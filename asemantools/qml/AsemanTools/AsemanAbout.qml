@@ -21,6 +21,7 @@ import AsemanTools 1.0
 
 Rectangle {
     id: aseman_splash
+    color: Desktop.titleBarColor
 
     Image {
         id: logo
@@ -28,7 +29,7 @@ Rectangle {
         width: 200*Devices.density
         height: 142*Devices.density
         sourceSize: Qt.size(width,height)
-        source: "files/aseman-special.png"
+        source: Desktop.titleBarIsDark? "files/aseman-special.png" : "files/aseman-special-black.png"
         z: 10
     }
 
@@ -38,9 +39,10 @@ Rectangle {
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.margins: 20*Devices.density
+        font.family: AsemanApp.globalFont.family
         wrapMode: Text.WrapAtWordBoundaryOrAnywhere
         font.pixelSize: 9*Devices.fontDensity
-        color: "#ffffff"
+        color: Desktop.titleBarTextColor
         horizontalAlignment: Text.AlignHCenter
         z: 10
         text: qsTr("Aseman is a non-profit organization, exists to support and lead the free, open source and cross-platform projects and researches.")
@@ -53,75 +55,34 @@ Rectangle {
         anchors.right: parent.right
         anchors.leftMargin: 20*Devices.density
         anchors.rightMargin: 20*Devices.density
+        anchors.topMargin: 4*Devices.density
         wrapMode: Text.WrapAtWordBoundaryOrAnywhere
         font.pixelSize: 9*Devices.fontDensity
-        color: "#ffffff"
+        font.family: AsemanApp.globalFont.family
+        color: Desktop.titleBarTextColor
         horizontalAlignment: Text.AlignHCenter
         z: 10
         text: qsTr("The Goal of the Aseman is to provide free and secure products to keep people’s freedom and their privacy.")
     }
 
-    MouseArea {
+    Button {
         anchors.bottom: parent.bottom
-        anchors.bottomMargin: View.navigationBarHeight
+        anchors.bottomMargin: View.navigationBarHeight + 10*Devices.density
         anchors.horizontalCenter: parent.horizontalCenter
         height: 40*Devices.density
-        width: 300*Devices.density
-        z: 10
-        cursorShape: Qt.PointingHandCursor
+        width: 120*Devices.density
+        normalColor: masterPalette.highlight
+        highlightColor: Qt.darker(masterPalette.highlight)
+        textColor: masterPalette.highlightedText
+        radius: 4*Devices.density
+        text: qsTr("Home Page")
         onClicked: Qt.openUrlExternally("http://aseman.co")
-
-        Text {
-            anchors.centerIn: parent
-            font.pixelSize: 9*Devices.fontDensity
-            font.bold: true
-            color: "#ffffff"
-            horizontalAlignment: Text.AlignHCenter
-            text: qsTr("Home Page")
-        }
     }
 
-    Component {
-        id: img_component
-        Image {
-            id: img
-            width: parent.width
-            height: parent.height
-            source: "files/splash-back.jpg"
-            fillMode: Image.PreserveAspectCrop
-            opacity: 0
-            scale: 1
-
-            Behavior on opacity {
-                NumberAnimation{ easing.type: Easing.Linear; duration: create_timer.first?0:create_timer.interval }
-            }
-            Behavior on scale {
-                NumberAnimation{ easing.type: Easing.Linear; duration: kill_timer.interval }
-            }
-
-            Timer {
-                id: kill_timer
-                interval: create_timer.interval*2
-                onTriggered: img.destroy()
-            }
-
-            Component.onCompleted: {
-                opacity = 1
-                scale = 3
-                kill_timer.start()
-                create_timer.first = false
-            }
-        }
-    }
-
-    Timer {
-        id: create_timer
-        repeat: true
-        interval: 6000
-        triggeredOnStart: true
-        Component.onCompleted: start()
-        onTriggered: img_component.createObject(aseman_splash)
-
-        property bool first: true
+    Header {
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.top: parent.top
+        light: Desktop.titleBarIsDark
     }
 }

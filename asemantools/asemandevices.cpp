@@ -41,6 +41,7 @@
 #include <QScreen>
 #include <QDateTime>
 #include <QDebug>
+#include <QMimeData>
 
 class AsemanDevicesPrivate
 {
@@ -359,6 +360,15 @@ qreal AsemanDevices::fontDensity() const
 #endif
 }
 
+QString AsemanDevices::localFilesPrePath()
+{
+#ifdef Q_OS_WIN
+    return "file:///";
+#else
+    return "file://";
+#endif
+}
+
 QString AsemanDevices::clipboard() const
 {
     return QGuiApplication::clipboard()->text();
@@ -367,6 +377,19 @@ QString AsemanDevices::clipboard() const
 bool AsemanDevices::keyboard() const
 {
     return p->keyboard_stt;
+}
+
+QList<QUrl> AsemanDevices::clipboardUrl() const
+{
+    return QGuiApplication::clipboard()->mimeData()->urls();
+}
+
+void AsemanDevices::setClipboardUrl(const QList<QUrl> &urls)
+{
+    QMimeData *mime = new QMimeData();
+    mime->setUrls(urls);
+
+    QGuiApplication::clipboard()->setMimeData(mime);
 }
 
 QString AsemanDevices::cameraLocation()
@@ -432,7 +455,26 @@ QString AsemanDevices::documentsLocation()
 QString AsemanDevices::resourcePath()
 {
 #ifndef Q_OS_MAC
-    return QCoreApplication::applicationDirPath() + "/";
+    QString result = QCoreApplication::applicationDirPath() + "/../share/" + QCoreApplication::applicationName().toLower();
+    QFileInfo file(result);
+    if(file.exists() && file.isDir())
+        return file.filePath();
+    else
+        return QCoreApplication::applicationDirPath() + "/";
+#else
+    return QCoreApplication::applicationDirPath() + "/../Resources/";
+#endif
+}
+
+QString AsemanDevices::libsPath()
+{
+#ifndef Q_OS_MAC
+    QString result = QCoreApplication::applicationDirPath() + "/../lib/" + QCoreApplication::applicationName().toLower();
+    QFileInfo file(result);
+    if(file.exists() && file.isDir())
+        return file.filePath();
+    else
+        return QCoreApplication::applicationDirPath() + "/";
 #else
     return QCoreApplication::applicationDirPath() + "/../Resources/";
 #endif

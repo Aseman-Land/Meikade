@@ -76,7 +76,7 @@ Item {
             id: txt1
             anchors.horizontalCenter: parent.horizontalCenter
             font.pixelSize: 13*Devices.fontDensity
-            font.family: AsemanApp.globalFontFamily
+            font.family: AsemanApp.globalFont.family
             wrapMode: TextInput.WordWrap
             color: poem_header.color
             horizontalAlignment: Text.AlignHCenter
@@ -86,7 +86,7 @@ Item {
             id: txt2
             anchors.horizontalCenter: parent.horizontalCenter
             font.pixelSize: 13*Devices.fontDensity
-            font.family: AsemanApp.globalFontFamily
+            font.family: AsemanApp.globalFont.family
             wrapMode: TextInput.WordWrap
             color: poem_header.color
             horizontalAlignment: Text.AlignHCenter
@@ -110,7 +110,7 @@ Item {
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.margins: 8*Devices.density
                 font.pixelSize: 10*Devices.fontDensity
-                font.family: AsemanApp.globalFontFamily
+                font.family: AsemanApp.globalFont.family
                 wrapMode: TextInput.WordWrap
                 color: poem_header.color
                 horizontalAlignment: Text.AlignHCenter

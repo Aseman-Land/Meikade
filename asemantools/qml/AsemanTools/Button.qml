@@ -16,7 +16,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-import QtQuick 2.2
+import QtQuick 2.0
 import AsemanTools 1.0
 
 Rectangle {
@@ -44,7 +44,7 @@ Rectangle {
     property alias textColor: txt.color
 
     property alias cursorShape: marea.cursorShape
-    property real textMargin: 1*Devices.density
+    property real textMargin: 0
 
     property color tooltipColor: "#cc000000"
     property color tooltipTextColor: "#ffffff"
@@ -57,7 +57,6 @@ Rectangle {
         id: row
         anchors.top: parent.top
         anchors.bottom: parent.bottom
-        anchors.topMargin: 4*Devices.density
         anchors.margins: 3*Devices.density
         anchors.horizontalCenter: parent.horizontalCenter
         spacing: 4*Devices.density
@@ -77,7 +76,7 @@ Rectangle {
             y: parent.height/2 - height/2 - textMargin
             color: "#ffffff"
             font.bold: Devices.isWindows? false : true
-            font.family: AsemanApp.globalFontFamily
+            font.family: AsemanApp.globalFont.family
             font.pixelSize: 9*Devices.fontDensity
         }
     }

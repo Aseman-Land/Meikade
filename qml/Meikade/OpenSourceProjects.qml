@@ -46,7 +46,7 @@ Rectangle {
         anchors.top: title.bottom
         anchors.right: parent.right
         anchors.margins: 8*Devices.density
-        font.family: AsemanApp.globalFontFamily
+        font.family: AsemanApp.globalFont.family
         font.pixelSize: 9*Devices.fontDensity
         color: "#333333"
         text: qsTr("List of other opensource projects used in Meikade.")
@@ -87,7 +87,7 @@ Rectangle {
                     Text {
                         id: title_txt
                         font.pixelSize: 14*Devices.fontDensity
-                        font.family: AsemanApp.globalFontFamily
+                        font.family: AsemanApp.globalFont.family
                         anchors.left: parent.left
                         color: "#333333"
                         text: title
@@ -96,7 +96,7 @@ Rectangle {
                     Text {
                         id: license_txt
                         font.pixelSize: 10*Devices.fontDensity
-                        font.family: AsemanApp.globalFontFamily
+                        font.family: AsemanApp.globalFont.family
                         anchors.right: parent.right
                         anchors.bottom: parent.bottom
                         color: "#666666"
@@ -107,7 +107,7 @@ Rectangle {
                 Text {
                     id: description_txt
                     font.pixelSize: 9*Devices.fontDensity
-                    font.family: AsemanApp.globalFontFamily
+                    font.family: AsemanApp.globalFont.family
                     anchors.left: parent.left
                     anchors.right: parent.right
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
@@ -118,7 +118,7 @@ Rectangle {
                 Text {
                     id: link_txt
                     font.pixelSize: 9*Devices.fontDensity
-                    font.family: AsemanApp.globalFontFamily
+                    font.family: AsemanApp.globalFont.family
                     color: "#0d80ec"
                     text: link
 

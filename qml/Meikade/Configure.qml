@@ -57,7 +57,7 @@ BackHandlerView {
         height: headerHeight
         verticalAlignment: Text.AlignVCenter
         font.pixelSize: 12*Devices.fontDensity
-        font.family: AsemanApp.globalFontFamily
+        font.family: AsemanApp.globalFont.family
         color: "#ffffff"
     }
 
@@ -111,7 +111,7 @@ BackHandlerView {
                         anchors.margins: 30*Devices.density
                         y: parent.height/2 - height/2
                         font.pixelSize: 11*Devices.fontDensity
-                        font.family: AsemanApp.globalFontFamily
+                        font.family: AsemanApp.globalFont.family
                         color: "#ffffff"
                         text: name
                         wrapMode: TextInput.WordWrap

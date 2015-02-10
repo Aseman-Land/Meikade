@@ -20,6 +20,7 @@
 #define ASEMANDEVICES_H
 
 #include <QObject>
+#include <QUrl>
 #include <QSize>
 
 class QScreen;
@@ -52,6 +53,8 @@ class AsemanDevices : public QObject
     Q_PROPERTY(QSize screenSize        READ screenSize        NOTIFY geometryChanged          )
     Q_PROPERTY(qreal keyboardHeight    READ keyboardHeight    NOTIFY geometryChanged          )
 
+    Q_PROPERTY(QString localFilesPrePath READ localFilesPrePath NOTIFY localFilesPrePathChanged)
+
     Q_PROPERTY(int   densityDpi  READ densityDpi  NOTIFY densityDpiChanged  )
     Q_PROPERTY(qreal density     READ density     NOTIFY densityChanged     )
     Q_PROPERTY(qreal fontDensity READ fontDensity NOTIFY fontDensityChanged )
@@ -60,7 +63,8 @@ class AsemanDevices : public QObject
     Q_PROPERTY(bool  transparentNavigationBar READ transparentNavigationBar NOTIFY transparentNavigationBarChanged)
     Q_PROPERTY(qreal standardTitleBarHeight   READ standardTitleBarHeight   NOTIFY standardTitleBarHeightChanged  )
 
-    Q_PROPERTY(QString clipboard READ clipboard WRITE setClipboard NOTIFY clipboardChanged)
+    Q_PROPERTY(QString     clipboard    READ clipboard    WRITE setClipboard    NOTIFY clipboardChanged   )
+    Q_PROPERTY(QList<QUrl> clipboardUrl READ clipboardUrl WRITE setClipboardUrl NOTIFY clipboardUrlChanged)
 
     Q_PROPERTY(bool keyboard READ keyboard NOTIFY keyboardChanged)
 
@@ -69,6 +73,7 @@ class AsemanDevices : public QObject
     Q_PROPERTY(QString musicsLocation    READ musicsLocation    NOTIFY musicsLocationChanged    )
     Q_PROPERTY(QString documentsLocation READ documentsLocation NOTIFY documentsLocationChanged )
     Q_PROPERTY(QString resourcePath      READ resourcePath      NOTIFY resourcePathChanged      )
+    Q_PROPERTY(QString libsPath          READ libsPath          NOTIFY libsPathChanged          )
 
 public:
     AsemanDevices(QObject *parent = 0);
@@ -103,6 +108,8 @@ public:
     qreal density() const;
     qreal fontDensity() const;
 
+    static QString localFilesPrePath();
+
     bool transparentStatusBar() const;
     bool transparentNavigationBar() const;
     qreal standardTitleBarHeight() const;
@@ -110,11 +117,15 @@ public:
     QString clipboard() const;
     bool keyboard() const;
 
+    QList<QUrl> clipboardUrl() const;
+    void setClipboardUrl(const QList<QUrl> &urls);
+
     static QString cameraLocation();
     static QString picturesLocation();
     static QString musicsLocation();
     static QString documentsLocation();
     static QString resourcePath();
+    static QString libsPath();
 
 public slots:
     void hideKeyboard();
@@ -148,6 +159,7 @@ signals:
     void isWindowsPhoneChanged();
 
     void screenChanged();
+    void localFilesPrePathChanged();
 
     void lcdPhysicalSizeChanged();
     void lcdPhysicalWidthChanged();
@@ -167,6 +179,7 @@ signals:
     void fontDensityChanged();
 
     void clipboardChanged();
+    void clipboardUrlChanged();
     void keyboardChanged();
 
     void cameraLocationChanged();
@@ -174,6 +187,7 @@ signals:
     void musicsLocationChanged();
     void documentsLocationChanged();
     void resourcePathChanged();
+    void libsPathChanged();
 
 private slots:
     void incoming_share( const QString & title, const QString & msg );

@@ -41,7 +41,7 @@ Item {
         Text {
             id: delete_warn
             font.pixelSize: 17*Devices.fontDensity
-            font.family: AsemanApp.globalFontFamily
+            font.family: AsemanApp.globalFont.family
             anchors.margins: 10*Devices.density
             anchors.left: parent.left
             anchors.right: parent.horizontalCenter
@@ -111,7 +111,7 @@ Item {
                 anchors.margins: 30*Devices.density
                 y: parent.height/2 - height/2
                 font.pixelSize: 11*Devices.fontDensity
-                font.family: AsemanApp.globalFontFamily
+                font.family: AsemanApp.globalFont.family
                 color: "#ffffff"
                 text: Meikade.fileName(item.file)
                 wrapMode: TextInput.WordWrap
@@ -154,7 +154,7 @@ Item {
                 anchors.right: parent.right
                 anchors.margins: 10*Devices.density
                 font.pixelSize: 10*Devices.fontDensity
-                font.family: AsemanApp.globalFontFamily
+                font.family: AsemanApp.globalFont.family
                 color: "#ffffff"
                 wrapMode: TextInput.WordWrap
             }
@@ -175,7 +175,7 @@ Item {
                     anchors.margins: 30*Devices.density
                     y: parent.height/2 - height/2
                     font.pixelSize: 11*Devices.fontDensity
-                    font.family: AsemanApp.globalFontFamily
+                    font.family: AsemanApp.globalFont.family
                     color: "#ffffff"
                 }
 
@@ -201,7 +201,7 @@ Item {
                 Text {
                     id: message
                     font.pixelSize: 9*Devices.fontDensity
-                    font.family: AsemanApp.globalFontFamily
+                    font.family: AsemanApp.globalFont.family
                     color: splitter.color
                     anchors.bottom: parent.top
                     anchors.left: parent.left

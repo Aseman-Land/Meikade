@@ -55,7 +55,7 @@ Item {
                 text: item.name
                 font.pixelSize: view.selectedIndex == item.tid? 18*Devices.fontDensity : 12*Devices.fontDensity
                 font.underline: view.selectedIndex == item.tid
-                font.family: AsemanApp.globalFontFamily
+                font.family: AsemanApp.globalFont.family
                 color: item.press? "#0d80ec" : "#ffffff"
             }
 

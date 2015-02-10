@@ -11,7 +11,7 @@ Column {
         width: main.width - 40*Devices.density
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.margins: 10*Devices.density
-        font.family: AsemanApp.globalFontFamily
+        font.family: AsemanApp.globalFont.family
         font.pixelSize: 9*Devices.fontDensity
         color: "#333333"
         wrapMode: Text.WrapAtWordBoundaryOrAnywhere
@@ -21,7 +21,7 @@ Column {
     Row {
         anchors.right: parent.right
         Button {
-            textFont.family: AsemanApp.globalFontFamily
+            textFont.family: AsemanApp.globalFont.family
             textFont.pixelSize: 10*Devices.fontDensity
             textColor: "#0d80ec"
             normalColor: "#00000000"
@@ -33,7 +33,7 @@ Column {
         }
 
         Button {
-            textFont.family: AsemanApp.globalFontFamily
+            textFont.family: AsemanApp.globalFont.family
             textFont.pixelSize: 10*Devices.fontDensity
             textColor: "#0d80ec"
             normalColor: "#00000000"

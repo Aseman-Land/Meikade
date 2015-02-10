@@ -132,7 +132,7 @@ AsemanMain {
     FontLoader{
         id: poem_texts_font
         source: Meikade.resourcePath + "/fonts/" + Meikade.poemsFont + ".ttf"
-        onStatusChanged: if(status == FontLoader.Ready) AsemanApp.globalFontFamily = name
+        onStatusChanged: if(status == FontLoader.Ready) AsemanApp.globalFont.family = name
     }
 
     FontLoader{
@@ -318,7 +318,7 @@ AsemanMain {
             anchors.verticalCenter: menu_img.verticalCenter
             anchors.right: menu_img.left
             anchors.rightMargin: 8*Devices.density
-            font.family: AsemanApp.globalFontFamily
+            font.family: AsemanApp.globalFont.family
             font.pixelSize: 11*Devices.fontDensity
             text: qsTr("Meikade")
             color: "#ffffff"

@@ -24,6 +24,7 @@
 #include <QObject>
 #include <QColor>
 #include <QDir>
+#include <QFont>
 #include <QWindow>
 
 class AsemanDesktopToolsPrivate;
@@ -34,7 +35,11 @@ class AsemanDesktopTools : public QObject
     Q_PROPERTY(QColor titleBarTextColor READ titleBarTextColor NOTIFY titleBarTextColorChanged)
     Q_PROPERTY(bool titleBarIsDark READ titleBarIsDark NOTIFY titleBarIsDarkChanged)
     Q_PROPERTY(int desktopSession READ desktopSession NOTIFY desktopSessionChanged)
+    Q_PROPERTY(QStringList fontFamilies READ fontFamilies NOTIFY fakeSignal)
+    Q_PROPERTY(QString menuStyle READ menuStyle WRITE setMenuStyle NOTIFY menuStyleChanged)
+
     Q_ENUMS(DesktopSession)
+    Q_ENUMS(YesOrNoType)
 
     Q_OBJECT
 public:
@@ -51,6 +56,13 @@ public:
         Mac
     };
 
+    enum YesOrNoType {
+        Warning,
+        Question,
+        Information,
+        Critical
+    };
+
     int desktopSession() const;
 
     QColor titleBarColor() const;
@@ -58,11 +70,20 @@ public:
     QColor titleBarTextColor() const;
     bool titleBarIsDark() const;
 
+    QStringList fontFamilies() const;
+
+    void setMenuStyle(const QString &style);
+    QString menuStyle() const;
+
 public slots:
     QString getOpenFileName(QWindow *window = 0, const QString &title = QString(), const QString &filter = QString(), const QString & startPath = QDir::homePath() );
     QString getSaveFileName(QWindow *window = 0, const QString &title = QString(), const QString &filter = QString(), const QString & startPath = QDir::homePath() );
     QString getExistingDirectory(QWindow *window = 0, const QString &title = QString(), const QString & startPath = QDir::homePath());
+    QFont getFont(QWindow *window = 0, const QString &title = QString(), const QFont &font = QFont());
     QColor getColor(const QColor &color = QColor()) const;
+    QString getText(QWindow *window = 0, const QString &title = QString(), const QString &text = QString(), const QString &defaultText = QString());
+    int showMenu( const QStringList & actions, QPoint point = QPoint() );
+    bool yesOrNo(QWindow *window, const QString &title, const QString &text, int type = Warning);
 
 signals:
     void titleBarColorChanged();
@@ -70,6 +91,8 @@ signals:
     void titleBarTransparentColorChanged();
     void titleBarIsDarkChanged();
     void desktopSessionChanged();
+    void menuStyleChanged();
+    void fakeSignal();
 
 private:
     AsemanDesktopToolsPrivate *p;

@@ -26,8 +26,13 @@
 #include "asemanlistobject.h"
 #include "asemancalendarconverter.h"
 #include "asemanimagecoloranalizor.h"
+#include "asemanmimedata.h"
+#include "asemandragobject.h"
+#include "asemandownloader.h"
 #include "asemanbackhandler.h"
 #include "asemancountriesmodel.h"
+#include "asemannotification.h"
+#include "asemanautostartmanager.h"
 #ifdef Q_OS_ANDROID
 #include "asemanjavalayer.h"
 #endif
@@ -36,9 +41,6 @@
 #endif
 #ifdef ASEMAN_SENSORS
 #include "asemansensors.h"
-#endif
-#ifdef ASEMAN_NOTIFICATION
-#include "asemannotification.h"
 #endif
 
 #include <QPointer>
@@ -103,18 +105,22 @@ AsemanQuickView::AsemanQuickView(int options, QWindow *parent) :
     engine()->rootContext()->setContextProperty( "AsemanApp", AsemanApplication::instance() );
     engine()->rootContext()->setContextProperty( "View", this );
 
+    qRegisterMetaType<AsemanMimeData*>("AsemanMimeData*");
+
+    qmlRegisterType<AsemanMimeData>("AsemanTools", 1, 0, "MimeData");
+    qmlRegisterType<AsemanDragObject>("AsemanTools", 1, 0, "DragObject");
     qmlRegisterType<AsemanHashObject>("AsemanTools", 1,0, "HashObject");
     qmlRegisterType<AsemanListObject>("AsemanTools", 1,0, "ListObject");
+    qmlRegisterType<AsemanDownloader>("AsemanTools", 1,0, "Downloader");
     qmlRegisterType<AsemanImageColorAnalizor>("AsemanTools", 1,0, "ImageColorAnalizor");
     qmlRegisterType<AsemanCountriesModel>("AsemanTools", 1,0, "CountriesModel");
+    qmlRegisterType<AsemanNotification>("AsemanTools", 1,0, "Notification");
+    qmlRegisterType<AsemanAutoStartManager>("AsemanTools", 1,0, "AutoStartManager");
 #ifdef DESKTOP_LINUX
     qmlRegisterType<AsemanMimeApps>("AsemanTools", 1,0, "MimeApps");
 #endif
 #ifdef ASEMAN_SENSORS
     qmlRegisterType<AsemanSensors>("AsemanTools", 1,0, "AsemanSensors");
-#endif
-#ifdef ASEMAN_NOTIFICATION
-    qmlRegisterType<AsemanNotification>("AsemanTools", 1,0, "Notification");
 #endif
 
     setResizeMode(QQuickView::SizeRootObjectToView);

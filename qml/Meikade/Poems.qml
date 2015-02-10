@@ -80,7 +80,7 @@ Rectangle {
             anchors.rightMargin: 8*Devices.density
             color: "#ffffff"
             font.pixelSize: 10*Devices.fontDensity
-            font.family: AsemanApp.globalFontFamily
+            font.family: AsemanApp.globalFont.family
             text: Database.catName(catId)
         }
     }
@@ -124,7 +124,7 @@ Rectangle {
                 anchors.margins: 30*Devices.density
                 y: parent.height/2 - height/2
                 font.pixelSize: Devices.isMobile? 10*Devices.fontDensity : 11*Devices.fontDensity
-                font.family: AsemanApp.globalFontFamily
+                font.family: AsemanApp.globalFont.family
                 color: "#333333"
                 text: Database.poemName(pid)
                 wrapMode: TextInput.WordWrap

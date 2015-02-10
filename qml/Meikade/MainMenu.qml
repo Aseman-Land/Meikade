@@ -49,7 +49,7 @@ Rectangle {
                 anchors.margins: 20*Devices.density
                 y: parent.height/2 - height/2 -1*Devices.density
                 font.pixelSize: Devices.isMobile? 9*Devices.fontDensity : 11*Devices.fontDensity
-                font.family: AsemanApp.globalFontFamily
+                font.family: AsemanApp.globalFont.family
                 color: "#ffffff"
                 horizontalAlignment: Text.AlignRight
                 text: name

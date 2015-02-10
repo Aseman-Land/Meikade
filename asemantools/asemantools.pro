@@ -51,17 +51,26 @@ android {
     }
 }
 
-contains(QT,sensors) {
-    DEFINES += ASEMAN_SENSORS
-    SOURCES += asemansensors.cpp
-    HEADERS += asemansensors.h
+contains(QT,widgets) {
+    DEFINES += NATIVE_ASEMAN_NOTIFICATION
+    SOURCES +=  \
+        asemannativenotification.cpp \
+        asemannativenotificationitem.cpp
+    HEADERS +=  \
+        asemannativenotification.h \
+        asemannativenotificationitem.h
 }
 linux {
 contains(QT,dbus) {
-    DEFINES += ASEMAN_NOTIFICATION
-    SOURCES += asemannotification.cpp
-    HEADERS += asemannotification.h
+    DEFINES += LINUX_NATIVE_ASEMAN_NOTIFICATION
+    SOURCES += asemanlinuxnativenotification.cpp
+    HEADERS += asemanlinuxnativenotification.h
 }
+}
+macx {
+    DEFINES += MAC_NATIVE_ASEMAN_NOTIFICATION
+    SOURCES += asemanmacnativenotification.cpp
+    HEADERS += asemanmacnativenotification.h
 }
 
 SOURCES += \
@@ -80,7 +89,12 @@ SOURCES += \
     asemanabstractcolorfulllistmodel.cpp \
     asemanimagecoloranalizor.cpp \
     asemancountriesmodel.cpp \
-    asemantoolsplugin.cpp
+    asemantoolsplugin.cpp \
+    asemandragobject.cpp \
+    asemanmimedata.cpp \
+    asemandownloader.cpp \
+    asemannotification.cpp \
+    asemanautostartmanager.cpp
 
 HEADERS += \
     asemandevices.h \
@@ -99,7 +113,12 @@ HEADERS += \
     asemanabstractcolorfulllistmodel.h \
     asemanimagecoloranalizor.h \
     asemancountriesmodel.h \
-    asemantoolsplugin.h
+    asemantoolsplugin.h \
+    asemandragobject.h \
+    asemanmimedata.h \
+    asemandownloader.h \
+    asemannotification.h \
+    asemanautostartmanager.h
 
 OTHER_FILES += \
     android-build/src/land/aseman/android/AsemanActivity.java \

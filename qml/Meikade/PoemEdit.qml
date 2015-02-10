@@ -120,7 +120,7 @@ Rectangle {
                 anchors.fill: parent
                 anchors.margins: 4*Devices.density
                 font.pixelSize: 10*Devices.fontDensity
-                font.family: AsemanApp.globalFontFamily
+                font.family: AsemanApp.globalFont.family
                 wrapMode: Text.Wrap
                 selectionColor: "#0d80ec"
                 selectedTextColor: "#ffffff"

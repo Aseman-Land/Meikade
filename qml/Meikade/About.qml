@@ -63,7 +63,7 @@ Rectangle {
 
         Text {
             width: parent.width
-            font.family: AsemanApp.globalFontFamily
+            font.family: AsemanApp.globalFont.family
             font.pixelSize: 10*Devices.fontDensity
             text: qsTr("Meikade is a free (means, the users have the freedom to run, copy, distribute, study, change and improve the software) and opensource application by Aseman Labs")
             wrapMode: Text.WordWrap
@@ -74,7 +74,7 @@ Rectangle {
 
         Text {
             width: parent.width
-            font.family: AsemanApp.globalFontFamily
+            font.family: AsemanApp.globalFont.family
             font.pixelSize: 9*Devices.fontDensity
             text: "v1.0.7"
             wrapMode: Text.WordWrap

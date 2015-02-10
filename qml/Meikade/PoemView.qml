@@ -205,7 +205,7 @@ Rectangle {
                         text: Meikade.numberToArabicString(index+1)
                         color: "#ffffff"
                         font.pixelSize: 9*fontScale
-                        font.family: AsemanApp.globalFontFamily
+                        font.family: AsemanApp.globalFont.family
                     }
                 }
             }
@@ -238,7 +238,7 @@ Rectangle {
                     anchors.bottom: parent.bottom
                     anchors.leftMargin: 8*Devices.density
                     font.pixelSize: Devices.isMobile? 8*Devices.fontDensity : 9*Devices.fontDensity
-                    font.family: AsemanApp.globalFontFamily
+                    font.family: AsemanApp.globalFont.family
                     color: "#ffffff"
 
                     Component.onCompleted: {

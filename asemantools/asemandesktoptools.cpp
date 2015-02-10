@@ -22,22 +22,31 @@
 #include <QStringList>
 #include <QPalette>
 #include <QEventLoop>
+#include <QFontDatabase>
+#include <QInputDialog>
 #include <QDebug>
 
 #ifdef DESKTOP_DEVICE
 #include <QColorDialog>
 #include <QFileDialog>
+#include <QFontDialog>
+#include <QMenu>
+#include <QAction>
+#include <QMessageBox>
 #endif
 
 class AsemanDesktopToolsPrivate
 {
 public:
+    QFontDatabase *font_db;
+    QString style;
 };
 
 AsemanDesktopTools::AsemanDesktopTools(QObject *parent) :
     QObject(parent)
 {
     p = new AsemanDesktopToolsPrivate;
+    p->font_db = 0;
 }
 
 int AsemanDesktopTools::desktopSession() const
@@ -77,6 +86,7 @@ int AsemanDesktopTools::desktopSession() const
 
 QColor AsemanDesktopTools::titleBarColor() const
 {
+#ifdef DESKTOP_DEVICE
     const int dsession = desktopSession();
     switch( dsession )
     {
@@ -128,6 +138,9 @@ QColor AsemanDesktopTools::titleBarColor() const
     }
 
     return QColor("#EDEDED");
+#else
+    return QColor("#111111");
+#endif
 }
 
 QColor AsemanDesktopTools::titleBarTransparentColor() const
@@ -139,6 +152,7 @@ QColor AsemanDesktopTools::titleBarTransparentColor() const
 
 QColor AsemanDesktopTools::titleBarTextColor() const
 {
+#ifdef DESKTOP_DEVICE
     const int dsession = desktopSession();
     switch( dsession )
     {
@@ -190,6 +204,9 @@ QColor AsemanDesktopTools::titleBarTextColor() const
     }
 
     return QColor("#333333");
+#else
+    return QColor("#ffffff");
+#endif
 }
 
 bool AsemanDesktopTools::titleBarIsDark() const
@@ -200,6 +217,28 @@ bool AsemanDesktopTools::titleBarIsDark() const
         return false;
     else
         return true;
+}
+
+QStringList AsemanDesktopTools::fontFamilies() const
+{
+    if(!p->font_db)
+        p->font_db = new QFontDatabase();
+
+    return p->font_db->families();
+}
+
+void AsemanDesktopTools::setMenuStyle(const QString &style)
+{
+    if(p->style == style)
+        return;
+
+    p->style = style;
+    emit menuStyleChanged();
+}
+
+QString AsemanDesktopTools::menuStyle() const
+{
+    return p->style;
 }
 
 QString AsemanDesktopTools::getOpenFileName(QWindow *window, const QString & title, const QString &filter, const QString &startPath)
@@ -229,16 +268,37 @@ QString AsemanDesktopTools::getOpenFileName(QWindow *window, const QString & tit
                 return QFileDialog::getOpenFileName(0, title, startPath, filter);
         }
         else
-        {
             return QFileDialog::getOpenFileName(0, title, startPath, filter);
+        break;
+
+    case AsemanDesktopTools::Unity:
+    case AsemanDesktopTools::GnomeFallBack:
+    case AsemanDesktopTools::Gnome:
+        if( QFileInfo::exists("/usr/bin/zenity") )
+        {
+            QStringList args = QStringList()<< "--title=" << "--file-selection" <<
+                                               "--class=Cutegram" << "--name=Cutegram";
+            if(!filter.isEmpty())
+                args << "--file-filter=" + filter;
+
+            QProcess process;
+            QEventLoop loop;
+            connect(&process, SIGNAL(finished(int)), &loop, SLOT(quit()), Qt::QueuedConnection );
+
+            process.start("/usr/bin/zenity", args );
+            loop.exec(QEventLoop::ExcludeUserInputEvents);
+
+            if( process.exitStatus() == QProcess::NormalExit )
+                return QString(process.readAll()).remove("\n");
+            else
+                return QFileDialog::getOpenFileName(0, title, startPath, filter);
         }
+        else
+            return QFileDialog::getOpenFileName(0, title, startPath, filter);
         break;
 
     case AsemanDesktopTools::Mac:
     case AsemanDesktopTools::Windows:
-    case AsemanDesktopTools::Unity:
-    case AsemanDesktopTools::GnomeFallBack:
-    case AsemanDesktopTools::Gnome:
         return QFileDialog::getOpenFileName(0, title, startPath, filter);
         break;
     }
@@ -285,11 +345,34 @@ QString AsemanDesktopTools::getSaveFileName(QWindow *window, const QString &titl
         }
         break;
 
-    case AsemanDesktopTools::Mac:
-    case AsemanDesktopTools::Windows:
     case AsemanDesktopTools::Unity:
     case AsemanDesktopTools::GnomeFallBack:
     case AsemanDesktopTools::Gnome:
+        if( QFileInfo::exists("/usr/bin/zenity") )
+        {
+            QStringList args = QStringList()<< "--title=" << "--file-selection" << "--save" <<
+                                               "--class=Cutegram" << "--name=Cutegram";
+            if(!filter.isEmpty())
+                args << "--file-filter=" + filter;
+
+            QProcess process;
+            QEventLoop loop;
+            connect(&process, SIGNAL(finished(int)), &loop, SLOT(quit()), Qt::QueuedConnection );
+
+            process.start("/usr/bin/zenity", args );
+            loop.exec(QEventLoop::ExcludeUserInputEvents);
+
+            if( process.exitStatus() == QProcess::NormalExit )
+                return QString(process.readAll()).remove("\n");
+            else
+                return QFileDialog::getSaveFileName(0, title, startPath, filter);
+        }
+        else
+            return QFileDialog::getSaveFileName(0, title, startPath, filter);
+        break;
+
+    case AsemanDesktopTools::Mac:
+    case AsemanDesktopTools::Windows:
         return QFileDialog::getSaveFileName(0, title, startPath, filter);
         break;
     }
@@ -336,11 +419,32 @@ QString AsemanDesktopTools::getExistingDirectory(QWindow *window, const QString 
         }
         break;
 
-    case AsemanDesktopTools::Mac:
-    case AsemanDesktopTools::Windows:
     case AsemanDesktopTools::Unity:
     case AsemanDesktopTools::GnomeFallBack:
     case AsemanDesktopTools::Gnome:
+        if( QFileInfo::exists("/usr/bin/zenity") )
+        {
+            QStringList args = QStringList()<< "--title=" << "--file-selection" << "--directory" <<
+                                               "--class=Cutegram" << "--name=Cutegram";
+
+            QProcess process;
+            QEventLoop loop;
+            connect(&process, SIGNAL(finished(int)), &loop, SLOT(quit()), Qt::QueuedConnection );
+
+            process.start("/usr/bin/zenity", args );
+            loop.exec(QEventLoop::ExcludeUserInputEvents);
+
+            if( process.exitStatus() == QProcess::NormalExit )
+                return QString(process.readAll()).remove("\n");
+            else
+                return QFileDialog::getExistingDirectory(0, title, startPath);
+        }
+        else
+            return QFileDialog::getExistingDirectory(0, title, startPath);
+        break;
+
+    case AsemanDesktopTools::Mac:
+    case AsemanDesktopTools::Windows:
         return QFileDialog::getExistingDirectory(0, title, startPath);
         break;
     }
@@ -354,6 +458,20 @@ QString AsemanDesktopTools::getExistingDirectory(QWindow *window, const QString 
 #endif
 }
 
+QFont AsemanDesktopTools::getFont(QWindow *window, const QString &title, const QFont &font)
+{
+#ifdef DESKTOP_DEVICE
+    Q_UNUSED(window)
+    bool ok = false;
+    return QFontDialog::getFont(&ok, font, 0, title);
+#else
+    Q_UNUSED(window)
+    Q_UNUSED(title)
+    Q_UNUSED(font)
+    return font;
+#endif
+}
+
 QColor AsemanDesktopTools::getColor(const QColor &color) const
 {
 #ifdef DESKTOP_DEVICE
@@ -363,7 +481,71 @@ QColor AsemanDesktopTools::getColor(const QColor &color) const
 #endif
 }
 
+QString AsemanDesktopTools::getText(QWindow *window, const QString &title, const QString &text, const QString &defaultText)
+{
+    Q_UNUSED(window)
+
+    bool ok = false;
+    const QString &result = QInputDialog::getText(0, title, text, QLineEdit::Normal, defaultText, &ok);
+    if(!ok)
+        return QString();
+
+    return result;
+}
+
+int AsemanDesktopTools::showMenu(const QStringList &actions, QPoint point)
+{
+#ifdef DESKTOP_DEVICE
+    if( point.isNull() )
+        point = QCursor::pos();
+
+    QMenu menu;
+    menu.setStyleSheet(p->style);
+
+    QList<QAction*> pointers;
+    foreach(const QString &act, actions)
+        pointers << (act.isEmpty()? menu.addSeparator() : menu.addAction(act));
+
+    QAction *res = menu.exec(point);
+    return pointers.indexOf(res);
+#else
+    return -1;
+#endif
+}
+
+bool AsemanDesktopTools::yesOrNo(QWindow *window, const QString &title, const QString &text, int type)
+{
+    Q_UNUSED(window)
+#ifdef DESKTOP_DEVICE
+    switch(type)
+    {
+    case Warning:
+        return QMessageBox::warning(0, title, text, QMessageBox::Yes|QMessageBox::No) == QMessageBox::Yes;
+        break;
+
+    case Information:
+        return QMessageBox::information(0, title, text, QMessageBox::Yes|QMessageBox::No) == QMessageBox::Yes;
+        break;
+
+    case Question:
+        return QMessageBox::question(0, title, text, QMessageBox::Yes|QMessageBox::No) == QMessageBox::Yes;
+        break;
+
+    case Critical:
+        return QMessageBox::critical(0, title, text, QMessageBox::Yes|QMessageBox::No) == QMessageBox::Yes;
+        break;
+    }
+
+    return false;
+#else
+    return false;
+#endif
+}
+
 AsemanDesktopTools::~AsemanDesktopTools()
 {
+    if(p->font_db)
+        delete p->font_db;
+
     delete p;
 }

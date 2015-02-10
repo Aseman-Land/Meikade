@@ -60,7 +60,7 @@ Item {
                 anchors.leftMargin: 10*Devices.density
                 y: parent.height/2 - height/2
                 font.pixelSize: 11*Devices.fontDensity
-                font.family: AsemanApp.globalFontFamily
+                font.family: AsemanApp.globalFont.family
                 color: "#ffffff"
                 text: item.font
                 wrapMode: TextInput.WordWrap

@@ -16,7 +16,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-import QtQuick 2.2
+import QtQuick 2.0
 import AsemanTools 1.0
 
 Item {
@@ -41,7 +41,10 @@ Item {
 
     MouseArea {
         anchors.fill: parent
+        hoverEnabled: true
+        acceptedButtons: Qt.LeftButton | Qt.RightButton
         onClicked: p_dialog.hide()
+        onWheel: wheel.accepted = true
     }
 
     QtObject {
