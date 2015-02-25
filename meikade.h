@@ -32,7 +32,7 @@ class Meikade : public QObject
     Q_PROPERTY(QString resourcePath READ resourcePath NOTIFY resourcePathChanged)
     Q_PROPERTY(QString currentLanguage READ currentLanguage WRITE setCurrentLanguage NOTIFY currentLanguageChanged)
     Q_PROPERTY(int runCount READ runCount WRITE setRunCount NOTIFY runCountChanged)
-    Q_PROPERTY( Qt::LayoutDirection  languageDirection  READ languageDirection NOTIFY languageDirectionChanged )
+    Q_PROPERTY( int  languageDirection  READ languageDirection NOTIFY languageDirectionChanged )
     Q_OBJECT
 public:
     Meikade(QObject *parent = 0);
@@ -57,7 +57,7 @@ public:
     static QString resourcePathAbs();
     static QString resourcePath();
 
-    Q_INVOKABLE Qt::LayoutDirection languageDirection();
+    Q_INVOKABLE int languageDirection();
 
     Q_INVOKABLE qint64 mSecsSinceEpoch() const;
 

@@ -38,6 +38,8 @@ Rectangle {
 
     property bool rememberBar: false
 
+    property variant stickerDialog
+
     onPoemIdChanged: {
         view_list.refresh()
 
@@ -493,6 +495,27 @@ Rectangle {
             Button {
                 width: parent.width
                 height: 40*Devices.density
+                text:   qsTr("Share Image")
+                textColor: "#333333"
+                textFont.bold: false
+                textFont.pixelSize: 10*Devices.fontDensity
+                onClicked: {
+                    var poet
+                    var catId = Database.poemCat(poem_edit.poemId)
+                    while( catId ) {
+                        poet = Database.catName(catId)
+                        catId = Database.parentOf(catId)
+                    }
+
+                    stickerDialog = sticker_dialog_component.createObject(view)
+                    stickerDialog.text = poem_edit.text
+                    stickerDialog.poet = poet
+                    hideBottomPanel()
+                }
+            }
+            Button {
+                width: parent.width
+                height: 40*Devices.density
                 text: poem_edit.favorited? qsTr("Unfavorite") : qsTr("Favorite")
                 textColor: "#333333"
                 textFont.bold: false
@@ -530,5 +553,37 @@ Rectangle {
         highlight_enabler.restart()
         highlight_disabler.restart()
 
+    }
+
+    Component {
+        id: sticker_dialog_component
+        StickerDialog {
+            id: sdlg
+            width: view.width
+            height: view.height
+            x: -width
+
+            Behavior on x {
+                NumberAnimation{easing.type: Easing.OutCubic; duration: 400}
+            }
+
+            Timer {
+                id: destroy_timer
+                interval: 400
+                onTriggered: sdlg.destroy()
+            }
+
+            function close() {
+                x = -width
+            }
+
+            Component.onCompleted: {
+                x = 0
+                BackHandler.pushHandler(sdlg, sdlg.close)
+            }
+            Component.onDestruction: {
+                BackHandler.removeHandler(sdlg)
+            }
+        }
     }
 }

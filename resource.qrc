@@ -146,5 +146,19 @@
         <file>qml/Meikade/icons/menu.png</file>
         <file>qml/Meikade/FavoriteMessage.qml</file>
         <file>qml/Meikade/CopyErrorMessage.qml</file>
+        <file>qml/Meikade/StickerDialog.qml</file>
+        <file>qml/Meikade/stickers/icons/color.png</file>
+        <file>qml/Meikade/stickers/icons/font.png</file>
+        <file>qml/Meikade/stickers/icons/image.png</file>
+        <file>qml/Meikade/stickers/icons/logo.png</file>
+        <file>qml/Meikade/stickers/icons/size.png</file>
+        <file>qml/Meikade/stickers/images/s0.png</file>
+        <file>qml/Meikade/stickers/images/s1.png</file>
+        <file>qml/Meikade/stickers/images/s2.png</file>
+        <file>qml/Meikade/stickers/images/s3.png</file>
+        <file>qml/Meikade/stickers/images/s4.png</file>
+        <file>qml/Meikade/stickers/images/s5.png</file>
+        <file>qml/Meikade/icons/logo.png</file>
+        <file>qml/Meikade/icons/poet.png</file>
     </qresource>
 </RCC>

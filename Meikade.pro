@@ -36,7 +36,9 @@ SOURCES += main.cpp \
     meikade.cpp \
     meikadedatabase.cpp \
     SimpleQtCryptor/simpleqtcryptor.cpp \
-    p7zipextractor.cpp
+    p7zipextractor.cpp \
+    stickermodel.cpp \
+    stickerwriter.cpp
 
 HEADERS += \
     listobject.h \
@@ -52,7 +54,9 @@ HEADERS += \
     meikadedatabase.h \
     SimpleQtCryptor/serpent_sbox.h \
     SimpleQtCryptor/simpleqtcryptor.h \
-    p7zipextractor.h
+    p7zipextractor.h \
+    stickermodel.h \
+    stickerwriter.h
 
 OTHER_FILES += \
     android/AndroidManifest.xml \

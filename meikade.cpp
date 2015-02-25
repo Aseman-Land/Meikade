@@ -18,6 +18,7 @@
 
 #include "meikade.h"
 #include "meikadedatabase.h"
+#include "stickermodel.h"
 #include "userdata.h"
 #include "threadeddatabase.h"
 #include "threadedfilesystem.h"
@@ -25,6 +26,7 @@
 #include "listobject.h"
 #include "hashobject.h"
 #include "systeminfo.h"
+#include "stickerwriter.h"
 #include "p7zipextractor.h"
 #include "meikade_macros.h"
 #include "asemantools/asemandevices.h"
@@ -121,6 +123,9 @@ Meikade::Meikade(QObject *parent) :
     p->close  = false;
 #endif
 
+    qmlRegisterType<StickerModel>("Meikade", 1, 0, "StickerModel");
+    qmlRegisterType<StickerWriter>("Meikade", 1, 0, "StickerWriter");
+
     QDir().mkpath(HOME_PATH);
     init_languages();
 }
@@ -189,7 +194,7 @@ QString Meikade::fileSuffix(const QString &path)
 
 QStringList Meikade::availableFonts()
 {
-    return QStringList() << "DroidNaskh-Regular" << "IranNastaliq";
+    return QStringList() << "DroidNaskh-Regular" << "IranNastaliq" << "BKoodakO" << "BYekan";
 }
 
 qreal Meikade::fontPointScale(const QString &fontName)
@@ -278,7 +283,7 @@ QString Meikade::resourcePath()
 #endif
 }
 
-Qt::LayoutDirection Meikade::languageDirection()
+int Meikade::languageDirection()
 {
     return p->locales.value(currentLanguage()).textDirection();
 }

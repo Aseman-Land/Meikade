@@ -76,7 +76,7 @@ Rectangle {
             width: parent.width
             font.family: AsemanApp.globalFont.family
             font.pixelSize: 9*Devices.fontDensity
-            text: "v1.0.7"
+            text: "v2.0.0"
             wrapMode: Text.WordWrap
             color: "#ffffff"
             horizontalAlignment: Text.AlignRight

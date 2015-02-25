@@ -37,6 +37,7 @@ AsemanMain {
     property alias catPage: cat_page
 
     property bool blockBack: false
+    property bool fontsLoaded: false
 
     property bool animations: Meikade.animations
 
@@ -133,11 +134,6 @@ AsemanMain {
         id: poem_texts_font
         source: Meikade.resourcePath + "/fonts/" + Meikade.poemsFont + ".ttf"
         onStatusChanged: if(status == FontLoader.Ready) AsemanApp.globalFont.family = name
-    }
-
-    FontLoader{
-        id: normal_fonts
-        source: Meikade.resourcePath + "/fonts/DroidNaskh-Regular.ttf"
     }
 
     MainMenu {
@@ -489,5 +485,25 @@ AsemanMain {
 
     function back(){
         return AsemanApp.back()
+    }
+
+    function loadFonts() {
+        if(fontsLoaded)
+            return
+
+        var fonts = Meikade.availableFonts()
+        for(var i=0; i<fonts.length; i++)
+            if(fonts[i] != "DroidNaskh-Regular")
+                font_loader_component.createObject(main, {"fontName": fonts[i]})
+
+        fontsLoaded = true
+    }
+
+    Component {
+        id: font_loader_component
+        FontLoader{
+            source: Meikade.resourcePath + "/fonts/" + fontName + ".ttf"
+            property string fontName
+        }
     }
 }
