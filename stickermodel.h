@@ -13,6 +13,7 @@ class StickerModel : public QAbstractListModel
 
     Q_ENUMS(State)
     Q_ENUMS(LogoTypes)
+    Q_ENUMS(StickerType)
 
 public:
     enum ColorfullListModelRoles {
@@ -35,6 +36,12 @@ public:
     enum LogoTypes {
         PoetLogo,
         MeikadeLogo
+    };
+
+    enum StickerType {
+        StickerDouble = 0,
+        StickerTopRight = 1,
+        StickerBottomLeft
     };
 
     StickerModel(QObject *parent = 0);

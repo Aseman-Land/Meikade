@@ -35,6 +35,7 @@ AsemanMain {
     property bool flatDesign: true
 
     property alias catPage: cat_page
+    property alias materialDesignButton: md_button
 
     property bool blockBack: false
     property bool fontsLoaded: false
@@ -271,6 +272,14 @@ AsemanMain {
                     CategoryPage {
                         id: cat_page
                         anchors.fill: parent
+
+                        MaterialDesignButton {
+                            id: md_button
+                            anchors.fill: parent
+                            onHafezOmenRequest: cat_page.showHafezOmen()
+                            onRandomPoemRequest: cat_page.showRandom()
+                            onSearchRequest: search_bar.show()
+                        }
                     }
                 }
             }

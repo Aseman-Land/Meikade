@@ -110,22 +110,39 @@ Rectangle {
 
                 property real ratio: 1
                 property real parentRatio: main_frame.width/main_frame.height
-                property string imagePath: "stickers/images/s0.png"
+
+                property string imagePath: "stickers/images/0_1.png"
+                property int imageType: StickerModel.StickerDouble
 
                 property real xwidth: (ratio>parentRatio? main_frame.width : main_frame.height*ratio)*xratio
                 property real xheight: (ratio>parentRatio? main_frame.width/ratio : main_frame.height)*xratio
-
-                Behavior on width {
-                    NumberAnimation{easing.type: Easing.OutCubic; duration: 400}
-                }
-                Behavior on height {
-                    NumberAnimation{easing.type: Easing.OutCubic; duration: 400}
-                }
 
                 Item {
                     id: frame_source
                     anchors.fill: parent
                     visible: false
+
+                    Image {
+                        id: top_right_sticker
+                        width: frame_mask.width*0.4
+                        anchors.top: parent.top
+                        anchors.right: parent.right
+                        anchors.margins: frame_mask.width*0.1
+                        fillMode: Image.PreserveAspectFit
+                        source: frame.imagePath
+                        visible: frame.imageType == StickerModel.StickerTopRight
+                    }
+
+                    Image {
+                        id: btm_left_sticker
+                        width: frame_mask.width*0.4
+                        anchors.bottom: parent.bottom
+                        anchors.left: parent.left
+                        anchors.margins: frame_mask.width*0.1
+                        fillMode: Image.PreserveAspectFit
+                        source: frame.imagePath
+                        visible: frame.imageType == StickerModel.StickerBottomLeft
+                    }
 
                     Item {
                         id: squere_frame
@@ -133,18 +150,11 @@ Rectangle {
                         height: width
                         anchors.centerIn: parent
 
-                        Behavior on width {
-                            NumberAnimation{easing.type: Easing.OutCubic; duration: 400}
-                        }
-                        Behavior on height {
-                            NumberAnimation{easing.type: Easing.OutCubic; duration: 400}
-                        }
-
                         Column {
                             id: frame_mask
                             width: parent.width
                             anchors.centerIn: parent
-                            spacing: 10*Devices.density
+                            spacing: 40*Devices.density
 
                             Image {
                                 id: top_sticker
@@ -152,6 +162,7 @@ Rectangle {
                                 anchors.horizontalCenter: parent.horizontalCenter
                                 fillMode: Image.PreserveAspectFit
                                 source: frame.imagePath
+                                visible: frame.imageType == StickerModel.StickerDouble
                             }
 
                             Text {
@@ -173,6 +184,7 @@ Rectangle {
                                 anchors.horizontalCenter: parent.horizontalCenter
                                 fillMode: Image.PreserveAspectFit
                                 source: frame.imagePath
+                                visible: frame.imageType == StickerModel.StickerDouble
                                 transform: Scale { origin.x: btm_sticker.width/2; origin.y: btm_sticker.height/2; yScale: -1}
                             }
                         }
@@ -180,15 +192,14 @@ Rectangle {
 
                     Column {
                         id: logos_column
-                        anchors.left: parent.left
-                        anchors.bottom: parent.bottom
-                        anchors.margins: 20*Devices.density
+                        x: frame.imageType == StickerModel.StickerBottomLeft? parent.width - width - 20*Devices.density : 20*Devices.density
+                        y:frame.imageType == StickerModel.StickerBottomLeft? 20*Devices.density : parent.height - height - 20*Devices.density
                         spacing: 15*Devices.density
 
                         Text {
                             id: poet_txt
                             anchors.horizontalCenter: parent.horizontalCenter
-                            font.pixelSize: (txt.fontSize*Devices.fontDensity)*0.7
+                            font.pixelSize: meikade_logo.height/2
                             font.family: txt.font.family
                             color: images_frame.color
                         }
@@ -301,7 +312,10 @@ Rectangle {
                             break
 
                         case StickerModel.Sticker:
+                            frame_source.visible = true
                             frame.imagePath = stateCommand
+                            frame.imageType = stateCommand2
+                            frame_source.visible = false
                             break
 
                         case StickerModel.Font:

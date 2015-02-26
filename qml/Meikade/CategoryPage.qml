@@ -28,11 +28,13 @@ Rectangle {
     ListObject {
         id: list
         onCountChanged: {
-            if( count <= 1 )
+            if( count <= 1 ) {
                 BackHandler.removeHandler(page)
-            else
-            if( count == 2 )
+                materialDesignButton.show()
+            } else
+            if( count == 2 ) {
                 BackHandler.pushHandler(page, page.back)
+            }
         }
     }
 
@@ -130,6 +132,36 @@ Rectangle {
         }
     }
 
+    Component {
+        id: poemview_component
+
+        PoemView {
+            id: pview
+            width: parent.width
+            height: parent.height
+            x: inited? 0 : -width
+            rememberBar: true
+
+            property bool inited: false
+            property bool outside: false
+
+            Behavior on x {
+                NumberAnimation{ easing.type: Easing.OutCubic; duration: 400 }
+            }
+
+            Timer {
+                id: destroy_timer
+                interval: 400
+                onTriggered: pview.destroy()
+            }
+
+            function end() {
+                inited = false
+                destroy_timer.restart()
+            }
+        }
+    }
+
     function back() {
         if( list.count == 1 )
             return
@@ -144,5 +176,61 @@ Rectangle {
             BackHandler.removeHandler(page)
         else
             return false
+    }
+
+    function showHafezOmen() {
+        var item = hafez_omen_component.createObject( base_frame, {"catId": 10001} )
+        item.inited = true
+
+        if( list.count != 0 )
+            list.last().outside = true
+
+        list.append(item)
+        materialDesignButton.hide()
+    }
+
+    function showRandom() {
+        var poets = Database.poets()
+        var poet_id_rnd = Math.floor(Math.random()*poets.length)
+        if(poet_id_rnd == poets.length)
+            poet_id_rnd--
+
+        var poet = poets[poet_id_rnd]
+
+        var cats = Database.childsOf(poet)
+        var poem = -1
+        while(cats.length != 0)
+        {
+            var cat_id_rnd = Math.floor(Math.random()*cats.length)
+            if(cat_id_rnd == cats.length)
+                cat_id_rnd--
+
+            var cat = cats[cat_id_rnd]
+            var poems = Database.catPoems(cat)
+            if(poems.length != 0)
+            {
+                var poem_id_rnd = Math.floor(Math.random()*poems.length)
+                if(poem_id_rnd == poems.length)
+                    poem_id_rnd--
+
+                poem = poems[poem_id_rnd]
+                break;
+            }
+
+            cats = Database.childsOf(cat)
+        }
+
+        if(poem == -1 || !poem)
+            return false
+
+        var item = poemview_component.createObject( base_frame, {"poemId": poem} )
+        item.inited = true
+
+        if( list.count != 0 )
+            list.last().outside = true
+
+        list.append(item)
+        materialDesignButton.hide()
+        return true
     }
 }

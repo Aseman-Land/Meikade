@@ -43,6 +43,15 @@ Item {
         clip: true
         spacing: 8*Devices.density
         topMargin: category.topMargin
+        onVerticalVelocityChanged: {
+            if(catId != 0)
+                return
+            if((verticalVelocity>4 && !atYBeginning) || atYEnd)
+                materialDesignButton.hide()
+            else
+            if((verticalVelocity<-4 && !atYEnd) || atYBeginning)
+                materialDesignButton.show()
+        }
 
         model: ListModel {}
         delegate: Rectangle {
@@ -77,6 +86,7 @@ Item {
                 id: marea
                 anchors.fill: parent
                 onClicked: {
+                    materialDesignButton.hide()
                     var childs = Database.childsOf(identifier)
 
                     var map = item.mapToItem(category, 0, 0)

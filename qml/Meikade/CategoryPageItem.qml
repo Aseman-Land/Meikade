@@ -127,7 +127,7 @@ Rectangle {
             id: desc_header
             width: cat_item.width
             height: expand? desc_text.height + desc_text.y*2 : 80*Devices.density
-            color: "#444444"
+            color: "#333333"
             clip: true
 
             property bool expand: false

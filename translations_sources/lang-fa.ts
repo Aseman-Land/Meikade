@@ -165,7 +165,7 @@
 <context>
     <name>Category</name>
     <message>
-        <location filename="../qml/Meikade/Category.qml" line="113"/>
+        <location filename="../qml/Meikade/Category.qml" line="123"/>
         <source>This is a problem to loading poets.
 Please contact us:
 contact@aseman.org</source>
@@ -337,7 +337,7 @@ Thank you.</source>
     <message>
         <location filename="../qml/Meikade/HafezOmen.qml" line="65"/>
         <source>Intent and Tap on the screen</source>
-        <translation>نیت کنید و بر انگشتتان را بر روی صفحه بزنید</translation>
+        <translation>نیت کنید و انگشتتان را بر روی صفحه بزنید</translation>
     </message>
 </context>
 <context>
@@ -416,6 +416,24 @@ Thank you.</source>
         <location filename="../qml/Meikade/MainMenu.qml" line="82"/>
         <source>About Aseman</source>
         <translation>درباره‌ی آسمان</translation>
+    </message>
+</context>
+<context>
+    <name>MaterialDesignButton</name>
+    <message>
+        <location filename="../qml/Meikade/MaterialDesignButton.qml" line="111"/>
+        <source>Hafez Omen</source>
+        <translation>فال حافظ</translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/MaterialDesignButton.qml" line="126"/>
+        <source>Random Poem</source>
+        <translation>شعر اتفاقی</translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/MaterialDesignButton.qml" line="141"/>
+        <source>Search</source>
+        <translation>جستجو</translation>
     </message>
 </context>
 <context>
@@ -648,17 +666,17 @@ Thank you.</source>
 <context>
     <name>StickerDialog</name>
     <message>
-        <location filename="../qml/Meikade/StickerDialog.qml" line="58"/>
+        <location filename="../qml/Meikade/StickerDialog.qml" line="63"/>
         <source>Share</source>
         <translation>به اشتراک گذاری</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/StickerDialog.qml" line="71"/>
+        <location filename="../qml/Meikade/StickerDialog.qml" line="79"/>
         <source>Save</source>
         <translation>ذخیره</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/StickerDialog.qml" line="256"/>
+        <location filename="../qml/Meikade/StickerDialog.qml" line="278"/>
         <source>Font</source>
         <translation>قلم</translation>
     </message>
@@ -666,62 +684,62 @@ Thank you.</source>
 <context>
     <name>StickerModel</name>
     <message>
-        <location filename="../stickermodel.cpp" line="123"/>
+        <location filename="../stickermodel.cpp" line="124"/>
         <source>Size</source>
         <translation>اندازه</translation>
     </message>
     <message>
-        <location filename="../stickermodel.cpp" line="129"/>
+        <location filename="../stickermodel.cpp" line="130"/>
         <source>Color</source>
         <translation>رنگ</translation>
     </message>
     <message>
-        <location filename="../stickermodel.cpp" line="135"/>
+        <location filename="../stickermodel.cpp" line="136"/>
         <source>Sticker</source>
         <translation>شکل</translation>
     </message>
     <message>
-        <location filename="../stickermodel.cpp" line="141"/>
+        <location filename="../stickermodel.cpp" line="142"/>
         <source>Font</source>
         <translation>قلم</translation>
     </message>
     <message>
-        <location filename="../stickermodel.cpp" line="147"/>
+        <location filename="../stickermodel.cpp" line="148"/>
         <source>Logo</source>
         <translation>نشانه</translation>
     </message>
     <message>
-        <location filename="../stickermodel.cpp" line="163"/>
+        <location filename="../stickermodel.cpp" line="164"/>
         <source>1:1</source>
         <translation>1:1</translation>
     </message>
     <message>
-        <location filename="../stickermodel.cpp" line="168"/>
+        <location filename="../stickermodel.cpp" line="169"/>
         <source>4:3</source>
         <translation>4:3</translation>
     </message>
     <message>
-        <location filename="../stickermodel.cpp" line="173"/>
+        <location filename="../stickermodel.cpp" line="174"/>
         <source>3:4</source>
         <translation>3:4</translation>
     </message>
     <message>
-        <location filename="../stickermodel.cpp" line="178"/>
+        <location filename="../stickermodel.cpp" line="179"/>
         <source>16:9</source>
         <translation>16:9</translation>
     </message>
     <message>
-        <location filename="../stickermodel.cpp" line="183"/>
+        <location filename="../stickermodel.cpp" line="184"/>
         <source>16:6</source>
         <translation>16:6</translation>
     </message>
     <message>
-        <location filename="../stickermodel.cpp" line="271"/>
+        <location filename="../stickermodel.cpp" line="273"/>
         <source>Meikade Logo</source>
         <translation>نشانه‌ی می‌کده</translation>
     </message>
     <message>
-        <location filename="../stickermodel.cpp" line="277"/>
+        <location filename="../stickermodel.cpp" line="279"/>
         <source>Poet Name</source>
         <translation>نام شاعر</translation>
     </message>
@@ -737,7 +755,7 @@ Thank you.</source>
 <context>
     <name>main</name>
     <message>
-        <location filename="../qml/Meikade/main.qml" line="322"/>
+        <location filename="../qml/Meikade/main.qml" line="328"/>
         <source>Meikade</source>
         <translation>مِی‌کده</translation>
     </message>

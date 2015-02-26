@@ -152,13 +152,32 @@
         <file>qml/Meikade/stickers/icons/image.png</file>
         <file>qml/Meikade/stickers/icons/logo.png</file>
         <file>qml/Meikade/stickers/icons/size.png</file>
-        <file>qml/Meikade/stickers/images/s0.png</file>
-        <file>qml/Meikade/stickers/images/s1.png</file>
-        <file>qml/Meikade/stickers/images/s2.png</file>
-        <file>qml/Meikade/stickers/images/s3.png</file>
-        <file>qml/Meikade/stickers/images/s4.png</file>
-        <file>qml/Meikade/stickers/images/s5.png</file>
         <file>qml/Meikade/icons/logo.png</file>
         <file>qml/Meikade/icons/poet.png</file>
+        <file>qml/Meikade/stickers/images/0_1.png</file>
+        <file>qml/Meikade/stickers/images/0_2.png</file>
+        <file>qml/Meikade/stickers/images/0_3.png</file>
+        <file>qml/Meikade/stickers/images/0_4.png</file>
+        <file>qml/Meikade/stickers/images/0_5.png</file>
+        <file>qml/Meikade/stickers/images/0_6.png</file>
+        <file>qml/Meikade/stickers/images/1_1.png</file>
+        <file>qml/Meikade/stickers/images/1_2.png</file>
+        <file>qml/Meikade/stickers/images/1_3.png</file>
+        <file>qml/Meikade/stickers/images/1_4.png</file>
+        <file>qml/Meikade/stickers/images/1_5.png</file>
+        <file>qml/Meikade/stickers/images/1_6.png</file>
+        <file>qml/Meikade/stickers/images/1_7.png</file>
+        <file>qml/Meikade/stickers/images/1_8.png</file>
+        <file>qml/Meikade/stickers/images/1_9.png</file>
+        <file>qml/Meikade/stickers/images/1_10.png</file>
+        <file>qml/Meikade/stickers/images/1_11.png</file>
+        <file>qml/Meikade/stickers/images/2_1.png</file>
+        <file>qml/Meikade/stickers/images/2_2.png</file>
+        <file>qml/Meikade/stickers/images/2_3.png</file>
+        <file>qml/Meikade/stickers/images/2_4.png</file>
+        <file>qml/Meikade/stickers/images/0_0.png</file>
+        <file>qml/Meikade/MaterialDesignButton.qml</file>
+        <file>qml/Meikade/icons/new.png</file>
+        <file>qml/Meikade/AboutNileTeam.qml</file>
     </qresource>
 </RCC>

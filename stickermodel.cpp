@@ -2,6 +2,7 @@
 
 #include <QUrl>
 #include <QColor>
+#include <QDir>
 
 class StickerModelItem
 {
@@ -226,12 +227,20 @@ void StickerModel::refresh()
 
     case Sticker:
     {
-        for(int i=0; i<5; i++)
+        const QStringList & files = QDir(":/qml/Meikade/stickers/images/").entryList(QDir::Files, QDir::Name);
+        foreach(const QString &f, files)
         {
+            QString path = ":/qml/Meikade/stickers/images/"+f;
+            QFileInfo file(path);
+            const QStringList &parts = file.baseName().split("_",QString::SkipEmptyParts);
+            if(parts.count() != 2)
+                continue;
+
             StickerModelItem sticker;
             sticker.type = Sticker;
-            sticker.image = QUrl::fromLocalFile(QString(":/qml/Meikade/stickers/images/s%1.png").arg(i));
+            sticker.image = QUrl::fromLocalFile(path);
             sticker.command1 = sticker.image;
+            sticker.command2 = parts.first().toInt();
 
             p->list << sticker;
         }
