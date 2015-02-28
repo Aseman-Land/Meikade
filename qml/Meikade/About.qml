@@ -55,8 +55,9 @@ Rectangle {
 
     Flickable {
         id: flickable
-        anchors.fill: parent
-        anchors.topMargin: header.height
+        anchors.top: header.bottom
+        anchors.bottom: version.top
+        width: parent.width
         contentWidth: column.width
         contentHeight: column.height
         flickableDirection: Flickable.VerticalFlick
@@ -73,6 +74,12 @@ Rectangle {
                 anchors.right: parent.right
                 anchors.margins: 20*Devices.density
                 anchors.verticalCenter: parent.verticalCenter
+
+                Image {
+                    width: 192
+                    height: width
+                    sourceSize: Qt.size(width,height)
+                }
 
                 Text {
                     width: parent.width
@@ -109,7 +116,7 @@ Rectangle {
                     width: parent.width
                     font.family: AsemanApp.globalFont.family
                     font.pixelSize: 9*Devices.fontDensity
-                    text: qsTr(" - Bardia Daneshvar (Team's Leader and Developer)\n"+
+                    text: qsTr(" - Bardia Daneshvar (Project Leader and Developer)\n"+
                                " - AmirHosein Mousavi (Designer and Idea Processing)\n"+
                                " - Pourya Daneshvar (Designer)\n"+
                                " - Hasan Noruzi (Idea Processing)")
@@ -121,6 +128,7 @@ Rectangle {
     }
 
     Text {
+        id: version
         anchors.bottom: parent.bottom
         anchors.right: parent.right
         anchors.rightMargin: 20*Devices.density

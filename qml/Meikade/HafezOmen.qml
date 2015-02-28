@@ -98,6 +98,7 @@ Rectangle {
         width: portrait? parent.width : parent.width*2/3
         height: parent.height
         x: hafez_omen.viewMode? 0 : -width - shadow.width
+        rememberBar: true
 
         Behavior on x {
             NumberAnimation { easing.type: hafez_omen.easingType; duration: animations*hafez_omen.duration }

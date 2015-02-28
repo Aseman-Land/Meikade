@@ -4,8 +4,40 @@
 <context>
     <name>About</name>
     <message>
-        <location filename="../qml/Meikade/About.qml" line="68"/>
-        <source>Meikade is a free (means, the users have the freedom to run, copy, distribute, study, change and improve the software) and opensource application by Aseman Labs</source>
+        <location filename="../qml/Meikade/About.qml" line="82"/>
+        <source>Meikade is a free and opensource application by Nile Team</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/About.qml" line="91"/>
+        <source>Meikade is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/About.qml" line="103"/>
+        <source>Meikade Members:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/About.qml" line="112"/>
+        <source> - Bardia Daneshvar (Project Leader and Developer)
+ - AmirHosein Mousavi (Designer and Idea Processing)
+ - Pourya Daneshvar (Designer)
+ - Hasan Noruzi (Idea Processing)</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>AboutNileTeam</name>
+    <message>
+        <location filename="../qml/Meikade/AboutNileTeam.qml" line="22"/>
+        <source>About Nile:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/AboutNileTeam.qml" line="31"/>
+        <source>Nile is an Iranian software corporation that makes software for Desktop computers, Android, iOS, Mac, Windows Phone, Ubuntu Phone and ...
+Nile create Free and OpenSource projects.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -299,7 +331,7 @@ Thank you.</source>
 <context>
     <name>InitializeWait</name>
     <message>
-        <location filename="../qml/Meikade/InitializeWait.qml" line="67"/>
+        <location filename="../qml/Meikade/InitializeWait.qml" line="73"/>
         <source>Installing Database</source>
         <translation type="unfinished"></translation>
     </message>
@@ -346,24 +378,24 @@ Thank you.</source>
     </message>
     <message>
         <location filename="../qml/Meikade/MainMenu.qml" line="82"/>
-        <source>About Aseman</source>
+        <source>About Nile Team</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>MaterialDesignButton</name>
     <message>
-        <location filename="../qml/Meikade/MaterialDesignButton.qml" line="111"/>
+        <location filename="../qml/Meikade/MaterialDesignButton.qml" line="122"/>
         <source>Hafez Omen</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/MaterialDesignButton.qml" line="126"/>
+        <location filename="../qml/Meikade/MaterialDesignButton.qml" line="137"/>
         <source>Random Poem</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/MaterialDesignButton.qml" line="141"/>
+        <location filename="../qml/Meikade/MaterialDesignButton.qml" line="152"/>
         <source>Search</source>
         <translation type="unfinished"></translation>
     </message>

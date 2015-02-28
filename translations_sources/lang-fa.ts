@@ -16,9 +16,34 @@
         <translation type="obsolete">برگرد</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/About.qml" line="68"/>
         <source>Meikade is a free (means, the users have the freedom to run, copy, distribute, study, change and improve the software) and opensource application by Aseman Labs</source>
         <translation>میکده یک برنامه‌ی آزاد و منبع‌باز است که توسط تیم تحقیقاتی سیالان منتشر شده است</translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/About.qml" line="82"/>
+        <source>Meikade is a free and opensource application by Nile Team</source>
+        <translation>می‌کده یک برنامه‌ی آزاد و اپن‌سورس است که توسط تیم نیل طراحی و پیاده‌سازی شده است</translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/About.qml" line="91"/>
+        <source>Meikade is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.</source>
+        <translation>می‌کده یک برنامه‌ی آزاد است. این به این معنی است که می‌کده حامی آزادی‌های کاربر است. بنابراین شما می‌توانید آن را تحت قوانین نسخه‌ی سوم مجوز GPL که توسط FSF ارایه شده است دوباره منتشر کنید، آن را به دوستان خود بدهید و یا در آن تغییرات ایجاد کنید.</translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/About.qml" line="103"/>
+        <source>Meikade Members:</source>
+        <translation>تیم توسعه‌ی می‌کده:</translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/About.qml" line="112"/>
+        <source> - Bardia Daneshvar (Project Leader and Developer)
+ - AmirHosein Mousavi (Designer and Idea Processing)
+ - Pourya Daneshvar (Designer)
+ - Hasan Noruzi (Idea Processing)</source>
+        <translation>- بردیا دانشور (رهبر پروژه و توسعه دهنده)
+- امیرحسین موسوی (طراح و ایده‌پرداز)
+- پوریا دانشور (طراح)
+- حسن نوروزی (ایده پرداز)</translation>
     </message>
 </context>
 <context>
@@ -26,6 +51,23 @@
     <message>
         <source>Check Aseman website</source>
         <translation type="obsolete">دیدن سایت سیالان</translation>
+    </message>
+</context>
+<context>
+    <name>AboutNileTeam</name>
+    <message>
+        <location filename="../qml/Meikade/AboutNileTeam.qml" line="22"/>
+        <source>About Nile:</source>
+        <translation>درباره‌ی تیم نیل:</translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/AboutNileTeam.qml" line="31"/>
+        <source>Nile is an Iranian software corporation that makes software for Desktop computers, Android, iOS, Mac, Windows Phone, Ubuntu Phone and ...
+Nile create Free and OpenSource projects.</source>
+        <translation>نیل تیم تولید کننده‌ی نرم‌افزار است که بیشتر بر روی برنامه‌های کاربردی برای سیستم‌عامل‌های دسکتاپ، اندروید، آی‌او‌اس، ویندوز موبایل و ... کار می‌کند.
+هدف اصلی تیم نیل، تولید نرم‌افزارهای آزاد و با کیفیت که حافظ آزادی کاربران است می‌باشد.
+نرم‌افزارهای آزاد نرم‌افزارهایی هستند که آزادی کاربر و توسعه‌دهنده را حقظ می‌کند. به این معنی که کاربران اجازه‌ی باز انتشار، دادن نسخه‌ی کپی به دوستان خود و یا تغییر دادن در برنامه را تحت قوانین ارایه شده دارند و هیچ‌گونه از حقوق آزادی کاربر از آن‌ها گرفته نمی‌شود.
+تیم نیل جز معدود تیم‌هایی است که در ایران به صورت جدی بر روی نرم‌افزارهای آزاد کار می‌کند و از قوانین آن پیروی می‌کند.</translation>
     </message>
 </context>
 <context>
@@ -363,7 +405,7 @@ Thank you.</source>
         <translation type="obsolete">در حال بارگذاری</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/InitializeWait.qml" line="67"/>
+        <location filename="../qml/Meikade/InitializeWait.qml" line="73"/>
         <source>Installing Database</source>
         <translation>درحال نصب پایگاه‌داده</translation>
     </message>
@@ -394,6 +436,11 @@ Thank you.</source>
         <translation>علاقه‌مندی‌ها</translation>
     </message>
     <message>
+        <location filename="../qml/Meikade/MainMenu.qml" line="82"/>
+        <source>About Nile Team</source>
+        <translation>درباره‌ی تیم نیل</translation>
+    </message>
+    <message>
         <source>Notes</source>
         <translation type="obsolete">یادداشت‌ها</translation>
     </message>
@@ -413,7 +460,6 @@ Thank you.</source>
         <translation>درباره میکده</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/MainMenu.qml" line="82"/>
         <source>About Aseman</source>
         <translation>درباره‌ی آسمان</translation>
     </message>
@@ -421,17 +467,17 @@ Thank you.</source>
 <context>
     <name>MaterialDesignButton</name>
     <message>
-        <location filename="../qml/Meikade/MaterialDesignButton.qml" line="111"/>
+        <location filename="../qml/Meikade/MaterialDesignButton.qml" line="122"/>
         <source>Hafez Omen</source>
         <translation>فال حافظ</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/MaterialDesignButton.qml" line="126"/>
+        <location filename="../qml/Meikade/MaterialDesignButton.qml" line="137"/>
         <source>Random Poem</source>
         <translation>شعر اتفاقی</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/MaterialDesignButton.qml" line="141"/>
+        <location filename="../qml/Meikade/MaterialDesignButton.qml" line="152"/>
         <source>Search</source>
         <translation>جستجو</translation>
     </message>
