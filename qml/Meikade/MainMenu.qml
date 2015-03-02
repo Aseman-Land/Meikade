@@ -79,7 +79,7 @@ Rectangle {
             model.append({"name":qsTr("Configure"), "fileName":"Configure.qml"})
             model.append({"name":qsTr("OpenSource Projecs"), "fileName":"OpenSourceProjects.qml"})
             model.append({"name":qsTr("About")    , "fileName":"About.qml"})
-            model.append({"name":qsTr("About Nile Team"), "fileName":"AboutNileTeam.qml"})
+            model.append({"name":qsTr("About Nile Group"), "fileName":"AboutNileTeam.qml"})
         }
     }
 

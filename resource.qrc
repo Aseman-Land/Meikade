@@ -179,5 +179,6 @@
         <file>qml/Meikade/MaterialDesignButton.qml</file>
         <file>qml/Meikade/icons/new.png</file>
         <file>qml/Meikade/AboutNileTeam.qml</file>
+        <file>qml/Meikade/icons/nilegroup.png</file>
     </qresource>
 </RCC>

@@ -2,15 +2,14 @@ import QtQuick 2.0
 import AsemanTools 1.0
 
 Rectangle {
-    width: 100
-    height: 62
+    width: parent.width
     color: "#dddddd"
 
     Rectangle {
         id: header
         width: parent.width
         height: View.statusBarHeight + Devices.standardTitleBarHeight
-        color: "#705AFF"
+        color: "#00A0E3"
 
         Button{
             id: back_btn
@@ -36,8 +35,9 @@ Rectangle {
 
     Flickable {
         id: flickable
-        anchors.fill: parent
-        anchors.topMargin: header.height
+        anchors.top: header.bottom
+        anchors.bottom: home_btn.top
+        width: parent.width
         contentWidth: column.width
         contentHeight: column.height
         flickableDirection: Flickable.VerticalFlick
@@ -55,32 +55,67 @@ Rectangle {
                 anchors.margins: 20*Devices.density
                 anchors.verticalCenter: parent.verticalCenter
 
+                Item {width: 20; height: 20*Devices.density}
+
                 Image {
-                    width: 192
+                    width: 150*Devices.density
                     height: width
                     sourceSize: Qt.size(width,height)
+                    source: "icons/nilegroup.png"
+                    anchors.horizontalCenter: parent.horizontalCenter
                 }
 
-                Text {
-                    width: parent.width
-                    font.family: AsemanApp.globalFont.family
-                    font.pixelSize: 10*Devices.fontDensity
-                    font.bold: true
-                    wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                    color: "#333333"
-                    text: qsTr("About Nile:")
+                Item {width: 2; height: 20*Devices.density}
+
+                Rectangle {
+                    anchors.left: parent.left
+                    anchors.right: parent.right
+                    anchors.margins: -20*Devices.density
+                    height: 50*Devices.density
+                    color: "#cccccc"
+
+                    Text {
+                        anchors.centerIn: parent
+                        font.family: AsemanApp.globalFont.family
+                        font.pixelSize: 12*Devices.fontDensity
+                        font.bold: true
+                        wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                        color: "#333333"
+                        text: qsTr("About Nile Group")
+                    }
                 }
 
+                Item {width: 2; height: 20*Devices.density}
+
                 Text {
-                    width: parent.width
+                    anchors.horizontalCenter: parent.horizontalCenter
                     font.family: AsemanApp.globalFont.family
                     font.pixelSize: 10*Devices.fontDensity
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                     color: "#333333"
                     text: qsTr("Nile is an Iranian software corporation that makes software for Desktop computers, Android, iOS, Mac, Windows Phone, Ubuntu Phone and ...\n"+
                                "Nile create Free and OpenSource projects.")
+
+                    Component.onCompleted: {
+                        width = flickable.width - 40*Devices.density
+                    }
                 }
             }
         }
+    }
+
+    Button {
+        id: home_btn
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: View.navigationBarHeight + 10*Devices.density
+        anchors.horizontalCenter: parent.horizontalCenter
+        height: 40*Devices.density
+        width: 120*Devices.density
+        normalColor: "#00A0E3"
+        highlightColor: Qt.darker(normalColor)
+        textColor: "#ffffff"
+        radius: 4*Devices.density
+        text: qsTr("Home Page")
+        onClicked: Qt.openUrlExternally("http://nilegroup.org")
     }
 }

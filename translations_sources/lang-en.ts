@@ -4,40 +4,50 @@
 <context>
     <name>About</name>
     <message>
-        <location filename="../qml/Meikade/About.qml" line="82"/>
+        <location filename="../qml/Meikade/About.qml" line="93"/>
         <source>Meikade is a free and opensource application by Nile Team</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/About.qml" line="91"/>
+        <location filename="../qml/Meikade/About.qml" line="102"/>
         <source>Meikade is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/About.qml" line="103"/>
+        <location filename="../qml/Meikade/About.qml" line="114"/>
         <source>Meikade Members:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/About.qml" line="112"/>
+        <location filename="../qml/Meikade/About.qml" line="123"/>
         <source> - Bardia Daneshvar (Project Leader and Developer)
  - AmirHosein Mousavi (Designer and Idea Processing)
  - Pourya Daneshvar (Designer)
  - Hasan Noruzi (Idea Processing)</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../qml/Meikade/About.qml" line="145"/>
+        <source>Meikade Github</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>AboutNileTeam</name>
     <message>
-        <location filename="../qml/Meikade/AboutNileTeam.qml" line="22"/>
-        <source>About Nile:</source>
+        <location filename="../qml/Meikade/AboutNileTeam.qml" line="82"/>
+        <source>About Nile Group</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/AboutNileTeam.qml" line="31"/>
+        <location filename="../qml/Meikade/AboutNileTeam.qml" line="94"/>
         <source>Nile is an Iranian software corporation that makes software for Desktop computers, Android, iOS, Mac, Windows Phone, Ubuntu Phone and ...
 Nile create Free and OpenSource projects.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/AboutNileTeam.qml" line="116"/>
+        <source>Home Page</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -378,7 +388,7 @@ Thank you.</source>
     </message>
     <message>
         <location filename="../qml/Meikade/MainMenu.qml" line="82"/>
-        <source>About Nile Team</source>
+        <source>About Nile Group</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

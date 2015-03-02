@@ -23,13 +23,13 @@ Rectangle {
     id: about
     width: 100
     height: 62
-    color: "#333333"
+    color: "#dddddd"
 
     Rectangle {
         id: header
         width: parent.width
         height: View.statusBarHeight + Devices.standardTitleBarHeight
-        color: "#FF7340"
+        color: "#A80807"
 
         Button{
             id: back_btn
@@ -40,7 +40,7 @@ Rectangle {
             radius: 0
             normalColor: "#00000000"
             highlightColor: "#88666666"
-            textColor: "#ffffff"
+            textColor: "#333333"
             icon: "icons/back_light_64.png"
             iconHeight: 16*Devices.density
             fontSize: 11*Devices.fontDensity
@@ -56,7 +56,7 @@ Rectangle {
     Flickable {
         id: flickable
         anchors.top: header.bottom
-        anchors.bottom: version.top
+        anchors.bottom: home_btn.top
         width: parent.width
         contentWidth: column.width
         contentHeight: column.height
@@ -75,11 +75,17 @@ Rectangle {
                 anchors.margins: 20*Devices.density
                 anchors.verticalCenter: parent.verticalCenter
 
+                Item {width: 20; height: 20*Devices.density}
+
                 Image {
-                    width: 192
+                    width: 128*Devices.density
                     height: width
                     sourceSize: Qt.size(width,height)
+                    source: "icons/meikade.png"
+                    anchors.horizontalCenter: parent.horizontalCenter
                 }
+
+                Item {width: 2; height: 20*Devices.density}
 
                 Text {
                     width: parent.width
@@ -88,7 +94,7 @@ Rectangle {
                     font.bold: true
                     text: qsTr("Meikade is a free and opensource application by Nile Team")
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                    color: "#ffffff"
+                    color: "#333333"
                 }
 
                 Text {
@@ -97,7 +103,7 @@ Rectangle {
                     font.pixelSize: 9*Devices.fontDensity
                     text: qsTr("Meikade is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.")
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                    color: "#ffffff"
+                    color: "#333333"
                 }
 
                 Item {width: 20; height: 30*Devices.density}
@@ -109,7 +115,7 @@ Rectangle {
                     font.bold: true
                     text: qsTr("Meikade Members:")
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                    color: "#ffffff"
+                    color: "#333333"
                 }
 
                 Text {
@@ -121,10 +127,25 @@ Rectangle {
                                " - Pourya Daneshvar (Designer)\n"+
                                " - Hasan Noruzi (Idea Processing)")
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                    color: "#ffffff"
+                    color: "#333333"
                 }
             }
         }
+    }
+
+    Button {
+        id: home_btn
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: View.navigationBarHeight + 10*Devices.density
+        anchors.horizontalCenter: parent.horizontalCenter
+        height: 40*Devices.density
+        width: 150*Devices.density
+        normalColor: "#A80807"
+        highlightColor: Qt.darker(normalColor)
+        textColor: "#ffffff"
+        radius: 4*Devices.density
+        text: qsTr("Meikade Github")
+        onClicked: Qt.openUrlExternally("https://github.com/NileGroup/Meikade")
     }
 
     Text {
@@ -137,7 +158,7 @@ Rectangle {
         font.pixelSize: 9*Devices.fontDensity
         text: "v2.0.0"
         wrapMode: Text.WordWrap
-        color: "#ffffff"
+        color: "#333333"
         horizontalAlignment: Text.AlignRight
     }
 }

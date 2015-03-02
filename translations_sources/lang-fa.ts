@@ -20,22 +20,22 @@
         <translation>میکده یک برنامه‌ی آزاد و منبع‌باز است که توسط تیم تحقیقاتی سیالان منتشر شده است</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/About.qml" line="82"/>
+        <location filename="../qml/Meikade/About.qml" line="93"/>
         <source>Meikade is a free and opensource application by Nile Team</source>
-        <translation>می‌کده یک برنامه‌ی آزاد و اپن‌سورس است که توسط تیم نیل طراحی و پیاده‌سازی شده است</translation>
+        <translation>می‌کده یک برنامه‌ی آزاد و منبع‌باز است که توسط گروه نیل طراحی و پیاده‌سازی شده است</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/About.qml" line="91"/>
+        <location filename="../qml/Meikade/About.qml" line="102"/>
         <source>Meikade is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.</source>
         <translation>می‌کده یک برنامه‌ی آزاد است. این به این معنی است که می‌کده حامی آزادی‌های کاربر است. بنابراین شما می‌توانید آن را تحت قوانین نسخه‌ی سوم مجوز GPL که توسط FSF ارایه شده است دوباره منتشر کنید، آن را به دوستان خود بدهید و یا در آن تغییرات ایجاد کنید.</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/About.qml" line="103"/>
+        <location filename="../qml/Meikade/About.qml" line="114"/>
         <source>Meikade Members:</source>
         <translation>تیم توسعه‌ی می‌کده:</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/About.qml" line="112"/>
+        <location filename="../qml/Meikade/About.qml" line="123"/>
         <source> - Bardia Daneshvar (Project Leader and Developer)
  - AmirHosein Mousavi (Designer and Idea Processing)
  - Pourya Daneshvar (Designer)
@@ -44,6 +44,11 @@
 - امیرحسین موسوی (طراح و ایده‌پرداز)
 - پوریا دانشور (طراح)
 - حسن نوروزی (ایده پرداز)</translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/About.qml" line="145"/>
+        <source>Meikade Github</source>
+        <translation>گیت‌هاب می‌کده</translation>
     </message>
 </context>
 <context>
@@ -56,18 +61,27 @@
 <context>
     <name>AboutNileTeam</name>
     <message>
-        <location filename="../qml/Meikade/AboutNileTeam.qml" line="22"/>
         <source>About Nile:</source>
-        <translation>درباره‌ی تیم نیل:</translation>
+        <translation>درباره‌ی گروه نیل:</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/AboutNileTeam.qml" line="31"/>
+        <location filename="../qml/Meikade/AboutNileTeam.qml" line="82"/>
+        <source>About Nile Group</source>
+        <translation>درباره‌ی گروه نیل</translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/AboutNileTeam.qml" line="94"/>
         <source>Nile is an Iranian software corporation that makes software for Desktop computers, Android, iOS, Mac, Windows Phone, Ubuntu Phone and ...
 Nile create Free and OpenSource projects.</source>
-        <translation>نیل تیم تولید کننده‌ی نرم‌افزار است که بیشتر بر روی برنامه‌های کاربردی برای سیستم‌عامل‌های دسکتاپ، اندروید، آی‌او‌اس، ویندوز موبایل و ... کار می‌کند.
-هدف اصلی تیم نیل، تولید نرم‌افزارهای آزاد و با کیفیت که حافظ آزادی کاربران است می‌باشد.
-نرم‌افزارهای آزاد نرم‌افزارهایی هستند که آزادی کاربر و توسعه‌دهنده را حقظ می‌کند. به این معنی که کاربران اجازه‌ی باز انتشار، دادن نسخه‌ی کپی به دوستان خود و یا تغییر دادن در برنامه را تحت قوانین ارایه شده دارند و هیچ‌گونه از حقوق آزادی کاربر از آن‌ها گرفته نمی‌شود.
-تیم نیل جز معدود تیم‌هایی است که در ایران به صورت جدی بر روی نرم‌افزارهای آزاد کار می‌کند و از قوانین آن پیروی می‌کند.</translation>
+        <translation>نیل، گروه تولید کننده‌ی نرم‌افزار است که بیشتر بر روی برنامه‌های کاربردی برای سیستم‌عامل‌های دسکتاپ، اندروید، آی‌او‌اس، ویندوز موبایل و ... کار می‌کند.
+هدف اصلی گروه نیل، تولید نرم‌افزارهای آزاد و با کیفیت که حافظ آزادی کاربران است می‌باشد.
+نرم‌افزارهای آزاد نرم‌افزارهایی هستند که آزادی کاربر و توسعه‌دهنده را حفظ می‌کند. به این معنی که کاربران اجازه‌ی باز انتشار، دادن نسخه‌ی کپی به دوستان خود و یا تغییر دادن در برنامه را تحت قوانین ارایه شده دارند و هیچ‌گونه از حقوق آزادی کاربر از آن‌ها گرفته نمی‌شود.
+گروه نیل جز معدود تیم‌هایی است که در ایران به صورت جدی بر روی نرم‌افزارهای آزاد کار می‌کند و از قوانین آن پیروی می‌کند.</translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/AboutNileTeam.qml" line="116"/>
+        <source>Home Page</source>
+        <translation>صفحه خانگی</translation>
     </message>
 </context>
 <context>
@@ -85,7 +99,7 @@ Nile create Free and OpenSource projects.</source>
     <message>
         <location filename="../asemantools/qml/AsemanTools/AsemanAbout.qml" line="78"/>
         <source>Home Page</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">صفحه خانگی</translation>
     </message>
 </context>
 <context>
@@ -437,6 +451,10 @@ Thank you.</source>
     </message>
     <message>
         <location filename="../qml/Meikade/MainMenu.qml" line="82"/>
+        <source>About Nile Group</source>
+        <translation>درباره‌ی گروه نیل</translation>
+    </message>
+    <message>
         <source>About Nile Team</source>
         <translation>درباره‌ی تیم نیل</translation>
     </message>
