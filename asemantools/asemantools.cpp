@@ -28,6 +28,7 @@
 #include <QFileInfo>
 #include <QDir>
 #include <QStringList>
+#include <QTextDocument>
 #include <QProcess>
 #include <QUuid>
 
@@ -68,6 +69,29 @@ AsemanTools::AsemanTools(QObject *parent) :
 void AsemanTools::debug(const QVariant &var)
 {
     qDebug() << var;
+}
+
+QDateTime AsemanTools::currentDate()
+{
+    return QDateTime::currentDateTime();
+}
+
+QString AsemanTools::dateToMSec(const QDateTime &dt)
+{
+    return QString::number(dt.toMSecsSinceEpoch());
+}
+
+QDateTime AsemanTools::mSecToDate(const QString &ms)
+{
+    return QDateTime::fromMSecsSinceEpoch(ms.toLongLong());
+}
+
+QString AsemanTools::dateToString(const QDateTime &dt, const QString & format)
+{
+    if(format.isEmpty())
+        return dt.toString();
+    else
+        return dt.toString(format);
 }
 
 QString AsemanTools::fileName(const QString &path)
@@ -194,6 +218,13 @@ QString AsemanTools::passToMd5(const QString &pass)
 QString AsemanTools::createUuid()
 {
     return QUuid::createUuid().toString();
+}
+
+QString AsemanTools::htmlToPlaintText(const QString &html)
+{
+    QTextDocument doc;
+    doc.setHtml(html);
+    return doc.toPlainText();
 }
 
 void AsemanTools::copyDirectory(const QString &src, const QString &dst)

@@ -94,7 +94,8 @@ SOURCES += \
     asemanmimedata.cpp \
     asemandownloader.cpp \
     asemannotification.cpp \
-    asemanautostartmanager.cpp
+    asemanautostartmanager.cpp \
+    asemanquickobject.cpp
 
 HEADERS += \
     asemandevices.h \
@@ -118,7 +119,8 @@ HEADERS += \
     asemanmimedata.h \
     asemandownloader.h \
     asemannotification.h \
-    asemanautostartmanager.h
+    asemanautostartmanager.h \
+    asemanquickobject.h
 
 OTHER_FILES += \
     android-build/src/land/aseman/android/AsemanActivity.java \
@@ -128,9 +130,7 @@ OTHER_FILES += \
     android-build/src/land/aseman/android/AsemanBootBroadcast.java \
     android-build/src/land/aseman/android/AsemanServiceDelegate.java
 
-SOURCE_FILES = $$files(qml/AsemanTools/*)
-
-qmlFiles.source = $$SOURCE_FILES
+qmlFiles.source = qml/AsemanTools/
 qmlFiles.target = $$DESTDIR/../..
 COPYFOLDERS += qmlFiles
 
