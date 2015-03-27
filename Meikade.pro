@@ -65,3 +65,7 @@ OTHER_FILES += \
 
 RESOURCES += \
     resource.qrc
+
+DISTFILES += \
+    translations_sources/lang-fa.ts \
+    translations_sources/lang-en.ts

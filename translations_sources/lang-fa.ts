@@ -346,7 +346,7 @@ Meikade need 150MB free space on your memory.</source>
 If you are like this app, please rate us on Google play or Bazaar.
 Thank you.</source>
         <translation>از شما بخاطر انتخاب این برنامه سپاس‌گذاریم.
-اگر از این برنامه خوشتان آمده، لطفا برای حمایت از ما، به می‌کده در بازار یا گوگل‌پلی امتیاز دهید.
+اگر از این برنامه خوشتان آمده، لطفا برای حمایت از ما، به می‌کده در ایران اپس، بازار یا گوگل‌پلی امتیاز دهید.
 ممنون.</translation>
     </message>
     <message>
@@ -357,7 +357,7 @@ Thank you.</source>
     <message>
         <location filename="../qml/Meikade/FavoriteMessage.qml" line="41"/>
         <source>OK</source>
-        <translation>برو به بازار</translation>
+        <translation>امتیاز دادن</translation>
     </message>
 </context>
 <context>
