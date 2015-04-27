@@ -21,6 +21,7 @@
 #include <QMetaMethod>
 #include <QMetaObject>
 #include <QCryptographicHash>
+#include <QCoreApplication>
 #include <QColor>
 #include <QTimer>
 #include <QFile>
@@ -114,6 +115,29 @@ QString AsemanTools::readText(const QString &path)
     return res;
 }
 
+QStringList AsemanTools::stringLinks(const QString &str)
+{
+    QStringList links;
+    QRegExp links_rxp("((?:(?:\\w\\S*\\/\\S*|\\/\\S+|\\:\\/)(?:\\/\\S*\\w|\\w))|(?:\\w+\\.(?:com|org|co|net)))");
+    int pos = 0;
+    while ((pos = links_rxp.indexIn(str, pos)) != -1)
+    {
+        QString link = links_rxp.cap(1);
+        if(link.indexOf(QRegExp("\\w+\\:\\/\\/")) == -1)
+            link = "http://" + link;
+
+        links << link;
+        pos += links_rxp.matchedLength();
+    }
+
+    return links;
+}
+
+QUrl AsemanTools::stringToUrl(const QString &path)
+{
+    return QUrl(path);
+}
+
 QString AsemanTools::qtVersion()
 {
     return qVersion();
@@ -163,10 +187,19 @@ QVariantMap AsemanTools::colorHsl(const QColor &clr)
 bool AsemanTools::createVideoThumbnail(const QString &video, const QString &output, QString ffmpegPath)
 {
     if(ffmpegPath.isEmpty())
-#ifndef Q_OS_WIN
-        ffmpegPath = "ffmpeg";
+#ifdef Q_OS_WIN
+        ffmpegPath = QCoreApplication::applicationDirPath() + "/ffmpeg.exe";
 #else
-        ffmpegPath = "ffmpeg.exe";
+#ifdef Q_OS_MAC
+        ffmpegPath = QCoreApplication::applicationDirPath() + "/ffmpeg";
+#else
+    {
+        if(QFileInfo::exists("/usr/bin/avconv"))
+            ffmpegPath = "/usr/bin/avconv";
+        else
+            ffmpegPath = "ffmpeg";
+    }
+#endif
 #endif
 
     QStringList args;

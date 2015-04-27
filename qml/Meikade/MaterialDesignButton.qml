@@ -70,7 +70,7 @@ Item {
             Rectangle {
                 anchors.fill: parent
                 anchors.margins: 8*Devices.density
-                color: opened? "#ffffff" : "#880000"
+                color: opened? "#ffffff" : "#881010"
                 radius: opened? 6*Devices.density : width/2
 
                 Behavior on color {

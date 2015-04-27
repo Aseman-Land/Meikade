@@ -20,22 +20,22 @@
         <translation>میکده یک برنامه‌ی آزاد و منبع‌باز است که توسط تیم تحقیقاتی سیالان منتشر شده است</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/About.qml" line="93"/>
+        <location filename="../qml/Meikade/About.qml" line="95"/>
         <source>Meikade is a free and opensource application by Nile Team</source>
         <translation>می‌کده یک برنامه‌ی آزاد و منبع‌باز است که توسط گروه نیل طراحی و پیاده‌سازی شده است</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/About.qml" line="102"/>
+        <location filename="../qml/Meikade/About.qml" line="104"/>
         <source>Meikade is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.</source>
         <translation>می‌کده یک برنامه‌ی آزاد است. این به این معنی است که می‌کده حامی آزادی‌های کاربر است. بنابراین شما می‌توانید آن را تحت قوانین نسخه‌ی سوم مجوز GPL که توسط FSF ارایه شده است دوباره منتشر کنید، آن را به دوستان خود بدهید و یا در آن تغییرات ایجاد کنید.</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/About.qml" line="114"/>
+        <location filename="../qml/Meikade/About.qml" line="116"/>
         <source>Meikade Members:</source>
         <translation>تیم توسعه‌ی می‌کده:</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/About.qml" line="123"/>
+        <location filename="../qml/Meikade/About.qml" line="125"/>
         <source> - Bardia Daneshvar (Project Leader and Developer)
  - AmirHosein Mousavi (Designer and Idea Processing)
  - Pourya Daneshvar (Designer)
@@ -46,7 +46,7 @@
 - حسن نوروزی (ایده پرداز)</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/About.qml" line="145"/>
+        <location filename="../qml/Meikade/About.qml" line="147"/>
         <source>Meikade Github</source>
         <translation>گیت‌هاب می‌کده</translation>
     </message>
@@ -65,12 +65,12 @@
         <translation>درباره‌ی گروه نیل:</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/AboutNileTeam.qml" line="82"/>
+        <location filename="../qml/Meikade/AboutNileTeam.qml" line="84"/>
         <source>About Nile Group</source>
         <translation>درباره‌ی گروه نیل</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/AboutNileTeam.qml" line="94"/>
+        <location filename="../qml/Meikade/AboutNileTeam.qml" line="96"/>
         <source>Nile is an Iranian software corporation that makes software for Desktop computers, Android, iOS, Mac, Windows Phone, Ubuntu Phone and ...
 Nile create Free and OpenSource projects.</source>
         <translation>نیل، گروه تولید کننده‌ی نرم‌افزار است که بیشتر بر روی برنامه‌های کاربردی برای سیستم‌عامل‌های دسکتاپ، اندروید، آی‌او‌اس، ویندوز موبایل و ... کار می‌کند.
@@ -79,7 +79,7 @@ Nile create Free and OpenSource projects.</source>
 گروه نیل جز معدود تیم‌هایی است که در ایران به صورت جدی بر روی نرم‌افزارهای آزاد کار می‌کند و از قوانین آن پیروی می‌کند.</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/AboutNileTeam.qml" line="116"/>
+        <location filename="../qml/Meikade/AboutNileTeam.qml" line="118"/>
         <source>Home Page</source>
         <translation>صفحه خانگی</translation>
     </message>
@@ -87,17 +87,17 @@ Nile create Free and OpenSource projects.</source>
 <context>
     <name>AsemanAbout</name>
     <message>
-        <location filename="../asemantools/qml/AsemanTools/AsemanAbout.qml" line="48"/>
+        <location filename="../asemantools/qml/AsemanTools/AsemanAbout.qml" line="50"/>
         <source>Aseman is a non-profit organization, exists to support and lead the free, open source and cross-platform projects and researches.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../asemantools/qml/AsemanTools/AsemanAbout.qml" line="65"/>
+        <location filename="../asemantools/qml/AsemanTools/AsemanAbout.qml" line="67"/>
         <source>The Goal of the Aseman is to provide free and secure products to keep people’s freedom and their privacy.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../asemantools/qml/AsemanTools/AsemanAbout.qml" line="78"/>
+        <location filename="../asemantools/qml/AsemanTools/AsemanAbout.qml" line="80"/>
         <source>Home Page</source>
         <translation type="unfinished">صفحه خانگی</translation>
     </message>
@@ -105,62 +105,62 @@ Nile create Free and OpenSource projects.</source>
 <context>
     <name>AsemanTools</name>
     <message>
-        <location filename="../asemantools/asemantools.cpp" line="56"/>
+        <location filename="../asemantools/asemantools.cpp" line="58"/>
         <source>0</source>
         <translation>۰</translation>
     </message>
     <message>
-        <location filename="../asemantools/asemantools.cpp" line="57"/>
+        <location filename="../asemantools/asemantools.cpp" line="59"/>
         <source>1</source>
         <translation>۱</translation>
     </message>
     <message>
-        <location filename="../asemantools/asemantools.cpp" line="58"/>
+        <location filename="../asemantools/asemantools.cpp" line="60"/>
         <source>2</source>
         <translation>۲</translation>
     </message>
     <message>
-        <location filename="../asemantools/asemantools.cpp" line="59"/>
+        <location filename="../asemantools/asemantools.cpp" line="61"/>
         <source>3</source>
         <translation>۳</translation>
     </message>
     <message>
-        <location filename="../asemantools/asemantools.cpp" line="60"/>
+        <location filename="../asemantools/asemantools.cpp" line="62"/>
         <source>4</source>
         <translation>۴</translation>
     </message>
     <message>
-        <location filename="../asemantools/asemantools.cpp" line="61"/>
+        <location filename="../asemantools/asemantools.cpp" line="63"/>
         <source>5</source>
         <translation>۵</translation>
     </message>
     <message>
-        <location filename="../asemantools/asemantools.cpp" line="62"/>
+        <location filename="../asemantools/asemantools.cpp" line="64"/>
         <source>6</source>
         <translation>۶</translation>
     </message>
     <message>
-        <location filename="../asemantools/asemantools.cpp" line="63"/>
+        <location filename="../asemantools/asemantools.cpp" line="65"/>
         <source>7</source>
         <translation>۷</translation>
     </message>
     <message>
-        <location filename="../asemantools/asemantools.cpp" line="64"/>
+        <location filename="../asemantools/asemantools.cpp" line="66"/>
         <source>8</source>
         <translation>۸</translation>
     </message>
     <message>
-        <location filename="../asemantools/asemantools.cpp" line="65"/>
+        <location filename="../asemantools/asemantools.cpp" line="67"/>
         <source>9</source>
         <translation>۹</translation>
     </message>
     <message>
-        <location filename="../asemantools/asemantools.cpp" line="100"/>
+        <location filename="../asemantools/asemantools.cpp" line="148"/>
         <source>Aseman is a not-for-profit research and software development team launched in February 2014 focusing on development of products, technologies and solutions in order to publish them as open-source projects accessible to all people in the universe. Currently, we are focusing on design and development of software applications and tools which have direct connection with end users.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../asemantools/asemantools.cpp" line="101"/>
+        <location filename="../asemantools/asemantools.cpp" line="149"/>
         <source>By enabling innovative projects and distributing software to millions of users globally, the lab is working to accelerate the growth of high-impact open source software projects and promote an open source culture of accessibility and increased productivity around the world. The lab partners with industry leaders and policy makers to bring open source technologies to new sectors, including education, health and government.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -391,9 +391,19 @@ Thank you.</source>
 <context>
     <name>HafezOmen</name>
     <message>
-        <location filename="../qml/Meikade/HafezOmen.qml" line="65"/>
+        <location filename="../qml/Meikade/HafezOmen.qml" line="86"/>
         <source>Intent and Tap on the screen</source>
-        <translation>نیت کنید و انگشتتان را بر روی صفحه بزنید</translation>
+        <translation>نیت کنید و اشارتی بفرمایید</translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/HafezOmen.qml" line="110"/>
+        <source>Read more about meikade hafez omen</source>
+        <translation>درباره‌ی فال می‌کده بیشتر بخوانید</translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/HafezOmen.qml" line="125"/>
+        <source>Read More</source>
+        <translation>بیشتر</translation>
     </message>
 </context>
 <context>
@@ -403,7 +413,7 @@ Thank you.</source>
         <translation type="obsolete">مِی‌کده</translation>
     </message>
     <message>
-        <location filename="../asemantools/qml/AsemanTools/Header.qml" line="93"/>
+        <location filename="../asemantools/qml/AsemanTools/Header.qml" line="94"/>
         <source>Back</source>
         <translation>برگرد</translation>
     </message>
@@ -552,6 +562,15 @@ Thank you.</source>
         <source>9</source>
         <translation>۹</translation>
     </message>
+    <message>
+        <location filename="../meikade.cpp" line="334"/>
+        <source>Meikade&apos;s hafez omen is different from other omens.
+It&apos;s calculate omen using natural random algorithms. Another apps calculate omen using machine algorithms.</source>
+        <translation>فال حافظ می‌کده دارای روشی کاملا متفاوت برای تفال زدن می‌باشد. می‌کده بر خلاف روش‌های ماشینی و الگوریتم‌های ریاضی که تقریبا همیشه استفاده می‌‌شوند، از روش‌های طبیعی و به کمک حرکت انگشتان شما بر روی صفحه برای شما فال می‌گیرد.
+هنگامی که صفحه نیت برای شما نمایش داده می‌شود، از شما می‌خواهد که انگشتتان را بر روی صفحه بکشید. با این کار برنامه عددی تصادفی را که برای تعیین فال شما نیاز است ، به کمک حرکت انگشتان شما، نحوه‌ی حرکت آن و زمانی که دست شما به روی صفحه حرکت کرده، به دست می‌آورد.
+در واقع می‌کده برای طبیعی‌تر بودن و درست‌تر بودن نتیجه‌ی فال، دقیقا همانند فال واقعی، از دستان شما کمک می‌گیرد و نتیجه‌ی فال کاملا بستگی به نحوه‌ی گشایش فال توسط شما دارد. این که چه مدت زمانی و چگونه به روی صفحه اشاره کنید، حتما بستگی به حس شما و مطمئنا تاثیر مهمی در نتیجه‌ی فال دارد.
+نیت کنید، اشارتی بفرمایید و همان فالی که باید را بگشایید.</translation>
+    </message>
 </context>
 <context>
     <name>Notes</name>
@@ -663,37 +682,42 @@ Thank you.</source>
 <context>
     <name>PoemView</name>
     <message>
-        <location filename="../qml/Meikade/PoemView.qml" line="443"/>
+        <location filename="../qml/Meikade/PoemView.qml" line="158"/>
+        <source>Phrase</source>
+        <translation>تعبیر</translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/PoemView.qml" line="494"/>
         <source>Favorited</source>
         <translation>به علاقه‌مند‌ی‌ها اضافه شد</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/PoemView.qml" line="446"/>
+        <location filename="../qml/Meikade/PoemView.qml" line="497"/>
         <source>Unfavorited</source>
         <translation>از علاقه‌مند‌ی‌ها پاک شد</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/PoemView.qml" line="453"/>
+        <location filename="../qml/Meikade/PoemView.qml" line="504"/>
         <source>Copy</source>
         <translation>کپی</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/PoemView.qml" line="476"/>
+        <location filename="../qml/Meikade/PoemView.qml" line="527"/>
         <source>Share</source>
         <translation>به اشتراک گذاری</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/PoemView.qml" line="498"/>
+        <location filename="../qml/Meikade/PoemView.qml" line="549"/>
         <source>Share Image</source>
         <translation>به اشتراک گذاری تصویر</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/PoemView.qml" line="519"/>
+        <location filename="../qml/Meikade/PoemView.qml" line="570"/>
         <source>Unfavorite</source>
         <translation>حذف از علاقه‌مندی‌ها</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/PoemView.qml" line="519"/>
+        <location filename="../qml/Meikade/PoemView.qml" line="570"/>
         <source>Favorite</source>
         <translation>اضافه به علاقه‌مندی‌ها</translation>
     </message>
@@ -819,7 +843,7 @@ Thank you.</source>
 <context>
     <name>main</name>
     <message>
-        <location filename="../qml/Meikade/main.qml" line="328"/>
+        <location filename="../qml/Meikade/main.qml" line="345"/>
         <source>Meikade</source>
         <translation>مِی‌کده</translation>
     </message>

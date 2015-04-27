@@ -1,6 +1,6 @@
 /*
-    Copyright (C) 2014 Aseman Labs
-    http://labs.aseman.org
+    Copyright (C) 2015 Nile Group
+    http://nilegroup.org
 
     Meikade is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -86,7 +86,7 @@ BackHandlerView {
     Rectangle {
         anchors.fill: title
         anchors.topMargin: -View.statusBarHeight
-        color: "#880000"
+        color: "#881010"
     }
 
     Header {

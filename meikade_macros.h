@@ -1,6 +1,6 @@
 /*
-    Copyright (C) 2014 Aseman Labs
-    http://labs.aseman.org
+    Copyright (C) 2015 Nile Group
+    http://nilegroup.org
 
     Meikade is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -27,8 +27,8 @@
 
 #ifdef Q_OS_ANDROID
 #define HOME_PATH QDir::homePath()
-#define BACKUP_PATH "/sdcard/Sialan/Meikade/backups"
-#define TEMP_PATH   "/sdcard/Sialan/Meikade/temp"
+#define BACKUP_PATH "/sdcard/NileGroup/Meikade/backups"
+#define TEMP_PATH   "/sdcard/NileGroup/Meikade/temp"
 #define TRANSLATIONS_PATH QString("assets:/files/translations")
 #else
 #ifdef Q_OS_IOS
@@ -38,12 +38,12 @@
 #define TRANSLATIONS_PATH QString(QCoreApplication::applicationDirPath() + "/files/translations/")
 #else
 #ifdef Q_OS_WIN
-#define HOME_PATH QString(QDir::homePath() + "/AppData/Local/aseman/meikade")
+#define HOME_PATH QString(QDir::homePath() + "/AppData/Local/NileGroup/meikade")
 #define BACKUP_PATH QDir::homePath()
 #define TEMP_PATH   QDir::tempPath()
 #define TRANSLATIONS_PATH QString(QCoreApplication::applicationDirPath() + "/files/translations/")
 #else
-#define HOME_PATH QString(QDir::homePath() + "/.config/aseman/meikade")
+#define HOME_PATH QString(QDir::homePath() + "/.config/nilegroup/meikade")
 #define BACKUP_PATH QDir::homePath()
 #define TEMP_PATH   QDir::tempPath()
 #define TRANSLATIONS_PATH QString(QCoreApplication::applicationDirPath() + "/files/translations/")

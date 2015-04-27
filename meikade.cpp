@@ -1,6 +1,6 @@
 /*
-    Copyright (C) 2014 Aseman Labs
-    http://labs.aseman.org
+    Copyright (C) 2015 Nile Group
+    http://nilegroup.org
 
     Meikade is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -327,6 +327,13 @@ bool Meikade::animations() const
 {
     static bool def = true; //p->devices->isIOS() || ( p->system->cpuCores() > 1 && p->system->cpuFreq()/1000 >= 1024 );
     return settings()->value("General/animations",def).toBool();
+}
+
+QString Meikade::aboutHafezOmen() const
+{
+    return tr("Meikade's hafez omen is different from other omens.\n"
+              "It's calculate omen using natural random algorithms. Another apps "
+              "calculate omen using machine algorithms.");
 }
 
 void Meikade::setPoemsFont(const QString &name)

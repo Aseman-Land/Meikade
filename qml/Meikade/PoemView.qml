@@ -1,6 +1,6 @@
 /*
-    Copyright (C) 2014 Aseman Labs
-    http://labs.aseman.org
+    Copyright (C) 2015 Nile Group
+    http://nilegroup.org
 
     Meikade is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -133,6 +133,43 @@ Rectangle {
         }
     }
 
+    Rectangle {
+        id: phrase_frame
+        width: parent.width
+        height: parent.height - header_back.headerHeight
+        anchors.bottom: parent.bottom
+        color: "#444444"
+        visible: !view_list.atYBeginning
+
+        Column {
+            id: phrase_column
+            width: parent.width - 40*Devices.density
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 20*Devices.density + View.navigationBarHeight
+            visible: phrase_txt.text.length != 0
+
+            Text {
+                id: phrase_title
+                width: parent.width
+                color: "#ffffff"
+                font.family: "Droid Arabic Naskh"
+                font.pixelSize: 19*Devices.density
+                text: qsTr("Phrase")
+            }
+
+            Text {
+                id: phrase_txt
+                width: parent.width
+                text: Database.poemPhrase(view.poemId)
+                color: "#ffffff"
+                font.family: "Droid Arabic Naskh"
+                font.pixelSize: 12*Devices.density
+                wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+            }
+        }
+    }
+
     ListView {
         id: view_list
         anchors.fill: parent
@@ -142,12 +179,26 @@ Rectangle {
         bottomMargin: View.navigationBarHeight
 
         property int highlightedVid: -1
-        footer: Item {
+        footer: Rectangle {
             width: view_list.width
-            height: 1
+            height: phrase_txt.text.length==0? 1 : phrase_column.height + 40*Devices.density
+            color: phrase_txt.text.length==0? "#ffffff" : "#00000000"
+
             Rectangle {
+                anchors.top: parent.bottom
                 width: parent.width
                 height: view.height
+                color: parent.color
+            }
+
+            Rectangle {
+                x: phrase_title.horizontalAlignment==Text.AlignLeft? 10*Devices.density : parent.width - width - 10*Devices.density
+                width: 20*Devices.density
+                height: width
+                rotation: 45
+                transformOrigin: Item.Center
+                anchors.verticalCenter: parent.top
+                visible: phrase_txt.text.length!=0
             }
         }
 

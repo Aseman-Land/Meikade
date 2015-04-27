@@ -1,6 +1,6 @@
 /*
-    Copyright (C) 2014 Aseman Labs
-    http://labs.aseman.org
+    Copyright (C) 2015 Nile Group
+    http://nilegroup.org
 
     Meikade is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -68,6 +68,8 @@ public:
 
     Q_INVOKABLE void setAnimations( bool stt );
     Q_INVOKABLE bool animations() const;
+
+    Q_INVOKABLE QString aboutHafezOmen() const;
 
     void setPoemsFont( const QString & name );
     QString poemsFont() const;

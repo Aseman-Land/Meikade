@@ -1,6 +1,6 @@
 /*
-    Copyright (C) 2014 Aseman Labs
-    http://labs.aseman.org
+    Copyright (C) 2015 Nile Group
+    http://nilegroup.org
 
     Meikade is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -156,7 +156,7 @@ Rectangle {
         anchors.bottomMargin: View.navigationBarHeight + 10*Devices.density
         font.family: AsemanApp.globalFont.family
         font.pixelSize: 9*Devices.fontDensity
-        text: "v2.0.0"
+        text: "v3.0.0"
         wrapMode: Text.WordWrap
         color: "#333333"
         horizontalAlignment: Text.AlignRight

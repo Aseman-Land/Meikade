@@ -1,6 +1,6 @@
 /*
-    Copyright (C) 2014 Aseman Labs
-    http://labs.aseman.org
+    Copyright (C) 2015 Nile Group
+    http://nilegroup.org
 
     Meikade is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -248,7 +248,7 @@ AsemanMain {
                 anchors.left: parent.left
                 anchors.right: parent.right
 
-                property real padY: header.about? parent.height/3 : 0
+                property real padY: 0
 
                 Behavior on padY {
                     NumberAnimation { easing.type: Easing.OutCubic; duration: animations*400 }
@@ -286,7 +286,7 @@ AsemanMain {
 
             Item {
                 id: header_frame
-                y: header.about? parent.height : 0
+                y: 0
                 anchors.left: parent.left
                 anchors.right: parent.right
                 height: Devices.standardTitleBarHeight+View.statusBarHeight
@@ -295,15 +295,32 @@ AsemanMain {
                     NumberAnimation { easing.type: Easing.OutCubic; duration: animations*400 }
                 }
 
-                Header {
+                Item {
                     id: header
                     anchors.left: parent.left
                     anchors.right: parent.right
                     anchors.bottom: parent.bottom
                     height: Devices.standardTitleBarHeight
-                    titleFont.pixelSize: 13*Devices.fontDensity
-                    light: true
-                    visible: false
+
+                    Button{
+                        id: back_btn
+                        anchors.left: parent.left
+                        anchors.top: parent.top
+                        height: parent.height
+                        radius: 0
+                        normalColor: "#00000000"
+                        highlightColor: "#88666666"
+                        textColor: "#ffffff"
+                        icon: "icons/back_light_64.png"
+                        iconHeight: 16*Devices.density
+                        fontSize: 11*Devices.fontDensity
+                        textFont.bold: false
+                        visible: backButton && cat_page.count != 1
+                        onClicked: {
+                            AsemanApp.back()
+                            Devices.hideKeyboard()
+                        }
+                    }
                 }
             }
         }

@@ -74,6 +74,14 @@ bool AsemanJavaLayer::sharePaper(const QString &title, const QString &msg)
     return res;
 }
 
+bool AsemanJavaLayer::shareFile(const QString &path, const QString &type)
+{
+    jstring jpath = p->env->NewString(reinterpret_cast<const jchar*>(path.constData()), path.length());
+    jstring jtype = p->env->NewString(reinterpret_cast<const jchar*>(type.constData()), type.length());
+    jboolean res = p->object.callMethod<jboolean>(__FUNCTION__, "(Ljava/lang/String;Ljava/lang/String;)Z", jpath, jtype );
+    return res;
+}
+
 bool AsemanJavaLayer::openFile(const QString &path, const QString &type)
 {
     jstring jpath = p->env->NewString(reinterpret_cast<const jchar*>(path.constData()), path.length());

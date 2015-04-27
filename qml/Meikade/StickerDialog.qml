@@ -381,7 +381,9 @@ Rectangle {
             onTriggered: {
                 indicator.active = false
                 indicator_hide_timer.restart()
-                Devices.openFile("file://"+writer.lastDest)
+                var shared = Devices.shareFile(writer.lastDest)
+                if(!shared)
+                    Devices.openFile("file://" + writer.lastDest)
             }
         }
 

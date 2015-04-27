@@ -4,22 +4,22 @@
 <context>
     <name>About</name>
     <message>
-        <location filename="../qml/Meikade/About.qml" line="93"/>
+        <location filename="../qml/Meikade/About.qml" line="95"/>
         <source>Meikade is a free and opensource application by Nile Team</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/About.qml" line="102"/>
+        <location filename="../qml/Meikade/About.qml" line="104"/>
         <source>Meikade is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/About.qml" line="114"/>
+        <location filename="../qml/Meikade/About.qml" line="116"/>
         <source>Meikade Members:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/About.qml" line="123"/>
+        <location filename="../qml/Meikade/About.qml" line="125"/>
         <source> - Bardia Daneshvar (Project Leader and Developer)
  - AmirHosein Mousavi (Designer and Idea Processing)
  - Pourya Daneshvar (Designer)
@@ -27,7 +27,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/About.qml" line="145"/>
+        <location filename="../qml/Meikade/About.qml" line="147"/>
         <source>Meikade Github</source>
         <translation type="unfinished"></translation>
     </message>
@@ -35,18 +35,18 @@
 <context>
     <name>AboutNileTeam</name>
     <message>
-        <location filename="../qml/Meikade/AboutNileTeam.qml" line="82"/>
+        <location filename="../qml/Meikade/AboutNileTeam.qml" line="84"/>
         <source>About Nile Group</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/AboutNileTeam.qml" line="94"/>
+        <location filename="../qml/Meikade/AboutNileTeam.qml" line="96"/>
         <source>Nile is an Iranian software corporation that makes software for Desktop computers, Android, iOS, Mac, Windows Phone, Ubuntu Phone and ...
 Nile create Free and OpenSource projects.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/AboutNileTeam.qml" line="116"/>
+        <location filename="../qml/Meikade/AboutNileTeam.qml" line="118"/>
         <source>Home Page</source>
         <translation type="unfinished"></translation>
     </message>
@@ -54,17 +54,17 @@ Nile create Free and OpenSource projects.</source>
 <context>
     <name>AsemanAbout</name>
     <message>
-        <location filename="../asemantools/qml/AsemanTools/AsemanAbout.qml" line="48"/>
+        <location filename="../asemantools/qml/AsemanTools/AsemanAbout.qml" line="50"/>
         <source>Aseman is a non-profit organization, exists to support and lead the free, open source and cross-platform projects and researches.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../asemantools/qml/AsemanTools/AsemanAbout.qml" line="65"/>
+        <location filename="../asemantools/qml/AsemanTools/AsemanAbout.qml" line="67"/>
         <source>The Goal of the Aseman is to provide free and secure products to keep people’s freedom and their privacy.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../asemantools/qml/AsemanTools/AsemanAbout.qml" line="78"/>
+        <location filename="../asemantools/qml/AsemanTools/AsemanAbout.qml" line="80"/>
         <source>Home Page</source>
         <translation type="unfinished"></translation>
     </message>
@@ -72,62 +72,62 @@ Nile create Free and OpenSource projects.</source>
 <context>
     <name>AsemanTools</name>
     <message>
-        <location filename="../asemantools/asemantools.cpp" line="56"/>
+        <location filename="../asemantools/asemantools.cpp" line="58"/>
         <source>0</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../asemantools/asemantools.cpp" line="57"/>
+        <location filename="../asemantools/asemantools.cpp" line="59"/>
         <source>1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../asemantools/asemantools.cpp" line="58"/>
+        <location filename="../asemantools/asemantools.cpp" line="60"/>
         <source>2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../asemantools/asemantools.cpp" line="59"/>
+        <location filename="../asemantools/asemantools.cpp" line="61"/>
         <source>3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../asemantools/asemantools.cpp" line="60"/>
+        <location filename="../asemantools/asemantools.cpp" line="62"/>
         <source>4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../asemantools/asemantools.cpp" line="61"/>
+        <location filename="../asemantools/asemantools.cpp" line="63"/>
         <source>5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../asemantools/asemantools.cpp" line="62"/>
+        <location filename="../asemantools/asemantools.cpp" line="64"/>
         <source>6</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../asemantools/asemantools.cpp" line="63"/>
+        <location filename="../asemantools/asemantools.cpp" line="65"/>
         <source>7</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../asemantools/asemantools.cpp" line="64"/>
+        <location filename="../asemantools/asemantools.cpp" line="66"/>
         <source>8</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../asemantools/asemantools.cpp" line="65"/>
+        <location filename="../asemantools/asemantools.cpp" line="67"/>
         <source>9</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../asemantools/asemantools.cpp" line="100"/>
+        <location filename="../asemantools/asemantools.cpp" line="148"/>
         <source>Aseman is a not-for-profit research and software development team launched in February 2014 focusing on development of products, technologies and solutions in order to publish them as open-source projects accessible to all people in the universe. Currently, we are focusing on design and development of software applications and tools which have direct connection with end users.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../asemantools/asemantools.cpp" line="101"/>
+        <location filename="../asemantools/asemantools.cpp" line="149"/>
         <source>By enabling innovative projects and distributing software to millions of users globally, the lab is working to accelerate the growth of high-impact open source software projects and promote an open source culture of accessibility and increased productivity around the world. The lab partners with industry leaders and policy makers to bring open source technologies to new sectors, including education, health and government.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -325,15 +325,25 @@ Thank you.</source>
 <context>
     <name>HafezOmen</name>
     <message>
-        <location filename="../qml/Meikade/HafezOmen.qml" line="65"/>
+        <location filename="../qml/Meikade/HafezOmen.qml" line="86"/>
         <source>Intent and Tap on the screen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/HafezOmen.qml" line="110"/>
+        <source>Read more about meikade hafez omen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/HafezOmen.qml" line="125"/>
+        <source>Read More</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>Header</name>
     <message>
-        <location filename="../asemantools/qml/AsemanTools/Header.qml" line="93"/>
+        <location filename="../asemantools/qml/AsemanTools/Header.qml" line="94"/>
         <source>Back</source>
         <translation type="unfinished"></translation>
     </message>
@@ -462,6 +472,12 @@ Thank you.</source>
         <source>9</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../meikade.cpp" line="334"/>
+        <source>Meikade&apos;s hafez omen is different from other omens.
+It&apos;s calculate omen using natural random algorithms. Another apps calculate omen using machine algorithms.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Notes</name>
@@ -526,37 +542,42 @@ Thank you.</source>
 <context>
     <name>PoemView</name>
     <message>
-        <location filename="../qml/Meikade/PoemView.qml" line="443"/>
+        <location filename="../qml/Meikade/PoemView.qml" line="158"/>
+        <source>Phrase</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/PoemView.qml" line="494"/>
         <source>Favorited</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/PoemView.qml" line="446"/>
+        <location filename="../qml/Meikade/PoemView.qml" line="497"/>
         <source>Unfavorited</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/PoemView.qml" line="453"/>
+        <location filename="../qml/Meikade/PoemView.qml" line="504"/>
         <source>Copy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/PoemView.qml" line="476"/>
+        <location filename="../qml/Meikade/PoemView.qml" line="527"/>
         <source>Share</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/PoemView.qml" line="498"/>
+        <location filename="../qml/Meikade/PoemView.qml" line="549"/>
         <source>Share Image</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/PoemView.qml" line="519"/>
+        <location filename="../qml/Meikade/PoemView.qml" line="570"/>
         <source>Unfavorite</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/PoemView.qml" line="519"/>
+        <location filename="../qml/Meikade/PoemView.qml" line="570"/>
         <source>Favorite</source>
         <translation type="unfinished"></translation>
     </message>
@@ -682,7 +703,7 @@ Thank you.</source>
 <context>
     <name>main</name>
     <message>
-        <location filename="../qml/Meikade/main.qml" line="328"/>
+        <location filename="../qml/Meikade/main.qml" line="345"/>
         <source>Meikade</source>
         <translation type="unfinished"></translation>
     </message>

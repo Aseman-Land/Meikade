@@ -180,5 +180,6 @@
         <file>qml/Meikade/icons/new.png</file>
         <file>qml/Meikade/AboutNileTeam.qml</file>
         <file>qml/Meikade/icons/nilegroup.png</file>
+        <file>qml/Meikade/HafezOmenDescription.qml</file>
     </qresource>
 </RCC>

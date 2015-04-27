@@ -1,6 +1,6 @@
 /*
-    Copyright (C) 2014 Aseman Labs
-    http://labs.aseman.org
+    Copyright (C) 2015 Nile Group
+    http://nilegroup.org
 
     Meikade is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -49,6 +49,7 @@ public slots:
 
     QString poemName( int id );
     int poemCat( int id );
+    QString poemPhrase(int id);
     QList<int> poemVerses( int id );
 
     int catPoetId( int cat );

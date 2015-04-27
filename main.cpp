@@ -1,6 +1,6 @@
 /*
-    Copyright (C) 2014 Aseman Labs
-    http://labs.aseman.org
+    Copyright (C) 2015 Nile Group
+    http://nilegroup.org
 
     Meikade is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -26,8 +26,8 @@ int main(int argc, char *argv[])
     AsemanApplication app(argc, argv);
     app.setApplicationName("Meikade");
     app.setApplicationDisplayName("Meikade");
-    app.setOrganizationDomain("land.aseman");
-    app.setOrganizationName("Aseman");
+    app.setOrganizationDomain("NileGroup");
+    app.setOrganizationName("Nile Group");
     app.setWindowIcon(QIcon(app.applicationDirPath()+"/qml/Meikade/icons/meikade.png"));
 
     Meikade meikade;

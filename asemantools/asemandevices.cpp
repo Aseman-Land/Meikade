@@ -488,14 +488,17 @@ QString AsemanDevices::libsPath()
 
 void AsemanDevices::hideKeyboard()
 {
+#ifndef DESKTOP_DEVICE
     if( p->hide_keyboard_timer )
         killTimer(p->hide_keyboard_timer);
 
     p->hide_keyboard_timer = startTimer(250);
+#endif
 }
 
 void AsemanDevices::showKeyboard()
 {
+#ifndef DESKTOP_DEVICE
     if( p->hide_keyboard_timer )
     {
         killTimer(p->hide_keyboard_timer);
@@ -506,6 +509,7 @@ void AsemanDevices::showKeyboard()
     p->keyboard_stt = true;
 
     emit keyboardChanged();
+#endif
 }
 
 void AsemanDevices::share(const QString &subject, const QString &message)
@@ -523,6 +527,16 @@ void AsemanDevices::openFile(const QString &address)
 #ifdef Q_OS_ANDROID
     const QMimeType & t = p->mime_db.mimeTypeForFile(address);
     p->java_layer->openFile( address, t.name() );
+#else
+    QDesktopServices::openUrl( QUrl(address) );
+#endif
+}
+
+void AsemanDevices::shareFile(const QString &address)
+{
+#ifdef Q_OS_ANDROID
+    const QMimeType & t = p->mime_db.mimeTypeForFile(address);
+    p->java_layer->shareFile( address, t.name() );
 #else
     QDesktopServices::openUrl( QUrl(address) );
 #endif

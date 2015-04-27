@@ -1,6 +1,6 @@
 /*
-    Copyright (C) 2014 Aseman Labs
-    http://labs.aseman.org
+    Copyright (C) 2015 Nile Group
+    http://nilegroup.org
 
     Meikade is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -58,6 +58,12 @@ Item {
             UserData.unfavorite(poemId,0)
             main.showTooltip( qsTr("Unfavorited") )
         }
+    }
+
+    Connections {
+        target: UserData
+        onFavorited: if(pid == poem_header.poemId && vid == 0) favorited = true
+        onUnfavorited: if(pid == poem_header.poemId && vid == 0) favorited = false
     }
 
     QtObject {

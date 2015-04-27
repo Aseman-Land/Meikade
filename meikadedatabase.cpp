@@ -1,6 +1,6 @@
 /*
     Copyright (C) 2014 Aseman Labs
-    http://labs.aseman.org
+    http://nilegroup.org
 
     Meikade is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -16,7 +16,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#define CURRENT_DB_VERSION 1
+#define CURRENT_DB_VERSION 2
 
 #include "meikadedatabase.h"
 #include "threadedfilesystem.h"
@@ -92,9 +92,9 @@ bool MeikadeDatabase::initialized() const
 void MeikadeDatabase::initialize()
 {
 #ifdef Q_OS_ANDROID
-    p->path = "/sdcard/Sialan/Meikade/data.sqlite";
+    p->path = "/sdcard/NileGroup/Meikade/data.sqlite";
     p->src = "assets:/database/data/data";
-    QDir().mkpath("/sdcard/Sialan/Meikade");
+    QDir().mkpath("/sdcard/NileGroup/Meikade");
 #else
     p->path = HOME_PATH + "/data.sqlite";
     p->src = "database/data/data";
@@ -108,7 +108,7 @@ void MeikadeDatabase::initialize()
         connect( p->tfs, SIGNAL(extractProgress(int)), SIGNAL(extractProgress(int)), Qt::QueuedConnection );
         connect( p->tfs, SIGNAL(extractFinished(QString)), SLOT(initialize_prv(QString)), Qt::QueuedConnection );
         connect( p->tfs, SIGNAL(extractError()), SIGNAL(copyError()), Qt::QueuedConnection );
-        p->tfs->extract(p->src,23,p->path);
+        p->tfs->extract(p->src,24,p->path);
     }
     else
     {
@@ -217,6 +217,27 @@ int MeikadeDatabase::poemCat(int id)
     }
 
     return p->poems_cache[id].value("cat_id").toInt();
+}
+
+QString MeikadeDatabase::poemPhrase(int id)
+{
+    if(!p->db.isOpen())
+        return QString();
+
+    if( !p->poems_cache.value(id).contains("phrase") )
+    {
+        QSqlQuery query( p->db );
+        query.prepare("SELECT phrase FROM poem WHERE id=:id");
+        query.bindValue(":id",id);
+        query.exec();
+
+        if( !query.next() )
+            return 0;
+
+        p->poems_cache[id]["phrase"] = query.record().value(0).toString();
+    }
+
+    return p->poems_cache[id].value("phrase").toString();
 }
 
 QList<int> MeikadeDatabase::poemVerses(int id)

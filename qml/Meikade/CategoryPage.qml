@@ -1,6 +1,6 @@
 /*
-    Copyright (C) 2014 Aseman Labs
-    http://labs.aseman.org
+    Copyright (C) 2015 Nile Group
+    http://nilegroup.org
 
     Meikade is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -24,6 +24,8 @@ Rectangle {
     width: 100
     height: 62
     color: "#dddddd"
+
+    property alias count: list.count
 
     ListObject {
         id: list
@@ -53,7 +55,7 @@ Rectangle {
         anchors.right: parent.right
         anchors.top: parent.top
         height: Devices.standardTitleBarHeight + View.statusBarHeight
-        color: "#880000"
+        color: "#881010"
     }
 
     Item {
