@@ -11,6 +11,7 @@ Rectangle {
         anchors.fill: parent
         anchors.leftMargin: 20*Devices.density
         anchors.rightMargin: 20*Devices.density
+        anchors.bottomMargin: View.navigationBarHeight
         flickableDirection: Flickable.VerticalFlick
         contentWidth: column.width
         contentHeight: column.height
