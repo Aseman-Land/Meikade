@@ -7,20 +7,16 @@
 #include <QDir>
 #include <QImageWriter>
 #include <QPointer>
+#include <QCoreApplication>
 #include <QDebug>
 
 #ifdef DISABLE_ASEMAN_WEBGRABBER
 #define NULL_ASEMAN_WEBGRABBER
 #else
-#if (QT_VERSION < QT_VERSION_CHECK(5, 4, 0)) && defined(ASEMAN_MULTIMEDIA)
-#define NULL_ASEMAN_WEBGRABBER
-#else
 #define NULL_WEBVIEW_ENGINE
 #ifdef ASEMAN_WEBENGINE
-#include <QWebEngineFrame>
 #include <QWebEngineView>
 #include <QWebEngineSettings>
-#define WEBFRAME_CLASS QWebEngineFrame
 #define WEBVIEW_CLASS QWebEngineView
 #define WEBSETTINGS_CLASS QWebEngineSettings
 #else
@@ -33,7 +29,6 @@
 #define WEBSETTINGS_CLASS QWebSettings
 #else
 #define NULL_ASEMAN_WEBGRABBER
-#endif
 #endif
 #endif
 #endif
@@ -250,9 +245,10 @@ void AsemanWebPageGrabber::createWebView()
 
     p->viewer = new WEBVIEW_CLASS();
     p->viewer->resize(800, 800);
+
+#ifdef ASEMAN_WEBKIT
     p->viewer->page()->mainFrame()->setScrollBarPolicy(Qt::Horizontal, Qt::ScrollBarAlwaysOff);
     p->viewer->page()->mainFrame()->setScrollBarPolicy(Qt::Vertical, Qt::ScrollBarAlwaysOff);
-//    p->viewer->settings()->setAttribute(WEBSETTINGS_CLASS::JavascriptEnabled, false);
     p->viewer->settings()->setAttribute(WEBSETTINGS_CLASS::JavaEnabled, false);
     p->viewer->settings()->setAttribute(WEBSETTINGS_CLASS::PluginsEnabled, false);
     p->viewer->settings()->setAttribute(WEBSETTINGS_CLASS::PrivateBrowsingEnabled, true);
@@ -268,6 +264,17 @@ void AsemanWebPageGrabber::createWebView()
     p->viewer->settings()->setAttribute(WEBSETTINGS_CLASS::NotificationsEnabled, false);
 #if (QT_VERSION >= QT_VERSION_CHECK(5, 4, 0))
     p->viewer->settings()->setAttribute(WEBSETTINGS_CLASS::Accelerated2dCanvasEnabled, false);
+#endif
+#else
+    p->viewer->settings()->setAttribute(WEBSETTINGS_CLASS::LinksIncludedInFocusChain, false);
+    p->viewer->settings()->setAttribute(WEBSETTINGS_CLASS::JavascriptCanOpenWindows, false);
+    p->viewer->settings()->setAttribute(WEBSETTINGS_CLASS::JavascriptCanAccessClipboard, false);
+    p->viewer->settings()->setAttribute(WEBSETTINGS_CLASS::LocalStorageEnabled, false);
+    p->viewer->settings()->setAttribute(WEBSETTINGS_CLASS::LocalContentCanAccessFileUrls, false);
+#endif
+
+#ifdef ASEMAN_WEBENGINE
+    p->viewer->show();
 #endif
 
     connect(p->viewer, SIGNAL(loadProgress(int)), SLOT(loadProgress(int)));

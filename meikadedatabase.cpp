@@ -108,7 +108,7 @@ void MeikadeDatabase::initialize()
         connect( p->tfs, SIGNAL(extractProgress(int)), SIGNAL(extractProgress(int)), Qt::QueuedConnection );
         connect( p->tfs, SIGNAL(extractFinished(QString)), SLOT(initialize_prv(QString)), Qt::QueuedConnection );
         connect( p->tfs, SIGNAL(extractError()), SIGNAL(copyError()), Qt::QueuedConnection );
-        p->tfs->extract(p->src,24,p->path);
+        p->tfs->extract(p->src,23,p->path);
     }
     else
     {
