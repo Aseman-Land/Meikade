@@ -242,7 +242,7 @@ Rectangle {
                 vid: verseId
                 pid: poemId
                 highlight: view_list.highlightedVid == vid
-                font.pixelSize: Devices.isMobile? 9*Devices.fontDensity : 11*Devices.fontDensity
+                font.pixelSize: Devices.isMobile? 9*Devices.fontDensity : 10*Devices.fontDensity
                 font.family: globalPoemFontFamily
 
                 Rectangle {

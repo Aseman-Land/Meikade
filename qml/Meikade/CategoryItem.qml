@@ -45,7 +45,7 @@ Item {
         anchors.margins: 8*Devices.density
         horizontalAlignment: Text.AlignRight
         text: Database.catName(cid)
-        font.pixelSize: Devices.isMobile? 9*Devices.fontDensity : 11*Devices.fontDensity
+        font.pixelSize: Devices.isMobile? 9*Devices.fontDensity : 10*Devices.fontDensity
         font.family: AsemanApp.globalFont.family
         wrapMode: Text.WrapAtWordBoundaryOrAnywhere
     }

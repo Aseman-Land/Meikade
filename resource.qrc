@@ -181,5 +181,12 @@
         <file>qml/Meikade/AboutNileTeam.qml</file>
         <file>qml/Meikade/icons/nilegroup.png</file>
         <file>qml/Meikade/HafezOmenDescription.qml</file>
+        <file>qml/Meikade/icons/menu-back.jpg</file>
+        <file>qml/Meikade/icons/menu-about.png</file>
+        <file>qml/Meikade/icons/menu-bookmark.png</file>
+        <file>qml/Meikade/icons/menu-configure.png</file>
+        <file>qml/Meikade/icons/menu-home.png</file>
+        <file>qml/Meikade/icons/menu-opensource.png</file>
+        <file>qml/Meikade/icons/menu-search.png</file>
     </qresource>
 </RCC>

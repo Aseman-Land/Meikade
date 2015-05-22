@@ -110,7 +110,7 @@ BackHandlerView {
                         anchors.right: parent.right
                         anchors.margins: 30*Devices.density
                         y: parent.height/2 - height/2
-                        font.pixelSize: 11*Devices.fontDensity
+                        font.pixelSize: 10*Devices.fontDensity
                         font.family: AsemanApp.globalFont.family
                         color: "#ffffff"
                         text: name

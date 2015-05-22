@@ -14,6 +14,8 @@ Item {
     signal randomPoemRequest()
     signal searchRequest()
 
+    property int layoutDirection: Qt.LeftToRight
+
     onHideStateChanged: {
         hide_timer.stop()
         if(hideState)
@@ -44,7 +46,7 @@ Item {
     Item {
         width: opened? 200*Devices.density : 64*Devices.density
         height: opened? 170*Devices.density : 64*Devices.density
-        anchors.right: parent.right
+        x: md_btn.layoutDirection==Qt.LeftToRight? parent.width-width-10*Devices.density : 10*Devices.density
         anchors.bottom: parent.bottom
         anchors.margins: 10*Devices.density
         clip: opened
@@ -106,7 +108,7 @@ Item {
         Column {
             width: 180*Devices.density
             height: 150*Devices.density
-            anchors.right: btn_rect.right
+            x: md_btn.layoutDirection==Qt.LeftToRight? parent.width-width-10*Devices.density : 10*Devices.density
             anchors.bottom: btn_rect.bottom
             anchors.margins: 10*Devices.density
             visible: opened

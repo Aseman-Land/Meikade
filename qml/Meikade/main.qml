@@ -137,48 +137,6 @@ AsemanMain {
         onStatusChanged: if(status == FontLoader.Ready) AsemanApp.globalFont.family = name
     }
 
-    MainMenu {
-        id: menu
-        width: main_scene.menuSize
-        anchors.right: parent.right
-        anchors.top: parent.top
-        anchors.bottom: parent.bottom
-        onSelected: {
-            if( main.menuItem )
-                main.menuItem.close()
-            if( !search_bar.hide ) {
-                if( search_bar.viewMode )
-                    if( BackHandler )
-                        AsemanApp.back()
-
-                search_bar.hide = true
-            }
-
-            if( fileName.length == 0 )
-                ;
-            else
-            if( fileName.slice(0,4) == "cmd:" ) {
-                var cmd = fileName.slice(4)
-                if( cmd == "search" )
-                    Meikade.timer(400,search_bar,"show")
-            }
-            else {
-                var component = Qt.createComponent("MainMenuItem.qml")
-                var item = component.createObject(frame)
-                item.anchors.fill = frame
-                item.z = 1000
-
-                var ocomponent = Qt.createComponent(fileName)
-                var object = ocomponent.createObject(item)
-                item.item = object
-
-                menuItem = item
-            }
-
-            hideMenu()
-        }
-    }
-
     SearchBar {
         id: search_bar
         anchors.left: main_scene.left
@@ -209,23 +167,6 @@ AsemanMain {
         height: parent.height
         clip: true
         transformOrigin: Item.Center
-
-        property real menuSize: 237*Devices.density
-        property bool menu: false
-
-        onMenuChanged: {
-            if( main_scene.menu ) {
-                main_scene.x = -main_scene.menuSize
-                BackHandler.pushHandler(main_scene, main_scene.hideMenu)
-            } else {
-                main_scene.x = 0
-                BackHandler.removeHandler(main_scene)
-            }
-        }
-
-        Behavior on x {
-            NumberAnimation { easing.type: Easing.OutCubic; duration: frame.anim?400:0 }
-        }
 
         Item {
             id: frame
@@ -276,6 +217,7 @@ AsemanMain {
                         MaterialDesignButton {
                             id: md_button
                             anchors.fill: parent
+                            layoutDirection: Qt.RightToLeft
                             onHafezOmenRequest: cat_page.showHafezOmen()
                             onRandomPoemRequest: cat_page.showRandom()
                             onSearchRequest: search_bar.show()
@@ -325,50 +267,6 @@ AsemanMain {
             }
         }
 
-        Image {
-            id: menu_img
-            height: 24*Devices.density
-            width: height
-            anchors.horizontalCenter: parent.right
-            anchors.top: parent.top
-            anchors.topMargin: (Devices.standardTitleBarHeight-height)/2 + View.statusBarHeight
-            sourceSize: Qt.size(width,height)
-            source: "icons/menu.png"
-        }
-
-        Text {
-            anchors.verticalCenter: menu_img.verticalCenter
-            anchors.right: menu_img.left
-            anchors.rightMargin: 8*Devices.density
-            font.family: AsemanApp.globalFont.family
-            font.pixelSize: 11*Devices.fontDensity
-            text: qsTr("Meikade")
-            color: "#ffffff"
-        }
-
-        Rectangle {
-            anchors.fill: menu_area
-            color: "#33ffffff"
-            visible: menu_area.pressed
-        }
-
-        MouseArea {
-            id: menu_area
-            anchors.top: parent.top
-            anchors.right: parent.right
-            height: Devices.standardTitleBarHeight + View.statusBarHeight
-            width: 100*Devices.density
-            onClicked: {
-                frame.anim = true
-                if( main_scene.menu )
-                    main_scene.x = 0
-                else
-                    main_scene.x = -main_scene.menuSize
-
-                main_scene.menu = !main_scene.menu
-            }
-        }
-
         MouseArea {
             anchors.fill: parent
             visible: !search_bar.hide
@@ -378,64 +276,6 @@ AsemanMain {
                 Devices.hideKeyboard()
             }
         }
-
-        function hideMenu() {
-            main_scene.menu = false
-        }
-    }
-
-    MouseArea {
-        id: marea
-        anchors.top: parent.top
-        anchors.bottom: parent.bottom
-        anchors.right: main_scene.right
-        anchors.topMargin: menu_area.height+menu_area.y
-        width: main_scene.menu? main_scene.width : 10*Devices.density
-
-        onPressed: {
-            pinX = mouseX
-            movedX = false
-        }
-
-        onMouseXChanged: {
-            var sizeX = main_scene.x + mouseX-pinX
-            if( Math.abs(mouseX-pinX)>10*Devices.density )
-                movedX = true
-
-            if( -sizeX > main_scene.menuSize )
-                sizeX = -main_scene.menuSize
-            else
-            if( -sizeX < 0 )
-                sizeX = 0
-
-            frame.anim = false
-            main_scene.x = sizeX
-            frame.anim = true
-        }
-
-        onReleased: {
-            if( !movedX ) {
-                main_scene.menu = false
-                main_scene.x = 0
-                return
-            }
-
-            var sizeX = -main_scene.x
-            if( main_scene.menu ) {
-                if( sizeX > 2*main_scene.menuSize/3 )
-                    main_scene.x = -main_scene.menuSize
-                else
-                    main_scene.menu = false
-            } else {
-                if( sizeX < main_scene.menuSize/3 )
-                    main_scene.x = 0
-                else
-                    main_scene.menu = true
-            }
-        }
-
-        property real pinX
-        property bool movedX: false
     }
 
     FastBlur {
@@ -463,12 +303,113 @@ AsemanMain {
         }
     }
 
-    function hideMenuItem() {
-        main.menuItem.close()
+    Rectangle {
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.top: sidebar.top
+        anchors.bottom: sidebar.bottom
+        color: "#000000"
+        opacity: sidebar.percent*0.7
     }
 
-    function hideMenu() {
-        main_scene.menu = false
+    SideMenu {
+        id: sidebar
+        anchors.fill: parent
+        menuWidth: Devices.isMobile? parent.width-50*Devices.density : parent.width/2 + 50*Devices.density
+        layoutDirection: Qt.RightToLeft
+        delegate: MouseArea {
+            anchors.fill: parent
+
+            Rectangle {
+                anchors.fill: parent
+                color: "#f0f0f0"
+            }
+
+            MainMenu {
+                anchors.fill: parent
+                anchors.bottomMargin: View.navigationBarHeight
+                onSelected: {
+                    if( main.menuItem )
+                        main.menuItem.close()
+                    if( !search_bar.hide ) {
+                        if( search_bar.viewMode )
+                            if( BackHandler )
+                                AsemanApp.back()
+
+                        search_bar.hide = true
+                    }
+
+                    if( fileName.length == 0 )
+                        ;
+                    else
+                    if( fileName.slice(0,4) == "cmd:" ) {
+                        var cmd = fileName.slice(4)
+                        if( cmd == "search" )
+                            Meikade.timer(400,search_bar,"show")
+                    }
+                    else {
+                        var component = Qt.createComponent("MainMenuItem.qml")
+                        var item = component.createObject(frame)
+                        item.anchors.fill = frame
+                        item.z = 1000
+
+                        var ocomponent = Qt.createComponent(fileName)
+                        var object = ocomponent.createObject(item)
+                        item.item = object
+
+                        menuItem = item
+                    }
+
+                    sidebar.discard()
+                }
+            }
+        }
+    }
+
+    Item {
+        id: menu_button
+        height: Devices.standardTitleBarHeight
+        width: 100*Devices.density
+        anchors.top: parent.top
+        anchors.right: parent.right
+        anchors.topMargin: View.statusBarHeight + main_scene.y
+        opacity: 1-sidebar.percent
+
+        Image {
+            id: menu_img
+            height: 24*Devices.density
+            width: height
+            anchors.horizontalCenter: parent.right
+            anchors.verticalCenter: parent.verticalCenter
+            sourceSize: Qt.size(width,height)
+            source: "icons/menu.png"
+        }
+
+        Text {
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.right: menu_img.left
+            anchors.rightMargin: 8*Devices.density
+            font.family: AsemanApp.globalFont.family
+            font.pixelSize: 11*Devices.fontDensity
+            text: qsTr("Meikade")
+            color: "#ffffff"
+        }
+
+        Rectangle {
+            anchors.fill: parent
+            color: "#33ffffff"
+            visible: menu_area.pressed
+        }
+
+        MouseArea {
+            id: menu_area
+            anchors.fill: parent
+            onClicked: sidebar.show()
+        }
+    }
+
+    function hideMenuItem() {
+        main.menuItem.close()
     }
 
     function setCurrentChapter( id ){

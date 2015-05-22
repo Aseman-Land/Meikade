@@ -43,6 +43,14 @@ Item {
         clip: true
         spacing: 8*Devices.density
         topMargin: category.topMargin
+        boundsBehavior: Flickable.StopAtBounds
+        rebound: Transition {
+            NumberAnimation {
+                properties: "x,y"
+                duration: 0
+            }
+        }
+
         onVerticalVelocityChanged: {
             if(catId != 0)
                 return

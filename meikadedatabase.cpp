@@ -16,7 +16,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#define CURRENT_DB_VERSION 2
+#define CURRENT_DB_VERSION 3
 
 #include "meikadedatabase.h"
 #include "threadedfilesystem.h"
@@ -101,14 +101,14 @@ void MeikadeDatabase::initialize()
 #endif
 
     int db_version = Meikade::settings()->value("initialize/dataVersion",0).toInt();
-    if( db_version < CURRENT_DB_VERSION || !QFileInfo(p->path).exists() || QFileInfo(p->path).size() < 118880000 )
+    if( db_version < CURRENT_DB_VERSION || !QFileInfo(p->path).exists() || QFileInfo(p->path).size() < 120000000 )
     {
         QFile::remove(p->path);
 
         connect( p->tfs, SIGNAL(extractProgress(int)), SIGNAL(extractProgress(int)), Qt::QueuedConnection );
         connect( p->tfs, SIGNAL(extractFinished(QString)), SLOT(initialize_prv(QString)), Qt::QueuedConnection );
         connect( p->tfs, SIGNAL(extractError()), SIGNAL(copyError()), Qt::QueuedConnection );
-        p->tfs->extract(p->src,23,p->path);
+        p->tfs->extract(p->src,24,p->path);
     }
     else
     {

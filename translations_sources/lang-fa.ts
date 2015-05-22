@@ -502,7 +502,7 @@ Thank you.</source>
     <message>
         <location filename="../qml/Meikade/MaterialDesignButton.qml" line="137"/>
         <source>Random Poem</source>
-        <translation>شعر اتفاقی</translation>
+        <translation>شعر تصادفی</translation>
     </message>
     <message>
         <location filename="../qml/Meikade/MaterialDesignButton.qml" line="152"/>

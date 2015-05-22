@@ -19,26 +19,61 @@
 import QtQuick 2.0
 import AsemanTools 1.0
 
-Rectangle {
+Item {
     id: mmenu
     width: 100
     height: 62
-    color: "#222222"
+    clip: true
 
     signal selected( string fileName )
 
     ListView {
         id: list
         anchors.fill: parent
-        anchors.topMargin: 40*Devices.density
-        anchors.bottomMargin: 40*Devices.density
         model: ListModel{}
         orientation: Qt.Vertical
+        boundsBehavior: Flickable.StopAtBounds
+        rebound: Transition {
+            NumberAnimation {
+                properties: "x,y"
+                duration: 0
+            }
+        }
+
+        header: Item {
+            width: list.width
+            height: menu_cover.height
+
+            Image {
+                id: menu_cover
+                width: list.width
+                height: width*9/16
+                fillMode: Image.PreserveAspectCrop
+                source: "icons/menu-back.jpg"
+                sourceSize: Qt.size(width,width)
+            }
+        }
+
+        section.property: "type"
+        section.criteria: ViewSection.FullString
+        section.delegate: Item {
+            width: list.width
+            height: 20*Devices.density
+
+            Rectangle {
+                width: parent.width - 20*Devices.density
+                height: 1*Devices.density
+                anchors.centerIn: parent
+                color: "#cccccc"
+                visible: section != "A"
+            }
+        }
+
         delegate: Rectangle {
             id: item
             width: list.width
-            height: 50*Devices.density
-            color: press? "#0d80ec" : "#00000000"
+            height: 36*Devices.density
+            color: press? "#880d80ec" : "#00000000"
 
             property alias press: marea.pressed
 
@@ -47,21 +82,25 @@ Rectangle {
                 anchors.left: parent.left
                 anchors.right: item_rect.left
                 anchors.margins: 20*Devices.density
-                y: parent.height/2 - height/2 -1*Devices.density
-                font.pixelSize: Devices.isMobile? 9*Devices.fontDensity : 11*Devices.fontDensity
+                anchors.verticalCenter: parent.verticalCenter
+                font.pixelSize: 9*Devices.fontDensity
                 font.family: AsemanApp.globalFont.family
-                color: "#ffffff"
+                color: "#444444"
                 horizontalAlignment: Text.AlignRight
                 text: name
             }
 
-            Rectangle {
+            Image {
                 id: item_rect
                 anchors.right: parent.right
                 anchors.verticalCenter: parent.verticalCenter
-                height: 10*Devices.density
-                width: 15*Devices.density
-                color: "#888888"
+                anchors.rightMargin: 10*Devices.density
+                height: width
+                width: 24*Devices.density
+                source: icon
+                fillMode: Image.PreserveAspectFit
+                sourceSize: Qt.size(width, height)
+                opacity: 0.6
             }
 
             MouseArea {
@@ -72,19 +111,19 @@ Rectangle {
         }
 
         Component.onCompleted: {
-            model.append({"name":qsTr("Home")     , "fileName":""})
-            model.append({"name":qsTr("Search")   , "fileName":"cmd:search"})
-            model.append({"name":qsTr("Bookmarks"), "fileName":"Bookmarks.qml"})
-//            model.append({"name":qsTr("Notes")    , "fileName":"Notes.qml"})
-            model.append({"name":qsTr("Configure"), "fileName":"Configure.qml"})
-            model.append({"name":qsTr("OpenSource Projecs"), "fileName":"OpenSourceProjects.qml"})
-            model.append({"name":qsTr("About")    , "fileName":"About.qml"})
-            model.append({"name":qsTr("About Nile Group"), "fileName":"AboutNileTeam.qml"})
+            model.append({"name":qsTr("Home")              , "icon": "icons/menu-home.png"      , "fileName":""                      , "type": "A"})
+            model.append({"name":qsTr("Search")            , "icon": "icons/menu-search.png"    , "fileName":"cmd:search"            , "type": "A"})
+            model.append({"name":qsTr("Bookmarks")         , "icon": "icons/menu-bookmark.png"  , "fileName":"Bookmarks.qml"         , "type": "A"})
+//            model.append({"name":qsTr("Notes")             , "icon": ""                         , "fileName":"Notes.qml"             , "type": "A"})
+            model.append({"name":qsTr("Configure")         , "icon": "icons/menu-configure.png" , "fileName":"Configure.qml"         , "type": "C"})
+            model.append({"name":qsTr("OpenSource Projecs"), "icon": "icons/menu-opensource.png", "fileName":"OpenSourceProjects.qml", "type": "C"})
+            model.append({"name":qsTr("About")             , "icon": "icons/menu-about.png"     , "fileName":"About.qml"             , "type": "C"})
+            model.append({"name":qsTr("About Nile Group")  , "icon": "icons/menu-about.png"     , "fileName":"AboutNileTeam.qml"     , "type": "C"})
         }
     }
 
     ScrollBar {
         scrollArea: list; height: list.height; anchors.top: list.top
-        anchors.left: list.left; color: "#ffffff"
+        anchors.left: list.left; color: "#333333"
     }
 }

@@ -98,6 +98,13 @@ Rectangle {
         topMargin: spacing
         bottomMargin: View.navigationBarHeight + spacing
         clip: true
+        boundsBehavior: Flickable.StopAtBounds
+        rebound: Transition {
+            NumberAnimation {
+                properties: "x,y"
+                duration: 0
+            }
+        }
 
         model: ListModel {}
         delegate: Rectangle {
@@ -123,7 +130,7 @@ Rectangle {
                 anchors.right: parent.right
                 anchors.margins: 30*Devices.density
                 y: parent.height/2 - height/2
-                font.pixelSize: Devices.isMobile? 10*Devices.fontDensity : 11*Devices.fontDensity
+                font.pixelSize: Devices.isMobile? 9*Devices.fontDensity : 10*Devices.fontDensity
                 font.family: AsemanApp.globalFont.family
                 color: "#333333"
                 text: Database.poemName(pid)
