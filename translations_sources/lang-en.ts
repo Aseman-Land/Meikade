@@ -122,12 +122,12 @@ Nile create Free and OpenSource projects.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../asemantools/asemantools.cpp" line="148"/>
+        <location filename="../asemantools/asemantools.cpp" line="153"/>
         <source>Aseman is a not-for-profit research and software development team launched in February 2014 focusing on development of products, technologies and solutions in order to publish them as open-source projects accessible to all people in the universe. Currently, we are focusing on design and development of software applications and tools which have direct connection with end users.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../asemantools/asemantools.cpp" line="149"/>
+        <location filename="../asemantools/asemantools.cpp" line="154"/>
         <source>By enabling innovative projects and distributing software to millions of users globally, the lab is working to accelerate the growth of high-impact open source software projects and promote an open source culture of accessibility and increased productivity around the world. The lab partners with industry leaders and policy makers to bring open source technologies to new sectors, including education, health and government.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -168,7 +168,7 @@ Nile create Free and OpenSource projects.</source>
 <context>
     <name>Bookmarks</name>
     <message>
-        <location filename="../qml/Meikade/Bookmarks.qml" line="100"/>
+        <location filename="../qml/Meikade/Bookmarks.qml" line="101"/>
         <source>Bookmarks</source>
         <translation type="unfinished"></translation>
     </message>
@@ -176,7 +176,7 @@ Nile create Free and OpenSource projects.</source>
 <context>
     <name>Category</name>
     <message>
-        <location filename="../qml/Meikade/Category.qml" line="123"/>
+        <location filename="../qml/Meikade/Category.qml" line="131"/>
         <source>This is a problem to loading poets.
 Please contact us:
 contact@aseman.org</source>
@@ -209,7 +209,12 @@ contact@aseman.org</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/Configure.qml" line="214"/>
+        <location filename="../qml/Meikade/Configure.qml" line="155"/>
+        <source>Night Theme</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/Configure.qml" line="215"/>
         <source>Configure</source>
         <translation type="unfinished"></translation>
     </message>
@@ -231,22 +236,22 @@ Meikade need 150MB free space on your memory.</source>
 <context>
     <name>CursorPicker</name>
     <message>
-        <location filename="../asemantools/qml/AsemanTools/CursorPicker.qml" line="361"/>
+        <location filename="../asemantools/qml/AsemanTools/CursorPicker.qml" line="362"/>
         <source>Copy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../asemantools/qml/AsemanTools/CursorPicker.qml" line="362"/>
+        <location filename="../asemantools/qml/AsemanTools/CursorPicker.qml" line="363"/>
         <source>Cut</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../asemantools/qml/AsemanTools/CursorPicker.qml" line="363"/>
+        <location filename="../asemantools/qml/AsemanTools/CursorPicker.qml" line="364"/>
         <source>Paste</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../asemantools/qml/AsemanTools/CursorPicker.qml" line="364"/>
+        <location filename="../asemantools/qml/AsemanTools/CursorPicker.qml" line="365"/>
         <source>Delete</source>
         <translation type="unfinished"></translation>
     </message>
@@ -325,17 +330,17 @@ Thank you.</source>
 <context>
     <name>HafezOmen</name>
     <message>
-        <location filename="../qml/Meikade/HafezOmen.qml" line="86"/>
+        <location filename="../qml/Meikade/HafezOmen.qml" line="105"/>
         <source>Intent and Tap on the screen</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/HafezOmen.qml" line="110"/>
+        <location filename="../qml/Meikade/HafezOmen.qml" line="130"/>
         <source>Read more about meikade hafez omen</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/HafezOmen.qml" line="125"/>
+        <location filename="../qml/Meikade/HafezOmen.qml" line="145"/>
         <source>Read More</source>
         <translation type="unfinished"></translation>
     </message>
@@ -357,6 +362,104 @@ Thank you.</source>
     </message>
 </context>
 <context>
+    <name>JalaliCalendarObject</name>
+    <message>
+        <location filename="../asemantools/asemancalendarconvertercore.cpp" line="414"/>
+        <source>Farvardin</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../asemantools/asemancalendarconvertercore.cpp" line="417"/>
+        <source>Ordibehesht</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../asemantools/asemancalendarconvertercore.cpp" line="420"/>
+        <source>Khordad</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../asemantools/asemancalendarconvertercore.cpp" line="423"/>
+        <source>Tir</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../asemantools/asemancalendarconvertercore.cpp" line="426"/>
+        <source>Mordad</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../asemantools/asemancalendarconvertercore.cpp" line="429"/>
+        <source>Shahrivar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../asemantools/asemancalendarconvertercore.cpp" line="432"/>
+        <source>Mehr</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../asemantools/asemancalendarconvertercore.cpp" line="435"/>
+        <source>Abaan</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../asemantools/asemancalendarconvertercore.cpp" line="438"/>
+        <source>Aazar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../asemantools/asemancalendarconvertercore.cpp" line="441"/>
+        <source>Dey</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../asemantools/asemancalendarconvertercore.cpp" line="444"/>
+        <source>Bahman</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../asemantools/asemancalendarconvertercore.cpp" line="447"/>
+        <source>Esfand</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../asemantools/asemancalendarconvertercore.cpp" line="459"/>
+        <source>Shanbe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../asemantools/asemancalendarconvertercore.cpp" line="462"/>
+        <source>1Shanbe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../asemantools/asemancalendarconvertercore.cpp" line="465"/>
+        <source>2Shanbe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../asemantools/asemancalendarconvertercore.cpp" line="468"/>
+        <source>3Shanbe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../asemantools/asemancalendarconvertercore.cpp" line="471"/>
+        <source>4Shanbe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../asemantools/asemancalendarconvertercore.cpp" line="474"/>
+        <source>5Shanbe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../asemantools/asemancalendarconvertercore.cpp" line="477"/>
+        <source>Jome</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>LanguageSelector</name>
     <message>
         <location filename="../qml/Meikade/LanguageSelector.qml" line="71"/>
@@ -367,37 +470,37 @@ Thank you.</source>
 <context>
     <name>MainMenu</name>
     <message>
-        <location filename="../qml/Meikade/MainMenu.qml" line="75"/>
+        <location filename="../qml/Meikade/MainMenu.qml" line="114"/>
         <source>Home</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/MainMenu.qml" line="76"/>
+        <location filename="../qml/Meikade/MainMenu.qml" line="115"/>
         <source>Search</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/MainMenu.qml" line="77"/>
+        <location filename="../qml/Meikade/MainMenu.qml" line="116"/>
         <source>Bookmarks</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/MainMenu.qml" line="79"/>
+        <location filename="../qml/Meikade/MainMenu.qml" line="118"/>
         <source>Configure</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/MainMenu.qml" line="80"/>
+        <location filename="../qml/Meikade/MainMenu.qml" line="119"/>
         <source>OpenSource Projecs</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/MainMenu.qml" line="81"/>
+        <location filename="../qml/Meikade/MainMenu.qml" line="120"/>
         <source>About</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/MainMenu.qml" line="82"/>
+        <location filename="../qml/Meikade/MainMenu.qml" line="121"/>
         <source>About Nile Group</source>
         <translation type="unfinished"></translation>
     </message>
@@ -405,17 +508,17 @@ Thank you.</source>
 <context>
     <name>MaterialDesignButton</name>
     <message>
-        <location filename="../qml/Meikade/MaterialDesignButton.qml" line="122"/>
+        <location filename="../qml/Meikade/MaterialDesignButton.qml" line="81"/>
         <source>Hafez Omen</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/MaterialDesignButton.qml" line="137"/>
+        <location filename="../qml/Meikade/MaterialDesignButton.qml" line="93"/>
         <source>Random Poem</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/MaterialDesignButton.qml" line="152"/>
+        <location filename="../qml/Meikade/MaterialDesignButton.qml" line="105"/>
         <source>Search</source>
         <translation type="unfinished"></translation>
     </message>
@@ -423,57 +526,57 @@ Thank you.</source>
 <context>
     <name>Meikade</name>
     <message>
-        <location filename="../meikade.cpp" line="230"/>
+        <location filename="../meikade.cpp" line="269"/>
         <source>0</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../meikade.cpp" line="231"/>
+        <location filename="../meikade.cpp" line="270"/>
         <source>1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../meikade.cpp" line="232"/>
+        <location filename="../meikade.cpp" line="271"/>
         <source>2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../meikade.cpp" line="233"/>
+        <location filename="../meikade.cpp" line="272"/>
         <source>3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../meikade.cpp" line="234"/>
+        <location filename="../meikade.cpp" line="273"/>
         <source>4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../meikade.cpp" line="235"/>
+        <location filename="../meikade.cpp" line="274"/>
         <source>5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../meikade.cpp" line="236"/>
+        <location filename="../meikade.cpp" line="275"/>
         <source>6</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../meikade.cpp" line="237"/>
+        <location filename="../meikade.cpp" line="276"/>
         <source>7</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../meikade.cpp" line="238"/>
+        <location filename="../meikade.cpp" line="277"/>
         <source>8</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../meikade.cpp" line="239"/>
+        <location filename="../meikade.cpp" line="278"/>
         <source>9</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../meikade.cpp" line="334"/>
+        <location filename="../meikade.cpp" line="397"/>
         <source>Meikade&apos;s hafez omen is different from other omens.
 It&apos;s calculate omen using natural random algorithms. Another apps calculate omen using machine algorithms.</source>
         <translation type="unfinished"></translation>
@@ -547,37 +650,37 @@ It&apos;s calculate omen using natural random algorithms. Another apps calculate
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/PoemView.qml" line="494"/>
+        <location filename="../qml/Meikade/PoemView.qml" line="500"/>
         <source>Favorited</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/PoemView.qml" line="497"/>
+        <location filename="../qml/Meikade/PoemView.qml" line="503"/>
         <source>Unfavorited</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/PoemView.qml" line="504"/>
+        <location filename="../qml/Meikade/PoemView.qml" line="510"/>
         <source>Copy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/PoemView.qml" line="527"/>
+        <location filename="../qml/Meikade/PoemView.qml" line="533"/>
         <source>Share</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/PoemView.qml" line="549"/>
+        <location filename="../qml/Meikade/PoemView.qml" line="555"/>
         <source>Share Image</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/PoemView.qml" line="570"/>
+        <location filename="../qml/Meikade/PoemView.qml" line="576"/>
         <source>Unfavorite</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/PoemView.qml" line="570"/>
+        <location filename="../qml/Meikade/PoemView.qml" line="576"/>
         <source>Favorite</source>
         <translation type="unfinished"></translation>
     </message>
@@ -585,12 +688,12 @@ It&apos;s calculate omen using natural random algorithms. Another apps calculate
 <context>
     <name>SearchBar</name>
     <message>
-        <location filename="../qml/Meikade/SearchBar.qml" line="80"/>
+        <location filename="../qml/Meikade/SearchBar.qml" line="83"/>
         <source>Search</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/SearchBar.qml" line="117"/>
+        <location filename="../qml/Meikade/SearchBar.qml" line="120"/>
         <source>All Poets</source>
         <translation type="unfinished"></translation>
     </message>
@@ -598,8 +701,8 @@ It&apos;s calculate omen using natural random algorithms. Another apps calculate
 <context>
     <name>SearchList</name>
     <message>
-        <location filename="../qml/Meikade/SearchList.qml" line="150"/>
-        <source>More</source>
+        <location filename="../qml/Meikade/SearchList.qml" line="56"/>
+        <source>Not found</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -703,7 +806,7 @@ It&apos;s calculate omen using natural random algorithms. Another apps calculate
 <context>
     <name>main</name>
     <message>
-        <location filename="../qml/Meikade/main.qml" line="345"/>
+        <location filename="../qml/Meikade/main.qml" line="402"/>
         <source>Meikade</source>
         <translation type="unfinished"></translation>
     </message>

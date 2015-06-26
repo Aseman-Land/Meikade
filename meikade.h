@@ -24,6 +24,7 @@
 #include <QStringList>
 
 class QSettings;
+class MeikadeDatabase;
 class MeikadePrivate;
 class Meikade : public QObject
 {
@@ -33,7 +34,9 @@ class Meikade : public QObject
     Q_PROPERTY(QString currentLanguage READ currentLanguage WRITE setCurrentLanguage NOTIFY currentLanguageChanged)
     Q_PROPERTY(int runCount READ runCount WRITE setRunCount NOTIFY runCountChanged)
     Q_PROPERTY( int  languageDirection  READ languageDirection NOTIFY languageDirectionChanged )
+    Q_PROPERTY(bool nightTheme READ nightTheme WRITE setNightTheme NOTIFY nightThemeChanged)
     Q_OBJECT
+
 public:
     Meikade(QObject *parent = 0);
     ~Meikade();
@@ -42,6 +45,7 @@ public:
 
     Q_INVOKABLE QChar convertChar( const QChar & ch );
     Q_INVOKABLE QString numberToArabicString( int number );
+    Q_INVOKABLE bool endUsingNumber(const QString &str);
 
     Q_INVOKABLE QStringList findBackups();
     Q_INVOKABLE QString fileName( const QString & path );
@@ -54,8 +58,11 @@ public:
     Q_INVOKABLE void setCurrentLanguage( const QString & lang );
     Q_INVOKABLE QString currentLanguage() const;
 
+    MeikadeDatabase *database() const;
+
     static QString resourcePathAbs();
     static QString resourcePath();
+    static Meikade *instance();
 
     Q_INVOKABLE int languageDirection();
 
@@ -68,6 +75,9 @@ public:
 
     Q_INVOKABLE void setAnimations( bool stt );
     Q_INVOKABLE bool animations() const;
+
+    void setNightTheme( bool stt );
+    bool nightTheme() const;
 
     Q_INVOKABLE QString aboutHafezOmen() const;
 
@@ -89,6 +99,7 @@ signals:
     void closeRequest();
     void poemsFontChanged();
     void animationsChanged();
+    void nightThemeChanged();
 
     void currentLanguageChanged();
     void languageDirectionChanged();

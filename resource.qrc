@@ -188,5 +188,11 @@
         <file>qml/Meikade/icons/menu-home.png</file>
         <file>qml/Meikade/icons/menu-opensource.png</file>
         <file>qml/Meikade/icons/menu-search.png</file>
+        <file>qml/Meikade/MaterialDesignButtonItem.qml</file>
+        <file>qml/Meikade/icons/button-search.png</file>
+        <file>qml/Meikade/TitleBarShadow.qml</file>
+        <file>qml/Meikade/icons/button-close.png</file>
+        <file>qml/Meikade/icons/button-omen.png</file>
+        <file>qml/Meikade/icons/button-random.png</file>
     </qresource>
 </RCC>

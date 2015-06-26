@@ -70,6 +70,7 @@ Rectangle {
             font.family: globalPoemFontFamily
             wrapMode: TextInput.WordWrap
             horizontalAlignment: Text.AlignRight
+            color: Meikade.nightTheme? "#ffffff" : "#111111"
         }
 
         Text{

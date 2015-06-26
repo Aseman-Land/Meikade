@@ -32,6 +32,7 @@ public:
 
 public slots:
     void initialize();
+    void terminateThread();
 
     void find( const QString & keyword, int poet = -1 );
     bool next( int length = 100 );
@@ -39,6 +40,7 @@ public slots:
 signals:
     void found( int poem_id, int vorder );
     void noMoreResult();
+    void terminated();
 
 protected:
     void run();

@@ -48,5 +48,6 @@ Item {
         font.pixelSize: Devices.isMobile? 9*Devices.fontDensity : 10*Devices.fontDensity
         font.family: AsemanApp.globalFont.family
         wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+        color: Meikade.nightTheme? "#ffffff" : "#111111"
     }
 }

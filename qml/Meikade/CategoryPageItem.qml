@@ -8,7 +8,7 @@ Rectangle {
     y: startInit? 0 : startY
     height: startInit? parent.height : startHeight
     clip: true
-    color: "#dddddd"
+    color: Meikade.nightTheme? "#222222" : "#dddddd"
 
     property alias catId: category.catId
     property alias root: cat_title.root
@@ -63,6 +63,7 @@ Rectangle {
 
             list.append(item)
         }
+
         onPoemSelected: {
             var item
             if( pid < 10000 ) {
@@ -86,8 +87,9 @@ Rectangle {
         width: category.width - 2*x
         height: 55*Devices.density
         border.width: 1*Devices.density
-        border.color: "#cccccc"
+        border.color: Meikade.nightTheme? "#444444" : "#cccccc"
         opacity: startInit? 0 : 1
+        color: Meikade.nightTheme? "#222222" : "#ffffff"
         visible: cat_title.cid != 0
 
         Behavior on opacity {
@@ -98,12 +100,19 @@ Rectangle {
     Rectangle {
         height: item.height
         width: parent.width
-        color: "#e0ffffff"
+        color: Meikade.nightTheme? "#e0000000" : "#e0ffffff"
         opacity: startInit? 1 : 0
         visible: cat_title.cid != 0
 
         Behavior on opacity {
             NumberAnimation{ easing.type: Easing.OutCubic; duration: destroy_timer.interval }
+        }
+
+        TitleBarShadow {
+            width: parent.width
+            anchors.top: parent.bottom
+            height: 2*Devices.density
+            opacity: 0.4
         }
     }
 
@@ -127,7 +136,7 @@ Rectangle {
             id: desc_header
             width: cat_item.width
             height: expand? desc_text.height + desc_text.y*2 : 80*Devices.density
-            color: "#333333"
+            color: Meikade.nightTheme? "#111111" : "#333333"
             clip: true
 
             property bool expand: false

@@ -22,7 +22,7 @@ import AsemanTools 1.0
 
 Rectangle {
     id: poems
-    color: "#dddddd"
+    color: Meikade.nightTheme? "#222222" : "#dddddd"
 
     property int catId: -1
 
@@ -112,8 +112,8 @@ Rectangle {
             x: poems_list.spacing
             width: poems_list.width - 2*x
             height: txt.height + 30*Devices.density
-            color: marea.pressed? "#CFDAFF" : "#ffffff"
-            border.color: "#cccccc"
+            color: marea.pressed? (Meikade.nightTheme? "#12223D" : "#CFDAFF") : (Meikade.nightTheme? "#111111" : "#ffffff")
+            border.color: Meikade.nightTheme? "#333333" : "#cccccc"
             border.width: 1*Devices.density
 
             property int pid: identifier
@@ -121,7 +121,8 @@ Rectangle {
             property bool hasNote: false
 
             onPidChanged: {
-                txt.text = Database.poemName(pid)
+                txt.poemTitle = Database.poemName(pid)
+                txt.poemFristVerse = Database.verseText(pid, 1)
             }
 
             Text{
@@ -132,9 +133,19 @@ Rectangle {
                 y: parent.height/2 - height/2
                 font.pixelSize: Devices.isMobile? 9*Devices.fontDensity : 10*Devices.fontDensity
                 font.family: AsemanApp.globalFont.family
-                color: "#333333"
-                text: Database.poemName(pid)
+                color: Meikade.nightTheme? "#ffffff" :"#333333"
+                text: {
+                    if(Meikade.endUsingNumber(poemTitle))
+                        return poemTitle + " - " + poemFristVerse
+                    else
+                        return poemTitle
+                }
                 wrapMode: TextInput.WordWrap
+                maximumLineCount: 1
+                elide: Text.ElideRight
+
+                property string poemTitle: Database.poemName(pid)
+                property string poemFristVerse: Database.verseText(pid, 1)
             }
 
             MouseArea{
@@ -147,7 +158,7 @@ Rectangle {
         }
 
         focus: true
-        highlight: Rectangle { color: "#3B97EC"; radius: 3; smooth: true }
+        highlight: Rectangle { color: Meikade.nightTheme? "#12223D" : "#3B97EC"; radius: 3; smooth: true }
         currentIndex: -1
 
         function refresh() {
@@ -161,9 +172,14 @@ Rectangle {
         }
     }
 
+    TitleBarShadow {
+        width: parent.width
+        anchors.top: header_back.bottom
+    }
+
     ScrollBar {
         scrollArea: poems_list; height: poems_list.height - View.navigationBarHeight
         anchors.left: poems_list.left; anchors.top: poems_list.top
-        color: "#333333"
+        color: Meikade.nightTheme? "#ffffff" : "#333333"
     }
 }

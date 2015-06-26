@@ -43,19 +43,74 @@ Item {
         onTriggered: md_btn.visible = false
     }
 
+    Rectangle {
+        anchors.fill: parent
+        anchors.topMargin: View.statusBarHeight + Devices.standardTitleBarHeight
+        anchors.bottomMargin: -View.navigationBarHeight
+        opacity: opened? 0.6 : 0
+        color: "#ffffff"
+
+        Behavior on opacity {
+            NumberAnimation{easing.type: Easing.OutCubic; duration: 300}
+        }
+    }
+
     Item {
-        width: opened? 200*Devices.density : 64*Devices.density
-        height: opened? 170*Devices.density : 64*Devices.density
+        width: 64*Devices.density
+        height: 64*Devices.density
         x: md_btn.layoutDirection==Qt.LeftToRight? parent.width-width-10*Devices.density : 10*Devices.density
         anchors.bottom: parent.bottom
         anchors.margins: 10*Devices.density
-        clip: opened
 
-        Behavior on width {
-            NumberAnimation{easing.type: Easing.OutCubic; duration: 200}
-        }
-        Behavior on height {
-            NumberAnimation{easing.type: Easing.OutCubic; duration: 200}
+        Item {
+            x: md_btn.layoutDirection==Qt.LeftToRight? parent.width-width : 0
+            height: opened? 200*Devices.density : 0
+            width: 200*Devices.density
+            anchors.bottom: btn_rect.top
+            opacity: opened? 1 : 0
+
+            Behavior on height {
+                NumberAnimation{easing.type: Easing.OutBack; duration: 300}
+            }
+            Behavior on opacity {
+                NumberAnimation{easing.type: Easing.OutCubic; duration: 200}
+            }
+
+            MaterialDesignButtonItem {
+                id: omen_btn
+                anchors.top: parent.top
+                height: parent.height/3
+                text: qsTr("Hafez Omen")
+                icon: "icons/button-omen.png"
+                onClicked: {
+                    md_btn.hafezOmenRequest()
+                    close()
+                }
+            }
+
+            MaterialDesignButtonItem {
+                id: random_btn
+                anchors.top: omen_btn.bottom
+                height: parent.height/3
+                text: qsTr("Random Poem")
+                icon: "icons/button-random.png"
+                onClicked: {
+                    md_btn.randomPoemRequest()
+                    close()
+                }
+            }
+
+            MaterialDesignButtonItem {
+                id: search_btn
+                anchors.top: random_btn.bottom
+                height: parent.height/3
+                text: qsTr("Search")
+                icon: "icons/button-search.png"
+                onClicked: {
+                    md_btn.searchRequest()
+                    close_timer.restart()
+                }
+            }
         }
 
         Item {
@@ -72,8 +127,8 @@ Item {
             Rectangle {
                 anchors.fill: parent
                 anchors.margins: 8*Devices.density
-                color: opened? "#ffffff" : "#881010"
-                radius: opened? 6*Devices.density : width/2
+                color: "#881010"
+                radius: width/2
 
                 Behavior on color {
                     ColorAnimation{easing.type: Easing.OutCubic; duration: 400}
@@ -93,69 +148,20 @@ Item {
 
         MouseArea {
             anchors.fill: parent
-            onClicked: opened = true
+            onClicked: opened = !opened
         }
 
         Image {
             anchors.centerIn: btn_rect
-            width: 26*Devices.density
+            width: 22*Devices.density
             height: width
             sourceSize: Qt.size(width,height)
-            visible: !opened
-            source: "icons/new.png"
-        }
+            rotation: opened? 0 : -45
+            source: "icons/button-close.png"
+            transformOrigin: Item.Center
 
-        Column {
-            width: 180*Devices.density
-            height: 150*Devices.density
-            x: md_btn.layoutDirection==Qt.LeftToRight? parent.width-width-10*Devices.density : 10*Devices.density
-            anchors.bottom: btn_rect.bottom
-            anchors.margins: 10*Devices.density
-            visible: opened
-
-            Button {
-                width: parent.width
-                height: parent.height/3
-                normalColor: "#00000000"
-                highlightColor: "#440d80ec"
-                textColor: "#333333"
-                fontSize: 10*Devices.fontDensity
-                textFont.bold: false
-                text: qsTr("Hafez Omen")
-                onClicked: {
-                    md_btn.hafezOmenRequest()
-                    close_timer.restart()
-                }
-            }
-
-            Button {
-                width: parent.width
-                height: parent.height/3
-                normalColor: "#00000000"
-                highlightColor: "#440d80ec"
-                textColor: "#333333"
-                fontSize: 10*Devices.fontDensity
-                textFont.bold: false
-                text: qsTr("Random Poem")
-                onClicked: {
-                    md_btn.randomPoemRequest()
-                    close_timer.restart()
-                }
-            }
-
-            Button {
-                width: parent.width
-                height: parent.height/3
-                normalColor: "#00000000"
-                highlightColor: "#440d80ec"
-                textColor: "#333333"
-                fontSize: 10*Devices.fontDensity
-                textFont.bold: false
-                text: qsTr("Search")
-                onClicked: {
-                    md_btn.searchRequest()
-                    close()
-                }
+            Behavior on rotation {
+                NumberAnimation{easing.type: Easing.OutBack; duration: 300}
             }
         }
     }

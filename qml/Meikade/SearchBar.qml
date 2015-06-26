@@ -23,149 +23,153 @@ import QtQuick.Controls 1.0 as QtControls
 BackHandlerView {
     id: search_bar
     width: 100
-    height: hide? 0 : (searchMode? main.height : search_frame.height + search_frame.y)
-    color: "#333333"
+    color: Meikade.nightTheme? "#222222" : "#ffffff"
     viewMode: false
     clip: true
 
     property bool hide: true
     property bool searchMode: false
+    property real headerRightMargin: 0
 
     onHideChanged: {
         if( !hide )
             txt.focus = true
         else
             main.focus = true
+
+        txt.text = ""
     }
 
-    Behavior on height {
-        NumberAnimation{ easing.type: Easing.OutCubic; duration: 400 }
-    }
-
-    Item {
+    Rectangle {
         id: search_frame
-        anchors.top: parent.top
-        anchors.left: parent.left
-        anchors.right: parent.right
-        height: 42*Devices.density
-        anchors.topMargin: View.statusBarHeight
+        width: parent.width
+        height: Devices.standardTitleBarHeight + View.statusBarHeight
+        color: "#4D2994"
 
-        Image {
-            id: search_img
-            anchors.top: parent.top
-            anchors.bottom: parent.bottom
-            anchors.right: parent.right
-            anchors.margins: 11*Devices.density
-            width: height
-            sourceSize: Qt.size(width,height)
-            source: "icons/search.png"
-            mirror: true
-        }
-
-        Rectangle {
-            id: search_splitter
-            width: 1*Devices.density
-            height: parent.height/2
-            anchors.verticalCenter: parent.verticalCenter
-            anchors.right: search_img.left
-            anchors.margins: txt.anchors.rightMargin/2
-            color: "#888888"
-        }
-
-        Text {
-            id: placeholder
-            anchors.fill: txt
-            font: txt.font
-            color: "#888888"
-            text: qsTr("Search")
-            visible: !txt.focus && txt.text.length == 0
-        }
-
-        TextInput {
-            id: txt
-            anchors.top: parent.top
-            anchors.bottom: parent.bottom
-            anchors.right: search_img.left
+        Item {
+            y: Devices.standardTitleBarHeight/2 - height/2 + View.statusBarHeight
             anchors.left: parent.left
-            anchors.margins: 4*Devices.density
-            anchors.topMargin: anchors.margins+1*Devices.density
-            anchors.rightMargin: 20*Devices.density
-            verticalAlignment: Text.AlignVCenter
-            horizontalAlignment: Text.AlignRight
-            inputMethodHints: Qt.ImhNoPredictiveText
-            color: "#dddddd"
-            font.family: AsemanApp.globalFont.family
-            font.pixelSize: Devices.fontDensity*11
-            onTextChanged: refresh()
+            anchors.right: parent.right
+            anchors.rightMargin: headerRightMargin
+            height: 42*Devices.density
 
-            QtControls.ComboBox {
-                id: poets_combo
-                anchors.left: parent.left
+            Image {
+                id: search_img
                 anchors.top: parent.top
                 anchors.bottom: parent.bottom
-                width: parent.width/4
-                textRole: "text"
-                model: ListModel{
-                    id: poets_model
-                }
-                onCurrentIndexChanged: txt.refresh()
+                anchors.right: parent.right
+                anchors.margins: 11*Devices.density
+                width: height
+                sourceSize: Qt.size(width,height)
+                source: "icons/search.png"
+                mirror: true
+            }
 
-                Connections {
-                    target: Database
-                    onInitializeFinished: {
-                        poets_combo.model.clear()
-                        poets_model.append({"text": qsTr("All Poets"), "pid": -1})
+            Rectangle {
+                id: search_splitter
+                width: 1*Devices.density
+                height: parent.height/2
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.right: search_img.left
+                anchors.margins: txt.anchors.rightMargin/2
+                color: "#888888"
+            }
 
-                        var poets = Database.poets()
-                        for(var i=0; i<poets.length; i++) {
-                            var pid = poets[i]
-                            poets_model.append({"text": Database.catName(pid), "pid": pid})
+            Text {
+                id: placeholder
+                anchors.fill: txt
+                font: txt.font
+                color: "#888888"
+                text: qsTr("Search")
+                visible: !txt.focus && txt.text.length == 0
+            }
+
+            TextInput {
+                id: txt
+                anchors.top: parent.top
+                anchors.bottom: parent.bottom
+                anchors.right: search_img.left
+                anchors.left: parent.left
+                anchors.margins: 4*Devices.density
+                anchors.topMargin: anchors.margins+1*Devices.density
+                anchors.rightMargin: 20*Devices.density
+                verticalAlignment: Text.AlignVCenter
+                horizontalAlignment: Text.AlignRight
+                inputMethodHints: Qt.ImhNoPredictiveText
+                color: "#dddddd"
+                font.family: AsemanApp.globalFont.family
+                font.pixelSize: Devices.fontDensity*11
+                onTextChanged: refresh()
+
+                QtControls.ComboBox {
+                    id: poets_combo
+                    anchors.left: parent.left
+                    anchors.top: parent.top
+                    anchors.bottom: parent.bottom
+                    width: parent.width/4
+                    textRole: "text"
+                    model: ListModel{
+                        id: poets_model
+                    }
+                    onCurrentIndexChanged: txt.refresh()
+
+                    Connections {
+                        target: Database
+                        onInitializeFinished: {
+                            poets_combo.model.clear()
+                            poets_model.append({"text": qsTr("All Poets"), "pid": -1})
+
+                            var poets = Database.poets()
+                            for(var i=0; i<poets.length; i++) {
+                                var pid = poets[i]
+                                poets_model.append({"text": Database.catName(pid), "pid": pid})
+                            }
                         }
+                    }
+                }
+
+                Rectangle {
+                    anchors.fill: poets_combo
+                    color: search_frame.color
+
+                    Text {
+                        anchors.fill: parent
+                        font.family: AsemanApp.globalFont.family
+                        font.pixelSize: 10*Devices.fontDensity
+                        verticalAlignment: Text.AlignVCenter
+                        horizontalAlignment: Text.AlignHCenter
+                        wrapMode: Text.WrapAnywhere
+                        maximumLineCount: 1
+                        elide: Text.ElideRight
+                        color: "#ffffff"
+                        text: poets_combo.currentText
+                    }
+
+                    Rectangle {
+                        anchors.right: parent.right
+                        anchors.top: parent.top
+                        anchors.bottom: parent.bottom
+                        width: 1*Devices.density
+                        color: "#888888"
+                    }
+                }
+
+                function refresh() {
+                    if( text.length == 0 ) {
+                        search_bar.searchMode = false
+                        search_starter.stop()
+                    } else {
+                        search_starter.restart()
                     }
                 }
             }
 
-            Rectangle {
-                anchors.fill: poets_combo
-                color: "#333333"
-
-                Text {
-                    anchors.fill: parent
-                    font.family: AsemanApp.globalFont.family
-                    font.pixelSize: 10*Devices.fontDensity
-                    verticalAlignment: Text.AlignVCenter
-                    horizontalAlignment: Text.AlignHCenter
-                    wrapMode: Text.WrapAnywhere
-                    maximumLineCount: 1
-                    elide: Text.ElideRight
-                    color: "#ffffff"
-                    text: poets_combo.currentText
-                }
-
-                Rectangle {
-                    anchors.right: parent.right
-                    anchors.top: parent.top
-                    anchors.bottom: parent.bottom
-                    width: 1*Devices.density
-                    color: "#888888"
-                }
+            Timer {
+                id: search_starter
+                interval: 500
+                repeat: false
+                onTriggered: search_bar.searchMode = true
             }
-
-            function refresh() {
-                if( text.length == 0 ) {
-                    search_bar.searchMode = false
-                    search_starter.stop()
-                } else {
-                    search_starter.restart()
-                }
-            }
-        }
-
-        Timer {
-            id: search_starter
-            interval: 500
-            repeat: false
-            onTriggered: search_bar.searchMode = true
         }
     }
 
@@ -176,6 +180,7 @@ BackHandlerView {
         width: parent.width
         clip: true
         x: search_bar.viewMode? 0 : -width
+        rememberBar: true
 
         Behavior on x {
             NumberAnimation { easing.type: Easing.OutCubic; duration: animations*400 }
@@ -210,6 +215,11 @@ BackHandlerView {
             poem.highlightItem(vid)
             search_bar.viewMode = true
         }
+    }
+
+    TitleBarShadow {
+        width: parent.width
+        anchors.top: search_frame.bottom
     }
 
     Button{

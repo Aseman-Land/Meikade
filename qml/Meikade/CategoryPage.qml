@@ -23,7 +23,7 @@ Rectangle {
     id: page
     width: 100
     height: 62
-    color: "#dddddd"
+    color: Meikade.nightTheme? "#222222" : "#dddddd"
 
     property alias count: list.count
 
@@ -49,6 +49,14 @@ Rectangle {
         }
     }
 
+    Item {
+        id: base_frame
+        anchors.top: title_bar.bottom
+        anchors.bottom: parent.bottom
+        anchors.left: parent.left
+        anchors.right: parent.right
+    }
+
     Rectangle {
         id: title_bar
         anchors.left: parent.left
@@ -56,14 +64,11 @@ Rectangle {
         anchors.top: parent.top
         height: Devices.standardTitleBarHeight + View.statusBarHeight
         color: "#881010"
-    }
 
-    Item {
-        id: base_frame
-        anchors.top: title_bar.bottom
-        anchors.bottom: parent.bottom
-        anchors.left: parent.left
-        anchors.right: parent.right
+        TitleBarShadow {
+            width: parent.width
+            anchors.top: parent.bottom
+        }
     }
 
     Component {

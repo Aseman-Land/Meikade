@@ -16,6 +16,12 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+#define DESTROY_QUERY \
+    if(p->find_query) { \
+        delete p->find_query; \
+        p->find_query = 0; \
+    }
+
 #include "threadeddatabase.h"
 #include "meikadedatabase.h"
 #include "meikade_macros.h"
@@ -26,6 +32,7 @@
 #include <QSqlRecord>
 #include <QSqlError>
 #include <QDir>
+#include <QUuid>
 #include <QVariant>
 #include <QDebug>
 
@@ -37,14 +44,16 @@ public:
     int pointer;
     int length;
     bool reset;
+    bool terminate;
 
     QString path;
+    QString connectionName;
 
     QMutex mutex;
     QSqlDatabase db;
     MeikadeDatabase *pdb;
 
-    QSqlQuery find_query;
+    QSqlQuery *find_query;
 };
 
 ThreadedDatabase::ThreadedDatabase( MeikadeDatabase *pdb, QObject *parent) :
@@ -55,22 +64,35 @@ ThreadedDatabase::ThreadedDatabase( MeikadeDatabase *pdb, QObject *parent) :
     p->length = 0;
     p->poet = -1;
     p->reset = false;
+    p->terminate = false;
     p->pdb = pdb;
+    p->find_query = 0;
 
     connect( pdb, SIGNAL(initializeFinished()), SLOT(initialize()), Qt::QueuedConnection );
+    if(p->pdb->initialized())
+        initialize();
 }
 
 void ThreadedDatabase::initialize()
 {
+    if(!p->connectionName.isEmpty())
+        return;
+
 #ifdef Q_OS_ANDROID
     p->path = "/sdcard/NileGroup/Meikade/data.sqlite";
 #else
     p->path = HOME_PATH + "/data.sqlite";
 #endif
+    p->connectionName = QUuid::createUuid().toString();
 
-    p->db = QSqlDatabase::addDatabase( "QSQLITE", THREADED_DATA_DB_CONNECTION );
+    p->db = QSqlDatabase::addDatabase( "QSQLITE", p->connectionName );
     p->db.setDatabaseName(p->path);
     p->db.open();
+}
+
+void ThreadedDatabase::terminateThread()
+{
+    p->terminate = true;
 }
 
 void ThreadedDatabase::find(const QString &keyword, int poet)
@@ -81,6 +103,7 @@ void ThreadedDatabase::find(const QString &keyword, int poet)
     p->pointer = -1;
     p->length = 0;
     p->reset = true;
+    p->terminate = false;
     p->mutex.unlock();
 }
 
@@ -104,36 +127,50 @@ void ThreadedDatabase::run()
 {
     for( int i=p->pointer; i<p->length; i++ )
     {
+        if(p->terminate)
+        {
+            DESTROY_QUERY
+            p->terminate = false;
+            emit terminated();
+            return;
+        }
+
         if( p->reset )
         {
             p->mutex.lock();
-            p->find_query = QSqlQuery(p->db);
+            if(p->find_query)
+                delete p->find_query;
+
+            p->find_query = new QSqlQuery(p->db);
             if(p->poet == -1)
             {
-                p->find_query.prepare("SELECT poem_id, vorder FROM verse WHERE text LIKE :keyword");
-                p->find_query.bindValue(":keyword","%" + p->keyword + "%");
+                p->find_query->prepare("SELECT poem_id, vorder FROM verse WHERE text LIKE :keyword");
+                p->find_query->bindValue(":keyword","%" + p->keyword + "%");
             }
             else
             {
-                p->find_query.prepare("SELECT poem_id, vorder FROM verse WHERE poet=:poet AND text LIKE :keyword");
-                p->find_query.bindValue(":keyword","%" + p->keyword + "%");
-                p->find_query.bindValue(":poet", p->poet);
+                p->find_query->prepare("SELECT poem_id, vorder FROM verse WHERE poet=:poet AND text LIKE :keyword");
+                p->find_query->bindValue(":keyword","%" + p->keyword + "%");
+                p->find_query->bindValue(":poet", p->poet);
             }
 
             p->reset = false;
             i = -1;
             p->mutex.unlock();
-            p->find_query.exec();
+            p->find_query->exec();
         }
+        if(!p->find_query)
+            return;
 
-        if( !p->find_query.next() )
+        if( !p->find_query->next() )
         {
+            DESTROY_QUERY
             p->length = -1;
             emit noMoreResult();
             return;
         }
 
-        QSqlRecord record = p->find_query.record();
+        QSqlRecord record = p->find_query->record();
         if( !p->reset )
             emit found( record.value(0).toInt(), record.value(1).toInt() );
 
@@ -143,5 +180,6 @@ void ThreadedDatabase::run()
 
 ThreadedDatabase::~ThreadedDatabase()
 {
+    QSqlDatabase::removeDatabase(p->connectionName);
     delete p;
 }

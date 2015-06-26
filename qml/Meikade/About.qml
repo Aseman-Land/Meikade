@@ -51,6 +51,11 @@ Rectangle {
                 Devices.hideKeyboard()
             }
         }
+
+        TitleBarShadow {
+            width: header.width
+            anchors.top: header.bottom
+        }
     }
 
     Flickable {
@@ -62,6 +67,13 @@ Rectangle {
         contentHeight: column.height
         flickableDirection: Flickable.VerticalFlick
         clip: true
+        boundsBehavior: Flickable.StopAtBounds
+        rebound: Transition {
+            NumberAnimation {
+                properties: "x,y"
+                duration: 0
+            }
+        }
 
         Item {
             id: main_item
@@ -156,7 +168,7 @@ Rectangle {
         anchors.bottomMargin: View.navigationBarHeight + 10*Devices.density
         font.family: AsemanApp.globalFont.family
         font.pixelSize: 9*Devices.fontDensity
-        text: "v3.0.1"
+        text: "v3.1.0"
         wrapMode: Text.WordWrap
         color: "#333333"
         horizontalAlignment: Text.AlignRight

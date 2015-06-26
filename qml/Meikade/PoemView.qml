@@ -22,6 +22,7 @@ import AsemanTools 1.0
 
 Rectangle {
     id: view
+    color: Meikade.nightTheme? "#222222" : "#ffffff"
 
     property int poemId: -1
     property bool onEdit: view_list.currentIndex != -1
@@ -29,8 +30,8 @@ Rectangle {
     property alias header: view_list.header
 
     property color highlightColor: "#11000000"
-    property color textColor: "#333333"
-    property color highlightTextColor: "#333333"
+    property color textColor: Meikade.nightTheme? "#ffffff" : "#333333"
+    property color highlightTextColor: Meikade.nightTheme? "#ffffff" : "#333333"
 
     property real fontScale: Meikade.fontPointScale(Meikade.poemsFont)
     property bool editable: true
@@ -182,7 +183,8 @@ Rectangle {
         footer: Rectangle {
             width: view_list.width
             height: phrase_txt.text.length==0? 1 : phrase_column.height + 40*Devices.density
-            color: phrase_txt.text.length==0? "#ffffff" : "#00000000"
+            color: phrase_txt.text.length==0? (Meikade.nightTheme? "#222222" : "#ffffff")
+                                            : "#00000000"
 
             Rectangle {
                 anchors.top: parent.bottom
@@ -199,6 +201,7 @@ Rectangle {
                 transformOrigin: Item.Center
                 anchors.verticalCenter: parent.top
                 visible: phrase_txt.text.length!=0
+                color: Meikade.nightTheme? "#222222" : "#ffffff"
             }
         }
 
@@ -214,7 +217,8 @@ Rectangle {
             id: item
             width: view_list.width
             height: editMode? pitem.height + edit_frame.height + extraHeight : pitem.height + extraHeight
-            clip: true
+            color: Meikade.nightTheme? "#222222" : "#ffffff"
+//            clip: true
 
             property real extraHeight: single? txt_frame.height : 0
             property alias press: marea.pressed
@@ -230,6 +234,12 @@ Rectangle {
                 repeat: false
                 onTriggered: item.anim = true
                 Component.onCompleted: start()
+            }
+
+            Rectangle {
+                anchors.fill: parent
+                anchors.bottomMargin: -2*Devices.density
+                color: Meikade.nightTheme? "#222222" : "#ffffff"
             }
 
             PoemItem {
@@ -256,7 +266,7 @@ Rectangle {
                     Text {
                         anchors.centerIn: parent
                         text: Meikade.numberToArabicString(index+1)
-                        color: "#ffffff"
+                        color: Meikade.nightTheme? "#111111" : "#ffffff"
                         font.pixelSize: 9*fontScale
                         font.family: AsemanApp.globalFont.family
                     }
@@ -284,6 +294,7 @@ Rectangle {
                 width: parent.width
                 anchors.top: pitem.bottom
                 color: "#EC4334"
+                visible: single
 
                 Text {
                     id: poet

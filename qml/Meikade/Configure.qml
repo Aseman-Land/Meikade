@@ -152,6 +152,7 @@ BackHandlerView {
 //                    model.append({ "name": qsTr("Fonts"), "file": "FontDialog.qml", "check": false, "pr":""})
 //                    model.append({ "name": qsTr("Animations"), "file": "", "check": true, "pr":"animations"})
                     model.append({ "name": qsTr("Languages"), "file": "LanguageSelector.qml", "check": false, "pr":""})
+                    model.append({ "name": qsTr("Night Theme"), "file": "", "check": true, "pr":"nightTheme"})
                 }
             }
 

@@ -18,24 +18,18 @@
 
 import QtQuick 2.0
 import AsemanTools 1.0
+import Meikade 1.0
 
 Rectangle {
     id: search_list
     width: 100
     height: 62
+    color: Meikade.nightTheme? "#222222" : "#ffffff"
 
-    property string keyword
-    property int poetId: -1
+    property alias keyword: tmodel.keyword
+    property alias poetId: tmodel.poet
 
     signal itemSelected( int poem_id, int vid )
-
-    onKeywordChanged: refresh()
-    onPoetIdChanged: refresh()
-
-    function refresh() {
-        view_list.clear()
-        search_timer.restart()
-    }
 
     Timer {
         id: search_timer
@@ -44,8 +38,26 @@ Rectangle {
         onTriggered: view_list.find(search_list.keyword)
     }
 
+    ThreadedSearchModel {
+        id: tmodel
+        database: Database
+        onFinishedChanged: if(finished && count==0) nfound_txt.visible = true
+        onCountChanged: if(count != 0) nfound_txt.visible = false
+    }
+
     Item {
         anchors.fill: parent
+
+        Text {
+            id: nfound_txt
+            y: 40*Devices.density
+            anchors.horizontalCenter: parent.horizontalCenter
+            color: Meikade.nightTheme? "#ffffff" : "#333333"
+            font.pixelSize: 11*Devices.fontDensity
+            font.family: AsemanApp.globalFont.family
+            text: qsTr("Not found")
+            visible: false
+        }
 
         ListView {
             id: view_list
@@ -54,14 +66,10 @@ Rectangle {
             maximumFlickVelocity: View.flickVelocity
             bottomMargin: View.navigationBarHeight
 
-            Connections {
-                target: ThreadedDatabase
-                onFound: {
-                    view_list.add(poem_id,vorder)
-                }
-            }
+            property bool atEnd: atYEnd
+            onAtEndChanged: if(atEnd && count != 0) tmodel.more()
 
-            model: ListModel {}
+            model: tmodel
             delegate: Rectangle {
                 id: item
                 width: view_list.width
@@ -74,9 +82,9 @@ Rectangle {
                     id: poem
                     width: parent.width
                     color: "#00000000"
-                    textColor: "#333333"
-                    vid: identifier
-                    pid: poem_id
+                    textColor: Meikade.nightTheme? "#ffffff" : "#333333"
+                    vid: model.vorder
+                    pid: model.poem
                     font.pixelSize: Devices.isMobile? 9*Devices.fontDensity : 10*Devices.fontDensity
 
                     Rectangle {
@@ -142,35 +150,27 @@ Rectangle {
                 }
             }
 
-            footer: Button {
+            footer: Item {
                 width: view_list.width
                 height: 42*Devices.density
-                color: "#333333"
-                highlightColor: "#222222"
-                text: qsTr("More")
-                onClicked: ThreadedDatabase.next(50)
+
+                Indicator {
+                    anchors.centerIn: parent
+                    modern: true
+                    light: false
+                    indicatorSize: 22*Devices.density
+
+                    property bool active: tmodel.refreshing
+                    onActiveChanged: {
+                        if(active)
+                            start()
+                        else
+                            stop()
+                    }
+                }
             }
 
             currentIndex: -1
-
-            function add( poem_id, vorder ) {
-                if( search_list.keyword.length == 0 )
-                    return
-                model.append({"poem_id": poem_id, "identifier": vorder})
-            }
-
-            function clear() {
-                model.clear()
-            }
-
-            function find( keyword ) {
-                clear()
-                if( keyword.length === 0 )
-                    return
-
-                ThreadedDatabase.find(keyword, search_list.poetId)
-                ThreadedDatabase.next(50)
-            }
         }
 
         ScrollBar {

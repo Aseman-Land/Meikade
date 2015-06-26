@@ -38,14 +38,17 @@ Item {
         id: item_menu_frame
         width: parent.width
         height: parent.height
-        x: menu_item.item? 0 : -width
+        y: menu_item.item? 0 : height
         clip: true
 
         MouseArea {
             anchors.fill: parent
         }
 
-        Behavior on x {
+        Behavior on y {
+            NumberAnimation{ easing.type: Easing.OutCubic; duration: 400 }
+        }
+        Behavior on scale {
             NumberAnimation{ easing.type: Easing.OutCubic; duration: 400 }
         }
     }
@@ -61,7 +64,15 @@ Item {
         if( item_close_timer.running )
             return
 
-        item_menu_frame.x = -width
+        item_menu_frame.y = height
+        item_close_timer.restart()
+    }
+
+    function goOutAndClose() {
+        if( item_close_timer.running )
+            return
+
+        item_menu_frame.scale = 0.7
         item_close_timer.restart()
     }
 

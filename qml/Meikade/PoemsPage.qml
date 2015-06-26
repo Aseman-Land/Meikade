@@ -23,7 +23,7 @@ Rectangle {
     id: poems_page
     width: 100
     height: 62
-    color: "#ffffff"
+    color: Meikade.nightTheme? "111111" :"#ffffff"
 
     property int catId: -1
     property bool viewMode: false

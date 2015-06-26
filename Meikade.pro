@@ -38,7 +38,8 @@ SOURCES += main.cpp \
     SimpleQtCryptor/simpleqtcryptor.cpp \
     p7zipextractor.cpp \
     stickermodel.cpp \
-    stickerwriter.cpp
+    stickerwriter.cpp \
+    threadedsearchmodel.cpp
 
 HEADERS += \
     listobject.h \
@@ -56,7 +57,8 @@ HEADERS += \
     SimpleQtCryptor/simpleqtcryptor.h \
     p7zipextractor.h \
     stickermodel.h \
-    stickerwriter.h
+    stickerwriter.h \
+    threadedsearchmodel.h
 
 OTHER_FILES += \
     android/AndroidManifest.xml \

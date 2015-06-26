@@ -88,6 +88,11 @@ BackHandlerView {
         anchors.fill: title
         anchors.topMargin: -View.statusBarHeight
         color: "#881010"
+
+        TitleBarShadow {
+            width: parent.width
+            anchors.top: parent.bottom
+        }
     }
 
     Header {

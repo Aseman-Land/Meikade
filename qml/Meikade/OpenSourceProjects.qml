@@ -40,6 +40,11 @@ Rectangle {
         light: true
     }
 
+    TitleBarShadow {
+        width: title.width
+        anchors.top: title.bottom
+    }
+
     Text {
         id: desc_txt
         anchors.left: parent.left
@@ -64,6 +69,13 @@ Rectangle {
         bottomMargin: View.navigationBarHeight
         clip: true
         focus: true
+        boundsBehavior: Flickable.StopAtBounds
+        rebound: Transition {
+            NumberAnimation {
+                properties: "x,y"
+                duration: 0
+            }
+        }
 
         model: ListModel {}
         delegate: Item {

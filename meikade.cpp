@@ -27,6 +27,7 @@
 #include "hashobject.h"
 #include "systeminfo.h"
 #include "stickerwriter.h"
+#include "threadedsearchmodel.h"
 #include "p7zipextractor.h"
 #include "meikade_macros.h"
 #include "asemantools/asemandevices.h"
@@ -81,13 +82,14 @@ QString translateNumbers( QString input )
     return input;
 }
 
+Meikade *meikade_instance = 0;
+
 class MeikadePrivate
 {
 public:
     AsemanQuickView *viewer;
     MeikadeDatabase *poem_db;
     UserData *user_db;
-    ThreadedDatabase *threaded_db;
     ThreadedFileSystem *threaded_fs;
     Backuper *backuper;
     SystemInfo *system;
@@ -107,6 +109,7 @@ public:
     QString language;
 
     QString poem_font;
+    bool nightTheme;
 };
 
 Meikade::Meikade(QObject *parent) :
@@ -117,6 +120,7 @@ Meikade::Meikade(QObject *parent) :
     p->hide_keyboard_timer = 0;
     p->translator = new QTranslator(this);
     p->poem_font = settings()->value("General/PoemFont","DroidNaskh-Regular").toString();
+    p->nightTheme = settings()->value("General/nightTheme",false).toBool();
 #ifdef Q_OS_ANDROID
     p->close  = false;
 #else
@@ -125,9 +129,14 @@ Meikade::Meikade(QObject *parent) :
 
     qmlRegisterType<StickerModel>("Meikade", 1, 0, "StickerModel");
     qmlRegisterType<StickerWriter>("Meikade", 1, 0, "StickerWriter");
+    qmlRegisterType<ThreadedSearchModel>("Meikade", 1, 0, "ThreadedSearchModel");
+    qmlRegisterUncreatableType<MeikadeDatabase>("Meikade", 1, 0, "MeikadeDatabase", "");
 
     QDir().mkpath(HOME_PATH);
     init_languages();
+
+    if(!meikade_instance)
+        meikade_instance = this;
 }
 
 bool Meikade::fileExists(const QString &f)
@@ -158,7 +167,7 @@ QChar Meikade::convertChar(const QChar &ch)
     case 9: return QString::fromUtf8("۹").at(0);
     }
 
-    return QChar();
+    return ch;
 }
 
 QString Meikade::numberToArabicString(int number)
@@ -169,6 +178,38 @@ QString Meikade::numberToArabicString(int number)
         res += convertChar(txt[i]);
 
     return res;
+}
+
+bool Meikade::endUsingNumber(const QString &str)
+{
+    if(str.isEmpty())
+        return false;
+
+    static QList<QString> *numbers = 0;
+    if(!numbers)
+    {
+        numbers = new QList<QString>();
+        numbers->append(QString::fromUtf8("۰"));
+        numbers->append(QString::fromUtf8("۱"));
+        numbers->append(QString::fromUtf8("۲"));
+        numbers->append(QString::fromUtf8("۳"));
+        numbers->append(QString::fromUtf8("۴"));
+        numbers->append(QString::fromUtf8("۵"));
+        numbers->append(QString::fromUtf8("۶"));
+        numbers->append(QString::fromUtf8("۷"));
+        numbers->append(QString::fromUtf8("۸"));
+        numbers->append(QString::fromUtf8("۹"));
+    }
+
+    QChar ch = str[str.size()-1];
+    for(int i=0; i<numbers->count(); i++)
+        if(ch == numbers->at(i))
+        {
+            ch = QString::number(i)[0];
+            break;
+        }
+
+    return ch.isNumber();
 }
 
 QStringList Meikade::findBackups()
@@ -247,6 +288,11 @@ QString Meikade::currentLanguage() const
     return p->language;
 }
 
+MeikadeDatabase *Meikade::database() const
+{
+    return p->poem_db;
+}
+
 QString Meikade::resourcePathAbs()
 {
 #ifdef Q_OS_ANDROID
@@ -281,6 +327,11 @@ QString Meikade::resourcePath()
     return "file://" + resourcePathAbs();
 #endif
 #endif
+}
+
+Meikade *Meikade::instance()
+{
+    return meikade_instance;
 }
 
 int Meikade::languageDirection()
@@ -327,6 +378,22 @@ bool Meikade::animations() const
 {
     static bool def = true; //p->devices->isIOS() || ( p->system->cpuCores() > 1 && p->system->cpuFreq()/1000 >= 1024 );
     return settings()->value("General/animations",def).toBool();
+}
+
+void Meikade::setNightTheme(bool stt)
+{
+    if( nightTheme() == stt )
+        return;
+
+    settings()->setValue("General/nightTheme",stt);
+    p->nightTheme = stt;
+
+    emit nightThemeChanged();
+}
+
+bool Meikade::nightTheme() const
+{
+    return p->nightTheme;
 }
 
 QString Meikade::aboutHafezOmen() const
@@ -383,7 +450,6 @@ void Meikade::start()
     p->threaded_fs = new ThreadedFileSystem(this);
     p->poem_db = new MeikadeDatabase(p->threaded_fs,this);
     p->user_db = new UserData(this);
-    p->threaded_db = new ThreadedDatabase(p->poem_db,this);
     p->backuper = new Backuper();
     p->system = new SystemInfo(this);
     p->devices = new AsemanDevices(this);
@@ -402,7 +468,6 @@ void Meikade::start()
     p->viewer->engine()->rootContext()->setContextProperty( "Backuper", p->backuper );
     p->viewer->engine()->rootContext()->setContextProperty( "System"  , p->system   );
     p->viewer->engine()->rootContext()->setContextProperty( "ThreadedFileSystem", p->threaded_fs );
-    p->viewer->engine()->rootContext()->setContextProperty( "ThreadedDatabase"  , p->threaded_db );
     p->viewer->setSource(QStringLiteral("qrc:///qml/Meikade/main.qml"));
     p->viewer->setIcon( QIcon(":/qml/Meikade/icons/meikade.png") );
     p->viewer->show();
@@ -471,6 +536,9 @@ void Meikade::init_languages()
 
 Meikade::~Meikade()
 {
+    if(meikade_instance == this)
+        meikade_instance = 0;
+
     if( p->viewer )
         delete p->viewer;
     if( p->backuper )

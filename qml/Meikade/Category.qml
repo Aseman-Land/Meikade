@@ -68,8 +68,8 @@ Item {
             width: category_list.width - 2*x
             height: 55*Devices.density
             border.width: 1*Devices.density
-            border.color: "#cccccc"
-            color: marea.pressed? "#CFDAFF" : "#ffffff"
+            border.color: Meikade.nightTheme? "#333333" : "#cccccc"
+            color: marea.pressed? (Meikade.nightTheme? "#1D2124" : "#CFDAFF") : (Meikade.nightTheme? "#111111" : "#ffffff")
 
             CategoryItem {
                 anchors.fill: parent
@@ -122,7 +122,7 @@ Item {
     ScrollBar {
         scrollArea: category_list; height: category_list.height-topMargin-View.navigationBarHeight
         anchors.left: category_list.left; anchors.top: category_list.top
-        anchors.topMargin: topMargin
+        anchors.topMargin: topMargin; color: Meikade.nightTheme? "#ffffff" : "#111111"
     }
 
     Text {

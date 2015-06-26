@@ -24,7 +24,7 @@ AsemanMain {
     id: main
     width: 500
     height: 680
-    color: "#333333"
+    color: "#000000"
     mainFrame: main_scene
 
     property string globalPoemFontFamily: Devices.isIOS? "Droid Arabic Naskh" : poem_texts_font.name
@@ -137,36 +137,17 @@ AsemanMain {
         onStatusChanged: if(status == FontLoader.Ready) AsemanApp.globalFont.family = name
     }
 
-    SearchBar {
-        id: search_bar
-        anchors.left: main_scene.left
-        anchors.right: main_scene.right
-        onHideChanged: {
-            if( !hide ) {
-                if( main.menuItem )
-                    main.menuItem.close()
-            }
-            if( !hide )
-                BackHandler.pushHandler( search_bar_back, search_bar_back.hide )
-            else
-                BackHandler.removeHandler(search_bar_back)
-        }
-
-        QtObject {
-            id: search_bar_back
-            function hide(){
-                search_bar.hide = true
-            }
-        }
-    }
-
     Item {
         id: main_scene
-        anchors.top: search_bar.bottom
         width: parent.width
         height: parent.height
         clip: true
         transformOrigin: Item.Center
+        scale: search_bar.hide && !main.menuItem? 1 : 0.7
+
+        Behavior on scale {
+            NumberAnimation { easing.type: Easing.OutCubic; duration: 400 }
+        }
 
         Item {
             id: frame
@@ -266,16 +247,6 @@ AsemanMain {
                 }
             }
         }
-
-        MouseArea {
-            anchors.fill: parent
-            visible: !search_bar.hide
-            z: 10000
-            onClicked: {
-                AsemanApp.back()
-                Devices.hideKeyboard()
-            }
-        }
     }
 
     FastBlur {
@@ -300,6 +271,62 @@ AsemanMain {
 
         Behavior on opacity {
             NumberAnimation { easing.type: Easing.OutCubic; duration: animations*400 }
+        }
+    }
+
+    Item {
+        anchors.fill: parent
+
+        SearchBar {
+            id: search_bar
+            width: parent.width
+            y: hide? parent.height : 0
+            height: parent.height
+            headerRightMargin: menu_button.width
+
+            Timer {
+                id: search_bar_anim
+                interval: 400
+                onTriggered: inited = true
+                Component.onCompleted: start()
+                property bool inited: false
+            }
+
+            Behavior on y {
+                NumberAnimation { easing.type: Easing.OutCubic; duration: search_bar_anim.inited? 400 : 0 }
+            }
+
+            onHideChanged: {
+                if(hide) {
+                    menu_item_frame.z = 1
+                    search_bar.z = 0
+                } else {
+                    menu_item_frame.z = 0
+                    search_bar.z = 1
+                }
+
+                if( !hide ) {
+                    if( main.menuItem )
+                        hideMenuItem()
+                }
+                if( !hide )
+                    BackHandler.pushHandler( search_bar_back, search_bar_back.hide )
+                else
+                    BackHandler.removeHandler(search_bar_back)
+            }
+
+            QtObject {
+                id: search_bar_back
+                function hide(){
+                    search_bar.hide = true
+                }
+            }
+        }
+
+        Item {
+            id: menu_item_frame
+            anchors.fill: parent
+            clip: true
         }
     }
 
@@ -330,7 +357,7 @@ AsemanMain {
                 anchors.bottomMargin: View.navigationBarHeight
                 onSelected: {
                     if( main.menuItem )
-                        main.menuItem.close()
+                        main.menuItem.goOutAndClose()
                     if( !search_bar.hide ) {
                         if( search_bar.viewMode )
                             if( BackHandler )
@@ -345,12 +372,12 @@ AsemanMain {
                     if( fileName.slice(0,4) == "cmd:" ) {
                         var cmd = fileName.slice(4)
                         if( cmd == "search" )
-                            Meikade.timer(400,search_bar,"show")
+                            search_bar.show()//Meikade.timer(400,search_bar,"show")
                     }
                     else {
                         var component = Qt.createComponent("MainMenuItem.qml")
-                        var item = component.createObject(frame)
-                        item.anchors.fill = frame
+                        var item = component.createObject(menu_item_frame)
+                        item.anchors.fill = menu_item_frame
                         item.z = 1000
 
                         var ocomponent = Qt.createComponent(fileName)
@@ -369,23 +396,23 @@ AsemanMain {
     Item {
         id: menu_button
         height: Devices.standardTitleBarHeight
-        width: 100*Devices.density
+        width: menu_img.width + menu_img.anchors.rightMargin + menu_text.width + menu_text.anchors.rightMargin + 12*Devices.density
         anchors.top: parent.top
         anchors.right: parent.right
         anchors.topMargin: View.statusBarHeight + main_scene.y
         opacity: 1-sidebar.percent
 
-        Image {
+        MenuIcon {
             id: menu_img
-            height: 24*Devices.density
-            width: height
-            anchors.horizontalCenter: parent.right
+            anchors.right: parent.right
             anchors.verticalCenter: parent.verticalCenter
-            sourceSize: Qt.size(width,height)
-            source: "icons/menu.png"
+            anchors.rightMargin: y
+            height: 20*Devices.density
+            width: height
         }
 
         Text {
+            id: menu_text
             anchors.verticalCenter: parent.verticalCenter
             anchors.right: menu_img.left
             anchors.rightMargin: 8*Devices.density
@@ -409,7 +436,11 @@ AsemanMain {
     }
 
     function hideMenuItem() {
+        if(!main.menuItem)
+            return
+
         main.menuItem.close()
+        main.menuItem = 0
     }
 
     function setCurrentChapter( id ){

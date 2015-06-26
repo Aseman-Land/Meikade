@@ -40,6 +40,9 @@ class AsemanDesktopToolsPrivate
 public:
     QFontDatabase *font_db;
     QString style;
+#ifdef DESKTOP_DEVICE
+    QList<QMenu*> currentMenuObjects;
+#endif
 };
 
 AsemanDesktopTools::AsemanDesktopTools(QObject *parent) :
@@ -239,6 +242,18 @@ void AsemanDesktopTools::setMenuStyle(const QString &style)
 QString AsemanDesktopTools::menuStyle() const
 {
     return p->style;
+}
+
+QObject *AsemanDesktopTools::currentMenuObject() const
+{
+#ifdef DesktopSession
+    if(p->currentMenuObjects.isEmpty())
+        return 0;
+
+    return p->currentMenuObjects.last();
+#else
+    return 0;
+#endif
 }
 
 QString AsemanDesktopTools::getOpenFileName(QWindow *window, const QString & title, const QString &filter, const QString &startPath)
@@ -510,7 +525,14 @@ int AsemanDesktopTools::showMenu(const QVariantList &actions, QPoint point)
     QMenu *menu = menuOf(actions, &pointers);
     menu->setStyleSheet(p->style);
 
+    p->currentMenuObjects.append(menu);
+    emit currentMenuObjectChanged();
+
     QAction *res = menu->exec(point);
+
+    p->currentMenuObjects.removeAll(menu);
+    emit currentMenuObjectChanged();
+
     menu->deleteLater();
 
     return pointers.indexOf(res);
@@ -606,6 +628,36 @@ bool AsemanDesktopTools::yesOrNo(QWindow *window, const QString &title, const QS
     Q_UNUSED(text)
     Q_UNUSED(type)
     return false;
+#endif
+}
+
+void AsemanDesktopTools::showMessage(QWindow *window, const QString &title, const QString &text, int type)
+{
+    Q_UNUSED(window)
+#ifdef DESKTOP_DEVICE
+    switch(type)
+    {
+    case Warning:
+        QMessageBox::warning(0, title, text, QMessageBox::Ok);
+        break;
+
+    case Information:
+        QMessageBox::information(0, title, text, QMessageBox::Ok);
+        break;
+
+    case Question:
+        QMessageBox::question(0, title, text, QMessageBox::Ok);
+        break;
+
+    case Critical:
+        QMessageBox::critical(0, title, text, QMessageBox::Ok);
+        break;
+    }
+#else
+    Q_UNUSED(title)
+    Q_UNUSED(text)
+    Q_UNUSED(type)
+    return;
 #endif
 }
 
