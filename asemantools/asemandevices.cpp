@@ -43,6 +43,10 @@
 #include <QDebug>
 #include <QMimeData>
 
+#ifdef ASEMAN_MULTIMEDIA
+#include <QCameraInfo>
+#endif
+
 #ifdef Q_OS_WIN
 #include <QSysInfo>
 #endif
@@ -371,6 +375,15 @@ qreal AsemanDevices::fontDensity() const
 #endif
 #endif
 #endif
+#endif
+}
+
+bool AsemanDevices::cameraIsAvailable() const
+{
+#ifdef ASEMAN_MULTIMEDIA
+    return QCameraInfo::availableCameras().count();
+#else
+    return false;
 #endif
 }
 
