@@ -13,6 +13,13 @@ Rectangle {
         anchors.rightMargin: 20*Devices.density
         anchors.bottomMargin: View.navigationBarHeight
         flickableDirection: Flickable.VerticalFlick
+        boundsBehavior: Flickable.StopAtBounds
+        rebound: Transition {
+            NumberAnimation {
+                properties: "x,y"
+                duration: 0
+            }
+        }
         contentWidth: column.width
         contentHeight: column.height
         clip: true

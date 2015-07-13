@@ -185,6 +185,23 @@ Rectangle {
             return false
     }
 
+    function home() {
+        if( list.count == 1 )
+            return
+
+        var item = list.takeLast()
+        item.end()
+
+        while(list.count > 1) {
+            item = list.takeLast()
+            item.destroy()
+        }
+
+        main.focus = true
+        list.last().outside = false
+        BackHandler.removeHandler(page)
+    }
+
     function showHafezOmen() {
         var item = hafez_omen_component.createObject( base_frame, {"catId": 10001} )
         item.inited = true

@@ -113,6 +113,11 @@ AsemanMain {
                 init_wait.visible = false
                 init_wait.destroy()
             }
+
+            if(AsemanApp.applicationVersion == "3.1.1" && Meikade.runCount > 1)
+                showNews(1)
+            else
+                Meikade.setMeikadeNews(1, true)
         }
     }
 
@@ -342,7 +347,7 @@ AsemanMain {
     SideMenu {
         id: sidebar
         anchors.fill: parent
-        menuWidth: Devices.isMobile? parent.width-50*Devices.density : parent.width/2 + 50*Devices.density
+        menuWidth: Devices.isMobile? parent.width-50*Devices.density : parent.width/2 + 20*Devices.density
         layoutDirection: Qt.RightToLeft
         delegate: MouseArea {
             anchors.fill: parent
@@ -367,7 +372,7 @@ AsemanMain {
                     }
 
                     if( fileName.length == 0 )
-                        ;
+                        cat_page.home()
                     else
                     if( fileName.slice(0,4) == "cmd:" ) {
                         var cmd = fileName.slice(4)
@@ -474,6 +479,15 @@ AsemanMain {
     function showFavoriteMessage() {
         var component = Qt.createComponent("FavoriteMessage.qml")
         messageDialog.show(component)
+    }
+
+    function showNews(num) {
+        if(Meikade.meikadeNews(num))
+            return
+
+        var component = Qt.createComponent("MeikadeNews" + num + ".qml")
+        messageDialog.show(component)
+        Meikade.setMeikadeNews(num, true)
     }
 
     function showCopyErrorMessage() {

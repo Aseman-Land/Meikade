@@ -39,7 +39,8 @@ SOURCES += main.cpp \
     p7zipextractor.cpp \
     stickermodel.cpp \
     stickerwriter.cpp \
-    threadedsearchmodel.cpp
+    threadedsearchmodel.cpp \
+    ganjoordownloadermodel.cpp
 
 HEADERS += \
     listobject.h \
@@ -58,7 +59,8 @@ HEADERS += \
     p7zipextractor.h \
     stickermodel.h \
     stickerwriter.h \
-    threadedsearchmodel.h
+    threadedsearchmodel.h \
+    ganjoordownloadermodel.h
 
 OTHER_FILES += \
     android/AndroidManifest.xml \

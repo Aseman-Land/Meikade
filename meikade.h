@@ -79,6 +79,9 @@ public:
     void setNightTheme( bool stt );
     bool nightTheme() const;
 
+    Q_INVOKABLE void setMeikadeNews(int i, bool stt);
+    Q_INVOKABLE bool meikadeNews(int i) const;
+
     Q_INVOKABLE QString aboutHafezOmen() const;
 
     void setPoemsFont( const QString & name );

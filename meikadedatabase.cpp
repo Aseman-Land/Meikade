@@ -16,7 +16,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#define CURRENT_DB_VERSION 3
+#define CURRENT_DB_VERSION 4
 
 #include "meikadedatabase.h"
 #include "threadedfilesystem.h"

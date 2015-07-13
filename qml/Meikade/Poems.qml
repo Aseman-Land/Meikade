@@ -125,7 +125,7 @@ Rectangle {
                 txt.poemFristVerse = Database.verseText(pid, 1)
             }
 
-            Text{
+            Text {
                 id: txt
                 anchors.left: parent.left
                 anchors.right: parent.right
@@ -136,11 +136,11 @@ Rectangle {
                 color: Meikade.nightTheme? "#ffffff" :"#333333"
                 text: {
                     if(Meikade.endUsingNumber(poemTitle))
-                        return poemTitle + " - " + poemFristVerse
+                        return poemTitle + " - " + poemFristVerse + "..."
                     else
                         return poemTitle
                 }
-                wrapMode: TextInput.WordWrap
+                wrapMode: Text.WordWrap
                 maximumLineCount: 1
                 elide: Text.ElideRight
 

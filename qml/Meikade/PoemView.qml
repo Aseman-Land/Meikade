@@ -178,6 +178,13 @@ Rectangle {
         highlightMoveDuration: 250
         maximumFlickVelocity: View.flickVelocity
         bottomMargin: View.navigationBarHeight
+        boundsBehavior: Flickable.StopAtBounds
+        rebound: Transition {
+            NumberAnimation {
+                properties: "x,y"
+                duration: 0
+            }
+        }
 
         property int highlightedVid: -1
         footer: Rectangle {
