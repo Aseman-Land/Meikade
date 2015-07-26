@@ -29,7 +29,7 @@ Item {
         id: txt
         y: parent.height*3/4
         anchors.horizontalCenter: parent.horizontalCenter
-        font.pixelSize: 12*Devices.fontDensity
+        font.pixelSize: 12*globalFontDensity*Devices.fontDensity
         font.bold: true
         font.family: AsemanApp.globalFont.family
         color: "#ffffff"

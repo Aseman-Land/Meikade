@@ -73,7 +73,7 @@ Item {
                 id: txt
                 anchors.centerIn: parent
                 color: "#333333"
-                font.pixelSize: 10*Devices.fontDensity
+                font.pixelSize: 10*globalFontDensity*Devices.fontDensity
                 font.bold: false
                 font.family: AsemanApp.globalFont.family
             }

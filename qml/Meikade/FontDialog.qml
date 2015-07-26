@@ -29,6 +29,13 @@ Item {
         anchors.bottomMargin: 4*Devices.density
         highlightMoveDuration: 250
         maximumFlickVelocity: View.flickVelocity
+        boundsBehavior: Flickable.StopAtBounds
+        rebound: Transition {
+            NumberAnimation {
+                properties: "x,y"
+                duration: 0
+            }
+        }
         clip: true
 
         model: ListModel {}
@@ -36,7 +43,7 @@ Item {
             id: item
             width: prefrences.width
             height: txt.height + 30*Devices.density
-            color: press? "#3B97EC" : "#00000000"
+            color: press? "#880d80ec" : "#00000000"
 
             property string font: fontName
             property alias press: marea.pressed
@@ -48,7 +55,7 @@ Item {
                 anchors.verticalCenter: parent.verticalCenter
                 width: height
                 height: 15*Devices.density
-                source: "icons/tik.png"
+                source: "icons/tik-dark.png"
                 visible: Meikade.poemsFont == item.font
             }
 
@@ -59,9 +66,9 @@ Item {
                 anchors.margins: 30*Devices.density
                 anchors.leftMargin: 10*Devices.density
                 y: parent.height/2 - height/2
-                font.pixelSize: 11*Devices.fontDensity
+                font.pixelSize: 11*globalFontDensity*Devices.fontDensity
                 font.family: AsemanApp.globalFont.family
-                color: "#ffffff"
+                color: "#333333"
                 text: item.font
                 wrapMode: TextInput.WordWrap
             }

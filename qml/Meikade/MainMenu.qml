@@ -83,7 +83,7 @@ Item {
                 anchors.right: item_rect.left
                 anchors.margins: 20*Devices.density
                 anchors.verticalCenter: parent.verticalCenter
-                font.pixelSize: 9*Devices.fontDensity
+                font.pixelSize: 9*globalFontDensity*Devices.fontDensity
                 font.family: AsemanApp.globalFont.family
                 color: "#444444"
                 horizontalAlignment: Text.AlignRight
@@ -114,6 +114,7 @@ Item {
             model.append({"name":qsTr("Home")              , "icon": "icons/menu-home.png"      , "fileName":""                      , "type": "A"})
             model.append({"name":qsTr("Search")            , "icon": "icons/menu-search.png"    , "fileName":"cmd:search"            , "type": "A"})
             model.append({"name":qsTr("Bookmarks")         , "icon": "icons/menu-bookmark.png"  , "fileName":"Bookmarks.qml"         , "type": "A"})
+            model.append({"name":qsTr("Download")          , "icon": "icons/down.png"           , "fileName":"XmlDownloaderPage.qml" , "type": "A"})
 //            model.append({"name":qsTr("Notes")             , "icon": ""                         , "fileName":"Notes.qml"             , "type": "A"})
             model.append({"name":qsTr("Configure")         , "icon": "icons/menu-configure.png" , "fileName":"Configure.qml"         , "type": "C"})
             model.append({"name":qsTr("OpenSource Projecs"), "icon": "icons/menu-opensource.png", "fileName":"OpenSourceProjects.qml", "type": "C"})

@@ -53,7 +53,7 @@ Rectangle {
             y: 40*Devices.density
             anchors.horizontalCenter: parent.horizontalCenter
             color: Meikade.nightTheme? "#ffffff" : "#333333"
-            font.pixelSize: 11*Devices.fontDensity
+            font.pixelSize: 11*globalFontDensity*Devices.fontDensity
             font.family: AsemanApp.globalFont.family
             text: qsTr("Not found")
             visible: false
@@ -85,7 +85,7 @@ Rectangle {
                     textColor: Meikade.nightTheme? "#ffffff" : "#333333"
                     vid: model.vorder
                     pid: model.poem
-                    font.pixelSize: Devices.isMobile? 9*Devices.fontDensity : 10*Devices.fontDensity
+                    font.pixelSize: Devices.isMobile? 9*globalFontDensity*Devices.fontDensity : 10*globalFontDensity*Devices.fontDensity
 
                     Rectangle {
                         anchors.right: parent.right
@@ -99,7 +99,7 @@ Rectangle {
                             anchors.centerIn: parent
                             text: Meikade.numberToArabicString(index+1)
                             color: "#ffffff"
-                            font.pixelSize: 10*Devices.fontDensity
+                            font.pixelSize: 10*globalFontDensity*Devices.fontDensity
                             font.family: AsemanApp.globalFont.family
                         }
                     }
@@ -117,7 +117,7 @@ Rectangle {
                         anchors.left: parent.left
                         anchors.bottom: parent.bottom
                         anchors.leftMargin: 8*Devices.density
-                        font.pixelSize: 9*Devices.fontDensity
+                        font.pixelSize: 9*globalFontDensity*Devices.fontDensity
                         font.family: AsemanApp.globalFont.family
                         color: "#ffffff"
 

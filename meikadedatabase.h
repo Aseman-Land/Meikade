@@ -36,9 +36,11 @@ signals:
     void initializeFinished();
     void extractProgress(int percent);
     void copyError();
+    void poetsChanged();
 
 public slots:
     void initialize();
+    void refresh();
 
     QList<int> rootChilds() const;
     QList<int> childsOf( int id ) const;
@@ -55,6 +57,7 @@ public slots:
     int catPoetId( int cat );
     QList<int> poets() const;
     QString poetDesctiption( int id );
+    bool containsPoet(int id);
 
     QString verseText(int pid , int vid);
     int versePosition(int pid , int vid);

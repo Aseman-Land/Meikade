@@ -99,7 +99,7 @@ Rectangle {
                     anchors.right: parent.right
                     anchors.verticalCenter: parent.verticalCenter
                     font.family: AsemanApp.globalFont.family
-                    font.pixelSize: 11*Devices.fontDensity
+                    font.pixelSize: 11*globalFontDensity*Devices.fontDensity
                     wrapMode: Text.WordWrap
                     color: "#ffffff"
                     text: qsTr("Intent and Tap on the screen")
@@ -124,7 +124,7 @@ Rectangle {
                     Text {
                         anchors.horizontalCenter: parent.horizontalCenter
                         font.family: AsemanApp.globalFont.family
-                        font.pixelSize: 11*Devices.fontDensity
+                        font.pixelSize: 11*globalFontDensity*Devices.fontDensity
                         wrapMode: Text.WordWrap
                         color: "#ffffff"
                         text: qsTr("Read more about meikade hafez omen")
@@ -134,7 +134,7 @@ Rectangle {
                     Button {
                         anchors.horizontalCenter: parent.horizontalCenter
                         textFont.family: AsemanApp.globalFont.family
-                        textFont.pixelSize: 9*Devices.fontDensity
+                        textFont.pixelSize: 9*globalFontDensity*Devices.fontDensity
                         textFont.bold: false
                         width: 100*Devices.density
                         height: 36*Devices.density

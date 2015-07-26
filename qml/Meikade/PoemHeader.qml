@@ -81,7 +81,7 @@ Item {
         Text {
             id: txt1
             anchors.horizontalCenter: parent.horizontalCenter
-            font.pixelSize: 13*Devices.fontDensity
+            font.pixelSize: 13*globalFontDensity*Devices.fontDensity
             font.family: AsemanApp.globalFont.family
             wrapMode: TextInput.WordWrap
             color: poem_header.color
@@ -91,7 +91,7 @@ Item {
         Text {
             id: txt2
             anchors.horizontalCenter: parent.horizontalCenter
-            font.pixelSize: 13*Devices.fontDensity
+            font.pixelSize: 13*globalFontDensity*Devices.fontDensity
             font.family: AsemanApp.globalFont.family
             wrapMode: TextInput.WordWrap
             color: poem_header.color
@@ -115,7 +115,7 @@ Item {
                 anchors.right: parent.right
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.margins: 8*Devices.density
-                font.pixelSize: 10*Devices.fontDensity
+                font.pixelSize: 10*globalFontDensity*Devices.fontDensity
                 font.family: AsemanApp.globalFont.family
                 wrapMode: TextInput.WordWrap
                 color: poem_header.color

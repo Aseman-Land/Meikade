@@ -40,7 +40,7 @@ Item {
 
         Text {
             id: delete_warn
-            font.pixelSize: 17*Devices.fontDensity
+            font.pixelSize: 17*globalFontDensity*Devices.fontDensity
             font.family: AsemanApp.globalFont.family
             anchors.margins: 10*Devices.density
             anchors.left: parent.left
@@ -90,6 +90,13 @@ Item {
         anchors.bottomMargin: 4*Devices.density
         highlightMoveDuration: 250
         maximumFlickVelocity: View.flickVelocity
+        boundsBehavior: Flickable.StopAtBounds
+        rebound: Transition {
+            NumberAnimation {
+                properties: "x,y"
+                duration: 0
+            }
+        }
         clip: true
 
         model: ListModel {}
@@ -97,7 +104,7 @@ Item {
             id: item
             width: prefrences.width
             height: txt.height + 30*Devices.density
-            color: press? "#3B97EC" : "#00000000"
+            color: press? "#880d80ec" : "#00000000"
 
             property string file: path
             property alias press: marea.pressed
@@ -110,9 +117,9 @@ Item {
                 anchors.right: parent.right
                 anchors.margins: 30*Devices.density
                 y: parent.height/2 - height/2
-                font.pixelSize: 11*Devices.fontDensity
+                font.pixelSize: 11*globalFontDensity*Devices.fontDensity
                 font.family: AsemanApp.globalFont.family
-                color: "#ffffff"
+                color: "#333333"
                 text: Meikade.fileName(item.file)
                 wrapMode: TextInput.WordWrap
             }
@@ -153,9 +160,9 @@ Item {
                 anchors.left: parent.left
                 anchors.right: parent.right
                 anchors.margins: 10*Devices.density
-                font.pixelSize: 10*Devices.fontDensity
+                font.pixelSize: 10*globalFontDensity*Devices.fontDensity
                 font.family: AsemanApp.globalFont.family
-                color: "#ffffff"
+                color: "#333333"
                 wrapMode: TextInput.WordWrap
             }
 
@@ -164,7 +171,7 @@ Item {
                 width: header.width
                 height: 60*Devices.density
                 anchors.top: title.bottom
-                color: press? "#3B97EC" : "#00000000"
+                color: press? "#880d80ec" : "#00000000"
 
                 property alias press: hmarea.pressed
 
@@ -174,9 +181,9 @@ Item {
                     anchors.right: parent.right
                     anchors.margins: 30*Devices.density
                     y: parent.height/2 - height/2
-                    font.pixelSize: 11*Devices.fontDensity
+                    font.pixelSize: 11*globalFontDensity*Devices.fontDensity
                     font.family: AsemanApp.globalFont.family
-                    color: "#ffffff"
+                    color: "#333333"
                 }
 
                 MouseArea{
@@ -196,11 +203,11 @@ Item {
                 anchors.margins: 10*Devices.density
                 anchors.bottomMargin: 0*Devices.density
                 height: 2*Devices.density
-                color: "#ffffff"
+                color: "#333333"
 
                 Text {
                     id: message
-                    font.pixelSize: 9*Devices.fontDensity
+                    font.pixelSize: 9*globalFontDensity*Devices.fontDensity
                     font.family: AsemanApp.globalFont.family
                     color: splitter.color
                     anchors.bottom: parent.top
@@ -245,7 +252,7 @@ Item {
 
     ScrollBar {
         scrollArea: prefrences; height: prefrences.height
-        anchors.right: prefrences.right; anchors.top: prefrences.top; color: "#ffffff"
+        anchors.right: prefrences.right; anchors.top: prefrences.top; color: "#333333"
     }
 
     Connections{

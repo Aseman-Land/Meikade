@@ -19,6 +19,7 @@
 import QtQuick 2.0
 import QtGraphicalEffects 1.0
 import AsemanTools 1.0
+import Meikade 1.0
 
 AsemanMain {
     id: main
@@ -29,6 +30,7 @@ AsemanMain {
 
     property string globalPoemFontFamily: Devices.isIOS? "Droid Arabic Naskh" : poem_texts_font.name
     property real globalZoomAnimDurations: animations? 500 : 0
+    property real globalFontDensity: 0.85
 
     property alias headerHeight: header.height
     property bool backButton: !Devices.isAndroid
@@ -79,7 +81,17 @@ AsemanMain {
             showFavoriteMessage()
     }
 
-    Connections{
+    Timer {
+        interval: 4000
+        onTriggered: loadFonts()
+        Component.onCompleted: start()
+    }
+
+    XmlDownloaderModel {
+        id: xml_model
+    }
+
+    Connections {
         target: Meikade
         onCloseRequest: AsemanApp.back()
     }
@@ -136,7 +148,7 @@ AsemanMain {
         }
     }
 
-    FontLoader{
+    FontLoader {
         id: poem_texts_font
         source: Meikade.resourcePath + "/fonts/" + Meikade.poemsFont + ".ttf"
         onStatusChanged: if(status == FontLoader.Ready) AsemanApp.globalFont.family = name
@@ -241,7 +253,7 @@ AsemanMain {
                         textColor: "#ffffff"
                         icon: "icons/back_light_64.png"
                         iconHeight: 16*Devices.density
-                        fontSize: 11*Devices.fontDensity
+                        fontSize: 11*globalFontDensity*Devices.fontDensity
                         textFont.bold: false
                         visible: backButton && cat_page.count != 1
                         onClicked: {
@@ -361,8 +373,12 @@ AsemanMain {
                 anchors.fill: parent
                 anchors.bottomMargin: View.navigationBarHeight
                 onSelected: {
-                    if( main.menuItem )
-                        main.menuItem.goOutAndClose()
+                    if( main.menuItem ) {
+                        if(fileName.length == 0)
+                            main.menuItem.close()
+                        else
+                            main.menuItem.goOutAndClose()
+                    }
                     if( !search_bar.hide ) {
                         if( search_bar.viewMode )
                             if( BackHandler )
@@ -371,15 +387,16 @@ AsemanMain {
                         search_bar.hide = true
                     }
 
-                    if( fileName.length == 0 )
+                    if( fileName.length == 0 ) {
                         cat_page.home()
+                        menuItem = null
+                    }
                     else
                     if( fileName.slice(0,4) == "cmd:" ) {
                         var cmd = fileName.slice(4)
                         if( cmd == "search" )
                             search_bar.show()//Meikade.timer(400,search_bar,"show")
-                    }
-                    else {
+                    } else {
                         var component = Qt.createComponent("MainMenuItem.qml")
                         var item = component.createObject(menu_item_frame)
                         item.anchors.fill = menu_item_frame
@@ -422,7 +439,7 @@ AsemanMain {
             anchors.right: menu_img.left
             anchors.rightMargin: 8*Devices.density
             font.family: AsemanApp.globalFont.family
-            font.pixelSize: 11*Devices.fontDensity
+            font.pixelSize: 11*globalFontDensity*Devices.fontDensity
             text: qsTr("Meikade")
             color: "#ffffff"
         }

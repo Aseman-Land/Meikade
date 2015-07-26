@@ -22,7 +22,7 @@ include(qmake/qtcAddDeployment.pri)
 include(asemantools/asemantools.pri)
 qtcAddDeployment()
 
-QT += sql qml quick
+QT += sql qml quick xml
 
 SOURCES += main.cpp \
     listobject.cpp \
@@ -40,7 +40,10 @@ SOURCES += main.cpp \
     stickermodel.cpp \
     stickerwriter.cpp \
     threadedsearchmodel.cpp \
-    ganjoordownloadermodel.cpp
+    xmldownloadermodel.cpp \
+    poetscriptinstaller.cpp \
+    poetscriptinstallerqueue.cpp \
+    poetimageprovider.cpp
 
 HEADERS += \
     listobject.h \
@@ -60,7 +63,10 @@ HEADERS += \
     stickermodel.h \
     stickerwriter.h \
     threadedsearchmodel.h \
-    ganjoordownloadermodel.h
+    xmldownloadermodel.h \
+    poetscriptinstaller.h \
+    poetscriptinstallerqueue.h \
+    poetimageprovider.h
 
 OTHER_FILES += \
     android/AndroidManifest.xml \

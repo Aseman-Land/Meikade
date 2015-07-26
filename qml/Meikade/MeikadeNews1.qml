@@ -32,7 +32,7 @@ Column {
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.margins: 10*Devices.density
                 font.family: AsemanApp.globalFont.family
-                font.pixelSize: 9*Devices.fontDensity
+                font.pixelSize: 9*globalFontDensity*Devices.fontDensity
                 color: "#333333"
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                 text: qsTr("We change some poets on meikade.")
@@ -49,7 +49,7 @@ Column {
     Button {
         width: parent.width
         textFont.family: AsemanApp.globalFont.family
-        textFont.pixelSize: 10*Devices.fontDensity
+        textFont.pixelSize: 10*globalFontDensity*Devices.fontDensity
         textColor: "#0d80ec"
         normalColor: "#00000000"
         highlightColor: "#660d80ec"

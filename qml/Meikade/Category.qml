@@ -35,6 +35,11 @@ Item {
     signal categorySelected( int cid, variant rect )
     signal poemSelected( int pid, variant rect )
 
+    Connections {
+        target: Database
+        onPoetsChanged: category_list.refresh()
+    }
+
     ListView {
         id: category_list
         anchors.fill: parent
@@ -127,7 +132,7 @@ Item {
 
     Text {
         anchors.centerIn: parent
-        font.pixelSize: 9*Devices.fontDensity
+        font.pixelSize: 9*globalFontDensity*Devices.fontDensity
         text: qsTr("This is a problem to loading poets.\nPlease contact us:\ncontact@aseman.org")
         visible: category_list.count == 0
     }

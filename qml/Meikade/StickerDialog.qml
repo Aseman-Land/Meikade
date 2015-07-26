@@ -57,7 +57,7 @@ Rectangle {
 
         Header {
             anchors.fill: parent
-            titleFont.pixelSize: 12*Devices.fontDensity
+            titleFont.pixelSize: 12*globalFontDensity*Devices.fontDensity
             light: true
             backButton: false
             text: qsTr("Share")
@@ -75,7 +75,7 @@ Rectangle {
                 radius: 5*Devices.density
                 normalColor: "#2A7B8F"
                 highlightColor: Qt.darker(normalColor, 1.1)
-                fontSize: 9*Devices.fontDensity
+                fontSize: 9*globalFontDensity*Devices.fontDensity
                 text: qsTr("Save")
                 onClicked: {
                     indicator.active = true
@@ -171,7 +171,7 @@ Rectangle {
                                 anchors.horizontalCenter: parent.horizontalCenter
                                 horizontalAlignment: Text.AlignHCenter
                                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                                font.pixelSize: fontSize*Devices.fontDensity * frame_mask.width/(320*Devices.density)
+                                font.pixelSize: fontSize*globalFontDensity*Devices.fontDensity * frame_mask.width/(320*Devices.density)
                                 color: images_frame.color
                                 lineHeight: 1.3
 

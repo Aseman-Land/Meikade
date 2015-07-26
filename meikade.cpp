@@ -29,7 +29,9 @@
 #include "stickerwriter.h"
 #include "threadedsearchmodel.h"
 #include "p7zipextractor.h"
+#include "xmldownloadermodel.h"
 #include "meikade_macros.h"
+#include "poetimageprovider.h"
 #include "asemantools/asemandevices.h"
 #include "asemantools/asemanquickview.h"
 #include "asemantools/asemanapplication.h"
@@ -119,7 +121,7 @@ Meikade::Meikade(QObject *parent) :
     p->viewer = 0;
     p->hide_keyboard_timer = 0;
     p->translator = new QTranslator(this);
-    p->poem_font = settings()->value("General/PoemFont","DroidNaskh-Regular").toString();
+    p->poem_font = settings()->value("General/PoemFont","IRAN-Sans").toString();
     p->nightTheme = settings()->value("General/nightTheme",false).toBool();
 #ifdef Q_OS_ANDROID
     p->close  = false;
@@ -127,6 +129,8 @@ Meikade::Meikade(QObject *parent) :
     p->close  = false;
 #endif
 
+    qmlRegisterType<XmlDownloaderModel>("Meikade", 1, 0, "XmlDownloaderModel");
+    qmlRegisterType<PoetImageProvider>("Meikade", 1, 0, "PoetImageProvider");
     qmlRegisterType<StickerModel>("Meikade", 1, 0, "StickerModel");
     qmlRegisterType<StickerWriter>("Meikade", 1, 0, "StickerWriter");
     qmlRegisterType<ThreadedSearchModel>("Meikade", 1, 0, "ThreadedSearchModel");
@@ -235,7 +239,7 @@ QString Meikade::fileSuffix(const QString &path)
 
 QStringList Meikade::availableFonts()
 {
-    return QStringList() << "DroidNaskh-Regular" << "IranNastaliq" << "BKoodakO" << "BYekan";
+    return QStringList() << "DroidNaskh-Regular" << /*"IranNastaliq" << */"BKoodakO" << "BYekan" << "IRAN-Sans";
 }
 
 qreal Meikade::fontPointScale(const QString &fontName)
@@ -244,7 +248,16 @@ qreal Meikade::fontPointScale(const QString &fontName)
         return 1;
     else
     if( fontName == "IranNastaliq" )
-        return 1.3;
+        return 1.6;
+    else
+    if( fontName == "BYekan" )
+        return 1.2;
+    else
+    if( fontName == "BKoodakO" )
+        return 1.2;
+    else
+    if( fontName == "IRAN-Sans" )
+        return 1;
     else
         return 1;
 }

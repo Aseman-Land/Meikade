@@ -43,7 +43,7 @@ Rectangle {
             textColor: "#333333"
             icon: "icons/back_light_64.png"
             iconHeight: 16*Devices.density
-            fontSize: 11*Devices.fontDensity
+            fontSize: 11*globalFontDensity*Devices.fontDensity
             textFont.bold: false
             visible: backButton
             onClicked: {
@@ -102,7 +102,7 @@ Rectangle {
                 Text {
                     width: parent.width
                     font.family: AsemanApp.globalFont.family
-                    font.pixelSize: 10*Devices.fontDensity
+                    font.pixelSize: 10*globalFontDensity*Devices.fontDensity
                     font.bold: true
                     text: qsTr("Meikade is a free and opensource application by Nile Team")
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
@@ -112,7 +112,7 @@ Rectangle {
                 Text {
                     width: parent.width
                     font.family: AsemanApp.globalFont.family
-                    font.pixelSize: 9*Devices.fontDensity
+                    font.pixelSize: 9*globalFontDensity*Devices.fontDensity
                     text: qsTr("Meikade is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.")
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                     color: "#333333"
@@ -123,7 +123,7 @@ Rectangle {
                 Text {
                     width: parent.width
                     font.family: AsemanApp.globalFont.family
-                    font.pixelSize: 10*Devices.fontDensity
+                    font.pixelSize: 10*globalFontDensity*Devices.fontDensity
                     font.bold: true
                     text: qsTr("Meikade Members:")
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
@@ -133,7 +133,7 @@ Rectangle {
                 Text {
                     width: parent.width
                     font.family: AsemanApp.globalFont.family
-                    font.pixelSize: 9*Devices.fontDensity
+                    font.pixelSize: 9*globalFontDensity*Devices.fontDensity
                     text: qsTr(" - Bardia Daneshvar (Project Leader and Developer)\n"+
                                " - AmirHosein Mousavi (Designer and Idea Processing)\n"+
                                " - Pourya Daneshvar (Designer)\n"+
@@ -167,7 +167,7 @@ Rectangle {
         anchors.rightMargin: 20*Devices.density
         anchors.bottomMargin: View.navigationBarHeight + 10*Devices.density
         font.family: AsemanApp.globalFont.family
-        font.pixelSize: 9*Devices.fontDensity
+        font.pixelSize: 9*globalFontDensity*Devices.fontDensity
         text: "v3.1.0"
         wrapMode: Text.WordWrap
         color: "#333333"

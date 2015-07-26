@@ -154,7 +154,7 @@ Rectangle {
                 id: phrase_title
                 width: parent.width
                 color: "#ffffff"
-                font.family: "Droid Arabic Naskh"
+                font.family: AsemanApp.globalFont.family
                 font.pixelSize: 19*Devices.density
                 text: qsTr("Phrase")
             }
@@ -164,7 +164,7 @@ Rectangle {
                 width: parent.width
                 text: Database.poemPhrase(view.poemId)
                 color: "#ffffff"
-                font.family: "Droid Arabic Naskh"
+                font.family: AsemanApp.globalFont.family
                 font.pixelSize: 12*Devices.density
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
             }
@@ -259,7 +259,7 @@ Rectangle {
                 vid: verseId
                 pid: poemId
                 highlight: view_list.highlightedVid == vid
-                font.pixelSize: Devices.isMobile? 9*Devices.fontDensity : 10*Devices.fontDensity
+                font.pixelSize: Devices.isMobile? 9*fontScale*globalFontDensity*Devices.fontDensity : 10*fontScale*globalFontDensity*Devices.fontDensity
                 font.family: globalPoemFontFamily
 
                 Rectangle {
@@ -274,7 +274,7 @@ Rectangle {
                         anchors.centerIn: parent
                         text: Meikade.numberToArabicString(index+1)
                         color: Meikade.nightTheme? "#111111" : "#ffffff"
-                        font.pixelSize: 9*fontScale
+                        font.pixelSize: 9*fontScale*globalFontDensity*Devices.fontDensity
                         font.family: AsemanApp.globalFont.family
                     }
                 }
@@ -308,7 +308,7 @@ Rectangle {
                     anchors.left: parent.left
                     anchors.bottom: parent.bottom
                     anchors.leftMargin: 8*Devices.density
-                    font.pixelSize: Devices.isMobile? 8*Devices.fontDensity : 9*Devices.fontDensity
+                    font.pixelSize: Devices.isMobile? 8*globalFontDensity*Devices.fontDensity : 9*globalFontDensity*Devices.fontDensity
                     font.family: AsemanApp.globalFont.family
                     color: "#ffffff"
 
@@ -378,7 +378,7 @@ Rectangle {
             id: header
             width: view_list.width
             poemId: view.poemId
-            font.pixelSize: Devices.isMobile? 11*Devices.fontDensity : 13*Devices.fontDensity
+            font.pixelSize: Devices.isMobile? 11*globalFontDensity*Devices.fontDensity : 13*globalFontDensity*Devices.fontDensity
             font.family: globalPoemFontFamily
             onHeightChanged: {
                 header_back.headerHeight = height+view_list.y
@@ -469,7 +469,7 @@ Rectangle {
             width: parent.width
             anchors.bottom: parent.bottom
             poemId: view.poemId
-            font.pixelSize: Devices.isMobile? 11*Devices.fontDensity : 13*Devices.fontDensity
+            font.pixelSize: Devices.isMobile? 11*globalFontDensity*Devices.fontDensity : 13*globalFontDensity*Devices.fontDensity
             font.family: globalPoemFontFamily
         }
     }
@@ -522,7 +522,7 @@ Rectangle {
                 text:   qsTr("Copy")
                 textColor: "#333333"
                 textFont.bold: false
-                textFont.pixelSize: 10*Devices.fontDensity
+                textFont.pixelSize: 10*globalFontDensity*Devices.fontDensity
                 onClicked: {
                     var subject = Database.poemName(poem_edit.poemId)
                     var poet
@@ -545,7 +545,7 @@ Rectangle {
                 text:   qsTr("Share")
                 textColor: "#333333"
                 textFont.bold: false
-                textFont.pixelSize: 10*Devices.fontDensity
+                textFont.pixelSize: 10*globalFontDensity*Devices.fontDensity
                 onClicked: {
                     var subject = Database.poemName(poem_edit.poemId)
                     var poet
@@ -567,7 +567,7 @@ Rectangle {
                 text:   qsTr("Share Image")
                 textColor: "#333333"
                 textFont.bold: false
-                textFont.pixelSize: 10*Devices.fontDensity
+                textFont.pixelSize: 10*globalFontDensity*Devices.fontDensity
                 onClicked: {
                     var poet
                     var catId = Database.poemCat(poem_edit.poemId)
@@ -588,7 +588,7 @@ Rectangle {
                 text: poem_edit.favorited? qsTr("Unfavorite") : qsTr("Favorite")
                 textColor: "#333333"
                 textFont.bold: false
-                textFont.pixelSize: 10*Devices.fontDensity
+                textFont.pixelSize: 10*globalFontDensity*Devices.fontDensity
                 onClicked: {
                     poem_edit.favorited = !poem_edit.favorited
                     hideBottomPanel()

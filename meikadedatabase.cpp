@@ -69,6 +69,7 @@ public:
     QHash<int,int> cat_poets;
     QHash<QString, int> poets_cats;
     QList<int> sorted_poets;
+    QSet<int> poets_set;
 
     ThreadedFileSystem *tfs;
     bool initialized;
@@ -101,7 +102,7 @@ void MeikadeDatabase::initialize()
 #endif
 
     int db_version = Meikade::settings()->value("initialize/dataVersion",0).toInt();
-    if( db_version < CURRENT_DB_VERSION || !QFileInfo(p->path).exists() || QFileInfo(p->path).size() < 120000000 )
+    if( db_version < CURRENT_DB_VERSION || !QFileInfo(p->path).exists() || QFileInfo(p->path).size() < 115000000 )
     {
         QFile::remove(p->path);
 
@@ -115,6 +116,12 @@ void MeikadeDatabase::initialize()
         QMetaObject::invokeMethod( this, "initialize_prv", Qt::QueuedConnection, Q_ARG(QString,p->path) );
         p->initialized = true;
     }
+}
+
+void MeikadeDatabase::refresh()
+{
+    init_buffer();
+    emit poetsChanged();
 }
 
 void MeikadeDatabase::initialize_prv(const QString &dst)
@@ -273,6 +280,11 @@ QString MeikadeDatabase::poetDesctiption(int id)
     return p->poets[id]["description"].toString();
 }
 
+bool MeikadeDatabase::containsPoet(int id)
+{
+    return p->poets_set.contains(id);
+}
+
 QString MeikadeDatabase::verseText(int pid, int vid)
 {
     QSqlQuery query( p->db );
@@ -306,7 +318,10 @@ void MeikadeDatabase::init_buffer()
     p->childs.clear();
     p->cats.clear();
     p->parents.clear();
+    p->poets_cats.clear();
     p->poets.clear();
+    p->cat_poets.clear();
+    p->poets_set.clear();
 
     QSqlQuery cats_query( p->db );
     cats_query.prepare("SELECT id, parent_id, poet_id, text, url FROM cat");
@@ -338,6 +353,7 @@ void MeikadeDatabase::init_buffer()
 
         p->cat_poets[cat] = id;
         p->poets_cats.insertMulti(name, cat);
+        p->poets_set.insert(id);
 
         for( int i=0; i<record.count(); i++ )
             p->poets[cat][record.fieldName(i)] = record.value(i);

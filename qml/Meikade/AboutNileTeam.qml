@@ -23,7 +23,7 @@ Rectangle {
             textColor: "#ffffff"
             icon: "icons/back_light_64.png"
             iconHeight: 16*Devices.density
-            fontSize: 11*Devices.fontDensity
+            fontSize: 11*globalFontDensity*Devices.fontDensity
             textFont.bold: false
             visible: backButton
             onClicked: {
@@ -89,7 +89,7 @@ Rectangle {
                     Text {
                         anchors.centerIn: parent
                         font.family: AsemanApp.globalFont.family
-                        font.pixelSize: 12*Devices.fontDensity
+                        font.pixelSize: 12*globalFontDensity*Devices.fontDensity
                         font.bold: true
                         wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                         color: "#333333"
@@ -102,7 +102,7 @@ Rectangle {
                 Text {
                     anchors.horizontalCenter: parent.horizontalCenter
                     font.family: AsemanApp.globalFont.family
-                    font.pixelSize: 10*Devices.fontDensity
+                    font.pixelSize: 10*globalFontDensity*Devices.fontDensity
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                     color: "#333333"
                     text: qsTr("Nile is an Iranian software corporation that makes software for Desktop computers, Android, iOS, Mac, Windows Phone, Ubuntu Phone and ...\n"+

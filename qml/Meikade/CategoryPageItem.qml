@@ -161,7 +161,7 @@ Rectangle {
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                 color: "#ffffff"
                 font.family: AsemanApp.globalFont.family
-                font.pixelSize: 9*Devices.fontDensity
+                font.pixelSize: 9*globalFontDensity*Devices.fontDensity
                 text: Database.poetDesctiption(catId)
             }
 

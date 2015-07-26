@@ -28,13 +28,20 @@ Item {
         anchors.topMargin: 4*Devices.density
         anchors.bottomMargin: 4*Devices.density
         highlightMoveDuration: 250
+        boundsBehavior: Flickable.StopAtBounds
+        rebound: Transition {
+            NumberAnimation {
+                properties: "x,y"
+                duration: 0
+            }
+        }
 
         model: ListModel {}
         delegate: Rectangle {
             id: item
             width: preference_list.width
             height: 60*Devices.density
-            color: press? "#3B97EC" : "#00000000"
+            color: press? "#880d80ec" : "#00000000"
 
             property string text: name
             property alias press: marea.pressed
@@ -46,7 +53,7 @@ Item {
                 anchors.verticalCenter: parent.verticalCenter
                 width: height
                 height: 15*Devices.density
-                source: "icons/tik.png"
+                source: "icons/tik-dark.png"
                 visible: Meikade.currentLanguage == item.text
             }
 
@@ -58,9 +65,9 @@ Item {
                 anchors.leftMargin: 10*Devices.density
                 y: parent.height/2 - height/2
                 text: parent.text
-                font.pixelSize: 11*Devices.fontDensity
+                font.pixelSize: 11*globalFontDensity*Devices.fontDensity
                 font.family: AsemanApp.globalFont.family
-                color: "#ffffff"
+                color: "#333333"
             }
 
             MouseArea{

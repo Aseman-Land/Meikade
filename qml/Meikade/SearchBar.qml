@@ -135,7 +135,7 @@ BackHandlerView {
                     Text {
                         anchors.fill: parent
                         font.family: AsemanApp.globalFont.family
-                        font.pixelSize: 10*Devices.fontDensity
+                        font.pixelSize: 10*globalFontDensity*Devices.fontDensity
                         verticalAlignment: Text.AlignVCenter
                         horizontalAlignment: Text.AlignHCenter
                         wrapMode: Text.WrapAnywhere
@@ -234,7 +234,7 @@ BackHandlerView {
         textColor: "#ffffff"
         icon: "icons/back_light_64.png"
         iconHeight: 16*Devices.density
-        fontSize: 11*Devices.fontDensity
+        fontSize: 11*globalFontDensity*Devices.fontDensity
         textFont.bold: false
         visible: backButton && search_bar.searchMode
         onClicked: {

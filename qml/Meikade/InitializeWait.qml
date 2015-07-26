@@ -34,7 +34,7 @@ Item {
         id: init_txt
         y: parent.height*4/5
         anchors.horizontalCenter: parent.horizontalCenter
-        font.pixelSize: 12*Devices.fontDensity
+        font.pixelSize: 12*globalFontDensity*Devices.fontDensity
         font.bold: true
         color: "#ffffff"
     }

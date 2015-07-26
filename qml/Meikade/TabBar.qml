@@ -53,7 +53,7 @@ Item {
                 x: 10*Devices.density
                 anchors.verticalCenter: parent.verticalCenter
                 text: item.name
-                font.pixelSize: view.selectedIndex == item.tid? 18*Devices.fontDensity : 12*Devices.fontDensity
+                font.pixelSize: view.selectedIndex == item.tid? 18*globalFontDensity*Devices.fontDensity : 12*globalFontDensity*Devices.fontDensity
                 font.underline: view.selectedIndex == item.tid
                 font.family: AsemanApp.globalFont.family
                 color: item.press? "#0d80ec" : "#ffffff"

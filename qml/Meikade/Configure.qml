@@ -23,51 +23,64 @@ BackHandlerView {
     id: configure
     width: 100
     height: 62
-    color: "#555555"
+    color: "#f0f0f0"
 
     viewMode: false
 
-    Button{
-        id: back_btn
-        anchors.left: parent.left
-        anchors.top: parent.top
-        anchors.topMargin: View.statusBarHeight
-        height: headerHeight
-        radius: 0
-        normalColor: "#00000000"
-        highlightColor: "#666666"
-        textColor: "#ffffff"
-        icon: "icons/back_light_64.png"
-        iconHeight: 16*Devices.density
-        fontSize: 11*Devices.fontDensity
-        textFont.bold: false
-        visible: backButton
-        onClicked: {
-            AsemanApp.back()
-            Devices.hideKeyboard()
+    Rectangle {
+        id: header
+        width: parent.width
+        height: View.statusBarHeight + Devices.standardTitleBarHeight
+        color: "#40CCC3"
+        z: 2
+
+        Item {
+            anchors.fill: parent
+            anchors.topMargin: View.statusBarHeight
+
+            Button{
+                id: back_btn
+                anchors.left: parent.left
+                anchors.verticalCenter: parent.verticalCenter
+                height: parent.height
+                radius: 0
+                normalColor: "#00000000"
+                highlightColor: "#666666"
+                textColor: "#ffffff"
+                icon: "icons/back_light_64.png"
+                iconHeight: 16*Devices.density
+                fontSize: 11*globalFontDensity*Devices.fontDensity
+                textFont.bold: false
+                visible: backButton
+                onClicked: {
+                    AsemanApp.back()
+                    Devices.hideKeyboard()
+                }
+            }
+
+            Text {
+                id: configure_txt
+                anchors.centerIn: parent
+                height: headerHeight
+                verticalAlignment: Text.AlignVCenter
+                font.pixelSize: 12*globalFontDensity*Devices.fontDensity
+                font.family: AsemanApp.globalFont.family
+                color: "#ffffff"
+            }
+        }
+
+        TitleBarShadow {
+            width: parent.width
+            anchors.top: parent.bottom
         }
     }
 
-    Text {
-        id: configure_txt
-        anchors.top: parent.top
-        anchors.margins: 12*Devices.density
-        anchors.topMargin: View.statusBarHeight
-        anchors.horizontalCenter: parent.horizontalCenter
-        height: headerHeight
-        verticalAlignment: Text.AlignVCenter
-        font.pixelSize: 12*Devices.fontDensity
-        font.family: AsemanApp.globalFont.family
-        color: "#ffffff"
-    }
-
-    Rectangle {
+    Item {
         id: frame
         anchors.left: parent.left
         anchors.right: parent.right
-        anchors.top: configure_txt.bottom
+        anchors.top: header.bottom
         anchors.bottom: parent.bottom
-        color: "#333333"
         clip: true
 
         Rectangle {
@@ -89,6 +102,13 @@ BackHandlerView {
                 anchors.bottomMargin: 4*Devices.density
                 highlightMoveDuration: 250
                 maximumFlickVelocity: View.flickVelocity
+                boundsBehavior: Flickable.StopAtBounds
+                rebound: Transition {
+                    NumberAnimation {
+                        properties: "x,y"
+                        duration: 0
+                    }
+                }
                 clip: true
 
                 model: ListModel {}
@@ -96,7 +116,7 @@ BackHandlerView {
                     id: item
                     width: prefrences.width
                     height: txt.height + 20*Devices.density
-                    color: press? "#3B97EC" : "#00000000"
+                    color: press? "#880d80ec" : "#00000000"
 
                     property string dstFile: file
                     property alias press: marea.pressed
@@ -110,9 +130,9 @@ BackHandlerView {
                         anchors.right: parent.right
                         anchors.margins: 30*Devices.density
                         y: parent.height/2 - height/2
-                        font.pixelSize: 10*Devices.fontDensity
+                        font.pixelSize: 10*globalFontDensity*Devices.fontDensity
                         font.family: AsemanApp.globalFont.family
-                        color: "#ffffff"
+                        color: "#333333"
                         text: name
                         wrapMode: TextInput.WordWrap
                     }
@@ -137,19 +157,20 @@ BackHandlerView {
                         x: Meikade.languageDirection == Qt.RightToLeft? 20 : item.width - width - 20
                         anchors.verticalCenter: parent.verticalCenter
                         visible: item.checkable
+                        color: "#333333"
                         checked: item.prprt.length==0? false : Meikade.property(Meikade,item.prprt)
                         onCheckedChanged: Meikade.setProperty(Meikade,item.prprt,checked)
                     }
                 }
 
-                highlight: Rectangle { color: "#3B97EC"; radius: 3; smooth: true }
+                highlight: Rectangle { color: "#880d80ec"; radius: 3; smooth: true }
                 currentIndex: -1
 
                 function refresh() {
                     model.clear()
 
                     model.append({ "name": qsTr("Backup & Restore"), "file": "BackupDialog.qml", "check": false, "pr":""})
-//                    model.append({ "name": qsTr("Fonts"), "file": "FontDialog.qml", "check": false, "pr":""})
+                    model.append({ "name": qsTr("Fonts"), "file": "FontDialog.qml", "check": false, "pr":""})
 //                    model.append({ "name": qsTr("Animations"), "file": "", "check": true, "pr":"animations"})
                     model.append({ "name": qsTr("Languages"), "file": "LanguageSelector.qml", "check": false, "pr":""})
                     model.append({ "name": qsTr("Night Theme"), "file": "", "check": true, "pr":"nightTheme"})
@@ -195,14 +216,6 @@ BackHandlerView {
                 NumberAnimation { easing.type: Easing.OutCubic; duration: animations*300 }
             }
         }
-    }
-
-    Rectangle {
-        anchors.left: parent.left
-        anchors.right: parent.right
-        anchors.top: configure_txt.bottom
-        height: 1*Devices.density
-        color: "#888888"
     }
 
     Connections{

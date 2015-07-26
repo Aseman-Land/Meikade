@@ -18,12 +18,18 @@
 
 import QtQuick 2.0
 import AsemanTools 1.0
+import Meikade 1.0
 
 Item {
     id: item
 
     property int cid
     property bool root
+
+    PoetImageProvider {
+        id: image_provider
+        poet: root? Database.catPoetId(cid) : 0
+    }
 
     Image {
         id: img
@@ -34,7 +40,7 @@ Item {
         width: height
         sourceSize: Qt.size(width,height)
         fillMode: Image.PreserveAspectFit
-        source: root? "poets/" + Database.catPoetId(cid) + ".png" : ""
+        source: root? image_provider.path : ""
     }
 
     Text{
@@ -45,7 +51,7 @@ Item {
         anchors.margins: 8*Devices.density
         horizontalAlignment: Text.AlignRight
         text: Database.catName(cid)
-        font.pixelSize: Devices.isMobile? 9*Devices.fontDensity : 10*Devices.fontDensity
+        font.pixelSize: Devices.isMobile? 9*globalFontDensity*Devices.fontDensity : 10*globalFontDensity*Devices.fontDensity
         font.family: AsemanApp.globalFont.family
         wrapMode: Text.WrapAtWordBoundaryOrAnywhere
         color: Meikade.nightTheme? "#ffffff" : "#111111"

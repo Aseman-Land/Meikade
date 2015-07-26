@@ -199,5 +199,10 @@
         <file>qml/Meikade/poets/55.png</file>
         <file>qml/Meikade/poets/612.png</file>
         <file>qml/Meikade/MeikadeNews1.qml</file>
+        <file>qml/Meikade/icons/tik-dark.png</file>
+        <file>qml/Meikade/XmlDownloaderPage.qml</file>
+        <file>qml/Meikade/icons/download.png</file>
+        <file>qml/Meikade/icons/installed.png</file>
+        <file>qml/Meikade/icons/down.png</file>
     </qresource>
 </RCC>

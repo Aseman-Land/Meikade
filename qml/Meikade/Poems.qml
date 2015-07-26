@@ -79,7 +79,7 @@ Rectangle {
             anchors.right: parent.right
             anchors.rightMargin: 8*Devices.density
             color: "#ffffff"
-            font.pixelSize: 10*Devices.fontDensity
+            font.pixelSize: 10*globalFontDensity*Devices.fontDensity
             font.family: AsemanApp.globalFont.family
             text: Database.catName(catId)
         }
@@ -131,7 +131,7 @@ Rectangle {
                 anchors.right: parent.right
                 anchors.margins: 30*Devices.density
                 y: parent.height/2 - height/2
-                font.pixelSize: Devices.isMobile? 9*Devices.fontDensity : 10*Devices.fontDensity
+                font.pixelSize: Devices.isMobile? 9*globalFontDensity*Devices.fontDensity : 10*globalFontDensity*Devices.fontDensity
                 font.family: AsemanApp.globalFont.family
                 color: Meikade.nightTheme? "#ffffff" :"#333333"
                 text: {
