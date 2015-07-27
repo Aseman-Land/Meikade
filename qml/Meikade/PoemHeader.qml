@@ -22,7 +22,7 @@ import AsemanTools 1.0
 Item {
     id: poem_header
     width: 100
-    height: title_column.height + title_column.y
+    height: 190*Devices.density
 
     property int poemId: -1
     property bool favorited: false
@@ -73,7 +73,7 @@ Item {
 
     Column {
         id: title_column
-        y: 20*Devices.density + View.statusBarHeight
+        anchors.verticalCenter: parent.verticalCenter
         anchors.left: parent.left
         anchors.right: parent.right
         spacing: 10*Devices.density
@@ -83,17 +83,18 @@ Item {
             anchors.horizontalCenter: parent.horizontalCenter
             font.pixelSize: 13*globalFontDensity*Devices.fontDensity
             font.family: AsemanApp.globalFont.family
-            wrapMode: TextInput.WordWrap
+            wrapMode: Text.WordWrap
             color: poem_header.color
             horizontalAlignment: Text.AlignHCenter
         }
 
         Text {
             id: txt2
+            width: parent.width
             anchors.horizontalCenter: parent.horizontalCenter
             font.pixelSize: 13*globalFontDensity*Devices.fontDensity
             font.family: AsemanApp.globalFont.family
-            wrapMode: TextInput.WordWrap
+            wrapMode: Text.WordWrap
             color: poem_header.color
             horizontalAlignment: Text.AlignHCenter
         }
@@ -103,74 +104,75 @@ Item {
             anchors.right: parent.right
             height: title_column.spacing
         }
+    }
 
-        Rectangle {
-            anchors.left: parent.left
+    Rectangle {
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+        height: 32*Devices.density
+        color: "#EC4334"
+
+        Text{
+            id: poet_txt
             anchors.right: parent.right
-            height: 32*Devices.density
-            color: "#EC4334"
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.margins: 8*Devices.density
+            font.pixelSize: 10*globalFontDensity*Devices.fontDensity
+            font.family: AsemanApp.globalFont.family
+            wrapMode: TextInput.WordWrap
+            color: poem_header.color
+            horizontalAlignment: Text.AlignHCenter
+        }
 
-            Text{
-                id: poet_txt
-                anchors.right: parent.right
-                anchors.verticalCenter: parent.verticalCenter
-                anchors.margins: 8*Devices.density
-                font.pixelSize: 10*globalFontDensity*Devices.fontDensity
-                font.family: AsemanApp.globalFont.family
-                wrapMode: TextInput.WordWrap
-                color: poem_header.color
-                horizontalAlignment: Text.AlignHCenter
+        Row {
+            id: tools_row
+            height: 32*Devices.density
+            anchors.left: parent.left
+            anchors.verticalCenter: parent.verticalCenter
+            spacing: 1*Devices.density
+
+            Button {
+                id: favorite
+                height: tools_row.height
+                width: height
+                icon: poem_header.favorited? "icons/favorites.png" : "icons/unfavorites.png"
+                normalColor: "#9D463E"
+                iconHeight: 14*Devices.density
+                onClicked: poem_header.favorited = !poem_header.favorited
             }
 
-            Row {
-                id: tools_row
-                height: 32*Devices.density
-                anchors.left: parent.left
-                anchors.verticalCenter: parent.verticalCenter
-                spacing: 1*Devices.density
-
-                Button {
-                    id: favorite
-                    height: tools_row.height
-                    width: height
-                    icon: poem_header.favorited? "icons/favorites.png" : "icons/unfavorites.png"
-                    normalColor: "#9D463E"
-                    iconHeight: 14*Devices.density
-                    onClicked: poem_header.favorited = !poem_header.favorited
-                }
-
-                Button {
-                    id: share
-                    height: tools_row.height
-                    width: height
-                    icon: "icons/share.png"
-                    normalColor: "#9D463E"
-                    iconHeight: 14*Devices.density
-                    onClicked: {
-                        var subject = Database.poemName(poem_header.poemId)
-                        var poet
-                        var catId = Database.poemCat(poem_header.poemId)
-                        while( catId ) {
-                            poet = Database.catName(catId)
-                            subject = Database.catName(catId) + ", " + subject
-                            catId = Database.parentOf(catId)
-                        }
-
-                        var message = ""
-                        var vorders = Database.poemVerses(poem_header.poemId)
-                        for( var i=0; i<vorders.length; i++ ) {
-                            var vid = vorders[i]
-                            if( i!=0 && Database.versePosition(poem_header.poemId,vid)===0 && Database.versePosition(poem_header.poemId,vid+1)===1 )
-                                message = message + "\n"
-
-                            message = message + Database.verseText(poem_header.poemId,vorders[i]) + "\n"
-
-                        }
-
-                        message = message + "\n\n" + poet
-
-                        Devices.share(subject,message)
+            Button {
+                id: share
+                height: tools_row.height
+                width: height
+                icon: "icons/share.png"
+                normalColor: "#9D463E"
+                iconHeight: 14*Devices.density
+                onClicked: {
+                    var subject = Database.poemName(poem_header.poemId)
+                    var poet
+                    var catId = Database.poemCat(poem_header.poemId)
+                    while( catId ) {
+                        poet = Database.catName(catId)
+                        subject = Database.catName(catId) + ", " + subject
+                        catId = Database.parentOf(catId)
                     }
+
+                    var message = ""
+                    var vorders = Database.poemVerses(poem_header.poemId)
+                    for( var i=0; i<vorders.length; i++ ) {
+                        var vid = vorders[i]
+                        if( i!=0 && Database.versePosition(poem_header.poemId,vid)===0 && Database.versePosition(poem_header.poemId,vid+1)===1 )
+                            message = message + "\n"
+
+                        message = message + Database.verseText(poem_header.poemId,vorders[i]) + "\n"
+
+                    }
+
+                    message = message + "\n\n" + poet
+
+                    Devices.share(subject,message)
                 }
             }
         }

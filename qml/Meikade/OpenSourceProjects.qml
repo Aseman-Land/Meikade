@@ -36,7 +36,7 @@ Rectangle {
         anchors.top: parent.top
         anchors.topMargin: View.statusBarHeight
         anchors.right: parent.right
-        titleFont.pixelSize: 13*globalFontDensity*Devices.fontDensity
+        titleFont.pixelSize: 12*globalFontDensity*Devices.fontDensity
         light: true
         backButtonText: ""
     }

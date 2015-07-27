@@ -95,7 +95,7 @@ BackHandlerView {
         anchors.top: parent.top
         anchors.right: parent.right
         anchors.topMargin: View.statusBarHeight
-        titleFont.pixelSize: 13*globalFontDensity*Devices.fontDensity
+        titleFont.pixelSize: 12*globalFontDensity*Devices.fontDensity
         light: true
         text: qsTr("Notes")
         backButtonText: ""

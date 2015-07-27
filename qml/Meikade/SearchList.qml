@@ -65,6 +65,13 @@ Rectangle {
             highlightMoveDuration: 250
             maximumFlickVelocity: View.flickVelocity
             bottomMargin: View.navigationBarHeight
+            boundsBehavior: Flickable.StopAtBounds
+            rebound: Transition {
+                NumberAnimation {
+                    properties: "x,y"
+                    duration: 0
+                }
+            }
 
             property bool atEnd: atYEnd
             onAtEndChanged: if(atEnd && count != 0) tmodel.more()

@@ -102,7 +102,7 @@ Rectangle {
                 Text {
                     anchors.horizontalCenter: parent.horizontalCenter
                     font.family: AsemanApp.globalFont.family
-                    font.pixelSize: 10*globalFontDensity*Devices.fontDensity
+                    font.pixelSize: 9*globalFontDensity*Devices.fontDensity
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                     color: "#333333"
                     text: qsTr("Nile is an Iranian software corporation that makes software for Desktop computers, Android, iOS, Mac, Windows Phone, Ubuntu Phone and ...\n"+
