@@ -88,35 +88,23 @@
         <file>qml/Meikade/poets/32.png</file>
         <file>qml/Meikade/poets/33.png</file>
         <file>qml/Meikade/poets/34.png</file>
-        <file>qml/Meikade/poets/35.png</file>
         <file>qml/Meikade/poets/37.png</file>
         <file>qml/Meikade/poets/38.png</file>
         <file>qml/Meikade/poets/39.png</file>
-        <file>qml/Meikade/poets/40.png</file>
-        <file>qml/Meikade/poets/41.png</file>
         <file>qml/Meikade/poets/42.png</file>
         <file>qml/Meikade/poets/43.png</file>
         <file>qml/Meikade/poets/44.png</file>
         <file>qml/Meikade/poets/45.png</file>
         <file>qml/Meikade/poets/46.png</file>
         <file>qml/Meikade/poets/47.png</file>
-        <file>qml/Meikade/poets/48.png</file>
         <file>qml/Meikade/poets/49.png</file>
-        <file>qml/Meikade/poets/50.png</file>
         <file>qml/Meikade/poets/51.png</file>
         <file>qml/Meikade/poets/52.png</file>
-        <file>qml/Meikade/poets/53.png</file>
-        <file>qml/Meikade/poets/54.png</file>
         <file>qml/Meikade/poets/56.png</file>
         <file>qml/Meikade/poets/501.png</file>
-        <file>qml/Meikade/poets/502.png</file>
-        <file>qml/Meikade/poets/503.png</file>
-        <file>qml/Meikade/poets/504.png</file>
         <file>qml/Meikade/poets/505.png</file>
-        <file>qml/Meikade/poets/506.png</file>
         <file>qml/Meikade/poets/512.png</file>
         <file>qml/Meikade/poets/514.png</file>
-        <file>qml/Meikade/poets/602.png</file>
         <file>qml/Meikade/poets/615.png</file>
         <file>qml/Meikade/poets/508.png</file>
         <file>qml/Meikade/poets/608.png</file>
@@ -194,15 +182,15 @@
         <file>qml/Meikade/icons/button-close.png</file>
         <file>qml/Meikade/icons/button-omen.png</file>
         <file>qml/Meikade/icons/button-random.png</file>
-        <file>qml/Meikade/poets/600.png</file>
         <file>qml/Meikade/poets/700.png</file>
         <file>qml/Meikade/poets/55.png</file>
-        <file>qml/Meikade/poets/612.png</file>
         <file>qml/Meikade/MeikadeNews1.qml</file>
         <file>qml/Meikade/icons/tik-dark.png</file>
         <file>qml/Meikade/XmlDownloaderPage.qml</file>
         <file>qml/Meikade/icons/download.png</file>
         <file>qml/Meikade/icons/installed.png</file>
         <file>qml/Meikade/icons/down.png</file>
+        <file>qml/Meikade/poets/default.png</file>
+        <file>qml/Meikade/icons/shop.png</file>
     </qresource>
 </RCC>

@@ -38,6 +38,7 @@ Rectangle {
         anchors.right: parent.right
         titleFont.pixelSize: 13*globalFontDensity*Devices.fontDensity
         light: true
+        backButtonText: ""
     }
 
     TitleBarShadow {
@@ -145,7 +146,7 @@ Rectangle {
         Component.onCompleted: {
             model.clear()
 
-            model.append({"title": "Droid fonts", "license": "Apache License v2", "link": "https://www.google.com/fonts/specimen/Droid+Sans", "description": "Droid Sans is a humanist sans serif typeface designed by Steve Matteson, Type Director of Ascender Corp."})
+//            model.append({"title": "Droid fonts", "license": "Apache License v2", "link": "https://www.google.com/fonts/specimen/Droid+Sans", "description": "Droid Sans is a humanist sans serif typeface designed by Steve Matteson, Type Director of Ascender Corp."})
             model.append({"title": "Ganjoor", "license": "GNU GPL v2", "link": "http://ganjoor.net", "description": "Persian poetry web site called ganjoor which includes a .NET based Windows client and a SQLite copy of site database"})
             model.append({"title": "Qt Framework " + Tools.qtVersion(), "license": "GNU GPL v3", "link": "http://qt.io", "description": "Qt is a cross-platform application and UI framework for developers using C++ or QML, a CSS & JavaScript like language."})
             model.append({"title": "QtSingleApplication", "license": "GNU GPL v3", "link": "https://github.com/lycis/QtDropbox/", "description": "The QtSingleApplication component provides support for applications that can be only started once per user."})

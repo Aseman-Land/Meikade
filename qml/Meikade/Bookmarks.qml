@@ -104,6 +104,7 @@ BackHandlerView {
         titleFont.pixelSize: 13*globalFontDensity*Devices.fontDensity
         light: true
         text: qsTr("Bookmarks")
+        backButtonText: ""
     }
 
     function refresh() {

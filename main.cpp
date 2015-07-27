@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
     app.setApplicationDisplayName("Meikade");
     app.setOrganizationDomain("NileGroup");
     app.setOrganizationName("Nile Group");
-    app.setApplicationVersion("3.1.1");
+    app.setApplicationVersion("v3.2.0");
     app.setWindowIcon(QIcon(app.applicationDirPath()+"/qml/Meikade/icons/meikade.png"));
 
     Meikade meikade;

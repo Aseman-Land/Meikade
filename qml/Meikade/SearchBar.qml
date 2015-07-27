@@ -44,7 +44,7 @@ BackHandlerView {
         id: search_frame
         width: parent.width
         height: Devices.standardTitleBarHeight + View.statusBarHeight
-        color: "#4D2994"
+        color: "#440B0B"
 
         Item {
             y: Devices.standardTitleBarHeight/2 - height/2 + View.statusBarHeight

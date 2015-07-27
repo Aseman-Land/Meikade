@@ -61,6 +61,7 @@ Rectangle {
             light: true
             backButton: false
             text: qsTr("Share")
+            backButtonText: ""
         }
 
         Row {
@@ -245,6 +246,13 @@ Rectangle {
             model: smodel
             orientation: Qt.Horizontal
             layoutDirection: Meikade.languageDirection
+            boundsBehavior: Flickable.StopAtBounds
+            rebound: Transition {
+                NumberAnimation {
+                    properties: "x,y"
+                    duration: 0
+                }
+            }
             delegate: Rectangle {
                 height: listv.height
                 width: height

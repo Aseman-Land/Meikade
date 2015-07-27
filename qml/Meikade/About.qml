@@ -168,7 +168,7 @@ Rectangle {
         anchors.bottomMargin: View.navigationBarHeight + 10*Devices.density
         font.family: AsemanApp.globalFont.family
         font.pixelSize: 9*globalFontDensity*Devices.fontDensity
-        text: "v3.1.0"
+        text: AsemanApp.applicationVersion
         wrapMode: Text.WordWrap
         color: "#333333"
         horizontalAlignment: Text.AlignRight

@@ -1,6 +1,7 @@
 #define THUMB_WEB_LINK QString("http://aseman.land/download/meikade/thumbs/%1.png").arg(p->poet)
 #define THUMB_QRC_LINK QString(":/qml/Meikade/poets/%1.png").arg(p->poet)
 #define THUMB_DNL_LINK QString(p->downloadPath+"/%1.png").arg(p->poet)
+#define THUMB_DEFAULT QString(":/qml/Meikade/poets/default.png")
 
 #include "poetimageprovider.h"
 #include "asemantools/asemandownloader.h"
@@ -69,7 +70,7 @@ void PoetImageProvider::refresh()
         result = "qrc" + THUMB_QRC_LINK;
     else
     if(QFileInfo::exists(THUMB_DNL_LINK))
-        result = THUMB_DNL_LINK;
+        result = QUrl::fromLocalFile(THUMB_DNL_LINK);
     else
     {
         p->downloader = new AsemanDownloader(this);
@@ -79,7 +80,7 @@ void PoetImageProvider::refresh()
         connect(p->downloader, SIGNAL(finished(QByteArray)), SLOT(finished(QByteArray)));
 
         p->downloader->start();
-        return;
+        result = "qrc" + THUMB_DEFAULT;
     }
 
     p->path = result;

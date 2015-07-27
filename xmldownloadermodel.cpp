@@ -357,11 +357,12 @@ void XmlDownloaderModel::finished(const QByteArray &data)
         while(!revision.isNull())
         {
             const int structure = revision.attribute("structure").toInt();
-            if(structure > XML_REVISION_STRUCTURE)
-                continue;
             const QDateTime &date = QDateTime::fromString(revision.attribute("date"), XML_DATE_FORMAT);
-            if(date < unit.date)
+            if(structure > XML_REVISION_STRUCTURE || date < unit.date)
+            {
+                revision = revision.nextSiblingElement("Poet");
                 continue;
+            }
 
             const QString &guid = revision.attribute("guid");
             const QString &mime = revision.attribute("mimeType");

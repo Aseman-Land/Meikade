@@ -28,9 +28,9 @@ AsemanMain {
     color: "#000000"
     mainFrame: main_scene
 
-    property string globalPoemFontFamily: Devices.isIOS? "Droid Arabic Naskh" : poem_texts_font.name
+    property string globalPoemFontFamily: poem_texts_font.name
     property real globalZoomAnimDurations: animations? 500 : 0
-    property real globalFontDensity: 0.85
+    property real globalFontDensity: 0.9
 
     property alias headerHeight: header.height
     property bool backButton: !Devices.isAndroid

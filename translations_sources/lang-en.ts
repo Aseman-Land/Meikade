@@ -492,7 +492,7 @@ Thank you.</source>
     </message>
     <message>
         <location filename="../qml/Meikade/MainMenu.qml" line="117"/>
-        <source>Download</source>
+        <source>Store</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -537,57 +537,57 @@ Thank you.</source>
 <context>
     <name>Meikade</name>
     <message>
-        <location filename="../meikade.cpp" line="282"/>
+        <location filename="../meikade.cpp" line="284"/>
         <source>0</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../meikade.cpp" line="283"/>
+        <location filename="../meikade.cpp" line="285"/>
         <source>1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../meikade.cpp" line="284"/>
+        <location filename="../meikade.cpp" line="286"/>
         <source>2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../meikade.cpp" line="285"/>
+        <location filename="../meikade.cpp" line="287"/>
         <source>3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../meikade.cpp" line="286"/>
+        <location filename="../meikade.cpp" line="288"/>
         <source>4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../meikade.cpp" line="287"/>
+        <location filename="../meikade.cpp" line="289"/>
         <source>5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../meikade.cpp" line="288"/>
+        <location filename="../meikade.cpp" line="290"/>
         <source>6</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../meikade.cpp" line="289"/>
+        <location filename="../meikade.cpp" line="291"/>
         <source>7</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../meikade.cpp" line="290"/>
+        <location filename="../meikade.cpp" line="292"/>
         <source>8</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../meikade.cpp" line="291"/>
+        <location filename="../meikade.cpp" line="293"/>
         <source>9</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../meikade.cpp" line="425"/>
+        <location filename="../meikade.cpp" line="427"/>
         <source>Meikade&apos;s hafez omen is different from other omens.
 It&apos;s calculate omen using natural random algorithms. Another apps calculate omen using machine algorithms.</source>
         <translation type="unfinished"></translation>
@@ -830,30 +830,55 @@ It&apos;s calculate omen using natural random algorithms. Another apps calculate
 <context>
     <name>XmlDownloaderPage</name>
     <message>
-        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="115"/>
+        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="48"/>
+        <source>Store</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="82"/>
+        <source>Fetching poet lists...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="91"/>
+        <source>Can&apos;t connect to the server</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="126"/>
+        <source>Poets list, you can download from NileGroup servers...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="203"/>
         <source>Installing</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="118"/>
+        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="206"/>
         <source>Downloading</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="121"/>
+        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="209"/>
         <source>Installed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="123"/>
-        <source>Ready to download</source>
+        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="212"/>
+        <source>Error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="214"/>
+        <source>Free</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>main</name>
     <message>
-        <location filename="../qml/Meikade/main.qml" line="438"/>
+        <location filename="../qml/Meikade/main.qml" line="443"/>
         <source>Meikade</source>
         <translation type="unfinished"></translation>
     </message>

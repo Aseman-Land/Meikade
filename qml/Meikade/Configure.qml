@@ -45,7 +45,7 @@ BackHandlerView {
                 height: parent.height
                 radius: 0
                 normalColor: "#00000000"
-                highlightColor: "#666666"
+                highlightColor: "#33666666"
                 textColor: "#ffffff"
                 icon: "icons/back_light_64.png"
                 iconHeight: 16*Devices.density
@@ -170,7 +170,7 @@ BackHandlerView {
                     model.clear()
 
                     model.append({ "name": qsTr("Backup & Restore"), "file": "BackupDialog.qml", "check": false, "pr":""})
-                    model.append({ "name": qsTr("Fonts"), "file": "FontDialog.qml", "check": false, "pr":""})
+//                    model.append({ "name": qsTr("Fonts"), "file": "FontDialog.qml", "check": false, "pr":""})
 //                    model.append({ "name": qsTr("Animations"), "file": "", "check": true, "pr":"animations"})
                     model.append({ "name": qsTr("Languages"), "file": "LanguageSelector.qml", "check": false, "pr":""})
                     model.append({ "name": qsTr("Night Theme"), "file": "", "check": true, "pr":"nightTheme"})
