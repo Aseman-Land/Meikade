@@ -36,6 +36,26 @@
     </message>
     <message>
         <location filename="../qml/Meikade/About.qml" line="137"/>
+        <source> - AmirHosein Mousavi (Project Manager and Leader)
+ - Bardia Daneshvar (Project Founder, Project Architect and Developer)
+ - Pourya Daneshvar (Designer)
+ - Hasan Noruzi (Idea Processing)</source>
+        <translation>- امیرحسین موسوی (مدیر و رهبر پروژه)
+- بردیا دانشور (بنیان‌گذار، طراح فنی و برنامه‌نویس)
+- پوریا دانشور (طراح)
+- حسن نوروزی (ایده پرداز)</translation>
+    </message>
+    <message>
+        <source> - AmirHosein Mousavi (Project Manager and Leader)
+ - Bardia Daneshvar (Project Architect and Main Developer)
+ - Pourya Daneshvar (Designer)
+ - Hasan Noruzi (Idea Processing)</source>
+        <translation>- امیرحسین موسوی (مدیر و رهبر پروژه)
+- بردیا دانشور (طراح فنی و برنامه‌نویس)
+- پوریا دانشور (طراح)
+- حسن نوروزی (ایده پرداز)</translation>
+    </message>
+    <message>
         <source> - Bardia Daneshvar (Project Leader and Developer)
  - AmirHosein Mousavi (Designer and Idea Processing)
  - Pourya Daneshvar (Designer)
@@ -255,7 +275,6 @@ contact@aseman.org</translation>
         <translation type="obsolete">صفحه نمایش</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/Configure.qml" line="173"/>
         <source>Fonts</source>
         <translation>فونت‌ها</translation>
     </message>
@@ -716,12 +735,12 @@ It&apos;s calculate omen using natural random algorithms. Another apps calculate
 <context>
     <name>OpenSourceProjects</name>
     <message>
-        <location filename="../qml/Meikade/OpenSourceProjects.qml" line="57"/>
+        <location filename="../qml/Meikade/OpenSourceProjects.qml" line="58"/>
         <source>List of other opensource projects used in Meikade.</source>
         <translation>لیست پروژه‌های منبع بازی که در میکده از آن‌ها استفاده شده است.</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/OpenSourceProjects.qml" line="173"/>
+        <location filename="../qml/Meikade/OpenSourceProjects.qml" line="174"/>
         <source>Open Source Projects</source>
         <translation>پروژه‌های منبع باز</translation>
     </message>
@@ -892,12 +911,12 @@ It&apos;s calculate omen using natural random algorithms. Another apps calculate
         <translation>به اشتراک گذاری</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/StickerDialog.qml" line="79"/>
+        <location filename="../qml/Meikade/StickerDialog.qml" line="80"/>
         <source>Save</source>
         <translation>ذخیره</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/StickerDialog.qml" line="278"/>
+        <location filename="../qml/Meikade/StickerDialog.qml" line="286"/>
         <source>Font</source>
         <translation>قلم</translation>
     </message>

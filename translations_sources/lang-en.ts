@@ -20,8 +20,8 @@
     </message>
     <message>
         <location filename="../qml/Meikade/About.qml" line="137"/>
-        <source> - Bardia Daneshvar (Project Leader and Developer)
- - AmirHosein Mousavi (Designer and Idea Processing)
+        <source> - AmirHosein Mousavi (Project Manager and Leader)
+ - Bardia Daneshvar (Project Founder, Project Architect and Developer)
  - Pourya Daneshvar (Designer)
  - Hasan Noruzi (Idea Processing)</source>
         <translation type="unfinished"></translation>
@@ -201,11 +201,6 @@ contact@aseman.org</source>
     <message>
         <location filename="../qml/Meikade/Configure.qml" line="172"/>
         <source>Backup &amp; Restore</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/Meikade/Configure.qml" line="173"/>
-        <source>Fonts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -617,12 +612,12 @@ It&apos;s calculate omen using natural random algorithms. Another apps calculate
 <context>
     <name>OpenSourceProjects</name>
     <message>
-        <location filename="../qml/Meikade/OpenSourceProjects.qml" line="57"/>
+        <location filename="../qml/Meikade/OpenSourceProjects.qml" line="58"/>
         <source>List of other opensource projects used in Meikade.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/OpenSourceProjects.qml" line="173"/>
+        <location filename="../qml/Meikade/OpenSourceProjects.qml" line="174"/>
         <source>Open Source Projects</source>
         <translation type="unfinished"></translation>
     </message>
@@ -746,12 +741,12 @@ It&apos;s calculate omen using natural random algorithms. Another apps calculate
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/StickerDialog.qml" line="79"/>
+        <location filename="../qml/Meikade/StickerDialog.qml" line="80"/>
         <source>Save</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/StickerDialog.qml" line="278"/>
+        <location filename="../qml/Meikade/StickerDialog.qml" line="286"/>
         <source>Font</source>
         <translation type="unfinished"></translation>
     </message>
