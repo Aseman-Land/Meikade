@@ -480,13 +480,7 @@ void Meikade::start()
     p->system = new SystemInfo(this);
     p->devices = new AsemanDevices(this);
 
-    p->viewer = new AsemanQuickView(
-#ifndef Q_OS_ANDROID
-                        AsemanQuickView::AllExceptLogger
-#else
-                        AsemanQuickView::AllExceptLogger
-#endif
-                );
+    p->viewer = new AsemanQuickView();
     p->viewer->installEventFilter(this);
     p->viewer->engine()->rootContext()->setContextProperty( "Meikade" , this );
     p->viewer->engine()->rootContext()->setContextProperty( "Database", p->poem_db  );

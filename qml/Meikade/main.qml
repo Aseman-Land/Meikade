@@ -18,10 +18,10 @@
 
 import QtQuick 2.0
 import QtGraphicalEffects 1.0
-import AsemanTools 1.0
+import AsemanTools 1.0 as AT
 import Meikade 1.0
 
-AsemanMain {
+AT.AsemanMain {
     id: main
     width: 500
     height: 680
@@ -33,7 +33,7 @@ AsemanMain {
     property real globalFontDensity: 0.9
 
     property alias headerHeight: header.height
-    property bool backButton: !Devices.isAndroid
+    property bool backButton: !AT.Devices.isAndroid
     property bool flatDesign: true
 
     property alias catPage: cat_page
@@ -52,9 +52,9 @@ AsemanMain {
 
     onMenuItemChanged: {
         if( menuItem )
-            BackHandler.pushHandler( main, main.hideMenuItem )
+            AT.BackHandler.pushHandler( main, main.hideMenuItem )
         else
-            BackHandler.removeHandler(main)
+            AT.BackHandler.removeHandler(main)
     }
 
     QtObject {
@@ -93,18 +93,18 @@ AsemanMain {
 
     Connections {
         target: Meikade
-        onCloseRequest: AsemanApp.back()
+        onCloseRequest: AT.AsemanApp.back()
     }
 
     Connections {
-        target: AsemanApp
+        target: AT.AsemanApp
         onBackRequest: {
             if(timer_delayer.running)
                 return
 
             timer_delayer.start()
-            var res = BackHandler.back()
-            if( !res && !Devices.isDesktop )
+            var res = AT.BackHandler.back()
+            if( !res && !AT.Devices.isDesktop )
                 Meikade.close()
         }
     }
@@ -115,7 +115,7 @@ AsemanMain {
         repeat: false
     }
 
-    Keys.onEscapePressed: AsemanApp.back()
+    Keys.onEscapePressed: AT.AsemanApp.back()
 
     Connections {
         target: Database
@@ -126,7 +126,7 @@ AsemanMain {
                 init_wait.destroy()
             }
 
-            if(AsemanApp.applicationVersion == "3.1.1" && Meikade.runCount > 1)
+            if(AT.AsemanApp.applicationVersion == "3.1.1" && Meikade.runCount > 1)
                 showNews(1)
             else
                 Meikade.setMeikadeNews(1, true)
@@ -151,7 +151,7 @@ AsemanMain {
     FontLoader {
         id: poem_texts_font
         source: Meikade.resourcePath + "/fonts/" + Meikade.poemsFont + ".ttf"
-        onStatusChanged: if(status == FontLoader.Ready) AsemanApp.globalFont.family = name
+        onStatusChanged: if(status == FontLoader.Ready) AT.AsemanApp.globalFont.family = name
     }
 
     Item {
@@ -229,7 +229,7 @@ AsemanMain {
                 y: 0
                 anchors.left: parent.left
                 anchors.right: parent.right
-                height: Devices.standardTitleBarHeight+View.statusBarHeight
+                height: AT.Devices.standardTitleBarHeight+AT.View.statusBarHeight
 
                 Behavior on y {
                     NumberAnimation { easing.type: Easing.OutCubic; duration: animations*400 }
@@ -240,9 +240,9 @@ AsemanMain {
                     anchors.left: parent.left
                     anchors.right: parent.right
                     anchors.bottom: parent.bottom
-                    height: Devices.standardTitleBarHeight
+                    height: AT.Devices.standardTitleBarHeight
 
-                    Button{
+                    AT.Button{
                         id: back_btn
                         anchors.left: parent.left
                         anchors.top: parent.top
@@ -252,13 +252,13 @@ AsemanMain {
                         highlightColor: "#88666666"
                         textColor: "#ffffff"
                         icon: "icons/back_light_64.png"
-                        iconHeight: 16*Devices.density
-                        fontSize: 11*globalFontDensity*Devices.fontDensity
+                        iconHeight: 16*AT.Devices.density
+                        fontSize: 11*globalFontDensity*AT.Devices.fontDensity
                         textFont.bold: false
                         visible: backButton && cat_page.count != 1
                         onClicked: {
-                            AsemanApp.back()
-                            Devices.hideKeyboard()
+                            AT.AsemanApp.back()
+                            AT.Devices.hideKeyboard()
                         }
                     }
                 }
@@ -269,7 +269,7 @@ AsemanMain {
     FastBlur {
         anchors.fill: main_scene
         source: main_scene
-        radius: 32*Devices.density
+        radius: 32*AT.Devices.density
         opacity: main_dialog_frame.opacity
         visible: main_dialog_frame.visible
     }
@@ -327,9 +327,9 @@ AsemanMain {
                         hideMenuItem()
                 }
                 if( !hide )
-                    BackHandler.pushHandler( search_bar_back, search_bar_back.hide )
+                    AT.BackHandler.pushHandler( search_bar_back, search_bar_back.hide )
                 else
-                    BackHandler.removeHandler(search_bar_back)
+                    AT.BackHandler.removeHandler(search_bar_back)
             }
 
             QtObject {
@@ -356,10 +356,10 @@ AsemanMain {
         opacity: sidebar.percent*0.7
     }
 
-    SideMenu {
+    AT.SideMenu {
         id: sidebar
         anchors.fill: parent
-        menuWidth: Devices.isMobile? parent.width-50*Devices.density : parent.width/2 + 20*Devices.density
+        menuWidth: AT.Devices.isMobile? parent.width-50*AT.Devices.density : parent.width/2 + 20*AT.Devices.density
         layoutDirection: Qt.RightToLeft
         delegate: MouseArea {
             anchors.fill: parent
@@ -371,7 +371,7 @@ AsemanMain {
 
             MainMenu {
                 anchors.fill: parent
-                anchors.bottomMargin: View.navigationBarHeight
+                anchors.bottomMargin: AT.View.navigationBarHeight
                 onSelected: {
                     if( main.menuItem ) {
                         if(fileName.length == 0)
@@ -382,7 +382,7 @@ AsemanMain {
                     if( !search_bar.hide ) {
                         if( search_bar.viewMode )
                             if( BackHandler )
-                                AsemanApp.back()
+                                AT.AsemanApp.back()
 
                         search_bar.hide = true
                     }
@@ -417,19 +417,19 @@ AsemanMain {
 
     Item {
         id: menu_button
-        height: Devices.standardTitleBarHeight
-        width: menu_img.width + menu_img.anchors.rightMargin + menu_text.width + menu_text.anchors.rightMargin + 12*Devices.density
+        height: AT.Devices.standardTitleBarHeight
+        width: menu_img.width + menu_img.anchors.rightMargin + menu_text.width + menu_text.anchors.rightMargin + 12*AT.Devices.density
         anchors.top: parent.top
         anchors.right: parent.right
-        anchors.topMargin: View.statusBarHeight + main_scene.y
+        anchors.topMargin: AT.View.statusBarHeight + main_scene.y
         opacity: 1-sidebar.percent
 
-        MenuIcon {
+        AT.MenuIcon {
             id: menu_img
             anchors.right: parent.right
             anchors.verticalCenter: parent.verticalCenter
             anchors.rightMargin: y
-            height: 20*Devices.density
+            height: 20*AT.Devices.density
             width: height
         }
 
@@ -437,9 +437,9 @@ AsemanMain {
             id: menu_text
             anchors.verticalCenter: parent.verticalCenter
             anchors.right: menu_img.left
-            anchors.rightMargin: 8*Devices.density
-            font.family: AsemanApp.globalFont.family
-            font.pixelSize: 11*globalFontDensity*Devices.fontDensity
+            anchors.rightMargin: 8*AT.Devices.density
+            font.family: AT.AsemanApp.globalFont.family
+            font.pixelSize: 11*globalFontDensity*AT.Devices.fontDensity
             text: qsTr("Meikade")
             color: "#ffffff"
         }
@@ -466,7 +466,7 @@ AsemanMain {
     }
 
     function setCurrentChapter( id ){
-        quran_frame.chapterViewer.chapter = id
+        quran_frame.chapterAT.Viewer.chapter = id
     }
 
     function showMainDialog( item ){
@@ -513,7 +513,7 @@ AsemanMain {
     }
 
     function back(){
-        return AsemanApp.back()
+        return AT.AsemanApp.back()
     }
 
     function loadFonts() {
