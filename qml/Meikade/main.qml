@@ -347,19 +347,9 @@ AT.AsemanMain {
         }
     }
 
-    Rectangle {
-        anchors.left: parent.left
-        anchors.right: parent.right
-        anchors.top: sidebar.top
-        anchors.bottom: sidebar.bottom
-        color: "#000000"
-        opacity: sidebar.percent*0.7
-    }
-
     AT.SideMenu {
         id: sidebar
         anchors.fill: parent
-        menuWidth: AT.Devices.isMobile? parent.width-50*AT.Devices.density : parent.width/2 + 20*AT.Devices.density
         layoutDirection: Qt.RightToLeft
         delegate: MouseArea {
             anchors.fill: parent
