@@ -20,6 +20,7 @@ import QtQuick 2.0
 import QtGraphicalEffects 1.0
 import AsemanTools 1.0 as AT
 import Meikade 1.0
+import "."
 
 AT.AsemanMain {
     id: main

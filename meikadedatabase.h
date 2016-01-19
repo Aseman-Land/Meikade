@@ -64,6 +64,7 @@ public slots:
 
 private:
     void init_buffer();
+    void fetchPoem(int pid );
 
 private slots:
     void initialize_prv(const QString & dst);

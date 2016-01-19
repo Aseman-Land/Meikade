@@ -78,4 +78,5 @@ RESOURCES += \
 
 DISTFILES += \
     translations_sources/lang-fa.ts \
-    translations_sources/lang-en.ts
+    translations_sources/lang-en.ts \
+    qmldir

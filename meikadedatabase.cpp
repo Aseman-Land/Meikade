@@ -73,6 +73,9 @@ public:
 
     ThreadedFileSystem *tfs;
     bool initialized;
+
+    int fetchedPoem;
+    QHash<int, QHash<QString,QVariant> > fetchedPoemData;
 };
 
 MeikadeDatabase::MeikadeDatabase(ThreadedFileSystem *tfs, QObject *parent) :
@@ -81,6 +84,7 @@ MeikadeDatabase::MeikadeDatabase(ThreadedFileSystem *tfs, QObject *parent) :
     p = new MeikadeDatabasePrivate;
     p->tfs = tfs;
     p->initialized = false;
+    p->fetchedPoem = -1;
 
     initialize();
 }
@@ -287,30 +291,14 @@ bool MeikadeDatabase::containsPoet(int id)
 
 QString MeikadeDatabase::verseText(int pid, int vid)
 {
-    QSqlQuery query( p->db );
-    query.prepare("SELECT text FROM verse WHERE poem_id=:pid AND vorder=:vid");
-    query.bindValue(":pid",pid);
-    query.bindValue(":vid",vid);
-    query.exec();
-
-    if( !query.next() )
-        return QString();
-
-    return query.record().value(0).toString();
+    fetchPoem(pid);
+    return p->fetchedPoemData[vid]["text"].toString();
 }
 
 int MeikadeDatabase::versePosition(int pid, int vid)
 {
-    QSqlQuery query( p->db );
-    query.prepare("SELECT position FROM verse WHERE poem_id=:pid AND vorder=:vid");
-    query.bindValue(":pid",pid);
-    query.bindValue(":vid",vid);
-    query.exec();
-
-    if( !query.next() )
-        return 0;
-
-    return query.record().value(0).toInt();
+    fetchPoem(pid);
+    return p->fetchedPoemData[vid]["position"].toInt();
 }
 
 void MeikadeDatabase::init_buffer()
@@ -364,6 +352,28 @@ void MeikadeDatabase::init_buffer()
     qStableSort( sort_tmp.begin(), sort_tmp.end(), sortPersianString );
     foreach( const QString & name, sort_tmp )
         p->sorted_poets << p->poets_cats.value(name);
+}
+
+void MeikadeDatabase::fetchPoem(int pid)
+{
+    if(p->fetchedPoem == pid)
+        return;
+
+    p->fetchedPoem = pid;
+    p->fetchedPoemData.clear();
+
+    QSqlQuery query(p->db);
+    query.prepare("SELECT vorder, text, position FROM verse WHERE poem_id=:pid");
+    query.bindValue(":pid",pid);
+    query.exec();
+
+    while( query.next() )
+    {
+        QSqlRecord record = query.record();
+        int vorder = record.value("vorder").toInt();
+        p->fetchedPoemData[vorder]["text"] = record.value("text").toString();
+        p->fetchedPoemData[vorder]["position"] = record.value("position").toInt();
+    }
 }
 
 MeikadeDatabase::~MeikadeDatabase()

@@ -516,6 +516,7 @@ void Meikade::start()
 
     p->viewer = new AsemanQuickView();
     p->viewer->installEventFilter(this);
+    p->viewer->engine()->addImportPath(":/qml/");
     p->viewer->engine()->rootContext()->setContextProperty( "Meikade" , this );
     p->viewer->engine()->rootContext()->setContextProperty( "Database", p->poem_db  );
     p->viewer->engine()->rootContext()->setContextProperty( "UserData", p->user_db  );

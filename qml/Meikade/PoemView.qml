@@ -16,7 +16,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-import QtQuick 2.0
+import QtQuick 2.3
 import QtGraphicalEffects 1.0
 import AsemanTools 1.0
 
@@ -25,7 +25,8 @@ Rectangle {
     color: Meikade.nightTheme? "#222222" : "#ffffff"
 
     property int poemId: -1
-    property bool onEdit: view_list.currentIndex != -1
+    property bool onEdit: view_list.selectedIndex != -1
+    property bool allowEditMode: false
 
     property alias header: view_list.header
 
@@ -176,9 +177,15 @@ Rectangle {
         anchors.fill: parent
         clip: true
         highlightMoveDuration: 250
+        displayMarginBeginning: 512*Devices.density
+        displayMarginEnd: 512*Devices.density
+        cacheBuffer: 512*Devices.density
         maximumFlickVelocity: View.flickVelocity
         bottomMargin: View.navigationBarHeight
         boundsBehavior: Flickable.StopAtBounds
+        highlightRangeMode: ListView.ApplyRange
+        preferredHighlightBegin: height/2
+        preferredHighlightEnd: height/2
         rebound: Transition {
             NumberAnimation {
                 properties: "x,y"
@@ -187,6 +194,8 @@ Rectangle {
         }
 
         property int highlightedVid: -1
+        property int selectedIndex: -1
+
         footer: Rectangle {
             width: view_list.width
             height: phrase_txt.text.length==0? 1 : phrase_column.height + 40*Devices.density
@@ -212,8 +221,8 @@ Rectangle {
             }
         }
 
-        onCurrentIndexChanged: {
-            if( currentIndex != -1 )
+        onSelectedIndexChanged: {
+            if( selectedIndex != -1 )
                 BackHandler.pushHandler(view, view.closeEdit)
             else
                 BackHandler.removeHandler(view)
@@ -229,7 +238,7 @@ Rectangle {
 
             property real extraHeight: single? txt_frame.height : 0
             property alias press: marea.pressed
-            property bool editMode: view_list.currentIndex == index
+            property bool editMode: allowEditMode? view_list.selectedIndex == index : 0
             property bool anim: false
 
             Behavior on height {
@@ -373,7 +382,6 @@ Rectangle {
         }
 
         focus: true
-        currentIndex: -1
         header: PoemHeader{
             id: header
             width: view_list.width
@@ -388,7 +396,7 @@ Rectangle {
 
         function refresh(){
             model.clear()
-            currentIndex = -1
+            selectedIndex = -1
 
             refresh_timer.idx = 0
             refresh_timer.moveToVerse = -1
@@ -414,7 +422,7 @@ Rectangle {
                         refresh_timer.restart()
                     } else {
                         if( moveToVerse != -1 )
-                            view_list.goTo(moveToVerse)
+                            view_list.goTo(moveToVerse, true)
 
                         moveToVerse = -1
                         idx = 0
@@ -437,8 +445,8 @@ Rectangle {
             model.clear()
         }
 
-        function goTo( vid ){
-            if( refresh_timer.running ) {
+        function goTo( vid, force ){
+            if( refresh_timer.running && !force ) {
                 refresh_timer.moveToVerse = vid
                 return
             }
@@ -446,7 +454,7 @@ Rectangle {
             if( index === -1 )
                 return
 
-            view_list.positionViewAtIndex(index,ListView.Center)
+            view_list.currentIndex = index
         }
 
         function vidIndex( vid ) {
@@ -477,6 +485,7 @@ Rectangle {
     ScrollBar {
         scrollArea: view_list; height: view_list.height-View.navigationBarHeight
         anchors.left: view_list.left; anchors.top: view_list.top
+        color: Meikade.nightTheme? "#ffffff" : "#881010"
     }
 
     MouseArea {
