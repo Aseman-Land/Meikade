@@ -217,7 +217,7 @@ AT.AsemanMain {
                             anchors.fill: parent
                             layoutDirection: Qt.RightToLeft
                             onHafezOmenRequest: cat_page.showHafezOmen()
-                            onRandomPoemRequest: cat_page.showRandom(0)
+                            onRandomPoemRequest: cat_page.showRandom()
                             onSearchRequest: search_bar.show()
                         }
                     }

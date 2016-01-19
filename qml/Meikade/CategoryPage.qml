@@ -214,6 +214,7 @@ Rectangle {
     }
 
     function showRandom(id) {
+        id = id || 0
         var cats = Database.childsOf(id)
         var poem = -1
         while(cats.length != 0)
