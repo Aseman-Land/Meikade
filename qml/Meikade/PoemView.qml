@@ -162,7 +162,7 @@ Rectangle {
             Text {
                 id: phrase_txt
                 width: parent.width
-                text: Database.poemPhrase(view.poemId)
+                text: Meikade.phrase? Database.poemPhrase(view.poemId) : ""
                 color: "#ffffff"
                 font.family: AsemanApp.globalFont.family
                 font.pixelSize: 12*Devices.density

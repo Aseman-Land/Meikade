@@ -412,7 +412,6 @@ AT.AsemanMain {
         anchors.top: parent.top
         anchors.right: parent.right
         anchors.topMargin: AT.View.statusBarHeight + main_scene.y
-        opacity: 1-sidebar.percent
 
         AT.MenuIcon {
             id: menu_img
@@ -421,6 +420,8 @@ AT.AsemanMain {
             anchors.rightMargin: y
             height: 20*AT.Devices.density
             width: height
+            ratio: sidebar.percent
+            layoutDirection: Qt.RightToLeft
         }
 
         Text {
@@ -432,10 +433,13 @@ AT.AsemanMain {
             font.pixelSize: 11*globalFontDensity*AT.Devices.fontDensity
             text: qsTr("Meikade")
             color: "#ffffff"
+            opacity: 1-sidebar.percent
         }
 
         Rectangle {
-            anchors.fill: parent
+            anchors.fill: sidebar.showed? menu_img : parent
+            anchors.margins: sidebar.showed? -menu_img.y+8*AT.Devices.density : 0
+            radius: 3*AT.Devices.density
             color: "#33ffffff"
             visible: menu_area.pressed
         }
@@ -443,7 +447,12 @@ AT.AsemanMain {
         MouseArea {
             id: menu_area
             anchors.fill: parent
-            onClicked: sidebar.show()
+            onClicked: {
+                if(sidebar.showed)
+                    sidebar.discard()
+                else
+                    sidebar.show()
+            }
         }
     }
 
