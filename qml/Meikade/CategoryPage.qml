@@ -213,15 +213,8 @@ Rectangle {
         materialDesignButton.hide()
     }
 
-    function showRandom() {
-        var poets = Database.poets()
-        var poet_id_rnd = Math.floor(Math.random()*poets.length)
-        if(poet_id_rnd == poets.length)
-            poet_id_rnd--
-
-        var poet = poets[poet_id_rnd]
-
-        var cats = Database.childsOf(poet)
+    function showRandom(id) {
+        var cats = Database.childsOf(id)
         var poem = -1
         while(cats.length != 0)
         {
