@@ -58,7 +58,8 @@ BackHandlerView {
                 anchors.top: parent.top
                 anchors.bottom: parent.bottom
                 anchors.right: parent.right
-                anchors.margins: 11*Devices.density
+                anchors.topMargin: 11*Devices.density
+                anchors.bottomMargin: 11*Devices.density
                 width: height
                 sourceSize: Qt.size(width,height)
                 source: "icons/search.png"
@@ -245,6 +246,6 @@ BackHandlerView {
 
     function show() {
         hide = false
-        main.mainTitle = qsTr("Search")
+        main.mainTitle = ""
     }
 }

@@ -109,7 +109,7 @@ AT.AsemanMain {
             if( !res && !AT.Devices.isDesktop )
                 Meikade.close()
 
-            main.mainTitle = search_bar.hide? qsTr("Meikade") : qsTr("Search")
+            main.mainTitle = search_bar.hide? qsTr("Meikade") : ""
         }
     }
 

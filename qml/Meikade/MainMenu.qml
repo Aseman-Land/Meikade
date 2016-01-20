@@ -108,7 +108,10 @@ Item {
                 anchors.fill: parent
                 onClicked: {
                     mmenu.selected(fileName)
-                    main.mainTitle = name
+                    if(!search_bar.hide)
+                        main.mainTitle = ""
+                    else
+                        main.mainTitle = name
                 }
             }
         }
