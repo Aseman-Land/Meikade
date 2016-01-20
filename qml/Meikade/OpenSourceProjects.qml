@@ -171,7 +171,6 @@ Rectangle {
     }
 
     function initTranslations(){
-        title.text = qsTr("Open Source Projects")
     }
 
     Component.onCompleted: {

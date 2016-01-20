@@ -103,7 +103,6 @@ BackHandlerView {
         anchors.topMargin: View.statusBarHeight
         titleFont.pixelSize: 12*globalFontDensity*Devices.fontDensity
         light: true
-        text: qsTr("Bookmarks")
         backButtonText: ""
     }
 

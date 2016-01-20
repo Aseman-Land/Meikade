@@ -45,7 +45,6 @@ Rectangle {
                 font.pixelSize: 12*globalFontDensity*Devices.fontDensity
                 font.family: AsemanApp.globalFont.family
                 color: "#ffffff"
-                text: qsTr("Store")
             }
         }
 
