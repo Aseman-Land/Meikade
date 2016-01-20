@@ -46,7 +46,10 @@ Rectangle {
     }
 
     Item {
-        anchors.fill: parent
+        anchors.top: advanced.bottom
+        anchors.bottom: parent.bottom
+        anchors.left: parent.left
+        anchors.right: parent.right
 
         Text {
             id: nfound_txt
@@ -184,5 +187,19 @@ Rectangle {
             scrollArea: view_list; height: view_list.height
             anchors.left: view_list.left; anchors.top: view_list.top
         }
+    }
+
+    Rectangle {
+        id: advanced
+        anchors.top: parent.top
+        width: parent.width
+        height: 50
+        color: "#fcfcfc"
+    }
+
+    TitleBarShadow {
+        anchors.top: advanced.bottom
+        width: advanced.width
+        height: 1*Devices.density
     }
 }
