@@ -245,5 +245,6 @@ BackHandlerView {
 
     function show() {
         hide = false
+        main.mainTitle = qsTr("Search")
     }
 }
