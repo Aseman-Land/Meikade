@@ -531,7 +531,7 @@ Rectangle {
                 text:   qsTr("Copy")
                 textColor: "#333333"
                 textFont.bold: false
-                textFont.pixelSize: 10*globalFontDensity*Devices.fontDensity
+                textFont.pixelSize: 9*globalFontDensity*Devices.fontDensity
                 onClicked: {
                     var subject = Database.poemName(poem_edit.poemId)
                     var poet
@@ -554,7 +554,7 @@ Rectangle {
                 text:   qsTr("Share")
                 textColor: "#333333"
                 textFont.bold: false
-                textFont.pixelSize: 10*globalFontDensity*Devices.fontDensity
+                textFont.pixelSize: 9*globalFontDensity*Devices.fontDensity
                 onClicked: {
                     var subject = Database.poemName(poem_edit.poemId)
                     var poet
@@ -576,7 +576,7 @@ Rectangle {
                 text:   qsTr("Share Image")
                 textColor: "#333333"
                 textFont.bold: false
-                textFont.pixelSize: 10*globalFontDensity*Devices.fontDensity
+                textFont.pixelSize: 9*globalFontDensity*Devices.fontDensity
                 onClicked: {
                     var poet
                     var catId = Database.poemCat(poem_edit.poemId)
@@ -597,7 +597,7 @@ Rectangle {
                 text: poem_edit.favorited? qsTr("Unfavorite") : qsTr("Favorite")
                 textColor: "#333333"
                 textFont.bold: false
-                textFont.pixelSize: 10*globalFontDensity*Devices.fontDensity
+                textFont.pixelSize: 9*globalFontDensity*Devices.fontDensity
                 onClicked: {
                     poem_edit.favorited = !poem_edit.favorited
                     hideBottomPanel()

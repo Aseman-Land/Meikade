@@ -105,6 +105,34 @@ Nile create Free and OpenSource projects.</source>
     </message>
 </context>
 <context>
+    <name>AboutPageAseman</name>
+    <message>
+        <location filename="../asemantools/qml/AsemanTools/AboutPageAseman.qml" line="7"/>
+        <source>Aseman</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../asemantools/qml/AsemanTools/AboutPageAseman.qml" line="42"/>
+        <source>Aseman Team</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../asemantools/qml/AsemanTools/AboutPageAseman.qml" line="52"/>
+        <source>Aseman is a non-profit organization, exists to support and lead the free, open source and cross-platform projects and researches.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../asemantools/qml/AsemanTools/AboutPageAseman.qml" line="62"/>
+        <source>The Goal of the Aseman is to provide free and secure products to keep people’s freedom and their privacy.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../asemantools/qml/AsemanTools/AboutPageAseman.qml" line="74"/>
+        <source>Home</source>
+        <translation type="unfinished">صفحه خانگی</translation>
+    </message>
+</context>
+<context>
     <name>AsemanAbout</name>
     <message>
         <location filename="../asemantools/qml/AsemanTools/AsemanAbout.qml" line="50"/>
@@ -123,64 +151,72 @@ Nile create Free and OpenSource projects.</source>
     </message>
 </context>
 <context>
+    <name>AsemanFontHandler</name>
+    <message>
+        <location filename="../asemantools/asemanfonthandler.cpp" line="250"/>
+        <source>Select font</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>AsemanTools</name>
     <message>
-        <location filename="../asemantools/asemantools.cpp" line="58"/>
+        <location filename="../asemantools/asemantools.cpp" line="63"/>
         <source>0</source>
         <translation>۰</translation>
     </message>
     <message>
-        <location filename="../asemantools/asemantools.cpp" line="59"/>
+        <location filename="../asemantools/asemantools.cpp" line="64"/>
         <source>1</source>
         <translation>۱</translation>
     </message>
     <message>
-        <location filename="../asemantools/asemantools.cpp" line="60"/>
+        <location filename="../asemantools/asemantools.cpp" line="65"/>
         <source>2</source>
         <translation>۲</translation>
     </message>
     <message>
-        <location filename="../asemantools/asemantools.cpp" line="61"/>
+        <location filename="../asemantools/asemantools.cpp" line="66"/>
         <source>3</source>
         <translation>۳</translation>
     </message>
     <message>
-        <location filename="../asemantools/asemantools.cpp" line="62"/>
+        <location filename="../asemantools/asemantools.cpp" line="67"/>
         <source>4</source>
         <translation>۴</translation>
     </message>
     <message>
-        <location filename="../asemantools/asemantools.cpp" line="63"/>
+        <location filename="../asemantools/asemantools.cpp" line="68"/>
         <source>5</source>
         <translation>۵</translation>
     </message>
     <message>
-        <location filename="../asemantools/asemantools.cpp" line="64"/>
+        <location filename="../asemantools/asemantools.cpp" line="69"/>
         <source>6</source>
         <translation>۶</translation>
     </message>
     <message>
-        <location filename="../asemantools/asemantools.cpp" line="65"/>
+        <location filename="../asemantools/asemantools.cpp" line="70"/>
         <source>7</source>
         <translation>۷</translation>
     </message>
     <message>
-        <location filename="../asemantools/asemantools.cpp" line="66"/>
+        <location filename="../asemantools/asemantools.cpp" line="71"/>
         <source>8</source>
         <translation>۸</translation>
     </message>
     <message>
-        <location filename="../asemantools/asemantools.cpp" line="67"/>
+        <location filename="../asemantools/asemantools.cpp" line="72"/>
         <source>9</source>
         <translation>۹</translation>
     </message>
     <message>
-        <location filename="../asemantools/asemantools.cpp" line="153"/>
+        <location filename="../asemantools/asemantools.cpp" line="195"/>
         <source>Aseman is a not-for-profit research and software development team launched in February 2014 focusing on development of products, technologies and solutions in order to publish them as open-source projects accessible to all people in the universe. Currently, we are focusing on design and development of software applications and tools which have direct connection with end users.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../asemantools/asemantools.cpp" line="154"/>
+        <location filename="../asemantools/asemantools.cpp" line="196"/>
         <source>By enabling innovative projects and distributing software to millions of users globally, the lab is working to accelerate the growth of high-impact open source software projects and promote an open source culture of accessibility and increased productivity around the world. The lab partners with industry leaders and policy makers to bring open source technologies to new sectors, including education, health and government.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -293,7 +329,17 @@ contact@aseman.org</translation>
         <translation>تم شب</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/Configure.qml" line="228"/>
+        <location filename="../qml/Meikade/Configure.qml" line="177"/>
+        <source>Phrase</source>
+        <translation>نمایش تعبیر</translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/Configure.qml" line="179"/>
+        <source>Keep screen on</source>
+        <translation>روشن ماندن صفحه</translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/Configure.qml" line="231"/>
         <source>Configure</source>
         <translation>تنظیمات</translation>
     </message>
@@ -343,22 +389,20 @@ Meikade need 150MB free space on your memory.</source>
 <context>
     <name>DateTimeChooser</name>
     <message>
-        <location filename="../asemantools/qml/AsemanTools/DateTimeChooser.qml" line="178"/>
         <source>AM</source>
         <translation>AM</translation>
     </message>
     <message>
-        <location filename="../asemantools/qml/AsemanTools/DateTimeChooser.qml" line="178"/>
         <source>PM</source>
         <translation>PM</translation>
     </message>
     <message>
-        <location filename="../asemantools/qml/AsemanTools/DateTimeChooser.qml" line="219"/>
+        <location filename="../asemantools/qml/AsemanTools/DateTimeChooser.qml" line="183"/>
         <source>Date</source>
         <translation>تاریخ</translation>
     </message>
     <message>
-        <location filename="../asemantools/qml/AsemanTools/DateTimeChooser.qml" line="230"/>
+        <location filename="../asemantools/qml/AsemanTools/DateTimeChooser.qml" line="194"/>
         <source>Time</source>
         <translation>زمان</translation>
     </message>
@@ -646,57 +690,57 @@ Thank you.</source>
 <context>
     <name>Meikade</name>
     <message>
-        <location filename="../meikade.cpp" line="284"/>
+        <location filename="../meikade.cpp" line="287"/>
         <source>0</source>
         <translation>۰</translation>
     </message>
     <message>
-        <location filename="../meikade.cpp" line="285"/>
+        <location filename="../meikade.cpp" line="288"/>
         <source>1</source>
         <translation>۱</translation>
     </message>
     <message>
-        <location filename="../meikade.cpp" line="286"/>
+        <location filename="../meikade.cpp" line="289"/>
         <source>2</source>
         <translation>۲</translation>
     </message>
     <message>
-        <location filename="../meikade.cpp" line="287"/>
+        <location filename="../meikade.cpp" line="290"/>
         <source>3</source>
         <translation>۳</translation>
     </message>
     <message>
-        <location filename="../meikade.cpp" line="288"/>
+        <location filename="../meikade.cpp" line="291"/>
         <source>4</source>
         <translation>۴</translation>
     </message>
     <message>
-        <location filename="../meikade.cpp" line="289"/>
+        <location filename="../meikade.cpp" line="292"/>
         <source>5</source>
         <translation>۵</translation>
     </message>
     <message>
-        <location filename="../meikade.cpp" line="290"/>
+        <location filename="../meikade.cpp" line="293"/>
         <source>6</source>
         <translation>۶</translation>
     </message>
     <message>
-        <location filename="../meikade.cpp" line="291"/>
+        <location filename="../meikade.cpp" line="294"/>
         <source>7</source>
         <translation>۷</translation>
     </message>
     <message>
-        <location filename="../meikade.cpp" line="292"/>
+        <location filename="../meikade.cpp" line="295"/>
         <source>8</source>
         <translation>۸</translation>
     </message>
     <message>
-        <location filename="../meikade.cpp" line="293"/>
+        <location filename="../meikade.cpp" line="296"/>
         <source>9</source>
         <translation>۹</translation>
     </message>
     <message>
-        <location filename="../meikade.cpp" line="427"/>
+        <location filename="../meikade.cpp" line="461"/>
         <source>Meikade&apos;s hafez omen is different from other omens.
 It&apos;s calculate omen using natural random algorithms. Another apps calculate omen using machine algorithms.</source>
         <translation>فال حافظ می‌کده دارای روشی کاملا متفاوت برای تفال زدن می‌باشد. می‌کده بر خلاف روش‌های ماشینی و الگوریتم‌های ریاضی که تقریبا همیشه استفاده می‌‌شوند، از روش‌های طبیعی و به کمک حرکت انگشتان شما بر روی صفحه برای شما فال می‌گیرد.
@@ -718,6 +762,19 @@ It&apos;s calculate omen using natural random algorithms. Another apps calculate
         <location filename="../qml/Meikade/MeikadeNews1.qml" line="56"/>
         <source>OK</source>
         <translation>Ok</translation>
+    </message>
+</context>
+<context>
+    <name>MessageDialogOkCancelWarning</name>
+    <message>
+        <location filename="../asemantools/qml/AsemanTools/MessageDialogOkCancelWarning.qml" line="38"/>
+        <source>Cancel</source>
+        <translation type="unfinished">انصراف</translation>
+    </message>
+    <message>
+        <location filename="../asemantools/qml/AsemanTools/MessageDialogOkCancelWarning.qml" line="52"/>
+        <source>OK</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -830,42 +887,42 @@ It&apos;s calculate omen using natural random algorithms. Another apps calculate
 <context>
     <name>PoemView</name>
     <message>
-        <location filename="../qml/Meikade/PoemView.qml" line="159"/>
+        <location filename="../qml/Meikade/PoemView.qml" line="160"/>
         <source>Phrase</source>
         <translation>تعبیر</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/PoemView.qml" line="512"/>
+        <location filename="../qml/Meikade/PoemView.qml" line="521"/>
         <source>Favorited</source>
         <translation>به علاقه‌مند‌ی‌ها اضافه شد</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/PoemView.qml" line="515"/>
+        <location filename="../qml/Meikade/PoemView.qml" line="524"/>
         <source>Unfavorited</source>
         <translation>از علاقه‌مند‌ی‌ها پاک شد</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/PoemView.qml" line="522"/>
+        <location filename="../qml/Meikade/PoemView.qml" line="531"/>
         <source>Copy</source>
         <translation>کپی</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/PoemView.qml" line="545"/>
+        <location filename="../qml/Meikade/PoemView.qml" line="554"/>
         <source>Share</source>
         <translation>به اشتراک گذاری</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/PoemView.qml" line="567"/>
+        <location filename="../qml/Meikade/PoemView.qml" line="576"/>
         <source>Share Image</source>
         <translation>به اشتراک گذاری تصویر</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/PoemView.qml" line="588"/>
+        <location filename="../qml/Meikade/PoemView.qml" line="597"/>
         <source>Unfavorite</source>
         <translation>حذف از علاقه‌مندی‌ها</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/PoemView.qml" line="588"/>
+        <location filename="../qml/Meikade/PoemView.qml" line="597"/>
         <source>Favorite</source>
         <translation>اضافه به علاقه‌مندی‌ها</translation>
     </message>
@@ -878,7 +935,7 @@ It&apos;s calculate omen using natural random algorithms. Another apps calculate
         <translation>جستجو</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/SearchBar.qml" line="120"/>
+        <location filename="../qml/Meikade/SearchBar.qml" line="138"/>
         <source>All Poets</source>
         <translation>همه‌ی شعرا</translation>
     </message>
@@ -1055,7 +1112,7 @@ It&apos;s calculate omen using natural random algorithms. Another apps calculate
 <context>
     <name>main</name>
     <message>
-        <location filename="../qml/Meikade/main.qml" line="443"/>
+        <location filename="../qml/Meikade/main.qml" line="435"/>
         <source>Meikade</source>
         <translation>مِی‌کده</translation>
     </message>
