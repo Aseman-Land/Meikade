@@ -108,7 +108,6 @@ Rectangle {
             id: rand_btn
             anchors.left: parent.left
             anchors.verticalCenter: parent.verticalCenter
-            anchors.leftMargin: 8*Devices.density
             height: parent.height
             radius: 0
             normalColor: "transparent"
