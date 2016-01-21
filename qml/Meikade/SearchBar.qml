@@ -101,59 +101,6 @@ BackHandlerView {
                 font.pixelSize: Devices.fontDensity*11
                 onTextChanged: refresh()
 
-                QtControls.ComboBox {
-                    id: poets_combo
-                    anchors.left: parent.left
-                    anchors.top: parent.top
-                    anchors.bottom: parent.bottom
-                    width: parent.width/4
-                    textRole: "text"
-                    model: ListModel{
-                        id: poets_model
-                    }
-                    onCurrentIndexChanged: txt.refresh()
-
-                    Connections {
-                        target: Database
-                        onInitializeFinished: {
-                            poets_combo.model.clear()
-                            poets_model.append({"text": qsTr("All Poets"), "pid": -1})
-
-                            var poets = Database.poets()
-                            for(var i=0; i<poets.length; i++) {
-                                var pid = poets[i]
-                                poets_model.append({"text": Database.catName(pid), "pid": pid})
-                            }
-                        }
-                    }
-                }
-
-                Rectangle {
-                    anchors.fill: poets_combo
-                    color: search_frame.color
-
-                    Text {
-                        anchors.fill: parent
-                        font.family: AsemanApp.globalFont.family
-                        font.pixelSize: 10*globalFontDensity*Devices.fontDensity
-                        verticalAlignment: Text.AlignVCenter
-                        horizontalAlignment: Text.AlignHCenter
-                        wrapMode: Text.WrapAnywhere
-                        maximumLineCount: 1
-                        elide: Text.ElideRight
-                        color: "#ffffff"
-                        text: poets_combo.currentText
-                    }
-
-                    Rectangle {
-                        anchors.right: parent.right
-                        anchors.top: parent.top
-                        anchors.bottom: parent.bottom
-                        width: 1*Devices.density
-                        color: "#888888"
-                    }
-                }
-
                 function refresh() {
                     if( text.length == 0 ) {
                         search_bar.searchMode = false
@@ -196,7 +143,7 @@ BackHandlerView {
         keyword: txt.text
         clip: true
         poetId: {
-            var obj = poets_combo.model.get(poets_combo.currentIndex)
+            var obj = search_list.poetCombo.model.get(search_list.poetCombo.currentIndex)
             if(!obj)
                 return -1
             if(obj.pid == -1)

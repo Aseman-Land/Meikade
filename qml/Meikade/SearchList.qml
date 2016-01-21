@@ -19,6 +19,7 @@
 import QtQuick 2.0
 import AsemanTools 1.0
 import Meikade 1.0
+import QtQuick.Controls 1.0 as QtControls
 
 Rectangle {
     id: search_list
@@ -28,6 +29,7 @@ Rectangle {
 
     property alias keyword: tmodel.keyword
     property alias poetId: tmodel.poet
+    property alias poetCombo: poets_combo
 
     signal itemSelected( int poem_id, int vid )
 
@@ -193,8 +195,78 @@ Rectangle {
         id: advanced
         anchors.top: parent.top
         width: parent.width
-        height: 50
+        height: 45*Devices.density
         color: "#fcfcfc"
+
+        QtControls.ComboBox {
+            id: poets_combo
+            anchors.right: parent.right
+            anchors.top: parent.top
+            anchors.bottom: parent.bottom
+            anchors.rightMargin: 8*Devices.density
+            width: parent.width/2
+            textRole: "text"
+            model: ListModel{
+                id: poets_model
+            }
+            onCurrentIndexChanged: txt.refresh()
+
+            Connections {
+                target: Database
+                onInitializeFinished: {
+                    poets_combo.model.clear()
+                    poets_model.append({"text": qsTr("All Poets"), "pid": -1})
+
+                    var poets = Database.poets()
+                    for(var i=0; i<poets.length; i++) {
+                        var pid = poets[i]
+                        poets_model.append({"text": Database.catName(pid), "pid": pid})
+                    }
+                }
+            }
+        }
+
+        Rectangle {
+            anchors.fill: poets_combo
+            color: advanced.color
+
+            Text {
+                id: sscope_lbl
+                anchors.top: parent.top
+                anchors.bottom: parent.bottom
+                anchors.right: parent.right
+                anchors.leftMargin: 8*Devices.density
+                anchors.rightMargin: 8*Devices.density
+                font.family: AsemanApp.globalFont.family
+                font.pixelSize: 10*globalFontDensity*Devices.fontDensity
+                verticalAlignment: Text.AlignVCenter
+                horizontalAlignment: Text.AlignRight
+                font.underline: true
+                wrapMode: Text.WrapAnywhere
+                maximumLineCount: 1
+                elide: Text.ElideRight
+                color: "blue"
+                text: qsTr(":Search in")
+            }
+
+            Text {
+                anchors.right: sscope_lbl.left
+                anchors.left: parent.left
+                anchors.top: parent.top
+                anchors.bottom: parent.bottom
+                anchors.leftMargin: 8*Devices.density
+                anchors.rightMargin: 8*Devices.density
+                font.family: AsemanApp.globalFont.family
+                font.pixelSize: 10*globalFontDensity*Devices.fontDensity
+                verticalAlignment: Text.AlignVCenter
+                horizontalAlignment: Text.AlignRight
+                wrapMode: Text.WrapAnywhere
+                maximumLineCount: 1
+                elide: Text.ElideRight
+                color: "#5d5d5d"
+                text: poets_combo.currentText
+            }
+        }
     }
 
     TitleBarShadow {
