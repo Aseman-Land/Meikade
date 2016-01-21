@@ -100,7 +100,7 @@ Rectangle {
     Rectangle {
         height: item.height
         width: parent.width
-        color: Meikade.nightTheme? "#e0000000" : "#ffffff"
+        color: Meikade.nightTheme? "#e0000000" : "#e0ffffff"
         opacity: startInit? 1 : 0
         visible: cat_title.cid != 0
 
