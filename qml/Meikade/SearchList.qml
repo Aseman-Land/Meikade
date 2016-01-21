@@ -195,7 +195,7 @@ Rectangle {
         id: advanced
         anchors.top: parent.top
         width: parent.width
-        height: 45*Devices.density
+        height: 40*Devices.density
         color: "#fcfcfc"
 
         QtControls.ComboBox {
@@ -238,7 +238,7 @@ Rectangle {
                 anchors.leftMargin: 8*Devices.density
                 anchors.rightMargin: 8*Devices.density
                 font.family: AsemanApp.globalFont.family
-                font.pixelSize: 10*globalFontDensity*Devices.fontDensity
+                font.pixelSize: 9*globalFontDensity*Devices.fontDensity
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignRight
                 font.underline: true
@@ -257,7 +257,7 @@ Rectangle {
                 anchors.leftMargin: 8*Devices.density
                 anchors.rightMargin: 8*Devices.density
                 font.family: AsemanApp.globalFont.family
-                font.pixelSize: 10*globalFontDensity*Devices.fontDensity
+                font.pixelSize: 9*globalFontDensity*Devices.fontDensity
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignRight
                 wrapMode: Text.WrapAnywhere
@@ -273,5 +273,6 @@ Rectangle {
         anchors.top: advanced.bottom
         width: advanced.width
         height: 1*Devices.density
+        opacity: 0.5
     }
 }
