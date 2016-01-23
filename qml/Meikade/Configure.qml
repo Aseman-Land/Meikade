@@ -129,6 +129,8 @@ BackHandlerView {
                         anchors.left: parent.left
                         anchors.right: parent.right
                         anchors.margins: 30*Devices.density
+                        anchors.leftMargin: Meikade.languageDirection == Qt.RightToLeft? 30*Devices.density + checkbox.width : 30*Devices.density
+                        anchors.rightMargin: Meikade.languageDirection != Qt.RightToLeft? 30*Devices.density + checkbox.width : 30*Devices.density
                         y: parent.height/2 - height/2
                         font.pixelSize: 10*globalFontDensity*Devices.fontDensity
                         font.family: AsemanApp.globalFont.family
@@ -137,7 +139,7 @@ BackHandlerView {
                         wrapMode: TextInput.WordWrap
                     }
 
-                    MouseArea{
+                    MouseArea {
                         id: marea
                         anchors.fill: parent
                         onClicked: {
@@ -178,6 +180,7 @@ BackHandlerView {
                     model.append({ "name": qsTr("Phrase"), "file": "", "check": true, "pr":"phrase"})
                     if(Devices.isAndroid)
                         model.append({ "name": qsTr("Keep screen on"), "file": "", "check": true, "pr":"keepScreenOn"})
+                    model.append({ "name": qsTr("Send anonymous data to improve meikade."), "file": "", "check": true, "pr":"activePush"})
                 }
             }
 

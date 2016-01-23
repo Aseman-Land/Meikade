@@ -28,12 +28,15 @@ public:
 
     ApiLayer_LastMessage lastMsg;
     ApiLayer_LastAdvertise adv;
+
+    bool activePush;
 };
 
 NetworkFeatures::NetworkFeatures(QObject *parent) :
     QObject(parent)
 {
     p = new NetworkFeaturesPrivate;
+    p->activePush = true;
 
     p->settings = new QSettings(HOME_PATH + "/network-featurs.ini", QSettings::IniFormat, this);
     p->api = new ApiLayer(this);
@@ -57,16 +60,25 @@ NetworkFeatures::NetworkFeatures(QObject *parent) :
 
 void NetworkFeatures::pushActivity(const QString &type, int ms, const QString &comment)
 {
+    if(!p->activePush || type.isEmpty() || ms == 0)
+        return;
+
     p->api->pushActivityRequest(type, ms, comment);
 }
 
 void NetworkFeatures::pushAction(const QString &action)
 {
+    if(!p->activePush || action.isEmpty())
+        return;
+
     p->api->pushActionRequest(action);
 }
 
 void NetworkFeatures::pushDeviceModel(const QString &name, qreal screen, qreal density)
 {
+    if(!p->activePush || name.isEmpty())
+        return;
+
     p->api->pushDeviceModelRequest(name, screen, density);
 }
 
@@ -156,6 +168,20 @@ QString NetworkFeatures::advertisePhoto() const
 QString NetworkFeatures::advertiseLink() const
 {
     return p->adv.link;
+}
+
+void NetworkFeatures::setActivePush(bool stt)
+{
+    if(p->activePush == stt)
+        return;
+
+    p->activePush = stt;
+    emit activePushChanged();
+}
+
+bool NetworkFeatures::activePush() const
+{
+    return p->activePush;
 }
 
 NetworkFeatures::~NetworkFeatures()

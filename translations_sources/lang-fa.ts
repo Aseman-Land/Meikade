@@ -277,7 +277,7 @@ Nile create Free and OpenSource projects.</source>
 <context>
     <name>Category</name>
     <message>
-        <location filename="../qml/Meikade/Category.qml" line="136"/>
+        <location filename="../qml/Meikade/Category.qml" line="142"/>
         <source>This is a problem to loading poets.
 Please contact us:
 contact@aseman.org</source>
@@ -302,7 +302,7 @@ contact@aseman.org</translation>
 <context>
     <name>Configure</name>
     <message>
-        <location filename="../qml/Meikade/Configure.qml" line="172"/>
+        <location filename="../qml/Meikade/Configure.qml" line="173"/>
         <source>Backup &amp; Restore</source>
         <translation>بکاپ و بازیابی</translation>
     </message>
@@ -319,27 +319,32 @@ contact@aseman.org</translation>
         <translation type="obsolete">انیمیشن‌ها</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/Configure.qml" line="175"/>
+        <location filename="../qml/Meikade/Configure.qml" line="176"/>
         <source>Languages</source>
         <translation>زبان برنامه</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/Configure.qml" line="176"/>
+        <location filename="../qml/Meikade/Configure.qml" line="177"/>
         <source>Night Theme</source>
         <translation>تم شب</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/Configure.qml" line="177"/>
+        <location filename="../qml/Meikade/Configure.qml" line="178"/>
         <source>Phrase</source>
         <translation>نمایش تعبیر</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/Configure.qml" line="179"/>
+        <location filename="../qml/Meikade/Configure.qml" line="180"/>
         <source>Keep screen on</source>
         <translation>روشن ماندن صفحه</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/Configure.qml" line="231"/>
+        <location filename="../qml/Meikade/Configure.qml" line="181"/>
+        <source>Send anonymous data to improve meikade.</source>
+        <translation>ارسال اطلاعات ناشناس و فنی برنامه به منظور بهبود میکده.</translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/Configure.qml" line="233"/>
         <source>Configure</source>
         <translation>تنظیمات</translation>
     </message>
@@ -613,22 +618,22 @@ Thank you.</source>
 <context>
     <name>MainMenu</name>
     <message>
-        <location filename="../qml/Meikade/MainMenu.qml" line="114"/>
+        <location filename="../qml/Meikade/MainMenu.qml" line="122"/>
         <source>Home</source>
         <translation>صفحه خانگی</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/MainMenu.qml" line="115"/>
+        <location filename="../qml/Meikade/MainMenu.qml" line="123"/>
         <source>Search</source>
         <translation>جستجو</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/MainMenu.qml" line="116"/>
+        <location filename="../qml/Meikade/MainMenu.qml" line="124"/>
         <source>Bookmarks</source>
         <translation>علاقه‌مندی‌ها</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/MainMenu.qml" line="117"/>
+        <location filename="../qml/Meikade/MainMenu.qml" line="125"/>
         <source>Store</source>
         <translation>فروشگاه</translation>
     </message>
@@ -637,7 +642,7 @@ Thank you.</source>
         <translation>فروشگاه</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/MainMenu.qml" line="122"/>
+        <location filename="../qml/Meikade/MainMenu.qml" line="130"/>
         <source>About Nile Group</source>
         <translation>درباره گروه نیل</translation>
     </message>
@@ -650,17 +655,17 @@ Thank you.</source>
         <translation type="obsolete">یادداشت‌ها</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/MainMenu.qml" line="119"/>
+        <location filename="../qml/Meikade/MainMenu.qml" line="127"/>
         <source>Configure</source>
         <translation>تنظیمات</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/MainMenu.qml" line="120"/>
+        <location filename="../qml/Meikade/MainMenu.qml" line="128"/>
         <source>OpenSource Projecs</source>
         <translation>پروژه‌های منبع باز</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/MainMenu.qml" line="121"/>
+        <location filename="../qml/Meikade/MainMenu.qml" line="129"/>
         <source>About</source>
         <translation>درباره می‌کده</translation>
     </message>
@@ -677,12 +682,12 @@ Thank you.</source>
         <translation>فال حافظ</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/MaterialDesignButton.qml" line="95"/>
+        <location filename="../qml/Meikade/MaterialDesignButton.qml" line="96"/>
         <source>Random Poem</source>
         <translation>شعر تصادفی</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/MaterialDesignButton.qml" line="107"/>
+        <location filename="../qml/Meikade/MaterialDesignButton.qml" line="109"/>
         <source>Search</source>
         <translation>جستجو</translation>
     </message>
@@ -690,57 +695,57 @@ Thank you.</source>
 <context>
     <name>Meikade</name>
     <message>
-        <location filename="../meikade.cpp" line="287"/>
+        <location filename="../meikade.cpp" line="289"/>
         <source>0</source>
         <translation>۰</translation>
     </message>
     <message>
-        <location filename="../meikade.cpp" line="288"/>
+        <location filename="../meikade.cpp" line="290"/>
         <source>1</source>
         <translation>۱</translation>
     </message>
     <message>
-        <location filename="../meikade.cpp" line="289"/>
+        <location filename="../meikade.cpp" line="291"/>
         <source>2</source>
         <translation>۲</translation>
     </message>
     <message>
-        <location filename="../meikade.cpp" line="290"/>
+        <location filename="../meikade.cpp" line="292"/>
         <source>3</source>
         <translation>۳</translation>
     </message>
     <message>
-        <location filename="../meikade.cpp" line="291"/>
+        <location filename="../meikade.cpp" line="293"/>
         <source>4</source>
         <translation>۴</translation>
     </message>
     <message>
-        <location filename="../meikade.cpp" line="292"/>
+        <location filename="../meikade.cpp" line="294"/>
         <source>5</source>
         <translation>۵</translation>
     </message>
     <message>
-        <location filename="../meikade.cpp" line="293"/>
+        <location filename="../meikade.cpp" line="295"/>
         <source>6</source>
         <translation>۶</translation>
     </message>
     <message>
-        <location filename="../meikade.cpp" line="294"/>
+        <location filename="../meikade.cpp" line="296"/>
         <source>7</source>
         <translation>۷</translation>
     </message>
     <message>
-        <location filename="../meikade.cpp" line="295"/>
+        <location filename="../meikade.cpp" line="297"/>
         <source>8</source>
         <translation>۸</translation>
     </message>
     <message>
-        <location filename="../meikade.cpp" line="296"/>
+        <location filename="../meikade.cpp" line="298"/>
         <source>9</source>
         <translation>۹</translation>
     </message>
     <message>
-        <location filename="../meikade.cpp" line="461"/>
+        <location filename="../meikade.cpp" line="477"/>
         <source>Meikade&apos;s hafez omen is different from other omens.
 It&apos;s calculate omen using natural random algorithms. Another apps calculate omen using machine algorithms.</source>
         <translation>فال حافظ می‌کده دارای روشی کاملا متفاوت برای تفال زدن می‌باشد. می‌کده بر خلاف روش‌های ماشینی و الگوریتم‌های ریاضی که تقریبا همیشه استفاده می‌‌شوند، از روش‌های طبیعی و به کمک حرکت انگشتان شما بر روی صفحه برای شما فال می‌گیرد.
@@ -887,42 +892,42 @@ It&apos;s calculate omen using natural random algorithms. Another apps calculate
 <context>
     <name>PoemView</name>
     <message>
-        <location filename="../qml/Meikade/PoemView.qml" line="160"/>
+        <location filename="../qml/Meikade/PoemView.qml" line="166"/>
         <source>Phrase</source>
         <translation>تعبیر</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/PoemView.qml" line="521"/>
+        <location filename="../qml/Meikade/PoemView.qml" line="528"/>
         <source>Favorited</source>
         <translation>به علاقه‌مند‌ی‌ها اضافه شد</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/PoemView.qml" line="524"/>
+        <location filename="../qml/Meikade/PoemView.qml" line="532"/>
         <source>Unfavorited</source>
         <translation>از علاقه‌مند‌ی‌ها پاک شد</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/PoemView.qml" line="531"/>
+        <location filename="../qml/Meikade/PoemView.qml" line="539"/>
         <source>Copy</source>
         <translation>کپی</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/PoemView.qml" line="554"/>
+        <location filename="../qml/Meikade/PoemView.qml" line="563"/>
         <source>Share</source>
         <translation>به اشتراک گذاری</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/PoemView.qml" line="576"/>
+        <location filename="../qml/Meikade/PoemView.qml" line="586"/>
         <source>Share Image</source>
         <translation>به اشتراک گذاری تصویر</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/PoemView.qml" line="597"/>
+        <location filename="../qml/Meikade/PoemView.qml" line="608"/>
         <source>Unfavorite</source>
         <translation>حذف از علاقه‌مندی‌ها</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/PoemView.qml" line="597"/>
+        <location filename="../qml/Meikade/PoemView.qml" line="608"/>
         <source>Favorite</source>
         <translation>اضافه به علاقه‌مندی‌ها</translation>
     </message>
@@ -1052,7 +1057,7 @@ It&apos;s calculate omen using natural random algorithms. Another apps calculate
 <context>
     <name>XmlDownloaderPage</name>
     <message>
-        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="82"/>
+        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="83"/>
         <source>Fetching poet lists...</source>
         <translation>در حال دریافت اطلاعات...</translation>
     </message>
@@ -1061,7 +1066,7 @@ It&apos;s calculate omen using natural random algorithms. Another apps calculate
         <translation>خطا در برقراری ارتباط با سرور!</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="126"/>
+        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="127"/>
         <source>Poets list, you can download from NileGroup servers...</source>
         <translation>لیست شعرایی که با کلیک کردن بر روی آن‌ها می‌توانید آن‌ها را از سرورهای گروه نیل دریافت کنید...</translation>
     </message>
@@ -1070,37 +1075,37 @@ It&apos;s calculate omen using natural random algorithms. Another apps calculate
         <translation>- رایگان</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="48"/>
+        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="49"/>
         <source>Store</source>
         <translation>فروشگاه</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="91"/>
+        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="92"/>
         <source>Can&apos;t connect to the server</source>
         <translation>خطا در برقراری ارتباط با سرور</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="203"/>
+        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="204"/>
         <source>Installing</source>
         <translation>در حال نصب</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="206"/>
+        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="207"/>
         <source>Downloading</source>
         <translation>در حال دریافت</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="209"/>
+        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="210"/>
         <source>Installed</source>
         <translation>نصب شده</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="212"/>
+        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="213"/>
         <source>Error</source>
         <translation>خطا</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="214"/>
+        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="215"/>
         <source>Free</source>
         <translation>رایگان</translation>
     </message>
@@ -1112,7 +1117,7 @@ It&apos;s calculate omen using natural random algorithms. Another apps calculate
 <context>
     <name>main</name>
     <message>
-        <location filename="../qml/Meikade/main.qml" line="435"/>
+        <location filename="../qml/Meikade/main.qml" line="442"/>
         <source>Meikade</source>
         <translation>مِی‌کده</translation>
     </message>

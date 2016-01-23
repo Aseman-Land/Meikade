@@ -244,7 +244,7 @@ QString Meikade::fileSuffix(const QString &path)
 
 QStringList Meikade::availableFonts()
 {
-    return QStringList() << "DroidNaskh-Regular" << /*"IranNastaliq" << */"BKoodakO" << "BYekan" << "IRAN-Sans";
+    return QStringList() << "DroidNaskh-Regular" << /*"IranNastaliq" << "BKoodakO" <<*/ "BYekan" << "IRAN-Sans";
 }
 
 qreal Meikade::fontPointScale(const QString &fontName)
@@ -456,6 +456,20 @@ void Meikade::setPhrase(bool stt)
 bool Meikade::phrase() const
 {
     return settings()->value("General/tabir",true).toBool();
+}
+
+void Meikade::setActivePush(bool stt)
+{
+    if( activePush() == stt )
+        return;
+
+    settings()->setValue("General/activePush", stt);
+    emit activePushChanged();
+}
+
+bool Meikade::activePush() const
+{
+    return settings()->value("General/activePush",true).toBool();
 }
 
 QString Meikade::aboutHafezOmen() const

@@ -95,6 +95,7 @@ AT.AsemanMain {
 
     NetworkFeatures {
         id: network_features
+        activePush: Meikade.activePush
         onShowMessage: messageDialog.show(network_message_component, {"message":message, "destUrl":url})
     }
 

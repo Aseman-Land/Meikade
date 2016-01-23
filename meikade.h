@@ -37,6 +37,7 @@ class Meikade : public QObject
     Q_PROPERTY(bool nightTheme READ nightTheme WRITE setNightTheme NOTIFY nightThemeChanged)
     Q_PROPERTY(bool keepScreenOn READ keepScreenOn WRITE setKeepScreenOn NOTIFY keepScreenOnChanged)
     Q_PROPERTY(bool phrase READ phrase WRITE setPhrase NOTIFY phraseChanged)
+    Q_PROPERTY(bool activePush READ activePush WRITE setActivePush NOTIFY activePushChanged)
     Q_OBJECT
 
 public:
@@ -90,6 +91,9 @@ public:
     void setPhrase(bool stt);
     bool phrase() const;
 
+    void setActivePush(bool stt);
+    bool activePush() const;
+
     Q_INVOKABLE QString aboutHafezOmen() const;
 
     void setPoemsFont( const QString & name );
@@ -113,6 +117,7 @@ signals:
     void nightThemeChanged();
     void keepScreenOnChanged();
     void phraseChanged();
+    void activePushChanged();
 
     void currentLanguageChanged();
     void languageDirectionChanged();

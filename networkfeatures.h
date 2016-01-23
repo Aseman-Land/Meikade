@@ -18,6 +18,8 @@ class NetworkFeatures : public QObject
     Q_PROPERTY(QString advertisePhoto READ advertisePhoto NOTIFY advertiseChanged)
     Q_PROPERTY(QString advertiseLink READ advertiseLink NOTIFY advertiseChanged)
 
+    Q_PROPERTY(bool activePush READ activePush WRITE setActivePush NOTIFY activePushChanged)
+
 public:
     NetworkFeatures(QObject *parent = 0);
     ~NetworkFeatures();
@@ -30,6 +32,9 @@ public:
     QString advertisePhoto() const;
     QString advertiseLink() const;
 
+    void setActivePush(bool stt);
+    bool activePush() const;
+
 public slots:
     void pushActivity(const QString &type, int ms, const QString &comment);
     void pushAction(const QString &action);
@@ -39,6 +44,7 @@ signals:
     void advertiseChanged();
     void lastMessageChanged();
     void showMessage(const QString &message, const QString &url);
+    void activePushChanged();
 
 private slots:
     void wake();
