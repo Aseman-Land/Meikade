@@ -150,6 +150,7 @@ Item {
                 normalColor: "#9D463E"
                 iconHeight: 14*Devices.density
                 onClicked: {
+                    networkFeatures.pushAction( ("Share Poem: %1").arg(poem_header.poemId) )
                     var subject = Database.poemName(poem_header.poemId)
                     var poet
                     var catId = Database.poemCat(poem_header.poemId)

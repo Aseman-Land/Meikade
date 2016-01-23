@@ -3,6 +3,7 @@ import AsemanTools 1.0
 import Meikade 1.0
 
 Rectangle {
+    id: xml_page
     width: 100
     height: 62
 
@@ -240,6 +241,7 @@ Rectangle {
                         return
 
                     model.downloadingState = true
+                    networkFeatures.pushAction( ("Poet Download: %1").arg(model.poetId) )
                 }
             }
         }
@@ -251,5 +253,6 @@ Rectangle {
     }
 
     Component.onCompleted: xml_model.refresh()
+    ActivityAnalizer { object: xml_page }
 }
 

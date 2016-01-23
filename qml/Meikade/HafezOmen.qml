@@ -205,4 +205,6 @@ Rectangle {
     function back() {
         hafez_omen.viewMode = false
     }
+
+    ActivityAnalizer { object: hafez_omen; comment: "" }
 }

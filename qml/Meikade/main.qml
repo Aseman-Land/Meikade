@@ -44,6 +44,7 @@ AT.AsemanMain {
     property bool fontsLoaded: false
 
     property bool animations: Meikade.animations
+    property alias networkFeatures: network_features
 
     property variant areaFrame: area_frame
     property variant mainDialog
@@ -90,6 +91,11 @@ AT.AsemanMain {
 
     XmlDownloaderModel {
         id: xml_model
+    }
+
+    NetworkFeatures {
+        id: network_features
+        onShowMessage: messageDialog.show(network_message_component, {"message":message, "destUrl":url})
     }
 
     Connections {
@@ -385,11 +391,12 @@ AT.AsemanMain {
                     else
                     if( fileName.slice(0,4) == "cmd:" ) {
                         var cmd = fileName.slice(4)
-                        if( cmd == "search" )
+                        if( cmd == "search" ) {
                             search_bar.show()//Meikade.timer(400,search_bar,"show")
+                            networkFeatures.pushAction("Search (from menu)")
+                        }
                     } else {
-                        var component = Qt.createComponent("MainMenuItem.qml")
-                        var item = component.createObject(menu_item_frame)
+                        var item = main_menu_item_component.createObject(menu_item_frame)
                         item.anchors.fill = menu_item_frame
                         item.z = 1000
 
@@ -455,6 +462,14 @@ AT.AsemanMain {
                     sidebar.show()
             }
         }
+    }
+
+    Timer {
+        id: start_report_timer
+        interval: 2000
+        repeat: false
+        onTriggered: networkFeatures.pushDeviceModel(AT.Devices.deviceName, AT.Devices.lcdPhysicalSize, AT.Devices.density)
+        Component.onCompleted: start()
     }
 
     function hideMenuItem() {
@@ -534,5 +549,21 @@ AT.AsemanMain {
             source: Meikade.resourcePath + "/fonts/" + fontName + ".ttf"
             property string fontName
         }
+    }
+
+    Component {
+        id: network_message_component
+        AT.MessageDialogOkCancelWarning {
+            property string destUrl
+            onOk: {
+                Qt.openUrlExternally(destUrl)
+                AT.AsemanApp.back()
+            }
+        }
+    }
+
+    Component {
+        id: main_menu_item_component
+        MainMenuItem {}
     }
 }

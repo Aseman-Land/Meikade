@@ -148,6 +148,7 @@ BackHandlerView {
                                 configure.viewMode = true
                             } else {
                                 checkbox.checked = !checkbox.checked
+                                networkFeatures.pushAction( ("Configure: %1 changed to %2").arg(item.prprt).arg(checkbox.checked) )
                             }
                         }
                     }
@@ -234,4 +235,6 @@ BackHandlerView {
     Component.onCompleted: {
         initTranslations()
     }
+
+    ActivityAnalizer { object: configure; comment: "" }
 }

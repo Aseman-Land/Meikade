@@ -123,4 +123,6 @@ BackHandlerView {
     Component.onCompleted: {
         refresh()
     }
+
+    ActivityAnalizer { object: bookmarks; comment: "" }
 }

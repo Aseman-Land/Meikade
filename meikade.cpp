@@ -31,6 +31,7 @@
 #include "p7zipextractor.h"
 #include "xmldownloadermodel.h"
 #include "meikade_macros.h"
+#include "networkfeatures.h"
 #include "poetimageprovider.h"
 #include "asemantools/asemandevices.h"
 #include "asemantools/asemanquickview.h"
@@ -136,6 +137,7 @@ Meikade::Meikade(QObject *parent) :
     qmlRegisterType<PoetImageProvider>("Meikade", 1, 0, "PoetImageProvider");
     qmlRegisterType<StickerModel>("Meikade", 1, 0, "StickerModel");
     qmlRegisterType<StickerWriter>("Meikade", 1, 0, "StickerWriter");
+    qmlRegisterType<NetworkFeatures>("Meikade", 1, 0, "NetworkFeatures");
     qmlRegisterType<ThreadedSearchModel>("Meikade", 1, 0, "ThreadedSearchModel");
     qmlRegisterUncreatableType<MeikadeDatabase>("Meikade", 1, 0, "MeikadeDatabase", "");
 

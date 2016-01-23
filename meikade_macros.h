@@ -20,6 +20,7 @@
 #define MEIKADE_MACROS_H
 
 #include <QtGlobal>
+#include <QDir>
 
 #define DATA_DB_CONNECTION "data_sqlite"
 #define THREADED_DATA_DB_CONNECTION "threaded_data_sqlite"
