@@ -42,3 +42,4 @@ TabBar 1.0 TabBar.qml
 TitleBarShadow 1.0 TitleBarShadow.qml
 WaitDialog 1.0 WaitDialog.qml
 XmlDownloaderPage 1.0 XmlDownloaderPage.qml
+ActivityAnalizer 1.0 ActivityAnalizer.qml

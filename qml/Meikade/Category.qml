@@ -104,10 +104,16 @@ Item {
 
                     var map = item.mapToItem(category, 0, 0)
                     var rect = Qt.rect(map.x, map.y, item.width, item.height)
-                    if( childs.length === 0 && !item.hafezOmen )
+                    if( childs.length === 0 && !item.hafezOmen ) {
                         category.poemSelected(identifier, rect)
-                    else
+                    } else {
                         category.categorySelected(identifier, rect)
+                    }
+
+                    if(catId == 0)
+                        networkFeatures.pushAction( ("Poet Selected: %1").arg(identifier) )
+                    else
+                        networkFeatures.pushAction( ("Cat Selected: %1").arg(identifier) )
                 }
             }
         }

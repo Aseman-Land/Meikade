@@ -182,7 +182,6 @@
         <file>qml/Meikade/icons/button-close.png</file>
         <file>qml/Meikade/icons/button-omen.png</file>
         <file>qml/Meikade/icons/button-random.png</file>
-        <file>qml/Meikade/poets/700.png</file>
         <file>qml/Meikade/poets/55.png</file>
         <file>qml/Meikade/MeikadeNews1.qml</file>
         <file>qml/Meikade/icons/tik-dark.png</file>
@@ -194,5 +193,6 @@
         <file>qml/Meikade/icons/shop.png</file>
         <file>qml/Meikade/icons/button-random-white.png</file>
         <file>qml/Meikade/qmldir</file>
+        <file>qml/Meikade/ActivityAnalizer.qml</file>
     </qresource>
 </RCC>

@@ -29,6 +29,7 @@ Rectangle {
     property bool allowEditMode: false
 
     property alias header: view_list.header
+    property alias count: view_list.count
 
     property color highlightColor: "#11000000"
     property color textColor: Meikade.nightTheme? "#ffffff" : "#333333"
@@ -44,6 +45,11 @@ Rectangle {
 
     onPoemIdChanged: {
         view_list.refresh()
+
+        if(poemId!=-1) {
+            analizer.end()
+            analizer.begin()
+        }
 
         var cat = Database.poemCat(poemId)
         var fileName = cat
@@ -516,9 +522,11 @@ Rectangle {
             onFavoritedChanged: {
                 if( signalBlocker )
                     return
+
                 if( favorited ) {
                     UserData.favorite(poemId,vid)
                     showTooltip( qsTr("Favorited") )
+                    networkFeatures.pushAction( ("Poem Favorited: %1").arg(poemId) )
                 } else {
                     UserData.unfavorite(poemId,vid)
                     showTooltip( qsTr("Unfavorited") )
@@ -531,7 +539,7 @@ Rectangle {
                 text:   qsTr("Copy")
                 textColor: "#333333"
                 textFont.bold: false
-                textFont.pixelSize: 10*globalFontDensity*Devices.fontDensity
+                textFont.pixelSize: 9*globalFontDensity*Devices.fontDensity
                 onClicked: {
                     var subject = Database.poemName(poem_edit.poemId)
                     var poet
@@ -544,6 +552,7 @@ Rectangle {
 
                     var message = poem_edit.text + "\n\n" + poet
 
+                    networkFeatures.pushAction( ("Copy Verse: %1:%2").arg(poem_edit.poemId).arg(poem_edit.vid) )
                     Devices.clipboard = message
                     hideBottomPanel()
                 }
@@ -554,7 +563,7 @@ Rectangle {
                 text:   qsTr("Share")
                 textColor: "#333333"
                 textFont.bold: false
-                textFont.pixelSize: 10*globalFontDensity*Devices.fontDensity
+                textFont.pixelSize: 9*globalFontDensity*Devices.fontDensity
                 onClicked: {
                     var subject = Database.poemName(poem_edit.poemId)
                     var poet
@@ -565,6 +574,7 @@ Rectangle {
                         catId = Database.parentOf(catId)
                     }
 
+                    networkFeatures.pushAction( ("Share Verse: %1:%2").arg(poem_edit.poemId).arg(poem_edit.vid) )
                     var message = poem_edit.text + "\n\n" + poet
                     Devices.share(subject,message)
                     hideBottomPanel()
@@ -576,7 +586,7 @@ Rectangle {
                 text:   qsTr("Share Image")
                 textColor: "#333333"
                 textFont.bold: false
-                textFont.pixelSize: 10*globalFontDensity*Devices.fontDensity
+                textFont.pixelSize: 9*globalFontDensity*Devices.fontDensity
                 onClicked: {
                     var poet
                     var catId = Database.poemCat(poem_edit.poemId)
@@ -585,6 +595,7 @@ Rectangle {
                         catId = Database.parentOf(catId)
                     }
 
+                    networkFeatures.pushAction( ("Share Image: %1:%2").arg(poem_edit.poemId).arg(poem_edit.vid) )
                     stickerDialog = sticker_dialog_component.createObject(view)
                     stickerDialog.text = poem_edit.text
                     stickerDialog.poet = poet
@@ -597,9 +608,11 @@ Rectangle {
                 text: poem_edit.favorited? qsTr("Unfavorite") : qsTr("Favorite")
                 textColor: "#333333"
                 textFont.bold: false
-                textFont.pixelSize: 10*globalFontDensity*Devices.fontDensity
+                textFont.pixelSize: 9*globalFontDensity*Devices.fontDensity
                 onClicked: {
                     poem_edit.favorited = !poem_edit.favorited
+                    if(poem_edit.favorited)
+                        networkFeatures.pushAction( ("Verse Favorited: %1:%2").arg(poem_edit.poemId).arg(poem_edit.vid) )
                     hideBottomPanel()
                 }
             }
@@ -664,4 +677,6 @@ Rectangle {
             }
         }
     }
+
+    ActivityAnalizer { id: analizer; object: view; comment: view.poemId }
 }

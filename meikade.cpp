@@ -31,6 +31,7 @@
 #include "p7zipextractor.h"
 #include "xmldownloadermodel.h"
 #include "meikade_macros.h"
+#include "networkfeatures.h"
 #include "poetimageprovider.h"
 #include "asemantools/asemandevices.h"
 #include "asemantools/asemanquickview.h"
@@ -136,6 +137,7 @@ Meikade::Meikade(QObject *parent) :
     qmlRegisterType<PoetImageProvider>("Meikade", 1, 0, "PoetImageProvider");
     qmlRegisterType<StickerModel>("Meikade", 1, 0, "StickerModel");
     qmlRegisterType<StickerWriter>("Meikade", 1, 0, "StickerWriter");
+    qmlRegisterType<NetworkFeatures>("Meikade", 1, 0, "NetworkFeatures");
     qmlRegisterType<ThreadedSearchModel>("Meikade", 1, 0, "ThreadedSearchModel");
     qmlRegisterUncreatableType<MeikadeDatabase>("Meikade", 1, 0, "MeikadeDatabase", "");
 
@@ -242,7 +244,7 @@ QString Meikade::fileSuffix(const QString &path)
 
 QStringList Meikade::availableFonts()
 {
-    return QStringList() << "DroidNaskh-Regular" << /*"IranNastaliq" << */"BKoodakO" << "BYekan" << "IRAN-Sans";
+    return QStringList() << "DroidNaskh-Regular" << /*"IranNastaliq" << "BKoodakO" <<*/ "BYekan" << "IRAN-Sans";
 }
 
 qreal Meikade::fontPointScale(const QString &fontName)
@@ -454,6 +456,20 @@ void Meikade::setPhrase(bool stt)
 bool Meikade::phrase() const
 {
     return settings()->value("General/tabir",true).toBool();
+}
+
+void Meikade::setActivePush(bool stt)
+{
+    if( activePush() == stt )
+        return;
+
+    settings()->setValue("General/activePush", stt);
+    emit activePushChanged();
+}
+
+bool Meikade::activePush() const
+{
+    return settings()->value("General/activePush",true).toBool();
 }
 
 QString Meikade::aboutHafezOmen() const

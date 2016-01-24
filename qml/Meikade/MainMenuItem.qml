@@ -56,7 +56,11 @@ Item {
         id: item_close_timer
         interval: 400
         repeat: false
-        onTriggered: menu_item.destroy()
+        onTriggered: {
+            menu_item.destroy()
+            if(menu_item.item)
+                menu_item.item.destroy()
+        }
     }
 
     function close() {

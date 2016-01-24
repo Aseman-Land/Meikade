@@ -49,8 +49,13 @@ Item {
                 width: list.width
                 height: width*9/16
                 fillMode: Image.PreserveAspectCrop
-                source: "icons/menu-back.jpg"
+                source: networkFeatures.advertisePhoto.length!=0? networkFeatures.advertisePhoto : "icons/menu-back.jpg"
                 sourceSize: Qt.size(width,width)
+            }
+
+            MouseArea {
+                anchors.fill: parent
+                onClicked: Qt.openUrlExternally(networkFeatures.advertiseLink)
             }
         }
 
@@ -107,7 +112,9 @@ Item {
                 id: marea
                 anchors.fill: parent
                 onClicked: {
+                    networkFeatures.pushAction( ("Menu Action: %1").arg(fileName) )
                     mmenu.selected(fileName)
+
                     if(!search_bar.hide)
                         main.mainTitle = ""
                     else

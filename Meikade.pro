@@ -43,7 +43,9 @@ SOURCES += main.cpp \
     xmldownloadermodel.cpp \
     poetscriptinstaller.cpp \
     poetscriptinstallerqueue.cpp \
-    poetimageprovider.cpp
+    poetimageprovider.cpp \
+    apilayer.cpp \
+    networkfeatures.cpp
 
 HEADERS += \
     listobject.h \
@@ -66,7 +68,9 @@ HEADERS += \
     xmldownloadermodel.h \
     poetscriptinstaller.h \
     poetscriptinstallerqueue.h \
-    poetimageprovider.h
+    poetimageprovider.h \
+    apilayer.h \
+    networkfeatures.h
 
 OTHER_FILES += \
     android/AndroidManifest.xml \

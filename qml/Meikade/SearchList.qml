@@ -98,23 +98,6 @@ Rectangle {
                     vid: model.vorder
                     pid: model.poem
                     font.pixelSize: Devices.isMobile? 9*globalFontDensity*Devices.fontDensity : 10*globalFontDensity*Devices.fontDensity
-
-                    Rectangle {
-                        anchors.right: parent.right
-                        anchors.top: parent.top
-                        anchors.bottom: parent.bottom
-                        width: 25*Devices.density
-                        color: "#EC4334"
-                        visible: item.press
-
-                        Text {
-                            anchors.centerIn: parent
-                            text: Meikade.numberToArabicString(index+1)
-                            color: "#ffffff"
-                            font.pixelSize: 10*globalFontDensity*Devices.fontDensity
-                            font.family: AsemanApp.globalFont.family
-                        }
-                    }
                 }
 
                 Rectangle {

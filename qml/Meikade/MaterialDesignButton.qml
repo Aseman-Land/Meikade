@@ -83,6 +83,7 @@ Item {
                 text: qsTr("Hafez Omen")
                 icon: "icons/button-omen.png"
                 onClicked: {
+                    networkFeatures.pushAction("Hafez Omen")
                     md_btn.hafezOmenRequest()
                     close()
                 }
@@ -95,6 +96,7 @@ Item {
                 text: qsTr("Random Poem")
                 icon: "icons/button-random.png"
                 onClicked: {
+                    networkFeatures.pushAction("Random Poem")
                     md_btn.randomPoemRequest()
                     close()
                 }
@@ -107,6 +109,7 @@ Item {
                 text: qsTr("Search")
                 icon: "icons/button-search.png"
                 onClicked: {
+                    networkFeatures.pushAction("Search")
                     md_btn.searchRequest()
                     close_timer.restart()
                 }

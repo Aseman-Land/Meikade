@@ -49,6 +49,7 @@ Rectangle {
                 poems_page.switchPages()
             view.poemId = pid
             view.goToBegin()
+            networkFeatures.pushAction( ("Poem Selected: %1").arg(pid) )
         }
 
         property real ratio: poems_page.viewMode && portrait? 0.8 : 1
@@ -84,4 +85,6 @@ Rectangle {
     function back() {
         poems_page.viewMode = false
     }
+
+    ActivityAnalizer { object: poems_page; comment: poems_page.catId }
 }

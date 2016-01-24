@@ -193,7 +193,7 @@ Rectangle {
                 }
 
                 Behavior on opacity {
-                    NumberAnimation{ easing.type: Easing.OutCubic; duration: 400 }
+                    NumberAnimation { easing.type: Easing.OutCubic; duration: 400 }
                 }
             }
 
@@ -216,4 +216,6 @@ Rectangle {
         startInit = false
         destroy_timer.start()
     }
+
+    ActivityAnalizer { object: cat_item; comment: cat_item.catId }
 }
