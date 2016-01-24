@@ -129,6 +129,9 @@ Meikade::Meikade(QObject *parent) :
     p->close  = false;
 #endif
 
+    if(keepScreenOn())
+        setKeepScreenOn(true, true);
+
     qmlRegisterType<XmlDownloaderModel>("Meikade", 1, 0, "XmlDownloaderModel");
     qmlRegisterType<PoetImageProvider>("Meikade", 1, 0, "PoetImageProvider");
     qmlRegisterType<StickerModel>("Meikade", 1, 0, "StickerModel");
@@ -422,6 +425,37 @@ bool Meikade::meikadeNews(int i) const
     return settings()->value("General/meikadeNews" + QString::number(i),false).toBool();
 }
 
+void Meikade::setKeepScreenOn(bool stt, bool force)
+{
+    if( keepScreenOn() == stt && !force )
+        return;
+
+#ifdef Q_OS_ANDROID
+    p->viewer->javaLayer()->setKeepScreenOn(stt);
+#endif
+    settings()->setValue("General/keepScreenOn", stt);
+    emit keepScreenOnChanged();
+}
+
+bool Meikade::keepScreenOn() const
+{
+    return settings()->value("General/keepScreenOn",false).toBool();
+}
+
+void Meikade::setPhrase(bool stt)
+{
+    if( phrase() == stt )
+        return;
+
+    settings()->setValue("General/tabir", stt);
+    emit phraseChanged();
+}
+
+bool Meikade::phrase() const
+{
+    return settings()->value("General/tabir",true).toBool();
+}
+
 QString Meikade::aboutHafezOmen() const
 {
     return tr("Meikade's hafez omen is different from other omens.\n"
@@ -482,6 +516,7 @@ void Meikade::start()
 
     p->viewer = new AsemanQuickView();
     p->viewer->installEventFilter(this);
+    p->viewer->engine()->addImportPath(":/qml/");
     p->viewer->engine()->rootContext()->setContextProperty( "Meikade" , this );
     p->viewer->engine()->rootContext()->setContextProperty( "Database", p->poem_db  );
     p->viewer->engine()->rootContext()->setContextProperty( "UserData", p->user_db  );

@@ -26,16 +26,22 @@ Rectangle {
 
     property int pid
     property int vid
-    property int masterVid: vid
+    property int masterVid: {
+        var psn1 = Database.versePosition(item.pid,item.vid)
+        if( psn1 === 0 )
+            return vid
+        else
+        if( psn1 === 1 )
+            return vid-1
+        else
+            return vid
+    }
 
     property alias textColor: txt.color
     property alias font: txt.font
     property string text: txt.text + (txt_2.visible? "\n" + txt_2.text : "")
 
     property bool highlight: false
-
-    onVidChanged: refresh()
-    onPidChanged: refresh()
 
     Rectangle {
         id: highlight_rect
@@ -50,13 +56,32 @@ Rectangle {
 
     QtObject {
         id: privates
-        property int position
-        property int position_2
+        property int position: {
+            var psn1 = Database.versePosition(item.pid,item.vid)
+            if( psn1 === 0 )
+                return psn1
+            else
+            if( psn1 === 1 )
+                return Database.versePosition(item.pid,item.vid-1)
+            else
+                return psn1
+        }
+
+        property int position_2: {
+            var psn1 = Database.versePosition(item.pid,item.vid)
+            if( psn1 === 0 )
+                return Database.versePosition(item.pid,item.vid+1)
+            else
+            if( psn1 === 1 )
+                return psn1
+            else
+                return -1
+        }
     }
 
     Column{
         id: column
-        y: parent.height/2 - height/2
+        anchors.verticalCenter: parent.verticalCenter
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.margins: 30*Devices.density
@@ -64,71 +89,69 @@ Rectangle {
 
         Text{
             id: txt
-            anchors.right: parent.right
-            anchors.left: parent.left
+            width: parent.width
             font.pixelSize: Devices.isMobile? 9*globalFontDensity*Devices.fontDensity : 11*globalFontDensity*Devices.fontDensity
             font.family: globalPoemFontFamily
             wrapMode: TextInput.WordWrap
             horizontalAlignment: Text.AlignRight
             color: Meikade.nightTheme? "#ffffff" : "#111111"
+            text: {
+                var psn1 = Database.versePosition(item.pid,item.vid)
+                var txt1 = Database.verseText(item.pid,item.vid)
+
+                if( item.vid == 0 ) {
+                    var name = Database.poemName(poemId)
+                    var catId = Database.poemCat(poemId)
+                    while( catId ) {
+                        name = Database.catName(catId) + ", " + name
+                        catId = Database.parentOf(catId)
+                    }
+
+                    txt1 = name
+                }
+
+                if( psn1 === 0 )
+                    return txt1
+                else
+                if( psn1 === 1 )
+                    return Database.verseText(item.pid,item.vid-1)
+                else
+                    return txt1
+            }
         }
 
         Text{
             id: txt_2
-            anchors.left: parent.left
-            anchors.right: parent.right
+            width: parent.width
             font: txt.font
             wrapMode: TextInput.WordWrap
             visible: privates.position==0 && privates.position_2==1
             color: item.textColor
             horizontalAlignment: Text.AlignLeft
-        }
-    }
+            text: {
+                var psn1 = Database.versePosition(item.pid,item.vid)
+                var txt1 = Database.verseText(item.pid,item.vid)
 
-    function refresh(){
-        var psn1 = Database.versePosition(item.pid,item.vid)
-        var psn2
-        var txt1 = Database.verseText(item.pid,item.vid)
-        var txt2
+                if( item.vid == 0 ) {
+                    var name = Database.poemName(poemId)
+                    var catId = Database.poemCat(poemId)
+                    while( catId ) {
+                        name = Database.catName(catId) + ", " + name
+                        catId = Database.parentOf(catId)
+                    }
 
-        if( item.vid == 0 ) {
-            var name = Database.poemName(poemId)
-            var catId = Database.poemCat(poemId)
-            while( catId ) {
-                name = Database.catName(catId) + ", " + name
-                catId = Database.parentOf(catId)
+                    txt1 = name
+                }
+
+                if( psn1 === 0 )
+                    return Database.verseText(item.pid,item.vid+1)
+                else
+                if( psn1 === 1 ) {
+                    return txt1
+                }
+                else
+                    return ""
             }
-
-            txt1 = name
-        }
-
-        if( psn1 === 0 ) {
-            psn2 = Database.versePosition(item.pid,item.vid+1)
-            txt2 = Database.verseText(item.pid,item.vid+1)
-
-            privates.position = psn1
-            privates.position_2 = psn2
-            txt.text = txt1
-            txt_2.text = txt2
-            masterVid = vid
-        }
-        else
-        if( psn1 === 1 ) {
-            psn2 = Database.versePosition(item.pid,item.vid-1)
-            txt2 = Database.verseText(item.pid,item.vid-1)
-
-            privates.position = psn2
-            privates.position_2 = psn1
-            txt.text = txt2
-            txt_2.text = txt1
-            masterVid = vid-1
-        }
-        else
-        {
-            privates.position = psn1
-            privates.position_2 = -1
-            txt.text = txt1
-            txt_2.text = ""
         }
     }
 }

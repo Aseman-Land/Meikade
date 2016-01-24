@@ -102,6 +102,21 @@ BackHandlerView {
                 font.pixelSize: Devices.fontDensity*11
                 onTextChanged: refresh()
 
+                Button {
+                    anchors.left: poets_combo.right
+                    anchors.top: parent.top
+                    anchors.leftMargin: 4*Devices.density
+                    height: parent.height
+                    width: height
+                    normalColor: "#00000000"
+                    highlightColor: "#44ffffff"
+                    iconHeight: height*0.6
+                    radius: 3*Devices.density
+                    icon: "icons/button-close.png"
+                    visible: txt.text.length != 0
+                    onClicked: txt.text = ""
+                }
+
                 QtControls.ComboBox {
                     id: poets_combo
                     anchors.left: parent.left
@@ -116,7 +131,10 @@ BackHandlerView {
 
                     Connections {
                         target: Database
-                        onInitializeFinished: {
+                        onPoetsChanged: refresh()
+                        onInitializeFinished: refresh()
+
+                        function refresh(){
                             poets_combo.model.clear()
                             poets_model.append({"text": qsTr("All Poets"), "pid": -1})
 
