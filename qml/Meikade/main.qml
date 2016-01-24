@@ -29,6 +29,8 @@ AT.AsemanMain {
     color: "#000000"
     mainFrame: main_scene
 
+    property string mainTitle: qsTr("Meikade")
+
     property string globalPoemFontFamily: poem_texts_font.name
     property real globalZoomAnimDurations: animations? 500 : 0
     property real globalFontDensity: 0.9
@@ -107,6 +109,8 @@ AT.AsemanMain {
             var res = AT.BackHandler.back()
             if( !res && !AT.Devices.isDesktop )
                 Meikade.close()
+
+            main.mainTitle = search_bar.hide? qsTr("Meikade") : ""
         }
     }
 
@@ -432,7 +436,7 @@ AT.AsemanMain {
             anchors.rightMargin: 8*AT.Devices.density
             font.family: AT.AsemanApp.globalFont.family
             font.pixelSize: 11*globalFontDensity*AT.Devices.fontDensity
-            text: qsTr("Meikade")
+            text: main.mainTitle
             color: "#ffffff"
             opacity: 1-sidebar.percent
         }

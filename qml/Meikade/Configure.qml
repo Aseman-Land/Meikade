@@ -228,7 +228,6 @@ BackHandlerView {
 
     function initTranslations(){
         prefrences.refresh()
-        configure_txt.text = qsTr("Configure")
     }
 
     Component.onCompleted: {

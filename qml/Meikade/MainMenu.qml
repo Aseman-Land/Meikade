@@ -106,12 +106,18 @@ Item {
             MouseArea {
                 id: marea
                 anchors.fill: parent
-                onClicked: mmenu.selected(fileName)
+                onClicked: {
+                    mmenu.selected(fileName)
+                    if(!search_bar.hide)
+                        main.mainTitle = ""
+                    else
+                        main.mainTitle = name
+                }
             }
         }
 
         Component.onCompleted: {
-            model.append({"name":qsTr("Home")              , "icon": "icons/menu-home.png"      , "fileName":""                      , "type": "A"})
+            model.append({"name":qsTr("Meikade")           , "icon": "icons/menu-home.png"      , "fileName":""                      , "type": "A"})
             model.append({"name":qsTr("Search")            , "icon": "icons/menu-search.png"    , "fileName":"cmd:search"            , "type": "A"})
             model.append({"name":qsTr("Bookmarks")         , "icon": "icons/menu-bookmark.png"  , "fileName":"Bookmarks.qml"         , "type": "A"})
             model.append({"name":qsTr("Store")             , "icon": "icons/shop.png"           , "fileName":"XmlDownloaderPage.qml" , "type": "A"})
