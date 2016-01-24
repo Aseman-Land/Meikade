@@ -104,6 +104,10 @@ Rectangle {
         opacity: startInit? 1 : 0
         visible: cat_title.cid != 0
 
+        MouseArea {
+            anchors.fill: parent
+        }
+
         Button{
             id: rand_btn
             anchors.left: parent.left
@@ -111,7 +115,7 @@ Rectangle {
             height: parent.height
             radius: 0
             normalColor: "transparent"
-            highlightColor: "#00000066"
+            highlightColor: "#22000000"
             icon: "icons/button-random.png"
             iconHeight: 25*Devices.density
             visible: true

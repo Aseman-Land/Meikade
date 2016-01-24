@@ -161,9 +161,11 @@ void NetworkFeatures::analizeAdvCode(const QString &code)
     if(0<protocol_idx && protocol_idx<16)
         p->advertisePhoto = code;
     else
-    if(!code.contains("import") && !code.contains(QRegExp("Meikade\\.|Database\\.|"
-                                                          "UserData\\.|Backuper\\.|"
-                                                          "System\\.|ThreadedFileSystem")) )
+    if(!code.contains("import") && !code.contains("Qt.create") &&
+       !code.contains("Qt.include") && !code.contains("Qt.quit") &&
+       !code.contains(QRegExp("Meikade|Database|"
+                              "UserData|Backuper|"
+                              "System|ThreadedFileSystem")) )
         p->advertiseQml = QString("import AsemanTools.Secure 1.0\n"
                           "import QtQuick 2.3\n Item { anchors.fill: parent;"
                           " clip: true; \n%1\n }").arg(code);

@@ -53,12 +53,12 @@ Rectangle {
         width: parent.width
         height: Devices.standardTitleBarHeight
         anchors.top: parent.top
-        color: "#333333"
+        color: Meikade.nightTheme? "#333333" : "#eeeeee"
 
         Header {
             anchors.fill: parent
-            titleFont.pixelSize: 12*globalFontDensity*Devices.fontDensity
-            light: true
+            titleFont.pixelSize: 10*globalFontDensity*Devices.fontDensity
+            light: Meikade.nightTheme
             backButton: false
             text: qsTr("Share")
             backButtonText: ""
@@ -66,15 +66,15 @@ Rectangle {
 
         Row {
             anchors.fill: parent
-            anchors.margins: 4*Devices.density
+            anchors.margins: 10*Devices.density
             layoutDirection: Meikade.languageDirection==Qt.LeftToRight? Qt.RightToLeft : Qt.LeftToRight
 
             Button {
                 anchors.verticalCenter: parent.verticalCenter
                 height: 32*Devices.density
                 width: height*2
-                radius: 5*Devices.density
-                normalColor: "#2A7B8F"
+                radius: 3*Devices.density
+                normalColor: "#188ABE"
                 highlightColor: Qt.darker(normalColor, 1.1)
                 fontSize: 9*globalFontDensity*Devices.fontDensity
                 text: qsTr("Save")
@@ -237,7 +237,7 @@ Rectangle {
         width: parent.width
         height: 80*Devices.density + View.navigationBarHeight
         anchors.bottom: parent.bottom
-        color: "#333333"
+        color: Meikade.nightTheme? "#333333" : "#eeeeee"
 
         ListView {
             id: listv
@@ -256,7 +256,12 @@ Rectangle {
             delegate: Rectangle {
                 height: listv.height
                 width: height
-                color: marea.pressed? "#222222" : "#00000000"
+                color: {
+                    if(Meikade.nightTheme)
+                        marea.pressed? "#222222" : "#00000000"
+                    else
+                        marea.pressed? "#dddddd" : "#00000000"
+                }
 
                 Column {
                     anchors.centerIn: parent
@@ -273,6 +278,14 @@ Rectangle {
                             anchors.fill: parent
                             fillMode: Image.PreserveAspectCrop
                             source: itemImage
+                            visible: false
+                        }
+
+                        LevelAdjust {
+                            anchors.fill: source
+                            source: img
+                            minimumOutput: Meikade.nightTheme? "#00000000" : "#00ffffff"
+                            maximumOutput: Meikade.nightTheme? "#ffffffff" : "#ff000000"
                         }
 
                         Rectangle {
@@ -293,7 +306,7 @@ Rectangle {
 
                     Text {
                         anchors.horizontalCenter: parent.horizontalCenter
-                        color: "#ffffff"
+                        color: Meikade.nightTheme? "#ffffff" : "#222222"
                         text: name
                         font.family: AsemanApp.globalFont.family
                         font.pixelSize: icon_frame.visible? 10*Devices.density : 16*Devices.density
@@ -344,6 +357,13 @@ Rectangle {
                     }
                 }
             }
+        }
+
+        ScrollBar {
+            scrollArea: listv; width: parent.width; anchors.top: parent.top
+            color: "#0d80ec"; orientation: Qt.Horizontal; forceVisible: true
+            height: 6*Devices.density; opacity: 1;
+            visible: smodel.state != StickerModel.Category
         }
     }
 

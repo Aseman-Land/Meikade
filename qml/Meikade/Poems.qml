@@ -91,7 +91,7 @@ Rectangle {
             height: parent.height
             radius: 0
             normalColor: "transparent"
-            highlightColor: "#00000066"
+            highlightColor: "#22000000"
             icon: "icons/button-random-white.png"
             iconHeight: 25*Devices.density
             visible: true

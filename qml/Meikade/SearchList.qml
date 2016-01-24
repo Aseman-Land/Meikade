@@ -184,10 +184,11 @@ Rectangle {
         QtControls.ComboBox {
             id: poets_combo
             anchors.right: parent.right
+            anchors.left: parent.left
             anchors.top: parent.top
             anchors.bottom: parent.bottom
             anchors.rightMargin: 8*Devices.density
-            width: parent.width/2
+            anchors.leftMargin: 8*Devices.density
             textRole: "text"
             model: ListModel{
                 id: poets_model
