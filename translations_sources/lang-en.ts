@@ -202,14 +202,6 @@ Nile create Free and OpenSource projects.</source>
     </message>
 </context>
 <context>
-    <name>Bookmarks</name>
-    <message>
-        <location filename="../qml/Meikade/Bookmarks.qml" line="106"/>
-        <source>Bookmarks</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>Category</name>
     <message>
         <location filename="../qml/Meikade/Category.qml" line="142"/>
@@ -235,38 +227,33 @@ contact@aseman.org</source>
 <context>
     <name>Configure</name>
     <message>
-        <location filename="../qml/Meikade/Configure.qml" line="173"/>
+        <location filename="../qml/Meikade/Configure.qml" line="175"/>
         <source>Backup &amp; Restore</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/Configure.qml" line="176"/>
+        <location filename="../qml/Meikade/Configure.qml" line="178"/>
         <source>Languages</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/Configure.qml" line="177"/>
+        <location filename="../qml/Meikade/Configure.qml" line="179"/>
         <source>Night Theme</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/Configure.qml" line="178"/>
+        <location filename="../qml/Meikade/Configure.qml" line="180"/>
         <source>Phrase</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/Configure.qml" line="180"/>
+        <location filename="../qml/Meikade/Configure.qml" line="182"/>
         <source>Keep screen on</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/Configure.qml" line="181"/>
+        <location filename="../qml/Meikade/Configure.qml" line="183"/>
         <source>Send anonymous data to improve meikade.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/Meikade/Configure.qml" line="233"/>
-        <source>Configure</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -512,42 +499,42 @@ Thank you.</source>
 <context>
     <name>MainMenu</name>
     <message>
-        <location filename="../qml/Meikade/MainMenu.qml" line="122"/>
-        <source>Home</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/Meikade/MainMenu.qml" line="123"/>
-        <source>Search</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/Meikade/MainMenu.qml" line="124"/>
-        <source>Bookmarks</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/Meikade/MainMenu.qml" line="125"/>
-        <source>Store</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../qml/Meikade/MainMenu.qml" line="127"/>
-        <source>Configure</source>
+        <source>Meikade</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/Meikade/MainMenu.qml" line="128"/>
-        <source>OpenSource Projecs</source>
+        <source>Search</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/Meikade/MainMenu.qml" line="129"/>
-        <source>About</source>
+        <source>Bookmarks</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/Meikade/MainMenu.qml" line="130"/>
+        <source>Store</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/MainMenu.qml" line="132"/>
+        <source>Configure</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/MainMenu.qml" line="133"/>
+        <source>OpenSource Projecs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/MainMenu.qml" line="134"/>
+        <source>About</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/MainMenu.qml" line="135"/>
         <source>About Nile Group</source>
         <translation type="unfinished"></translation>
     </message>
@@ -656,23 +643,10 @@ It&apos;s calculate omen using natural random algorithms. Another apps calculate
     </message>
 </context>
 <context>
-    <name>Notes</name>
-    <message>
-        <location filename="../qml/Meikade/Notes.qml" line="100"/>
-        <source>Notes</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>OpenSourceProjects</name>
     <message>
         <location filename="../qml/Meikade/OpenSourceProjects.qml" line="58"/>
         <source>List of other opensource projects used in Meikade.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/Meikade/OpenSourceProjects.qml" line="174"/>
-        <source>Open Source Projects</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -761,21 +735,26 @@ It&apos;s calculate omen using natural random algorithms. Another apps calculate
 <context>
     <name>SearchBar</name>
     <message>
-        <location filename="../qml/Meikade/SearchBar.qml" line="83"/>
+        <location filename="../qml/Meikade/SearchBar.qml" line="84"/>
         <source>Search</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/Meikade/SearchBar.qml" line="138"/>
-        <source>All Poets</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>SearchList</name>
     <message>
-        <location filename="../qml/Meikade/SearchList.qml" line="58"/>
+        <location filename="../qml/Meikade/SearchList.qml" line="63"/>
         <source>Not found</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/SearchList.qml" line="204"/>
+        <source>All Poets</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/SearchList.qml" line="235"/>
+        <source>:Search in</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -879,47 +858,42 @@ It&apos;s calculate omen using natural random algorithms. Another apps calculate
 <context>
     <name>XmlDownloaderPage</name>
     <message>
-        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="49"/>
-        <source>Store</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="83"/>
+        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="82"/>
         <source>Fetching poet lists...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="92"/>
+        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="91"/>
         <source>Can&apos;t connect to the server</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="127"/>
+        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="126"/>
         <source>Poets list, you can download from NileGroup servers...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="204"/>
+        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="203"/>
         <source>Installing</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="207"/>
+        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="206"/>
         <source>Downloading</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="210"/>
+        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="209"/>
         <source>Installed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="213"/>
+        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="212"/>
         <source>Error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="215"/>
+        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="214"/>
         <source>Free</source>
         <translation type="unfinished"></translation>
     </message>
@@ -927,7 +901,8 @@ It&apos;s calculate omen using natural random algorithms. Another apps calculate
 <context>
     <name>main</name>
     <message>
-        <location filename="../qml/Meikade/main.qml" line="442"/>
+        <location filename="../qml/Meikade/main.qml" line="32"/>
+        <location filename="../qml/Meikade/main.qml" line="120"/>
         <source>Meikade</source>
         <translation type="unfinished"></translation>
     </message>
