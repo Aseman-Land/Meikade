@@ -192,6 +192,7 @@
         <file>qml/Meikade/icons/down.png</file>
         <file>qml/Meikade/poets/default.png</file>
         <file>qml/Meikade/icons/shop.png</file>
+        <file>qml/Meikade/icons/button-random-white.png</file>
         <file>qml/Meikade/qmldir</file>
     </qresource>
 </RCC>

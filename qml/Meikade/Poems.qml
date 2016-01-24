@@ -83,6 +83,22 @@ Rectangle {
             font.family: AsemanApp.globalFont.family
             text: Database.catName(catId)
         }
+
+        Button{
+            id: rand_btn
+            anchors.left: parent.left
+            anchors.verticalCenter: parent.verticalCenter
+            height: parent.height
+            radius: 0
+            normalColor: "transparent"
+            highlightColor: "#00000066"
+            icon: "icons/button-random-white.png"
+            iconHeight: 25*Devices.density
+            visible: true
+            onClicked: {
+                cat_page.showRandomPoem(catId)
+            }
+        }
     }
 
     ListView {

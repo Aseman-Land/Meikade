@@ -213,15 +213,35 @@ Rectangle {
         materialDesignButton.hide()
     }
 
-    function showRandom() {
-        var poets = Database.poets()
-        var poet_id_rnd = Math.floor(Math.random()*poets.length)
-        if(poet_id_rnd == poets.length)
-            poet_id_rnd--
+    function showRandomPoem(id) {
+        var poem = -1
+        var poems = Database.catPoems(id)
+        if(poems.length != 0)
+        {
+            var poem_id_rnd = Math.floor(Math.random()*poems.length)
+            if(poem_id_rnd == poems.length)
+                poem_id_rnd--
 
-        var poet = poets[poet_id_rnd]
+            poem = poems[poem_id_rnd]
+        }
 
-        var cats = Database.childsOf(poet)
+        if(poem == -1 || !poem)
+            return false
+
+        var item = poemview_component.createObject( base_frame, {"poemId": poem} )
+        item.inited = true
+
+        if( list.count != 0 )
+            list.last().outside = true
+
+        list.append(item)
+        materialDesignButton.hide()
+        return true
+    }
+
+    function showRandomCatPoem(id) {
+        id = id || 0
+        var cats = Database.childsOf(id)
         var poem = -1
         while(cats.length != 0)
         {
