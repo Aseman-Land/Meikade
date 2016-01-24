@@ -24,7 +24,6 @@ Item {
     anchors.fill: parent
 
     property variant item
-    property variant fallBackHandler
 
     onItemChanged: {
         if( !item )
@@ -80,10 +79,4 @@ Item {
         close()
         return true
     }
-
-    Component.onCompleted: {
-        fallBackHandler = BackHandler
-        BackHandler = menu_item
-    }
-    Component.onDestruction: if( BackHandler == menu_item ) BackHandler = fallBackHandler
 }

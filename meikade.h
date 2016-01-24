@@ -35,6 +35,8 @@ class Meikade : public QObject
     Q_PROPERTY(int runCount READ runCount WRITE setRunCount NOTIFY runCountChanged)
     Q_PROPERTY( int  languageDirection  READ languageDirection NOTIFY languageDirectionChanged )
     Q_PROPERTY(bool nightTheme READ nightTheme WRITE setNightTheme NOTIFY nightThemeChanged)
+    Q_PROPERTY(bool keepScreenOn READ keepScreenOn WRITE setKeepScreenOn NOTIFY keepScreenOnChanged)
+    Q_PROPERTY(bool phrase READ phrase WRITE setPhrase NOTIFY phraseChanged)
     Q_OBJECT
 
 public:
@@ -82,6 +84,12 @@ public:
     Q_INVOKABLE void setMeikadeNews(int i, bool stt);
     Q_INVOKABLE bool meikadeNews(int i) const;
 
+    void setKeepScreenOn(bool stt, bool force = false);
+    bool keepScreenOn() const;
+
+    void setPhrase(bool stt);
+    bool phrase() const;
+
     Q_INVOKABLE QString aboutHafezOmen() const;
 
     void setPoemsFont( const QString & name );
@@ -103,6 +111,8 @@ signals:
     void poemsFontChanged();
     void animationsChanged();
     void nightThemeChanged();
+    void keepScreenOnChanged();
+    void phraseChanged();
 
     void currentLanguageChanged();
     void languageDirectionChanged();
