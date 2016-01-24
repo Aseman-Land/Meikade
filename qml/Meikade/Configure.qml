@@ -174,6 +174,9 @@ BackHandlerView {
 //                    model.append({ "name": qsTr("Animations"), "file": "", "check": true, "pr":"animations"})
                     model.append({ "name": qsTr("Languages"), "file": "LanguageSelector.qml", "check": false, "pr":""})
                     model.append({ "name": qsTr("Night Theme"), "file": "", "check": true, "pr":"nightTheme"})
+                    model.append({ "name": qsTr("Phrase"), "file": "", "check": true, "pr":"phrase"})
+                    if(Devices.isAndroid)
+                        model.append({ "name": qsTr("Keep screen on"), "file": "", "check": true, "pr":"keepScreenOn"})
                 }
             }
 

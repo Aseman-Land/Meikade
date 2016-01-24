@@ -127,7 +127,7 @@ Item {
     ScrollBar {
         scrollArea: category_list; height: category_list.height-topMargin-View.navigationBarHeight
         anchors.left: category_list.left; anchors.top: category_list.top
-        anchors.topMargin: topMargin; color: Meikade.nightTheme? "#ffffff" : "#111111"
+        anchors.topMargin: topMargin; color: Meikade.nightTheme? "#ffffff" : "#881010"
     }
 
     Text {
