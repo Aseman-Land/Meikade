@@ -134,7 +134,7 @@ Rectangle {
                     width: parent.width
                     font.family: AsemanApp.globalFont.family
                     font.pixelSize: 9*globalFontDensity*Devices.fontDensity
-                    text: qsTr(" - AmirHosein Mousavi (Project Manager and Leader)\n"+
+                    text: qsTr(" - AmirHosein Mousavi (Project Manager and Leader and Developer)\n"+
                                " - Bardia Daneshvar (Project Founder, Project Architect and Developer)\n"+
                                " - Pourya Daneshvar (Designer)\n"+
                                " - Hasan Noruzi (Idea Processing)")

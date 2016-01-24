@@ -38,6 +38,7 @@ BackHandlerView {
             main.focus = true
 
         txt.text = ""
+        search_list.poetCombo.currentIndex = 0
     }
 
     Rectangle {

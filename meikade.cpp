@@ -306,6 +306,20 @@ QString Meikade::currentLanguage() const
     return p->language;
 }
 
+QQuickItem *Meikade::createObject(const QString &code)
+{
+    if(!p->viewer || !p->viewer->engine())
+        return 0;
+
+    QQmlComponent *component = new QQmlComponent(p->viewer->engine(), p->viewer);
+    component->setData(code.toUtf8(), QUrl());
+    QQuickItem *result = qobject_cast<QQuickItem *>(component->create());
+    if(!result)
+        qDebug() << component->errorString();
+
+    return result;
+}
+
 MeikadeDatabase *Meikade::database() const
 {
     return p->poem_db;

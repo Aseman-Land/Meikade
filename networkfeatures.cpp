@@ -5,7 +5,7 @@
 #define LAST_MESSAGE_ACTION "LastMessage/urlAction"
 #define LAST_MESSAGE_VISIBLED "LastMessage/visibled"
 
-#define ADVERTISE_IMAGE "Advertise/image"
+#define ADVERTISE_CODE "Advertise/code"
 #define ADVERTISE_LINK "Advertise/link"
 
 #include "networkfeatures.h"
@@ -30,6 +30,9 @@ public:
     ApiLayer_LastAdvertise adv;
 
     bool activePush;
+
+    QString advertiseQml;
+    QString advertisePhoto;
 };
 
 NetworkFeatures::NetworkFeatures(QObject *parent) :
@@ -118,26 +121,52 @@ void NetworkFeatures::pushLastMessageRequestAnswer(qint64 id, const ApiLayer_Las
 void NetworkFeatures::pushGetAdvertiseRequestAnswer(qint64 id, const ApiLayer_LastAdvertise &adv)
 {
     Q_UNUSED(id)
-    p->settings->setValue(ADVERTISE_IMAGE, adv.imageUrl);
+
+    p->settings->setValue(ADVERTISE_CODE, adv.imageUrl.toUtf8());
     p->settings->setValue(ADVERTISE_LINK, adv.link);
+
     p->adv = adv;
+    analizeAdvCode(p->adv.imageUrl);
+
     emit advertiseChanged();
 }
 
 void NetworkFeatures::init()
 {
-    /*! Commented because the advertise is not needed when
-     *  The user is not connected to the internet
-
-    p->adv.imageUrl = p->settings->value(ADVERTISE_IMAGE).toString();
-    p->adv.link = p->settings->value(ADVERTISE_LINK).toString();
-
-     */
+    QString code = p->settings->value(ADVERTISE_CODE).toByteArray();
+    analizeAdvCode(code);
+    if(p->advertiseQml.isEmpty())
+        p->advertisePhoto.clear();
+    else
+    {
+        p->adv.imageUrl = code;
+        p->adv.link = p->settings->value(ADVERTISE_LINK).toString();
+    }
 
     p->lastMsg.uuid = p->settings->value(LAST_MESSAGE_UUID).toString();
     p->lastMsg.message = p->settings->value(LAST_MESSAGE_MSG).toString();
     p->lastMsg.allowedDeviceIds = p->settings->value(LAST_MESSAGE_ALW_DEVICE).toString();
     p->lastMsg.okUrlAction = p->settings->value(LAST_MESSAGE_ACTION).toString();
+}
+
+void NetworkFeatures::analizeAdvCode(const QString &code)
+{
+    p->advertisePhoto.clear();
+    p->advertiseQml.clear();
+
+    const int protocol_idx = code.indexOf("://");
+    if(code.trimmed().isEmpty())
+        ;
+    else
+    if(0<protocol_idx && protocol_idx<16)
+        p->advertisePhoto = code;
+    else
+    if(!code.contains("import") && !code.contains(QRegExp("Meikade\\.|Database\\.|"
+                                                          "UserData\\.|Backuper\\.|"
+                                                          "System\\.|ThreadedFileSystem")) )
+        p->advertiseQml = QString("import AsemanTools.Secure 1.0\n"
+                          "import QtQuick 2.3\n Item { anchors.fill: parent;"
+                          " clip: true; \n%1\n }").arg(code);
 }
 
 QString NetworkFeatures::lastMessageUuid() const
@@ -162,12 +191,17 @@ QString NetworkFeatures::lastMessageUrl() const
 
 QString NetworkFeatures::advertisePhoto() const
 {
-    return p->adv.imageUrl;
+    return p->advertisePhoto;
 }
 
 QString NetworkFeatures::advertiseLink() const
 {
     return p->adv.link;
+}
+
+QString NetworkFeatures::advertiseQml() const
+{
+    return p->advertiseQml;
 }
 
 void NetworkFeatures::setActivePush(bool stt)

@@ -23,6 +23,7 @@
 #include <QSettings>
 #include <QStringList>
 
+class QQuickItem;
 class QSettings;
 class MeikadeDatabase;
 class MeikadePrivate;
@@ -60,6 +61,8 @@ public:
     Q_INVOKABLE QStringList languages();
     Q_INVOKABLE void setCurrentLanguage( const QString & lang );
     Q_INVOKABLE QString currentLanguage() const;
+
+    Q_INVOKABLE QQuickItem *createObject(const QString &code);
 
     MeikadeDatabase *database() const;
 

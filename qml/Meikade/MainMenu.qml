@@ -49,12 +49,38 @@ Item {
                 width: list.width
                 height: width*9/16
                 fillMode: Image.PreserveAspectCrop
-                source: networkFeatures.advertisePhoto.length!=0? networkFeatures.advertisePhoto : "icons/menu-back.jpg"
-                sourceSize: Qt.size(width,width)
+                source: "icons/menu-back.jpg"
+                sourceSize: Qt.size(width*2,height*2)
+            }
+
+            Image {
+                id: menu_adv
+                anchors.fill: menu_cover
+                fillMode: Image.PreserveAspectFit
+                source: networkFeatures.advertisePhoto
+                asynchronous: true
+                sourceSize: menu_cover.sourceSize
+                clip: true
+
+                property Item advItem
+                property string advertiseQml: networkFeatures.advertiseQml
+                onAdvertiseQmlChanged: {
+                    if(advItem) {
+                        advItem.visible = 0
+                        Tools.deleteItemDelay(10, advItem)
+                        advItem = null
+                    }
+                    if(advertiseQml.length == 0)
+                        return
+
+                    advItem = Meikade.createObject(advertiseQml)
+                    advItem.parent = parent
+                }
             }
 
             MouseArea {
                 anchors.fill: parent
+                visible: networkFeatures.advertiseLink.trim().length != 0
                 onClicked: Qt.openUrlExternally(networkFeatures.advertiseLink)
             }
         }

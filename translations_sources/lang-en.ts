@@ -20,7 +20,7 @@
     </message>
     <message>
         <location filename="../qml/Meikade/About.qml" line="137"/>
-        <source> - AmirHosein Mousavi (Project Manager and Leader)
+        <source> - AmirHosein Mousavi (Project Manager and Leader and Developer)
  - Bardia Daneshvar (Project Founder, Project Architect and Developer)
  - Pourya Daneshvar (Designer)
  - Hasan Noruzi (Idea Processing)</source>

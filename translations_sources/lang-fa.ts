@@ -36,6 +36,16 @@
     </message>
     <message>
         <location filename="../qml/Meikade/About.qml" line="137"/>
+        <source> - AmirHosein Mousavi (Project Manager and Leader and Developer)
+ - Bardia Daneshvar (Project Founder, Project Architect and Developer)
+ - Pourya Daneshvar (Designer)
+ - Hasan Noruzi (Idea Processing)</source>
+        <translation>- امیرحسین موسوی (مدیر و رهبر پروژه و برنامه‌نویس)
+- بردیا دانشور (بنیان‌گذار، طراح فنی و برنامه‌نویس)
+- پوریا دانشور (طراح)
+- حسن نوروزی (ایده پرداز)</translation>
+    </message>
+    <message>
         <source> - AmirHosein Mousavi (Project Manager and Leader)
  - Bardia Daneshvar (Project Founder, Project Architect and Developer)
  - Pourya Daneshvar (Designer)
