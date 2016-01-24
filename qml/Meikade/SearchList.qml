@@ -213,7 +213,10 @@ Rectangle {
 
             Connections {
                 target: Database
-                onInitializeFinished: {
+                onPoetsChanged: refresh()
+                onInitializeFinished: refresh()
+
+                function refresh(){
                     poets_combo.model.clear()
                     poets_model.append({"text": qsTr("All Poets"), "pid": -1})
 
