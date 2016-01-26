@@ -132,6 +132,12 @@ void StickerModel::refresh()
         color.type = Category;
         color.image = QUrl::fromLocalFile(":/qml/Meikade/stickers/icons/color.png");
 
+        StickerModelItem image;
+        image.title = tr("Image");
+        image.command1 = OpenImage;
+        image.type = Category;
+        image.image = QUrl::fromLocalFile(":/qml/Meikade/stickers/icons/open.png");
+
         StickerModelItem sticker;
         sticker.title = tr("Sticker");
         sticker.command1 = Sticker;
@@ -152,6 +158,7 @@ void StickerModel::refresh()
 
         p->list << size;
         p->list << color;
+        p->list << image;
         p->list << sticker;
         p->list << font;
         p->list << logo;

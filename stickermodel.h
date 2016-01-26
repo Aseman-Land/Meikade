@@ -30,7 +30,8 @@ public:
         Color,
         Size,
         Font,
-        Logo
+        Logo,
+        OpenImage
     };
 
     enum LogoTypes {

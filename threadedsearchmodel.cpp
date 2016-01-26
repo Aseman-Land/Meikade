@@ -35,7 +35,7 @@ public:
     int poet;
 
     QTimer *timer;
-    ThreadedDatabase *threaded;
+    QPointer<ThreadedDatabase> threaded;
     QPointer<MeikadeDatabase> database;
 };
 
@@ -233,10 +233,11 @@ void ThreadedSearchModel::refresh_prv()
             disconnect(p->threaded, SIGNAL(noMoreResult()), this, SLOT(noMoreResult())  );
 
             connect(p->threaded, SIGNAL(finished()), p->threaded, SLOT(deleteLater()));
-            p->threaded->terminate();
+            p->threaded->quit();
+            p->threaded->wait();
         }
-        else
-            p->threaded->deleteLater();
+
+        p->threaded->deleteLater();
     }
 
     p->threaded = new ThreadedDatabase(p->database, this);

@@ -33,6 +33,7 @@
 #include <QSqlError>
 #include <QDir>
 #include <QUuid>
+#include <QTimer>
 #include <QVariant>
 #include <QDebug>
 
@@ -68,9 +69,14 @@ ThreadedDatabase::ThreadedDatabase( MeikadeDatabase *pdb, QObject *parent) :
     p->pdb = pdb;
     p->find_query = 0;
 
-    connect( pdb, SIGNAL(initializeFinished()), SLOT(initialize()), Qt::QueuedConnection );
-    if(p->pdb->initialized())
-        initialize();
+    if(p->pdb)
+    {
+        connect( pdb, SIGNAL(initializeFinished()), SLOT(initialize()), Qt::QueuedConnection );
+        if(p->pdb->initialized())
+            initialize();
+    }
+    else
+        QTimer::singleShot(1000, this, SLOT(initialize()));
 }
 
 void ThreadedDatabase::initialize()
@@ -180,6 +186,9 @@ void ThreadedDatabase::run()
 
 ThreadedDatabase::~ThreadedDatabase()
 {
+    if(p->find_query)
+        delete p->find_query;
+
     QSqlDatabase::removeDatabase(p->connectionName);
     delete p;
 }

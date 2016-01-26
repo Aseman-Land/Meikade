@@ -350,7 +350,7 @@ contact@aseman.org</translation>
     <message>
         <location filename="../qml/Meikade/Configure.qml" line="183"/>
         <source>Send anonymous data to improve meikade.</source>
-        <translation>ارسال اطلاعات ناشناس و فنی برنامه به منظور بهبود میکده.</translation>
+        <translation>ارسال اطلاعات فنی برنامه به منظور بهبود میکده.</translation>
     </message>
     <message>
         <source>Configure</source>
@@ -630,22 +630,22 @@ Thank you.</source>
         <translation>صفحه خانگی</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/MainMenu.qml" line="127"/>
+        <location filename="../qml/Meikade/MainMenu.qml" line="153"/>
         <source>Meikade</source>
         <translation>مِی‌کده</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/MainMenu.qml" line="128"/>
+        <location filename="../qml/Meikade/MainMenu.qml" line="154"/>
         <source>Search</source>
         <translation>جستجو</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/MainMenu.qml" line="129"/>
+        <location filename="../qml/Meikade/MainMenu.qml" line="155"/>
         <source>Bookmarks</source>
         <translation>علاقه‌مندی‌ها</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/MainMenu.qml" line="130"/>
+        <location filename="../qml/Meikade/MainMenu.qml" line="156"/>
         <source>Store</source>
         <translation>فروشگاه</translation>
     </message>
@@ -654,7 +654,7 @@ Thank you.</source>
         <translation>فروشگاه</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/MainMenu.qml" line="135"/>
+        <location filename="../qml/Meikade/MainMenu.qml" line="161"/>
         <source>About Nile Group</source>
         <translation>درباره گروه نیل</translation>
     </message>
@@ -667,17 +667,17 @@ Thank you.</source>
         <translation type="obsolete">یادداشت‌ها</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/MainMenu.qml" line="132"/>
+        <location filename="../qml/Meikade/MainMenu.qml" line="158"/>
         <source>Configure</source>
         <translation>تنظیمات</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/MainMenu.qml" line="133"/>
+        <location filename="../qml/Meikade/MainMenu.qml" line="159"/>
         <source>OpenSource Projecs</source>
         <translation>پروژه‌های منبع باز</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/MainMenu.qml" line="134"/>
+        <location filename="../qml/Meikade/MainMenu.qml" line="160"/>
         <source>About</source>
         <translation>درباره می‌کده</translation>
     </message>
@@ -757,7 +757,7 @@ Thank you.</source>
         <translation>۹</translation>
     </message>
     <message>
-        <location filename="../meikade.cpp" line="477"/>
+        <location filename="../meikade.cpp" line="491"/>
         <source>Meikade&apos;s hafez omen is different from other omens.
 It&apos;s calculate omen using natural random algorithms. Another apps calculate omen using machine algorithms.</source>
         <translation>فال حافظ می‌کده دارای روشی کاملا متفاوت برای تفال زدن می‌باشد. می‌کده بر خلاف روش‌های ماشینی و الگوریتم‌های ریاضی که تقریبا همیشه استفاده می‌‌شوند، از روش‌های طبیعی و به کمک حرکت انگشتان شما بر روی صفحه برای شما فال می‌گیرد.
@@ -945,7 +945,7 @@ It&apos;s calculate omen using natural random algorithms. Another apps calculate
 <context>
     <name>SearchBar</name>
     <message>
-        <location filename="../qml/Meikade/SearchBar.qml" line="84"/>
+        <location filename="../qml/Meikade/SearchBar.qml" line="85"/>
         <source>Search</source>
         <translation>جستجو</translation>
     </message>
@@ -966,12 +966,12 @@ It&apos;s calculate omen using natural random algorithms. Another apps calculate
         <translation>پیدا نشد</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/SearchList.qml" line="204"/>
+        <location filename="../qml/Meikade/SearchList.qml" line="205"/>
         <source>All Poets</source>
         <translation>همه‌ی شعرا</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/SearchList.qml" line="235"/>
+        <location filename="../qml/Meikade/SearchList.qml" line="236"/>
         <source>:Search in</source>
         <translation>جستجو در</translation>
     </message>
@@ -987,19 +987,29 @@ It&apos;s calculate omen using natural random algorithms. Another apps calculate
 <context>
     <name>StickerDialog</name>
     <message>
-        <location filename="../qml/Meikade/StickerDialog.qml" line="63"/>
+        <location filename="../qml/Meikade/StickerDialog.qml" line="62"/>
         <source>Share</source>
         <translation>به اشتراک گذاری</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/StickerDialog.qml" line="80"/>
+        <location filename="../qml/Meikade/StickerDialog.qml" line="79"/>
         <source>Save</source>
         <translation>ذخیره</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/StickerDialog.qml" line="286"/>
+        <location filename="../qml/Meikade/StickerDialog.qml" line="306"/>
         <source>Font</source>
         <translation>قلم</translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/StickerDialog.qml" line="483"/>
+        <source>Select Image</source>
+        <translation>انتخاب تصویر</translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/StickerDialog.qml" line="500"/>
+        <source>Unset</source>
+        <translation>حذف</translation>
     </message>
 </context>
 <context>
@@ -1016,51 +1026,56 @@ It&apos;s calculate omen using natural random algorithms. Another apps calculate
     </message>
     <message>
         <location filename="../stickermodel.cpp" line="136"/>
+        <source>Image</source>
+        <translation>عکس</translation>
+    </message>
+    <message>
+        <location filename="../stickermodel.cpp" line="142"/>
         <source>Sticker</source>
         <translation>شکل</translation>
     </message>
     <message>
-        <location filename="../stickermodel.cpp" line="142"/>
+        <location filename="../stickermodel.cpp" line="148"/>
         <source>Font</source>
         <translation>قلم</translation>
     </message>
     <message>
-        <location filename="../stickermodel.cpp" line="148"/>
+        <location filename="../stickermodel.cpp" line="154"/>
         <source>Logo</source>
         <translation>نشانه</translation>
     </message>
     <message>
-        <location filename="../stickermodel.cpp" line="164"/>
+        <location filename="../stickermodel.cpp" line="171"/>
         <source>1:1</source>
         <translation>1:1</translation>
     </message>
     <message>
-        <location filename="../stickermodel.cpp" line="169"/>
+        <location filename="../stickermodel.cpp" line="176"/>
         <source>4:3</source>
         <translation>4:3</translation>
     </message>
     <message>
-        <location filename="../stickermodel.cpp" line="174"/>
+        <location filename="../stickermodel.cpp" line="181"/>
         <source>3:4</source>
         <translation>3:4</translation>
     </message>
     <message>
-        <location filename="../stickermodel.cpp" line="179"/>
+        <location filename="../stickermodel.cpp" line="186"/>
         <source>16:9</source>
         <translation>16:9</translation>
     </message>
     <message>
-        <location filename="../stickermodel.cpp" line="184"/>
+        <location filename="../stickermodel.cpp" line="191"/>
         <source>16:6</source>
         <translation>16:6</translation>
     </message>
     <message>
-        <location filename="../stickermodel.cpp" line="273"/>
+        <location filename="../stickermodel.cpp" line="280"/>
         <source>Meikade Logo</source>
         <translation>نشانه‌ی می‌کده</translation>
     </message>
     <message>
-        <location filename="../stickermodel.cpp" line="279"/>
+        <location filename="../stickermodel.cpp" line="286"/>
         <source>Poet Name</source>
         <translation>نام شاعر</translation>
     </message>

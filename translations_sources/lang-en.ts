@@ -499,42 +499,42 @@ Thank you.</source>
 <context>
     <name>MainMenu</name>
     <message>
-        <location filename="../qml/Meikade/MainMenu.qml" line="127"/>
+        <location filename="../qml/Meikade/MainMenu.qml" line="153"/>
         <source>Meikade</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/MainMenu.qml" line="128"/>
+        <location filename="../qml/Meikade/MainMenu.qml" line="154"/>
         <source>Search</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/MainMenu.qml" line="129"/>
+        <location filename="../qml/Meikade/MainMenu.qml" line="155"/>
         <source>Bookmarks</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/MainMenu.qml" line="130"/>
+        <location filename="../qml/Meikade/MainMenu.qml" line="156"/>
         <source>Store</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/MainMenu.qml" line="132"/>
+        <location filename="../qml/Meikade/MainMenu.qml" line="158"/>
         <source>Configure</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/MainMenu.qml" line="133"/>
+        <location filename="../qml/Meikade/MainMenu.qml" line="159"/>
         <source>OpenSource Projecs</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/MainMenu.qml" line="134"/>
+        <location filename="../qml/Meikade/MainMenu.qml" line="160"/>
         <source>About</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/MainMenu.qml" line="135"/>
+        <location filename="../qml/Meikade/MainMenu.qml" line="161"/>
         <source>About Nile Group</source>
         <translation type="unfinished"></translation>
     </message>
@@ -610,7 +610,7 @@ Thank you.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../meikade.cpp" line="477"/>
+        <location filename="../meikade.cpp" line="491"/>
         <source>Meikade&apos;s hafez omen is different from other omens.
 It&apos;s calculate omen using natural random algorithms. Another apps calculate omen using machine algorithms.</source>
         <translation type="unfinished"></translation>
@@ -735,7 +735,7 @@ It&apos;s calculate omen using natural random algorithms. Another apps calculate
 <context>
     <name>SearchBar</name>
     <message>
-        <location filename="../qml/Meikade/SearchBar.qml" line="84"/>
+        <location filename="../qml/Meikade/SearchBar.qml" line="85"/>
         <source>Search</source>
         <translation type="unfinished"></translation>
     </message>
@@ -748,12 +748,12 @@ It&apos;s calculate omen using natural random algorithms. Another apps calculate
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/SearchList.qml" line="204"/>
+        <location filename="../qml/Meikade/SearchList.qml" line="205"/>
         <source>All Poets</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/SearchList.qml" line="235"/>
+        <location filename="../qml/Meikade/SearchList.qml" line="236"/>
         <source>:Search in</source>
         <translation type="unfinished"></translation>
     </message>
@@ -769,18 +769,28 @@ It&apos;s calculate omen using natural random algorithms. Another apps calculate
 <context>
     <name>StickerDialog</name>
     <message>
-        <location filename="../qml/Meikade/StickerDialog.qml" line="63"/>
+        <location filename="../qml/Meikade/StickerDialog.qml" line="62"/>
         <source>Share</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/StickerDialog.qml" line="80"/>
+        <location filename="../qml/Meikade/StickerDialog.qml" line="79"/>
         <source>Save</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/StickerDialog.qml" line="286"/>
+        <location filename="../qml/Meikade/StickerDialog.qml" line="306"/>
         <source>Font</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/StickerDialog.qml" line="483"/>
+        <source>Select Image</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/StickerDialog.qml" line="500"/>
+        <source>Unset</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -798,51 +808,56 @@ It&apos;s calculate omen using natural random algorithms. Another apps calculate
     </message>
     <message>
         <location filename="../stickermodel.cpp" line="136"/>
-        <source>Sticker</source>
+        <source>Image</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../stickermodel.cpp" line="142"/>
-        <source>Font</source>
+        <source>Sticker</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../stickermodel.cpp" line="148"/>
+        <source>Font</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../stickermodel.cpp" line="154"/>
         <source>Logo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../stickermodel.cpp" line="164"/>
+        <location filename="../stickermodel.cpp" line="171"/>
         <source>1:1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../stickermodel.cpp" line="169"/>
+        <location filename="../stickermodel.cpp" line="176"/>
         <source>4:3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../stickermodel.cpp" line="174"/>
+        <location filename="../stickermodel.cpp" line="181"/>
         <source>3:4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../stickermodel.cpp" line="179"/>
+        <location filename="../stickermodel.cpp" line="186"/>
         <source>16:9</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../stickermodel.cpp" line="184"/>
+        <location filename="../stickermodel.cpp" line="191"/>
         <source>16:6</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../stickermodel.cpp" line="273"/>
+        <location filename="../stickermodel.cpp" line="280"/>
         <source>Meikade Logo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../stickermodel.cpp" line="279"/>
+        <location filename="../stickermodel.cpp" line="286"/>
         <source>Poet Name</source>
         <translation type="unfinished"></translation>
     </message>

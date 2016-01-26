@@ -4,8 +4,7 @@ import AsemanTools 1.0
 import Meikade 1.0
 
 Rectangle {
-    width: 100
-    height: 62
+    id: sticker_dialog
     color: "#111111"
 
     property alias text: txt.text
@@ -81,6 +80,7 @@ Rectangle {
                 onClicked: {
                     indicator.active = true
                     progress_rect.visible = true
+                    networkFeatures.pushAction( ("Image saved with image %1").arg(frame_image.source==""?"off":"on") )
                     writer.save(Devices.picturesLocation + "/Meikade", Qt.size(1280, 1280/frame.ratio))
                 }
             }
@@ -117,6 +117,13 @@ Rectangle {
 
                 property real xwidth: (ratio>parentRatio? main_frame.width : main_frame.height*ratio)*xratio
                 property real xheight: (ratio>parentRatio? main_frame.width/ratio : main_frame.height)*xratio
+
+                Image {
+                    id: frame_image
+                    anchors.fill: parent
+                    sourceSize: Qt.size(width*2, height*2)
+                    fillMode: Image.PreserveAspectCrop
+                }
 
                 Item {
                     id: frame_source
@@ -247,6 +254,7 @@ Rectangle {
             orientation: Qt.Horizontal
             layoutDirection: Meikade.languageDirection
             boundsBehavior: Flickable.StopAtBounds
+            clip: true
             rebound: Transition {
                 NumberAnimation {
                     properties: "x,y"
@@ -320,7 +328,10 @@ Rectangle {
                         switch(model.state)
                         {
                         case StickerModel.Category:
-                            smodel.state = stateCommand
+                            if(stateCommand == StickerModel.OpenImage)
+                                file_viewer_component.createObject(sticker_dialog)
+                            else
+                                smodel.state = stateCommand
                             break
 
                         case StickerModel.Size:
@@ -330,6 +341,9 @@ Rectangle {
                         case StickerModel.Color:
                             frame.color = stateCommand
                             images_frame.color = stateCommand2
+                            break
+
+                        case StickerModel.OpenImage:
                             break
 
                         case StickerModel.Sticker:
@@ -361,9 +375,9 @@ Rectangle {
 
         ScrollBar {
             scrollArea: listv; width: parent.width; anchors.top: parent.top
-            color: "#0d80ec"; orientation: Qt.Horizontal; forceVisible: true
+            color: "#888888"; orientation: Qt.Horizontal; forceVisible: true
             height: 6*Devices.density; opacity: 1;
-            visible: smodel.state != StickerModel.Category
+//            visible: smodel.state != StickerModel.Category
         }
     }
 
@@ -419,6 +433,120 @@ Rectangle {
             id: indicator_hide_timer
             interval: 1000
             onTriggered: progress_rect.visible = false
+        }
+    }
+
+    Component {
+        id: file_viewer_component
+        Item {
+            id: fv_item
+            anchors.fill: sticker_dialog
+
+            property bool visibled: false
+
+            onVisibledChanged: {
+                if(visibled)
+                    BackHandler.pushHandler(fv_item, fv_item.back)
+                else
+                    BackHandler.removeHandler(fv_item)
+            }
+
+            Rectangle {
+                id: shadow_area
+                anchors.fill: parent
+                color: "#000000"
+                opacity: visibled? 0.5 : 0
+
+                Behavior on opacity {
+                    NumberAnimation {easing.type: Easing.OutCubic; duration: 300}
+                }
+            }
+
+            Rectangle {
+                id: fv_area
+                width: parent.width
+                height: parent.height
+                x: visibled? 0 : -sticker_dialog.width
+
+                Behavior on x {
+                    NumberAnimation {easing.type: Easing.OutCubic; duration: 300}
+                }
+
+                Rectangle {
+                    width: parent.width
+                    height: Devices.standardTitleBarHeight
+
+                    Header {
+                        anchors.fill: parent
+                        titleFont.pixelSize: 10*globalFontDensity*Devices.fontDensity
+                        light: Meikade.nightTheme
+                        backButton: false
+                        text: qsTr("Select Image")
+                        backButtonText: ""
+                    }
+
+                    Row {
+                        anchors.fill: parent
+                        anchors.margins: 10*Devices.density
+                        layoutDirection: Meikade.languageDirection==Qt.LeftToRight? Qt.RightToLeft : Qt.LeftToRight
+
+                        Button {
+                            anchors.verticalCenter: parent.verticalCenter
+                            height: 32*Devices.density
+                            width: height*2
+                            radius: 3*Devices.density
+                            normalColor: "#990000"
+                            highlightColor: Qt.darker(normalColor, 1.1)
+                            fontSize: 9*globalFontDensity*Devices.fontDensity
+                            text: qsTr("Unset")
+                            onClicked: {
+                                frame_image.source = ""
+                                close()
+                            }
+                        }
+                    }
+                }
+
+                FileSystemView {
+                    id: fsview
+                    anchors.fill: parent
+                    anchors.topMargin: Devices.standardTitleBarHeight
+                    clip: true
+                    root: AsemanApp.startPath
+                    filters: ["*.jpg", "*.png"]
+                    onClickedOnFile: {
+                        frame_image.source = fileUrl
+                        close()
+                    }
+                }
+
+                ScrollBar {
+                    scrollArea: fsview; height: fsview.height
+                    anchors.right: fsview.right; anchors.top: fsview.top
+                    color: "#333333"
+                }
+
+                TitleBarShadow {
+                    anchors.top: fsview.top
+                    width: parent.width
+                }
+            }
+
+            function back() {
+                if(fsview.back())
+                    return false
+
+                close()
+            }
+
+            function close() {
+                visibled = 0
+                Tools.jsDelayCall(300, function(){fv_item.destroy()})
+            }
+
+            Component.onCompleted: {
+                visibled = true
+            }
         }
     }
 }
