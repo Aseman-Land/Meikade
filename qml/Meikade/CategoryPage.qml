@@ -185,9 +185,20 @@ Rectangle {
             return false
     }
 
-    function backToPoet(id) {
-        var cat = category_component.createObject( base_frame, {"catId": id} )
+    function backToPoet(pid) {
+        if( list.count == 1 )
+            return
+
+        var cat = category_component.createObject( base_frame, {"catId": pid} )
         cat.start()
+
+        var item = list.takeLast()
+        item.end()
+
+        while(list.count > 1) {
+            item = list.takeLast()
+            item.destroy()
+        }
 
         if( list.count != 0 )
             list.last().outside = true
@@ -196,18 +207,20 @@ Rectangle {
         materialDesignButton.hide()
     }
 
-    function backToCats(id) {
-        var poems = Database.catPoems(id)
+    function backToCats(cid, pid) {
+        backToPoet(pid)
+
+        var poems = Database.catPoems(cid)
         var item
         if( poems.length != 0 )
         {
-            var poems_list = poems_component.createObject( base_frame, {"catId": id} )
+            var poems_list = poems_component.createObject( base_frame, {"catId": cid} )
             poems_list.inited = true
             item = poems_list
         }
         else
         {
-            var cat = category_component.createObject( base_frame, {"catId": id} )
+            var cat = category_component.createObject( base_frame, {"catId": cid} )
             cat.start()
             item = cat
         }

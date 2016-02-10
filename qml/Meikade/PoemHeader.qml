@@ -153,7 +153,7 @@ Item {
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
-                    page.backToCats(catId)
+                    page.backToCats(catId, poetId)
                 }
             }
         }
