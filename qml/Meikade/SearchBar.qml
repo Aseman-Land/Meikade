@@ -97,7 +97,7 @@ BackHandlerView {
                 anchors.rightMargin: 20*Devices.density
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignRight
-                inputMethodHints: Qt.ImhNoPredictiveText
+//                inputMethodHints: Qt.ImhNoPredictiveText
                 color: "#dddddd"
                 font.family: AsemanApp.globalFont.family
                 font.pixelSize: Devices.fontDensity*11
