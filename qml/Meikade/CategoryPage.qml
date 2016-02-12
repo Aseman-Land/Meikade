@@ -185,6 +185,53 @@ Rectangle {
             return false
     }
 
+    function backToPoet(pid) {
+        if( list.count == 1 )
+            return
+
+        var cat = category_component.createObject( base_frame, {"catId": pid} )
+        cat.start()
+
+        var item = list.takeLast()
+        item.end()
+
+        while(list.count > 1) {
+            item = list.takeLast()
+            item.destroy()
+        }
+
+        if( list.count != 0 )
+            list.last().outside = true
+
+        list.append(cat)
+        materialDesignButton.hide()
+    }
+
+    function backToCats(cid, pid) {
+        backToPoet(pid)
+
+        var poems = Database.catPoems(cid)
+        var item
+        if( poems.length != 0 )
+        {
+            var poems_list = poems_component.createObject( base_frame, {"catId": cid} )
+            poems_list.inited = true
+            item = poems_list
+        }
+        else
+        {
+            var cat = category_component.createObject( base_frame, {"catId": cid} )
+            cat.start()
+            item = cat
+        }
+
+        if( list.count != 0 )
+            list.last().outside = true
+
+        list.append(item)
+        materialDesignButton.hide()
+    }
+
     function home() {
         if( list.count == 1 )
             return

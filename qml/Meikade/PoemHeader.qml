@@ -25,6 +25,8 @@ Item {
     height: 190*Devices.density
 
     property int poemId: -1
+    property int poetId: -1
+    property int catId: -1
     property bool favorited: false
     property alias font: txt1.font
     property color color: "#ffffff"
@@ -44,7 +46,12 @@ Item {
             cat = Database.parentOf(cat)
         }
 
-        poet_txt.text = Database.catName(poet) + ", " + Database.catName(book)
+        poet_txt.text = Database.catName(poet) + ","
+        book_txt.text = Database.catName(book)
+
+        poetId = poet
+        catId = book
+
         privates.signalBlocker = false
     }
 
@@ -113,7 +120,7 @@ Item {
         height: 32*Devices.density
         color: "#EC4334"
 
-        Text{
+        Text {
             id: poet_txt
             anchors.right: parent.right
             anchors.verticalCenter: parent.verticalCenter
@@ -123,6 +130,32 @@ Item {
             wrapMode: TextInput.WordWrap
             color: poem_header.color
             horizontalAlignment: Text.AlignHCenter
+
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                    page.backToPoet(poetId)
+                }
+            }
+        }
+
+        Text {
+            id: book_txt
+            anchors.right: poet_txt.left
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.margins: 8*Devices.density
+            font.pixelSize: 10*globalFontDensity*Devices.fontDensity
+            font.family: AsemanApp.globalFont.family
+            wrapMode: TextInput.WordWrap
+            color: poem_header.color
+            horizontalAlignment: Text.AlignHCenter
+
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                    page.backToCats(catId, poetId)
+                }
+            }
         }
 
         Row {
