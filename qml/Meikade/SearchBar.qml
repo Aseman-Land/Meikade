@@ -97,7 +97,13 @@ BackHandlerView {
                 anchors.rightMargin: 20*Devices.density
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignRight
-//                inputMethodHints: Qt.ImhNoPredictiveText
+                inputMethodHints: {
+                    var deviceName = Devices.deviceName
+                    if(deviceName.toLowerCase().indexOf("htc") >= 0)
+                        return Qt.ImhNone
+                    else
+                        return Qt.ImhNoPredictiveText
+                }
                 color: "#dddddd"
                 font.family: AsemanApp.globalFont.family
                 font.pixelSize: Devices.fontDensity*11
