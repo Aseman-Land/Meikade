@@ -244,7 +244,7 @@ QString Meikade::fileSuffix(const QString &path)
 
 QStringList Meikade::availableFonts()
 {
-    return QStringList() << "DroidNaskh-Regular" << /*"IranNastaliq" << "BKoodakO" <<*/ "BYekan" << "IRAN-Sans";
+    return QStringList() << "DroidNaskh-Regular" << /*"IranNastaliq" << "BKoodakO" <<*/ "BYekan" << "IRAN-Sans" << "fontawesome-webfont";
 }
 
 qreal Meikade::fontPointScale(const QString &fontName)
@@ -262,6 +262,9 @@ qreal Meikade::fontPointScale(const QString &fontName)
         return 1.2;
     else
     if( fontName == "IRAN-Sans" )
+        return 1;
+    else
+    if( fontName == "fontawesome-webfont" )
         return 1;
     else
         return 1;
