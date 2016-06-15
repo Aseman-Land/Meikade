@@ -170,7 +170,8 @@ Item {
                 height: tools_row.height
                 width: height
                 icon: poem_header.favorited? "icons/favorites.png" : "icons/unfavorites.png"
-                normalColor: "#9D463E"
+                normalColor: "#44000000"
+                highlightColor: Qt.rgba(0, 0, 0, 0.4)
                 iconHeight: 14*Devices.density
                 onClicked: poem_header.favorited = !poem_header.favorited
             }
@@ -180,7 +181,8 @@ Item {
                 height: tools_row.height
                 width: height
                 icon: "icons/share.png"
-                normalColor: "#9D463E"
+                normalColor: "#44000000"
+                highlightColor: Qt.rgba(0, 0, 0, 0.4)
                 iconHeight: 14*Devices.density
                 onClicked: {
                     networkFeatures.pushAction( ("Share Poem: %1").arg(poem_header.poemId) )
