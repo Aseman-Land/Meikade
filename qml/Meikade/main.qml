@@ -263,14 +263,21 @@ AT.AsemanMain {
                         normalColor: "#00000000"
                         highlightColor: "#88666666"
                         textColor: "#ffffff"
-                        icon: "icons/back_light_64.png"
-                        iconHeight: 16*AT.Devices.density
-                        fontSize: 11*globalFontDensity*AT.Devices.fontDensity
+                        iconHeight: 25*AT.Devices.density
+                        fontSize: 25*globalFontDensity*AT.Devices.fontDensity
                         textFont.bold: false
                         visible: backButton && cat_page.count != 1
                         onClicked: {
                             AT.AsemanApp.back()
                             AT.Devices.hideKeyboard()
+                        }
+
+                        Text {
+                            anchors.centerIn: parent
+                            font.pixelSize: 25*globalFontDensity*Devices.fontDensity
+                            font.family: awesome_font.name
+                            color: "white"
+                            text: ""
                         }
                     }
                 }
@@ -475,6 +482,11 @@ AT.AsemanMain {
         repeat: false
         onTriggered: networkFeatures.pushDeviceModel(AT.Devices.deviceName, AT.Devices.lcdPhysicalSize, AT.Devices.density)
         Component.onCompleted: start()
+    }
+
+    FontLoader {
+        id: awesome_font
+        source: Meikade.resourcePath + "/fonts/fontawesome-webfont.ttf"
     }
 
     function hideMenuItem() {

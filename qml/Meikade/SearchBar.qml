@@ -54,17 +54,18 @@ BackHandlerView {
             anchors.rightMargin: headerRightMargin
             height: 42*Devices.density
 
-            Image {
+            Text {
                 id: search_img
                 anchors.top: parent.top
                 anchors.bottom: parent.bottom
                 anchors.right: parent.right
                 anchors.topMargin: 11*Devices.density
                 anchors.bottomMargin: 11*Devices.density
-                width: height
-                sourceSize: Qt.size(width,height)
-                source: "icons/search.png"
-                mirror: true
+                font.pixelSize: 15*globalFontDensity*Devices.fontDensity
+                font.family: awesome_font.name
+                color: "white"
+                horizontalAlignment: Text.AlignHCenter
+                text: ""
             }
 
             Rectangle {
@@ -119,9 +120,16 @@ BackHandlerView {
                     highlightColor: "#44ffffff"
                     iconHeight: height*0.6
                     radius: 3*Devices.density
-                    icon: "icons/button-close.png"
                     visible: txt.text.length != 0
                     onClicked: txt.text = ""
+
+                    Text {
+                        anchors.centerIn: parent
+                        font.pixelSize: 14*globalFontDensity*Devices.fontDensity
+                        font.family: awesome_font.name
+                        color: "#99ffffff"
+                        text: ""
+                    }
                 }
 
                 function refresh() {
@@ -202,7 +210,6 @@ BackHandlerView {
         normalColor: "#00000000"
         highlightColor: "#88666666"
         textColor: "#ffffff"
-        icon: "icons/back_light_64.png"
         iconHeight: 16*Devices.density
         fontSize: 11*globalFontDensity*Devices.fontDensity
         textFont.bold: false
@@ -210,6 +217,14 @@ BackHandlerView {
         onClicked: {
             AsemanApp.back()
             Devices.hideKeyboard()
+        }
+
+        Text {
+            anchors.centerIn: parent
+            font.pixelSize: 25*globalFontDensity*Devices.fontDensity
+            font.family: awesome_font.name
+            color: "white"
+            text: ""
         }
     }
 

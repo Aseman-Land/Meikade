@@ -85,25 +85,43 @@ BackHandlerView {
     }
 
     Rectangle {
-        anchors.fill: title
-        anchors.topMargin: -View.statusBarHeight
+        id: header
+        width: parent.width
+        height: View.statusBarHeight + Devices.standardTitleBarHeight
         color: "#881010"
 
-        TitleBarShadow {
-            width: parent.width
-            anchors.top: parent.bottom
-        }
-    }
+        Button{
+            id: back_btn
+            anchors.left: parent.left
+            anchors.top: parent.top
+            anchors.topMargin: View.statusBarHeight
+            height: headerHeight
+            radius: 0
+            normalColor: "#00000000"
+            highlightColor: "#88666666"
+            textColor: "#333333"
+            iconHeight: 16*Devices.density
+            fontSize: 11*globalFontDensity*Devices.fontDensity
+            textFont.bold: false
+            visible: backButton
+            onClicked: {
+                AsemanApp.back()
+                Devices.hideKeyboard()
+            }
 
-    Header {
-        id: title
-        anchors.left: parent.left
-        anchors.top: parent.top
-        anchors.right: parent.right
-        anchors.topMargin: View.statusBarHeight
-        titleFont.pixelSize: 12*globalFontDensity*Devices.fontDensity
-        light: true
-        backButtonText: ""
+            Text {
+                anchors.centerIn: parent
+                font.pixelSize: 25*globalFontDensity*Devices.fontDensity
+                font.family: awesome_font.name
+                color: "white"
+                text: ""
+            }
+        }
+
+        TitleBarShadow {
+            width: header.width
+            anchors.top: header.bottom
+        }
     }
 
     function refresh() {

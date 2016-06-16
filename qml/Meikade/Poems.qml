@@ -92,11 +92,18 @@ Rectangle {
             radius: 0
             normalColor: "transparent"
             highlightColor: "#22000000"
-            icon: "icons/button-random-white.png"
             iconHeight: 25*Devices.density
             visible: true
             onClicked: {
                 cat_page.showRandomPoem(catId)
+            }
+
+            Text {
+                anchors.centerIn: parent
+                font.pixelSize: 13*globalFontDensity*Devices.fontDensity
+                font.family: awesome_font.name
+                color: "white"
+                text: ""
             }
         }
     }

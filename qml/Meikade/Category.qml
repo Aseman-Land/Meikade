@@ -82,17 +82,15 @@ Item {
                 root: category.catId == 0
             }
 
-            Image {
+            Text {
                 id: go_img
                 anchors.left: parent.left
                 anchors.verticalCenter: parent.verticalCenter
-                anchors.margins: 8*Devices.density
-                height: 20*Devices.density
-                width: height
-                sourceSize: Qt.size(width,height)
-                fillMode: Image.PreserveAspectFit
-                source: "icons/go.png"
-                opacity: 0.4
+                anchors.margins: 12*Devices.density
+                font.pixelSize: 30*globalFontDensity*Devices.fontDensity
+                font.family: awesome_font.name
+                color: "#44000000"
+                text: ""
             }
 
             MouseArea{

@@ -81,7 +81,7 @@ Item {
                 anchors.top: parent.top
                 height: parent.height/3
                 text: qsTr("Hafez Omen")
-                icon: "icons/button-omen.png"
+                icon: ""
                 onClicked: {
                     networkFeatures.pushAction("Hafez Omen")
                     md_btn.hafezOmenRequest()
@@ -94,7 +94,7 @@ Item {
                 anchors.top: omen_btn.bottom
                 height: parent.height/3
                 text: qsTr("Random Poem")
-                icon: "icons/button-random.png"
+                icon: ""
                 onClicked: {
                     networkFeatures.pushAction("Random Poem")
                     md_btn.randomPoemRequest()
@@ -107,7 +107,7 @@ Item {
                 anchors.top: random_btn.bottom
                 height: parent.height/3
                 text: qsTr("Search")
-                icon: "icons/button-search.png"
+                icon: ""
                 onClicked: {
                     networkFeatures.pushAction("Search")
                     md_btn.searchRequest()
@@ -154,14 +154,13 @@ Item {
             onClicked: opened = !opened
         }
 
-        Image {
+        Text {
             anchors.centerIn: btn_rect
-            width: 22*Devices.density
-            height: width
-            sourceSize: Qt.size(width,height)
+            font.pixelSize: 15*globalFontDensity*Devices.fontDensity
+            font.family: awesome_font.name
             rotation: opened? 0 : -45
-            source: "icons/button-close.png"
-            transformOrigin: Item.Center
+            color: "white"
+            text: ""
 
             Behavior on rotation {
                 NumberAnimation{easing.type: Easing.OutBack; duration: 300}

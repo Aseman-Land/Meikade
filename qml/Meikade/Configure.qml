@@ -47,7 +47,6 @@ BackHandlerView {
                 normalColor: "#00000000"
                 highlightColor: "#33666666"
                 textColor: "#ffffff"
-                icon: "icons/back_light_64.png"
                 iconHeight: 16*Devices.density
                 fontSize: 11*globalFontDensity*Devices.fontDensity
                 textFont.bold: false
@@ -55,6 +54,14 @@ BackHandlerView {
                 onClicked: {
                     AsemanApp.back()
                     Devices.hideKeyboard()
+                }
+
+                Text {
+                    anchors.centerIn: parent
+                    font.pixelSize: 25*globalFontDensity*Devices.fontDensity
+                    font.family: awesome_font.name
+                    color: "white"
+                    text: ""
                 }
             }
 
