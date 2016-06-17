@@ -263,8 +263,8 @@ AT.AsemanMain {
                         normalColor: "#00000000"
                         highlightColor: "#88666666"
                         textColor: "#ffffff"
-                        iconHeight: 25*AT.Devices.density
-                        fontSize: 25*globalFontDensity*AT.Devices.fontDensity
+                        iconHeight: 16*AT.Devices.density
+                        fontSize: 11*globalFontDensity*AT.Devices.fontDensity
                         textFont.bold: false
                         visible: backButton && cat_page.count != 1
                         onClicked: {
