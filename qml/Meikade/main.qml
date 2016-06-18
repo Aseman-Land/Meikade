@@ -255,6 +255,28 @@ AT.AsemanMain {
                     height: AT.Devices.standardTitleBarHeight
 
                     AT.Button{
+                        id: srch_btn
+                        anchors.left: back_btn.visible? back_btn.right : parent.left
+                        anchors.top: parent.top
+                        height: parent.height
+                        width: height
+                        radius: 0
+                        highlightColor: "#88666666"
+                        onClicked: {
+                            networkFeatures.pushAction("Search (from header)")
+                            search_bar.show()
+                        }
+
+                        Text {
+                            anchors.centerIn: parent
+                            font.pixelSize: 15*globalFontDensity*AT.Devices.fontDensity
+                            font.family: awesome_font.name
+                            color: "white"
+                            text: ""
+                        }
+                    }
+
+                    AT.Button{
                         id: back_btn
                         anchors.left: parent.left
                         anchors.top: parent.top
@@ -274,7 +296,7 @@ AT.AsemanMain {
 
                         Text {
                             anchors.centerIn: parent
-                            font.pixelSize: 25*globalFontDensity*Devices.fontDensity
+                            font.pixelSize: 25*globalFontDensity*AT.Devices.fontDensity
                             font.family: awesome_font.name
                             color: "white"
                             text: ""
