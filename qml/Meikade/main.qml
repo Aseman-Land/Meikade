@@ -370,6 +370,7 @@ AT.AsemanMain {
         id: sidebar
         anchors.fill: parent
         layoutDirection: Qt.RightToLeft
+        handleWidth: 5*Devices.density
         delegate: MouseArea {
             anchors.fill: parent
 
