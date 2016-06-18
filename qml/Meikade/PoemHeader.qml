@@ -115,16 +115,36 @@ Item {
     }
 
     Rectangle {
+        id: header
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.bottom: parent.bottom
         height: 32*Devices.density
         color: "#EC4334"
+        state: poem_header.toolsOpened? "toolsOn" : "toolsOff"
+
+        states: [
+            State {
+                name: "toolsOn"
+                AnchorChanges { target: poet_txt; anchors.verticalCenter: header.bottom }
+                AnchorChanges { target: book_txt; anchors.verticalCenter: header.bottom }
+                AnchorChanges { target: tools_row; anchors.verticalCenter: header.verticalCenter }
+            },
+            State {
+                name: "toolsOff"
+                AnchorChanges { target: poet_txt; anchors.verticalCenter: header.verticalCenter }
+                AnchorChanges { target: book_txt; anchors.verticalCenter: header.verticalCenter }
+                AnchorChanges { target: tools_row; anchors.verticalCenter: header.bottom }
+            }
+        ]
+
+        transitions: Transition {
+            AnchorAnimation { duration: 200 }
+        }
 
         Text {
             id: poet_txt
             anchors.right: parent.right
-            anchors.verticalCenter: parent.verticalCenter
             anchors.margins: 8*Devices.density
             font.pixelSize: 10*globalFontDensity*Devices.fontDensity
             font.family: AsemanApp.globalFont.family
@@ -144,7 +164,6 @@ Item {
         Text {
             id: book_txt
             anchors.right: poet_txt.left
-            anchors.verticalCenter: parent.verticalCenter
             anchors.margins: 8*Devices.density
             font.pixelSize: 10*globalFontDensity*Devices.fontDensity
             font.family: AsemanApp.globalFont.family
@@ -165,7 +184,6 @@ Item {
             id: tools_row
             height: 32*Devices.density
             anchors.right: parent.right
-            anchors.verticalCenter: parent.verticalCenter
             spacing: 1*Devices.density
             visible: poem_header.toolsOpened
 
