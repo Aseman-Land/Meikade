@@ -230,7 +230,7 @@ AT.AsemanMain {
                             layoutDirection: Qt.RightToLeft
                             onHafezOmenRequest: cat_page.showHafezOmen()
                             onRandomPoemRequest: cat_page.showRandomCatPoem()
-                            onSearchRequest: search_bar.show()
+                            onStoreRequest: showSinglePage("XmlDownloaderPage.qml")
                         }
                     }
                 }
@@ -581,6 +581,18 @@ AT.AsemanMain {
                 font_loader_component.createObject(main, {"fontName": fonts[i]})
 
         fontsLoaded = true
+    }
+
+    function showSinglePage(fileName) {
+        var item = main_menu_item_component.createObject(menu_item_frame)
+        item.anchors.fill = menu_item_frame
+        item.z = 1000
+
+        var ocomponent = Qt.createComponent(fileName)
+        var object = ocomponent.createObject(item)
+        item.item = object
+
+        menuItem = item
     }
 
     Component {

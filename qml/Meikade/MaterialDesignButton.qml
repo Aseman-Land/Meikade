@@ -13,6 +13,7 @@ Item {
     signal hafezOmenRequest()
     signal randomPoemRequest()
     signal searchRequest()
+    signal storeRequest()
 
     property int layoutDirection: Qt.LeftToRight
 
@@ -103,14 +104,14 @@ Item {
             }
 
             MaterialDesignButtonItem {
-                id: search_btn
+                id: store_btn
                 anchors.top: random_btn.bottom
                 height: parent.height/3
-                text: qsTr("Search")
-                icon: ""
+                text: qsTr("Other Poets")
+                icon: ""
                 onClicked: {
-                    networkFeatures.pushAction("Search")
-                    md_btn.searchRequest()
+                    networkFeatures.pushAction("Store")
+                    md_btn.storeRequest()
                     close_timer.restart()
                 }
             }
