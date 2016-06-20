@@ -81,6 +81,17 @@ Rectangle {
             property bool atEnd: atYEnd
             onAtEndChanged: if(atEnd && count != 0) tmodel.more()
 
+            onVerticalVelocityChanged: {
+                if(view_list.atYBeginning || view_list.count == 0)
+                    ascroll.hide = true
+                else
+                if((verticalVelocity>4 && !atYBeginning) || atYEnd)
+                    ascroll.hide = true
+                else
+                if((verticalVelocity<-4 && !atYEnd) || atYBeginning)
+                    ascroll.hide = false
+            }
+
             model: tmodel
             delegate: Rectangle {
                 id: item
@@ -261,5 +272,41 @@ Rectangle {
         width: advanced.width
         height: 1*Devices.density
         opacity: 0.5
+    }
+
+    Rectangle {
+        id: ascroll
+
+        property bool hide: true
+
+        anchors.bottom: parent.bottom
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.margins: 20*Devices.density
+        width: 50*Devices.density
+        height: width
+        radius: width/2
+        color: "#66000000"
+        opacity: hide? 0 : 1
+        z: hide? -1 : 0
+
+        Behavior on opacity {
+            NumberAnimation { duration: 500 }
+        }
+
+        Text {
+            anchors.centerIn: parent
+            font.pixelSize: 25*globalFontDensity*Devices.fontDensity
+            font.family: awesome_font.name
+            color: "white"
+            text: ""
+        }
+
+        MouseArea {
+            anchors.fill: parent
+            onClicked: {
+                view_list.positionViewAtBeginning()
+                ascroll.hide = true
+            }
+        }
     }
 }
