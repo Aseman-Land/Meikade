@@ -18,6 +18,7 @@ android {
     ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
 }
 
+DEFINES += DISABLE_KEYCHAIN
 include(qmake/qtcAddDeployment.pri)
 include(asemantools/asemantools.pri)
 qtcAddDeployment()
@@ -83,4 +84,10 @@ RESOURCES += \
 DISTFILES += \
     translations_sources/lang-fa.ts \
     translations_sources/lang-en.ts \
-    qmldir
+    qmldir \
+    android/gradle/wrapper/gradle-wrapper.jar \
+    android/gradlew \
+    android/res/values/libs.xml \
+    android/build.gradle \
+    android/gradle/wrapper/gradle-wrapper.properties \
+    android/gradlew.bat

@@ -36,6 +36,7 @@
 #include "asemantools/asemandevices.h"
 #include "asemantools/asemanquickview.h"
 #include "asemantools/asemanapplication.h"
+#include "asemantools/asemanqmlengine.h"
 
 #ifdef Q_OS_ANDROID
 #include "asemantools/asemanjavalayer.h"
@@ -90,7 +91,7 @@ Meikade *meikade_instance = 0;
 class MeikadePrivate
 {
 public:
-    AsemanQuickView *viewer;
+    AsemanQmlEngine *viewer;
     MeikadeDatabase *poem_db;
     UserData *user_db;
     ThreadedFileSystem *threaded_fs;
@@ -308,10 +309,10 @@ QString Meikade::currentLanguage() const
 
 QQuickItem *Meikade::createObject(const QString &code)
 {
-    if(!p->viewer || !p->viewer->engine())
+    if(!p->viewer || !p->viewer)
         return 0;
 
-    QQmlComponent *component = new QQmlComponent(p->viewer->engine(), p->viewer);
+    QQmlComponent *component = new QQmlComponent(p->viewer, p->viewer);
     component->setData(code.toUtf8(), QUrl());
     QQuickItem *result = qobject_cast<QQuickItem *>(component->create());
     if(!result)
@@ -447,7 +448,7 @@ void Meikade::setKeepScreenOn(bool stt, bool force)
         return;
 
 #ifdef Q_OS_ANDROID
-    p->viewer->javaLayer()->setKeepScreenOn(stt);
+    AsemanJavaLayer::instance()->setKeepScreenOn(stt);
 #endif
     settings()->setValue("General/keepScreenOn", stt);
     emit keepScreenOnChanged();
@@ -544,24 +545,22 @@ void Meikade::start()
     p->system = new SystemInfo(this);
     p->devices = new AsemanDevices(this);
 
-    p->viewer = new AsemanQuickView();
-    p->viewer->installEventFilter(this);
-    p->viewer->engine()->addImportPath(":/qml/");
-    p->viewer->engine()->rootContext()->setContextProperty( "Meikade" , this );
-    p->viewer->engine()->rootContext()->setContextProperty( "Database", p->poem_db  );
-    p->viewer->engine()->rootContext()->setContextProperty( "UserData", p->user_db  );
-    p->viewer->engine()->rootContext()->setContextProperty( "Backuper", p->backuper );
-    p->viewer->engine()->rootContext()->setContextProperty( "System"  , p->system   );
-    p->viewer->engine()->rootContext()->setContextProperty( "ThreadedFileSystem", p->threaded_fs );
-    p->viewer->setSource(QStringLiteral("qrc:///qml/Meikade/main.qml"));
-    p->viewer->setIcon( QIcon(":/qml/Meikade/icons/meikade.png") );
-    p->viewer->show();
+    p->viewer = new AsemanQmlEngine();
+    p->viewer->addImportPath(":/qml/");
+    p->viewer->rootContext()->setContextProperty( "Meikade" , this );
+    p->viewer->rootContext()->setContextProperty( "Database", p->poem_db  );
+    p->viewer->rootContext()->setContextProperty( "UserData", p->user_db  );
+    p->viewer->rootContext()->setContextProperty( "Backuper", p->backuper );
+    p->viewer->rootContext()->setContextProperty( "System"  , p->system   );
+    p->viewer->rootContext()->setContextProperty( "ThreadedFileSystem", p->threaded_fs );
+    p->viewer->load(QUrl("qrc:///qml/Meikade/main.qml"));
+//    p->viewer->setIcon( QIcon(":/qml/Meikade/icons/meikade.png") );
+//    p->viewer->show();
 }
 
 void Meikade::close()
 {
     p->close = true;
-    p->viewer->close();
 }
 
 void Meikade::timer(int interval, QObject *obj, const QString &member)

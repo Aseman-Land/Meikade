@@ -19,16 +19,12 @@
 #include <QIcon>
 
 #include "meikade.h"
+#include "asemantools/asemanqttools.h"
 #include "asemantools/asemanapplication.h"
 
 int main(int argc, char *argv[])
 {
     AsemanApplication app(argc, argv);
-    app.setApplicationName("Meikade");
-    app.setApplicationDisplayName("Meikade");
-    app.setOrganizationDomain("NileGroup");
-    app.setOrganizationName("Nile Group");
-    app.setApplicationVersion("v3.3.0");
     app.setWindowIcon(QIcon(app.applicationDirPath()+"/qml/Meikade/icons/meikade.png"));
 
     Meikade meikade;

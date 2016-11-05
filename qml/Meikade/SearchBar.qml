@@ -18,12 +18,12 @@
 
 import QtQuick 2.0
 import AsemanTools 1.0
-import QtQuick.Controls 1.0 as QtControls
+import QtQuick.Controls 2.0 as QtControls
 
 BackHandlerView {
     id: search_bar
     width: 100
-    color: Meikade.nightTheme? "#222222" : "#ffffff"
+    color: Meikade.nightTheme? "#222222" : "#dddddd"
     viewMode: false
     clip: true
 
@@ -34,8 +34,6 @@ BackHandlerView {
     onHideChanged: {
         if( !hide )
             txt.focus = true
-        else
-            main.focus = true
 
         txt.text = ""
         search_list.poetCombo.currentIndex = 0
@@ -143,26 +141,12 @@ BackHandlerView {
         }
     }
 
-    PoemView {
-        id: poem
-        anchors.top: search_frame.bottom
-        anchors.bottom: parent.bottom
-        width: parent.width
-        clip: true
-        x: search_bar.viewMode? 0 : -width
-        rememberBar: true
-
-        Behavior on x {
-            NumberAnimation { easing.type: Easing.OutCubic; duration: animations*400 }
-        }
-    }
-
     SearchList {
         id: search_list
         anchors.top: search_frame.bottom
         anchors.bottom: parent.bottom
-        width: parent.width
-        x: search_bar.viewMode? width : 0
+        anchors.right: parent.right
+        width: portrait? parent.width : parent.width*1/3
         keyword: txt.text
         clip: true
         poetId: {
@@ -184,6 +168,33 @@ BackHandlerView {
             poem.goTo(vid)
             poem.highlightItem(vid)
             search_bar.viewMode = true
+        }
+
+        Rectangle{
+            y: -height
+            width: parent.height
+            height: 10*Devices.density
+            rotation: 90
+            transformOrigin: Item.BottomLeft
+            visible: !portrait
+            gradient: Gradient {
+                GradientStop { position: 0.0; color: "#00000000" }
+                GradientStop { position: 1.0; color: "#33000000" }
+            }
+        }
+    }
+
+    PoemView {
+        id: poem
+        anchors.top: search_frame.bottom
+        anchors.bottom: parent.bottom
+        width: portrait? parent.width : parent.width*2/3
+        clip: true
+        x: search_bar.viewMode? 0 : -width
+        rememberBar: true
+
+        Behavior on x {
+            NumberAnimation { easing.type: Easing.OutCubic; duration: animations*400 }
         }
     }
 

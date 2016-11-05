@@ -35,6 +35,5 @@ Rectangle {
 
     function back() {
         viewMode = false
-        main.focus = true
     }
 }

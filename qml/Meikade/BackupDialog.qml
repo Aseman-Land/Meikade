@@ -119,7 +119,7 @@ Item {
                 y: parent.height/2 - height/2
                 font.pixelSize: 11*globalFontDensity*Devices.fontDensity
                 font.family: AsemanApp.globalFont.family
-                color: "#333333"
+                color: "#ffffff"
                 text: Meikade.fileName(item.file)
                 wrapMode: TextInput.WordWrap
             }
@@ -162,7 +162,7 @@ Item {
                 anchors.margins: 10*Devices.density
                 font.pixelSize: 10*globalFontDensity*Devices.fontDensity
                 font.family: AsemanApp.globalFont.family
-                color: "#333333"
+                color: "#ffffff"
                 wrapMode: TextInput.WordWrap
             }
 
@@ -183,7 +183,7 @@ Item {
                     y: parent.height/2 - height/2
                     font.pixelSize: 11*globalFontDensity*Devices.fontDensity
                     font.family: AsemanApp.globalFont.family
-                    color: "#333333"
+                    color: "#ffffff"
                 }
 
                 MouseArea{
@@ -203,7 +203,7 @@ Item {
                 anchors.margins: 10*Devices.density
                 anchors.bottomMargin: 0*Devices.density
                 height: 2*Devices.density
-                color: "#333333"
+                color: "#ffffff"
 
                 Text {
                     id: message

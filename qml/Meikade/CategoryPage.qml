@@ -42,7 +42,14 @@ Rectangle {
 
     Connections {
         target: Database
-        onInitializeFinished: {
+        onInitializeFinished: finished()
+        Component.onCompleted: {
+            if(Database.initialized) {
+                finished()
+            }
+        }
+
+        function finished() {
             var item = category_component.createObject(base_frame, {"catId": 0, "startY": 0, "startHeight": base_frame.height})
             item.startInit = true
             list.append(item)
@@ -144,7 +151,7 @@ Rectangle {
 
         PoemView {
             id: pview
-            width: parent.width
+            width: portrait? parent.width : parent.width*2/3
             height: parent.height
             x: inited? 0 : -width
             rememberBar: true
@@ -178,7 +185,6 @@ Rectangle {
         if( list.count != 0 )
             list.last().outside = false
 
-        main.focus = true
         if( list.count == 1 )
             BackHandler.removeHandler(page)
         else
@@ -244,7 +250,6 @@ Rectangle {
             item.destroy()
         }
 
-        main.focus = true
         list.last().outside = false
         BackHandler.removeHandler(page)
     }

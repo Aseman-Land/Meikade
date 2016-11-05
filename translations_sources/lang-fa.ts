@@ -1148,10 +1148,10 @@ It&apos;s calculate omen using natural random algorithms. Another apps calculate
     </message>
 </context>
 <context>
-    <name>main</name>
+    <name>MeikadeWindow</name>
     <message>
-        <location filename="../qml/Meikade/main.qml" line="32"/>
-        <location filename="../qml/Meikade/main.qml" line="120"/>
+        <location filename="../qml/Meikade/MeikadeWindow.qml" line="32"/>
+        <location filename="../qml/Meikade/MeikadeWindow.qml" line="120"/>
         <source>Meikade</source>
         <translation>مِی‌کده</translation>
     </message>

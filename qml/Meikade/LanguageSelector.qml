@@ -53,7 +53,7 @@ Item {
                 anchors.verticalCenter: parent.verticalCenter
                 width: height
                 height: 15*Devices.density
-                source: "icons/tik-dark.png"
+                source: "icons/tik.png"
                 visible: Meikade.currentLanguage == item.text
             }
 
@@ -67,7 +67,7 @@ Item {
                 text: parent.text
                 font.pixelSize: 11*globalFontDensity*Devices.fontDensity
                 font.family: AsemanApp.globalFont.family
-                color: "#333333"
+                color: "#ffffff"
             }
 
             MouseArea{

@@ -23,7 +23,7 @@ Rectangle {
     id: poems_page
     width: 100
     height: 62
-    color: Meikade.nightTheme? "111111" :"#ffffff"
+    color: Meikade.nightTheme? "111111" :"#dddddd"
 
     property int catId: -1
     property bool viewMode: false
@@ -40,8 +40,9 @@ Rectangle {
 
     Poems {
         id: poems
-        width: parent.width
+        width: portrait? parent.width : parent.width*1/3
         height: parent.height
+        anchors.right: parent.right
         catId: poems_page.catId
 //        scale: ratio
         onItemSelected: {
@@ -56,6 +57,19 @@ Rectangle {
 
         Behavior on ratio {
             NumberAnimation { easing.type: poems_page.easingType; duration: animations*poems_page.duration }
+        }
+
+        Rectangle{
+            y: -height
+            width: parent.height
+            height: 10*Devices.density
+            rotation: 90
+            transformOrigin: Item.BottomLeft
+            visible: !portrait
+            gradient: Gradient {
+                GradientStop { position: 0.0; color: "#00000000" }
+                GradientStop { position: 1.0; color: "#33000000" }
+            }
         }
     }
 

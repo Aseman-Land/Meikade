@@ -19,7 +19,8 @@
 import QtQuick 2.0
 import AsemanTools 1.0
 import Meikade 1.0
-import QtQuick.Controls 1.0 as QtControls
+import QtQuick.Controls 2.0 as QtControls
+import QtQuick.Controls.Material 2.0
 
 Rectangle {
     id: search_list
@@ -195,10 +196,14 @@ Rectangle {
             }
             onCurrentIndexChanged: txt.refresh()
 
+            Material.background: "transparent"
+            Material.elevation: 0
+
             Connections {
                 target: Database
                 onPoetsChanged: refresh()
                 onInitializeFinished: refresh()
+                Component.onCompleted: refresh()
 
                 function refresh(){
                     poets_combo.model.clear()
@@ -216,6 +221,7 @@ Rectangle {
         Rectangle {
             anchors.fill: poets_combo
             color: advanced.color
+            z: 100
 
             Text {
                 id: sscope_lbl

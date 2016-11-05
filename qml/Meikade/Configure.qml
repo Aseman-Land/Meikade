@@ -18,27 +18,32 @@
 
 import QtQuick 2.0
 import AsemanTools 1.0
+import AsemanTools 1.0 as AT
+import QtQuick.Controls 2.0
+import QtQuick.Controls.Material 2.0
 
 BackHandlerView {
     id: configure
     width: 100
     height: 62
-    color: "#f0f0f0"
+    color: Material.background
 
     viewMode: false
+
+    Material.theme: Material.Dark
 
     Rectangle {
         id: header
         width: parent.width
         height: View.statusBarHeight + Devices.standardTitleBarHeight
-        color: "#40CCC3"
+        color: "#222222"
         z: 2
 
         Item {
             anchors.fill: parent
             anchors.topMargin: View.statusBarHeight
 
-            Button{
+            AT.Button{
                 id: back_btn
                 anchors.left: parent.left
                 anchors.verticalCenter: parent.verticalCenter
@@ -134,7 +139,7 @@ BackHandlerView {
                         y: parent.height/2 - height/2
                         font.pixelSize: 10*globalFontDensity*Devices.fontDensity
                         font.family: AsemanApp.globalFont.family
-                        color: "#333333"
+                        color: "#ffffff"
                         text: name
                         wrapMode: TextInput.WordWrap
                     }
@@ -155,12 +160,11 @@ BackHandlerView {
                         }
                     }
 
-                    CheckBox {
+                    Switch {
                         id: checkbox
                         x: Meikade.languageDirection == Qt.RightToLeft? 20 : item.width - width - 20
                         anchors.verticalCenter: parent.verticalCenter
                         visible: item.checkable
-                        color: "#333333"
                         checked: item.prprt.length==0? false : Meikade.property(Meikade,item.prprt)
                         onCheckedChanged: Meikade.setProperty(Meikade,item.prprt,checked)
                     }
@@ -184,7 +188,7 @@ BackHandlerView {
                 }
             }
 
-            ScrollBar {
+            AT.ScrollBar {
                 scrollArea: prefrences; height: prefrences.height
                 anchors.right: prefrences.right; anchors.top: prefrences.top; color: "#ffffff"
             }
