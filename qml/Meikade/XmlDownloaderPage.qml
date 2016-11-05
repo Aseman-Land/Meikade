@@ -27,7 +27,6 @@ Rectangle {
                 normalColor: "#00000000"
                 highlightColor: "#33666666"
                 textColor: "#ffffff"
-                icon: "icons/back_light_64.png"
                 iconHeight: 16*Devices.density
                 fontSize: 11*globalFontDensity*Devices.fontDensity
                 textFont.bold: false
@@ -35,6 +34,14 @@ Rectangle {
                 onClicked: {
                     AsemanApp.back()
                     Devices.hideKeyboard()
+                }
+
+                Text {
+                    anchors.centerIn: parent
+                    font.pixelSize: 25*globalFontDensity*Devices.fontDensity
+                    font.family: awesome_font.name
+                    color: "white"
+                    text: ""
                 }
             }
 
@@ -163,15 +170,15 @@ Rectangle {
                 font.family: AsemanApp.globalFont.family
             }
 
-            Image {
+            Text {
                 id: img
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.left: parent.left
                 anchors.leftMargin: 20*Devices.density
-                height: 26*Devices.density
-                width: height
-                sourceSize: Qt.size(width, height)
-                source: model.installed? "icons/installed.png" : "icons/download.png"
+                font.pixelSize: 15*globalFontDensity*Devices.fontDensity
+                font.family: awesome_font.name
+                color: model.installed? "#3c994b" : "#3d3d3d"
+                text: model.installed? "" : ""
                 visible: !indicator.active
             }
 

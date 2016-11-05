@@ -140,11 +140,18 @@ Item {
                 anchors.right: parent.right
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.rightMargin: 10*Devices.density
-                icon: "icons/delete.png"
                 normalColor: "#00000000"
                 onClicked: {
                     msg_item.filePath = item.file
                     showRollerDialog( item.mapToItem(main,0,0).y, item.mapToItem(main,0,item.height).y, msg_item )
+                }
+
+                Text {
+                    anchors.centerIn: parent
+                    font.pixelSize: 15*globalFontDensity*Devices.fontDensity
+                    font.family: awesome_font.name
+                    color: "#99ff0000"
+                    text: ""
                 }
             }
         }

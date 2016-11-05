@@ -23,7 +23,7 @@ BackHandlerView {
     id: bookmarks
     width: 100
     height: 62
-    color: "#ffffff"
+    color: Meikade.nightTheme? "#222222" : "#dddddd"
     viewMode: false
 
     QtObject {
@@ -39,33 +39,14 @@ BackHandlerView {
         onNoteChanged: bookmarks.refresh()
     }
 
-    PoemView {
-        id: poem
-        anchors.top: parent.top
-        anchors.bottom: parent.bottom
-        anchors.topMargin: headerHeight+View.statusBarHeight
-        width: parent.width
-        clip: true
-        rememberBar: true
-        x: bookmarks.viewMode? 0 : -width
-
-        Behavior on x {
-            NumberAnimation { easing.type: Easing.OutCubic; duration: animations*400 }
-        }
-    }
-
     Rectangle {
         id: bookmark_frame
         anchors.top: parent.top
         anchors.bottom: parent.bottom
         anchors.topMargin: headerHeight+View.statusBarHeight
-        width: parent.width
-        x: bookmarks.viewMode? width : 0
+        anchors.right: parent.right
+        width: portrait? parent.width : parent.width*1/3
         color: "#ffffff"
-
-        Behavior on x {
-            NumberAnimation { easing.type: Easing.OutCubic; duration: animations*400 }
-        }
 
         PoemView {
             id: poem_view
@@ -82,28 +63,74 @@ BackHandlerView {
                 bookmarks.viewMode = true
             }
         }
-    }
 
-    Rectangle {
-        anchors.fill: title
-        anchors.topMargin: -View.statusBarHeight
-        color: "#881010"
-
-        TitleBarShadow {
-            width: parent.width
-            anchors.top: parent.bottom
+        Rectangle{
+            y: -height
+            width: parent.height
+            height: 10*Devices.density
+            rotation: 90
+            transformOrigin: Item.BottomLeft
+            visible: !portrait
+            gradient: Gradient {
+                GradientStop { position: 0.0; color: "#00000000" }
+                GradientStop { position: 1.0; color: "#33000000" }
+            }
         }
     }
 
-    Header {
-        id: title
-        anchors.left: parent.left
+    PoemView {
+        id: poem
         anchors.top: parent.top
-        anchors.right: parent.right
-        anchors.topMargin: View.statusBarHeight
-        titleFont.pixelSize: 12*globalFontDensity*Devices.fontDensity
-        light: true
-        backButtonText: ""
+        anchors.bottom: parent.bottom
+        anchors.topMargin: headerHeight+View.statusBarHeight
+        width: portrait? parent.width : parent.width*2/3
+        clip: true
+        rememberBar: true
+        x: bookmarks.viewMode? 0 : -width
+
+        Behavior on x {
+            NumberAnimation { easing.type: Easing.OutCubic; duration: animations*400 }
+        }
+    }
+
+    Rectangle {
+        id: header
+        width: parent.width
+        height: View.statusBarHeight + Devices.standardTitleBarHeight
+        color: "#881010"
+
+        Button{
+            id: back_btn
+            anchors.left: parent.left
+            anchors.top: parent.top
+            anchors.topMargin: View.statusBarHeight
+            height: headerHeight
+            radius: 0
+            normalColor: "#00000000"
+            highlightColor: "#88666666"
+            textColor: "#333333"
+            iconHeight: 16*Devices.density
+            fontSize: 11*globalFontDensity*Devices.fontDensity
+            textFont.bold: false
+            visible: backButton
+            onClicked: {
+                AsemanApp.back()
+                Devices.hideKeyboard()
+            }
+
+            Text {
+                anchors.centerIn: parent
+                font.pixelSize: 25*globalFontDensity*Devices.fontDensity
+                font.family: awesome_font.name
+                color: "white"
+                text: ""
+            }
+        }
+
+        TitleBarShadow {
+            width: header.width
+            anchors.top: header.bottom
+        }
     }
 
     function refresh() {

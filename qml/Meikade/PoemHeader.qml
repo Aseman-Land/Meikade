@@ -28,6 +28,7 @@ Item {
     property int poetId: -1
     property int catId: -1
     property bool favorited: false
+    property bool toolsOpened: false
     property alias font: txt1.font
     property color color: "#ffffff"
 
@@ -114,22 +115,43 @@ Item {
     }
 
     Rectangle {
+        id: header
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.bottom: parent.bottom
         height: 32*Devices.density
         color: "#EC4334"
+        state: poem_header.toolsOpened? "toolsOn" : "toolsOff"
+
+        states: [
+            State {
+                name: "toolsOn"
+                AnchorChanges { target: poet_txt; anchors.verticalCenter: header.bottom }
+                AnchorChanges { target: book_txt; anchors.verticalCenter: header.bottom }
+                AnchorChanges { target: tools_row; anchors.verticalCenter: header.verticalCenter }
+            },
+            State {
+                name: "toolsOff"
+                AnchorChanges { target: poet_txt; anchors.verticalCenter: header.verticalCenter }
+                AnchorChanges { target: book_txt; anchors.verticalCenter: header.verticalCenter }
+                AnchorChanges { target: tools_row; anchors.verticalCenter: header.bottom }
+            }
+        ]
+
+        transitions: Transition {
+            AnchorAnimation { duration: 200 }
+        }
 
         Text {
             id: poet_txt
             anchors.right: parent.right
-            anchors.verticalCenter: parent.verticalCenter
             anchors.margins: 8*Devices.density
             font.pixelSize: 10*globalFontDensity*Devices.fontDensity
             font.family: AsemanApp.globalFont.family
             wrapMode: TextInput.WordWrap
             color: poem_header.color
             horizontalAlignment: Text.AlignHCenter
+            visible: !poem_header.toolsOpened
 
             MouseArea {
                 anchors.fill: parent
@@ -142,13 +164,13 @@ Item {
         Text {
             id: book_txt
             anchors.right: poet_txt.left
-            anchors.verticalCenter: parent.verticalCenter
             anchors.margins: 8*Devices.density
             font.pixelSize: 10*globalFontDensity*Devices.fontDensity
             font.family: AsemanApp.globalFont.family
             wrapMode: TextInput.WordWrap
             color: poem_header.color
             horizontalAlignment: Text.AlignHCenter
+            visible: !poem_header.toolsOpened
 
             MouseArea {
                 anchors.fill: parent
@@ -161,54 +183,127 @@ Item {
         Row {
             id: tools_row
             height: 32*Devices.density
-            anchors.left: parent.left
-            anchors.verticalCenter: parent.verticalCenter
+            anchors.right: parent.right
             spacing: 1*Devices.density
+            visible: poem_header.toolsOpened
 
             Button {
                 id: favorite
                 height: tools_row.height
                 width: height
-                icon: poem_header.favorited? "icons/favorites.png" : "icons/unfavorites.png"
-                normalColor: "#9D463E"
+                normalColor: "#44000000"
+                highlightColor: Qt.rgba(0, 0, 0, 0.4)
                 iconHeight: 14*Devices.density
                 onClicked: poem_header.favorited = !poem_header.favorited
+
+                Text {
+                    anchors.centerIn: parent
+                    font.pixelSize: 11*globalFontDensity*Devices.fontDensity
+                    font.family: awesome_font.name
+                    color: "white"
+                    text: poem_header.favorited? "" : ""
+                }
             }
 
             Button {
                 id: share
                 height: tools_row.height
                 width: height
-                icon: "icons/share.png"
-                normalColor: "#9D463E"
+                normalColor: "#44000000"
+                highlightColor: Qt.rgba(0, 0, 0, 0.4)
                 iconHeight: 14*Devices.density
                 onClicked: {
                     networkFeatures.pushAction( ("Share Poem: %1").arg(poem_header.poemId) )
                     var subject = Database.poemName(poem_header.poemId)
-                    var poet
                     var catId = Database.poemCat(poem_header.poemId)
                     while( catId ) {
-                        poet = Database.catName(catId)
                         subject = Database.catName(catId) + ", " + subject
                         catId = Database.parentOf(catId)
                     }
 
-                    var message = ""
-                    var vorders = Database.poemVerses(poem_header.poemId)
-                    for( var i=0; i<vorders.length; i++ ) {
-                        var vid = vorders[i]
-                        if( i!=0 && Database.versePosition(poem_header.poemId,vid)===0 && Database.versePosition(poem_header.poemId,vid+1)===1 )
-                            message = message + "\n"
-
-                        message = message + Database.verseText(poem_header.poemId,vorders[i]) + "\n"
-
-                    }
-
-                    message = message + "\n\n" + poet
-
+                    var message = getPoemText()
                     Devices.share(subject,message)
+                }
+
+                Text {
+                    anchors.centerIn: parent
+                    font.pixelSize: 11*globalFontDensity*Devices.fontDensity
+                    font.family: awesome_font.name
+                    color: "white"
+                    text: ""
+                }
+            }
+
+            Button {
+                id: copy
+                height: tools_row.height
+                width: height
+                normalColor: "#44000000"
+                highlightColor: Qt.rgba(0, 0, 0, 0.4)
+                iconHeight: 14*Devices.density
+                onClicked: {
+                    networkFeatures.pushAction( ("Copy Poem: %1").arg(poem_header.poemId) )
+                    var message = getPoemText()
+                    Devices.clipboard = message
+                }
+
+                Text {
+                    anchors.centerIn: parent
+                    font.pixelSize: 11*globalFontDensity*Devices.fontDensity
+                    font.family: awesome_font.name
+                    color: "white"
+                    text: ""
                 }
             }
         }
+
+        Row {
+            id: menu_row
+            height: 32*Devices.density
+            anchors.left: parent.left
+            anchors.verticalCenter: parent.verticalCenter
+            spacing: 1*Devices.density
+
+            Button {
+                id: menu
+                height: menu_row.height
+                width: height
+                normalColor: "#44000000"
+                highlightColor: Qt.rgba(0, 0, 0, 0.4)
+                iconHeight: 14*Devices.density
+                onClicked: poem_header.toolsOpened = !poem_header.toolsOpened
+
+                Text {
+                    anchors.centerIn: parent
+                    font.pixelSize: 11*globalFontDensity*Devices.fontDensity
+                    font.family: awesome_font.name
+                    color: "white"
+                    text: poem_header.toolsOpened? "" : ""
+                }
+            }
+        }
+    }
+
+    function getPoemText() {
+        var poet
+        var catId = Database.poemCat(poem_header.poemId)
+        while( catId ) {
+            poet = Database.catName(catId)
+            catId = Database.parentOf(catId)
+        }
+
+        var message = ""
+        var vorders = Database.poemVerses(poem_header.poemId)
+        for( var i=0; i<vorders.length; i++ ) {
+            var vid = vorders[i]
+            if( i!=0 && Database.versePosition(poem_header.poemId,vid)===0 && Database.versePosition(poem_header.poemId,vid+1)===1 )
+                message = message + "\n"
+
+            message = message + Database.verseText(poem_header.poemId,vorders[i]) + "\n"
+
+        }
+
+        message = message + "\n\n" + poet
+        return message
     }
 }

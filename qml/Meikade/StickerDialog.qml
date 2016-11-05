@@ -408,12 +408,13 @@ Rectangle {
             }
         }
 
-        Image {
+        Text {
             id: tik
             anchors.centerIn: parent
-            width: 22*Devices.density
-            height: width
-            source: "icons/tik.png"
+            font.pixelSize: 15*globalFontDensity*Devices.fontDensity
+            font.family: awesome_font.name
+            color: "#e6e6e6"
+            text: ""
             visible: !indicator.active
         }
 

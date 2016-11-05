@@ -199,7 +199,7 @@ MeikadeWindowBase {
                             layoutDirection: Qt.RightToLeft
                             onHafezOmenRequest: cat_page.showHafezOmen()
                             onRandomPoemRequest: cat_page.showRandomCatPoem()
-                            onSearchRequest: search_bar.show()
+                            onStoreRequest: showSinglePage("XmlDownloaderPage.qml")
                         }
                     }
                 }
@@ -224,6 +224,28 @@ MeikadeWindowBase {
                     height: AT.Devices.standardTitleBarHeight
 
                     AT.Button{
+                        id: srch_btn
+                        anchors.left: back_btn.visible? back_btn.right : parent.left
+                        anchors.top: parent.top
+                        height: parent.height
+                        width: height
+                        radius: 0
+                        highlightColor: "#88666666"
+                        onClicked: {
+                            networkFeatures.pushAction("Search (from header)")
+                            search_bar.show()
+                        }
+
+                        Text {
+                            anchors.centerIn: parent
+                            font.pixelSize: 15*globalFontDensity*AT.Devices.fontDensity
+                            font.family: awesome_font.name
+                            color: "white"
+                            text: ""
+                        }
+                    }
+
+                    AT.Button{
                         id: back_btn
                         anchors.left: parent.left
                         anchors.top: parent.top
@@ -232,7 +254,6 @@ MeikadeWindowBase {
                         normalColor: "#00000000"
                         highlightColor: "#88666666"
                         textColor: "#ffffff"
-                        icon: "icons/back_light_64.png"
                         iconHeight: 16*AT.Devices.density
                         fontSize: 11*globalFontDensity*AT.Devices.fontDensity
                         textFont.bold: false
@@ -240,6 +261,14 @@ MeikadeWindowBase {
                         onClicked: {
                             AT.AsemanApp.back()
                             AT.Devices.hideKeyboard()
+                        }
+
+                        Text {
+                            anchors.centerIn: parent
+                            font.pixelSize: 25*globalFontDensity*AT.Devices.fontDensity
+                            font.family: awesome_font.name
+                            color: "white"
+                            text: ""
                         }
                     }
                 }
@@ -332,6 +361,7 @@ MeikadeWindowBase {
         id: sidebar
         anchors.fill: parent
         layoutDirection: Qt.RightToLeft
+        handleWidth: 5*AT.Devices.density
         delegate: MouseArea {
             anchors.fill: parent
 
@@ -451,6 +481,11 @@ MeikadeWindowBase {
         Component.onCompleted: start()
     }
 
+    FontLoader {
+        id: awesome_font
+        source: Meikade.resourcePath + "/fonts/fontawesome-webfont.ttf"
+    }
+
     function hideMenuItem() {
         if(!main.menuItem)
             return
@@ -520,6 +555,18 @@ MeikadeWindowBase {
                 font_loader_component.createObject(main, {"fontName": fonts[i]})
 
         fontsLoaded = true
+    }
+
+    function showSinglePage(fileName) {
+        var item = main_menu_item_component.createObject(menu_item_frame)
+        item.anchors.fill = menu_item_frame
+        item.z = 1000
+
+        var ocomponent = Qt.createComponent(fileName)
+        var object = ocomponent.createObject(item)
+        item.item = object
+
+        menuItem = item
     }
 
     Component {

@@ -46,14 +46,15 @@ Item {
             property string text: name
             property alias press: marea.pressed
 
-            Image {
+            Text {
                 id: tik_img
                 anchors.left: parent.left
                 anchors.leftMargin: 10*Devices.density
                 anchors.verticalCenter: parent.verticalCenter
-                width: height
-                height: 15*Devices.density
-                source: "icons/tik.png"
+                font.pixelSize: 15*globalFontDensity*Devices.fontDensity
+                font.family: awesome_font.name
+                color: "#ffffff"
+                text: ""
                 visible: Meikade.currentLanguage == item.text
             }
 

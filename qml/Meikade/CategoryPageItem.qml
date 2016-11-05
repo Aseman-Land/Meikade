@@ -116,11 +116,18 @@ Rectangle {
             radius: 0
             normalColor: "transparent"
             highlightColor: "#22000000"
-            icon: "icons/button-random.png"
             iconHeight: 25*Devices.density
             visible: true
             onClicked: {
                 cat_page.showRandomCatPoem(catId)
+            }
+
+            Text {
+                anchors.centerIn: parent
+                font.pixelSize: 13*globalFontDensity*Devices.fontDensity
+                font.family: awesome_font.name
+                color: "#3d3d3d"
+                text: ""
             }
         }
 

@@ -8,7 +8,7 @@ Item {
 
     property alias buttonHeight: button_frame.height
     property alias text: txt.text
-    property alias icon: img.source
+    property alias icon: img.text
 
     signal clicked()
 
@@ -53,12 +53,12 @@ Item {
                 source: btn_rect
             }
 
-            Image {
+            Text {
                 id: img
-                anchors.fill: parent
-                anchors.margins: 18*Devices.density
-                fillMode: Image.PreserveAspectFit
-                sourceSize: Qt.size(width, height)
+                anchors.centerIn: parent
+                font.pixelSize: 15*globalFontDensity*Devices.fontDensity
+                font.family: awesome_font.name
+                color: "#3d3d3d"
             }
         }
 

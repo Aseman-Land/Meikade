@@ -112,7 +112,7 @@ Item {
                 id: txt
                 anchors.left: parent.left
                 anchors.right: item_rect.left
-                anchors.margins: 20*Devices.density
+                anchors.margins: 15*Devices.density
                 anchors.verticalCenter: parent.verticalCenter
                 font.pixelSize: 9*globalFontDensity*Devices.fontDensity
                 font.family: AsemanApp.globalFont.family
@@ -121,17 +121,16 @@ Item {
                 text: name
             }
 
-            Image {
+            Text {
                 id: item_rect
                 anchors.right: parent.right
                 anchors.verticalCenter: parent.verticalCenter
-                anchors.rightMargin: 10*Devices.density
-                height: width
-                width: 24*Devices.density
-                source: icon
-                fillMode: Image.PreserveAspectFit
-                sourceSize: Qt.size(width, height)
-                opacity: 0.6
+                anchors.rightMargin: 15*Devices.density
+                font.pixelSize: 14*globalFontDensity*Devices.fontDensity
+                font.family: awesome_font.name
+                color: "#777777"
+                horizontalAlignment: Text.AlignHCenter
+                text: icon
             }
 
             MouseArea {
@@ -150,15 +149,15 @@ Item {
         }
 
         Component.onCompleted: {
-            model.append({"name":qsTr("Meikade")           , "icon": "icons/menu-home.png"      , "fileName":""                      , "type": "A"})
-            model.append({"name":qsTr("Search")            , "icon": "icons/menu-search.png"    , "fileName":"cmd:search"            , "type": "A"})
-            model.append({"name":qsTr("Bookmarks")         , "icon": "icons/menu-bookmark.png"  , "fileName":"Bookmarks.qml"         , "type": "A"})
-            model.append({"name":qsTr("Store")             , "icon": "icons/shop.png"           , "fileName":"XmlDownloaderPage.qml" , "type": "A"})
-//            model.append({"name":qsTr("Notes")             , "icon": ""                         , "fileName":"Notes.qml"             , "type": "A"})
-            model.append({"name":qsTr("Configure")         , "icon": "icons/menu-configure.png" , "fileName":"Configure.qml"         , "type": "C"})
-            model.append({"name":qsTr("OpenSource Projecs"), "icon": "icons/menu-opensource.png", "fileName":"OpenSourceProjects.qml", "type": "C"})
-            model.append({"name":qsTr("About")             , "icon": "icons/menu-about.png"     , "fileName":"About.qml"             , "type": "C"})
-            model.append({"name":qsTr("About Nile Group")  , "icon": "icons/menu-about.png"     , "fileName":"AboutNileTeam.qml"     , "type": "C"})
+            model.append({"name":qsTr("Meikade")           , "icon": "", "fileName":""                      , "type": "A"})
+            model.append({"name":qsTr("Search")            , "icon": "", "fileName":"cmd:search"            , "type": "A"})
+            model.append({"name":qsTr("Bookmarks")         , "icon": "", "fileName":"Bookmarks.qml"         , "type": "A"})
+            model.append({"name":qsTr("Store")             , "icon": "", "fileName":"XmlDownloaderPage.qml" , "type": "A"})
+//            model.append({"name":qsTr("Notes")             , "icon": "", "fileName":"Notes.qml"             , "type": "A"})
+            model.append({"name":qsTr("Configure")         , "icon": "", "fileName":"Configure.qml"         , "type": "C"})
+            model.append({"name":qsTr("OpenSource Projecs"), "icon": "", "fileName":"OpenSourceProjects.qml", "type": "C"})
+            model.append({"name":qsTr("About")             , "icon": "", "fileName":"About.qml"             , "type": "C"})
+            model.append({"name":qsTr("About Nile Group")  , "icon": "", "fileName":"AboutNileTeam.qml"     , "type": "C"})
         }
     }
 
