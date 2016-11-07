@@ -24,13 +24,15 @@ import QtQuick.Controls.Material 2.0
 
 BackHandlerView {
     id: configure
-    width: 100
-    height: 62
+    anchors.fill: parent
+    clip: true
     color: Material.background
 
     viewMode: false
 
     Material.theme: Material.Dark
+
+    readonly property string title: qsTr("Configure")
 
     Rectangle {
         id: header

@@ -2,8 +2,11 @@ import QtQuick 2.0
 import AsemanTools 1.0
 
 Rectangle {
-    width: parent.width
+    anchors.fill: parent
     color: "#dddddd"
+    clip: true
+
+    readonly property string title: qsTr("About Nile Group")
 
     Rectangle {
         id: header

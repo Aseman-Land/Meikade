@@ -4,8 +4,10 @@ import Meikade 1.0
 
 Rectangle {
     id: xml_page
-    width: 100
-    height: 62
+    anchors.fill: parent
+    clip: true
+
+    readonly property string title: qsTr("Store")
 
     Rectangle {
         id: header

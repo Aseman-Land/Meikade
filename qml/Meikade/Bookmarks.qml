@@ -21,10 +21,12 @@ import AsemanTools 1.0
 
 BackHandlerView {
     id: bookmarks
-    width: 100
-    height: 62
+    anchors.fill: parent
+    clip: true
     color: Meikade.nightTheme? "#222222" : "#dddddd"
     viewMode: false
+
+    readonly property string title: qsTr("Bookmarks")
 
     QtObject {
         id: privates

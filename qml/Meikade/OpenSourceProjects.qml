@@ -20,9 +20,11 @@ import QtQuick 2.0
 import AsemanTools 1.0
 
 Rectangle {
-    width: 100
-    height: 62
+    anchors.fill: parent
+    clip: true
     color: "#ffffff"
+
+    readonly property string title: qsTr("OpenSource Projecs")
 
     Rectangle {
         id: header

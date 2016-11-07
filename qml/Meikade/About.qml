@@ -21,9 +21,11 @@ import AsemanTools 1.0
 
 Rectangle {
     id: about
-    width: 100
-    height: 62
+    anchors.fill: parent
+    clip: true
     color: "#dddddd"
+
+    readonly property string title: qsTr("About")
 
     Rectangle {
         id: header

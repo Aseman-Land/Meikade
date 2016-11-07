@@ -139,18 +139,13 @@ Item {
                 onClicked: {
                     networkFeatures.pushAction( ("Menu Action: %1").arg(fileName) )
                     mmenu.selected(fileName)
-
-                    if(!search_bar.hide)
-                        main.mainTitle = ""
-                    else
-                        main.mainTitle = name
                 }
             }
         }
 
         Component.onCompleted: {
             model.append({"name":qsTr("Meikade")           , "icon": "", "fileName":""                      , "type": "A"})
-            model.append({"name":qsTr("Search")            , "icon": "", "fileName":"cmd:search"            , "type": "A"})
+            model.append({"name":qsTr("Search")            , "icon": "", "fileName":"SearchBar.qml"            , "type": "A"})
             model.append({"name":qsTr("Bookmarks")         , "icon": "", "fileName":"Bookmarks.qml"         , "type": "A"})
             model.append({"name":qsTr("Store")             , "icon": "", "fileName":"XmlDownloaderPage.qml" , "type": "A"})
 //            model.append({"name":qsTr("Notes")             , "icon": "", "fileName":"Notes.qml"             , "type": "A"})

@@ -22,14 +22,16 @@ import QtQuick.Controls 2.0 as QtControls
 
 BackHandlerView {
     id: search_bar
-    width: 100
+    anchors.fill: parent
     color: Meikade.nightTheme? "#222222" : "#dddddd"
     viewMode: false
     clip: true
 
     property bool hide: true
     property bool searchMode: false
-    property real headerRightMargin: 0
+    property real headerRightMargin: menu_button.width
+
+    readonly property string title: " "
 
     onHideChanged: {
         if( !hide )
@@ -237,6 +239,5 @@ BackHandlerView {
 
     function show() {
         hide = false
-        main.mainTitle = ""
     }
 }

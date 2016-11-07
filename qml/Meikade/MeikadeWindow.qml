@@ -18,7 +18,7 @@
 
 import QtQuick 2.0
 import QtGraphicalEffects 1.0
-import AsemanTools 1.0 as AT
+import AsemanTools 1.1 as AT
 import Meikade 1.0
 import "."
 
@@ -26,18 +26,17 @@ MeikadeWindowBase {
     id: main
     color: "#000000"
 
-    property string mainTitle: qsTr("Meikade")
-
     property string globalPoemFontFamily: poem_texts_font.name
     property real globalZoomAnimDurations: animations? 500 : 0
     property real globalFontDensity: 0.9
 
-    property alias headerHeight: header.height
+    readonly property real headerHeight: page_manager.mainItem? page_manager.mainItem.headerHeight : 0
     property bool backButton: !AT.Devices.isAndroid
     property bool flatDesign: true
 
-    property alias catPage: cat_page
-    property alias materialDesignButton: md_button
+    property alias pageManager: page_manager
+    readonly property variant catPage: page_manager.mainItem? page_manager.mainItem.catPage : 0
+    readonly property variant materialDesignButton: page_manager.mainItem? page_manager.mainItem.materialDesignButton : 0
 
     property bool blockBack: false
     property bool fontsLoaded: false
@@ -45,18 +44,10 @@ MeikadeWindowBase {
     property bool animations: Meikade.animations
     property alias networkFeatures: network_features
 
-    property variant areaFrame: area_frame
+    readonly property variant areaFrame: page_manager.mainItem? page_manager.mainItem.areaFrame : 0
     property variant mainDialog
 
-    property variant menuItem
     property variant init_wait
-
-    onMenuItemChanged: {
-        if( menuItem )
-            AT.BackHandler.pushHandler( main, main.hideMenuItem )
-        else
-            AT.BackHandler.removeHandler(main)
-    }
 
     QtObject {
         id: privates
@@ -135,27 +126,20 @@ MeikadeWindowBase {
         onStatusChanged: if(status == FontLoader.Ready) AT.AsemanApp.globalFont.family = name
     }
 
-    Item {
-        id: main_scene
-        width: parent.width
-        height: parent.height
-        clip: true
-        transformOrigin: Item.Center
-        scale: search_bar.hide && !main.menuItem? 1 : 0.7
-
-        Behavior on scale {
-            NumberAnimation { easing.type: Easing.OutCubic; duration: 400 }
-        }
-
-        Item {
+    AT.SlidePageManager {
+        id: page_manager
+        anchors.fill: parent
+        direction: Qt.Vertical
+        mainComponent: Item {
             id: frame
-            y: 0
-            x: 0
-            width: main.width
-            height: main.height
+            anchors.fill: parent
             clip: true
 
             property bool anim: false
+            property alias headerHeight: header.height
+            property alias catPage: cat_page
+            property alias materialDesignButton: md_button
+            property alias areaFrame: area_frame
 
             Behavior on y {
                 NumberAnimation { easing.type: Easing.OutCubic; duration: frame.anim?animations*400:0 }
@@ -199,7 +183,7 @@ MeikadeWindowBase {
                             layoutDirection: Qt.RightToLeft
                             onHafezOmenRequest: cat_page.showHafezOmen()
                             onRandomPoemRequest: cat_page.showRandomCatPoem()
-                            onStoreRequest: showSinglePage("XmlDownloaderPage.qml")
+                            onStoreRequest: pageManager.append( Qt.createComponent("XmlDownloaderPage.qml") )
                         }
                     }
                 }
@@ -277,8 +261,8 @@ MeikadeWindowBase {
     }
 
     FastBlur {
-        anchors.fill: main_scene
-        source: main_scene
+        anchors.fill: page_manager
+        source: page_manager
         radius: 32*AT.Devices.density
         opacity: main_dialog_frame.opacity
         visible: main_dialog_frame.visible
@@ -301,62 +285,6 @@ MeikadeWindowBase {
         }
     }
 
-    Item {
-        anchors.fill: parent
-
-        SearchBar {
-            id: search_bar
-            width: parent.width
-            y: hide? parent.height : 0
-            height: parent.height
-            headerRightMargin: menu_button.width
-
-            Timer {
-                id: search_bar_anim
-                interval: 400
-                onTriggered: inited = true
-                Component.onCompleted: start()
-                property bool inited: false
-            }
-
-            Behavior on y {
-                NumberAnimation { easing.type: Easing.OutCubic; duration: search_bar_anim.inited? 400 : 0 }
-            }
-
-            onHideChanged: {
-                if(hide) {
-                    menu_item_frame.z = 1
-                    search_bar.z = 0
-                } else {
-                    menu_item_frame.z = 0
-                    search_bar.z = 1
-                }
-
-                if( !hide ) {
-                    if( main.menuItem )
-                        hideMenuItem()
-                }
-                if( !hide )
-                    AT.BackHandler.pushHandler( search_bar_back, search_bar_back.hide )
-                else
-                    AT.BackHandler.removeHandler(search_bar_back)
-            }
-
-            QtObject {
-                id: search_bar_back
-                function hide(){
-                    search_bar.hide = true
-                }
-            }
-        }
-
-        Item {
-            id: menu_item_frame
-            anchors.fill: parent
-            clip: true
-        }
-    }
-
     AT.SideMenu {
         id: sidebar
         anchors.fill: parent
@@ -374,46 +302,13 @@ MeikadeWindowBase {
                 anchors.fill: parent
                 anchors.bottomMargin: AT.View.navigationBarHeight
                 onSelected: {
-                    if( main.menuItem ) {
-                        if(fileName.length == 0)
-                            main.menuItem.close()
-                        else
-                            main.menuItem.goOutAndClose()
-                    }
-                    if( !search_bar.hide ) {
-                        if( search_bar.viewMode )
-                            if( BackHandler )
-                                AT.AsemanApp.back()
-
-                        search_bar.hide = true
-                    }
-
                     if( fileName.length == 0 ) {
-                        cat_page.home()
-                        menuItem = null
-                    }
-                    else
-                    if( fileName.slice(0,4) == "cmd:" ) {
-                        var cmd = fileName.slice(4)
-                        if( cmd == "search" ) {
-                            search_bar.show()//Meikade.timer(400,search_bar,"show")
-                            networkFeatures.pushAction("Search (from menu)")
-                        }
+                        catPage.home()
+                        pageManager.closeLast()
                     } else {
-                        var item = main_menu_item_component.createObject(menu_item_frame)
-                        item.anchors.fill = menu_item_frame
-                        item.z = 1000
 
                         var ocomponent = Qt.createComponent(fileName)
-                        var object = ocomponent.createObject(item)
-                        if(!object) {
-                            console.debug(ocomponent.errorString())
-                            item.destroy()
-                            return
-                        }
-                        item.item = object
-
-                        menuItem = item
+                        pageManager.append(ocomponent)
                     }
 
                     sidebar.discard()
@@ -428,7 +323,7 @@ MeikadeWindowBase {
         width: menu_img.width + menu_img.anchors.rightMargin + menu_text.width + menu_text.anchors.rightMargin + 12*AT.Devices.density
         anchors.top: parent.top
         anchors.right: parent.right
-        anchors.topMargin: AT.View.statusBarHeight + main_scene.y
+        anchors.topMargin: AT.View.statusBarHeight + page_manager.y
 
         AT.MenuIcon {
             id: menu_img
@@ -448,7 +343,7 @@ MeikadeWindowBase {
             anchors.rightMargin: 8*AT.Devices.density
             font.family: AT.AsemanApp.globalFont.family
             font.pixelSize: 11*globalFontDensity*AT.Devices.fontDensity
-            text: main.mainTitle
+            text: pageManager.currentItem && pageManager.currentItem.title? pageManager.currentItem.title : qsTr("Meikade")
             color: "#ffffff"
             opacity: 1-sidebar.percent
         }
@@ -555,18 +450,6 @@ MeikadeWindowBase {
                 font_loader_component.createObject(main, {"fontName": fonts[i]})
 
         fontsLoaded = true
-    }
-
-    function showSinglePage(fileName) {
-        var item = main_menu_item_component.createObject(menu_item_frame)
-        item.anchors.fill = menu_item_frame
-        item.z = 1000
-
-        var ocomponent = Qt.createComponent(fileName)
-        var object = ocomponent.createObject(item)
-        item.item = object
-
-        menuItem = item
     }
 
     Component {
