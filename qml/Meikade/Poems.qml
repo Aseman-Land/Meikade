@@ -95,7 +95,7 @@ Rectangle {
             iconHeight: 25*Devices.density
             visible: true
             onClicked: {
-                cat_page.showRandomPoem(catId)
+                showRandomPoem(catId)
             }
 
             Text {

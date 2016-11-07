@@ -27,6 +27,9 @@ Rectangle {
 
     property alias count: list.count
 
+    property variant randomPoetObject
+    property variant poemsListObject
+
     ListObject {
         id: list
         onCountChanged: {
@@ -146,36 +149,6 @@ Rectangle {
         }
     }
 
-    Component {
-        id: poemview_component
-
-        PoemView {
-            id: pview
-            width: portrait? parent.width : parent.width*2/3
-            height: parent.height
-            x: inited? 0 : -width
-            rememberBar: true
-
-            property bool inited: false
-            property bool outside: false
-
-            Behavior on x {
-                NumberAnimation{ easing.type: Easing.OutCubic; duration: 400 }
-            }
-
-            Timer {
-                id: destroy_timer
-                interval: 400
-                onTriggered: pview.destroy()
-            }
-
-            function end() {
-                inited = false
-                destroy_timer.restart()
-            }
-        }
-    }
-
     function back() {
         if( list.count == 1 )
             return
@@ -220,7 +193,12 @@ Rectangle {
         var item
         if( poems.length != 0 )
         {
-            var poems_list = poems_component.createObject( base_frame, {"catId": cid} )
+            if(!poemsListObject)
+                poemsListObject = poems_component.createObject( base_frame, {"catId": cid} )
+            else
+                poemsListObject.catId = cid
+
+            var poems_list = poemsListObject
             poems_list.inited = true
             item = poems_list
         }
@@ -265,32 +243,6 @@ Rectangle {
         materialDesignButton.hide()
     }
 
-    function showRandomPoem(id) {
-        var poem = -1
-        var poems = Database.catPoems(id)
-        if(poems.length != 0)
-        {
-            var poem_id_rnd = Math.floor(Math.random()*poems.length)
-            if(poem_id_rnd == poems.length)
-                poem_id_rnd--
-
-            poem = poems[poem_id_rnd]
-        }
-
-        if(poem == -1 || !poem)
-            return false
-
-        var item = poemview_component.createObject( base_frame, {"poemId": poem} )
-        item.inited = true
-
-        if( list.count != 0 )
-            list.last().outside = true
-
-        list.append(item)
-        materialDesignButton.hide()
-        return true
-    }
-
     function showRandomCatPoem(id) {
         id = id || 0
         var cats = Database.childsOf(id)
@@ -319,7 +271,16 @@ Rectangle {
         if(poem == -1 || !poem)
             return false
 
-        var item = poemview_component.createObject( base_frame, {"poemId": poem} )
+        if(!poemsListObject)
+            poemsListObject = poems_component.createObject( base_frame, {"poemId": poem} )
+        else
+            poemsListObject.poemId = poem
+
+        var item = poemsListObject
+        var animationsRecovery = animations
+        animations = false
+        item.viewMode = true
+        animations = animationsRecovery
         item.inited = true
 
         if( list.count != 0 )

@@ -64,10 +64,10 @@ BackHandlerView {
             }
         }
 
-        Rectangle{
+        Rectangle {
             y: -height
             width: parent.height
-            height: 10*Devices.density
+            height: 3*Devices.density
             rotation: 90
             transformOrigin: Item.BottomLeft
             visible: !portrait

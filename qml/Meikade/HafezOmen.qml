@@ -75,7 +75,11 @@ Rectangle {
                 if( !hafez_omen.viewMode )
                     hafez_omen.switchPages()
                 view.poemId = pid
-                view.goToBegin()
+                var animationsRecovery = animations
+                animations = false
+                view.viewMode = true
+                animations = animationsRecovery
+                BackHandler.removeHandler(view)
             }
 
             Behavior on scale {
@@ -156,10 +160,10 @@ Rectangle {
             opacity: (1 - omen_frame.scale)*3
         }
 
-        PoemView {
+        PoemsPage {
             id: view
-            width: portrait? parent.width : parent.width*2/3
             height: parent.height
+            width: parent.width
             x: hafez_omen.viewMode? 0 : -width - shadow.width
             rememberBar: true
 

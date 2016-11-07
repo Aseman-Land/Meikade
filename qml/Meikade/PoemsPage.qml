@@ -26,7 +26,9 @@ Rectangle {
     color: Meikade.nightTheme? "111111" :"#dddddd"
 
     property int catId: -1
+    property alias poemId: view.poemId
     property bool viewMode: false
+    property alias rememberBar: view.rememberBar
 
     property int duration: 400
     property int easingType: Easing.OutQuad
@@ -36,6 +38,16 @@ Rectangle {
             BackHandler.pushHandler(poems_page, poems_page.back)
         else
             BackHandler.removeHandler(poems_page)
+    }
+
+    onPoemIdChanged: {
+        view.goToBegin()
+        if(poemId > 0) {
+            var catId = Database.poemCat(poemId)
+            if(catId > 0)
+                poems_page.catId = catId
+        }
+        networkFeatures.pushAction( ("Poem Selected: %1").arg(poemId) )
     }
 
     Poems {
@@ -49,8 +61,6 @@ Rectangle {
             if( !poems_page.viewMode )
                 poems_page.switchPages()
             view.poemId = pid
-            view.goToBegin()
-            networkFeatures.pushAction( ("Poem Selected: %1").arg(pid) )
         }
 
         property real ratio: poems_page.viewMode && portrait? 0.8 : 1
@@ -62,7 +72,7 @@ Rectangle {
         Rectangle{
             y: -height
             width: parent.height
-            height: 10*Devices.density
+            height: 3*Devices.density
             rotation: 90
             transformOrigin: Item.BottomLeft
             visible: !portrait
@@ -98,6 +108,25 @@ Rectangle {
 
     function back() {
         poems_page.viewMode = false
+    }
+
+    function showRandomPoem(id) {
+        var poem = -1
+        var poems = Database.catPoems(id)
+        if(poems.length != 0)
+        {
+            var poem_id_rnd = Math.floor(Math.random()*poems.length)
+            if(poem_id_rnd == poems.length)
+                poem_id_rnd--
+
+            poem = poems[poem_id_rnd]
+        }
+
+        if(poem == -1 || !poem)
+            return false
+
+        poemId = poem
+        viewMode = true
     }
 
     ActivityAnalizer { object: poems_page; comment: poems_page.catId }
