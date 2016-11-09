@@ -1,6 +1,9 @@
 import QtQuick 2.0
+import QtQuick.Controls 2.0
 import AsemanTools 1.0
 import Meikade 1.0
+import AsemanTools.Awesome 1.0
+import QtQuick.Layouts 1.3
 
 Rectangle {
     id: xml_page
@@ -19,33 +22,6 @@ Rectangle {
         Item {
             anchors.fill: parent
             anchors.topMargin: View.statusBarHeight
-
-            Button{
-                id: back_btn
-                anchors.left: parent.left
-                anchors.verticalCenter: parent.verticalCenter
-                height: parent.height
-                radius: 0
-                normalColor: "#00000000"
-                highlightColor: "#33666666"
-                textColor: "#ffffff"
-                iconHeight: 16*Devices.density
-                fontSize: 11*globalFontDensity*Devices.fontDensity
-                textFont.bold: false
-                visible: backButton
-                onClicked: {
-                    AsemanApp.back()
-                    Devices.hideKeyboard()
-                }
-
-                Text {
-                    anchors.centerIn: parent
-                    font.pixelSize: 25*globalFontDensity*Devices.fontDensity
-                    font.family: awesome_font.name
-                    color: "white"
-                    text: ""
-                }
-            }
 
             Text {
                 id: configure_txt
@@ -90,7 +66,7 @@ Rectangle {
         font.family: AsemanApp.globalFont.family
         text: qsTr("Fetching poet lists...")
         color: "#333333"
-        visible: list_indicator.active
+        visible: list_indicator.running
     }
 
     Text {
@@ -99,7 +75,7 @@ Rectangle {
         font.family: AsemanApp.globalFont.family
         text: qsTr("Can't connect to the server")
         color: "#333333"
-        visible: xml_model.errors.length != 0 || (listv.count == 0 && !list_indicator.active)
+        visible: xml_model.errors.length != 0 || (listv.count == 0 && !list_indicator.running)
     }
 
     ListView {
@@ -147,80 +123,79 @@ Rectangle {
                 poet: model.poetId
             }
 
-            Image {
-                id: poet_img
-                anchors.verticalCenter: parent.verticalCenter
-                anchors.margins: 16*Devices.density
+            RowLayout {
+                anchors.left: parent.left
                 anchors.right: parent.right
-                height: 38*Devices.density
-                width: height
-                sourceSize: Qt.size(width,height)
-                fillMode: Image.PreserveAspectFit
-                source: image_provider.path
-            }
-
-            Text {
-                id: poet_name
-                anchors.right: poet_img.left
-                anchors.left: parent.left
+                anchors.margins: 16*Devices.density
                 anchors.verticalCenter: parent.verticalCenter
-                anchors.margins: 20*Devices.density
-                anchors.rightMargin: 4*Devices.density
-                text: model.poetName
-                horizontalAlignment: Text.AlignRight
-                font.pixelSize: 10*globalFontDensity*Devices.fontDensity
-                font.family: AsemanApp.globalFont.family
-            }
+                spacing: 10*Devices.density
+                layoutDirection: View.layoutDirection
 
-            Text {
-                id: img
-                anchors.verticalCenter: parent.verticalCenter
-                anchors.left: parent.left
-                anchors.leftMargin: 20*Devices.density
-                font.pixelSize: 15*globalFontDensity*Devices.fontDensity
-                font.family: awesome_font.name
-                color: model.installed? "#3c994b" : "#3d3d3d"
-                text: model.installed? "" : ""
-                visible: !indicator.active
-            }
+                Image {
+                    anchors.verticalCenter: parent.verticalCenter
+                    Layout.preferredHeight: 38*Devices.density
+                    Layout.preferredWidth: Layout.preferredHeight
 
-            Indicator {
-                id: indicator
-                anchors.fill: img
-                light: false
-                modern: true
-                indicatorSize: 18*Devices.density
-
-                property bool active: model.installing || model.downloadingState || model.downloadedStatus
-                onActiveChanged: {
-                    if(active)
-                        start()
-                    else
-                        stop()
+                    sourceSize: Qt.size(width,height)
+                    fillMode: Image.PreserveAspectFit
+                    source: image_provider.path
                 }
-            }
 
-            Text {
-                anchors.verticalCenter: parent.verticalCenter
-                anchors.left: img.right
-                anchors.leftMargin: 10*Devices.density
-                font.pixelSize: 9*globalFontDensity*Devices.fontDensity
-                font.family: AsemanApp.globalFont.family
-                color: "#888888"
-                text: {
-                    if(model.installing)
-                        return qsTr("Installing")
-                    else
-                    if(model.downloadingState)
-                        return qsTr("Downloading")
-                    else
-                    if(model.installed)
-                        return qsTr("Installed")
-                    else
-                    if(model.downloadError)
-                        return qsTr("Error")
-                    else
-                        return qsTr("Free")
+                Text {
+                    anchors.verticalCenter: parent.verticalCenter
+                    Layout.fillWidth: true
+
+                    text: model.poetName
+                    horizontalAlignment: View.layoutDirection==Qt.LeftToRight? Text.AlignLeft : Text.AlignRight
+                    font.pixelSize: 10*globalFontDensity*Devices.fontDensity
+                    font.family: AsemanApp.globalFont.family
+                }
+
+                Text {
+                    anchors.verticalCenter: parent.verticalCenter
+                    font.pixelSize: 9*globalFontDensity*Devices.fontDensity
+                    font.family: AsemanApp.globalFont.family
+                    color: "#888888"
+                    text: {
+                        if(model.installing)
+                            return qsTr("Installing")
+                        else
+                        if(model.downloadingState)
+                            return qsTr("Downloading")
+                        else
+                        if(model.installed)
+                            return qsTr("Installed")
+                        else
+                        if(model.downloadError)
+                            return qsTr("Error")
+                        else
+                            return qsTr("Free")
+                    }
+                }
+
+                Item {
+                    Layout.preferredHeight: parent.height
+                    Layout.preferredWidth: Layout.preferredHeight
+
+                    Text {
+                        id: img
+                        anchors.centerIn: parent
+                        font.pixelSize: 15*globalFontDensity*Devices.fontDensity
+                        font.family: Awesome.family
+                        color: model.installed? "#3c994b" : "#3d3d3d"
+                        text: model.installed? Awesome.fa_check_square_o : Awesome.fa_plus
+                        visible: !indicator.running
+                    }
+
+                    Indicator {
+                        id: indicator
+                        anchors.centerIn: parent
+                        width: 18*Devices.density
+                        height: width
+                        light: false
+                        modern: true
+                        running: model.installing || model.downloadingState || model.downloadedStatus
+                    }
                 }
             }
 
@@ -228,9 +203,9 @@ Rectangle {
                 width: parent.width
                 height: 3*Devices.density
                 anchors.bottom: parent.bottom
-                visible: indicator.active
+                visible: indicator.running
                 percent: 100*model.downloadedBytes/model.fileSize
-                transform: Scale { origin.x: width/2; origin.y: height/2; xScale: -1}
+                transform: Scale { origin.x: width/2; origin.y: height/2; xScale: View.layoutDirection==Qt.LeftToRight?1:-1}
                 color: "#00000000"
             }
 
@@ -245,7 +220,7 @@ Rectangle {
                 id: marea
                 anchors.fill: parent
                 onClicked: {
-                    if(model.installed || indicator.active)
+                    if(model.installed || indicator.running)
                         return
 
                     model.downloadingState = true

@@ -18,6 +18,7 @@
 
 import QtQuick 2.0
 import AsemanTools 1.0
+import AsemanTools.Awesome 1.0
 
 Item {
     id: category
@@ -84,13 +85,14 @@ Item {
 
             Text {
                 id: go_img
-                anchors.left: parent.left
+                anchors.right: View.layoutDirection==Qt.LeftToRight? parent.right : undefined
+                anchors.left: View.layoutDirection==Qt.LeftToRight? undefined : parent.left
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.margins: 12*Devices.density
                 font.pixelSize: 30*globalFontDensity*Devices.fontDensity
-                font.family: awesome_font.name
+                font.family: Awesome.family
                 color: "#44000000"
-                text: ""
+                text: View.layoutDirection==Qt.LeftToRight? Awesome.fa_angle_right : Awesome.fa_angle_left
             }
 
             MouseArea{

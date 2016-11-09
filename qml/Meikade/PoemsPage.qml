@@ -24,6 +24,7 @@ Rectangle {
     width: 100
     height: 62
     color: Meikade.nightTheme? "111111" :"#dddddd"
+    clip: true
 
     property int catId: -1
     property alias poemId: view.poemId
@@ -54,7 +55,8 @@ Rectangle {
         id: poems
         width: portrait? parent.width : parent.width*1/3
         height: parent.height
-        anchors.right: parent.right
+        anchors.right: View.layoutDirection==Qt.LeftToRight? undefined : parent.right
+        anchors.left: View.layoutDirection==Qt.LeftToRight? parent.left : undefined
         catId: poems_page.catId
 //        scale: ratio
         onItemSelected: {
@@ -70,10 +72,11 @@ Rectangle {
         }
 
         Rectangle{
-            y: -height
+            y: View.layoutDirection==Qt.LeftToRight? parent.height-height : -height
+            x: View.layoutDirection==Qt.LeftToRight? parent.width : 0
             width: parent.height
             height: 3*Devices.density
-            rotation: 90
+            rotation: View.layoutDirection==Qt.LeftToRight? -90 : 90
             transformOrigin: Item.BottomLeft
             visible: !portrait
             gradient: Gradient {
@@ -94,7 +97,15 @@ Rectangle {
         id: view
         width: portrait? parent.width : parent.width*2/3
         height: parent.height
-        x: poems_page.viewMode? 0 : -width
+        x: {
+            switch(View.layoutDirection) {
+            case Qt.RightToLeft:
+                return  poems_page.viewMode? 0 : -width
+            default:
+            case Qt.LeftToRight:
+                return  poems_page.viewMode? parent.width - width : parent.width
+            }
+        }
         rememberBar: true
 
         Behavior on x {

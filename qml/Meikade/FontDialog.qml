@@ -18,6 +18,7 @@
 
 import QtQuick 2.0
 import AsemanTools 1.0
+import AsemanTools.Awesome 1.0
 
 Item {
     anchors.fill: parent
@@ -54,9 +55,9 @@ Item {
                 anchors.leftMargin: 10*Devices.density
                 anchors.verticalCenter: parent.verticalCenter
                 font.pixelSize: 15*globalFontDensity*Devices.fontDensity
-                font.family: awesome_font.name
+                font.family: Awesome.family
                 color: "#5d5d5d"
-                text: ""
+                text: Awesome.fa_check
                 visible: Meikade.currentLanguage == item.text
             }
 

@@ -127,7 +127,7 @@ Rectangle {
             id: ppage
             width: parent.width
             height: parent.height
-            x: inited? 0 : -width
+            x: inited? 0 : (View.layoutDirection==Qt.LeftToRight? width : -width )
 
             property bool inited: false
             property bool outside: false
@@ -280,6 +280,7 @@ Rectangle {
         var animationsRecovery = animations
         animations = false
         item.viewMode = true
+        BackHandler.removeHandler(item)
         animations = animationsRecovery
         item.inited = true
 

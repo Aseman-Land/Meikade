@@ -34,7 +34,7 @@ class Meikade : public QObject
     Q_PROPERTY(QString resourcePath READ resourcePath NOTIFY resourcePathChanged)
     Q_PROPERTY(QString currentLanguage READ currentLanguage WRITE setCurrentLanguage NOTIFY currentLanguageChanged)
     Q_PROPERTY(int runCount READ runCount WRITE setRunCount NOTIFY runCountChanged)
-    Q_PROPERTY( int  languageDirection  READ languageDirection NOTIFY languageDirectionChanged )
+    Q_PROPERTY(int  languageDirection  READ languageDirection NOTIFY languageDirectionChanged )
     Q_PROPERTY(bool nightTheme READ nightTheme WRITE setNightTheme NOTIFY nightThemeChanged)
     Q_PROPERTY(bool keepScreenOn READ keepScreenOn WRITE setKeepScreenOn NOTIFY keepScreenOnChanged)
     Q_PROPERTY(bool phrase READ phrase WRITE setPhrase NOTIFY phraseChanged)

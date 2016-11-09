@@ -18,6 +18,7 @@
 
 import QtQuick 2.0
 import AsemanTools 1.0
+import AsemanTools.Awesome 1.0
 
 Item {
     width: 100
@@ -149,9 +150,9 @@ Item {
                 Text {
                     anchors.centerIn: parent
                     font.pixelSize: 15*globalFontDensity*Devices.fontDensity
-                    font.family: awesome_font.name
+                    font.family: Awesome.family
                     color: "#99ff0000"
-                    text: ""
+                    text: Awesome.fa_close
                 }
             }
         }

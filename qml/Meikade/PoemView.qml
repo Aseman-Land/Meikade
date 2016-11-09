@@ -652,7 +652,7 @@ Rectangle {
             id: sdlg
             width: view.width
             height: view.height
-            x: -width
+            x: View.layoutDirection==Qt.LeftToRight? parent.width : -width
 
             Behavior on x {
                 NumberAnimation{easing.type: Easing.OutCubic; duration: 400}
@@ -665,7 +665,7 @@ Rectangle {
             }
 
             function close() {
-                x = -width
+                x = View.layoutDirection==Qt.LeftToRight? parent.width : -width
             }
 
             Component.onCompleted: {

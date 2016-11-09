@@ -1,10 +1,20 @@
 import QtQuick 2.0
 import AsemanTools 1.0
+import AsemanTools.Awesome 1.0
 
 Rectangle {
     id: cat_item
     width: parent.width
-    x: outside? parent.width : 0
+    x: {
+        if(outside) {
+            if(View.layoutDirection==Qt.LeftToRight)
+                return -parent.width
+            else
+                return parent.width
+        } else {
+            return 0
+        }
+    }
     y: startInit? 0 : startY
     height: startInit? parent.height : startHeight
     clip: true
@@ -110,7 +120,8 @@ Rectangle {
 
         Button{
             id: rand_btn
-            anchors.left: parent.left
+            anchors.right: View.layoutDirection==Qt.LeftToRight? parent.right : undefined
+            anchors.left: View.layoutDirection==Qt.LeftToRight? undefined : parent.left
             anchors.verticalCenter: parent.verticalCenter
             height: parent.height
             radius: 0
@@ -125,9 +136,9 @@ Rectangle {
             Text {
                 anchors.centerIn: parent
                 font.pixelSize: 13*globalFontDensity*Devices.fontDensity
-                font.family: awesome_font.name
+                font.family: Awesome.family
                 color: "#3d3d3d"
-                text: ""
+                text: Awesome.fa_random
             }
         }
 

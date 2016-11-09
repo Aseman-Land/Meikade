@@ -21,6 +21,7 @@ import AsemanTools 1.0
 import Meikade 1.0
 import QtQuick.Controls 2.0 as QtControls
 import QtQuick.Controls.Material 2.0
+import AsemanTools.Awesome 1.0
 
 Rectangle {
     id: search_list
@@ -121,9 +122,8 @@ Rectangle {
 
                     Text {
                         id: poet
-                        anchors.left: parent.left
                         anchors.bottom: parent.bottom
-                        anchors.leftMargin: 8*Devices.density
+                        x: View.layoutDirection==Qt.LeftToRight? parent.width - width - 8*Devices.density : 8*Devices.density
                         font.pixelSize: 9*globalFontDensity*Devices.fontDensity
                         font.family: AsemanApp.globalFont.family
                         color: "#ffffff"
@@ -238,24 +238,24 @@ Rectangle {
                 id: sscope_lbl
                 anchors.top: parent.top
                 anchors.bottom: parent.bottom
-                anchors.right: parent.right
+                anchors.right: View.layoutDirection==Qt.LeftToRight? undefined : parent.right
+                anchors.left: View.layoutDirection==Qt.LeftToRight? parent.left : undefined
                 anchors.leftMargin: 8*Devices.density
                 anchors.rightMargin: 8*Devices.density
                 font.family: AsemanApp.globalFont.family
                 font.pixelSize: 9*globalFontDensity*Devices.fontDensity
                 verticalAlignment: Text.AlignVCenter
-                horizontalAlignment: Text.AlignRight
                 font.underline: true
                 wrapMode: Text.WrapAnywhere
                 maximumLineCount: 1
                 elide: Text.ElideRight
                 color: "blue"
-                text: qsTr(":Search in")
+                text: qsTr("Search in:")
             }
 
             Text {
-                anchors.right: sscope_lbl.left
-                anchors.left: parent.left
+                anchors.right: View.layoutDirection==Qt.LeftToRight? parent.right : sscope_lbl.left
+                anchors.left: View.layoutDirection==Qt.LeftToRight? sscope_lbl.right : parent.left
                 anchors.top: parent.top
                 anchors.bottom: parent.bottom
                 anchors.leftMargin: 8*Devices.density
@@ -263,7 +263,7 @@ Rectangle {
                 font.family: AsemanApp.globalFont.family
                 font.pixelSize: 9*globalFontDensity*Devices.fontDensity
                 verticalAlignment: Text.AlignVCenter
-                horizontalAlignment: Text.AlignRight
+                horizontalAlignment: View.layoutDirection==Qt.LeftToRight? Text.AlignLeft : Text.AlignRight
                 wrapMode: Text.WrapAnywhere
                 maximumLineCount: 1
                 elide: Text.ElideRight
@@ -302,9 +302,9 @@ Rectangle {
         Text {
             anchors.centerIn: parent
             font.pixelSize: 25*globalFontDensity*Devices.fontDensity
-            font.family: awesome_font.name
+            font.family: Awesome.family
             color: "white"
-            text: ""
+            text: Awesome.fa_angle_up
         }
 
         MouseArea {

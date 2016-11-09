@@ -18,6 +18,8 @@
 
 import QtQuick 2.0
 import AsemanTools 1.0
+import AsemanTools.Awesome 1.0
+import QtQuick.Layouts 1.3
 
 Item {
     id: mmenu
@@ -108,29 +110,33 @@ Item {
 
             property alias press: marea.pressed
 
-            Text {
-                id: txt
+            RowLayout {
                 anchors.left: parent.left
-                anchors.right: item_rect.left
-                anchors.margins: 15*Devices.density
-                anchors.verticalCenter: parent.verticalCenter
-                font.pixelSize: 9*globalFontDensity*Devices.fontDensity
-                font.family: AsemanApp.globalFont.family
-                color: "#444444"
-                horizontalAlignment: Text.AlignRight
-                text: name
-            }
-
-            Text {
-                id: item_rect
                 anchors.right: parent.right
                 anchors.verticalCenter: parent.verticalCenter
-                anchors.rightMargin: 15*Devices.density
-                font.pixelSize: 14*globalFontDensity*Devices.fontDensity
-                font.family: awesome_font.name
-                color: "#777777"
-                horizontalAlignment: Text.AlignHCenter
-                text: icon
+                anchors.margins: 15*Devices.density
+                layoutDirection: View.layoutDirection
+                spacing: 15*Devices.density
+
+                Text {
+                    anchors.verticalCenter: parent.verticalCenter
+                    font.pixelSize: 14*globalFontDensity*Devices.fontDensity
+                    font.family: Awesome.family
+                    color: "#777777"
+                    horizontalAlignment: Text.AlignHCenter
+                    text: icon
+                }
+
+                Text {
+                    Layout.fillWidth: true
+
+                    anchors.verticalCenter: parent.verticalCenter
+                    font.pixelSize: 9*globalFontDensity*Devices.fontDensity
+                    font.family: AsemanApp.globalFont.family
+                    color: "#444444"
+                    horizontalAlignment: View.layoutDirection==Qt.LeftToRight? Qt.AlignLeft : Qt.AlignRight
+                    text: name
+                }
             }
 
             MouseArea {
@@ -144,15 +150,15 @@ Item {
         }
 
         Component.onCompleted: {
-            model.append({"name":qsTr("Meikade")           , "icon": "", "fileName":""                      , "type": "A"})
-            model.append({"name":qsTr("Search")            , "icon": "", "fileName":"SearchBar.qml"            , "type": "A"})
-            model.append({"name":qsTr("Bookmarks")         , "icon": "", "fileName":"Bookmarks.qml"         , "type": "A"})
-            model.append({"name":qsTr("Store")             , "icon": "", "fileName":"XmlDownloaderPage.qml" , "type": "A"})
-//            model.append({"name":qsTr("Notes")             , "icon": "", "fileName":"Notes.qml"             , "type": "A"})
-            model.append({"name":qsTr("Configure")         , "icon": "", "fileName":"Configure.qml"         , "type": "C"})
-            model.append({"name":qsTr("OpenSource Projecs"), "icon": "", "fileName":"OpenSourceProjects.qml", "type": "C"})
-            model.append({"name":qsTr("About")             , "icon": "", "fileName":"About.qml"             , "type": "C"})
-            model.append({"name":qsTr("About Nile Group")  , "icon": "", "fileName":"AboutNileTeam.qml"     , "type": "C"})
+            model.append({"name":qsTr("Meikade")           , "icon": Awesome.fa_home, "fileName":""                      , "type": "A"})
+            model.append({"name":qsTr("Search")            , "icon": Awesome.fa_search, "fileName":"SearchBar.qml"            , "type": "A"})
+            model.append({"name":qsTr("Bookmarks")         , "icon": Awesome.fa_bookmark_o, "fileName":"Bookmarks.qml"         , "type": "A"})
+            model.append({"name":qsTr("Store")             , "icon": Awesome.fa_shopping_cart, "fileName":"XmlDownloaderPage.qml" , "type": "A"})
+//            model.append({"name":qsTr("Notes")             , "icon": Awesome.fa_sticky_note, "fileName":"Notes.qml"             , "type": "A"})
+            model.append({"name":qsTr("Configure")         , "icon": Awesome.fa_cog, "fileName":"Configure.qml"         , "type": "C"})
+            model.append({"name":qsTr("OpenSource Projecs"), "icon": Awesome.fa_code_fork, "fileName":"OpenSourceProjects.qml", "type": "C"})
+            model.append({"name":qsTr("About")             , "icon": Awesome.fa_info_circle, "fileName":"About.qml"             , "type": "C"})
+            model.append({"name":qsTr("About Nile Group")  , "icon": Awesome.fa_info_circle, "fileName":"AboutNileTeam.qml"     , "type": "C"})
         }
     }
 

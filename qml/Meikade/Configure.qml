@@ -45,33 +45,6 @@ BackHandlerView {
             anchors.fill: parent
             anchors.topMargin: View.statusBarHeight
 
-            AT.Button{
-                id: back_btn
-                anchors.left: parent.left
-                anchors.verticalCenter: parent.verticalCenter
-                height: parent.height
-                radius: 0
-                normalColor: "#00000000"
-                highlightColor: "#33666666"
-                textColor: "#ffffff"
-                iconHeight: 16*Devices.density
-                fontSize: 11*globalFontDensity*Devices.fontDensity
-                textFont.bold: false
-                visible: backButton
-                onClicked: {
-                    AsemanApp.back()
-                    Devices.hideKeyboard()
-                }
-
-                Text {
-                    anchors.centerIn: parent
-                    font.pixelSize: 25*globalFontDensity*Devices.fontDensity
-                    font.family: awesome_font.name
-                    color: "white"
-                    text: ""
-                }
-            }
-
             Text {
                 id: configure_txt
                 anchors.centerIn: parent

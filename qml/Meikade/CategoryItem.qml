@@ -19,9 +19,11 @@
 import QtQuick 2.0
 import AsemanTools 1.0
 import Meikade 1.0
+import QtQuick.Layouts 1.3
 
-Item {
+RowLayout {
     id: item
+    layoutDirection: View.layoutDirection
 
     property int cid
     property bool root
@@ -33,11 +35,12 @@ Item {
 
     Image {
         id: img
-        anchors.right: parent.right
-        anchors.top: parent.top
-        anchors.bottom: parent.bottom
-        anchors.margins: 4*Devices.density
-        width: height
+
+        Layout.preferredHeight: root? parent.height - 8*Devices.density : 0
+        Layout.preferredWidth: Layout.preferredHeight
+        Layout.alignment: Qt.AlignHCenter
+        Layout.margins: 4*Devices.density
+
         sourceSize: Qt.size(width,height)
         fillMode: Image.PreserveAspectFit
         source: root? image_provider.path : ""
@@ -45,11 +48,11 @@ Item {
 
     Text{
         id: txt
-        anchors.left: parent.left
-        anchors.right: root? img.left : parent.right
-        anchors.verticalCenter: parent.verticalCenter
-        anchors.margins: 8*Devices.density
-        horizontalAlignment: Text.AlignRight
+
+        Layout.fillWidth: true
+        Layout.alignment: Qt.AlignHCenter
+
+        horizontalAlignment: View.layoutDirection==Qt.LeftToRight? Qt.AlignLeft : Qt.AlignRight
         text: Database.catName(cid)
         font.pixelSize: Devices.isMobile? 9*globalFontDensity*Devices.fontDensity : 10*globalFontDensity*Devices.fontDensity
         font.family: AsemanApp.globalFont.family

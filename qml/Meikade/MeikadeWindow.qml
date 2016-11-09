@@ -19,6 +19,7 @@
 import QtQuick 2.0
 import QtGraphicalEffects 1.0
 import AsemanTools 1.1 as AT
+import AsemanTools.Awesome 1.0
 import Meikade 1.0
 import "."
 
@@ -177,13 +178,15 @@ MeikadeWindowBase {
                         id: cat_page
                         anchors.fill: parent
 
-                        MaterialDesignButton {
+                        AT.MaterialDesignButton {
                             id: md_button
                             anchors.fill: parent
-                            layoutDirection: Qt.RightToLeft
-                            onHafezOmenRequest: cat_page.showHafezOmen()
-                            onRandomPoemRequest: cat_page.showRandomCatPoem()
-                            onStoreRequest: pageManager.append( Qt.createComponent("XmlDownloaderPage.qml") )
+                            color: "#881010"
+                            list: [
+                                {"name": qsTr("Other Poets"), "iconText": Awesome.fa_shopping_cart, "method": function(){ pageManager.append( Qt.createComponent("XmlDownloaderPage.qml") ) }},
+                                {"name": qsTr("Random Poem"), "iconText": Awesome.fa_random, "method": cat_page.showRandomCatPoem},
+                                {"name": qsTr("Hafez Omen") , "iconText": Awesome.fa_book, "method": cat_page.showHafezOmen }
+                            ]
                         }
                     }
                 }
@@ -208,8 +211,7 @@ MeikadeWindowBase {
                     height: AT.Devices.standardTitleBarHeight
 
                     AT.Button{
-                        id: srch_btn
-                        anchors.left: back_btn.visible? back_btn.right : parent.left
+                        x: AT.View.layoutDirection==Qt.RightToLeft? 0 : parent.width - width
                         anchors.top: parent.top
                         height: parent.height
                         width: height
@@ -217,42 +219,15 @@ MeikadeWindowBase {
                         highlightColor: "#88666666"
                         onClicked: {
                             networkFeatures.pushAction("Search (from header)")
-                            search_bar.show()
+                            pageManager.append( Qt.createComponent("SearchBar.qml") )
                         }
 
                         Text {
                             anchors.centerIn: parent
                             font.pixelSize: 15*globalFontDensity*AT.Devices.fontDensity
-                            font.family: awesome_font.name
+                            font.family: Awesome.family
                             color: "white"
-                            text: ""
-                        }
-                    }
-
-                    AT.Button{
-                        id: back_btn
-                        anchors.left: parent.left
-                        anchors.top: parent.top
-                        height: parent.height
-                        radius: 0
-                        normalColor: "#00000000"
-                        highlightColor: "#88666666"
-                        textColor: "#ffffff"
-                        iconHeight: 16*AT.Devices.density
-                        fontSize: 11*globalFontDensity*AT.Devices.fontDensity
-                        textFont.bold: false
-                        visible: backButton && cat_page.count != 1
-                        onClicked: {
-                            AT.AsemanApp.back()
-                            AT.Devices.hideKeyboard()
-                        }
-
-                        Text {
-                            anchors.centerIn: parent
-                            font.pixelSize: 25*globalFontDensity*AT.Devices.fontDensity
-                            font.family: awesome_font.name
-                            color: "white"
-                            text: ""
+                            text: Awesome.fa_search
                         }
                     }
                 }
@@ -288,7 +263,6 @@ MeikadeWindowBase {
     AT.SideMenu {
         id: sidebar
         anchors.fill: parent
-        layoutDirection: Qt.RightToLeft
         handleWidth: 5*AT.Devices.density
         delegate: MouseArea {
             anchors.fill: parent
@@ -320,37 +294,49 @@ MeikadeWindowBase {
     Item {
         id: menu_button
         height: AT.Devices.standardTitleBarHeight
-        width: menu_img.width + menu_img.anchors.rightMargin + menu_text.width + menu_text.anchors.rightMargin + 12*AT.Devices.density
-        anchors.top: parent.top
-        anchors.right: parent.right
-        anchors.topMargin: AT.View.statusBarHeight + page_manager.y
+        width: row.width + 26*AT.Devices.density
+        x: AT.View.layoutDirection==Qt.LeftToRight? 0 : parent.width - width
+        y: AT.View.statusBarHeight + page_manager.y
 
-        AT.MenuIcon {
-            id: menu_img
-            anchors.right: parent.right
-            anchors.verticalCenter: parent.verticalCenter
-            anchors.rightMargin: y
-            height: 20*AT.Devices.density
-            width: height
-            ratio: sidebar.percent
-            layoutDirection: Qt.RightToLeft
-        }
+        Row {
+            id: row
+            anchors.centerIn: parent
+            layoutDirection: AT.View.layoutDirection
+            spacing: 10*AT.Devices.density
 
-        Text {
-            id: menu_text
-            anchors.verticalCenter: parent.verticalCenter
-            anchors.right: menu_img.left
-            anchors.rightMargin: 8*AT.Devices.density
-            font.family: AT.AsemanApp.globalFont.family
-            font.pixelSize: 11*globalFontDensity*AT.Devices.fontDensity
-            text: pageManager.currentItem && pageManager.currentItem.title? pageManager.currentItem.title : qsTr("Meikade")
-            color: "#ffffff"
-            opacity: 1-sidebar.percent
+            AT.MenuIcon {
+                id: menuIcon
+                anchors.verticalCenter: parent.verticalCenter
+                height: 20*AT.Devices.density
+                width: height
+                ratio: {
+                    if(!AT.Devices.isAndroid)
+                    {
+                        if(catPage && catPage.count>1)
+                            return 1
+                        else
+                        if(pageManager.count)
+                            return 1
+                    }
+                    return sidebar.percent
+                }
+            }
+
+            Text {
+                anchors.verticalCenter: parent.verticalCenter
+                font.family: AT.AsemanApp.globalFont.family
+                font.pixelSize: 11*globalFontDensity*AT.Devices.fontDensity
+                text: pageManager.currentItem && pageManager.currentItem.title? pageManager.currentItem.title : qsTr("Meikade")
+                verticalAlignment: Text.AlignVCenter
+                color: "#ffffff"
+                opacity: 1-sidebar.percent
+                visible: opacity != 0
+            }
         }
 
         Rectangle {
-            anchors.fill: sidebar.showed? menu_img : parent
-            anchors.margins: sidebar.showed? -menu_img.y+8*AT.Devices.density : 0
+            anchors.fill: row
+            anchors.margins: -8*AT.Devices.density
             radius: 3*AT.Devices.density
             color: "#33ffffff"
             visible: menu_area.pressed
@@ -360,6 +346,9 @@ MeikadeWindowBase {
             id: menu_area
             anchors.fill: parent
             onClicked: {
+                if(menuIcon.ratio == 1)
+                    AT.BackHandler.back()
+                else
                 if(sidebar.showed)
                     sidebar.discard()
                 else
@@ -374,11 +363,6 @@ MeikadeWindowBase {
         repeat: false
         onTriggered: networkFeatures.pushDeviceModel(AT.Devices.deviceName, AT.Devices.lcdPhysicalSize, AT.Devices.density)
         Component.onCompleted: start()
-    }
-
-    FontLoader {
-        id: awesome_font
-        source: Meikade.resourcePath + "/fonts/fontawesome-webfont.ttf"
     }
 
     function hideMenuItem() {

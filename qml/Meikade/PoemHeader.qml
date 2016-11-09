@@ -18,6 +18,7 @@
 
 import QtQuick 2.0
 import AsemanTools 1.0
+import AsemanTools.Awesome 1.0
 
 Item {
     id: poem_header
@@ -144,7 +145,8 @@ Item {
 
         Text {
             id: poet_txt
-            anchors.right: parent.right
+            anchors.right: View.layoutDirection==Qt.LeftToRight? undefined : parent.right
+            anchors.left: View.layoutDirection==Qt.LeftToRight? parent.left : undefined
             anchors.margins: 8*Devices.density
             font.pixelSize: 10*globalFontDensity*Devices.fontDensity
             font.family: AsemanApp.globalFont.family
@@ -163,7 +165,8 @@ Item {
 
         Text {
             id: book_txt
-            anchors.right: poet_txt.left
+            anchors.right: View.layoutDirection==Qt.LeftToRight? undefined : poet_txt.left
+            anchors.left: View.layoutDirection==Qt.LeftToRight? poet_txt.right : undefined
             anchors.margins: 8*Devices.density
             font.pixelSize: 10*globalFontDensity*Devices.fontDensity
             font.family: AsemanApp.globalFont.family
@@ -183,9 +186,11 @@ Item {
         Row {
             id: tools_row
             height: 32*Devices.density
-            anchors.right: parent.right
+            anchors.right: View.layoutDirection==Qt.LeftToRight? undefined : parent.right
+            anchors.left: View.layoutDirection==Qt.LeftToRight? parent.left : undefined
             spacing: 1*Devices.density
             visible: poem_header.toolsOpened
+            layoutDirection: View.layoutDirection
 
             Button {
                 id: favorite
@@ -199,9 +204,9 @@ Item {
                 Text {
                     anchors.centerIn: parent
                     font.pixelSize: 11*globalFontDensity*Devices.fontDensity
-                    font.family: awesome_font.name
+                    font.family: Awesome.family
                     color: "white"
-                    text: poem_header.favorited? "" : ""
+                    text: poem_header.favorited? Awesome.fa_heart : Awesome.fa_heart_o
                 }
             }
 
@@ -228,9 +233,9 @@ Item {
                 Text {
                     anchors.centerIn: parent
                     font.pixelSize: 11*globalFontDensity*Devices.fontDensity
-                    font.family: awesome_font.name
+                    font.family: Awesome.family
                     color: "white"
-                    text: ""
+                    text: Awesome.fa_share_alt
                 }
             }
 
@@ -250,9 +255,9 @@ Item {
                 Text {
                     anchors.centerIn: parent
                     font.pixelSize: 11*globalFontDensity*Devices.fontDensity
-                    font.family: awesome_font.name
+                    font.family: Awesome.family
                     color: "white"
-                    text: ""
+                    text: Awesome.fa_copy
                 }
             }
         }
@@ -260,7 +265,8 @@ Item {
         Row {
             id: menu_row
             height: 32*Devices.density
-            anchors.left: parent.left
+            anchors.right: View.layoutDirection==Qt.LeftToRight? parent.right : undefined
+            anchors.left: View.layoutDirection==Qt.LeftToRight? undefined : parent.left
             anchors.verticalCenter: parent.verticalCenter
             spacing: 1*Devices.density
 
@@ -276,9 +282,9 @@ Item {
                 Text {
                     anchors.centerIn: parent
                     font.pixelSize: 11*globalFontDensity*Devices.fontDensity
-                    font.family: awesome_font.name
+                    font.family: Awesome.family
                     color: "white"
-                    text: poem_header.toolsOpened? "" : ""
+                    text: poem_header.toolsOpened? Awesome.fa_close : Awesome.fa_ellipsis_v
                 }
             }
         }

@@ -164,7 +164,6 @@
         <file>qml/Meikade/stickers/images/2_3.png</file>
         <file>qml/Meikade/stickers/images/2_4.png</file>
         <file>qml/Meikade/stickers/images/0_0.png</file>
-        <file>qml/Meikade/MaterialDesignButton.qml</file>
         <file>qml/Meikade/icons/new.png</file>
         <file>qml/Meikade/AboutNileTeam.qml</file>
         <file>qml/Meikade/icons/nilegroup.png</file>
@@ -176,7 +175,6 @@
         <file>qml/Meikade/icons/menu-home.png</file>
         <file>qml/Meikade/icons/menu-opensource.png</file>
         <file>qml/Meikade/icons/menu-search.png</file>
-        <file>qml/Meikade/MaterialDesignButtonItem.qml</file>
         <file>qml/Meikade/icons/button-search.png</file>
         <file>qml/Meikade/TitleBarShadow.qml</file>
         <file>qml/Meikade/icons/button-close.png</file>

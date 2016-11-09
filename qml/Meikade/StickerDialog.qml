@@ -2,6 +2,7 @@ import QtQuick 2.0
 import QtGraphicalEffects 1.0
 import AsemanTools 1.0
 import Meikade 1.0
+import AsemanTools.Awesome 1.0
 
 Rectangle {
     id: sticker_dialog
@@ -412,9 +413,9 @@ Rectangle {
             id: tik
             anchors.centerIn: parent
             font.pixelSize: 15*globalFontDensity*Devices.fontDensity
-            font.family: awesome_font.name
+            font.family: Awesome.family
             color: "#e6e6e6"
-            text: ""
+            text: Awesome.fa_check
             visible: !indicator.active
         }
 

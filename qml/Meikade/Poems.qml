@@ -19,6 +19,7 @@
 import QtQuick 2.0
 import QtGraphicalEffects 1.0
 import AsemanTools 1.0
+import AsemanTools.Awesome 1.0
 
 Rectangle {
     id: poems
@@ -76,17 +77,21 @@ Rectangle {
 
         Text {
             anchors.verticalCenter: parent.verticalCenter
-            anchors.right: parent.right
-            anchors.rightMargin: 8*Devices.density
+            anchors.right: View.layoutDirection==Qt.LeftToRight? undefined : parent.right
+            anchors.left: View.layoutDirection==Qt.LeftToRight? parent.left : undefined
+            anchors.margins: 8*Devices.density
             color: "#ffffff"
             font.pixelSize: 10*globalFontDensity*Devices.fontDensity
+            horizontalAlignment: View.layoutDirection==Qt.LeftToRight? Text.AlignLeft : Text.AlignRight
             font.family: AsemanApp.globalFont.family
             text: Database.catName(catId)
         }
 
         Button{
             id: rand_btn
-            anchors.left: parent.left
+            anchors.right: View.layoutDirection==Qt.LeftToRight? parent.right : undefined
+            anchors.left: View.layoutDirection==Qt.LeftToRight? undefined : parent.left
+            anchors.margins: 8*Devices.density
             anchors.verticalCenter: parent.verticalCenter
             height: parent.height
             radius: 0
@@ -101,9 +106,9 @@ Rectangle {
             Text {
                 anchors.centerIn: parent
                 font.pixelSize: 13*globalFontDensity*Devices.fontDensity
-                font.family: awesome_font.name
+                font.family: Awesome.family
                 color: "white"
-                text: ""
+                text: Awesome.fa_random
             }
         }
     }
@@ -156,6 +161,7 @@ Rectangle {
                 y: parent.height/2 - height/2
                 font.pixelSize: Devices.isMobile? 9*globalFontDensity*Devices.fontDensity : 10*globalFontDensity*Devices.fontDensity
                 font.family: AsemanApp.globalFont.family
+                horizontalAlignment: View.layoutDirection==Qt.LeftToRight? Text.AlignLeft : Text.AlignRight
                 color: Meikade.nightTheme? "#ffffff" :"#333333"
                 text: {
                     if(Meikade.endUsingNumber(poemTitle))

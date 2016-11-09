@@ -19,6 +19,7 @@
 import QtQuick 2.0
 import AsemanTools 1.0
 import QtQuick.Controls 2.0 as QtControls
+import AsemanTools.Awesome 1.0
 
 BackHandlerView {
     id: search_bar
@@ -51,21 +52,23 @@ BackHandlerView {
             y: Devices.standardTitleBarHeight/2 - height/2 + View.statusBarHeight
             anchors.left: parent.left
             anchors.right: parent.right
-            anchors.rightMargin: headerRightMargin
+            anchors.rightMargin: View.layoutDirection==Qt.LeftToRight? 0 : headerRightMargin
+            anchors.leftMargin: View.layoutDirection==Qt.LeftToRight? headerRightMargin : 0
             height: 42*Devices.density
 
             Text {
                 id: search_img
                 anchors.top: parent.top
                 anchors.bottom: parent.bottom
-                anchors.right: parent.right
+                anchors.right: View.layoutDirection==Qt.LeftToRight? undefined : parent.right
+                anchors.left: View.layoutDirection==Qt.LeftToRight? parent.left : undefined
                 anchors.topMargin: 11*Devices.density
                 anchors.bottomMargin: 11*Devices.density
                 font.pixelSize: 15*globalFontDensity*Devices.fontDensity
-                font.family: awesome_font.name
+                font.family: Awesome.family
                 color: "white"
                 horizontalAlignment: Text.AlignHCenter
-                text: ""
+                text: Awesome.fa_search
             }
 
             Rectangle {
@@ -73,8 +76,9 @@ BackHandlerView {
                 width: 1*Devices.density
                 height: parent.height/2
                 anchors.verticalCenter: parent.verticalCenter
-                anchors.right: search_img.left
-                anchors.margins: txt.anchors.rightMargin/2
+                anchors.right: View.layoutDirection==Qt.LeftToRight? undefined : search_img.left
+                anchors.left: View.layoutDirection==Qt.LeftToRight? search_img.right : undefined
+                anchors.margins: 10*Devices.density
                 color: "#888888"
             }
 
@@ -84,6 +88,7 @@ BackHandlerView {
                 font: txt.font
                 color: "#888888"
                 text: qsTr("Search")
+                verticalAlignment: Text.AlignVCenter
                 visible: !txt.focus && txt.text.length == 0
             }
 
@@ -91,13 +96,14 @@ BackHandlerView {
                 id: txt
                 anchors.top: parent.top
                 anchors.bottom: parent.bottom
-                anchors.right: search_img.left
-                anchors.left: parent.left
+                anchors.right: View.layoutDirection==Qt.LeftToRight? parent.right : search_img.left
+                anchors.left: View.layoutDirection==Qt.LeftToRight? search_img.right : parent.left
                 anchors.margins: 4*Devices.density
                 anchors.topMargin: anchors.margins+1*Devices.density
-                anchors.rightMargin: 20*Devices.density
+                anchors.rightMargin: View.layoutDirection==Qt.LeftToRight? anchors.margins : 20*Devices.density
+                anchors.leftMargin: View.layoutDirection==Qt.LeftToRight? 20*Devices.density : anchors.margins
                 verticalAlignment: Text.AlignVCenter
-                horizontalAlignment: Text.AlignRight
+                horizontalAlignment: View.layoutDirection==Qt.LeftToRight? Text.AlignLeft : Text.AlignRight
                 inputMethodHints: {
                     var deviceName = Devices.deviceName
                     if(deviceName.toLowerCase().indexOf("htc") >= 0)
@@ -111,9 +117,8 @@ BackHandlerView {
                 onTextChanged: refresh()
 
                 Button {
-                    anchors.left: parent.left
                     anchors.top: parent.top
-                    anchors.leftMargin: 4*Devices.density
+                    x: View.layoutDirection==Qt.LeftToRight? parent.width - width - 4*Devices.density : 4*Devices.density
                     height: parent.height
                     width: height
                     normalColor: "#00000000"
@@ -126,9 +131,9 @@ BackHandlerView {
                     Text {
                         anchors.centerIn: parent
                         font.pixelSize: 14*globalFontDensity*Devices.fontDensity
-                        font.family: awesome_font.name
+                        font.family: Awesome.family
                         color: "#99ffffff"
-                        text: ""
+                        text: Awesome.fa_close
                     }
                 }
 
@@ -155,7 +160,8 @@ BackHandlerView {
         id: search_list
         anchors.top: search_frame.bottom
         anchors.bottom: parent.bottom
-        anchors.right: parent.right
+        anchors.right: View.layoutDirection==Qt.LeftToRight? undefined : parent.right
+        anchors.left: View.layoutDirection==Qt.LeftToRight? parent.left : undefined
         width: portrait? parent.width : parent.width*1/3
         keyword: txt.text
         clip: true
@@ -177,10 +183,11 @@ BackHandlerView {
         }
 
         Rectangle{
-            y: -height
+            y: View.layoutDirection==Qt.LeftToRight? parent.height-height : -height
+            x: View.layoutDirection==Qt.LeftToRight? parent.width : 0
             width: parent.height
             height: 3*Devices.density
-            rotation: 90
+            rotation: View.layoutDirection==Qt.LeftToRight? -90 : 90
             transformOrigin: Item.BottomLeft
             visible: !portrait
             gradient: Gradient {
@@ -196,7 +203,15 @@ BackHandlerView {
         anchors.bottom: parent.bottom
         width: portrait? parent.width : parent.width*2/3
         clip: true
-        x: search_bar.viewMode? 0 : -width
+        x: {
+            switch(View.layoutDirection) {
+            case Qt.RightToLeft:
+                return  search_bar.viewMode? 0 : -width
+            default:
+            case Qt.LeftToRight:
+                return  search_bar.viewMode? parent.width - width : parent.width
+            }
+        }
         rememberBar: true
 
         Behavior on x {
@@ -207,34 +222,6 @@ BackHandlerView {
     TitleBarShadow {
         width: parent.width
         anchors.top: search_frame.bottom
-    }
-
-    Button{
-        id: back_btn
-        anchors.left: parent.left
-        anchors.top: parent.top
-        anchors.topMargin: View.statusBarHeight
-        height: headerHeight
-        radius: 0
-        normalColor: "#00000000"
-        highlightColor: "#88666666"
-        textColor: "#ffffff"
-        iconHeight: 16*Devices.density
-        fontSize: 11*globalFontDensity*Devices.fontDensity
-        textFont.bold: false
-        visible: backButton && search_bar.searchMode
-        onClicked: {
-            AsemanApp.back()
-            Devices.hideKeyboard()
-        }
-
-        Text {
-            anchors.centerIn: parent
-            font.pixelSize: 25*globalFontDensity*Devices.fontDensity
-            font.family: awesome_font.name
-            color: "white"
-            text: ""
-        }
     }
 
     function show() {

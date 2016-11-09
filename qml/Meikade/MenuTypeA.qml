@@ -51,11 +51,11 @@ Rectangle {
 
     Rectangle{
         id: shadow
-        x: -height
-        y: -height
+        y: View.layoutDirection==Qt.LeftToRight? parent.height-height : -height
+        x: View.layoutDirection==Qt.LeftToRight? parent.width : 0
         width: parent.height
-        height: menu_type_a.shadowSize
-        rotation: 90
+        height: 3*Devices.density
+        rotation: View.layoutDirection==Qt.LeftToRight? -90 : 90
         transformOrigin: Item.BottomLeft
         gradient: Gradient {
             GradientStop { position: 0.0; color: "#66000000" }

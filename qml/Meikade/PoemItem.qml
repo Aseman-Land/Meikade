@@ -87,13 +87,13 @@ Rectangle {
         anchors.margins: 30*Devices.density
         spacing: 10*Devices.density
 
-        Text{
+        Text {
             id: txt
             width: parent.width
             font.pixelSize: Devices.isMobile? 9*globalFontDensity*Devices.fontDensity : 11*globalFontDensity*Devices.fontDensity
             font.family: globalPoemFontFamily
             wrapMode: TextInput.WordWrap
-            horizontalAlignment: Text.AlignRight
+            horizontalAlignment: TextTools.directionOf(text)==Qt.LeftToRight? Text.AlignLeft : Text.AlignRight
             color: Meikade.nightTheme? "#ffffff" : "#111111"
             text: {
                 var psn1 = Database.versePosition(item.pid,item.vid)
@@ -127,7 +127,7 @@ Rectangle {
             wrapMode: TextInput.WordWrap
             visible: privates.position==0 && privates.position_2==1
             color: item.textColor
-            horizontalAlignment: Text.AlignLeft
+            horizontalAlignment: TextTools.directionOf(text)==Qt.LeftToRight? Text.AlignRight : Text.AlignLeft
             text: {
                 var psn1 = Database.versePosition(item.pid,item.vid)
                 var txt1 = Database.verseText(item.pid,item.vid)

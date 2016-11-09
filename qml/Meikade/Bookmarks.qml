@@ -46,7 +46,8 @@ BackHandlerView {
         anchors.top: parent.top
         anchors.bottom: parent.bottom
         anchors.topMargin: headerHeight+View.statusBarHeight
-        anchors.right: parent.right
+        anchors.right: View.layoutDirection==Qt.LeftToRight? undefined : parent.right
+        anchors.left: View.layoutDirection==Qt.LeftToRight? parent.left : undefined
         width: portrait? parent.width : parent.width*1/3
         color: "#ffffff"
 
@@ -67,10 +68,11 @@ BackHandlerView {
         }
 
         Rectangle {
-            y: -height
+            y: View.layoutDirection==Qt.LeftToRight? parent.height-height : -height
+            x: View.layoutDirection==Qt.LeftToRight? parent.width : 0
             width: parent.height
             height: 3*Devices.density
-            rotation: 90
+            rotation: View.layoutDirection==Qt.LeftToRight? -90 : 90
             transformOrigin: Item.BottomLeft
             visible: !portrait
             gradient: Gradient {
@@ -88,7 +90,15 @@ BackHandlerView {
         width: portrait? parent.width : parent.width*2/3
         clip: true
         rememberBar: true
-        x: bookmarks.viewMode? 0 : -width
+        x: {
+            switch(View.layoutDirection) {
+            case Qt.RightToLeft:
+                return  bookmarks.viewMode? 0 : -width
+            default:
+            case Qt.LeftToRight:
+                return  bookmarks.viewMode? parent.width - width : parent.width
+            }
+        }
 
         Behavior on x {
             NumberAnimation { easing.type: Easing.OutCubic; duration: animations*400 }
@@ -100,34 +110,6 @@ BackHandlerView {
         width: parent.width
         height: View.statusBarHeight + Devices.standardTitleBarHeight
         color: "#881010"
-
-        Button{
-            id: back_btn
-            anchors.left: parent.left
-            anchors.top: parent.top
-            anchors.topMargin: View.statusBarHeight
-            height: headerHeight
-            radius: 0
-            normalColor: "#00000000"
-            highlightColor: "#88666666"
-            textColor: "#333333"
-            iconHeight: 16*Devices.density
-            fontSize: 11*globalFontDensity*Devices.fontDensity
-            textFont.bold: false
-            visible: backButton
-            onClicked: {
-                AsemanApp.back()
-                Devices.hideKeyboard()
-            }
-
-            Text {
-                anchors.centerIn: parent
-                font.pixelSize: 25*globalFontDensity*Devices.fontDensity
-                font.family: awesome_font.name
-                color: "white"
-                text: ""
-            }
-        }
 
         TitleBarShadow {
             width: header.width
