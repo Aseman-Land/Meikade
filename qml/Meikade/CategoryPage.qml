@@ -109,7 +109,7 @@ Rectangle {
         Button {
             x: View.layoutDirection==Qt.RightToLeft? 0 : parent.width - width
             y: View.statusBarHeight
-            height: parent.height
+            height: Devices.standardTitleBarHeight
             width: height
             radius: 0
             highlightColor: "#88666666"
@@ -218,7 +218,7 @@ Rectangle {
                 Button {
                     x: View.layoutDirection==Qt.RightToLeft? 0 : parent.width - width
                     y: View.statusBarHeight
-                    height: parent.height
+                    height: Devices.standardTitleBarHeight
                     width: height
                     radius: 0
                     highlightColor: "#88666666"
@@ -256,6 +256,7 @@ Rectangle {
 
     function backToPoet(pid) {
         pageManager.append( Qt.createComponent("CategoryPage.qml") ).catId = pid
+        materialDesignButton.hide()
     }
 
     function backToCats(cid, pid) {
@@ -263,7 +264,8 @@ Rectangle {
         if( poems.length != 0 )
             pageManager.append(poemsHeader_component).catId = cid
         else
-            backToPoet(cid)
+            pageManager.append( Qt.createComponent("CategoryPage.qml") ).catId = cid
+        materialDesignButton.hide()
     }
 
     function home() {
