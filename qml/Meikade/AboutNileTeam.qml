@@ -20,7 +20,7 @@ Rectangle {
         }
     }
 
-    Flickable {
+    AsemanFlickable {
         id: flickable
         anchors.top: header.bottom
         anchors.bottom: home_btn.top
@@ -29,14 +29,6 @@ Rectangle {
         contentHeight: column.height
         flickableDirection: Flickable.VerticalFlick
         clip: true
-        boundsBehavior: Flickable.StopAtBounds
-        rebound: Transition {
-            NumberAnimation {
-                properties: "x,y"
-                duration: 0
-            }
-        }
-
         Item {
             id: main_item
             width: flickable.width

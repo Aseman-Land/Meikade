@@ -113,7 +113,7 @@ Rectangle {
         }
     }
 
-    ListView {
+    AsemanListView {
         id: poems_list
         anchors.left: parent.left
         anchors.right: parent.right
@@ -121,19 +121,10 @@ Rectangle {
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 4*Devices.density
         highlightMoveDuration: 250
-        maximumFlickVelocity: View.flickVelocity
         spacing: 8*Devices.density
         topMargin: spacing
         bottomMargin: View.navigationBarHeight + spacing
         clip: true
-        boundsBehavior: Flickable.StopAtBounds
-        rebound: Transition {
-            NumberAnimation {
-                properties: "x,y"
-                duration: 0
-            }
-        }
-
         model: ListModel {}
         delegate: Rectangle {
             id: item
@@ -208,7 +199,8 @@ Rectangle {
 
     ScrollBar {
         scrollArea: poems_list; height: poems_list.height - View.navigationBarHeight
-        anchors.left: poems_list.left; anchors.top: poems_list.top
+        anchors.right: poems_list.right; anchors.top: poems_list.top
         color: Meikade.nightTheme? "#ffffff" : "#881010"
+        LayoutMirroring.enabled: View.layoutDirection == Qt.RightToLeft
     }
 }

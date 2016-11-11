@@ -51,7 +51,7 @@ Rectangle {
         wrapMode: Text.WrapAtWordBoundaryOrAnywhere
     }
 
-    ListView {
+    AsemanListView {
         id: preference_list
         anchors.top: desc_txt.bottom
         anchors.left: parent.left
@@ -62,14 +62,6 @@ Rectangle {
         bottomMargin: View.navigationBarHeight
         clip: true
         focus: true
-        boundsBehavior: Flickable.StopAtBounds
-        rebound: Transition {
-            NumberAnimation {
-                properties: "x,y"
-                duration: 0
-            }
-        }
-
         model: ListModel {}
         delegate: Item {
             id: item

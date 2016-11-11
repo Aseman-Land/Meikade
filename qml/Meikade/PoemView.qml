@@ -178,7 +178,7 @@ Rectangle {
         }
     }
 
-    ListView {
+    AsemanListView {
         id: view_list
         anchors.fill: parent
         clip: true
@@ -186,19 +186,10 @@ Rectangle {
         displayMarginBeginning: 512*Devices.density
         displayMarginEnd: 512*Devices.density
         cacheBuffer: 512*Devices.density
-        maximumFlickVelocity: View.flickVelocity
         bottomMargin: View.navigationBarHeight
-        boundsBehavior: Flickable.StopAtBounds
         highlightRangeMode: ListView.ApplyRange
         preferredHighlightBegin: height/2
         preferredHighlightEnd: height/2
-        rebound: Transition {
-            NumberAnimation {
-                properties: "x,y"
-                duration: 0
-            }
-        }
-
         property int highlightedVid: -1
         property int selectedIndex: -1
 
@@ -278,7 +269,7 @@ Rectangle {
                 font.family: globalPoemFontFamily
 
                 Rectangle {
-                    anchors.right: parent.right
+                    x: View.layoutDirection==Qt.LeftToRight? 0 : parent.width-width
                     anchors.top: parent.top
                     anchors.bottom: parent.bottom
                     width: 25*Devices.density
@@ -287,7 +278,7 @@ Rectangle {
 
                     Text {
                         anchors.centerIn: parent
-                        text: Meikade.numberToArabicString(index+1)
+                        text: Meikade.currentLanguage != "Persian"? index+1 : Meikade.numberToArabicString(index+1)
                         color: Meikade.nightTheme? "#111111" : "#ffffff"
                         font.pixelSize: 9*fontScale*globalFontDensity*Devices.fontDensity
                         font.family: AsemanApp.globalFont.family
@@ -490,8 +481,9 @@ Rectangle {
 
     ScrollBar {
         scrollArea: view_list; height: view_list.height-View.navigationBarHeight
-        anchors.left: view_list.left; anchors.top: view_list.top
+        anchors.right: view_list.right; anchors.top: view_list.top
         color: Meikade.nightTheme? "#ffffff" : "#881010"
+        LayoutMirroring.enabled: View.layoutDirection == Qt.RightToLeft
     }
 
     MouseArea {

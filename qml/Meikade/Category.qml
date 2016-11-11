@@ -41,22 +41,13 @@ Item {
         onPoetsChanged: category_list.refresh()
     }
 
-    ListView {
+    AsemanListView {
         id: category_list
         anchors.fill: parent
         bottomMargin: View.navigationBarHeight + spacing
-        maximumFlickVelocity: View.flickVelocity
         clip: true
         spacing: 8*Devices.density
         topMargin: category.topMargin
-        boundsBehavior: Flickable.StopAtBounds
-        rebound: Transition {
-            NumberAnimation {
-                properties: "x,y"
-                duration: 0
-            }
-        }
-
         onVerticalVelocityChanged: {
             if(catId != 0)
                 return
@@ -132,8 +123,9 @@ Item {
 
     ScrollBar {
         scrollArea: category_list; height: category_list.height-topMargin-View.navigationBarHeight
-        anchors.left: category_list.left; anchors.top: category_list.top
+        anchors.right: category_list.right; anchors.top: category_list.top
         anchors.topMargin: topMargin; color: Meikade.nightTheme? "#ffffff" : "#881010"
+        LayoutMirroring.enabled: View.layoutDirection == Qt.RightToLeft
     }
 
     Text {

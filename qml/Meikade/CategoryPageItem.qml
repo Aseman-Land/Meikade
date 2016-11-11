@@ -29,10 +29,8 @@ Rectangle {
     property real startY: 0
     property real startHeight: 0
 
-    property Component categoryComponent
-    property Component poemsComponent
-    property Component hafezOmenComponent
-    property variant baseFrame
+    signal categorySelected( int cid, variant rect )
+    signal poemSelected( int pid, variant rect )
 
     Behavior on x {
         NumberAnimation{ easing.type: Easing.OutCubic; duration: destroy_timer.interval }
@@ -62,33 +60,8 @@ Rectangle {
         height: cat_item.parent.height
         width: cat_item.parent.width
         header: root? desc_component : spacer_component
-
-        onCategorySelected: {
-            var item = categoryComponent.createObject(baseFrame, {"catId": cid, "startY": rect.y, "startHeight": rect.height,
-                                                      "root": (cat_item.catId == 0)} )
-            item.start()
-
-            if( list.count != 0 )
-                list.last().outside = true
-
-            list.append(item)
-        }
-
-        onPoemSelected: {
-            var item
-            if( pid < 10000 ) {
-                item = poemsComponent.createObject(baseFrame, {"catId": pid})
-                item.inited = true
-            } else {
-                item = hafezOmenComponent.createObject( baseFrame, {"catId": pid} )
-                item.inited = true
-            }
-
-            if( list.count != 0 )
-                list.last().outside = true
-
-            list.append(item)
-        }
+        onCategorySelected: cat_item.categorySelected(cid, rect)
+        onPoemSelected: cat_item.poemSelected(pid, rect)
     }
 
     Rectangle {

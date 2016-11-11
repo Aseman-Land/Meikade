@@ -247,21 +247,14 @@ Rectangle {
         anchors.bottom: parent.bottom
         color: Meikade.nightTheme? "#333333" : "#eeeeee"
 
-        ListView {
+        AsemanListView {
             id: listv
             anchors.fill: parent
             anchors.bottomMargin: View.navigationBarHeight
             model: smodel
             orientation: Qt.Horizontal
             layoutDirection: Meikade.languageDirection
-            boundsBehavior: Flickable.StopAtBounds
             clip: true
-            rebound: Transition {
-                NumberAnimation {
-                    properties: "x,y"
-                    duration: 0
-                }
-            }
             delegate: Rectangle {
                 height: listv.height
                 width: height

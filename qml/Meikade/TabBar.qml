@@ -28,11 +28,10 @@ Item {
 
     signal itemSelected( int tid )
 
-    ListView {
+    AsemanListView {
         id: view
         anchors.fill: parent
         highlightMoveDuration: 250
-        maximumFlickVelocity: View.flickVelocity
         orientation: Qt.Horizontal
         layoutDirection: Meikade.languageDirection
 

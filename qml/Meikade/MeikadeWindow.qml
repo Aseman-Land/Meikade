@@ -31,7 +31,7 @@ MeikadeWindowBase {
     property real globalZoomAnimDurations: animations? 500 : 0
     property real globalFontDensity: 0.9
 
-    readonly property real headerHeight: page_manager.mainItem? page_manager.mainItem.headerHeight : 0
+    readonly property real headerHeight: AT.Devices.standardTitleBarHeight
     property bool backButton: !AT.Devices.isAndroid
     property bool flatDesign: true
 
@@ -137,7 +137,6 @@ MeikadeWindowBase {
             clip: true
 
             property bool anim: false
-            property alias headerHeight: header.height
             property alias catPage: cat_page
             property alias materialDesignButton: md_button
             property alias areaFrame: area_frame
@@ -176,61 +175,31 @@ MeikadeWindowBase {
 
                     CategoryPage {
                         id: cat_page
-                        anchors.fill: parent
 
                         AT.MaterialDesignButton {
                             id: md_button
                             anchors.fill: parent
                             color: "#881010"
-                            list: [
-                                {"name": qsTr("Other Poets"), "iconText": Awesome.fa_shopping_cart, "method": function(){ pageManager.append( Qt.createComponent("XmlDownloaderPage.qml") ) }},
-                                {"name": qsTr("Random Poem"), "iconText": Awesome.fa_random, "method": cat_page.showRandomCatPoem},
-                                {"name": qsTr("Hafez Omen") , "iconText": Awesome.fa_book, "method": cat_page.showHafezOmen }
-                            ]
                         }
                     }
                 }
             }
 
-            Item {
-                id: header_frame
-                y: 0
-                anchors.left: parent.left
-                anchors.right: parent.right
-                height: AT.Devices.standardTitleBarHeight+AT.View.statusBarHeight
+            Connections{
+                target: Meikade
+                onCurrentLanguageChanged: initTranslations()
+            }
 
-                Behavior on y {
-                    NumberAnimation { easing.type: Easing.OutCubic; duration: animations*400 }
-                }
+            function initTranslations(){
+                md_button.list = [
+                            {"name": qsTr("Other Poets"), "iconText": Awesome.fa_shopping_cart, "method": function(){ pageManager.append( Qt.createComponent("XmlDownloaderPage.qml") ) }},
+                            {"name": qsTr("Random Poem"), "iconText": Awesome.fa_random, "method": cat_page.showRandomCatPoem},
+                            {"name": qsTr("Hafez Omen") , "iconText": Awesome.fa_book, "method": cat_page.showHafezOmen }
+                        ]
+            }
 
-                Item {
-                    id: header
-                    anchors.left: parent.left
-                    anchors.right: parent.right
-                    anchors.bottom: parent.bottom
-                    height: AT.Devices.standardTitleBarHeight
-
-                    AT.Button{
-                        x: AT.View.layoutDirection==Qt.RightToLeft? 0 : parent.width - width
-                        anchors.top: parent.top
-                        height: parent.height
-                        width: height
-                        radius: 0
-                        highlightColor: "#88666666"
-                        onClicked: {
-                            networkFeatures.pushAction("Search (from header)")
-                            pageManager.append( Qt.createComponent("SearchBar.qml") )
-                        }
-
-                        Text {
-                            anchors.centerIn: parent
-                            font.pixelSize: 15*globalFontDensity*AT.Devices.fontDensity
-                            font.family: Awesome.family
-                            color: "white"
-                            text: Awesome.fa_search
-                        }
-                    }
-                }
+            Component.onCompleted: {
+                initTranslations()
             }
         }
     }
@@ -263,7 +232,6 @@ MeikadeWindowBase {
     AT.SideMenu {
         id: sidebar
         anchors.fill: parent
-        handleWidth: 5*AT.Devices.density
         delegate: MouseArea {
             anchors.fill: parent
 
@@ -296,7 +264,7 @@ MeikadeWindowBase {
         height: AT.Devices.standardTitleBarHeight
         width: row.width + 26*AT.Devices.density
         x: AT.View.layoutDirection==Qt.LeftToRight? 0 : parent.width - width
-        y: AT.View.statusBarHeight + page_manager.y
+        y: AT.View.statusBarHeight
 
         Row {
             id: row
@@ -310,15 +278,29 @@ MeikadeWindowBase {
                 height: 20*AT.Devices.density
                 width: height
                 ratio: {
-                    if(!AT.Devices.isAndroid)
-                    {
-                        if(catPage && catPage.count>1)
-                            return 1
-                        else
-                        if(pageManager.count)
-                            return 1
-                    }
+                    if(catPage && catPage.count>1)
+                        return fakeRatio
+                    else
+                    if(pageManager.count)
+                        return fakeRatio
+                    else
+                    if(sidebar.percent == 0)
+                        return fakeRatio
                     return sidebar.percent
+                }
+
+                property real fakeRatio: {
+                    if(catPage && catPage.count>1)
+                        return 1
+                    else
+                    if(pageManager.count)
+                        return 1
+                    else
+                        return 0
+                }
+
+                Behavior on fakeRatio {
+                    NumberAnimation{easing.type: Easing.OutCubic; duration: 300}
                 }
             }
 

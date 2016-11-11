@@ -66,20 +66,11 @@ Rectangle {
             visible: false
         }
 
-        ListView {
+        AsemanListView {
             id: view_list
             anchors.fill: parent
             highlightMoveDuration: 250
-            maximumFlickVelocity: View.flickVelocity
             bottomMargin: View.navigationBarHeight
-            boundsBehavior: Flickable.StopAtBounds
-            rebound: Transition {
-                NumberAnimation {
-                    properties: "x,y"
-                    duration: 0
-                }
-            }
-
             property bool atEnd: atYEnd
             onAtEndChanged: if(atEnd && count != 0) tmodel.more()
 
@@ -182,7 +173,8 @@ Rectangle {
 
         ScrollBar {
             scrollArea: view_list; height: view_list.height
-            anchors.left: view_list.left; anchors.top: view_list.top
+            anchors.right: view_list.right; anchors.top: view_list.top
+            LayoutMirroring.enabled: View.layoutDirection == Qt.RightToLeft
         }
     }
 

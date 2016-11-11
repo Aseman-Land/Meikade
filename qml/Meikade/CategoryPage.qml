@@ -18,14 +18,15 @@
 
 import QtQuick 2.0
 import AsemanTools 1.0
+import AsemanTools.Awesome 1.0
 
 Rectangle {
     id: page
-    width: 100
-    height: 62
+    anchors.fill: parent
     color: Meikade.nightTheme? "#222222" : "#dddddd"
 
     property alias count: list.count
+    property alias catId: catItem.catId
 
     property variant randomPoetObject
     property variant poemsListObject
@@ -46,16 +47,13 @@ Rectangle {
     Connections {
         target: Database
         onInitializeFinished: finished()
-        Component.onCompleted: {
-            if(Database.initialized) {
-                finished()
-            }
-        }
+        Component.onCompleted: finished()
 
         function finished() {
-            var item = category_component.createObject(base_frame, {"catId": 0, "startY": 0, "startHeight": base_frame.height})
-            item.startInit = true
-            list.append(item)
+            if(!Database.initialized)
+                return
+            catItem.catId = 0
+            catItem.startInit = true
         }
     }
 
@@ -65,19 +63,68 @@ Rectangle {
         anchors.bottom: parent.bottom
         anchors.left: parent.left
         anchors.right: parent.right
+
+        CategoryPageItem {
+            id: catItem
+            startY: 0
+            startHeight: parent.height
+            onCategorySelected: base_frame.appendCategory(cid, rect, catId == 0)
+            onPoemSelected: base_frame.appendPoem(pid, rect)
+            Component.onCompleted: list.append(catItem)
+        }
+
+        function appendCategory(cid, rect, root) {
+            var item = category_component.createObject(base_frame, {"catId": cid, "startY": rect.y, "startHeight": rect.height, "root": root} )
+            item.start()
+
+            if( list.count != 0 )
+                list.last().outside = true
+
+            list.append(item)
+        }
+
+        function appendPoem(pid, rect) {
+            var item
+            if( pid < 10000 ) {
+                item = poems_component.createObject(base_frame, {"catId": pid})
+                item.inited = true
+            } else {
+                item = hafez_omen_component.createObject(base_frame, {"catId": pid} )
+                item.inited = true
+            }
+
+            if( list.count != 0 )
+                list.last().outside = true
+
+            list.append(item)
+        }
     }
 
-    Rectangle {
+    Header {
         id: title_bar
-        anchors.left: parent.left
-        anchors.right: parent.right
-        anchors.top: parent.top
-        height: Devices.standardTitleBarHeight + View.statusBarHeight
+        width: parent.width
         color: "#881010"
+        shadow: true
 
-        TitleBarShadow {
-            width: parent.width
-            anchors.top: parent.bottom
+        Button {
+            x: View.layoutDirection==Qt.RightToLeft? 0 : parent.width - width
+            y: View.statusBarHeight
+            height: parent.height
+            width: height
+            radius: 0
+            highlightColor: "#88666666"
+            onClicked: {
+                networkFeatures.pushAction("Search (from header)")
+                pageManager.append( Qt.createComponent("SearchBar.qml") )
+            }
+
+            Text {
+                anchors.centerIn: parent
+                font.pixelSize: 15*globalFontDensity*Devices.fontDensity
+                font.family: Awesome.family
+                color: "white"
+                text: Awesome.fa_search
+            }
         }
     }
 
@@ -85,10 +132,8 @@ Rectangle {
         id: category_component
 
         CategoryPageItem {
-            categoryComponent: category_component
-            poemsComponent: poems_component
-            baseFrame: base_frame
-            hafezOmenComponent: hafez_omen_component
+            onCategorySelected: base_frame.appendCategory(cid, rect, catId == 0)
+            onPoemSelected: base_frame.appendPoem(pid, rect)
         }
     }
 
@@ -98,7 +143,7 @@ Rectangle {
             id: homen
             width: parent.width
             height: parent.height
-            x: inited? 0 : -width
+            x: inited? 0 : (View.layoutDirection==Qt.LeftToRight? width : -width )
 
             property bool inited: false
             property bool outside: false
@@ -149,6 +194,51 @@ Rectangle {
         }
     }
 
+    Component {
+        id: poemsHeader_component
+        Rectangle {
+            anchors.fill: parent
+
+            property alias catId: poems.catId
+            property alias poemId: poems.poemId
+
+            PoemsPage {
+                id: poems
+                width: parent.width
+                anchors.top: header.bottom
+                anchors.bottom: parent.bottom
+            }
+
+            Header {
+                id: header
+                width: parent.width
+                color: title_bar.color
+                shadow: true
+
+                Button {
+                    x: View.layoutDirection==Qt.RightToLeft? 0 : parent.width - width
+                    y: View.statusBarHeight
+                    height: parent.height
+                    width: height
+                    radius: 0
+                    highlightColor: "#88666666"
+                    onClicked: {
+                        networkFeatures.pushAction("Search (from header)")
+                        pageManager.append( Qt.createComponent("SearchBar.qml") )
+                    }
+
+                    Text {
+                        anchors.centerIn: parent
+                        font.pixelSize: 15*globalFontDensity*Devices.fontDensity
+                        font.family: Awesome.family
+                        color: "white"
+                        text: Awesome.fa_search
+                    }
+                }
+            }
+        }
+    }
+
     function back() {
         if( list.count == 1 )
             return
@@ -165,55 +255,15 @@ Rectangle {
     }
 
     function backToPoet(pid) {
-        if( list.count == 1 )
-            return
-
-        var cat = category_component.createObject( base_frame, {"catId": pid} )
-        cat.start()
-
-        var item = list.takeLast()
-        item.end()
-
-        while(list.count > 1) {
-            item = list.takeLast()
-            item.destroy()
-        }
-
-        if( list.count != 0 )
-            list.last().outside = true
-
-        list.append(cat)
-        materialDesignButton.hide()
+        pageManager.append( Qt.createComponent("CategoryPage.qml") ).catId = pid
     }
 
     function backToCats(cid, pid) {
-        backToPoet(pid)
-
         var poems = Database.catPoems(cid)
-        var item
         if( poems.length != 0 )
-        {
-            if(!poemsListObject)
-                poemsListObject = poems_component.createObject( base_frame, {"catId": cid} )
-            else
-                poemsListObject.catId = cid
-
-            var poems_list = poemsListObject
-            poems_list.inited = true
-            item = poems_list
-        }
+            pageManager.append(poemsHeader_component).catId = cid
         else
-        {
-            var cat = category_component.createObject( base_frame, {"catId": cid} )
-            cat.start()
-            item = cat
-        }
-
-        if( list.count != 0 )
-            list.last().outside = true
-
-        list.append(item)
-        materialDesignButton.hide()
+            backToPoet(cid)
     }
 
     function home() {

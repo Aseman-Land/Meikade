@@ -78,21 +78,13 @@ Rectangle {
         visible: xml_model.errors.length != 0 || (listv.count == 0 && !list_indicator.running)
     }
 
-    ListView {
+    AsemanListView {
         id: listv
         width: parent.width
         anchors.topMargin: 2*Devices.density
         anchors.top: header.bottom
         anchors.bottom: parent.bottom
         model: xml_model
-        boundsBehavior: Flickable.StopAtBounds
-        rebound: Transition {
-            NumberAnimation {
-                properties: "x,y"
-                duration: 0
-            }
-        }
-
         header: Item {
             width: listv.width
             height: title_txt.height + 4*Devices.density
@@ -231,8 +223,9 @@ Rectangle {
     }
 
     ScrollBar {
-        scrollArea: listv; height: listv.height; anchors.left: listv.left;
+        scrollArea: listv; height: listv.height; anchors.right: listv.right;
         anchors.top: listv.top; color: "#111111"
+        LayoutMirroring.enabled: View.layoutDirection == Qt.RightToLeft
     }
 
     Component.onCompleted: xml_model.refresh()

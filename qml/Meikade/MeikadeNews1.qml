@@ -18,14 +18,6 @@ Column {
             contentWidth: txt.width
             contentHeight: txt.height
             clip: true
-            boundsBehavior: Flickable.StopAtBounds
-            rebound: Transition {
-                NumberAnimation {
-                    properties: "x,y"
-                    duration: 0
-                }
-            }
-
             Text {
                 id: txt
                 width: flick.width

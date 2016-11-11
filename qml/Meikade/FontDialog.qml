@@ -23,20 +23,12 @@ import AsemanTools.Awesome 1.0
 Item {
     anchors.fill: parent
 
-    ListView {
+    AsemanListView {
         id: prefrences
         anchors.fill: parent
         anchors.topMargin: 4*Devices.density
         anchors.bottomMargin: 4*Devices.density
         highlightMoveDuration: 250
-        maximumFlickVelocity: View.flickVelocity
-        boundsBehavior: Flickable.StopAtBounds
-        rebound: Transition {
-            NumberAnimation {
-                properties: "x,y"
-                duration: 0
-            }
-        }
         clip: true
 
         model: ListModel {}
@@ -104,5 +96,6 @@ Item {
     ScrollBar {
         scrollArea: prefrences; height: prefrences.height
         anchors.right: prefrences.right; anchors.top: prefrences.top; color: "#ffffff"
+        LayoutMirroring.enabled: View.layoutDirection == Qt.RightToLeft
     }
 }

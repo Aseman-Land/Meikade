@@ -29,19 +29,11 @@ Item {
 
     signal selected( string fileName )
 
-    ListView {
+    AsemanListView {
         id: list
         anchors.fill: parent
         model: ListModel{}
         orientation: Qt.Vertical
-        boundsBehavior: Flickable.StopAtBounds
-        rebound: Transition {
-            NumberAnimation {
-                properties: "x,y"
-                duration: 0
-            }
-        }
-
         header: Item {
             width: list.width
             height: menu_cover.height
@@ -149,7 +141,8 @@ Item {
             }
         }
 
-        Component.onCompleted: {
+        function refresh() {
+            model.clear()
             model.append({"name":qsTr("Meikade")           , "icon": Awesome.fa_home, "fileName":""                      , "type": "A"})
             model.append({"name":qsTr("Search")            , "icon": Awesome.fa_search, "fileName":"SearchBar.qml"            , "type": "A"})
             model.append({"name":qsTr("Bookmarks")         , "icon": Awesome.fa_bookmark_o, "fileName":"Bookmarks.qml"         , "type": "A"})
@@ -162,8 +155,22 @@ Item {
         }
     }
 
+    Connections{
+        target: Meikade
+        onCurrentLanguageChanged: initTranslations()
+    }
+
+    function initTranslations(){
+        list.refresh()
+    }
+
+    Component.onCompleted: {
+        initTranslations()
+    }
+
     ScrollBar {
         scrollArea: list; height: list.height; anchors.top: list.top
-        anchors.left: list.left; color: "#333333"
+        anchors.right: list.right; color: "#333333"
+        LayoutMirroring.enabled: View.layoutDirection == Qt.RightToLeft
     }
 }

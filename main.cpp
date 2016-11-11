@@ -16,6 +16,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+#include <QGuiApplication>
 #include <QIcon>
 
 #include "meikade.h"
@@ -26,6 +27,8 @@ int main(int argc, char *argv[])
 {
     AsemanApplication app(argc, argv);
     app.setWindowIcon(QIcon(app.applicationDirPath()+"/qml/Meikade/icons/meikade.png"));
+
+    QGuiApplication::setFont(QFont("IranSans"));
 
     Meikade meikade;
     meikade.start();

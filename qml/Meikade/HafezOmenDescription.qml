@@ -6,20 +6,13 @@ Rectangle {
     height: 62
     color: "#f0f0f0"
 
-    Flickable {
+    AsemanFlickable {
         id: flick
         anchors.fill: parent
         anchors.leftMargin: 20*Devices.density
         anchors.rightMargin: 20*Devices.density
         anchors.bottomMargin: View.navigationBarHeight
         flickableDirection: Flickable.VerticalFlick
-        boundsBehavior: Flickable.StopAtBounds
-        rebound: Transition {
-            NumberAnimation {
-                properties: "x,y"
-                duration: 0
-            }
-        }
         contentWidth: column.width
         contentHeight: column.height
         clip: true
@@ -59,6 +52,7 @@ Rectangle {
         scrollArea: flick; height: flick.height
         anchors.right: parent.right; anchors.top: flick.top; color: "#333333"
         anchors.rightMargin: 2*Devices.density
+        LayoutMirroring.enabled: View.layoutDirection == Qt.RightToLeft
     }
 }
 

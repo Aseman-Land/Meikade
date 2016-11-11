@@ -24,6 +24,7 @@ Rectangle {
     width: 100
     height: 62
     color: "#000000"
+    clip: true
 
     property alias catId: omen_frame.catId
     property alias cellulSize: omen_frame.cellulSize
@@ -164,25 +165,11 @@ Rectangle {
             id: view
             height: parent.height
             width: parent.width
-            x: hafez_omen.viewMode? 0 : -width - shadow.width
+            x: hafez_omen.viewMode? 0 : (View.layoutDirection==Qt.LeftToRight? width : -width)
             rememberBar: true
 
             Behavior on x {
                 NumberAnimation { easing.type: hafez_omen.easingType; duration: animations*hafez_omen.duration }
-            }
-
-            Rectangle{
-                id: shadow
-                y: View.layoutDirection==Qt.LeftToRight? parent.height-height : -height
-                x: View.layoutDirection==Qt.LeftToRight? parent.width : 0
-                width: parent.height
-                height: 3*Devices.density
-                rotation: View.layoutDirection==Qt.LeftToRight? -90 : 90
-                transformOrigin: Item.BottomLeft
-                gradient: Gradient {
-                    GradientStop { position: 0.0; color: "#00000000" }
-                    GradientStop { position: 1.0; color: "#33000000" }
-                }
             }
         }
     }

@@ -82,20 +82,12 @@ BackHandlerView {
                 NumberAnimation { easing.type: Easing.OutCubic; duration: animations*300 }
             }
 
-            ListView {
+            AsemanListView {
                 id: prefrences
                 anchors.fill: parent
                 anchors.topMargin: 4*Devices.density
                 anchors.bottomMargin: 4*Devices.density
                 highlightMoveDuration: 250
-                maximumFlickVelocity: View.flickVelocity
-                boundsBehavior: Flickable.StopAtBounds
-                rebound: Transition {
-                    NumberAnimation {
-                        properties: "x,y"
-                        duration: 0
-                    }
-                }
                 clip: true
 
                 model: ListModel {}
@@ -131,10 +123,7 @@ BackHandlerView {
                         anchors.fill: parent
                         onClicked: {
                             if( !item.checkable ) {
-                                var component = Qt.createComponent(item.dstFile)
-                                var citem = component.createObject(sub_frame)
-                                sub_frame.item = citem
-                                configure.viewMode = true
+                                showConfigure(item.dstFile)
                             } else {
                                 checkbox.checked = !checkbox.checked
                                 networkFeatures.pushAction( ("Configure: %1 changed to %2").arg(item.prprt).arg(checkbox.checked) )
@@ -173,6 +162,7 @@ BackHandlerView {
             AT.ScrollBar {
                 scrollArea: prefrences; height: prefrences.height
                 anchors.right: prefrences.right; anchors.top: prefrences.top; color: "#ffffff"
+                LayoutMirroring.enabled: View.layoutDirection == Qt.RightToLeft
             }
         }
 
@@ -218,6 +208,13 @@ BackHandlerView {
 
     function initTranslations(){
         prefrences.refresh()
+    }
+
+    function showConfigure(url) {
+        var component = Qt.createComponent((url))
+        var citem = component.createObject(sub_frame)
+        sub_frame.item = citem
+        configure.viewMode = true
     }
 
     Component.onCompleted: {

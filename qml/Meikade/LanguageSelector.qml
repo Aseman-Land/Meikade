@@ -17,26 +17,21 @@
 */
 
 import QtQuick 2.0
+import QtQuick.Controls 2.0
 import AsemanTools 1.0
 import AsemanTools.Awesome 1.0
 
 Item {
     anchors.fill: parent
 
-    ListView {
+    ButtonGroup { id: radioGroup }
+
+    AsemanListView {
         id: preference_list
         anchors.fill: parent
         anchors.topMargin: 4*Devices.density
         anchors.bottomMargin: 4*Devices.density
         highlightMoveDuration: 250
-        boundsBehavior: Flickable.StopAtBounds
-        rebound: Transition {
-            NumberAnimation {
-                properties: "x,y"
-                duration: 0
-            }
-        }
-
         model: ListModel {}
         delegate: Rectangle {
             id: item
@@ -47,50 +42,28 @@ Item {
             property string text: name
             property alias press: marea.pressed
 
-            Text {
-                id: tik_img
-                anchors.left: parent.left
-                anchors.leftMargin: 10*Devices.density
+            RadioButton {
+                id: radioBtn
                 anchors.verticalCenter: parent.verticalCenter
-                font.pixelSize: 15*globalFontDensity*Devices.fontDensity
-                font.family: Awesome.family
-                color: "#ffffff"
-                text: Awesome.fa_check
-                visible: Meikade.currentLanguage == item.text
-            }
-
-            Text{
-                id: txt
-                anchors.left: tik_img.right
+                anchors.left: parent.left
                 anchors.right: parent.right
-                anchors.margins: 30*Devices.density
-                anchors.leftMargin: 10*Devices.density
-                y: parent.height/2 - height/2
+                anchors.margins: 10*Devices.density
+                checked: Meikade.currentLanguage == item.text
                 text: parent.text
-                font.pixelSize: 11*globalFontDensity*Devices.fontDensity
-                font.family: AsemanApp.globalFont.family
-                color: "#ffffff"
+                ButtonGroup.group: radioGroup
             }
 
             MouseArea{
                 id: marea
                 anchors.fill: parent
                 onClicked: {
+                    radioBtn.checked = true
                     Meikade.setCurrentLanguage(item.text)
-                    showTooltip( qsTr("Language changed") )
                 }
             }
         }
 
         focus: true
-        highlight: Rectangle { color: "#3B97EC"; radius: 3; smooth: true }
-        currentIndex: -1
-
-        onCurrentItemChanged: {
-            if( !currentItem )
-                return
-        }
-
         Component.onCompleted: {
             model.clear()
 
@@ -105,5 +78,6 @@ Item {
     ScrollBar {
         scrollArea: preference_list; height: preference_list.height
         anchors.right: preference_list.right; anchors.top: preference_list.top;color: "#ffffff"
+        LayoutMirroring.enabled: View.layoutDirection == Qt.RightToLeft
     }
 }
