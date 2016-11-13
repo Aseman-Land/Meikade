@@ -31,6 +31,8 @@ Item {
     property alias header: category_list.header
     property alias footer: category_list.footer
 
+    property alias list: category_list
+
     onCatIdChanged: category_list.refresh()
 
     signal categorySelected( int cid, variant rect )
@@ -48,16 +50,6 @@ Item {
         clip: true
         spacing: 8*Devices.density
         topMargin: category.topMargin
-        onVerticalVelocityChanged: {
-            if(catId != 0)
-                return
-            if((verticalVelocity>4 && !atYBeginning) || atYEnd)
-                materialDesignButton.hide()
-            else
-            if((verticalVelocity<-4 && !atYEnd) || atYBeginning)
-                materialDesignButton.show()
-        }
-
         model: ListModel {}
         delegate: Rectangle {
             id: item
@@ -76,21 +68,20 @@ Item {
 
             Text {
                 id: go_img
-                anchors.right: View.layoutDirection==Qt.LeftToRight? parent.right : undefined
-                anchors.left: View.layoutDirection==Qt.LeftToRight? undefined : parent.left
+                anchors.right: View.defaultLayout? parent.right : undefined
+                anchors.left: View.defaultLayout? undefined : parent.left
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.margins: 12*Devices.density
                 font.pixelSize: 30*globalFontDensity*Devices.fontDensity
                 font.family: Awesome.family
                 color: "#44000000"
-                text: View.layoutDirection==Qt.LeftToRight? Awesome.fa_angle_right : Awesome.fa_angle_left
+                text: View.defaultLayout? Awesome.fa_angle_right : Awesome.fa_angle_left
             }
 
             MouseArea{
                 id: marea
                 anchors.fill: parent
                 onClicked: {
-                    materialDesignButton.hide()
                     var childs = Database.childsOf(identifier)
 
                     var map = item.mapToItem(category, 0, 0)

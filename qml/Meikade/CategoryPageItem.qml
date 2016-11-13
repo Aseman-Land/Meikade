@@ -7,7 +7,7 @@ Rectangle {
     width: parent.width
     x: {
         if(outside) {
-            if(View.layoutDirection==Qt.LeftToRight)
+            if(View.defaultLayout)
                 return -parent.width
             else
                 return parent.width
@@ -22,6 +22,7 @@ Rectangle {
 
     property alias catId: category.catId
     property alias root: cat_title.root
+    property alias list: category.list
 
     property bool outside: false
     property bool startInit: false
@@ -93,8 +94,8 @@ Rectangle {
 
         Button{
             id: rand_btn
-            anchors.right: View.layoutDirection==Qt.LeftToRight? parent.right : undefined
-            anchors.left: View.layoutDirection==Qt.LeftToRight? undefined : parent.left
+            anchors.right: View.defaultLayout? parent.right : undefined
+            anchors.left: View.defaultLayout? undefined : parent.left
             anchors.verticalCenter: parent.verticalCenter
             height: parent.height
             radius: 0

@@ -18,6 +18,7 @@
 
 import QtQuick 2.0
 import QtQuick.Controls 2.0
+import QtQuick.Layouts 1.3
 import AsemanTools 1.0
 import AsemanTools.Awesome 1.0
 
@@ -33,6 +34,9 @@ Item {
     property bool toolsOpened: false
     property alias font: txt1.font
     property color color: "#ffffff"
+
+    signal nextRequest()
+    signal previousRequest()
 
     onPoemIdChanged: {
         privates.signalBlocker = true
@@ -53,7 +57,7 @@ Item {
         book_txt.text = Database.catName(book)
 
         poetId = poet
-        catId = book
+        catId = book? book : -1
 
         privates.signalBlocker = false
     }
@@ -81,38 +85,73 @@ Item {
         property bool signalBlocker: false
     }
 
-    Column {
-        id: title_column
-        anchors.verticalCenter: parent.verticalCenter
+    NullMouseArea { anchors.fill: parent }
+
+    RowLayout {
         anchors.left: parent.left
         anchors.right: parent.right
-        spacing: 10*Devices.density
+        height: parent.height - header.height
+        layoutDirection: View.layoutDirection
 
-        Text {
-            id: txt1
-            anchors.horizontalCenter: parent.horizontalCenter
-            font.pixelSize: 13*globalFontDensity*Devices.fontDensity
-            font.family: AsemanApp.globalFont.family
-            wrapMode: Text.WordWrap
-            color: poem_header.color
-            horizontalAlignment: Text.AlignHCenter
+        Button {
+            height: parent.height
+            textFont.family: Awesome.family
+            textFont.pixelSize: 14*globalFontDensity*Devices.fontDensity
+            textColor: phrase_txt.color
+            text: View.defaultLayout? Awesome.fa_angle_left : Awesome.fa_angle_right
+            normalColor: "#00000000"
+            highlightColor: "#88881010"
+            width: 30*Devices.density
+            onClicked: previousRequest()
         }
 
-        Text {
-            id: txt2
-            width: parent.width
-            anchors.horizontalCenter: parent.horizontalCenter
-            font.pixelSize: 13*globalFontDensity*Devices.fontDensity
-            font.family: AsemanApp.globalFont.family
-            wrapMode: Text.WordWrap
-            color: poem_header.color
-            horizontalAlignment: Text.AlignHCenter
-        }
-
-        Item {
+        Column {
+            id: title_column
+            anchors.verticalCenter: parent.verticalCenter
             anchors.left: parent.left
             anchors.right: parent.right
-            height: title_column.spacing
+            spacing: 10*Devices.density
+
+            Layout.fillWidth: true
+
+            Text {
+                id: txt1
+                anchors.horizontalCenter: parent.horizontalCenter
+                font.pixelSize: 13*globalFontDensity*Devices.fontDensity
+                font.family: AsemanApp.globalFont.family
+                wrapMode: Text.WordWrap
+                color: poem_header.color
+                horizontalAlignment: Text.AlignHCenter
+            }
+
+            Text {
+                id: txt2
+                width: parent.width
+                anchors.horizontalCenter: parent.horizontalCenter
+                font.pixelSize: 13*globalFontDensity*Devices.fontDensity
+                font.family: AsemanApp.globalFont.family
+                wrapMode: Text.WordWrap
+                color: poem_header.color
+                horizontalAlignment: Text.AlignHCenter
+            }
+
+            Item {
+                anchors.left: parent.left
+                anchors.right: parent.right
+                height: title_column.spacing
+            }
+        }
+
+        Button {
+            height: parent.height
+            textFont.family: Awesome.family
+            textFont.pixelSize: 14*globalFontDensity*Devices.fontDensity
+            textColor: phrase_txt.color
+            text: View.defaultLayout? Awesome.fa_angle_right : Awesome.fa_angle_left
+            normalColor: "#00000000"
+            highlightColor: "#88881010"
+            width: 30*Devices.density
+            onClicked: nextRequest()
         }
     }
 
@@ -125,8 +164,8 @@ Item {
         color: "#EC4334"
 
         Row {
-            anchors.right: View.layoutDirection==Qt.LeftToRight? undefined : parent.right
-            anchors.left: View.layoutDirection==Qt.LeftToRight? parent.left : undefined
+            anchors.right: View.defaultLayout? undefined : parent.right
+            anchors.left: View.defaultLayout? parent.left : undefined
             anchors.verticalCenter: parent.verticalCenter
             layoutDirection: View.layoutDirection
             anchors.margins: spacing
@@ -137,7 +176,7 @@ Item {
                 anchors.verticalCenter: parent.verticalCenter
                 font.pixelSize: 10*globalFontDensity*Devices.fontDensity
                 font.family: Awesome.family
-                text: View.layoutDirection==Qt.LeftToRight? Awesome.fa_chevron_right : Awesome.fa_chevron_left
+                text: View.defaultLayout? Awesome.fa_chevron_right : Awesome.fa_chevron_left
                 color: poem_header.color
             }
 
@@ -189,8 +228,8 @@ Item {
         Row {
             id: menu_row
             height: 32*Devices.density
-            anchors.right: View.layoutDirection==Qt.LeftToRight? parent.right : undefined
-            anchors.left: View.layoutDirection==Qt.LeftToRight? undefined : parent.left
+            anchors.right: View.defaultLayout? parent.right : undefined
+            anchors.left: View.defaultLayout? undefined : parent.left
             anchors.verticalCenter: parent.verticalCenter
             spacing: 1*Devices.density
 
@@ -213,13 +252,24 @@ Item {
 
                 Menu {
                     id: optionsMenu
-                    x: View.layoutDirection==Qt.LeftToRight? parent.width - width : 0
-                    transformOrigin: View.layoutDirection==Qt.LeftToRight? Menu.TopRight : Menu.TopLeft
+                    x: View.defaultLayout? parent.width - width : 0
+                    transformOrigin: View.defaultLayout? Menu.TopRight : Menu.TopLeft
                     modal: true
+
+                    onVisibleChanged: {
+                        if(visible)
+                            BackHandler.pushHandler(optionsMenu, function(){visible = false})
+                        else
+                            BackHandler.removeHandler(optionsMenu)
+                    }
 
                     MenuItem {
                         text: poem_header.favorited? qsTr("Unfavorite") : qsTr("Favorite")
                         onTriggered: poem_header.favorited = !poem_header.favorited
+                    }
+                    MenuItem {
+                        text: selectMode? qsTr("Cancel Select") : qsTr("Select")
+                        onTriggered: selectMode = !selectMode
                     }
                     MenuItem {
                         text: qsTr("Share")
@@ -242,8 +292,13 @@ Item {
                             networkFeatures.pushAction( ("Copy Poem: %1").arg(poem_header.poemId) )
                             var message = getPoemText()
                             Devices.clipboard = message
+                            showTooltip(qsTr("Copied..."))
                         }
                     }
+//                    MenuItem {
+//                        text: qsTr("Compare")
+//                        onTriggered: showSidePoem(poem_header.poemId)
+//                    }
                 }
             }
         }
@@ -261,6 +316,13 @@ Item {
         var vorders = Database.poemVerses(poem_header.poemId)
         for( var i=0; i<vorders.length; i++ ) {
             var vid = vorders[i]
+            if(selectMode)
+            {
+                if(selectionHash.contains(vid))
+                    message += selectionHash.value(vid) + "\n"
+                continue
+            }
+
             if( i!=0 && Database.versePosition(poem_header.poemId,vid)===0 && Database.versePosition(poem_header.poemId,vid+1)===1 )
                 message = message + "\n"
 
@@ -269,6 +331,9 @@ Item {
         }
 
         message = message + "\n\n" + poet
+        if(selectMode)
+            selectMode = false
+
         return message
     }
 }

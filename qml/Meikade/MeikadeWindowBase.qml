@@ -23,8 +23,6 @@ Rectangle {
     id: smain
     focus: true
 
-    property bool portrait: width<height
-
     property alias pasteButton: paste_btn
     property alias rollerDialog: roller_dialog
     property alias bottomPanel: bottom_panel

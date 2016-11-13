@@ -138,7 +138,7 @@ Rectangle {
                     Layout.fillWidth: true
 
                     text: model.poetName
-                    horizontalAlignment: View.layoutDirection==Qt.LeftToRight? Text.AlignLeft : Text.AlignRight
+                    horizontalAlignment: View.defaultLayout? Text.AlignLeft : Text.AlignRight
                     font.pixelSize: 10*globalFontDensity*Devices.fontDensity
                     font.family: AsemanApp.globalFont.family
                 }
@@ -197,7 +197,7 @@ Rectangle {
                 anchors.bottom: parent.bottom
                 visible: indicator.running
                 percent: 100*model.downloadedBytes/model.fileSize
-                transform: Scale { origin.x: width/2; origin.y: height/2; xScale: View.layoutDirection==Qt.LeftToRight?1:-1}
+                transform: Scale { origin.x: width/2; origin.y: height/2; xScale: View.defaultLayout?1:-1}
                 color: "#00000000"
             }
 

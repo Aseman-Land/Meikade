@@ -52,16 +52,16 @@ BackHandlerView {
             y: Devices.standardTitleBarHeight/2 - height/2 + View.statusBarHeight
             anchors.left: parent.left
             anchors.right: parent.right
-            anchors.rightMargin: View.layoutDirection==Qt.LeftToRight? 0 : headerRightMargin
-            anchors.leftMargin: View.layoutDirection==Qt.LeftToRight? headerRightMargin : 0
+            anchors.rightMargin: View.defaultLayout? 0 : headerRightMargin
+            anchors.leftMargin: View.defaultLayout? headerRightMargin : 0
             height: 42*Devices.density
 
             Text {
                 id: search_img
                 anchors.top: parent.top
                 anchors.bottom: parent.bottom
-                anchors.right: View.layoutDirection==Qt.LeftToRight? undefined : parent.right
-                anchors.left: View.layoutDirection==Qt.LeftToRight? parent.left : undefined
+                anchors.right: View.defaultLayout? undefined : parent.right
+                anchors.left: View.defaultLayout? parent.left : undefined
                 anchors.topMargin: 11*Devices.density
                 anchors.bottomMargin: 11*Devices.density
                 font.pixelSize: 15*globalFontDensity*Devices.fontDensity
@@ -76,8 +76,8 @@ BackHandlerView {
                 width: 1*Devices.density
                 height: parent.height/2
                 anchors.verticalCenter: parent.verticalCenter
-                anchors.right: View.layoutDirection==Qt.LeftToRight? undefined : search_img.left
-                anchors.left: View.layoutDirection==Qt.LeftToRight? search_img.right : undefined
+                anchors.right: View.defaultLayout? undefined : search_img.left
+                anchors.left: View.defaultLayout? search_img.right : undefined
                 anchors.margins: 10*Devices.density
                 color: "#888888"
             }
@@ -96,14 +96,14 @@ BackHandlerView {
                 id: txt
                 anchors.top: parent.top
                 anchors.bottom: parent.bottom
-                anchors.right: View.layoutDirection==Qt.LeftToRight? parent.right : search_img.left
-                anchors.left: View.layoutDirection==Qt.LeftToRight? search_img.right : parent.left
+                anchors.right: View.defaultLayout? parent.right : search_img.left
+                anchors.left: View.defaultLayout? search_img.right : parent.left
                 anchors.margins: 4*Devices.density
                 anchors.topMargin: anchors.margins+1*Devices.density
-                anchors.rightMargin: View.layoutDirection==Qt.LeftToRight? anchors.margins : 20*Devices.density
-                anchors.leftMargin: View.layoutDirection==Qt.LeftToRight? 20*Devices.density : anchors.margins
+                anchors.rightMargin: View.defaultLayout? anchors.margins : 20*Devices.density
+                anchors.leftMargin: View.defaultLayout? 20*Devices.density : anchors.margins
                 verticalAlignment: Text.AlignVCenter
-                horizontalAlignment: View.layoutDirection==Qt.LeftToRight? Text.AlignLeft : Text.AlignRight
+                horizontalAlignment: View.defaultLayout? Text.AlignLeft : Text.AlignRight
                 inputMethodHints: {
                     var deviceName = Devices.deviceName
                     if(deviceName.toLowerCase().indexOf("htc") >= 0)
@@ -118,7 +118,7 @@ BackHandlerView {
 
                 Button {
                     anchors.top: parent.top
-                    x: View.layoutDirection==Qt.LeftToRight? parent.width - width - 4*Devices.density : 4*Devices.density
+                    x: View.defaultLayout? parent.width - width - 4*Devices.density : 4*Devices.density
                     height: parent.height
                     width: height
                     normalColor: "#00000000"
@@ -160,9 +160,9 @@ BackHandlerView {
         id: search_list
         anchors.top: search_frame.bottom
         anchors.bottom: parent.bottom
-        anchors.right: View.layoutDirection==Qt.LeftToRight? undefined : parent.right
-        anchors.left: View.layoutDirection==Qt.LeftToRight? parent.left : undefined
-        width: portrait? parent.width : parent.width*1/3
+        anchors.right: View.defaultLayout? undefined : parent.right
+        anchors.left: View.defaultLayout? parent.left : undefined
+        width: localPortrait? parent.width : parent.width*1/3
         keyword: txt.text
         clip: true
         poetId: {
@@ -183,13 +183,13 @@ BackHandlerView {
         }
 
         Rectangle{
-            y: View.layoutDirection==Qt.LeftToRight? parent.height-height : -height
-            x: View.layoutDirection==Qt.LeftToRight? parent.width : 0
+            y: View.defaultLayout? parent.height-height : -height
+            x: View.defaultLayout? parent.width : 0
             width: parent.height
             height: 3*Devices.density
-            rotation: View.layoutDirection==Qt.LeftToRight? -90 : 90
+            rotation: View.defaultLayout? -90 : 90
             transformOrigin: Item.BottomLeft
-            visible: !portrait
+            visible: !localPortrait
             gradient: Gradient {
                 GradientStop { position: 0.0; color: "#00000000" }
                 GradientStop { position: 1.0; color: "#33000000" }
@@ -201,7 +201,7 @@ BackHandlerView {
         id: poem
         anchors.top: search_frame.bottom
         anchors.bottom: parent.bottom
-        width: portrait? parent.width : parent.width*2/3
+        width: localPortrait? parent.width : parent.width*2/3
         clip: true
         x: {
             switch(View.layoutDirection) {

@@ -30,13 +30,16 @@ Rectangle {
 
     property variant randomPoetObject
     property variant poemsListObject
+    property variant sidePoemsListObject
+
+    readonly property bool localPortrait: base_frame.width<base_frame.height
+    readonly property real sideMargin: sidePoemsListObject? parent.width/2 : 0
 
     ListObject {
         id: list
         onCountChanged: {
             if( count <= 1 ) {
                 BackHandler.removeHandler(page)
-                materialDesignButton.show()
             } else
             if( count == 2 ) {
                 BackHandler.pushHandler(page, page.back)
@@ -58,11 +61,28 @@ Rectangle {
     }
 
     Item {
+        anchors.top: base_frame.top
+        anchors.bottom: base_frame.bottom
+        width: sideMargin
+        clip: true
+
+        Item {
+            id: sideFrame
+            width: page.width/2
+            height: parent.height
+        }
+    }
+
+    Rectangle {
         id: base_frame
+        color: parent.color
         anchors.top: title_bar.bottom
         anchors.bottom: parent.bottom
         anchors.left: parent.left
         anchors.right: parent.right
+        anchors.leftMargin: View.defaultLayout? 0 : sideMargin
+        anchors.rightMargin: View.defaultLayout? sideMargin : 0
+        clip: true
 
         CategoryPageItem {
             id: catItem
@@ -71,6 +91,13 @@ Rectangle {
             onCategorySelected: base_frame.appendCategory(cid, rect, catId == 0)
             onPoemSelected: base_frame.appendPoem(pid, rect)
             Component.onCompleted: list.append(catItem)
+
+            MaterialDesignButton {
+                id: md_button
+                anchors.fill: parent
+                flickable: catItem.list
+                color: "#881010"
+            }
         }
 
         function appendCategory(cid, rect, root) {
@@ -107,7 +134,7 @@ Rectangle {
         shadow: true
 
         Button {
-            x: View.layoutDirection==Qt.RightToLeft? 0 : parent.width - width
+            x: View.reverseLayout? 0 : parent.width - width
             y: View.statusBarHeight
             height: Devices.standardTitleBarHeight
             width: height
@@ -143,7 +170,7 @@ Rectangle {
             id: homen
             width: parent.width
             height: parent.height
-            x: inited? 0 : (View.layoutDirection==Qt.LeftToRight? width : -width )
+            x: inited? 0 : (View.defaultLayout? width : -width )
 
             property bool inited: false
             property bool outside: false
@@ -172,7 +199,7 @@ Rectangle {
             id: ppage
             width: parent.width
             height: parent.height
-            x: inited? 0 : (View.layoutDirection==Qt.LeftToRight? width : -width )
+            x: inited? 0 : (View.defaultLayout? width : -width )
 
             property bool inited: false
             property bool outside: false
@@ -216,7 +243,7 @@ Rectangle {
                 shadow: true
 
                 Button {
-                    x: View.layoutDirection==Qt.RightToLeft? 0 : parent.width - width
+                    x: View.reverseLayout? 0 : parent.width - width
                     y: View.statusBarHeight
                     height: Devices.standardTitleBarHeight
                     width: height
@@ -256,7 +283,6 @@ Rectangle {
 
     function backToPoet(pid) {
         pageManager.append( Qt.createComponent("CategoryPage.qml") ).catId = pid
-        materialDesignButton.hide()
     }
 
     function backToCats(cid, pid) {
@@ -265,7 +291,6 @@ Rectangle {
             pageManager.append(poemsHeader_component).catId = cid
         else
             pageManager.append( Qt.createComponent("CategoryPage.qml") ).catId = cid
-        materialDesignButton.hide()
     }
 
     function home() {
@@ -292,7 +317,6 @@ Rectangle {
             list.last().outside = true
 
         list.append(item)
-        materialDesignButton.hide()
     }
 
     function showRandomCatPoem(id) {
@@ -340,7 +364,38 @@ Rectangle {
             list.last().outside = true
 
         list.append(item)
-        materialDesignButton.hide()
         return true
+    }
+
+    function showSidePoem(poem) {
+        if(!sidePoemsListObject)
+            sidePoemsListObject = poems_component.createObject( sideFrame, {"poemId": poem} )
+        else
+            sidePoemsListObject.poemId = poem
+
+        var item = sidePoemsListObject
+        var animationsRecovery = animations
+        animations = false
+        item.viewMode = true
+        BackHandler.removeHandler(item)
+        animations = animationsRecovery
+        item.inited = true
+    }
+
+    Connections{
+        target: Meikade
+        onCurrentLanguageChanged: initTranslations()
+    }
+
+    function initTranslations(){
+        md_button.list = [
+                    {"name": qsTr("Other Poets"), "iconText": Awesome.fa_shopping_cart, "method": function(){ pageManager.append( Qt.createComponent("XmlDownloaderPage.qml") ) }},
+                    {"name": qsTr("Random Poem"), "iconText": Awesome.fa_random, "method": showRandomCatPoem},
+                    {"name": qsTr("Hafez Omen") , "iconText": Awesome.fa_book, "method": showHafezOmen }
+                ]
+    }
+
+    Component.onCompleted: {
+        initTranslations()
     }
 }

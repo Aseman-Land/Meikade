@@ -22,9 +22,9 @@ import AsemanTools 1.0
 AsemanApplication {
     id: app
     applicationName: "Meikade"
-    applicationAbout: "Persia Poetry App"
+    applicationAbout: "Persian Poetry App"
     applicationDisplayName: "Meikade"
-    applicationVersion: "v3.3.0"
+    applicationVersion: "v3.5.0"
     applicationId: "7e861c79-2b50-427b-93b6-4591b54eb821"
     organizationDomain: "NileGroup"
     organizationName: "Aseman Team"

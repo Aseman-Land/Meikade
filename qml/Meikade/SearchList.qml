@@ -114,7 +114,7 @@ Rectangle {
                     Text {
                         id: poet
                         anchors.bottom: parent.bottom
-                        x: View.layoutDirection==Qt.LeftToRight? parent.width - width - 8*Devices.density : 8*Devices.density
+                        x: View.defaultLayout? parent.width - width - 8*Devices.density : 8*Devices.density
                         font.pixelSize: 9*globalFontDensity*Devices.fontDensity
                         font.family: AsemanApp.globalFont.family
                         color: "#ffffff"
@@ -198,6 +198,12 @@ Rectangle {
                 id: poets_model
             }
             onCurrentIndexChanged: txt.refresh()
+            popup.onVisibleChanged: {
+                if(popup.visible)
+                    BackHandler.pushHandler(poets_combo, function(){popup.visible = false})
+                else
+                    BackHandler.removeHandler(poets_combo)
+            }
 
             Material.background: "transparent"
             Material.elevation: 0
@@ -230,8 +236,8 @@ Rectangle {
                 id: sscope_lbl
                 anchors.top: parent.top
                 anchors.bottom: parent.bottom
-                anchors.right: View.layoutDirection==Qt.LeftToRight? undefined : parent.right
-                anchors.left: View.layoutDirection==Qt.LeftToRight? parent.left : undefined
+                anchors.right: View.defaultLayout? undefined : parent.right
+                anchors.left: View.defaultLayout? parent.left : undefined
                 anchors.leftMargin: 8*Devices.density
                 anchors.rightMargin: 8*Devices.density
                 font.family: AsemanApp.globalFont.family
@@ -246,8 +252,8 @@ Rectangle {
             }
 
             Text {
-                anchors.right: View.layoutDirection==Qt.LeftToRight? parent.right : sscope_lbl.left
-                anchors.left: View.layoutDirection==Qt.LeftToRight? sscope_lbl.right : parent.left
+                anchors.right: View.defaultLayout? parent.right : sscope_lbl.left
+                anchors.left: View.defaultLayout? sscope_lbl.right : parent.left
                 anchors.top: parent.top
                 anchors.bottom: parent.bottom
                 anchors.leftMargin: 8*Devices.density
@@ -255,7 +261,7 @@ Rectangle {
                 font.family: AsemanApp.globalFont.family
                 font.pixelSize: 9*globalFontDensity*Devices.fontDensity
                 verticalAlignment: Text.AlignVCenter
-                horizontalAlignment: View.layoutDirection==Qt.LeftToRight? Text.AlignLeft : Text.AlignRight
+                horizontalAlignment: View.defaultLayout? Text.AlignLeft : Text.AlignRight
                 wrapMode: Text.WrapAnywhere
                 maximumLineCount: 1
                 elide: Text.ElideRight

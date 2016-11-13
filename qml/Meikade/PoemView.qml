@@ -18,6 +18,8 @@
 
 import QtQuick 2.3
 import QtGraphicalEffects 1.0
+import QtQuick.Controls 2.0
+import QtQuick.Layouts 1.3
 import AsemanTools 1.0
 
 Rectangle {
@@ -25,6 +27,8 @@ Rectangle {
     color: Meikade.nightTheme? "#222222" : "#ffffff"
 
     property int poemId: -1
+    property variant poemsArray: new Array
+
     property bool onEdit: view_list.selectedIndex != -1
     property bool allowEditMode: false
 
@@ -40,6 +44,7 @@ Rectangle {
     property bool headerVisible: true
 
     property bool rememberBar: false
+    property bool selectMode: false
 
     property variant stickerDialog
 
@@ -52,6 +57,8 @@ Rectangle {
         }
 
         var cat = Database.poemCat(poemId)
+        poemsArray = Database.catPoems(cat)
+
         var fileName = cat
         var filePath = "banners/" + fileName + ".jpg"
         while( !Meikade.fileExists(filePath) ) {
@@ -62,11 +69,23 @@ Rectangle {
         img.source = filePath
     }
 
+    onSelectModeChanged: {
+        selectionHash.clear()
+        if(selectMode)
+            BackHandler.pushHandler(selectionHash, function(){selectMode = false})
+        else
+            BackHandler.removeHandler(selectionHash)
+    }
+
     signal itemSelected( int pid, int vid )
 
     Connections {
         target: Meikade
         onPoemsFontChanged: view.fontScale = Meikade.fontPointScale(Meikade.poemsFont)
+    }
+
+    HashObject {
+        id: selectionHash
     }
 
     Timer {
@@ -238,8 +257,15 @@ Rectangle {
             property bool editMode: allowEditMode? view_list.selectedIndex == index : 0
             property bool anim: false
 
+            property variant checkItem
+
             Behavior on height {
                 NumberAnimation{ easing.type: Easing.OutCubic; duration: item.anim? 400 : 0 }
+            }
+
+            Connections {
+                target: view
+                onSelectModeChanged: item.createSelectCheckBox()
             }
 
             Timer {
@@ -255,11 +281,19 @@ Rectangle {
                 color: Meikade.nightTheme? "#222222" : "#ffffff"
             }
 
+            Rectangle {
+                anchors.top: pitem.top
+                anchors.bottom: pitem.bottom
+                anchors.left: parent.left
+                anchors.right: pitem.left
+                color: pitem.color
+            }
+
             PoemItem {
                 id: pitem
                 anchors.top: parent.top
                 anchors.right: parent.right
-                anchors.left: parent.left
+                width: checkItem? parent.width - checkItem.width : parent.width
                 color: press? view.highlightColor : "#00000000"
                 textColor: item.press? view.highlightTextColor : view.textColor
                 vid: verseId
@@ -268,8 +302,12 @@ Rectangle {
                 font.pixelSize: Devices.isMobile? 9*fontScale*globalFontDensity*Devices.fontDensity : 10*fontScale*globalFontDensity*Devices.fontDensity
                 font.family: globalPoemFontFamily
 
+                Behavior on width {
+                    NumberAnimation {easing.type: Easing.OutCubic; duration: 300}
+                }
+
                 Rectangle {
-                    x: View.layoutDirection==Qt.LeftToRight? 0 : parent.width-width
+                    x: View.defaultLayout? 0 : parent.width-width
                     anchors.top: parent.top
                     anchors.bottom: parent.bottom
                     width: 25*Devices.density
@@ -289,7 +327,17 @@ Rectangle {
             MouseArea{
                 id: marea
                 anchors.fill: parent
+                z: 10
                 onClicked: {
+                    if(checkItem) {
+                        checkItem.checked = !checkItem.checked
+                        if(checkItem.checked)
+                            selectionHash.insert(model.verseId, pitem.text)
+                        else
+                            selectionHash.remove(model.verseId)
+                        return
+                    }
+
                     if( view.editable ) {
                         var itemObj = showBottomPanel(share_component, true)
                         itemObj.poemId = pitem.pid
@@ -376,10 +424,30 @@ Rectangle {
                     view_list.interactive = !itemObj.press
                 }
             }
+
+            function createSelectCheckBox() {
+                if(selectMode && !checkItem)
+                    checkItem = selectCBox_component.createObject(item)
+                else
+                if(!selectMode && checkItem)
+                    checkItem.destroy()
+            }
+
+            Component {
+                id: selectCBox_component
+                CheckBox {
+                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.left: parent.left
+                    anchors.margins: 10*Devices.density
+                    checked: selectionHash.contains(model.verseId)
+                }
+            }
+
+            Component.onCompleted: createSelectCheckBox()
         }
 
         focus: true
-        header: PoemHeader{
+        header: PoemHeader {
             id: header
             width: view_list.width
             poemId: view.poemId
@@ -389,10 +457,21 @@ Rectangle {
                 header_back.headerHeight = height+view_list.y
                 view_list.positionViewAtBeginning()
             }
+            onNextRequest: {
+                var idx = poemsArray.indexOf(poemId)+1
+                if(idx < poemsArray.length)
+                    view.poemId = poemsArray[idx]
+            }
+            onPreviousRequest: {
+                var idx = poemsArray.indexOf(poemId)-1
+                if(idx >= 0)
+                    view.poemId = poemsArray[idx]
+            }
         }
 
         function refresh(){
             model.clear()
+            selectMode = false
             selectedIndex = -1
 
             refresh_timer.idx = 0
@@ -644,7 +723,7 @@ Rectangle {
             id: sdlg
             width: view.width
             height: view.height
-            x: View.layoutDirection==Qt.LeftToRight? parent.width : -width
+            x: View.defaultLayout? parent.width : -width
 
             Behavior on x {
                 NumberAnimation{easing.type: Easing.OutCubic; duration: 400}
@@ -657,7 +736,7 @@ Rectangle {
             }
 
             function close() {
-                x = View.layoutDirection==Qt.LeftToRight? parent.width : -width
+                x = View.defaultLayout? parent.width : -width
             }
 
             Component.onCompleted: {

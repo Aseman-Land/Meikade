@@ -46,9 +46,9 @@ BackHandlerView {
         anchors.top: parent.top
         anchors.bottom: parent.bottom
         anchors.topMargin: headerHeight+View.statusBarHeight
-        anchors.right: View.layoutDirection==Qt.LeftToRight? undefined : parent.right
-        anchors.left: View.layoutDirection==Qt.LeftToRight? parent.left : undefined
-        width: portrait? parent.width : parent.width*1/3
+        anchors.right: View.defaultLayout? undefined : parent.right
+        anchors.left: View.defaultLayout? parent.left : undefined
+        width: localPortrait? parent.width : parent.width*1/3
         color: "#ffffff"
 
         PoemView {
@@ -68,13 +68,13 @@ BackHandlerView {
         }
 
         Rectangle {
-            y: View.layoutDirection==Qt.LeftToRight? parent.height-height : -height
-            x: View.layoutDirection==Qt.LeftToRight? parent.width : 0
+            y: View.defaultLayout? parent.height-height : -height
+            x: View.defaultLayout? parent.width : 0
             width: parent.height
             height: 3*Devices.density
-            rotation: View.layoutDirection==Qt.LeftToRight? -90 : 90
+            rotation: View.defaultLayout? -90 : 90
             transformOrigin: Item.BottomLeft
-            visible: !portrait
+            visible: !localPortrait
             gradient: Gradient {
                 GradientStop { position: 0.0; color: "#00000000" }
                 GradientStop { position: 1.0; color: "#33000000" }
@@ -87,7 +87,7 @@ BackHandlerView {
         anchors.top: parent.top
         anchors.bottom: parent.bottom
         anchors.topMargin: headerHeight+View.statusBarHeight
-        width: portrait? parent.width : parent.width*2/3
+        width: localPortrait? parent.width : parent.width*2/3
         clip: true
         rememberBar: true
         x: {

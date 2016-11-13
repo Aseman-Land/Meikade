@@ -77,20 +77,20 @@ Rectangle {
 
         Text {
             anchors.verticalCenter: parent.verticalCenter
-            anchors.right: View.layoutDirection==Qt.LeftToRight? undefined : parent.right
-            anchors.left: View.layoutDirection==Qt.LeftToRight? parent.left : undefined
+            anchors.right: View.defaultLayout? undefined : parent.right
+            anchors.left: View.defaultLayout? parent.left : undefined
             anchors.margins: 8*Devices.density
             color: "#ffffff"
             font.pixelSize: 10*globalFontDensity*Devices.fontDensity
-            horizontalAlignment: View.layoutDirection==Qt.LeftToRight? Text.AlignLeft : Text.AlignRight
+            horizontalAlignment: View.defaultLayout? Text.AlignLeft : Text.AlignRight
             font.family: AsemanApp.globalFont.family
             text: Database.catName(catId)
         }
 
         Button{
             id: rand_btn
-            anchors.right: View.layoutDirection==Qt.LeftToRight? parent.right : undefined
-            anchors.left: View.layoutDirection==Qt.LeftToRight? undefined : parent.left
+            anchors.right: View.defaultLayout? parent.right : undefined
+            anchors.left: View.defaultLayout? undefined : parent.left
             anchors.margins: 8*Devices.density
             anchors.verticalCenter: parent.verticalCenter
             height: parent.height
@@ -152,7 +152,7 @@ Rectangle {
                 y: parent.height/2 - height/2
                 font.pixelSize: Devices.isMobile? 9*globalFontDensity*Devices.fontDensity : 10*globalFontDensity*Devices.fontDensity
                 font.family: AsemanApp.globalFont.family
-                horizontalAlignment: View.layoutDirection==Qt.LeftToRight? Text.AlignLeft : Text.AlignRight
+                horizontalAlignment: View.defaultLayout? Text.AlignLeft : Text.AlignRight
                 color: Meikade.nightTheme? "#ffffff" :"#333333"
                 text: {
                     if(Meikade.endUsingNumber(poemTitle))

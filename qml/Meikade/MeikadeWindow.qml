@@ -37,7 +37,6 @@ MeikadeWindowBase {
 
     property alias pageManager: page_manager
     readonly property variant catPage: page_manager.mainItem? page_manager.mainItem.catPage : 0
-    readonly property variant materialDesignButton: page_manager.mainItem? page_manager.mainItem.materialDesignButton : 0
 
     property bool blockBack: false
     property bool fontsLoaded: false
@@ -138,7 +137,6 @@ MeikadeWindowBase {
 
             property bool anim: false
             property alias catPage: cat_page
-            property alias materialDesignButton: md_button
             property alias areaFrame: area_frame
 
             Behavior on y {
@@ -175,31 +173,8 @@ MeikadeWindowBase {
 
                     CategoryPage {
                         id: cat_page
-
-                        AT.MaterialDesignButton {
-                            id: md_button
-                            anchors.fill: parent
-                            color: "#881010"
-                        }
                     }
                 }
-            }
-
-            Connections{
-                target: Meikade
-                onCurrentLanguageChanged: initTranslations()
-            }
-
-            function initTranslations(){
-                md_button.list = [
-                            {"name": qsTr("Other Poets"), "iconText": Awesome.fa_shopping_cart, "method": function(){ pageManager.append( Qt.createComponent("XmlDownloaderPage.qml") ) }},
-                            {"name": qsTr("Random Poem"), "iconText": Awesome.fa_random, "method": cat_page.showRandomCatPoem},
-                            {"name": qsTr("Hafez Omen") , "iconText": Awesome.fa_book, "method": cat_page.showHafezOmen }
-                        ]
-            }
-
-            Component.onCompleted: {
-                initTranslations()
             }
         }
     }
@@ -263,7 +238,7 @@ MeikadeWindowBase {
         id: menu_button
         height: AT.Devices.standardTitleBarHeight
         width: row.width + 26*AT.Devices.density
-        x: AT.View.layoutDirection==Qt.LeftToRight? 0 : parent.width - width
+        x: AT.View.defaultLayout? 0 : parent.width - width
         y: AT.View.statusBarHeight
 
         Row {

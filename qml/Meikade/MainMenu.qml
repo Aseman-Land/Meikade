@@ -126,7 +126,7 @@ Item {
                     font.pixelSize: 9*globalFontDensity*Devices.fontDensity
                     font.family: AsemanApp.globalFont.family
                     color: "#444444"
-                    horizontalAlignment: View.layoutDirection==Qt.LeftToRight? Qt.AlignLeft : Qt.AlignRight
+                    horizontalAlignment: View.defaultLayout? Qt.AlignLeft : Qt.AlignRight
                     text: name
                 }
             }

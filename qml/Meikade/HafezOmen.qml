@@ -71,7 +71,7 @@ Rectangle {
             width: parent.width
             anchors.top: parent.top
             anchors.bottom: parent.bottom
-            scale: hafez_omen.viewMode && portrait? 0.8 : 1
+            scale: hafez_omen.viewMode && localPortrait? 0.8 : 1
             onItemSelected: {
                 if( !hafez_omen.viewMode )
                     hafez_omen.switchPages()
@@ -165,7 +165,7 @@ Rectangle {
             id: view
             height: parent.height
             width: parent.width
-            x: hafez_omen.viewMode? 0 : (View.layoutDirection==Qt.LeftToRight? width : -width)
+            x: hafez_omen.viewMode? 0 : (View.defaultLayout? width : -width)
             rememberBar: true
 
             Behavior on x {
