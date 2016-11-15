@@ -166,7 +166,7 @@ Rectangle {
         height: parent.height - header_back.headerHeight
         anchors.bottom: parent.bottom
         color: "#444444"
-        visible: !view_list.atYBeginning
+        visible: phrase_txt.text.length!=0
 
         Column {
             id: phrase_column

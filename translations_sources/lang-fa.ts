@@ -385,13 +385,31 @@ Nile create Free and OpenSource projects.</source>
 <context>
     <name>Category</name>
     <message>
-        <location filename="../qml/Meikade/Category.qml" line="134"/>
+        <location filename="../qml/Meikade/Category.qml" line="125"/>
         <source>This is a problem to loading poets.
 Please contact us:
 contact@aseman.org</source>
         <translation>مشکل در بارگذاری لیست شعرا.
 لطفا با ما تماس بگیرید:
 contact@aseman.org</translation>
+    </message>
+</context>
+<context>
+    <name>CategoryPage</name>
+    <message>
+        <location filename="../qml/Meikade/CategoryPage.qml" line="392"/>
+        <source>Other Poets</source>
+        <translation>شاعران دیگر</translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/CategoryPage.qml" line="393"/>
+        <source>Random Poem</source>
+        <translation>شعر تصادفی</translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/CategoryPage.qml" line="394"/>
+        <source>Hafez Omen</source>
+        <translation>فال حافظ</translation>
     </message>
 </context>
 <context>
@@ -1092,22 +1110,19 @@ It&apos;s calculate omen using natural random algorithms. Another apps calculate
 <context>
     <name>MeikadeWindow</name>
     <message>
-        <location filename="../qml/Meikade/MeikadeWindow.qml" line="195"/>
         <source>Other Poets</source>
-        <translation>شاعران دیگر</translation>
+        <translation type="vanished">شاعران دیگر</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/MeikadeWindow.qml" line="196"/>
         <source>Random Poem</source>
-        <translation>شعر تصادفی</translation>
+        <translation type="vanished">شعر تصادفی</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/MeikadeWindow.qml" line="197"/>
         <source>Hafez Omen</source>
-        <translation>فال حافظ</translation>
+        <translation type="vanished">فال حافظ</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/MeikadeWindow.qml" line="311"/>
+        <location filename="../qml/Meikade/MeikadeWindow.qml" line="286"/>
         <source>Meikade</source>
         <translation>مِی‌کده</translation>
     </message>
@@ -1294,37 +1309,37 @@ It&apos;s calculate omen using natural random algorithms. Another apps calculate
         <translation>از علاقه‌مند‌ی‌ها پاک شد</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/PoemHeader.qml" line="265"/>
+        <location filename="../qml/Meikade/PoemHeader.qml" line="267"/>
         <source>Unfavorite</source>
         <translation>حذف از علاقه‌مندی‌ها</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/PoemHeader.qml" line="265"/>
+        <location filename="../qml/Meikade/PoemHeader.qml" line="267"/>
         <source>Favorite</source>
         <translation>اضافه به علاقه‌مندی‌ها</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/PoemHeader.qml" line="269"/>
+        <location filename="../qml/Meikade/PoemHeader.qml" line="271"/>
         <source>Cancel Select</source>
         <translation>لغو انتخاب</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/PoemHeader.qml" line="269"/>
+        <location filename="../qml/Meikade/PoemHeader.qml" line="271"/>
         <source>Select</source>
         <translation>انتخاب</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/PoemHeader.qml" line="273"/>
+        <location filename="../qml/Meikade/PoemHeader.qml" line="275"/>
         <source>Share</source>
         <translation>به اشتراک گذاری</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/PoemHeader.qml" line="288"/>
+        <location filename="../qml/Meikade/PoemHeader.qml" line="290"/>
         <source>Copy</source>
         <translation>کپی</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/PoemHeader.qml" line="293"/>
+        <location filename="../qml/Meikade/PoemHeader.qml" line="295"/>
         <source>Copied...</source>
         <translation>کپی شد...</translation>
     </message>
