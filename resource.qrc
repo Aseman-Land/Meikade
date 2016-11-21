@@ -55,61 +55,6 @@
         <file>qml/Meikade/AboutAseman.qml</file>
         <file>qml/Meikade/icons/aseman.png</file>
         <file>qml/Meikade/icons/hafez_omen.jpg</file>
-        <file>qml/Meikade/poets/2.png</file>
-        <file>qml/Meikade/poets/3.png</file>
-        <file>qml/Meikade/poets/4.png</file>
-        <file>qml/Meikade/poets/5.png</file>
-        <file>qml/Meikade/poets/6.png</file>
-        <file>qml/Meikade/poets/7.png</file>
-        <file>qml/Meikade/poets/8.png</file>
-        <file>qml/Meikade/poets/9.png</file>
-        <file>qml/Meikade/poets/10.png</file>
-        <file>qml/Meikade/poets/11.png</file>
-        <file>qml/Meikade/poets/12.png</file>
-        <file>qml/Meikade/poets/13.png</file>
-        <file>qml/Meikade/poets/14.png</file>
-        <file>qml/Meikade/poets/15.png</file>
-        <file>qml/Meikade/poets/16.png</file>
-        <file>qml/Meikade/poets/17.png</file>
-        <file>qml/Meikade/poets/18.png</file>
-        <file>qml/Meikade/poets/19.png</file>
-        <file>qml/Meikade/poets/20.png</file>
-        <file>qml/Meikade/poets/21.png</file>
-        <file>qml/Meikade/poets/22.png</file>
-        <file>qml/Meikade/poets/23.png</file>
-        <file>qml/Meikade/poets/24.png</file>
-        <file>qml/Meikade/poets/25.png</file>
-        <file>qml/Meikade/poets/26.png</file>
-        <file>qml/Meikade/poets/27.png</file>
-        <file>qml/Meikade/poets/28.png</file>
-        <file>qml/Meikade/poets/29.png</file>
-        <file>qml/Meikade/poets/30.png</file>
-        <file>qml/Meikade/poets/31.png</file>
-        <file>qml/Meikade/poets/32.png</file>
-        <file>qml/Meikade/poets/33.png</file>
-        <file>qml/Meikade/poets/34.png</file>
-        <file>qml/Meikade/poets/37.png</file>
-        <file>qml/Meikade/poets/38.png</file>
-        <file>qml/Meikade/poets/39.png</file>
-        <file>qml/Meikade/poets/42.png</file>
-        <file>qml/Meikade/poets/43.png</file>
-        <file>qml/Meikade/poets/44.png</file>
-        <file>qml/Meikade/poets/45.png</file>
-        <file>qml/Meikade/poets/46.png</file>
-        <file>qml/Meikade/poets/47.png</file>
-        <file>qml/Meikade/poets/49.png</file>
-        <file>qml/Meikade/poets/51.png</file>
-        <file>qml/Meikade/poets/52.png</file>
-        <file>qml/Meikade/poets/56.png</file>
-        <file>qml/Meikade/poets/501.png</file>
-        <file>qml/Meikade/poets/505.png</file>
-        <file>qml/Meikade/poets/512.png</file>
-        <file>qml/Meikade/poets/514.png</file>
-        <file>qml/Meikade/poets/615.png</file>
-        <file>qml/Meikade/poets/508.png</file>
-        <file>qml/Meikade/poets/608.png</file>
-        <file>qml/Meikade/poets/611.png</file>
-        <file>qml/Meikade/poets/613.png</file>
         <file>qml/Meikade/icons/go.png</file>
         <file>qml/Meikade/CategoryItem.qml</file>
         <file>qml/Meikade/CategoryPageItem.qml</file>
@@ -180,7 +125,6 @@
         <file>qml/Meikade/icons/button-close.png</file>
         <file>qml/Meikade/icons/button-omen.png</file>
         <file>qml/Meikade/icons/button-random.png</file>
-        <file>qml/Meikade/poets/55.png</file>
         <file>qml/Meikade/MeikadeNews1.qml</file>
         <file>qml/Meikade/icons/tik-dark.png</file>
         <file>qml/Meikade/XmlDownloaderPage.qml</file>
@@ -197,5 +141,9 @@
         <file>qml/Meikade/main.qml</file>
         <file>qml/Meikade/MeikadeMainWindow.qml</file>
         <file>qtquickcontrols2.conf</file>
+        <file>qml/Meikade/GoUpButton.qml</file>
+        <file>qml/Meikade/CategoryEmptyArea.qml</file>
+        <file>qml/Meikade/LanguageInitializer.qml</file>
+        <file>qml/Meikade/PoemFooter.qml</file>
     </qresource>
 </RCC>

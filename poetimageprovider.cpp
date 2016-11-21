@@ -1,4 +1,4 @@
-#define THUMB_WEB_LINK QString("http://aseman.land/download/meikade/thumbs/%1.png").arg(p->poet)
+#define THUMB_WEB_LINK QString("http://aseman.land/download/meikade/2/thumbs/%1.png").arg(p->poet)
 #define THUMB_QRC_LINK QString(":/qml/Meikade/poets/%1.png").arg(p->poet)
 #define THUMB_DNL_LINK QString(p->downloadPath+"/%1.png").arg(p->poet)
 #define THUMB_DEFAULT QString(":/qml/Meikade/poets/default.png")
@@ -27,12 +27,7 @@ PoetImageProvider::PoetImageProvider(QObject *parent) :
 {
     p = new PoetImageProviderPrivate;
     p->poet = 0;
-
-#ifdef Q_OS_ANDROID
-    p->downloadPath = "/sdcard/NileGroup/Meikade/thumbs/poets";
-#else
     p->downloadPath = HOME_PATH + "/thumbs/poets";
-#endif
 
     QDir().mkpath(p->downloadPath);
 }

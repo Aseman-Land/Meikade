@@ -28,6 +28,7 @@ AsemanApplication {
     applicationId: "7e861c79-2b50-427b-93b6-4591b54eb821"
     organizationDomain: "NileGroup"
     organizationName: "Aseman Team"
+    windowIcon: "icons/meikade.png"
 
     property variant appMain
 

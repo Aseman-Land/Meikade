@@ -48,14 +48,7 @@ Rectangle {
         light: false
         modern: true
         indicatorSize: 20*Devices.density
-
-        property bool active: xml_model.refreshing
-        onActiveChanged: {
-            if(active)
-                start()
-            else
-                stop()
-        }
+        running: xml_model.refreshing
     }
 
     Text {

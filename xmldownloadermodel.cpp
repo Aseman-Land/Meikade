@@ -1,4 +1,4 @@
-#define XML_DOWNLOAD_LINK "http://aseman.land/download/meikade/data.xml"
+#define XML_DOWNLOAD_LINK "http://aseman.land/download/meikade/2/data.xml"
 #define XML_DATE_FORMAT "yyyy/MM/dd-HH:mm:ss"
 #define XML_VERSION "1.0"
 #define XML_REVISION_STRUCTURE 1

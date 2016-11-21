@@ -32,7 +32,6 @@ Rectangle {
     property variant poemsListObject
     property variant sidePoemsListObject
 
-    readonly property bool localPortrait: base_frame.width<base_frame.height
     readonly property real sideMargin: sidePoemsListObject? parent.width/2 : 0
 
     ListObject {
@@ -387,12 +386,30 @@ Rectangle {
         onCurrentLanguageChanged: initTranslations()
     }
 
+    Connections {
+        target: Database
+        onCountChanged: initTranslations()
+    }
+
     function initTranslations(){
-        md_button.list = [
-                    {"name": qsTr("Other Poets"), "iconText": Awesome.fa_shopping_cart, "method": function(){ pageManager.append( Qt.createComponent("XmlDownloaderPage.qml") ) }},
-                    {"name": qsTr("Random Poem"), "iconText": Awesome.fa_random, "method": showRandomCatPoem},
-                    {"name": qsTr("Hafez Omen") , "iconText": Awesome.fa_book, "method": showHafezOmen }
-                ]
+        if(Database.count) {
+            if(Database.containsHafez)
+                md_button.list = [
+                            {"name": qsTr("Add Poet"), "iconText": Awesome.fa_shopping_cart, "method": function(){ pageManager.append( Qt.createComponent("XmlDownloaderPage.qml") ) }},
+                            {"name": qsTr("Random Poem"), "iconText": Awesome.fa_random, "method": showRandomCatPoem},
+                            {"name": qsTr("Hafez Omen") , "iconText": Awesome.fa_book, "method": showHafezOmen }
+                        ]
+            else
+                md_button.list = [
+                            {"name": qsTr("Add Poet"), "iconText": Awesome.fa_shopping_cart, "method": function(){ pageManager.append( Qt.createComponent("XmlDownloaderPage.qml") ) }},
+                            {"name": qsTr("Random Poem"), "iconText": Awesome.fa_random, "method": showRandomCatPoem}
+                        ]
+        } else {
+            md_button.list = [
+                        {"name": qsTr("Add Poet"), "iconText": Awesome.fa_shopping_cart, "method": function(){ pageManager.append( Qt.createComponent("XmlDownloaderPage.qml") ) }}
+                    ]
+        }
+
     }
 
     Component.onCompleted: {

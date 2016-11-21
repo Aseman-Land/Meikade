@@ -4,7 +4,7 @@ folder_02.source = database
 folder_02.target = .
 folder_03.source = translations
 folder_03.target = files
-DEPLOYMENTFOLDERS = folder_01 folder_02 folder_03
+DEPLOYMENTFOLDERS += folder_01 folder_02 folder_03
 
 ios {
     QTPLUGIN += qsqlite
@@ -16,6 +16,12 @@ ios {
 }
 android {
     ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
+}
+
+contains(DEFINES,OLD_DATABASE) {
+    folder_05.source = data
+    folder_05.target = database
+    DEPLOYMENTFOLDERS += folder_05
 }
 
 DEFINES += DISABLE_KEYCHAIN

@@ -50,6 +50,7 @@ Rectangle {
     }
 
     Item {
+        id: viewFrame
         anchors.top: advanced.bottom
         anchors.bottom: parent.bottom
         anchors.left: parent.left
@@ -71,19 +72,9 @@ Rectangle {
             anchors.fill: parent
             highlightMoveDuration: 250
             bottomMargin: View.navigationBarHeight
+
             property bool atEnd: atYEnd
             onAtEndChanged: if(atEnd && count != 0) tmodel.more()
-
-            onVerticalVelocityChanged: {
-                if(view_list.atYBeginning || view_list.count == 0)
-                    ascroll.hide = true
-                else
-                if((verticalVelocity>4 && !atYBeginning) || atYEnd)
-                    ascroll.hide = true
-                else
-                if((verticalVelocity<-4 && !atYEnd) || atYBeginning)
-                    ascroll.hide = false
-            }
 
             model: tmodel
             delegate: Rectangle {
@@ -167,8 +158,6 @@ Rectangle {
                     }
                 }
             }
-
-            currentIndex: -1
         }
 
         ScrollBar {
@@ -176,6 +165,8 @@ Rectangle {
             anchors.right: view_list.right; anchors.top: view_list.top
             LayoutMirroring.enabled: View.layoutDirection == Qt.RightToLeft
         }
+
+        GoUpButton { list: view_list }
     }
 
     Rectangle {
@@ -276,41 +267,5 @@ Rectangle {
         width: advanced.width
         height: 1*Devices.density
         opacity: 0.5
-    }
-
-    Rectangle {
-        id: ascroll
-
-        property bool hide: true
-
-        anchors.bottom: parent.bottom
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.margins: 20*Devices.density
-        width: 50*Devices.density
-        height: width
-        radius: width/2
-        color: "#66000000"
-        opacity: hide? 0 : 1
-        z: hide? -1 : 0
-
-        Behavior on opacity {
-            NumberAnimation { duration: 500 }
-        }
-
-        Text {
-            anchors.centerIn: parent
-            font.pixelSize: 25*globalFontDensity*Devices.fontDensity
-            font.family: Awesome.family
-            color: "white"
-            text: Awesome.fa_angle_up
-        }
-
-        MouseArea {
-            anchors.fill: parent
-            onClicked: {
-                view_list.positionViewAtBeginning()
-                ascroll.hide = true
-            }
-        }
     }
 }

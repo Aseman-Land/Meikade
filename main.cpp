@@ -26,7 +26,6 @@
 int main(int argc, char *argv[])
 {
     AsemanApplication app(argc, argv);
-    app.setWindowIcon(QIcon(app.applicationDirPath()+"/qml/Meikade/icons/meikade.png"));
 
     QGuiApplication::setFont(QFont("IranSans"));
 

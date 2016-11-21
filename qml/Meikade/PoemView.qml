@@ -209,6 +209,7 @@ Rectangle {
         highlightRangeMode: ListView.ApplyRange
         preferredHighlightBegin: height/2
         preferredHighlightEnd: height/2
+        currentIndex: 0
         property int highlightedVid: -1
         property int selectedIndex: -1
 
@@ -457,16 +458,8 @@ Rectangle {
                 header_back.headerHeight = height+view_list.y
                 view_list.positionViewAtBeginning()
             }
-            onNextRequest: {
-                var idx = poemsArray.indexOf(poemId)+1
-                if(idx < poemsArray.length)
-                    view.poemId = poemsArray[idx]
-            }
-            onPreviousRequest: {
-                var idx = poemsArray.indexOf(poemId)-1
-                if(idx >= 0)
-                    view.poemId = poemsArray[idx]
-            }
+            onNextRequest: nextPoem()
+            onPreviousRequest: previousPoem()
         }
 
         function refresh(){
@@ -542,7 +535,10 @@ Rectangle {
         }
     }
 
+    GoUpButton { list: view_list; modernButton: false; visible: false }
+
     Item {
+        id: headerFrame
         width: view_list.width
         height: 32*Devices.density
         clip: true
@@ -555,6 +551,24 @@ Rectangle {
             poemId: view.poemId
             font.pixelSize: Devices.isMobile? 11*globalFontDensity*Devices.fontDensity : 13*globalFontDensity*Devices.fontDensity
             font.family: globalPoemFontFamily
+        }
+    }
+
+    PoemFooter {
+        width: view_list.width
+        anchors.top: headerFrame.bottom
+        visible: headerFrame.visible
+        onNextRequest: nextPoem()
+        onPreviousRequest: previousPoem()
+
+        Rectangle {
+            height: 3*Devices.density
+            width: parent.width
+            anchors.top: parent.bottom
+            gradient: Gradient {
+                GradientStop { position: 0.0; color: "#55000000" }
+                GradientStop { position: 1.0; color: "#00000000" }
+            }
         }
     }
 
@@ -715,6 +729,18 @@ Rectangle {
         highlight_enabler.restart()
         highlight_disabler.restart()
 
+    }
+
+    function nextPoem() {
+        var idx = poemsArray.indexOf(poemId)+1
+        if(idx < poemsArray.length)
+            view.poemId = poemsArray[idx]
+    }
+
+    function previousPoem() {
+        var idx = poemsArray.indexOf(poemId)-1
+        if(idx >= 0)
+            view.poemId = poemsArray[idx]
     }
 
     Component {

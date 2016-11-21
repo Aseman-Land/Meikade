@@ -28,8 +28,9 @@
 
 #ifdef Q_OS_ANDROID
 #define HOME_PATH QDir::homePath()
-#define BACKUP_PATH "/sdcard/NileGroup/Meikade/backups"
-#define TEMP_PATH   "/sdcard/NileGroup/Meikade/temp"
+#define ANDROID_OLD_DB_PATH "/sdcard/NileGroup/Meikade/"
+#define BACKUP_PATH ANDROID_OLD_DB_PATH "/backups"
+#define TEMP_PATH   HOME_PATH "/temp"
 #define TRANSLATIONS_PATH QString("assets:/files/translations")
 #else
 #ifdef Q_OS_IOS

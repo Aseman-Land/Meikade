@@ -85,7 +85,9 @@ void ThreadedDatabase::initialize()
         return;
 
 #ifdef Q_OS_ANDROID
-    p->path = "/sdcard/NileGroup/Meikade/data.sqlite";
+    p->path = ANDROID_OLD_DB_PATH "/data.sqlite";
+    if(!QFileInfo::exists(p->path))
+        p->path = HOME_PATH + "/data.sqlite";
 #else
     p->path = HOME_PATH + "/data.sqlite";
 #endif

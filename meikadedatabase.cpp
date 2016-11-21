@@ -83,10 +83,37 @@ MeikadeDatabase::MeikadeDatabase(ThreadedFileSystem *tfs, QObject *parent) :
 {
     p = new MeikadeDatabasePrivate;
     p->tfs = tfs;
-    p->initialized = false;
     p->fetchedPoem = -1;
 
+#ifndef OLD_DATABASE
+    p->initialized = true;
+#ifdef Q_OS_ANDROID
+    if(QFileInfo::exists(ANDROID_OLD_DB_PATH "/data.sqlite"))
+        p->path = ANDROID_OLD_DB_PATH "/data.sqlite";
+    else
+#endif
+    {
+        p->path = HOME_PATH + "/data.sqlite";
+        if( !Meikade::settings()->value("initialize/data_db",false).toBool() || !QFileInfo::exists(p->path) )
+#ifdef Q_OS_ANDROID
+            QFile::copy("assets:/database/data.sqlite",p->path);
+#else
+            QFile::copy(QCoreApplication::applicationDirPath() + "/database/data.sqlite",p->path);
+#endif
+    }
+
+    Meikade::settings()->setValue("initialize/data_db",true);
+    QFile(p->path).setPermissions(QFileDevice::ReadUser|QFileDevice::ReadGroup);
+
+    p->db = QSqlDatabase::addDatabase("QSQLITE",DATA_DB_CONNECTION);
+    p->db.setDatabaseName(p->path);
+    p->db.open();
+
+    init_buffer();
+#else
+    p->initialized = false;
     initialize();
+#endif
 }
 
 bool MeikadeDatabase::initialized() const
@@ -94,12 +121,22 @@ bool MeikadeDatabase::initialized() const
     return p->initialized;
 }
 
+int MeikadeDatabase::count() const
+{
+    return p->poets.count();
+}
+
+bool MeikadeDatabase::containsHafez() const
+{
+    return p->poets.contains(9);
+}
+
 void MeikadeDatabase::initialize()
 {
 #ifdef Q_OS_ANDROID
-    p->path = "/sdcard/NileGroup/Meikade/data.sqlite";
+    p->path = ANDROID_OLD_DB_PATH "/data.sqlite";
     p->src = "assets:/database/data/data";
-    QDir().mkpath("/sdcard/NileGroup/Meikade");
+    QDir().mkpath(ANDROID_OLD_DB_PATH);
 #else
     p->path = HOME_PATH + "/data.sqlite";
     p->src = "database/data/data";
@@ -352,6 +389,8 @@ void MeikadeDatabase::init_buffer()
     qStableSort( sort_tmp.begin(), sort_tmp.end(), sortPersianString );
     foreach( const QString & name, sort_tmp )
         p->sorted_poets << p->poets_cats.value(name);
+
+    Q_EMIT countChanged();
 }
 
 void MeikadeDatabase::fetchPoem(int pid)

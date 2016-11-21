@@ -32,6 +32,7 @@
 #include <QVariant>
 #include <QDateTime>
 #include <QDebug>
+#include <QCoreApplication>
 
 class UserDataPrivates
 {
@@ -50,7 +51,7 @@ UserData::UserData(QObject *parent) :
 #ifdef Q_OS_ANDROID
         QFile::copy("assets:/database/userdata.sqlite",p->path);
 #else
-        QFile::copy("database/userdata.sqlite",p->path);
+        QFile::copy(QCoreApplication::applicationDirPath() + "/database/userdata.sqlite",p->path);
 #endif
     Meikade::settings()->setValue("initialize/userdata_db",true);
     QFile(p->path).setPermissions(QFileDevice::WriteOwner|QFileDevice::WriteGroup|QFileDevice::ReadUser|QFileDevice::ReadGroup);

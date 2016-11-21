@@ -110,7 +110,8 @@ Rectangle {
                     text: qsTr(" - AmirHosein Mousavi (Project Manager and Leader and Developer)\n"+
                                " - Bardia Daneshvar (Project Founder, Project Architect and Developer)\n"+
                                " - Pourya Daneshvar (Designer)\n"+
-                               " - Hasan Noruzi (Idea Processing)")
+                               " - Hasan Noruzi (Idea Processing)\n"+
+                               " - Amin Hatami (Logo Designer)")
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                     color: "#333333"
                 }

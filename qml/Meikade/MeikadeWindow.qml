@@ -18,6 +18,7 @@
 
 import QtQuick 2.0
 import QtGraphicalEffects 1.0
+import QtQuick.Controls 2.0
 import AsemanTools 1.1 as AT
 import AsemanTools.Awesome 1.0
 import Meikade 1.0
@@ -48,6 +49,14 @@ MeikadeWindowBase {
     property variant mainDialog
 
     property variant init_wait
+    property string meikadeTitle: qsTr("Meikade")
+
+    readonly property bool localPortrait: catPage? (catPage.width<catPage.height || AT.Devices.isMobile) : portrait
+
+    Connections{
+        target: Meikade
+        onCurrentLanguageChanged: initTranslations()
+    }
 
     QtObject {
         id: privates
@@ -63,14 +72,22 @@ MeikadeWindowBase {
     }
 
     Component.onCompleted: {
+        initTranslations()
         if( !Database.initialized() ) {
             var initWaitComponent = Qt.createComponent("InitializeWait.qml")
             init_wait = initWaitComponent.createObject(main)
         }
 
         Meikade.runCount++
-        if( Meikade.runCount == 2 )
+        switch(Meikade.runCount)
+        {
+        case 1:
+            showLanguageSetup()
+            break
+        case 2:
             showFavoriteMessage()
+            break
+        }
     }
 
     Timer {
@@ -283,7 +300,7 @@ MeikadeWindowBase {
                 anchors.verticalCenter: parent.verticalCenter
                 font.family: AT.AsemanApp.globalFont.family
                 font.pixelSize: 11*globalFontDensity*AT.Devices.fontDensity
-                text: pageManager.currentItem && pageManager.currentItem.title? pageManager.currentItem.title : qsTr("Meikade")
+                text: pageManager.currentItem && pageManager.currentItem.title? pageManager.currentItem.title : meikadeTitle
                 verticalAlignment: Text.AlignVCenter
                 color: "#ffffff"
                 opacity: 1-sidebar.percent
@@ -358,6 +375,12 @@ MeikadeWindowBase {
         return item
     }
 
+    function showLanguageSetup() {
+        var component = Qt.createComponent("LanguageInitializer.qml")
+        var popup = component.createObject(main)
+        popup.open()
+    }
+
     function showFavoriteMessage() {
         var component = Qt.createComponent("FavoriteMessage.qml")
         messageDialog.show(component)
@@ -391,6 +414,10 @@ MeikadeWindowBase {
                 font_loader_component.createObject(main, {"fontName": fonts[i]})
 
         fontsLoaded = true
+    }
+
+    function initTranslations(){
+        meikadeTitle = qsTr("Meikade")
     }
 
     Component {

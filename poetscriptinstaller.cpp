@@ -17,9 +17,7 @@ class PoetScriptInstallerPrivate
 public:
     P7ZipExtractor *p7zip;
     QSqlDatabase db;
-
     QString path;
-    QString src;
 };
 
 PoetScriptInstaller::PoetScriptInstaller(QObject *parent) :
@@ -29,12 +27,11 @@ PoetScriptInstaller::PoetScriptInstaller(QObject *parent) :
     p->p7zip = 0;
 
 #ifdef Q_OS_ANDROID
-    p->path = "/sdcard/NileGroup/Meikade/data.sqlite";
-    p->src = "assets:/database/data/data";
-    QDir().mkpath("/sdcard/NileGroup/Meikade");
+    p->path = ANDROID_OLD_DB_PATH "/data.sqlite";
+    if(!QFileInfo::exists(p->path))
+        p->path = HOME_PATH + "/data.sqlite";
 #else
     p->path = HOME_PATH + "/data.sqlite";
-    p->src = "database/data/data";
 #endif
 }
 

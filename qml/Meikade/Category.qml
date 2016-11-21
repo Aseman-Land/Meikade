@@ -119,10 +119,8 @@ Item {
         LayoutMirroring.enabled: View.layoutDirection == Qt.RightToLeft
     }
 
-    Text {
-        anchors.centerIn: parent
-        font.pixelSize: 9*globalFontDensity*Devices.fontDensity
-        text: qsTr("This is a problem to loading poets.\nPlease contact us:\ncontact@aseman.org")
+    CategoryEmptyArea {
+        anchors.fill: parent
         visible: category_list.count == 0
     }
 }

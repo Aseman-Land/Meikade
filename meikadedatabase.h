@@ -26,17 +26,23 @@ class MeikadeDatabasePrivate;
 class MeikadeDatabase : public QObject
 {
     Q_OBJECT
+    Q_PROPERTY(int count READ count NOTIFY countChanged)
+    Q_PROPERTY(int containsHafez READ containsHafez NOTIFY countChanged)
+
 public:
     MeikadeDatabase( ThreadedFileSystem *tfs, QObject *parent = 0);
     ~MeikadeDatabase();
 
     Q_INVOKABLE bool initialized() const;
+    int count() const;
+    bool containsHafez() const;
 
 signals:
     void initializeFinished();
     void extractProgress(int percent);
     void copyError();
     void poetsChanged();
+    void countChanged();
 
 public slots:
     void initialize();
