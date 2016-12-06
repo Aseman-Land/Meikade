@@ -86,6 +86,7 @@ Rectangle {
 
     HashObject {
         id: selectionHash
+        onCountChanged: if(count == 0) selectMode = false
     }
 
     Timer {
@@ -330,20 +331,20 @@ Rectangle {
                 anchors.fill: parent
                 z: 10
                 onClicked: {
-                    if(checkItem) {
-                        checkItem.checked = !checkItem.checked
-                        if(checkItem.checked)
-                            selectionHash.insert(model.verseId, pitem.text)
-                        else
-                            selectionHash.remove(model.verseId)
-                        return
-                    }
-
                     if( view.editable ) {
-                        var itemObj = showBottomPanel(share_component, true)
-                        itemObj.poemId = pitem.pid
-                        itemObj.vid = pitem.vid
-                        itemObj.text = pitem.text
+                        selectMode = true
+                        if(checkItem) {
+                            checkItem.checked = !checkItem.checked
+                            if(checkItem.checked)
+                                selectionHash.insert(model.verseId, pitem.text)
+                            else
+                                selectionHash.remove(model.verseId)
+                        } else {
+                            var itemObj = showBottomPanel(share_component, true)
+                            itemObj.poemId = pitem.pid
+                            itemObj.vid = pitem.vid
+                            itemObj.text = pitem.text
+                        }
                     }
 
                     view.itemSelected(pitem.pid,pitem.vid)
@@ -454,6 +455,7 @@ Rectangle {
             poemId: view.poemId
             font.pixelSize: Devices.isMobile? 11*globalFontDensity*Devices.fontDensity : 13*globalFontDensity*Devices.fontDensity
             font.family: globalPoemFontFamily
+            z: 100
             onHeightChanged: {
                 header_back.headerHeight = height+view_list.y
                 view_list.positionViewAtBeginning()

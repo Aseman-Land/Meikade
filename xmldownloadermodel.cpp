@@ -23,6 +23,7 @@ class XmlDownloaderModelUnit
 public:
     XmlDownloaderModelUnit() :
         poetId(0),
+        type(-1),
         fileSize(0),
         thumbSize(0),
         downloaded(false),
@@ -38,6 +39,7 @@ public:
 
     int poetId;
     QString name;
+    int type;
 
     QString guid;
     QDateTime date;
@@ -64,6 +66,28 @@ public:
         return guid == b.guid;
     }
 };
+
+const QString sort_string = QString::fromUtf8("اَُِبپتثجچحخدذرزژسشصضطظعغفقکگلمنوهی");
+
+bool sortPersianXmlUnit( const XmlDownloaderModelUnit & au, const XmlDownloaderModelUnit & bu )
+{
+    const QString &a = au.name;
+    const QString &b = bu.name;
+
+    for( int i=0; i<a.size() && i<b.size(); i++ )
+    {
+        const QChar & ca = a[i];
+        const QChar & cb = b[i];
+
+        const int ia = sort_string.indexOf(ca);
+        const int ib = sort_string.indexOf(cb);
+
+        if( ia != ib )
+            return ia < ib;
+    }
+
+    return a.size() < b.size();
+}
 
 class XmlDownloaderModelPrivate
 {
@@ -122,6 +146,10 @@ QVariant XmlDownloaderModel::data(const QModelIndex &index, int role) const
 
     case DataRolePoetName:
         result = unit.name;
+        break;
+
+    case DataRolePoetType:
+        result = unit.type;
         break;
 
     case DataRoleFileDownloadUrl:
@@ -204,6 +232,7 @@ bool XmlDownloaderModel::setData(const QModelIndex &index, const QVariant &value
 
     case DataRolePoetId:
     case DataRolePoetName:
+    case DataRolePoetType:
     case DataRoleFileDownloadUrl:
     case DataRoleFileMimeType:
     case DataRoleFileThumbUrl:
@@ -230,6 +259,7 @@ QHash<qint32, QByteArray> XmlDownloaderModel::roleNames() const
     res = new QHash<qint32, QByteArray>();
     res->insert( DataRolePoetId, "poetId");
     res->insert( DataRolePoetName, "poetName");
+    res->insert( DataRolePoetType, "poetType");
     res->insert( DataRoleFileDownloadUrl, "fileDownloadUrl");
     res->insert( DataRoleFileMimeType, "fileMimeType");
     res->insert( DataRoleFileThumbUrl, "fileThumbUrl");
@@ -348,16 +378,19 @@ void XmlDownloaderModel::finished(const QByteArray &data)
     {
         const int poetId = poetChild.attribute("id").toInt();
         const QString &name = poetChild.attribute("name");
+        const int type = poetChild.attribute("type").toInt();
+        const QDateTime &dbDate = Meikade::instance()->database()->poetLastUpdate( Meikade::instance()->database()->poetCat(poetId) );
 
         XmlDownloaderModelUnit unit;
         unit.name = name;
+        unit.type = pow(2,qrand()%2+1) + ((qrand()%20)>18? 1 : 0);
         unit.poetId = poetId;
 
         QDomElement revision = poetChild.firstChildElement("Revision");
         while(!revision.isNull())
         {
             const int structure = revision.attribute("structure").toInt();
-            const QDateTime &date = QDateTime::fromString(revision.attribute("date"), XML_DATE_FORMAT);
+            const QDateTime &date = QDateTime::fromString(revision.attribute("date"));
             if(structure > XML_REVISION_STRUCTURE || date < unit.date)
             {
                 revision = revision.nextSiblingElement("Poet");
@@ -386,9 +419,12 @@ void XmlDownloaderModel::finished(const QByteArray &data)
             unit.fileSize = fileSize;
             unit.thumbSize = thumbSize;
             unit.version = version;
+            unit.date = date;
             unit.structure = structure;
-            unit.updateAvailable = false;
             unit.installed = mdb->containsPoet(poetId);
+            unit.updateAvailable = (date.date().year()>2000 && (date>dbDate || dbDate.isNull()) && unit.installed);
+            if(unit.updateAvailable)
+                unit.type = unit.type|(1<<20);
 
             revision = revision.nextSiblingElement("Poet");
         }
@@ -398,6 +434,8 @@ void XmlDownloaderModel::finished(const QByteArray &data)
 
         poetChild = poetChild.nextSiblingElement("Poet");
     }
+
+    qStableSort(result.begin(), result.end(), sortPersianXmlUnit);
 
     p->xml_downloader->deleteLater();
     p->xml_downloader = 0;
@@ -463,7 +501,7 @@ void XmlDownloaderModel::fileFinished(const QByteArray &data)
     unit.installing = true;
     unit.installed = false;
 
-    p->installer->append(filePath, unit.guid);
+    p->installer->append(filePath, unit.guid, unit.poetId, unit.date);
 
     QModelIndex index = QAbstractListModel::index(idx);
     emit dataChanged(index, index, QVector<int>()<<DataRoleDownloadingState
@@ -527,11 +565,12 @@ void XmlDownloaderModel::installerFinished(const QString &file, const QString &g
     unit.downloadedBytes = 0;
     unit.installing = false;
     unit.installed = true;
+    unit.updateAvailable = false;
 
     QModelIndex index = QAbstractListModel::index(idx);
     emit dataChanged(index, index, QVector<int>()<<DataRoleDownloadingState
                      <<DataRoleDownloadError<<DataRoleDownloadedBytes
-                     <<DataRoleInstalling<<DataRoleInstalled);
+                     <<DataRoleInstalling<<DataRoleInstalled<<DataRoleUpdateAvailable);
 
     MeikadeDatabase *mdb = Meikade::instance()->database();
     mdb->refresh();
@@ -583,7 +622,7 @@ void XmlDownloaderModel::stopDownload(const QModelIndex &index)
 
 void XmlDownloaderModel::changed(const QList<XmlDownloaderModelUnit> &list)
 {
-    bool count_changed = (list.count()==p->list.count());
+    bool count_changed = (list.count()!=p->list.count());
 
     for( int i=0 ; i<p->list.count() ; i++ )
     {

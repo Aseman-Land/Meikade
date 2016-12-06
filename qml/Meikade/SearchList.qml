@@ -184,6 +184,7 @@ Rectangle {
             anchors.bottom: parent.bottom
             anchors.rightMargin: 8*Devices.density
             anchors.leftMargin: 8*Devices.density
+            currentIndex: 0
             textRole: "text"
             model: ListModel{
                 id: poets_model
@@ -234,11 +235,11 @@ Rectangle {
                 font.family: AsemanApp.globalFont.family
                 font.pixelSize: 9*globalFontDensity*Devices.fontDensity
                 verticalAlignment: Text.AlignVCenter
-                font.underline: true
+//                font.underline: true
                 wrapMode: Text.WrapAnywhere
                 maximumLineCount: 1
                 elide: Text.ElideRight
-                color: "blue"
+                color: "#5d5d5d"
                 text: qsTr("Search in:")
             }
 

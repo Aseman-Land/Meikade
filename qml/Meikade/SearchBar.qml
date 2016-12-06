@@ -105,8 +105,8 @@ BackHandlerView {
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: View.defaultLayout? Text.AlignLeft : Text.AlignRight
                 inputMethodHints: {
-                    var deviceName = Devices.deviceName
-                    if(deviceName.toLowerCase().indexOf("htc") >= 0)
+                    var deviceName = Devices.deviceName.toLowerCase()
+                    if(deviceName.indexOf("htc") >= 0 || deviceName.indexOf("huawei") >= 0)
                         return Qt.ImhNone
                     else
                         return Qt.ImhNoPredictiveText

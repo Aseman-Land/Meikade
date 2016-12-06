@@ -47,7 +47,6 @@ public:
     bool reset;
     bool terminate;
 
-    QString path;
     QString connectionName;
 
     QMutex mutex;
@@ -72,6 +71,15 @@ ThreadedDatabase::ThreadedDatabase( MeikadeDatabase *pdb, QObject *parent) :
     if(p->pdb)
     {
         connect( pdb, SIGNAL(initializeFinished()), SLOT(initialize()), Qt::QueuedConnection );
+        connect( pdb, &MeikadeDatabase::databaseLocationChanged, this, [this](){
+            if(!p->pdb->initialized())
+                return;
+
+            p->db.close();
+            p->connectionName.clear();
+            initialize();
+        });
+
         if(p->pdb->initialized())
             initialize();
     }
@@ -81,20 +89,14 @@ ThreadedDatabase::ThreadedDatabase( MeikadeDatabase *pdb, QObject *parent) :
 
 void ThreadedDatabase::initialize()
 {
-    if(!p->connectionName.isEmpty())
+    if(!p->connectionName.isEmpty() || !p->pdb)
         return;
 
-#ifdef Q_OS_ANDROID
-    p->path = ANDROID_OLD_DB_PATH "/data.sqlite";
-    if(!QFileInfo::exists(p->path))
-        p->path = HOME_PATH + "/data.sqlite";
-#else
-    p->path = HOME_PATH + "/data.sqlite";
-#endif
+    QString dbPath = p->pdb->databasePath();
     p->connectionName = QUuid::createUuid().toString();
 
     p->db = QSqlDatabase::addDatabase( "QSQLITE", p->connectionName );
-    p->db.setDatabaseName(p->path);
+    p->db.setDatabaseName(dbPath);
     p->db.open();
 }
 
@@ -191,6 +193,7 @@ ThreadedDatabase::~ThreadedDatabase()
     if(p->find_query)
         delete p->find_query;
 
-    QSqlDatabase::removeDatabase(p->connectionName);
+    QString connectionName = p->connectionName;
     delete p;
+    QSqlDatabase::removeDatabase(connectionName);
 }

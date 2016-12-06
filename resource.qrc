@@ -145,5 +145,7 @@
         <file>qml/Meikade/CategoryEmptyArea.qml</file>
         <file>qml/Meikade/LanguageInitializer.qml</file>
         <file>qml/Meikade/PoemFooter.qml</file>
+        <file>qml/Meikade/DatabaseLocation.qml</file>
+        <file>qml/Meikade/XmlDownloaderPageItem.qml</file>
     </qresource>
 </RCC>

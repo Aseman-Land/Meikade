@@ -20,6 +20,7 @@ import QtQuick 2.0
 import QtQuick.Controls 2.0
 import AsemanTools 1.0
 import AsemanTools.Awesome 1.0
+import Meikade 1.0
 
 Item {
     anchors.fill: parent
@@ -48,10 +49,13 @@ Item {
                 anchors.left: parent.left
                 anchors.right: parent.right
                 anchors.margins: 10*Devices.density
-                checked: Meikade.currentLanguage == item.text
+                checked: Database.databaseLocation == model.type
                 text: parent.text
                 scale: Devices.density
                 ButtonGroup.group: radioGroup
+
+                LayoutMirroring.enabled: View.layoutDirection == Qt.RightToLeft
+                LayoutMirroring.childrenInherit: true
             }
 
             MouseArea{
@@ -59,7 +63,7 @@ Item {
                 anchors.fill: parent
                 onClicked: {
                     radioBtn.checked = true
-                    Meikade.setCurrentLanguage(item.text)
+                    Database.databaseLocation = model.type
                 }
             }
         }
@@ -67,11 +71,8 @@ Item {
         focus: true
         Component.onCompleted: {
             model.clear()
-
-            var langs = Meikade.languages()
-            for( var i=0; i<langs.length; i++ )
-                model.append({"name": langs[i]})
-
+            model.append({"name": qsTr("Internal Memory"), "type": MeikadeDatabase.ApplicationMemoryDatabase})
+            model.append({"name": qsTr("External Memory"), "type": MeikadeDatabase.ExternalSdCardDatabase})
             focus = true
         }
     }

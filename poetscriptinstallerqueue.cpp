@@ -7,8 +7,12 @@
 class PoetScriptInstallerQueueUnit
 {
 public:
+    PoetScriptInstallerQueueUnit(): poetId(0){}
+
     QString file;
     QString guid;
+    int poetId;
+    QDateTime date;
 
     bool operator ==(const PoetScriptInstallerQueueUnit &b) {
         return guid == b.guid;
@@ -55,12 +59,14 @@ void PoetScriptInstallerQueue::init_core()
     connect(p->core, SIGNAL(finished(bool)), SLOT(finished(bool)), Qt::QueuedConnection);
 }
 
-void PoetScriptInstallerQueue::append(const QString &file, const QString &guid)
+void PoetScriptInstallerQueue::append(const QString &file, const QString &guid, int poetId, const QDateTime &date)
 {
     init_core();
     PoetScriptInstallerQueueUnit unit;
     unit.file = file;
     unit.guid = guid;
+    unit.poetId = poetId;
+    unit.date = date;
 
     if(p->list.contains(unit))
         return;
@@ -90,7 +96,10 @@ void PoetScriptInstallerQueue::next()
 
     p->active = true;
     p->current = p->list.takeFirst();
-    QMetaObject::invokeMethod(p->core, "installFile", Qt::QueuedConnection, Q_ARG(QString,p->current.file));
+    QMetaObject::invokeMethod(p->core, "installFile", Qt::QueuedConnection,
+                              Q_ARG(QString,p->current.file),
+                              Q_ARG(int,p->current.poetId),
+                              Q_ARG(QDateTime,p->current.date));
 }
 
 PoetScriptInstallerQueue::~PoetScriptInstallerQueue()

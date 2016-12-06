@@ -33,6 +33,7 @@
 #include "meikade_macros.h"
 #include "networkfeatures.h"
 #include "poetimageprovider.h"
+#include "xmldownloaderproxymodel.h"
 #include "asemantools/asemandevices.h"
 #include "asemantools/asemanquickview.h"
 #include "asemantools/asemanapplication.h"
@@ -135,6 +136,7 @@ Meikade::Meikade(QObject *parent) :
         setKeepScreenOn(true, true);
 
     qmlRegisterType<XmlDownloaderModel>("Meikade", 1, 0, "XmlDownloaderModel");
+    qmlRegisterType<XmlDownloaderProxyModel>("Meikade", 1, 0, "XmlDownloaderProxyModel");
     qmlRegisterType<PoetImageProvider>("Meikade", 1, 0, "PoetImageProvider");
     qmlRegisterType<StickerModel>("Meikade", 1, 0, "StickerModel");
     qmlRegisterType<StickerWriter>("Meikade", 1, 0, "StickerWriter");

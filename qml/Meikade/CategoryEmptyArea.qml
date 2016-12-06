@@ -8,7 +8,7 @@ Item {
         width: parent.width
         anchors.verticalCenter: parent.verticalCenter
         font.family: AsemanApp.globalFont.family
-        font.pixelSize: 12*Devices.fontDensity
+        font.pixelSize: 10*Devices.fontDensity
         wrapMode: Text.WrapAtWordBoundaryOrAnywhere
         horizontalAlignment: Text.AlignHCenter
         color: "#666666"

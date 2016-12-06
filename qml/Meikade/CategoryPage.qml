@@ -381,6 +381,15 @@ Rectangle {
         item.inited = true
     }
 
+    function showStore() {
+        var ocomponent = Qt.createComponent("XmlDownloaderPage.qml")
+        if(ocomponent.status == Component.Ready)
+            pageManager.append(ocomponent)
+        else if(ocomponent.status == Component.Error) {
+            console.error(ocomponent.errorString())
+        }
+    }
+
     Connections{
         target: Meikade
         onCurrentLanguageChanged: initTranslations()
@@ -395,18 +404,18 @@ Rectangle {
         if(Database.count) {
             if(Database.containsHafez)
                 md_button.list = [
-                            {"name": qsTr("Add Poet"), "iconText": Awesome.fa_shopping_cart, "method": function(){ pageManager.append( Qt.createComponent("XmlDownloaderPage.qml") ) }},
+                            {"name": qsTr("Add Poet"), "iconText": Awesome.fa_shopping_cart, "method": showStore},
                             {"name": qsTr("Random Poem"), "iconText": Awesome.fa_random, "method": showRandomCatPoem},
                             {"name": qsTr("Hafez Omen") , "iconText": Awesome.fa_book, "method": showHafezOmen }
                         ]
             else
                 md_button.list = [
-                            {"name": qsTr("Add Poet"), "iconText": Awesome.fa_shopping_cart, "method": function(){ pageManager.append( Qt.createComponent("XmlDownloaderPage.qml") ) }},
+                            {"name": qsTr("Add Poet"), "iconText": Awesome.fa_shopping_cart, "method": showStore},
                             {"name": qsTr("Random Poem"), "iconText": Awesome.fa_random, "method": showRandomCatPoem}
                         ]
         } else {
             md_button.list = [
-                        {"name": qsTr("Add Poet"), "iconText": Awesome.fa_shopping_cart, "method": function(){ pageManager.append( Qt.createComponent("XmlDownloaderPage.qml") ) }}
+                        {"name": qsTr("Add Poet"), "iconText": Awesome.fa_shopping_cart, "method": showStore}
                     ]
         }
 

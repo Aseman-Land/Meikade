@@ -18,6 +18,7 @@ public:
     enum DataRoles {
         DataRolePoetId = Qt::UserRole,
         DataRolePoetName,
+        DataRolePoetType,
         DataRoleFileDownloadUrl,
         DataRoleFileMimeType,
         DataRoleFileThumbUrl,

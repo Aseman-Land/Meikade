@@ -1,6 +1,7 @@
 #ifndef POETSCRIPTINSTALLER_H
 #define POETSCRIPTINSTALLER_H
 
+#include <QDateTime>
 #include <QObject>
 
 class PoetScriptInstallerPrivate;
@@ -12,16 +13,11 @@ public:
     ~PoetScriptInstaller();
 
 public slots:
-    void installFile(const QString &path, bool removeFile = true);
-    void install(const QString &script);
-    void removePoet(int poet_id);
+    void installFile(const QString &path, int poetId, const QDateTime &date, bool removeFile = true);
+    void install(const QString &script, int poetId, const QDateTime &date);
 
 signals:
     void finished(bool error);
-
-private:
-    void removePoem(int poet_id);
-    void removeCatChild(int parent_id);
 
 private:
     PoetScriptInstallerPrivate *p;

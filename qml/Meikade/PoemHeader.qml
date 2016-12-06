@@ -197,8 +197,6 @@ Item {
                 }
             }
 
-            Item { width: 8*Devices.density; height: 1 }
-
             Text {
                 anchors.verticalCenter: parent.verticalCenter
                 font.pixelSize: 10*globalFontDensity*Devices.fontDensity
@@ -242,12 +240,29 @@ Item {
                 iconHeight: 14*Devices.density
                 onClicked: optionsMenu.open()
 
+                Rectangle {
+                    anchors.centerIn: parent
+                    width: selectMode? parent.width : 0
+                    height: width
+                    color: "#7e3132"
+                    visible: false
+
+                    Behavior on width {
+                        NumberAnimation { easing.type: Easing.OutBack; easing.overshoot: 5*Devices.density; duration: 250 }
+                    }
+                }
+
                 Text {
                     anchors.centerIn: parent
-                    font.pixelSize: 11*globalFontDensity*Devices.fontDensity
+                    font.pixelSize: 12*globalFontDensity*Devices.fontDensity
                     font.family: Awesome.family
                     color: "white"
                     text: Awesome.fa_ellipsis_v
+                    scale: selectMode? 1 : 0.95
+
+                    Behavior on scale {
+                        NumberAnimation { easing.type: Easing.OutBack; easing.overshoot: 160; duration: 250 }
+                    }
                 }
 
                 Menu {
@@ -264,12 +279,67 @@ Item {
                     }
 
                     MenuItem {
-                        text: poem_header.favorited? qsTr("Unfavorite") : qsTr("Favorite")
-                        onTriggered: poem_header.favorited = !poem_header.favorited
+                        text: localFavorited? qsTr("Unfavorite") : qsTr("Favorite")
+                        onTriggered: {
+                            if(!selectMode) {
+                                poem_header.favorited = !poem_header.favorited
+                            } else {
+                                var keys = selectionHash.keys()
+                                for(var i=0; i<selectionHash.count; i++) {
+                                    var vid = keys[i]
+                                    if( localFavorited ) {
+                                        UserData.unfavorite(poemId,vid)
+                                    } else {
+                                        UserData.favorite(poemId,vid)
+                                    }
+                                }
+                                if(localFavorited)
+                                    showTooltip( qsTr("Unfavorited") )
+                                else
+                                    showTooltip( qsTr("Favorited") )
+                            }
+                            selectMode = false
+                        }
+
+                        property bool localFavorited: {
+                            if(!selectMode) {
+                                return poem_header.favorited
+                            } else {
+                                var keys = selectionHash.keys()
+                                var favoriteds = 0
+                                var unfavoriteds = 0
+                                for(var i=0; i<selectionHash.count; i++) {
+                                    var vid = keys[i]
+                                    var faved = UserData.isFavorited(poemId, vid)
+                                    if(faved)
+                                        favoriteds++
+                                    else
+                                        unfavoriteds++
+                                }
+                                return favoriteds > unfavoriteds
+                            }
+                        }
                     }
                     MenuItem {
                         text: selectMode? qsTr("Cancel Select") : qsTr("Select")
                         onTriggered: selectMode = !selectMode
+                    }
+                    MenuItem {
+                        text: qsTr("Share Image")
+                        enabled: selectMode
+                        onTriggered: {
+                            var poet
+                            var catId = Database.poemCat(poem_header.poemId)
+                            while( catId ) {
+                                poet = Database.catName(catId)
+                                catId = Database.parentOf(catId)
+                            }
+
+                            networkFeatures.pushAction( ("Share Image: %1").arg(poem_header.poemId) )
+                            stickerDialog = sticker_dialog_component.createObject(view)
+                            stickerDialog.text = getPoemText(false)
+                            stickerDialog.poet = poet
+                        }
                     }
                     MenuItem {
                         text: qsTr("Share")
@@ -282,7 +352,7 @@ Item {
                                 catId = Database.parentOf(catId)
                             }
 
-                            var message = getPoemText()
+                            var message = getPoemText(true)
                             Devices.share(subject,message)
                         }
                     }
@@ -290,7 +360,7 @@ Item {
                         text: qsTr("Copy")
                         onTriggered: {
                             networkFeatures.pushAction( ("Copy Poem: %1").arg(poem_header.poemId) )
-                            var message = getPoemText()
+                            var message = getPoemText(true)
                             Devices.clipboard = message
                             showTooltip(qsTr("Copied..."))
                         }
@@ -304,7 +374,7 @@ Item {
         }
     }
 
-    function getPoemText() {
+    function getPoemText(poetName) {
         var poet
         var catId = Database.poemCat(poem_header.poemId)
         while( catId ) {
@@ -330,10 +400,11 @@ Item {
 
         }
 
-        message = message + "\n\n" + poet
+        if(poetName)
+            message += "\n\n" + poet
         if(selectMode)
             selectMode = false
 
-        return message
+        return message.trim()
     }
 }

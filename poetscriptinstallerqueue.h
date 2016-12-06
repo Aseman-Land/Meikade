@@ -2,6 +2,7 @@
 #define POETSCRIPTINSTALLERQUEUE_H
 
 #include <QObject>
+#include <QDateTime>
 
 class PoetScriptInstallerQueuePrivate;
 class PoetScriptInstallerQueue : public QObject
@@ -14,7 +15,7 @@ public:
     bool isActive();
 
 public slots:
-    void append(const QString &file, const QString &guid);
+    void append(const QString &file, const QString &guid, int poetId, const QDateTime &date);
 
 signals:
     void error(const QString &file, const QString &guid);

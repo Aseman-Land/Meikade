@@ -53,7 +53,7 @@ RowLayout {
         Layout.alignment: Qt.AlignHCenter
 
         horizontalAlignment: View.defaultLayout? Qt.AlignLeft : Qt.AlignRight
-        text: Database.catName(cid)
+        text: cid==-1? qsTr("Other Poems") : Database.catName(cid)
         font.pixelSize: Devices.isMobile? 9*globalFontDensity*Devices.fontDensity : 10*globalFontDensity*Devices.fontDensity
         font.family: AsemanApp.globalFont.family
         wrapMode: Text.WrapAtWordBoundaryOrAnywhere

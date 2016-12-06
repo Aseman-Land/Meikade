@@ -137,6 +137,7 @@ BackHandlerView {
                         anchors.verticalCenter: parent.verticalCenter
                         visible: item.checkable
                         checked: item.prprt.length==0? false : Meikade.property(Meikade,item.prprt)
+                        scale: Devices.density
                         onCheckedChanged: Meikade.setProperty(Meikade,item.prprt,checked)
                     }
                 }
@@ -151,6 +152,7 @@ BackHandlerView {
 //                    model.append({ "name": qsTr("Fonts"), "file": "FontDialog.qml", "check": false, "pr":""})
 //                    model.append({ "name": qsTr("Animations"), "file": "", "check": true, "pr":"animations"})
                     model.append({ "name": qsTr("Languages"), "file": "LanguageSelector.qml", "check": false, "pr":""})
+                    model.append({ "name": qsTr("Data Location"), "file": "DatabaseLocation.qml", "check": false, "pr":""})
                     model.append({ "name": qsTr("Night Theme"), "file": "", "check": true, "pr":"nightTheme"})
                     model.append({ "name": qsTr("Phrase"), "file": "", "check": true, "pr":"phrase"})
                     if(Devices.isAndroid)

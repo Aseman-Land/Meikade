@@ -240,9 +240,12 @@ MeikadeWindowBase {
                         catPage.home()
                         pageManager.closeLast()
                     } else {
-
                         var ocomponent = Qt.createComponent(fileName)
-                        pageManager.append(ocomponent)
+                        if(ocomponent.status == Component.Ready)
+                            pageManager.append(ocomponent)
+                        else if(ocomponent.status == Component.Error) {
+                            console.error(ocomponent.errorString())
+                        }
                     }
 
                     sidebar.discard()

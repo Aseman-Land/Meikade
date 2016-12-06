@@ -86,7 +86,9 @@ Item {
 
                     var map = item.mapToItem(category, 0, 0)
                     var rect = Qt.rect(map.x, map.y, item.width, item.height)
-                    if( childs.length === 0 && !item.hafezOmen ) {
+                    if( identifier == -1 ) {
+                        category.poemSelected(category.catId, rect)
+                    } else if( childs.length === 0 && !item.hafezOmen ) {
                         category.poemSelected(identifier, rect)
                     } else {
                         category.categorySelected(identifier, rect)
@@ -107,6 +109,10 @@ Item {
             for( var i=0; i<list.length; i++ ) {
                 model.append({"identifier":list[i]})
             }
+
+            var poems = Database.catPoems(category.catId)
+            if(poems.length != 0)
+                model.append({"identifier": -1})
 
             focus = true
         }

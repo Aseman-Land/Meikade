@@ -32,6 +32,7 @@
 #include <QFileDevice>
 #include <QDir>
 #include <QDebug>
+#include <QThread>
 
 const QString sort_string = QString::fromUtf8("اَُِبپتثجچحخدذرزژسشصضطظعغفقکگلمنوهی");
 
@@ -56,7 +57,6 @@ class MeikadeDatabasePrivate
 {
 public:
     QSqlDatabase db;
-    QString path;
     QString src;
 
     QMultiHash<int,int> childs;
@@ -73,10 +73,16 @@ public:
 
     ThreadedFileSystem *tfs;
     bool initialized;
+    int databaseLocation;
 
     int fetchedPoem;
     QHash<int, QHash<QString,QVariant> > fetchedPoemData;
+    QHash<QString,QVariant> values;
+
+    static MeikadeDatabaseThreadedCopy *copy;
 };
+
+MeikadeDatabaseThreadedCopy *MeikadeDatabasePrivate::copy = 0;
 
 MeikadeDatabase::MeikadeDatabase(ThreadedFileSystem *tfs, QObject *parent) :
     QObject(parent)
@@ -84,29 +90,37 @@ MeikadeDatabase::MeikadeDatabase(ThreadedFileSystem *tfs, QObject *parent) :
     p = new MeikadeDatabasePrivate;
     p->tfs = tfs;
     p->fetchedPoem = -1;
+    p->databaseLocation = ApplicationMemoryDatabase;
+
+    for(int i=ApplicationMemoryDatabase; i<=ExternalSdCardDatabase; i++)
+    {
+        QString path = databasePath(i);
+        if(QFileInfo::exists(path))
+            p->databaseLocation = static_cast<DatabaseLocation>(i);
+    }
+
+    const QString dbPath = databasePath();
 
 #ifndef OLD_DATABASE
     p->initialized = true;
 #ifdef Q_OS_ANDROID
-    if(QFileInfo::exists(ANDROID_OLD_DB_PATH "/data.sqlite"))
-        p->path = ANDROID_OLD_DB_PATH "/data.sqlite";
-    else
+    if(!QFileInfo::exists(ANDROID_OLD_DB_PATH "/data.sqlite"))
 #endif
     {
-        p->path = HOME_PATH + "/data.sqlite";
-        if( !Meikade::settings()->value("initialize/data_db",false).toBool() || !QFileInfo::exists(p->path) )
+        if(!QFileInfo::exists(databasePath()) )
 #ifdef Q_OS_ANDROID
-            QFile::copy("assets:/database/data.sqlite",p->path);
+            QFile::copy("assets:/database/data.sqlite", dbPath);
 #else
-            QFile::copy(QCoreApplication::applicationDirPath() + "/database/data.sqlite",p->path);
+            QFile::copy(QCoreApplication::applicationDirPath() + "/database/data.sqlite", dbPath);
 #endif
     }
 
     Meikade::settings()->setValue("initialize/data_db",true);
-    QFile(p->path).setPermissions(QFileDevice::ReadUser|QFileDevice::ReadGroup);
+    QFile(dbPath).setPermissions(QFileDevice::ReadUser|QFileDevice::WriteUser|
+                                 QFileDevice::ReadGroup|QFileDevice::WriteGroup);
 
     p->db = QSqlDatabase::addDatabase("QSQLITE",DATA_DB_CONNECTION);
-    p->db.setDatabaseName(p->path);
+    p->db.setDatabaseName(dbPath);
     p->db.open();
 
     init_buffer();
@@ -114,6 +128,88 @@ MeikadeDatabase::MeikadeDatabase(ThreadedFileSystem *tfs, QObject *parent) :
     p->initialized = false;
     initialize();
 #endif
+}
+
+void MeikadeDatabase::setDatabaseLocation(int dbLocation)
+{
+    if(p->databaseLocation == dbLocation)
+        return;
+
+    if(p->copy)
+        return;
+
+    QString src = databasePath(p->databaseLocation);
+    QString dst = databasePath(dbLocation);
+    if(src == dst)
+        return;
+
+    p->copy = new MeikadeDatabaseThreadedCopy();
+    connect(p->copy, &MeikadeDatabaseThreadedCopy::copyFinished, this, [this, dbLocation](const QString &source, const QString &destination, bool result){
+        if(!result) {
+            p->copy->deleteLater();
+            p->copy = 0;
+            Q_EMIT copyingDatabaseChanged();
+            return;
+        }
+
+        p->db.close();
+        QFile::remove(source);
+        p->databaseLocation = dbLocation;
+
+        p->db.setDatabaseName(destination);
+        p->db.open();
+        init_buffer();
+
+        p->copy->deleteLater();
+        p->copy = 0;
+
+        Q_EMIT copyingDatabaseChanged();
+        Q_EMIT databaseLocationChanged();
+    }, Qt::QueuedConnection);
+
+    p->copy->copy(src, dst);
+    Q_EMIT copyingDatabaseChanged();
+}
+
+int MeikadeDatabase::databaseLocation() const
+{
+    return p->databaseLocation;
+}
+
+QString MeikadeDatabase::databasePath() const
+{
+    return databasePath(p->databaseLocation);
+}
+
+QString MeikadeDatabase::databasePath(int dbLocation)
+{
+#ifdef Q_OS_ANDROID
+    switch(static_cast<int>(dbLocation))
+    {
+    case ExternalSdCardDatabase:
+        return ANDROID_SDCARD1_DB_PATH "/data.sqlite";
+        break;
+
+    default:
+    case ApplicationMemoryDatabase:
+    case InternalMemoryDatabase:
+        if(QFileInfo::exists(ANDROID_OLD_DB_PATH "/data.sqlite"))
+            return ANDROID_OLD_DB_PATH "/data.sqlite";
+        else
+            return HOME_PATH + "/data.sqlite";
+        break;
+    }
+#else
+    Q_UNUSED(dbLocation)
+    if(dbLocation == ExternalSdCardDatabase)
+        return "/home/bardia/data.sqlite";
+    return HOME_PATH + "/data.sqlite";
+#endif
+}
+
+bool MeikadeDatabase::copyingDatabase() const
+{
+    return p->copy;
 }
 
 bool MeikadeDatabase::initialized() const
@@ -133,28 +229,28 @@ bool MeikadeDatabase::containsHafez() const
 
 void MeikadeDatabase::initialize()
 {
+    const QString dbPath = databasePath();
+
 #ifdef Q_OS_ANDROID
-    p->path = ANDROID_OLD_DB_PATH "/data.sqlite";
     p->src = "assets:/database/data/data";
     QDir().mkpath(ANDROID_OLD_DB_PATH);
 #else
-    p->path = HOME_PATH + "/data.sqlite";
     p->src = "database/data/data";
 #endif
 
     int db_version = Meikade::settings()->value("initialize/dataVersion",0).toInt();
-    if( db_version < CURRENT_DB_VERSION || !QFileInfo(p->path).exists() || QFileInfo(p->path).size() < 105000000 )
+    if( db_version < CURRENT_DB_VERSION || !QFileInfo(dbPath).exists() || QFileInfo(dbPath).size() < 105000000 )
     {
-        QFile::remove(p->path);
+        QFile::remove(dbPath);
 
         connect( p->tfs, SIGNAL(extractProgress(int)), SIGNAL(extractProgress(int)), Qt::QueuedConnection );
         connect( p->tfs, SIGNAL(extractFinished(QString)), SLOT(initialize_prv(QString)), Qt::QueuedConnection );
         connect( p->tfs, SIGNAL(extractError()), SIGNAL(copyError()), Qt::QueuedConnection );
-        p->tfs->extract(p->src,22,p->path);
+        p->tfs->extract(p->src,22,dbPath);
     }
     else
     {
-        QMetaObject::invokeMethod( this, "initialize_prv", Qt::QueuedConnection, Q_ARG(QString,p->path) );
+        QMetaObject::invokeMethod( this, "initialize_prv", Qt::QueuedConnection, Q_ARG(QString,dbPath) );
         p->initialized = true;
     }
 }
@@ -170,15 +266,17 @@ void MeikadeDatabase::initialize_prv(const QString &dst)
     if( dst.isEmpty() )
         return;
 
+    const QString dbPath = databasePath();
+
     disconnect( p->tfs, SIGNAL(extractProgress(int)), this, SIGNAL(extractProgress(int)) );
     disconnect( p->tfs, SIGNAL(extractFinished(QString)), this, SLOT(initialize_prv(QString)) );
     disconnect( p->tfs, SIGNAL(extractError()), this, SIGNAL(copyError()) );
 
     Meikade::settings()->setValue("initialize/dataVersion",CURRENT_DB_VERSION);
-    QFile(p->path).setPermissions(QFileDevice::ReadUser|QFileDevice::ReadGroup);
+    QFile(dbPath).setPermissions(QFileDevice::ReadUser|QFileDevice::ReadGroup);
 
     p->db = QSqlDatabase::addDatabase("QSQLITE",DATA_DB_CONNECTION);
-    p->db.setDatabaseName(p->path);
+    p->db.setDatabaseName(dbPath);
     p->db.open();
 
     p->initialized = true;
@@ -321,6 +419,16 @@ QString MeikadeDatabase::poetDesctiption(int id)
     return p->poets[id]["description"].toString();
 }
 
+int MeikadeDatabase::poetCat(int id)
+{
+    return p->cat_poets.key(id);
+}
+
+QDateTime MeikadeDatabase::poetLastUpdate(int id)
+{
+    return p->poets[id]["lastUpdate"].toDateTime();
+}
+
 bool MeikadeDatabase::containsPoet(int id)
 {
     return p->poets_set.contains(id);
@@ -338,6 +446,31 @@ int MeikadeDatabase::versePosition(int pid, int vid)
     return p->fetchedPoemData[vid]["position"].toInt();
 }
 
+QVariant MeikadeDatabase::value(const QString &key, const QVariant &defaultValue) const
+{
+    return p->values.value(key, defaultValue);
+}
+
+bool MeikadeDatabase::setValue(const QString &key, const QVariant &value)
+{
+    if(MeikadeDatabase::value(key) == value)
+        return true;
+
+    QSqlQuery query(p->db);
+    query.prepare("INSERT OR REPLACE INTO General (key,value) "
+                  "VALUES (:key, :value)");
+    query.bindValue(":key", key);
+    query.bindValue(":value", value);
+    if(!query.exec())
+    {
+        qDebug() << __PRETTY_FUNCTION__ << query.lastError().text();
+        return false;
+    }
+
+    p->values[key] = value;
+    return true;
+}
+
 void MeikadeDatabase::init_buffer()
 {
     p->childs.clear();
@@ -347,6 +480,20 @@ void MeikadeDatabase::init_buffer()
     p->poets.clear();
     p->cat_poets.clear();
     p->poets_set.clear();
+    p->values.clear();
+
+    do {
+        QSqlQuery generalQuery(p->db);
+        generalQuery.prepare("SELECT * FROM General");
+        if(!generalQuery.exec())
+            qDebug() << __PRETTY_FUNCTION__ << generalQuery.lastError().text();
+        else
+        while(generalQuery.next())
+        {
+            QSqlRecord record = generalQuery.record();
+            p->values[record.value("key").toString()] = record.value("value");
+        }
+    } while(checkUpdate());
 
     QSqlQuery cats_query( p->db );
     cats_query.prepare("SELECT id, parent_id, poet_id, text, url FROM cat");
@@ -365,7 +512,7 @@ void MeikadeDatabase::init_buffer()
     }
 
     QSqlQuery poets_query( p->db );
-    poets_query.prepare("SELECT id, name, cat_id, description FROM poet");
+    poets_query.prepare("SELECT id, name, cat_id, description, lastUpdate FROM poet");
     poets_query.exec();
 
     while( poets_query.next() )
@@ -413,6 +560,42 @@ void MeikadeDatabase::fetchPoem(int pid)
         p->fetchedPoemData[vorder]["text"] = record.value("text").toString();
         p->fetchedPoemData[vorder]["position"] = record.value("position").toInt();
     }
+}
+
+bool MeikadeDatabase::checkUpdate()
+{
+    const int version = value("Database/version", 0).toString().toInt();
+    int dyn_version = version;
+    if(dyn_version == 0)
+    {
+        QStringList queries = QStringList()
+                << "PRAGMA foreign_keys = 0"
+                << "CREATE TABLE General (\"key\" TEXT PRIMARY KEY, value TEXT)"
+                << "CREATE TABLE sqlitestudio_temp_table AS SELECT * FROM poet"
+                << "DROP TABLE poet"
+                << "CREATE TABLE poet (id INTEGER PRIMARY KEY NOT NULL, name NVARCHAR (20), cat_id INTEGER, description TEXT, lastUpdate DATETIME DEFAULT NULL)"
+                << "INSERT INTO poet (id, name, cat_id, description) SELECT id, name, cat_id, description FROM sqlitestudio_temp_table"
+                << "DROP TABLE sqlitestudio_temp_table"
+                << "PRAGMA foreign_keys = 1";
+
+        foreach(const QString &q, queries)
+        {
+            QSqlQuery query(p->db);
+            query.prepare(q);
+            if(!query.exec())
+                qDebug() << __PRETTY_FUNCTION__ << query.lastError().text();
+        }
+        dyn_version = 1;
+        qDebug() << QString("Database updated to the %1 version.").arg(dyn_version);
+    }
+
+    if(dyn_version != version)
+    {
+        setValue("Database/version", QString::number(dyn_version));
+        return true;
+    }
+    else
+        return false;
 }
 
 MeikadeDatabase::~MeikadeDatabase()

@@ -2,6 +2,7 @@
 #include "p7zipextractor.h"
 #include "asemantools/asemanapplication.h"
 #include "meikade_macros.h"
+#include "poetremover.h"
 
 #include <QDir>
 #include <QUuid>
@@ -35,7 +36,7 @@ PoetScriptInstaller::PoetScriptInstaller(QObject *parent) :
 #endif
 }
 
-void PoetScriptInstaller::installFile(const QString &path, bool removeFile)
+void PoetScriptInstaller::installFile(const QString &path, int poetId, const QDateTime &date, bool removeFile)
 {
     if(!p->p7zip)
         p->p7zip = new P7ZipExtractor(this);
@@ -55,7 +56,7 @@ void PoetScriptInstaller::installFile(const QString &path, bool removeFile)
         return;
     }
 
-    install(file.readAll());
+    install(file.readAll(), poetId, date);
     file.close();
     file.remove();
 
@@ -63,7 +64,7 @@ void PoetScriptInstaller::installFile(const QString &path, bool removeFile)
     emit finished(false);
 }
 
-void PoetScriptInstaller::install(const QString &scr)
+void PoetScriptInstaller::install(const QString &scr, int poetId, const QDateTime &date)
 {
     QString script = QString(scr).replace("\r\n", "\n");
     QFile(p->path).setPermissions(QFileDevice::ReadUser|QFileDevice::WriteUser|
@@ -75,6 +76,8 @@ void PoetScriptInstaller::install(const QString &scr)
         p->db.setDatabaseName(p->path);
         p->db.open();
     }
+
+    PoetRemover::removePoetCat(p->db, poetId);
 
     int pos = 0;
     int from = 0;
@@ -90,72 +93,16 @@ void PoetScriptInstaller::install(const QString &scr)
 
         from = pos+2;
     }
-}
-
-void PoetScriptInstaller::removePoet(int poet_id )
-{
-    QSqlQuery begin(p->db);
-    begin.prepare("BEGIN");
-    begin.exec();
 
     QSqlQuery query(p->db);
-    query.prepare("SELECT id FROM cat WHERE poet_id=:pid");
-    query.bindValue(":pid", poet_id);
-    query.exec();
+    query.prepare("UPDATE poet SET lastUpdate=:date WHERE id=:id");
+    query.bindValue(":id", poetId);
+    query.bindValue(":date", date);
+    int res = query.exec();
+    if(!res)
+        qDebug() << __PRETTY_FUNCTION__ << query.lastError().text();
 
-    while( query.next() )
-    {
-        int id = query.record().value(0).toInt();
-        removeCatChild(id);
-    }
-
-    removePoem(poet_id);
-
-    QSqlQuery delete_cat_query(p->db);
-    delete_cat_query.prepare("DELETE FROM cat WHERE poet_id=:pid");
-    delete_cat_query.bindValue(":pid", poet_id);
-    delete_cat_query.exec();
-
-    QSqlQuery delete_poet_query(p->db);
-    delete_poet_query.prepare("DELETE FROM poet WHERE id=:id");
-    delete_poet_query.bindValue(":id", poet_id);
-    delete_poet_query.exec();
-
-    QSqlQuery commit(p->db);
-    commit.prepare("COMMIT");
-    commit.exec();
-}
-
-void PoetScriptInstaller::removePoem(int poet_id)
-{
-    QSqlQuery delete_verse_query(p->db);
-    delete_verse_query.prepare("DELETE FROM verse WHERE poet=:pid");
-    delete_verse_query.bindValue(":pid", poet_id);
-    delete_verse_query.exec();
-}
-
-void PoetScriptInstaller::removeCatChild(int parent_id)
-{
-    QSqlQuery query(p->db);
-    query.prepare("SELECT id FROM cat WHERE parent_id=:pid");
-    query.bindValue(":pid", parent_id);
-    query.exec();
-
-    while( query.next() )
-    {
-        int id = query.record().value(0).toInt();
-        removeCatChild(id);
-    }
-
-    QSqlQuery delete_poem_query(p->db);
-    delete_poem_query.prepare("DELETE FROM poem WHERE cat_id=:cid");
-    delete_poem_query.bindValue(":cid", parent_id);
-    delete_poem_query.exec();
-
-    QSqlQuery delete_cat_query(p->db);
-    delete_cat_query.prepare("DELETE FROM cat WHERE parent_id=:pid");
-    delete_cat_query.bindValue(":pid", parent_id);
-    delete_cat_query.exec();
+    PoetRemover::vacuum(p->db);
 }
 
 PoetScriptInstaller::~PoetScriptInstaller()
