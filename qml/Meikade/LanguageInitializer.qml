@@ -51,7 +51,7 @@ Popup {
             }
 
             delegate: RadioButton {
-                text: listViewTumbler.model[index]
+                text: model.text
                 checked: listViewTumbler.currentIndex == index
                 onCheckedChanged: if(checked) listViewTumbler.currentIndex = index
             }

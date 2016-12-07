@@ -256,11 +256,17 @@ void StickerModel::refresh()
 
     case Font:
     {
+        StickerModelItem font1;
+        font1.type = Font;
+        font1.title = "Iran Sans";
+        font1.command1 = "IRAN-Sans";
+        font1.command2 = 18;
+
         StickerModelItem font2;
         font2.type = Font;
         font2.title = "B Yekan";
         font2.command1 = "B Yekan";
-        font2.command2 = 25;
+        font2.command2 = 23;
 
         StickerModelItem font3;
         font3.type = Font;
@@ -269,7 +275,8 @@ void StickerModel::refresh()
         font3.command2 = 20;
 
         p->list << font2;
-        p->list << font3;
+        p->list << font1;
+//        p->list << font3;
     }
         break;
 

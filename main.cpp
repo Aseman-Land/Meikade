@@ -26,8 +26,9 @@
 int main(int argc, char *argv[])
 {
     AsemanApplication app(argc, argv);
+    app.setGlobalFont(QFont("IRAN-Sans"));
 
-    QGuiApplication::setFont(QFont("IranSans"));
+    QGuiApplication::setFont(app.globalFont());
 
     Meikade meikade;
     meikade.start();

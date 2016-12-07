@@ -77,8 +77,8 @@ Rectangle {
         anchors.top: header.bottom
         width: parent.width
         fontSize: 10*Devices.fontDensity
-        currentIndex: view.currentIndex
-        onCurrentIndexChanged: view.currentIndex = currentIndex
+        currentIndex: 0
+        onCurrentIndexChanged: if(view) view.currentIndex = currentIndex
         model: [qsTr("New Poets"), qsTr("Updates"), qsTr("All"), qsTr("Classic"), qsTr("Modern")]
     }
 
@@ -88,8 +88,9 @@ Rectangle {
         anchors.top: tabBar.bottom
         anchors.bottom: parent.bottom
         currentIndex: 0
+        onCurrentIndexChanged: tabBar.currentIndex = currentIndex
 
-        LayoutMirroring.enabled: View.layoutDirection == Qt.RightToLeft
+        LayoutMirroring.enabled: View.reverseLayout
         LayoutMirroring.childrenInherit: true
 
         XmlDownloaderPageItem { type: (1<<0) }
@@ -104,14 +105,14 @@ Rectangle {
         currentIndex: view.currentIndex
         opacity: 0.8
 
-        LayoutMirroring.enabled: View.layoutDirection == Qt.RightToLeft
+        LayoutMirroring.enabled: View.reverseLayout
         LayoutMirroring.childrenInherit: true
 
         anchors.bottom: view.bottom
         anchors.horizontalCenter: parent.horizontalCenter
     }
 
-    Component.onCompleted: xml_model.refresh()
+    Component.onCompleted: if(!xml_model.count) xml_model.refresh()
     ActivityAnalizer { object: xml_page }
 }
 

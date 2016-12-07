@@ -43,19 +43,27 @@ Item {
             property string text: name
             property alias press: marea.pressed
 
-            RadioButton {
-                id: radioBtn
+            Row {
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.left: parent.left
                 anchors.right: parent.right
                 anchors.margins: 10*Devices.density
-                checked: Database.databaseLocation == model.type
-                text: parent.text
-                scale: Devices.density
-                ButtonGroup.group: radioGroup
+                layoutDirection: View.layoutDirection
+                spacing: 8*Devices.density
 
-                LayoutMirroring.enabled: View.layoutDirection == Qt.RightToLeft
-                LayoutMirroring.childrenInherit: true
+                RadioButton {
+                    id: radioBtn
+                    checked: Database.databaseLocation == model.type
+                    ButtonGroup.group: radioGroup
+                }
+
+                Text {
+                    anchors.verticalCenter: parent.verticalCenter
+                    font.pixelSize: 10*globalFontDensity*Devices.fontDensity
+                    font.family: AsemanApp.globalFont.family
+                    color: "#ffffff"
+                    text: item.text
+                }
             }
 
             MouseArea{

@@ -280,6 +280,8 @@ Item {
 
                     MenuItem {
                         text: localFavorited? qsTr("Unfavorite") : qsTr("Favorite")
+                        font.family: AsemanApp.globalFont.family
+                        font.pixelSize: 9*Devices.fontDensity
                         onTriggered: {
                             if(!selectMode) {
                                 poem_header.favorited = !poem_header.favorited
@@ -322,10 +324,14 @@ Item {
                     }
                     MenuItem {
                         text: selectMode? qsTr("Cancel Select") : qsTr("Select")
+                        font.family: AsemanApp.globalFont.family
+                        font.pixelSize: 9*Devices.fontDensity
                         onTriggered: selectMode = !selectMode
                     }
                     MenuItem {
                         text: qsTr("Share Image")
+                        font.family: AsemanApp.globalFont.family
+                        font.pixelSize: 9*Devices.fontDensity
                         enabled: selectMode
                         onTriggered: {
                             var poet
@@ -343,6 +349,8 @@ Item {
                     }
                     MenuItem {
                         text: qsTr("Share")
+                        font.family: AsemanApp.globalFont.family
+                        font.pixelSize: 9*Devices.fontDensity
                         onTriggered: {
                             networkFeatures.pushAction( ("Share Poem: %1").arg(poem_header.poemId) )
                             var subject = Database.poemName(poem_header.poemId)
@@ -358,6 +366,8 @@ Item {
                     }
                     MenuItem {
                         text: qsTr("Copy")
+                        font.family: AsemanApp.globalFont.family
+                        font.pixelSize: 9*Devices.fontDensity
                         onTriggered: {
                             networkFeatures.pushAction( ("Copy Poem: %1").arg(poem_header.poemId) )
                             var message = getPoemText(true)
@@ -367,6 +377,8 @@ Item {
                     }
 //                    MenuItem {
 //                        text: qsTr("Compare")
+//                        font.family: AsemanApp.globalFont.family
+//                        font.pixelSize: 9*Devices.fontDensity
 //                        onTriggered: showSidePoem(poem_header.poemId)
 //                    }
                 }

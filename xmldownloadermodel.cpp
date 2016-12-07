@@ -383,7 +383,7 @@ void XmlDownloaderModel::finished(const QByteArray &data)
 
         XmlDownloaderModelUnit unit;
         unit.name = name;
-        unit.type = pow(2,qrand()%2+1) + ((qrand()%20)>18? 1 : 0);
+        unit.type = type;
         unit.poetId = poetId;
 
         QDomElement revision = poetChild.firstChildElement("Revision");

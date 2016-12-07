@@ -78,6 +78,7 @@ void PoetScriptInstaller::install(const QString &scr, int poetId, const QDateTim
     }
 
     PoetRemover::removePoetCat(p->db, poetId);
+    PoetRemover::begin(p->db);
 
     int pos = 0;
     int from = 0;
@@ -102,6 +103,7 @@ void PoetScriptInstaller::install(const QString &scr, int poetId, const QDateTim
     if(!res)
         qDebug() << __PRETTY_FUNCTION__ << query.lastError().text();
 
+    PoetRemover::commit(p->db);
     PoetRemover::vacuum(p->db);
 }
 

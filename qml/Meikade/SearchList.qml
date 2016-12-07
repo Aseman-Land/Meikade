@@ -197,6 +197,31 @@ Rectangle {
                     BackHandler.removeHandler(poets_combo)
             }
 
+            delegate: Rectangle {
+                width: poets_combo.width
+                height: 50*Devices.density
+                color: marea.pressed? "#22000000" : "#00000000"
+
+                Text {
+                    anchors.centerIn: parent
+                    text: model.text
+                    font.family: AsemanApp.globalFont.family
+                    font.pixelSize: 10*Devices.fontDensity
+                    opacity: enabled ? 1.0 : 0.3
+                    font.bold: poets_combo.currentIndex == index
+                    color: "#333333"
+                }
+
+                MouseArea {
+                    id: marea
+                    anchors.fill: parent
+                    onClicked: {
+                        poets_combo.currentIndex = index
+                        poets_combo.popup.close()
+                    }
+                }
+            }
+
             Material.background: "transparent"
             Material.elevation: 0
 
