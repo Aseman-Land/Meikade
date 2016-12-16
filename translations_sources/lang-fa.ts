@@ -25,9 +25,13 @@
         <translation>درباره می‌کده</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/About.qml" line="80"/>
         <source>Meikade is a free and opensource application by Nile Team</source>
-        <translation>می‌کده یک برنامه‌ی آزاد و منبع‌باز است که توسط گروه نیل طراحی و پیاده‌سازی شده است</translation>
+        <translation type="vanished">می‌کده یک برنامه‌ی آزاد و منبع‌باز است که توسط گروه نیل طراحی و پیاده‌سازی شده است</translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/About.qml" line="80"/>
+        <source>Meikade is a free and opensource application by Aseman Team</source>
+        <translation>می‌کده یک برنامه‌ی آزاد و منبع‌باز است که توسط تیم آسمان طراحی و پیاده‌سازی شده است</translation>
     </message>
     <message>
         <location filename="../qml/Meikade/About.qml" line="89"/>
@@ -41,12 +45,24 @@
     </message>
     <message>
         <location filename="../qml/Meikade/About.qml" line="110"/>
+        <source> - Bardia Daneshvar (Project Founder, Project Architect and Developer)
+ - AmirHosein Mousavi (Director of Public Relations and Developer)
+ - Pourya Daneshvar (Designer)
+ - Hasan Noruzi (Idea Processing)
+ - Amin Hatami (Logo Designer)</source>
+        <translation>- بردیا دانشور (رهبر پروژ، طراح فنی و برنامه‌نویس)
+- امیرحسین موسوی (روابط عمومی و رسانه و برنامه‌نویس)
+- پوریا دانشور (طراح)
+- حسن نوروزی (ایده پرداز)
+- امین حاتمی (طراح لوگو)</translation>
+    </message>
+    <message>
         <source> - AmirHosein Mousavi (Project Manager and Leader and Developer)
  - Bardia Daneshvar (Project Founder, Project Architect and Developer)
  - Pourya Daneshvar (Designer)
  - Hasan Noruzi (Idea Processing)
  - Amin Hatami (Logo Designer)</source>
-        <translation>- بردیا دانشور (رهبر پروژ، طراح فنی و برنامه‌نویس)
+        <translation type="vanished">- بردیا دانشور (رهبر پروژ، طراح فنی و برنامه‌نویس)
 - امیرحسین موسوی (روابط عمومی و رسانه و برنامه‌نویس)
 - پوریا دانشور (طراح)
 - حسن نوروزی (ایده پرداز)
@@ -192,25 +208,25 @@ Nile create Free and OpenSource projects.</source>
     <name>AsemanAbout</name>
     <message>
         <location filename="../asemantools/build/qml/AsemanTools/AsemanTools/AsemanAbout.qml" line="50"/>
-        <location filename="../asemantools/buildkde/qml/AsemanTools/AsemanTools/AsemanAbout.qml" line="50"/>
+        <location filename="../asemantools/buildkde/qml/AsemanTools/AsemanTools/AsemanAbout.qml" line="75"/>
         <location filename="../asemantools/build-5.4/qml/AsemanTools/AsemanTools/AsemanAbout.qml" line="50"/>
-        <location filename="../asemantools/qml/AsemanTools/AsemanAbout.qml" line="50"/>
+        <location filename="../asemantools/qml/AsemanTools/AsemanAbout.qml" line="75"/>
         <source>Aseman is a non-profit organization, exists to support and lead the free, open source and cross-platform projects and researches.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../asemantools/build/qml/AsemanTools/AsemanTools/AsemanAbout.qml" line="67"/>
-        <location filename="../asemantools/buildkde/qml/AsemanTools/AsemanTools/AsemanAbout.qml" line="67"/>
+        <location filename="../asemantools/buildkde/qml/AsemanTools/AsemanTools/AsemanAbout.qml" line="90"/>
         <location filename="../asemantools/build-5.4/qml/AsemanTools/AsemanTools/AsemanAbout.qml" line="67"/>
-        <location filename="../asemantools/qml/AsemanTools/AsemanAbout.qml" line="67"/>
+        <location filename="../asemantools/qml/AsemanTools/AsemanAbout.qml" line="90"/>
         <source>The Goal of the Aseman is to provide free and secure products to keep people’s freedom and their privacy.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../asemantools/build/qml/AsemanTools/AsemanTools/AsemanAbout.qml" line="80"/>
-        <location filename="../asemantools/buildkde/qml/AsemanTools/AsemanTools/AsemanAbout.qml" line="80"/>
+        <location filename="../asemantools/buildkde/qml/AsemanTools/AsemanTools/AsemanAbout.qml" line="107"/>
         <location filename="../asemantools/build-5.4/qml/AsemanTools/AsemanTools/AsemanAbout.qml" line="80"/>
-        <location filename="../asemantools/qml/AsemanTools/AsemanAbout.qml" line="80"/>
+        <location filename="../asemantools/qml/AsemanTools/AsemanAbout.qml" line="107"/>
         <source>Home Page</source>
         <translation type="unfinished">صفحه خانگی</translation>
     </message>
@@ -470,7 +486,7 @@ contact@aseman.org</translation>
 <context>
     <name>Configure</name>
     <message>
-        <location filename="../qml/Meikade/Configure.qml" line="151"/>
+        <location filename="../qml/Meikade/Configure.qml" line="150"/>
         <source>Backup &amp; Restore</source>
         <translation>بکاپ و بازیابی</translation>
     </message>
@@ -487,32 +503,32 @@ contact@aseman.org</translation>
         <translation type="obsolete">انیمیشن‌ها</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/Configure.qml" line="154"/>
+        <location filename="../qml/Meikade/Configure.qml" line="153"/>
         <source>Languages</source>
         <translation>زبان برنامه</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/Configure.qml" line="155"/>
+        <location filename="../qml/Meikade/Configure.qml" line="154"/>
         <source>Data Location</source>
         <translation>محل ذخیره اطلاعات</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/Configure.qml" line="156"/>
+        <location filename="../qml/Meikade/Configure.qml" line="155"/>
         <source>Night Theme</source>
         <translation>تم شب</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/Configure.qml" line="157"/>
+        <location filename="../qml/Meikade/Configure.qml" line="156"/>
         <source>Phrase</source>
         <translation>نمایش تعبیر</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/Configure.qml" line="159"/>
+        <location filename="../qml/Meikade/Configure.qml" line="158"/>
         <source>Keep screen on</source>
         <translation>روشن ماندن صفحه</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/Configure.qml" line="160"/>
+        <location filename="../qml/Meikade/Configure.qml" line="159"/>
         <source>Send anonymous data to improve meikade.</source>
         <translation>ارسال اطلاعات فنی برنامه به منظور بهبود میکده.</translation>
     </message>
@@ -592,12 +608,12 @@ Meikade need 150MB free space on your memory.</source>
 <context>
     <name>DatabaseLocation</name>
     <message>
-        <location filename="../qml/Meikade/DatabaseLocation.qml" line="74"/>
+        <location filename="../qml/Meikade/DatabaseLocation.qml" line="82"/>
         <source>Internal Memory</source>
         <translation>حافظه داخلی</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/DatabaseLocation.qml" line="75"/>
+        <location filename="../qml/Meikade/DatabaseLocation.qml" line="83"/>
         <source>External Memory</source>
         <translation>حافظه خارجی</translation>
     </message>
@@ -1000,9 +1016,8 @@ Thank you.</source>
         <translation type="vanished">فروشگاه</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/MainMenu.qml" line="154"/>
         <source>About Nile Group</source>
-        <translation>درباره گروه نیل</translation>
+        <translation type="vanished">درباره گروه نیل</translation>
     </message>
     <message>
         <source>About Nile Team</source>
@@ -1028,8 +1043,9 @@ Thank you.</source>
         <translation>درباره می‌کده</translation>
     </message>
     <message>
+        <location filename="../qml/Meikade/MainMenu.qml" line="155"/>
         <source>About Aseman</source>
-        <translation type="vanished">درباره آسمان</translation>
+        <translation>درباره تیم آسمان</translation>
     </message>
 </context>
 <context>
@@ -1357,13 +1373,13 @@ It&apos;s calculate omen using natural random algorithms. Another apps calculate
     <name>PoemHeader</name>
     <message>
         <location filename="../qml/Meikade/PoemHeader.qml" line="70"/>
-        <location filename="../qml/Meikade/PoemHeader.qml" line="299"/>
+        <location filename="../qml/Meikade/PoemHeader.qml" line="301"/>
         <source>Favorited</source>
         <translation>به علاقه‌مند‌ی‌ها اضافه شد</translation>
     </message>
     <message>
         <location filename="../qml/Meikade/PoemHeader.qml" line="73"/>
-        <location filename="../qml/Meikade/PoemHeader.qml" line="297"/>
+        <location filename="../qml/Meikade/PoemHeader.qml" line="299"/>
         <source>Unfavorited</source>
         <translation>از علاقه‌مند‌ی‌ها پاک شد</translation>
     </message>
@@ -1378,32 +1394,32 @@ It&apos;s calculate omen using natural random algorithms. Another apps calculate
         <translation>اضافه به علاقه‌مندی‌ها</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/PoemHeader.qml" line="324"/>
+        <location filename="../qml/Meikade/PoemHeader.qml" line="326"/>
         <source>Cancel Select</source>
         <translation>لغو انتخاب</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/PoemHeader.qml" line="324"/>
+        <location filename="../qml/Meikade/PoemHeader.qml" line="326"/>
         <source>Select</source>
         <translation>انتخاب</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/PoemHeader.qml" line="328"/>
+        <location filename="../qml/Meikade/PoemHeader.qml" line="332"/>
         <source>Share Image</source>
         <translation>به اشتراک گذاری تصویر</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/PoemHeader.qml" line="345"/>
+        <location filename="../qml/Meikade/PoemHeader.qml" line="351"/>
         <source>Share</source>
         <translation>به اشتراک گذاری</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/PoemHeader.qml" line="360"/>
+        <location filename="../qml/Meikade/PoemHeader.qml" line="368"/>
         <source>Copy</source>
         <translation>کپی</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/PoemHeader.qml" line="365"/>
+        <location filename="../qml/Meikade/PoemHeader.qml" line="375"/>
         <source>Copied...</source>
         <translation>کپی شد...</translation>
     </message>
@@ -1498,12 +1514,12 @@ It&apos;s calculate omen using natural random algorithms. Another apps calculate
         <translation>پیدا نشد</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/SearchList.qml" line="211"/>
+        <location filename="../qml/Meikade/SearchList.qml" line="236"/>
         <source>All Poets</source>
         <translation>همه‌ی شعرا</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/SearchList.qml" line="243"/>
+        <location filename="../qml/Meikade/SearchList.qml" line="268"/>
         <source>Search in:</source>
         <translation>جستجو در:</translation>
     </message>
@@ -1633,12 +1649,12 @@ It&apos;s calculate omen using natural random algorithms. Another apps calculate
         <translation>16:6</translation>
     </message>
     <message>
-        <location filename="../stickermodel.cpp" line="280"/>
+        <location filename="../stickermodel.cpp" line="287"/>
         <source>Meikade Logo</source>
         <translation>نشانه‌ی می‌کده</translation>
     </message>
     <message>
-        <location filename="../stickermodel.cpp" line="286"/>
+        <location filename="../stickermodel.cpp" line="293"/>
         <source>Poet Name</source>
         <translation>نام شاعر</translation>
     </message>
@@ -1698,7 +1714,7 @@ It&apos;s calculate omen using natural random algorithms. Another apps calculate
 <context>
     <name>XmlDownloaderPage</name>
     <message>
-        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="61"/>
+        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="62"/>
         <source>Fetching poet lists...</source>
         <translation>در حال دریافت اطلاعات...</translation>
     </message>
@@ -1715,39 +1731,54 @@ It&apos;s calculate omen using natural random algorithms. Another apps calculate
         <translation type="vanished">- رایگان</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="14"/>
+        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="15"/>
         <source>Store</source>
         <translation>فروشگاه</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="70"/>
+        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="71"/>
         <source>Can&apos;t connect to the server</source>
         <translation>خطا در برقراری ارتباط با سرور</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="81"/>
+        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="83"/>
         <source>New Poets</source>
         <translation>تازه‌ها</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="81"/>
+        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="83"/>
         <source>Updates</source>
         <translation>به‌روزرسانی</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="81"/>
+        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="83"/>
         <source>All</source>
         <translation>همه</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="81"/>
+        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="83"/>
         <source>Classic</source>
         <translation>کلاسیک</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="81"/>
+        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="83"/>
         <source>Modern</source>
         <translation>معاصر</translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="83"/>
+        <source>Installeds</source>
+        <translation>نصب شده‌ها</translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="147"/>
+        <source>Update</source>
+        <translation>به‌روزرسانی</translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="163"/>
+        <source>Delete</source>
+        <translation>پاک کردن</translation>
     </message>
     <message>
         <source>Installing</source>
@@ -1777,37 +1808,46 @@ It&apos;s calculate omen using natural random algorithms. Another apps calculate
 <context>
     <name>XmlDownloaderPageItem</name>
     <message>
-        <location filename="../qml/Meikade/XmlDownloaderPageItem.qml" line="39"/>
         <source>Poets list, you can download from NileGroup servers...</source>
-        <translation>لیست شعرایی که با کلیک کردن بر روی آن‌ها می‌توانید آن‌ها را از سرورهای گروه نیل دریافت کنید...</translation>
+        <translation type="vanished">لیست شعرایی که با کلیک کردن بر روی آن‌ها می‌توانید آن‌ها را از سرورهای گروه نیل دریافت کنید...</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/XmlDownloaderPageItem.qml" line="89"/>
+        <location filename="../qml/Meikade/XmlDownloaderPageItem.qml" line="40"/>
+        <source>Poets list, you can download from the Aseman team servers...</source>
+        <translation>لیست شعرایی که با کلیک کردن بر روی آن‌ها می‌توانید آن‌ها را از سرورهای تیم آسمان دریافت کنید...</translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/XmlDownloaderPageItem.qml" line="90"/>
         <source>Installing</source>
         <translation>در حال نصب</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/XmlDownloaderPageItem.qml" line="92"/>
+        <location filename="../qml/Meikade/XmlDownloaderPageItem.qml" line="93"/>
+        <source>Removing</source>
+        <translation>درحال پاک کردن</translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/XmlDownloaderPageItem.qml" line="96"/>
         <source>Downloading</source>
         <translation>در حال دریافت</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/XmlDownloaderPageItem.qml" line="95"/>
+        <location filename="../qml/Meikade/XmlDownloaderPageItem.qml" line="99"/>
         <source>Update</source>
         <translation>به‌روزرسانی</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/XmlDownloaderPageItem.qml" line="98"/>
+        <location filename="../qml/Meikade/XmlDownloaderPageItem.qml" line="102"/>
         <source>Installed</source>
         <translation>نصب شده</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/XmlDownloaderPageItem.qml" line="101"/>
+        <location filename="../qml/Meikade/XmlDownloaderPageItem.qml" line="105"/>
         <source>Error</source>
         <translation>خطا</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/XmlDownloaderPageItem.qml" line="103"/>
+        <location filename="../qml/Meikade/XmlDownloaderPageItem.qml" line="107"/>
         <source>Free</source>
         <translation>رایگان</translation>
     </message>

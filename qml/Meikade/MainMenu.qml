@@ -1,6 +1,6 @@
 /*
-    Copyright (C) 2015 Nile Group
-    http://nilegroup.org
+    Copyright (C) 2017 Aseman Team
+    http://aseman.co
 
     Meikade is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -151,7 +151,8 @@ Item {
             model.append({"name":qsTr("Configure")         , "icon": Awesome.fa_cog, "fileName":"Configure.qml"         , "type": "C"})
             model.append({"name":qsTr("OpenSource Projecs"), "icon": Awesome.fa_code_fork, "fileName":"OpenSourceProjects.qml", "type": "C"})
             model.append({"name":qsTr("About")             , "icon": Awesome.fa_info_circle, "fileName":"About.qml"             , "type": "C"})
-            model.append({"name":qsTr("About Nile Group")  , "icon": Awesome.fa_info_circle, "fileName":"AboutNileTeam.qml"     , "type": "C"})
+//            model.append({"name":qsTr("About Nile Group")  , "icon": Awesome.fa_info_circle, "fileName":"AboutNileTeam.qml"     , "type": "C"})
+            model.append({"name":qsTr("About Aseman")  , "icon": Awesome.fa_info_circle, "fileName":"AboutAseman.qml"     , "type": "C"})
         }
     }
 

@@ -1,3 +1,21 @@
+/*
+    Copyright (C) 2017 Aseman Team
+    http://aseman.co
+
+    Meikade is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Meikade is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
 import QtQuick 2.0
 import AsemanTools 1.0
 import Meikade 1.0
@@ -11,6 +29,7 @@ Item {
     LayoutMirroring.childrenInherit: true
 
     property alias type: proxyModel.type
+    property alias count: listv.count
 
     XmlDownloaderProxyModel{
         id: proxyModel
@@ -21,25 +40,25 @@ Item {
         id: listv
         anchors.fill: parent
         model: proxyModel
-        header: Item {
-            width: listv.width
-            height: title_txt.height + 4*Devices.density
+//        header: Item {
+//            width: listv.width
+//            height: title_txt.height + 4*Devices.density
 
-            Text {
-                id: title_txt
-                anchors.left: parent.left
-                anchors.right: parent.right
-                anchors.leftMargin: 8*Devices.density
-                anchors.rightMargin: 8*Devices.density
-                anchors.verticalCenter: parent.verticalCenter
-                font.pixelSize: 9*globalFontDensity*Devices.fontDensity
-                font.family: AsemanApp.globalFont.family
-                color: "#888888"
-                wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                text: qsTr("Poets list, you can download from NileGroup servers...")
-                visible: listv.count != 0
-            }
-        }
+//            Text {
+//                id: title_txt
+//                anchors.left: parent.left
+//                anchors.right: parent.right
+//                anchors.leftMargin: 8*Devices.density
+//                anchors.rightMargin: 8*Devices.density
+//                anchors.verticalCenter: parent.verticalCenter
+//                font.pixelSize: 9*globalFontDensity*Devices.fontDensity
+//                font.family: AsemanApp.globalFont.family
+//                color: "#888888"
+//                wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+//                text: qsTr("Poets list, you can download from the Aseman team servers...")
+//                visible: listv.count != 0
+//            }
+//        }
 
         delegate: Rectangle {
             width: listv.width
@@ -87,6 +106,9 @@ Item {
                     text: {
                         if(model.installing)
                             return qsTr("Installing")
+                        else
+                        if(model.removingState)
+                            return qsTr("Removing")
                         else
                         if(model.downloadingState)
                             return qsTr("Downloading")
@@ -141,7 +163,7 @@ Item {
                         height: width
                         light: false
                         modern: true
-                        running: model.installing || model.downloadingState || model.downloadedStatus
+                        running: model.installing || model.downloadingState || model.downloadedStatus || model.removingState
                     }
                 }
             }
@@ -167,8 +189,16 @@ Item {
                 id: marea
                 anchors.fill: parent
                 onClicked: {
-                    if((!model.updateAvailable && model.installed) || indicator.running)
+                    if(model.installed) {
+                        if(!indicator.running) {
+                            removePopup.poetName = model.poetName
+                            removePopup.updateCallback = model.updateAvailable? function(){ model.downloadingState = true } : null
+                            removePopup.deleteCallback = function(){ model.removingState = true }
+                            removePopup.open()
+                        }
+
                         return
+                    }
 
                     model.downloadingState = true
                     networkFeatures.pushAction( ("Poet Download: %1").arg(model.poetId) )

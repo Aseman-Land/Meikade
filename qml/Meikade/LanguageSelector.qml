@@ -1,6 +1,6 @@
 /*
-    Copyright (C) 2015 Nile Group
-    http://nilegroup.org
+    Copyright (C) 2017 Aseman Team
+    http://aseman.co
 
     Meikade is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -50,7 +50,6 @@ Item {
                 anchors.margins: 10*Devices.density
                 checked: Meikade.currentLanguage == item.text
                 text: parent.text
-                scale: Devices.density
                 ButtonGroup.group: radioGroup
             }
 

@@ -7,6 +7,7 @@ MainMenuItem 1.0 MainMenuItem.qml
 BackupDialog 1.0 BackupDialog.qml
 PoemHeader 1.0 PoemHeader.qml
 AboutAseman 1.0 AboutAseman.qml
+DatabaseLocation 1.0 DatabaseLocation.qml
 InitializeWait 1.0 InitializeWait.qml
 SearchBar 1.0 SearchBar.qml
 PoemsPage 1.0 PoemsPage.qml
@@ -16,10 +17,12 @@ CategoryEmptyArea 1.0 CategoryEmptyArea.qml
 MeikadeMainWindow 1.0 MeikadeMainWindow.qml
 About 1.0 About.qml
 MenuTypeA 1.0 MenuTypeA.qml
+LanguageInitializer 1.0 LanguageInitializer.qml
 CategoryItem 1.0 CategoryItem.qml
 GoUpButton 1.0 GoUpButton.qml
 MeikadeWindowBase 1.0 MeikadeWindowBase.qml
 AnimationItem 1.0 AnimationItem.qml
+PoemFooter 1.0 PoemFooter.qml
 CategoryPage 1.0 CategoryPage.qml
 WaitDialog 1.0 WaitDialog.qml
 SearchList 1.0 SearchList.qml
@@ -30,6 +33,7 @@ HafezOmen 1.0 HafezOmen.qml
 ActivityAnalizer 1.0 ActivityAnalizer.qml
 OpenSourceProjects 1.0 OpenSourceProjects.qml
 PoemEdit 1.0 PoemEdit.qml
+XmlDownloaderPageItem 1.0 XmlDownloaderPageItem.qml
 PoemView 1.0 PoemView.qml
 Bookmarks 1.0 Bookmarks.qml
 BackHandlerView 1.0 BackHandlerView.qml

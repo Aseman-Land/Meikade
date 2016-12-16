@@ -1,3 +1,21 @@
+/*
+    Copyright (C) 2017 Aseman Team
+    http://aseman.co
+
+    Meikade is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Meikade is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
 #ifndef XMLDOWNLOADERMODEL_H
 #define XMLDOWNLOADERMODEL_H
 
@@ -27,6 +45,7 @@ public:
         DataRoleFilePublicDate,
         DataRoleFileGuid,
         DataRoleFileCompressMethod,
+        DataRoleRemovingState,
         DataRoleDownloadedStatus,
         DataRoleDownloadingState,
         DataRoleDownloadError,
@@ -40,6 +59,7 @@ public:
     ~XmlDownloaderModel();
 
     XmlDownloaderModelUnit &itemOf( const QModelIndex &index ) const;
+    bool contains(int poetId) const;
     int indexOf(const QString &guid) const;
 
     int rowCount(const QModelIndex & parent = QModelIndex()) const;
@@ -55,6 +75,7 @@ public:
 
 public slots:
     void refresh();
+    void loadInstalleds();
 
 signals:
     void countChanged();
@@ -69,12 +90,16 @@ private slots:
     void fileError( const QStringList & error );
     void fileFinished( const QByteArray & data );
     void fileRecievedBytesChanged();
+
     void installerError(const QString &file, const QString &guid);
     void installerFinished(const QString &file, const QString &guid);
+    void removeError(const QString &guid);
+    void removeFinished(const QString &guid);
 
 private:
     void startDownload(const QModelIndex &index);
     void stopDownload(const QModelIndex &index);
+    void startRemoving(const QModelIndex &index);
 
     void changed(const QList<XmlDownloaderModelUnit> &list);
 

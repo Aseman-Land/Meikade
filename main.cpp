@@ -1,6 +1,6 @@
 /*
-    Copyright (C) 2015 Nile Group
-    http://nilegroup.org
+    Copyright (C) 2017 Aseman Team
+    http://aseman.co
 
     Meikade is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -17,7 +17,6 @@
 */
 
 #include <QGuiApplication>
-#include <QIcon>
 
 #include "meikade.h"
 #include "asemantools/asemanqttools.h"
@@ -25,6 +24,8 @@
 
 int main(int argc, char *argv[])
 {
+    QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+
     AsemanApplication app(argc, argv);
     app.setGlobalFont(QFont("IRAN-Sans"));
 

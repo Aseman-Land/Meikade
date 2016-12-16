@@ -10,7 +10,7 @@
     </message>
     <message>
         <location filename="../qml/Meikade/About.qml" line="80"/>
-        <source>Meikade is a free and opensource application by Nile Team</source>
+        <source>Meikade is a free and opensource application by Aseman Team</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -25,8 +25,8 @@
     </message>
     <message>
         <location filename="../qml/Meikade/About.qml" line="110"/>
-        <source> - AmirHosein Mousavi (Project Manager and Leader and Developer)
- - Bardia Daneshvar (Project Founder, Project Architect and Developer)
+        <source> - Bardia Daneshvar (Project Founder, Project Architect and Developer)
+ - AmirHosein Mousavi (Director of Public Relations and Developer)
  - Pourya Daneshvar (Designer)
  - Hasan Noruzi (Idea Processing)
  - Amin Hatami (Logo Designer)</source>
@@ -118,25 +118,25 @@ Nile create Free and OpenSource projects.</source>
     <name>AsemanAbout</name>
     <message>
         <location filename="../asemantools/build/qml/AsemanTools/AsemanTools/AsemanAbout.qml" line="50"/>
-        <location filename="../asemantools/buildkde/qml/AsemanTools/AsemanTools/AsemanAbout.qml" line="50"/>
+        <location filename="../asemantools/buildkde/qml/AsemanTools/AsemanTools/AsemanAbout.qml" line="75"/>
         <location filename="../asemantools/build-5.4/qml/AsemanTools/AsemanTools/AsemanAbout.qml" line="50"/>
-        <location filename="../asemantools/qml/AsemanTools/AsemanAbout.qml" line="50"/>
+        <location filename="../asemantools/qml/AsemanTools/AsemanAbout.qml" line="75"/>
         <source>Aseman is a non-profit organization, exists to support and lead the free, open source and cross-platform projects and researches.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../asemantools/build/qml/AsemanTools/AsemanTools/AsemanAbout.qml" line="67"/>
-        <location filename="../asemantools/buildkde/qml/AsemanTools/AsemanTools/AsemanAbout.qml" line="67"/>
+        <location filename="../asemantools/buildkde/qml/AsemanTools/AsemanTools/AsemanAbout.qml" line="90"/>
         <location filename="../asemantools/build-5.4/qml/AsemanTools/AsemanTools/AsemanAbout.qml" line="67"/>
-        <location filename="../asemantools/qml/AsemanTools/AsemanAbout.qml" line="67"/>
+        <location filename="../asemantools/qml/AsemanTools/AsemanAbout.qml" line="90"/>
         <source>The Goal of the Aseman is to provide free and secure products to keep people’s freedom and their privacy.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../asemantools/build/qml/AsemanTools/AsemanTools/AsemanAbout.qml" line="80"/>
-        <location filename="../asemantools/buildkde/qml/AsemanTools/AsemanTools/AsemanAbout.qml" line="80"/>
+        <location filename="../asemantools/buildkde/qml/AsemanTools/AsemanTools/AsemanAbout.qml" line="107"/>
         <location filename="../asemantools/build-5.4/qml/AsemanTools/AsemanTools/AsemanAbout.qml" line="80"/>
-        <location filename="../asemantools/qml/AsemanTools/AsemanAbout.qml" line="80"/>
+        <location filename="../asemantools/qml/AsemanTools/AsemanAbout.qml" line="107"/>
         <source>Home Page</source>
         <translation type="unfinished"></translation>
     </message>
@@ -370,37 +370,37 @@ Nile create Free and OpenSource projects.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/Configure.qml" line="151"/>
+        <location filename="../qml/Meikade/Configure.qml" line="150"/>
         <source>Backup &amp; Restore</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/Configure.qml" line="154"/>
+        <location filename="../qml/Meikade/Configure.qml" line="153"/>
         <source>Languages</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/Configure.qml" line="155"/>
+        <location filename="../qml/Meikade/Configure.qml" line="154"/>
         <source>Data Location</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/Configure.qml" line="156"/>
+        <location filename="../qml/Meikade/Configure.qml" line="155"/>
         <source>Night Theme</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/Configure.qml" line="157"/>
+        <location filename="../qml/Meikade/Configure.qml" line="156"/>
         <source>Phrase</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/Configure.qml" line="159"/>
+        <location filename="../qml/Meikade/Configure.qml" line="158"/>
         <source>Keep screen on</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/Configure.qml" line="160"/>
+        <location filename="../qml/Meikade/Configure.qml" line="159"/>
         <source>Send anonymous data to improve meikade.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -470,12 +470,12 @@ Meikade need 150MB free space on your memory.</source>
 <context>
     <name>DatabaseLocation</name>
     <message>
-        <location filename="../qml/Meikade/DatabaseLocation.qml" line="74"/>
+        <location filename="../qml/Meikade/DatabaseLocation.qml" line="82"/>
         <source>Internal Memory</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/DatabaseLocation.qml" line="75"/>
+        <location filename="../qml/Meikade/DatabaseLocation.qml" line="83"/>
         <source>External Memory</source>
         <translation type="unfinished"></translation>
     </message>
@@ -856,8 +856,8 @@ Thank you.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/MainMenu.qml" line="154"/>
-        <source>About Nile Group</source>
+        <location filename="../qml/Meikade/MainMenu.qml" line="155"/>
+        <source>About Aseman</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1096,13 +1096,13 @@ It&apos;s calculate omen using natural random algorithms. Another apps calculate
     <name>PoemHeader</name>
     <message>
         <location filename="../qml/Meikade/PoemHeader.qml" line="70"/>
-        <location filename="../qml/Meikade/PoemHeader.qml" line="299"/>
+        <location filename="../qml/Meikade/PoemHeader.qml" line="301"/>
         <source>Favorited</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/Meikade/PoemHeader.qml" line="73"/>
-        <location filename="../qml/Meikade/PoemHeader.qml" line="297"/>
+        <location filename="../qml/Meikade/PoemHeader.qml" line="299"/>
         <source>Unfavorited</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1117,32 +1117,32 @@ It&apos;s calculate omen using natural random algorithms. Another apps calculate
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/PoemHeader.qml" line="324"/>
+        <location filename="../qml/Meikade/PoemHeader.qml" line="326"/>
         <source>Cancel Select</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/PoemHeader.qml" line="324"/>
+        <location filename="../qml/Meikade/PoemHeader.qml" line="326"/>
         <source>Select</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/PoemHeader.qml" line="328"/>
+        <location filename="../qml/Meikade/PoemHeader.qml" line="332"/>
         <source>Share Image</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/PoemHeader.qml" line="345"/>
+        <location filename="../qml/Meikade/PoemHeader.qml" line="351"/>
         <source>Share</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/PoemHeader.qml" line="360"/>
+        <location filename="../qml/Meikade/PoemHeader.qml" line="368"/>
         <source>Copy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/PoemHeader.qml" line="365"/>
+        <location filename="../qml/Meikade/PoemHeader.qml" line="375"/>
         <source>Copied...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1229,12 +1229,12 @@ It&apos;s calculate omen using natural random algorithms. Another apps calculate
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/SearchList.qml" line="211"/>
+        <location filename="../qml/Meikade/SearchList.qml" line="236"/>
         <source>All Poets</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/SearchList.qml" line="243"/>
+        <location filename="../qml/Meikade/SearchList.qml" line="268"/>
         <source>Search in:</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1360,12 +1360,12 @@ It&apos;s calculate omen using natural random algorithms. Another apps calculate
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../stickermodel.cpp" line="280"/>
+        <location filename="../stickermodel.cpp" line="287"/>
         <source>Meikade Logo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../stickermodel.cpp" line="286"/>
+        <location filename="../stickermodel.cpp" line="293"/>
         <source>Poet Name</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1425,80 +1425,100 @@ It&apos;s calculate omen using natural random algorithms. Another apps calculate
 <context>
     <name>XmlDownloaderPage</name>
     <message>
-        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="14"/>
+        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="15"/>
         <source>Store</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="61"/>
+        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="62"/>
         <source>Fetching poet lists...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="70"/>
+        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="71"/>
         <source>Can&apos;t connect to the server</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="81"/>
+        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="83"/>
         <source>New Poets</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="81"/>
+        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="83"/>
         <source>Updates</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="81"/>
+        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="83"/>
         <source>All</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="81"/>
+        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="83"/>
         <source>Classic</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="81"/>
+        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="83"/>
         <source>Modern</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="83"/>
+        <source>Installeds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="147"/>
+        <source>Update</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="163"/>
+        <source>Delete</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>XmlDownloaderPageItem</name>
     <message>
-        <location filename="../qml/Meikade/XmlDownloaderPageItem.qml" line="39"/>
-        <source>Poets list, you can download from NileGroup servers...</source>
+        <location filename="../qml/Meikade/XmlDownloaderPageItem.qml" line="40"/>
+        <source>Poets list, you can download from the Aseman team servers...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/XmlDownloaderPageItem.qml" line="89"/>
+        <location filename="../qml/Meikade/XmlDownloaderPageItem.qml" line="90"/>
         <source>Installing</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/XmlDownloaderPageItem.qml" line="92"/>
+        <location filename="../qml/Meikade/XmlDownloaderPageItem.qml" line="93"/>
+        <source>Removing</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/XmlDownloaderPageItem.qml" line="96"/>
         <source>Downloading</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/XmlDownloaderPageItem.qml" line="95"/>
+        <location filename="../qml/Meikade/XmlDownloaderPageItem.qml" line="99"/>
         <source>Update</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/XmlDownloaderPageItem.qml" line="98"/>
+        <location filename="../qml/Meikade/XmlDownloaderPageItem.qml" line="102"/>
         <source>Installed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/XmlDownloaderPageItem.qml" line="101"/>
+        <location filename="../qml/Meikade/XmlDownloaderPageItem.qml" line="105"/>
         <source>Error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/XmlDownloaderPageItem.qml" line="103"/>
+        <location filename="../qml/Meikade/XmlDownloaderPageItem.qml" line="107"/>
         <source>Free</source>
         <translation type="unfinished"></translation>
     </message>

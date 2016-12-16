@@ -1,3 +1,21 @@
+/*
+    Copyright (C) 2017 Aseman Team
+    http://aseman.co
+
+    Meikade is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Meikade is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
 #define XML_DOWNLOAD_LINK "http://aseman.land/download/meikade/2/data.xml"
 #define XML_DATE_FORMAT "yyyy/MM/dd-HH:mm:ss"
 #define XML_VERSION "1.0"
@@ -31,6 +49,7 @@ public:
         downloadError(false),
         installed(false),
         installing(false),
+        removing(false),
         updateAvailable(false),
         downloadedBytes(0),
         structure(0),
@@ -56,6 +75,7 @@ public:
     bool downloadError;
     bool installed;
     bool installing;
+    bool removing;
     bool updateAvailable;
     qint64 downloadedBytes;
 
@@ -110,8 +130,10 @@ XmlDownloaderModel::XmlDownloaderModel(QObject *parent) :
     p->refreshing = false;
     p->installer = new PoetScriptInstallerQueue(this);
 
-    connect(p->installer, SIGNAL(error(QString,QString))   , SLOT(installerError(QString,QString))   );
-    connect(p->installer, SIGNAL(finished(QString,QString)), SLOT(installerFinished(QString,QString)));
+    connect(p->installer, &PoetScriptInstallerQueue::error, this, &XmlDownloaderModel::installerError);
+    connect(p->installer, &PoetScriptInstallerQueue::finished, this, &XmlDownloaderModel::installerFinished);
+    connect(p->installer, &PoetScriptInstallerQueue::removeError, this, &XmlDownloaderModel::removeError);
+    connect(p->installer, &PoetScriptInstallerQueue::removed, this, &XmlDownloaderModel::removeFinished);
 }
 
 XmlDownloaderModelUnit &XmlDownloaderModel::itemOf(const QModelIndex &index) const
@@ -119,12 +141,19 @@ XmlDownloaderModelUnit &XmlDownloaderModel::itemOf(const QModelIndex &index) con
     return p->list[index.row()];
 }
 
+bool XmlDownloaderModel::contains(int poetId) const
+{
+    for(const XmlDownloaderModelUnit &unit: p->list)
+        if(unit.poetId == poetId)
+            return true;
+    return false;
+}
+
 int XmlDownloaderModel::indexOf(const QString &guid) const
 {
     for(int i=0; i<p->list.count(); i++)
         if(p->list.at(i).guid == guid)
             return i;
-
     return -1;
 }
 
@@ -188,6 +217,10 @@ QVariant XmlDownloaderModel::data(const QModelIndex &index, int role) const
         result = unit.downloaded;
         break;
 
+    case DataRoleRemovingState:
+        result = unit.removing;
+        break;
+
     case DataRoleDownloadingState:
         result = unit.downloading;
         break;
@@ -223,6 +256,11 @@ bool XmlDownloaderModel::setData(const QModelIndex &index, const QVariant &value
     Q_UNUSED(unit)
     switch(role)
     {
+    case DataRoleRemovingState:
+        if(value.toBool())
+            startRemoving(index);
+        break;
+
     case DataRoleDownloadingState:
         if(value.toBool())
             startDownload(index);
@@ -268,6 +306,7 @@ QHash<qint32, QByteArray> XmlDownloaderModel::roleNames() const
     res->insert( DataRoleFileGuid, "fileGuid");
     res->insert( DataRoleFilePublicDate, "filePublicData");
     res->insert( DataRoleFileCompressMethod, "fileCompressMethod");
+    res->insert( DataRoleRemovingState, "removingState");
     res->insert( DataRoleDownloadedStatus, "downloadedStatus");
     res->insert( DataRoleDownloadingState, "downloadingState");
     res->insert( DataRoleDownloadError, "downloadError");
@@ -307,17 +346,48 @@ void XmlDownloaderModel::refresh()
         return;
 
     changed(QList<XmlDownloaderModelUnit>());
+    loadInstalleds();
 
     p->xml_downloader = new AsemanDownloader(this);
     p->xml_downloader->setPath(XML_DOWNLOAD_LINK);
 
-    connect(p->xml_downloader, SIGNAL(error(QStringList))  , SLOT(error(QStringList))  );
-    connect(p->xml_downloader, SIGNAL(finished(QByteArray)), SLOT(finished(QByteArray)));
+    connect(p->xml_downloader, &AsemanDownloader::error, this, &XmlDownloaderModel::error);
+    connect(p->xml_downloader, &AsemanDownloader::finished, this, &XmlDownloaderModel::finished);
 
     p->xml_downloader->start();
 
     p->refreshing = true;
     emit refreshingChanged();
+}
+
+void XmlDownloaderModel::loadInstalleds()
+{
+    MeikadeDatabase *db = Meikade::instance()->database();
+    if(!db)
+        return;
+
+    QList<XmlDownloaderModelUnit> list = p->list;
+
+    QList<int> poets = db->poets();
+    for(int poetId: poets)
+    {
+        if(contains(poetId))
+            continue;
+
+        int realPoetId = db->catPoetId(poetId);
+
+        XmlDownloaderModelUnit unit;
+        unit.poetId = realPoetId;
+        unit.name = db->catName(poetId);
+        unit.guid = QUuid::createUuid().toString();
+        unit.installed = true;
+        unit.type = (1<<19);
+
+        list << unit;
+    }
+
+    qStableSort(list.begin(), list.end(), sortPersianXmlUnit);
+    changed(list);
 }
 
 void XmlDownloaderModel::error(const QStringList &error)
@@ -334,6 +404,8 @@ void XmlDownloaderModel::error(const QStringList &error)
 
 void XmlDownloaderModel::finished(const QByteArray &data)
 {
+    changed(QList<XmlDownloaderModelUnit>());
+
     QList<XmlDownloaderModelUnit> result;
     QDomDocument dom;
 
@@ -425,6 +497,8 @@ void XmlDownloaderModel::finished(const QByteArray &data)
             unit.updateAvailable = (date.date().year()>2000 && (date>dbDate || dbDate.isNull()) && unit.installed);
             if(unit.updateAvailable)
                 unit.type = unit.type|(1<<20);
+            if(unit.installed)
+                unit.type = unit.type|(1<<19);
 
             revision = revision.nextSiblingElement("Poet");
         }
@@ -576,10 +650,54 @@ void XmlDownloaderModel::installerFinished(const QString &file, const QString &g
     mdb->refresh();
 }
 
+void XmlDownloaderModel::removeError(const QString &guid)
+{
+    const int idx = indexOf(guid);
+    if(idx == -1)
+        return;
+
+    XmlDownloaderModelUnit &unit = p->list[idx];
+    unit.downloadError = true;
+    unit.downloading = false;
+    unit.downloadedBytes = 0;
+    unit.removing = false;
+    unit.installing = false;
+    unit.installed = true;
+
+    QModelIndex index = QAbstractListModel::index(idx);
+    emit dataChanged(index, index, QVector<int>()<<DataRoleDownloadingState
+                     <<DataRoleDownloadError<<DataRoleDownloadedBytes
+                     <<DataRoleInstalling<<DataRoleInstalled);
+}
+
+void XmlDownloaderModel::removeFinished(const QString &guid)
+{
+    const int idx = indexOf(guid);
+    if(idx == -1)
+        return;
+
+    XmlDownloaderModelUnit &unit = p->list[idx];
+    unit.downloadError = false;
+    unit.downloading = false;
+    unit.downloadedBytes = 0;
+    unit.removing = false;
+    unit.installing = false;
+    unit.installed = false;
+    unit.updateAvailable = false;
+
+    QModelIndex index = QAbstractListModel::index(idx);
+    emit dataChanged(index, index, QVector<int>()<<DataRoleDownloadingState
+                     <<DataRoleDownloadError<<DataRoleDownloadedBytes
+                     <<DataRoleInstalling<<DataRoleInstalled<<DataRoleUpdateAvailable);
+
+    MeikadeDatabase *mdb = Meikade::instance()->database();
+    mdb->refresh();
+}
+
 void XmlDownloaderModel::startDownload(const QModelIndex &index)
 {
     XmlDownloaderModelUnit &unit = itemOf(index);
-    if(unit.downloading || unit.downloaded)
+    if(unit.downloading || unit.downloaded || unit.removing)
         return;
 
     if(!p->downloaders.contains(unit.guid))
@@ -607,7 +725,7 @@ void XmlDownloaderModel::startDownload(const QModelIndex &index)
 void XmlDownloaderModel::stopDownload(const QModelIndex &index)
 {
     XmlDownloaderModelUnit &unit = itemOf(index);
-    if(!unit.downloading || unit.downloaded)
+    if(!unit.downloading || unit.downloaded || unit.removing)
         return;
 
     if(p->downloaders.contains(unit.guid))
@@ -618,6 +736,19 @@ void XmlDownloaderModel::stopDownload(const QModelIndex &index)
 
     unit.downloading = false;
     emit dataChanged(index, index, QVector<int>()<<DataRoleDownloadingState);
+}
+
+void XmlDownloaderModel::startRemoving(const QModelIndex &index)
+{
+    XmlDownloaderModelUnit &unit = itemOf(index);
+    if(unit.downloading || unit.downloaded || unit.removing)
+        return;
+
+    unit.removing = true;
+
+    p->installer->remove(unit.guid, unit.poetId);
+
+    emit dataChanged(index, index, QVector<int>()<<DataRoleRemovingState);
 }
 
 void XmlDownloaderModel::changed(const QList<XmlDownloaderModelUnit> &list)
@@ -680,4 +811,3 @@ XmlDownloaderModel::~XmlDownloaderModel()
 {
     delete p;
 }
-

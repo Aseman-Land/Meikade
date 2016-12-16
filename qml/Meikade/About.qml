@@ -1,6 +1,6 @@
 /*
-    Copyright (C) 2015 Nile Group
-    http://nilegroup.org
+    Copyright (C) 2017 Aseman Team
+    http://aseman.co
 
     Meikade is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -77,7 +77,7 @@ Rectangle {
                     font.family: AsemanApp.globalFont.family
                     font.pixelSize: 10*globalFontDensity*Devices.fontDensity
                     font.bold: true
-                    text: qsTr("Meikade is a free and opensource application by Nile Team")
+                    text: qsTr("Meikade is a free and opensource application by Aseman Team")
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                     color: "#333333"
                 }
@@ -107,8 +107,8 @@ Rectangle {
                     width: parent.width
                     font.family: AsemanApp.globalFont.family
                     font.pixelSize: 9*globalFontDensity*Devices.fontDensity
-                    text: qsTr(" - AmirHosein Mousavi (Project Manager and Leader and Developer)\n"+
-                               " - Bardia Daneshvar (Project Founder, Project Architect and Developer)\n"+
+                    text: qsTr(" - Bardia Daneshvar (Project Founder, Project Architect and Developer)\n"+
+                               " - AmirHosein Mousavi (Director of Public Relations and Developer)\n"+
                                " - Pourya Daneshvar (Designer)\n"+
                                " - Hasan Noruzi (Idea Processing)\n"+
                                " - Amin Hatami (Logo Designer)")

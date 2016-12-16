@@ -1,3 +1,21 @@
+/*
+    Copyright (C) 2017 Aseman Team
+    http://aseman.co
+
+    Meikade is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Meikade is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
 #include "poetscriptinstaller.h"
 #include "p7zipextractor.h"
 #include "asemantools/asemanapplication.h"
@@ -67,18 +85,8 @@ void PoetScriptInstaller::installFile(const QString &path, int poetId, const QDa
 void PoetScriptInstaller::install(const QString &scr, int poetId, const QDateTime &date)
 {
     QString script = QString(scr).replace("\r\n", "\n");
-    QFile(p->path).setPermissions(QFileDevice::ReadUser|QFileDevice::WriteUser|
-                                  QFileDevice::ReadGroup|QFileDevice::WriteGroup);
-
-    if(!p->db.isOpen())
-    {
-        p->db = QSqlDatabase::addDatabase("QSQLITE", QUuid::createUuid().toString());
-        p->db.setDatabaseName(p->path);
-        p->db.open();
-    }
-
+    initDb();
     PoetRemover::removePoetCat(p->db, poetId);
-    PoetRemover::begin(p->db);
 
     int pos = 0;
     int from = 0;
@@ -102,13 +110,30 @@ void PoetScriptInstaller::install(const QString &scr, int poetId, const QDateTim
     int res = query.exec();
     if(!res)
         qDebug() << __PRETTY_FUNCTION__ << query.lastError().text();
+}
 
-    PoetRemover::commit(p->db);
+void PoetScriptInstaller::remove(int poetId)
+{
+    initDb();
+    PoetRemover::removePoetCat(p->db, poetId);
     PoetRemover::vacuum(p->db);
+    emit finished(false);
+}
+
+void PoetScriptInstaller::initDb()
+{
+    QFile(p->path).setPermissions(QFileDevice::ReadUser|QFileDevice::WriteUser|
+                                  QFileDevice::ReadGroup|QFileDevice::WriteGroup);
+
+    if(p->db.isOpen())
+        return;
+
+    p->db = QSqlDatabase::addDatabase("QSQLITE", QUuid::createUuid().toString());
+    p->db.setDatabaseName(p->path);
+    p->db.open();
 }
 
 PoetScriptInstaller::~PoetScriptInstaller()
 {
     delete p;
 }
-

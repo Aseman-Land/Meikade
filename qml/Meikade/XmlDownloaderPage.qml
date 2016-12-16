@@ -1,9 +1,28 @@
+/*
+    Copyright (C) 2017 Aseman Team
+    http://aseman.co
+
+    Meikade is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Meikade is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
 import QtQuick 2.0
-import QtQuick.Controls 2.0
 import AsemanTools 1.0
 import AsemanTools 1.1 as AT
 import Meikade 1.0
 import AsemanTools.Awesome 1.0
+import QtQuick.Controls 2.0
+import QtQuick.Controls.Material 2.0
 import QtQuick.Layouts 1.3
 
 Rectangle {
@@ -49,7 +68,7 @@ Rectangle {
         light: false
         modern: true
         indicatorSize: 20*Devices.density
-        running: xml_model.refreshing
+        running: xml_model.refreshing && (view.currentItem && view.currentItem.count == 0)
     }
 
     Text {
@@ -79,7 +98,7 @@ Rectangle {
         fontSize: 10*Devices.fontDensity
         currentIndex: 0
         onCurrentIndexChanged: if(view) view.currentIndex = currentIndex
-        model: [qsTr("New Poets"), qsTr("Updates"), qsTr("All"), qsTr("Classic"), qsTr("Modern")]
+        model: [qsTr("New Poets"), qsTr("Updates"), qsTr("Installeds"), qsTr("All"), qsTr("Classic"), qsTr("Modern")]
     }
 
     SwipeView {
@@ -95,6 +114,7 @@ Rectangle {
 
         XmlDownloaderPageItem { type: (1<<0) }
         XmlDownloaderPageItem { type: (1<<20) }
+        XmlDownloaderPageItem { type: (1<<19) }
         XmlDownloaderPageItem { type: (1<<10)-1 }
         XmlDownloaderPageItem { type: (1<<1) }
         XmlDownloaderPageItem { type: (1<<2) }
@@ -112,7 +132,68 @@ Rectangle {
         anchors.horizontalCenter: parent.horizontalCenter
     }
 
-    Component.onCompleted: if(!xml_model.count) xml_model.refresh()
+    Popup {
+        id: removePopup
+        x: parent.width/2 - width/2
+        y: parent.height/2 - height/2
+        modal: true
+        focus: true
+
+        property string poetName
+        property var deleteCallback
+        property var updateCallback
+
+        onVisibleChanged: {
+            if(visible) {
+                BackHandler.pushHandler(removePopup, function(){removePopup.visible = false})
+            } else {
+                BackHandler.removeHandler(removePopup)
+            }
+        }
+
+        ColumnLayout {
+
+            Label{
+                Layout.preferredWidth: 200*Devices.density
+                color: "#333333"
+                font.pixelSize: 12*Devices.fontDensity
+                horizontalAlignment: Label.AlignHCenter
+                text: removePopup.poetName
+            }
+
+            Button {
+                text: qsTr("Update")
+                visible: removePopup.updateCallback != null
+                onClicked: {
+                    removePopup.updateCallback()
+                    removePopup.close()
+                }
+
+                Material.foreground: Material.LightBlue
+                Material.background: "transparent"
+                Material.elevation: 0
+
+                Layout.preferredWidth: 0
+                Layout.fillWidth: true
+            }
+
+            Button {
+                text: qsTr("Delete")
+                onClicked: {
+                    removePopup.deleteCallback()
+                    removePopup.close()
+                }
+
+                Material.foreground: Material.Red
+                Material.background: "transparent"
+                Material.elevation: 0
+
+                Layout.preferredWidth: 0
+                Layout.fillWidth: true
+            }
+        }
+    }
+
+    Component.onCompleted: xml_model.refresh()
     ActivityAnalizer { object: xml_page }
 }
-

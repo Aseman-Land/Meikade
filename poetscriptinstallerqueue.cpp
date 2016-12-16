@@ -1,3 +1,21 @@
+/*
+    Copyright (C) 2017 Aseman Team
+    http://aseman.co
+
+    Meikade is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Meikade is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
 #include "poetscriptinstallerqueue.h"
 #include "poetscriptinstaller.h"
 
@@ -7,12 +25,18 @@
 class PoetScriptInstallerQueueUnit
 {
 public:
-    PoetScriptInstallerQueueUnit(): poetId(0){}
+    enum Type {
+        Install,
+        Remove
+    };
+
+    PoetScriptInstallerQueueUnit(): poetId(0), type(Install){}
 
     QString file;
     QString guid;
     int poetId;
     QDateTime date;
+    int type;
 
     bool operator ==(const PoetScriptInstallerQueueUnit &b) {
         return guid == b.guid;
@@ -56,7 +80,7 @@ void PoetScriptInstallerQueue::init_core()
 
     p->thread->start();
 
-    connect(p->core, SIGNAL(finished(bool)), SLOT(finished(bool)), Qt::QueuedConnection);
+    connect(p->core, &PoetScriptInstaller::finished, this, &PoetScriptInstallerQueue::finishedSlt, Qt::QueuedConnection);
 }
 
 void PoetScriptInstallerQueue::append(const QString &file, const QString &guid, int poetId, const QDateTime &date)
@@ -67,6 +91,7 @@ void PoetScriptInstallerQueue::append(const QString &file, const QString &guid, 
     unit.guid = guid;
     unit.poetId = poetId;
     unit.date = date;
+    unit.type = PoetScriptInstallerQueueUnit::Install;
 
     if(p->list.contains(unit))
         return;
@@ -75,12 +100,39 @@ void PoetScriptInstallerQueue::append(const QString &file, const QString &guid, 
     next();
 }
 
-void PoetScriptInstallerQueue::finished(bool error)
+void PoetScriptInstallerQueue::remove(const QString &guid, int poetId)
 {
-    if(error)
-        emit PoetScriptInstallerQueue::error(p->current.file, p->current.guid);
-    else
-        emit PoetScriptInstallerQueue::finished(p->current.file, p->current.guid);
+    init_core();
+    PoetScriptInstallerQueueUnit unit;
+    unit.guid = guid;
+    unit.poetId = poetId;
+    unit.type = PoetScriptInstallerQueueUnit::Remove;
+
+    if(p->list.contains(unit))
+        return;
+
+    p->list << unit;
+    next();
+}
+
+void PoetScriptInstallerQueue::finishedSlt(bool error)
+{
+    switch(p->current.type)
+    {
+        case PoetScriptInstallerQueueUnit::Install:
+        if(error)
+            emit PoetScriptInstallerQueue::error(p->current.file, p->current.guid);
+        else
+            emit PoetScriptInstallerQueue::finished(p->current.file, p->current.guid);
+        break;
+
+    case PoetScriptInstallerQueueUnit::Remove:
+        if(error)
+            emit PoetScriptInstallerQueue::removeError(p->current.guid);
+        else
+            emit PoetScriptInstallerQueue::removed(p->current.guid);
+        break;
+    }
 
     p->current = PoetScriptInstallerQueueUnit();
     next();
@@ -96,10 +148,21 @@ void PoetScriptInstallerQueue::next()
 
     p->active = true;
     p->current = p->list.takeFirst();
-    QMetaObject::invokeMethod(p->core, "installFile", Qt::QueuedConnection,
-                              Q_ARG(QString,p->current.file),
-                              Q_ARG(int,p->current.poetId),
-                              Q_ARG(QDateTime,p->current.date));
+
+    switch(p->current.type)
+    {
+    case PoetScriptInstallerQueueUnit::Install:
+        QMetaObject::invokeMethod(p->core, "installFile", Qt::QueuedConnection,
+                                  Q_ARG(QString,p->current.file),
+                                  Q_ARG(int,p->current.poetId),
+                                  Q_ARG(QDateTime,p->current.date));
+        break;
+
+    case PoetScriptInstallerQueueUnit::Remove:
+        QMetaObject::invokeMethod(p->core, "remove", Qt::QueuedConnection,
+                                  Q_ARG(int,p->current.poetId));
+        break;
+    }
 }
 
 PoetScriptInstallerQueue::~PoetScriptInstallerQueue()
@@ -113,4 +176,3 @@ PoetScriptInstallerQueue::~PoetScriptInstallerQueue()
 
     delete p;
 }
-

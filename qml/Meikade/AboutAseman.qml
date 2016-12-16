@@ -1,13 +1,13 @@
 /*
-    Copyright (C) 2015 Nile Group
-    http://nilegroup.org
+    Copyright (C) 2017 Aseman Team
+    http://aseman.co
 
-    Kaqaz is free software: you can redistribute it and/or modify
+    Meikade is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
 
-    Kaqaz is distributed in the hope that it will be useful,
+    Meikade is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
@@ -20,5 +20,7 @@ import QtQuick 2.0
 import AsemanTools 1.0
 
 AsemanAbout {
-
+    anchors.fill: parent
+    headerColor: "#333333"
+    color: "#ffffff"
 }

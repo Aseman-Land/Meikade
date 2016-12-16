@@ -1,8 +1,28 @@
+/*
+    Copyright (C) 2017 Aseman Team
+    http://aseman.co
+
+    Meikade is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Meikade is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
 #include "stickermodel.h"
 
 #include <QUrl>
 #include <QColor>
 #include <QDir>
+
+typedef QPair<QString,QString> PairString;
 
 class StickerModelItem
 {
@@ -202,40 +222,67 @@ void StickerModel::refresh()
 
     case Color:
     {
-        QStringList backgrounds;
-        backgrounds << "#f3f3f3";
-        backgrounds << "#435d97";
-        backgrounds << "#ebc220";
-        backgrounds << "#a13636";
-        backgrounds << "#1b1b1b";
-        backgrounds << "#3f8529";
-        backgrounds << "#3d93aa";
+        QList<PairString> colors;
+        colors << PairString("#f3f3f3", "#1b1b1b");
+        colors << PairString("#f3f3f3", "#ebc220");
+        colors << PairString("#f3f3f3", "#0d80ec");
+        colors << PairString("#f3f3f3", "#a13636");
 
-        QStringList foregrounds;
-        foregrounds << "#1b1b1b";
-        foregrounds << "#f3f3f3";
-        foregrounds << "#ebc220";
+        colors << PairString("#435d97", "#1b1b1b");
+        colors << PairString("#435d97", "#fbfbfb");
+        colors << PairString("#435d97", "#ebc220");
 
-        foreach(const QString &b, backgrounds)
-            foreach(const QString &f, foregrounds)
-            {
-                if(b == f)
-                    continue;
+        colors << PairString("#ebc220", "#1b1b1b");
+        colors << PairString("#ebc220", "#fbfbfb");
 
-                StickerModelItem color;
-                color.type = Color;
-                color.command1 = b;
-                color.command2 = f;
+        colors << PairString("#a13636", "#1b1b1b");
+        colors << PairString("#a13636", "#fbfbfb");
+        colors << PairString("#a13636", "#ebc220");
 
-                p->list << color;
-            }
+        colors << PairString("#1b1b1b", "#fbfbfb");
+        colors << PairString("#1b1b1b", "#ebc220");
+
+        colors << PairString("#3f8529", "#1b1b1b");
+        colors << PairString("#3f8529", "#fbfbfb");
+        colors << PairString("#3f8529", "#ebc220");
+
+        colors << PairString("#3d93aa", "#1b1b1b");
+        colors << PairString("#3d93aa", "#fbfbfb");
+        colors << PairString("#3d93aa", "#ebc220");
+
+        colors << PairString("#bcd014", "#1b1b1b");
+        colors << PairString("#bcd014", "#fbfbfb");
+
+        colors << PairString("#a43f95", "#1b1b1b");
+        colors << PairString("#a43f95", "#fbfbfb");
+        colors << PairString("#a43f95", "#ebc220");
+
+        colors << PairString("#f8c4c4", "#1b1b1b");
+        colors << PairString("#f8c4c4", "#fbfbfb");
+
+        colors << PairString("#ba9850", "#1b1b1b");
+        colors << PairString("#ba9850", "#fbfbfb");
+
+        colors << PairString("#0d80ec", "#1b1b1b");
+        colors << PairString("#0d80ec", "#fbfbfb");
+        colors << PairString("#0d80ec", "#ebc220");
+
+        for(const PairString &c: colors)
+        {
+            StickerModelItem color;
+            color.type = Color;
+            color.command1 = c.first;
+            color.command2 = c.second;
+
+            p->list << color;
+        }
     }
         break;
 
     case Sticker:
     {
         const QStringList & files = QDir(":/qml/Meikade/stickers/images/").entryList(QDir::Files, QDir::Name);
-        foreach(const QString &f, files)
+        for(const QString &f: files)
         {
             QString path = ":/qml/Meikade/stickers/images/"+f;
             QFileInfo file(path);
@@ -307,4 +354,3 @@ StickerModel::~StickerModel()
 {
     delete p;
 }
-

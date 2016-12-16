@@ -1,6 +1,6 @@
 /*
-    Copyright (C) 2015 Nile Group
-    http://nilegroup.org
+    Copyright (C) 2017 Aseman Team
+    http://aseman.co
 
     Meikade is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -30,26 +30,7 @@ AsemanApplication {
     organizationName: "Aseman Team"
     windowIcon: "icons/meikade.png"
 
-    property variant appMain
-
-    Component.onCompleted: { // Control app to run one instance
-        if(app.isRunning) {
-            console.debug("Another instance is running. Trying to make that visible...")
-            Tools.jsDelayCall(1, function(){
-                app.sendMessage("show")
-                app.exit(0)
-            })
-        } else {
-            var component = Qt.createComponent("MeikadeMainWindow.qml", Component.Asynchronous);
-            var callback = function(){
-                if(component.status == Component.Ready)
-                    appMain = component.createObject(app)
-                else if(component.status == Component.Error) {
-                    console.error(component.errorString())
-                }
-            }
-            component.statusChanged.connect(callback)
-            callback()
-        }
+    MeikadeMainWindow {
+        id: appMain
     }
 }

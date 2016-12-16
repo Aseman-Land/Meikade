@@ -1,3 +1,21 @@
+/*
+    Copyright (C) 2017 Aseman Team
+    http://aseman.co
+
+    Meikade is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Meikade is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
 import QtQuick 2.0
 import QtGraphicalEffects 1.0
 import AsemanTools 1.0
@@ -108,7 +126,7 @@ Rectangle {
                 anchors.centerIn: parent
                 width: xwidth
                 height: xheight
-                color: "#1b1b1b"
+                color: "#ebc220"
 
                 property real ratio: 1
                 property real parentRatio: main_frame.width/main_frame.height
@@ -228,7 +246,7 @@ Rectangle {
                     id: images_frame
                     anchors.fill: frame_source
                     visible: false
-                    color: "#ebc220"
+                    color: "#1b1b1b"
                 }
 
                 OpacityMask {
@@ -545,4 +563,3 @@ Rectangle {
         }
     }
 }
-
