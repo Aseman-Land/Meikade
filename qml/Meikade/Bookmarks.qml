@@ -18,12 +18,13 @@
 
 import QtQuick 2.0
 import AsemanTools 1.0
+import "globals"
 
 BackHandlerView {
     id: bookmarks
     anchors.fill: parent
     clip: true
-    color: Meikade.nightTheme? "#222222" : "#dddddd"
+    color: MeikadeGlobals.backgroundColor
     viewMode: false
 
     readonly property string title: qsTr("Bookmarks")
@@ -109,7 +110,7 @@ BackHandlerView {
         id: header
         width: parent.width
         height: View.statusBarHeight + Devices.standardTitleBarHeight
-        color: "#881010"
+        color: MeikadeGlobals.masterColor
 
         TitleBarShadow {
             width: header.width

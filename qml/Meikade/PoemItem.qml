@@ -18,6 +18,7 @@
 
 import QtQuick 2.0
 import AsemanTools 1.0
+import "globals"
 
 Rectangle {
     id: item
@@ -94,7 +95,7 @@ Rectangle {
             font.family: globalPoemFontFamily
             wrapMode: TextInput.WordWrap
             horizontalAlignment: TextTools.directionOf(text)==Qt.LeftToRight? Text.AlignLeft : Text.AlignRight
-            color: Meikade.nightTheme? "#ffffff" : "#111111"
+            color: MeikadeGlobals.foregroundColor
             text: {
                 var psn1 = Database.versePosition(item.pid,item.vid)
                 var txt1 = Database.verseText(item.pid,item.vid)

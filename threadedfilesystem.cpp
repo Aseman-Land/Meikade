@@ -178,5 +178,10 @@ void ThreadedFileSystem::copy_prv(const QString &src, const QString &dst)
 
 ThreadedFileSystem::~ThreadedFileSystem()
 {
+    if(p->thread)
+    {
+        p->thread->quit();
+        p->thread->wait();
+    }
     delete p;
 }

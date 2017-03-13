@@ -17,13 +17,14 @@
 */
 
 import QtQuick 2.0
-import AsemanTools 1.0
+import AsemanTools 1.1
 import AsemanTools.Awesome 1.0
+import "globals"
 
 Rectangle {
     id: page
     anchors.fill: parent
-    color: Meikade.nightTheme? "#222222" : "#dddddd"
+    color: MeikadeGlobals.backgroundColor
 
     property alias count: list.count
     property alias catId: catItem.catId
@@ -33,6 +34,7 @@ Rectangle {
     property variant sidePoemsListObject
 
     readonly property real sideMargin: sidePoemsListObject? parent.width/2 : 0
+    readonly property bool titleBarHide: title_bar.hide
 
     ListObject {
         id: list
@@ -95,7 +97,7 @@ Rectangle {
                 id: md_button
                 anchors.fill: parent
                 flickable: catItem.list
-                color: "#881010"
+                color: MeikadeGlobals.masterColor
             }
         }
 
@@ -129,8 +131,15 @@ Rectangle {
     Header {
         id: title_bar
         width: parent.width
-        color: "#881010"
+        color: MeikadeGlobals.masterColor
         shadow: true
+        y: hide? -Devices.standardTitleBarHeight : 0
+
+        property bool hide: false
+
+        Behavior on y {
+            NumberAnimation { easing.type: Easing.OutCubic; duration: 300 }
+        }
 
         Button {
             x: View.reverseLayout? 0 : parent.width - width
@@ -138,10 +147,10 @@ Rectangle {
             height: Devices.standardTitleBarHeight
             width: height
             radius: 0
-            highlightColor: "#88666666"
+            highlightColor: "#00000000"
             onClicked: {
                 networkFeatures.pushAction("Search (from header)")
-                pageManager.append( Qt.createComponent("SearchBar.qml") )
+                showSearch()
             }
 
             Text {
@@ -152,6 +161,12 @@ Rectangle {
                 text: Awesome.fa_search
             }
         }
+    }
+
+    Rectangle {
+        width: parent.width
+        height: Devices.statusBarHeight
+        color: title_bar.color
     }
 
     Component {
@@ -250,7 +265,7 @@ Rectangle {
                     highlightColor: "#88666666"
                     onClicked: {
                         networkFeatures.pushAction("Search (from header)")
-                        pageManager.append( Qt.createComponent("SearchBar.qml") )
+                        showSearch()
                     }
 
                     Text {
@@ -421,7 +436,19 @@ Rectangle {
 
     }
 
+    function hideHeader() {
+        if(!Devices.isMobile)
+            return
+        title_bar.hide = true
+    }
+
+    function showHeader() {
+        title_bar.hide = false
+    }
+
     Component.onCompleted: {
         initTranslations()
+        MeikadeGlobals.categoriesList.append(this)
     }
+    Component.onDestruction: MeikadeGlobals.categoriesList.removeAll(this)
 }

@@ -23,6 +23,7 @@ import AsemanTools 1.1 as AT
 import AsemanTools.Awesome 1.0
 import Meikade 1.0
 import "."
+import "globals"
 
 MeikadeWindowBase {
     id: main
@@ -229,7 +230,7 @@ MeikadeWindowBase {
 
             Rectangle {
                 anchors.fill: parent
-                color: "#f0f0f0"
+                color: MeikadeGlobals.backgroundAlternativeColor
             }
 
             MainMenu {
@@ -260,6 +261,15 @@ MeikadeWindowBase {
         width: row.width + 26*AT.Devices.density
         x: AT.View.defaultLayout? 0 : parent.width - width
         y: AT.View.statusBarHeight
+        visible: {
+            if(MeikadeGlobals.categoriesList.count == 0)
+                return true
+            if(!MeikadeGlobals.categoriesList.last())
+                return true
+            if(pageManager.currentItem && pageManager.currentItem.title)
+                return true
+            return !MeikadeGlobals.categoriesList.last().titleBarHide
+        }
 
         Row {
             id: row
@@ -421,6 +431,13 @@ MeikadeWindowBase {
 
     function initTranslations(){
         meikadeTitle = qsTr("Meikade")
+    }
+
+    function showSearch() {
+        var component = Qt.createComponent("SearchBar.qml")
+        var object = component.createObject(pageManager.currentItem)
+        AT.BackHandler.pushHandler(object, function(){ object.destroy() })
+        object.focusOnText()
     }
 
     Component {

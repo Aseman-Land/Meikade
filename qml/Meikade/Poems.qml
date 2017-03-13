@@ -17,13 +17,15 @@
 */
 
 import QtQuick 2.0
+import QtQuick.Controls 2.1
 import QtGraphicalEffects 1.0
 import AsemanTools 1.0
 import AsemanTools.Awesome 1.0
+import "globals"
 
 Rectangle {
     id: poems
-    color: Meikade.nightTheme? "#222222" : "#dddddd"
+    color: MeikadeGlobals.backgroundColor
 
     property int catId: -1
 
@@ -126,14 +128,12 @@ Rectangle {
         bottomMargin: View.navigationBarHeight + spacing
         clip: true
         model: ListModel {}
-        delegate: Rectangle {
+        delegate: MaterialFrame {
             id: item
             x: poems_list.spacing
             width: poems_list.width - 2*x
             height: txt.height + 30*Devices.density
-            color: marea.pressed? (Meikade.nightTheme? "#12223D" : "#CFDAFF") : (Meikade.nightTheme? "#111111" : "#ffffff")
-            border.color: Meikade.nightTheme? "#333333" : "#cccccc"
-            border.width: 1*Devices.density
+            color: MeikadeGlobals.backgroundAlternativeColor
 
             property int pid: identifier
             property bool hasFavorite: false
@@ -153,7 +153,7 @@ Rectangle {
                 font.pixelSize: Devices.isMobile? 9*globalFontDensity*Devices.fontDensity : 10*globalFontDensity*Devices.fontDensity
                 font.family: AsemanApp.globalFont.family
                 horizontalAlignment: View.defaultLayout? Text.AlignLeft : Text.AlignRight
-                color: Meikade.nightTheme? "#ffffff" :"#333333"
+                color: MeikadeGlobals.foregroundColor
                 text: {
                     if(Meikade.endUsingNumber(poemTitle))
                         return poemTitle + " - " + poemFristVerse + "..."
@@ -168,7 +168,7 @@ Rectangle {
                 property string poemFristVerse: Database.verseText(pid, 1)
             }
 
-            MouseArea{
+            ItemDelegate {
                 id: marea
                 anchors.fill: parent
                 onClicked: {
@@ -200,7 +200,7 @@ Rectangle {
     ScrollBar {
         scrollArea: poems_list; height: poems_list.height - View.navigationBarHeight
         anchors.right: poems_list.right; anchors.top: poems_list.top
-        color: Meikade.nightTheme? "#ffffff" : "#881010"
+        color: Meikade.nightTheme? "#ffffff" : MeikadeGlobals.masterColor
         LayoutMirroring.enabled: View.layoutDirection == Qt.RightToLeft
     }
 }

@@ -18,13 +18,14 @@
 
 import QtQuick 2.3
 import QtGraphicalEffects 1.0
-import QtQuick.Controls 2.0
+import QtQuick.Controls 2.1
 import QtQuick.Layouts 1.3
 import AsemanTools 1.0
+import "globals"
 
 Rectangle {
     id: view
-    color: Meikade.nightTheme? "#222222" : "#ffffff"
+    color: MeikadeGlobals.backgroundColor
 
     property int poemId: -1
     property variant poemsArray: new Array
@@ -36,8 +37,8 @@ Rectangle {
     property alias count: view_list.count
 
     property color highlightColor: "#11000000"
-    property color textColor: Meikade.nightTheme? "#ffffff" : "#333333"
-    property color highlightTextColor: Meikade.nightTheme? "#ffffff" : "#333333"
+    property color textColor: MeikadeGlobals.foregroundColor
+    property color highlightTextColor: MeikadeGlobals.foregroundColor
 
     property real fontScale: Meikade.fontPointScale(Meikade.poemsFont)
     property bool editable: true
@@ -45,6 +46,8 @@ Rectangle {
 
     property bool rememberBar: false
     property bool selectMode: false
+
+    property bool allowHideHeader: false
 
     property variant stickerDialog
 
@@ -166,7 +169,7 @@ Rectangle {
         width: parent.width
         height: parent.height - header_back.headerHeight
         anchors.bottom: parent.bottom
-        color: "#444444"
+        color: "#222222"
         visible: phrase_txt.text.length!=0
 
         Column {
@@ -211,13 +214,33 @@ Rectangle {
         preferredHighlightBegin: height/2
         preferredHighlightEnd: height/2
         currentIndex: 0
+
+        onContentYChanged: {
+            if(!allowHideHeader)
+                return
+
+            if(contentY < 100*Devices.density)
+                showHeader()
+            else
+            if(contentY > 200*Devices.density) {
+                var delta = (contentY-lastContentY)
+                if(delta < -100*Devices.density)
+                    showHeader()
+                else
+                if(delta > 50*Devices.density)
+                    hideHeader()
+            }
+        }
+        onDraggingVerticallyChanged: if(draggingVertically) lastContentY = contentY
+
         property int highlightedVid: -1
         property int selectedIndex: -1
+        property real lastContentY
 
         footer: Rectangle {
             width: view_list.width
             height: phrase_txt.text.length==0? 1 : phrase_column.height + 40*Devices.density
-            color: phrase_txt.text.length==0? (Meikade.nightTheme? "#222222" : "#ffffff")
+            color: phrase_txt.text.length==0? MeikadeGlobals.backgroundAlternativeColor
                                             : "#00000000"
 
             Rectangle {
@@ -235,7 +258,7 @@ Rectangle {
                 transformOrigin: Item.Center
                 anchors.verticalCenter: parent.top
                 visible: phrase_txt.text.length!=0
-                color: Meikade.nightTheme? "#222222" : "#ffffff"
+                color: MeikadeGlobals.backgroundAlternativeColor
             }
         }
 
@@ -280,7 +303,7 @@ Rectangle {
             Rectangle {
                 anchors.fill: parent
                 anchors.bottomMargin: -2*Devices.density
-                color: Meikade.nightTheme? "#222222" : "#ffffff"
+                color: MeikadeGlobals.backgroundAlternativeColor
             }
 
             Rectangle {
@@ -296,7 +319,7 @@ Rectangle {
                 anchors.top: parent.top
                 anchors.right: parent.right
                 width: checkItem? parent.width - checkItem.width : parent.width
-                color: press? view.highlightColor : "#00000000"
+                color: "#00000000"
                 textColor: item.press? view.highlightTextColor : view.textColor
                 vid: verseId
                 pid: poemId
@@ -313,23 +336,33 @@ Rectangle {
                     anchors.top: parent.top
                     anchors.bottom: parent.bottom
                     width: 25*Devices.density
-                    color: "#EC4334"
+                    color: Qt.lighter(MeikadeGlobals.masterColor)
                     visible: item.press || item.height != pitem.height + item.extraHeight
 
                     Text {
                         anchors.centerIn: parent
                         text: Meikade.currentLanguage != "Persian"? index+1 : Meikade.numberToArabicString(index+1)
-                        color: Meikade.nightTheme? "#111111" : "#ffffff"
+                        color: "#ffffff"
                         font.pixelSize: 9*fontScale*globalFontDensity*Devices.fontDensity
                         font.family: AsemanApp.globalFont.family
                     }
                 }
             }
 
-            MouseArea{
+            ItemDelegate {
                 id: marea
                 anchors.fill: parent
                 z: 10
+                onPressAndHold: {
+                    selectMode = true
+                    checkItem.checked = true
+                    selectionHash.insert(model.verseId, pitem.text)
+                    if(fake_header.visible)
+                        fake_header.showMenu()
+                    else
+                    if(view_list.headerItem)
+                        view_list.headerItem.showMenu()
+                }
                 onClicked: {
                     if( view.editable ) {
                         selectMode = true
@@ -356,7 +389,7 @@ Rectangle {
                 height: poet.height
                 width: parent.width
                 anchors.top: pitem.bottom
-                color: "#EC4334"
+                color: Qt.lighter(MeikadeGlobals.masterColor)
                 visible: single
 
                 Text {
@@ -537,7 +570,14 @@ Rectangle {
         }
     }
 
-    GoUpButton { list: view_list; modernButton: false; visible: false }
+    ScrollBar {
+        scrollArea: view_list; height: view_list.height-View.navigationBarHeight
+        anchors.right: view_list.right; anchors.top: view_list.top
+        color: Meikade.nightTheme? "#ffffff" : MeikadeGlobals.masterColor
+        LayoutMirroring.enabled: View.layoutDirection == Qt.RightToLeft
+    }
+
+    GoUpButton { list: view_list; visible: false }
 
     Item {
         id: headerFrame
@@ -572,13 +612,6 @@ Rectangle {
                 GradientStop { position: 1.0; color: "#00000000" }
             }
         }
-    }
-
-    ScrollBar {
-        scrollArea: view_list; height: view_list.height-View.navigationBarHeight
-        anchors.right: view_list.right; anchors.top: view_list.top
-        color: Meikade.nightTheme? "#ffffff" : "#881010"
-        LayoutMirroring.enabled: View.layoutDirection == Qt.RightToLeft
     }
 
     MouseArea {

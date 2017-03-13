@@ -18,9 +18,11 @@
 
 import QtQuick 2.0
 import QtGraphicalEffects 1.0
+import QtQuick.Controls 2.1 as QtControls
 import AsemanTools 1.0
 import Meikade 1.0
 import AsemanTools.Awesome 1.0
+import "globals"
 
 Rectangle {
     id: sticker_dialog
@@ -80,6 +82,7 @@ Rectangle {
             backButton: false
             text: qsTr("Share")
             backButtonText: ""
+            statusBar: false
         }
 
         Row {
@@ -87,15 +90,11 @@ Rectangle {
             anchors.margins: 10*Devices.density
             layoutDirection: Meikade.languageDirection==Qt.LeftToRight? Qt.RightToLeft : Qt.LeftToRight
 
-            Button {
+            QtControls.Button {
                 anchors.verticalCenter: parent.verticalCenter
-                height: 32*Devices.density
                 width: height*2
-                radius: 3*Devices.density
-                normalColor: "#188ABE"
-                highlightColor: Qt.darker(normalColor, 1.1)
-                fontSize: 9*globalFontDensity*Devices.fontDensity
                 text: qsTr("Save")
+                highlighted: true
                 onClicked: {
                     indicator.active = true
                     progress_rect.visible = true
@@ -496,6 +495,7 @@ Rectangle {
                         backButton: false
                         text: qsTr("Select Image")
                         backButtonText: ""
+                        statusBar: false
                     }
 
                     Row {
@@ -503,14 +503,10 @@ Rectangle {
                         anchors.margins: 10*Devices.density
                         layoutDirection: Meikade.languageDirection==Qt.LeftToRight? Qt.RightToLeft : Qt.LeftToRight
 
-                        Button {
+                        QtControls.Button {
                             anchors.verticalCenter: parent.verticalCenter
-                            height: 32*Devices.density
                             width: height*2
-                            radius: 3*Devices.density
-                            normalColor: "#990000"
-                            highlightColor: Qt.darker(normalColor, 1.1)
-                            fontSize: 9*globalFontDensity*Devices.fontDensity
+                            highlighted: true
                             text: qsTr("Unset")
                             onClicked: {
                                 frame_image.source = ""

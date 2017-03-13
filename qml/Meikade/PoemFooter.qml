@@ -21,10 +21,11 @@ import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.3
 import AsemanTools 1.0
 import AsemanTools.Awesome 1.0
+import "globals"
 
 Rectangle {
     height: 40*Devices.density
-    color: Meikade.nightTheme? "#222222" : "#ffffff"
+    color: MeikadeGlobals.backgroundColor
 
     signal nextRequest()
     signal previousRequest()
@@ -37,7 +38,7 @@ Rectangle {
             height: parent.height
             textFont.family: Awesome.family
             textFont.pixelSize: 14*globalFontDensity*Devices.fontDensity
-            textColor: Meikade.nightTheme? "#eeeeee" : "#444444"
+            textColor: MeikadeGlobals.foregroundColor
             text: View.defaultLayout? Awesome.fa_angle_left : Awesome.fa_angle_right
             normalColor: "#00000000"
             highlightColor: "#55000000"
@@ -55,7 +56,7 @@ Rectangle {
             height: parent.height
             textFont.family: Awesome.family
             textFont.pixelSize: 14*globalFontDensity*Devices.fontDensity
-            textColor: Meikade.nightTheme? "#eeeeee" : "#444444"
+            textColor: MeikadeGlobals.foregroundColor
             text: View.defaultLayout? Awesome.fa_angle_right : Awesome.fa_angle_left
             normalColor: "#00000000"
             highlightColor: "#55000000"

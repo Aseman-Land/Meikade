@@ -21,6 +21,7 @@ import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.3
 import AsemanTools 1.0
 import AsemanTools.Awesome 1.0
+import "globals"
 
 Item {
     id: poem_header
@@ -100,7 +101,7 @@ Item {
             textColor: phrase_txt.color
             text: View.defaultLayout? Awesome.fa_angle_left : Awesome.fa_angle_right
             normalColor: "#00000000"
-            highlightColor: "#88881010"
+            highlightColor: Qt.rgba(MeikadeGlobals.masterColor.r, MeikadeGlobals.masterColor.g, MeikadeGlobals.masterColor.b, 0.5)
             width: 30*Devices.density
             onClicked: previousRequest()
         }
@@ -149,7 +150,7 @@ Item {
             textColor: phrase_txt.color
             text: View.defaultLayout? Awesome.fa_angle_right : Awesome.fa_angle_left
             normalColor: "#00000000"
-            highlightColor: "#88881010"
+            highlightColor: Qt.rgba(MeikadeGlobals.masterColor.r, MeikadeGlobals.masterColor.g, MeikadeGlobals.masterColor.b, 0.5)
             width: 30*Devices.density
             onClicked: nextRequest()
         }
@@ -161,7 +162,7 @@ Item {
         anchors.right: parent.right
         anchors.bottom: parent.bottom
         height: 32*Devices.density
-        color: "#EC4334"
+        color: Qt.lighter(MeikadeGlobals.masterColor)
 
         Row {
             anchors.right: View.defaultLayout? undefined : parent.right
@@ -244,7 +245,7 @@ Item {
                     anchors.centerIn: parent
                     width: selectMode? parent.width : 0
                     height: width
-                    color: "#7e3132"
+                    color: MeikadeGlobals.masterColor
                     visible: false
 
                     Behavior on width {
@@ -418,5 +419,9 @@ Item {
             selectMode = false
 
         return message.trim()
+    }
+
+    function showMenu() {
+        optionsMenu.open()
     }
 }

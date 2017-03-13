@@ -17,8 +17,10 @@
 */
 
 import QtQuick 2.0
+import QtQuick.Controls 2.1
 import AsemanTools 1.0
 import AsemanTools.Awesome 1.0
+import "globals"
 
 Item {
     id: category
@@ -51,14 +53,16 @@ Item {
         spacing: 8*Devices.density
         topMargin: category.topMargin
         model: ListModel {}
-        delegate: Rectangle {
+        delegate: Item {
             id: item
             x: category_list.spacing
             width: category_list.width - 2*x
             height: 55*Devices.density
-            border.width: 1*Devices.density
-            border.color: Meikade.nightTheme? "#333333" : "#cccccc"
-            color: marea.pressed? (Meikade.nightTheme? "#1D2124" : "#CFDAFF") : (Meikade.nightTheme? "#111111" : "#ffffff")
+
+            MaterialFrame {
+                anchors.fill: parent
+                color: MeikadeGlobals.backgroundAlternativeColor
+            }
 
             CategoryItem {
                 anchors.fill: parent
@@ -74,11 +78,12 @@ Item {
                 anchors.margins: 12*Devices.density
                 font.pixelSize: 30*globalFontDensity*Devices.fontDensity
                 font.family: Awesome.family
-                color: "#44000000"
+                opacity: 0.5
+                color: MeikadeGlobals.foregroundColor
                 text: View.defaultLayout? Awesome.fa_angle_right : Awesome.fa_angle_left
             }
 
-            MouseArea{
+            ItemDelegate {
                 id: marea
                 anchors.fill: parent
                 onClicked: {
@@ -121,7 +126,7 @@ Item {
     ScrollBar {
         scrollArea: category_list; height: category_list.height-topMargin-View.navigationBarHeight
         anchors.right: category_list.right; anchors.top: category_list.top
-        anchors.topMargin: topMargin; color: Meikade.nightTheme? "#ffffff" : "#881010"
+        anchors.topMargin: topMargin; color: Meikade.nightTheme? "#ffffff" : MeikadeGlobals.masterColor
         LayoutMirroring.enabled: View.layoutDirection == Qt.RightToLeft
     }
 

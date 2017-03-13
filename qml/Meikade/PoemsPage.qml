@@ -18,12 +18,13 @@
 
 import QtQuick 2.0
 import AsemanTools 1.0
+import "globals"
 
 Rectangle {
     id: poems_page
     width: 100
     height: 62
-    color: Meikade.nightTheme? "111111" :"#dddddd"
+    color: MeikadeGlobals.backgroundColor
     clip: true
 
     property int catId: -1
@@ -97,6 +98,7 @@ Rectangle {
         id: view
         width: localPortrait? parent.width : parent.width*2/3
         height: parent.height
+        allowHideHeader: true
         x: {
             switch(View.layoutDirection) {
             case Qt.RightToLeft:
@@ -119,6 +121,7 @@ Rectangle {
 
     function back() {
         poems_page.viewMode = false
+        showHeader()
     }
 
     function showRandomPoem(id) {

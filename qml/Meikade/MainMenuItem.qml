@@ -17,6 +17,7 @@
 */
 
 import QtQuick 2.0
+import QtQuick.Controls 2.1
 import AsemanTools 1.0
 
 Item {
@@ -40,7 +41,7 @@ Item {
         y: menu_item.item? 0 : height
         clip: true
 
-        MouseArea {
+        ItemDelegate {
             anchors.fill: parent
         }
 

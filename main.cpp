@@ -24,7 +24,7 @@
 
 int main(int argc, char *argv[])
 {
-    QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+//    QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
     AsemanApplication app(argc, argv);
     app.setGlobalFont(QFont("IRAN-Sans"));

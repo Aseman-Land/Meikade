@@ -118,7 +118,7 @@ BackHandlerView {
                         wrapMode: TextInput.WordWrap
                     }
 
-                    MouseArea {
+                    ItemDelegate {
                         id: marea
                         anchors.fill: parent
                         onClicked: {

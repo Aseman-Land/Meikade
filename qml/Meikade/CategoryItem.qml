@@ -20,6 +20,7 @@ import QtQuick 2.0
 import AsemanTools 1.0
 import Meikade 1.0
 import QtQuick.Layouts 1.3
+import "globals"
 
 RowLayout {
     id: item
@@ -57,6 +58,6 @@ RowLayout {
         font.pixelSize: Devices.isMobile? 9*globalFontDensity*Devices.fontDensity : 10*globalFontDensity*Devices.fontDensity
         font.family: AsemanApp.globalFont.family
         wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-        color: Meikade.nightTheme? "#ffffff" : "#111111"
+        color: MeikadeGlobals.foregroundColor
     }
 }

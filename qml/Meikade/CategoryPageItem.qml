@@ -19,6 +19,7 @@
 import QtQuick 2.0
 import AsemanTools 1.0
 import AsemanTools.Awesome 1.0
+import "globals"
 
 Rectangle {
     id: cat_item
@@ -36,7 +37,7 @@ Rectangle {
     y: startInit? 0 : startY
     height: startInit? parent.height : startHeight
     clip: true
-    color: Meikade.nightTheme? "#222222" : "#dddddd"
+    color: MeikadeGlobals.backgroundColor
 
     property alias catId: category.catId
     property alias root: cat_title.root
@@ -83,15 +84,13 @@ Rectangle {
         onPoemSelected: cat_item.poemSelected(pid, rect)
     }
 
-    Rectangle {
+    MaterialFrame {
         id: item
         x: category.itemsSpacing
         width: category.width - 2*x
         height: 55*Devices.density
-        border.width: 1*Devices.density
-        border.color: Meikade.nightTheme? "#444444" : "#cccccc"
         opacity: startInit? 0 : 1
-        color: Meikade.nightTheme? "#222222" : "#ffffff"
+        color: MeikadeGlobals.backgroundAlternativeColor
         visible: cat_title.cid != 0
 
         Behavior on opacity {
@@ -102,9 +101,11 @@ Rectangle {
     Rectangle {
         height: item.height
         width: parent.width
-        color: Meikade.nightTheme? "#e0000000" : "#e0ffffff"
+        color: Qt.rgba(backColor.r, backColor.g, backColor.b, 0.9)
         opacity: startInit? 1 : 0
         visible: cat_title.cid != 0
+
+        property color backColor: MeikadeGlobals.backgroundAlternativeColor
 
         MouseArea {
             anchors.fill: parent
@@ -129,7 +130,7 @@ Rectangle {
                 anchors.centerIn: parent
                 font.pixelSize: 13*globalFontDensity*Devices.fontDensity
                 font.family: Awesome.family
-                color: "#3d3d3d"
+                color: MeikadeGlobals.foregroundColor
                 text: Awesome.fa_random
             }
         }
@@ -166,7 +167,7 @@ Rectangle {
             id: desc_header
             width: cat_item.width
             height: expand? desc_text.height + desc_text.y*2 : 80*Devices.density
-            color: Meikade.nightTheme? "#111111" : "#333333"
+            color: "#111111"
             clip: true
 
             property bool expand: false
@@ -189,7 +190,7 @@ Rectangle {
                 y: 8*Devices.density
                 anchors.margins: y
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                color: "#ffffff"
+                color: "#dddddd"
                 font.family: AsemanApp.globalFont.family
                 font.pixelSize: 9*globalFontDensity*Devices.fontDensity
                 text: Database.poetDesctiption(catId)

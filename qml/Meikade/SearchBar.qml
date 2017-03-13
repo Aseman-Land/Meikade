@@ -20,11 +20,12 @@ import QtQuick 2.0
 import AsemanTools 1.0
 import QtQuick.Controls 2.0 as QtControls
 import AsemanTools.Awesome 1.0
+import "globals"
 
 BackHandlerView {
     id: search_bar
     anchors.fill: parent
-    color: Meikade.nightTheme? "#222222" : "#dddddd"
+    color: MeikadeGlobals.backgroundColor
     viewMode: false
     clip: true
 
@@ -46,7 +47,13 @@ BackHandlerView {
         id: search_frame
         width: parent.width
         height: Devices.standardTitleBarHeight + View.statusBarHeight
-        color: "#440B0B"
+        color: Qt.darker(MeikadeGlobals.masterColor)
+
+        Rectangle {
+            width: parent.width
+            height: Devices.statusBarHeight
+            color: MeikadeGlobals.masterColor
+        }
 
         Item {
             y: Devices.standardTitleBarHeight/2 - height/2 + View.statusBarHeight
@@ -226,5 +233,10 @@ BackHandlerView {
 
     function show() {
         hide = false
+    }
+
+    function focusOnText() {
+        txt.focus = true
+        txt.forceActiveFocus()
     }
 }

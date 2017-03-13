@@ -21,6 +21,7 @@ import AsemanTools 1.0
 import Meikade 1.0
 import QtGraphicalEffects 1.0
 import AsemanTools.Awesome 1.0
+import "globals"
 
 Item {
     id: goUpBtn
@@ -28,7 +29,6 @@ Item {
 
     property ListView list
     property int duration: 250
-    property bool modernButton: SystemInfo.cpuCores>1
 
     readonly property bool atBeginning: list.atYBeginning
 
@@ -37,18 +37,6 @@ Item {
             BackHandler.removeHandler(goUpBtn)
         else
             BackHandler.pushHandler(goUpBtn, function(){ list.positionViewAtBeginning() })
-    }
-
-    Rectangle {
-        id: blurFrame
-        anchors.fill: parent
-        visible: false
-
-        FastBlur {
-            anchors.fill: parent
-            source: modernButton? list : null
-            radius: 64
-        }
     }
 
     Item {
@@ -68,22 +56,14 @@ Item {
 
     DropShadow {
         anchors.fill: ascrollMask
-        horizontalOffset: 1*Devices.density
+        horizontalOffset: 0*Devices.density
         verticalOffset: 1*Devices.density
         radius: 8.0
         samples: 17
-        color: "#80000000"
-        source: modernButton? ascrollMask : null
+        color: Qt.rgba(MeikadeGlobals.foregroundColor.r, MeikadeGlobals.foregroundColor.g, MeikadeGlobals.foregroundColor.b, 0.6)
+        source: ascrollMask
         opacity: ascroll.opacity
-        visible: modernButton
-    }
-
-    OpacityMask {
-        anchors.fill: ascrollMask
-        source: modernButton? blurFrame : null
-        maskSource: ascrollMask
-        opacity: ascroll.opacity
-        visible: modernButton
+        cached: true
     }
 
     Rectangle {
@@ -97,7 +77,7 @@ Item {
         width: 50*Devices.density
         height: width
         radius: width/2
-        color: modernButton? "#66ffffff" : "#eeeeee"
+        color: MeikadeGlobals.backgroundColor
         opacity: hide? 0 : 1
 
         Behavior on opacity {
@@ -109,7 +89,7 @@ Item {
             anchors.horizontalCenter: parent.horizontalCenter
             font.pixelSize: 25*globalFontDensity*Devices.fontDensity
             font.family: Awesome.family
-            color: "#333333"
+            color: MeikadeGlobals.foregroundColor
             text: Awesome.fa_angle_up
         }
 

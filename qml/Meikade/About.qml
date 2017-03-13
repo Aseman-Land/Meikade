@@ -17,13 +17,16 @@
 */
 
 import QtQuick 2.0
-import AsemanTools 1.0
+import QtQuick.Controls 2.1 as QtControls
+import QtQuick.Controls.Material 2.1
+import AsemanTools 1.1
+import "globals"
 
 Rectangle {
     id: about
     anchors.fill: parent
     clip: true
-    color: "#dddddd"
+    color: MeikadeGlobals.backgroundColor
 
     readonly property string title: qsTr("About")
 
@@ -31,7 +34,7 @@ Rectangle {
         id: header
         width: parent.width
         height: View.statusBarHeight + Devices.standardTitleBarHeight
-        color: "#A80807"
+        color: MeikadeGlobals.masterColor
 
         TitleBarShadow {
             width: header.width
@@ -119,19 +122,16 @@ Rectangle {
         }
     }
 
-    Button {
+    QtControls.Button {
         id: home_btn
         anchors.bottom: parent.bottom
         anchors.bottomMargin: View.navigationBarHeight + 10*Devices.density
         anchors.horizontalCenter: parent.horizontalCenter
-        height: 40*Devices.density
         width: 150*Devices.density
-        normalColor: "#A80807"
-        highlightColor: Qt.darker(normalColor)
-        textColor: "#ffffff"
-        radius: 4*Devices.density
         text: qsTr("Meikade Github")
+        highlighted: true
         onClicked: Qt.openUrlExternally("https://github.com/NileGroup/Meikade")
+        Material.accent: MeikadeGlobals.masterColor
     }
 
     Text {

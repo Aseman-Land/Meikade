@@ -147,5 +147,7 @@
         <file>qml/Meikade/PoemFooter.qml</file>
         <file>qml/Meikade/DatabaseLocation.qml</file>
         <file>qml/Meikade/XmlDownloaderPageItem.qml</file>
+        <file>qml/Meikade/globals/MeikadeGlobals.qml</file>
+        <file>qml/Meikade/globals/qmldir</file>
     </qresource>
 </RCC>

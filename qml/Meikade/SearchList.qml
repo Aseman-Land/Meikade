@@ -19,15 +19,16 @@
 import QtQuick 2.0
 import AsemanTools 1.0
 import Meikade 1.0
-import QtQuick.Controls 2.0 as QtControls
+import QtQuick.Controls 2.1 as QtControls
 import QtQuick.Controls.Material 2.0
 import AsemanTools.Awesome 1.0
+import "globals"
 
 Rectangle {
     id: search_list
     width: 100
     height: 62
-    color: Meikade.nightTheme? "#222222" : "#ffffff"
+    color: MeikadeGlobals.backgroundColor
 
     property alias keyword: tmodel.keyword
     property alias poetId: tmodel.poet
@@ -81,7 +82,7 @@ Rectangle {
                 id: item
                 width: view_list.width
                 height: poem.height + txt_frame.height
-                color: press? "#11000000" : "#00000000"
+                color: "#00000000"
 
                 property alias press: marea.pressed
 
@@ -89,7 +90,7 @@ Rectangle {
                     id: poem
                     width: parent.width
                     color: "#00000000"
-                    textColor: Meikade.nightTheme? "#ffffff" : "#333333"
+                    textColor: MeikadeGlobals.foregroundColor
                     vid: model.vorder
                     pid: model.poem
                     font.pixelSize: Devices.isMobile? 9*globalFontDensity*Devices.fontDensity : 10*globalFontDensity*Devices.fontDensity
@@ -100,7 +101,7 @@ Rectangle {
                     height: poet.height
                     width: parent.width
                     anchors.bottom: parent.bottom
-                    color: "#EC4334"
+                    color: Qt.lighter(MeikadeGlobals.masterColor)
 
                     Text {
                         id: poet
@@ -130,7 +131,7 @@ Rectangle {
                     }
                 }
 
-                MouseArea{
+                QtControls.ItemDelegate {
                     id: marea
                     anchors.fill: parent
                     onClicked: {
@@ -174,7 +175,7 @@ Rectangle {
         anchors.top: parent.top
         width: parent.width
         height: 40*Devices.density
-        color: "#fcfcfc"
+        color: MeikadeGlobals.backgroundAlternativeColor
 
         QtControls.ComboBox {
             id: poets_combo
@@ -200,7 +201,7 @@ Rectangle {
             delegate: Rectangle {
                 width: poets_combo.width
                 height: 50*Devices.density
-                color: marea.pressed? "#22000000" : "#00000000"
+                color: "#00000000"
 
                 Text {
                     anchors.centerIn: parent
@@ -209,10 +210,10 @@ Rectangle {
                     font.pixelSize: 10*Devices.fontDensity
                     opacity: enabled ? 1.0 : 0.3
                     font.bold: poets_combo.currentIndex == index
-                    color: "#333333"
+                    color: MeikadeGlobals.foregroundColor
                 }
 
-                MouseArea {
+                QtControls.ItemDelegate {
                     id: marea
                     anchors.fill: parent
                     onClicked: {
@@ -264,7 +265,7 @@ Rectangle {
                 wrapMode: Text.WrapAnywhere
                 maximumLineCount: 1
                 elide: Text.ElideRight
-                color: "#5d5d5d"
+                color: MeikadeGlobals.foregroundColor
                 text: qsTr("Search in:")
             }
 
@@ -282,7 +283,7 @@ Rectangle {
                 wrapMode: Text.WrapAnywhere
                 maximumLineCount: 1
                 elide: Text.ElideRight
-                color: "#5d5d5d"
+                color: MeikadeGlobals.foregroundColor
                 text: poets_combo.currentText
             }
         }

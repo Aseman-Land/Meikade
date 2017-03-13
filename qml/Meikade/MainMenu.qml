@@ -17,9 +17,11 @@
 */
 
 import QtQuick 2.0
+import QtQuick.Controls 2.1
 import AsemanTools 1.0
 import AsemanTools.Awesome 1.0
 import QtQuick.Layouts 1.3
+import "globals"
 
 Item {
     id: mmenu
@@ -37,10 +39,12 @@ Item {
         header: Item {
             width: list.width
             height: menu_cover.height
+            clip: true
 
             Image {
                 id: menu_cover
-                width: list.width
+                width: list.width + 4*Devices.density
+                anchors.horizontalCenter: parent.horizontalCenter
                 height: width*9/16
                 fillMode: Image.PreserveAspectCrop
                 source: "icons/menu-back.jpg"
@@ -89,16 +93,16 @@ Item {
                 width: parent.width - 20*Devices.density
                 height: 1*Devices.density
                 anchors.centerIn: parent
-                color: "#cccccc"
+                color: MeikadeGlobals.foregroundColor
+                opacity: 0.2
                 visible: section != "A"
             }
         }
 
-        delegate: Rectangle {
+        delegate: Item {
             id: item
             width: list.width
             height: 36*Devices.density
-            color: press? "#880d80ec" : "#00000000"
 
             property alias press: marea.pressed
 
@@ -108,13 +112,14 @@ Item {
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.margins: 15*Devices.density
                 layoutDirection: View.layoutDirection
-                spacing: 15*Devices.density
+                spacing: 25*Devices.density
 
                 Text {
                     anchors.verticalCenter: parent.verticalCenter
                     font.pixelSize: 14*globalFontDensity*Devices.fontDensity
                     font.family: Awesome.family
-                    color: "#777777"
+                    color: MeikadeGlobals.foregroundColor
+                    opacity: 0.7
                     horizontalAlignment: Text.AlignHCenter
                     text: icon
                 }
@@ -125,13 +130,13 @@ Item {
                     anchors.verticalCenter: parent.verticalCenter
                     font.pixelSize: 9*globalFontDensity*Devices.fontDensity
                     font.family: AsemanApp.globalFont.family
-                    color: "#444444"
+                    color: MeikadeGlobals.foregroundColor
                     horizontalAlignment: View.defaultLayout? Qt.AlignLeft : Qt.AlignRight
                     text: name
                 }
             }
 
-            MouseArea {
+            ItemDelegate {
                 id: marea
                 anchors.fill: parent
                 onClicked: {

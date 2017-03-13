@@ -19,12 +19,15 @@
 import QtQuick 2.0
 import AsemanTools 1.1
 import Meikade 1.0
+import QtQuick.Controls.Material 2.1
 import "."
 
 AsemanWindow {
     width: 1024
     height: 680
     visible: true
+
+    Material.theme: Meikade.nightTheme? Material.Dark : Material.Light
 
     Connections {
         target: Meikade

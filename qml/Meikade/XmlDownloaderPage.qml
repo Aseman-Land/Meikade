@@ -108,6 +108,7 @@ Rectangle {
         anchors.bottom: parent.bottom
         currentIndex: 0
         onCurrentIndexChanged: tabBar.currentIndex = currentIndex
+        interactive: false
 
         LayoutMirroring.enabled: View.reverseLayout
         LayoutMirroring.childrenInherit: true

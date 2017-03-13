@@ -18,6 +18,7 @@
 
 import QtQuick 2.0
 import AsemanTools 1.0
+import "globals"
 
 BackHandlerView {
     id: notes
@@ -86,7 +87,7 @@ BackHandlerView {
     Rectangle {
         anchors.fill: title
         anchors.topMargin: -View.statusBarHeight
-        color: "#881010"
+        color: MeikadeGlobals.masterColor
     }
 
     Header {
