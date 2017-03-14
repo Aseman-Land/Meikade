@@ -265,7 +265,7 @@ Rectangle {
                 wrapMode: Text.WrapAnywhere
                 maximumLineCount: 1
                 elide: Text.ElideRight
-                color: MeikadeGlobals.foregroundColor
+                color: MeikadeGlobals.alternativeColor
                 text: qsTr("Search in:")
             }
 

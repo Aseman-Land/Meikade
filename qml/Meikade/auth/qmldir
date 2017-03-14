@@ -1,0 +1,4 @@
+UserAccountDialogs 1.0 UserAccountDialogs.qml
+SignupDialog 1.0 SignupDialog.qml
+LoginDialog 1.0 LoginDialog.qml
+LoginPhoneDialog 1.0 LoginPhoneDialog.qml

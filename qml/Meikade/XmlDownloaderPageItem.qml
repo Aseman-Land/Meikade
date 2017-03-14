@@ -17,6 +17,7 @@
 */
 
 import QtQuick 2.0
+import QtQuick.Controls 2.1
 import AsemanTools 1.0
 import Meikade 1.0
 import AsemanTools.Awesome 1.0
@@ -60,10 +61,9 @@ Item {
 //            }
 //        }
 
-        delegate: Rectangle {
+        delegate: Item {
             width: listv.width
             height: 54*Devices.density
-            color: marea.pressed? "#440d80ec" : "#00000000"
 
             PoetImageProvider {
                 id: image_provider
@@ -185,7 +185,7 @@ Item {
                 anchors.bottom: parent.bottom
             }
 
-            MouseArea {
+            ItemDelegate {
                 id: marea
                 anchors.fill: parent
                 onClicked: {
@@ -201,7 +201,7 @@ Item {
                     }
 
                     model.downloadingState = true
-                    networkFeatures.pushAction( ("Poet Download: %1").arg(model.poetId) )
+                    AsemanServices.meikade.pushAction( ("Poet Download: %1").arg(model.poetId), null )
                 }
             }
         }

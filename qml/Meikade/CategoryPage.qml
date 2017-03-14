@@ -20,6 +20,7 @@ import QtQuick 2.0
 import AsemanTools 1.1
 import AsemanTools.Awesome 1.0
 import "globals"
+import "auth" as Auth
 
 Rectangle {
     id: page
@@ -141,24 +142,44 @@ Rectangle {
             NumberAnimation { easing.type: Easing.OutCubic; duration: 300 }
         }
 
-        Button {
-            x: View.reverseLayout? 0 : parent.width - width
+        Row {
             y: View.statusBarHeight
+            x: View.reverseLayout? 10*Devices.density : parent.width - width - 10*Devices.density
             height: Devices.standardTitleBarHeight
-            width: height
-            radius: 0
-            highlightColor: "#00000000"
-            onClicked: {
-                networkFeatures.pushAction("Search (from header)")
-                showSearch()
+            spacing: 2*Devices.density
+            layoutDirection: View.layoutDirection
+
+            Button {
+                anchors.verticalCenter: parent.verticalCenter
+                height: Devices.standardTitleBarHeight - 2*xMargin
+                width: height
+                text: Awesome.fa_user
+                fontSize: 13*Devices.fontDensity
+                textFont.family: Awesome.family
+                textColor: "#ffffff"
+                highlightColor: "#44ffffff"
+                radius: 4*Devices.density
+                onClicked: userAccount.open()
+
+                property real xMargin: 10*Devices.density
             }
 
-            Text {
-                anchors.centerIn: parent
-                font.pixelSize: 15*globalFontDensity*Devices.fontDensity
-                font.family: Awesome.family
-                color: "white"
+            Button {
+                anchors.verticalCenter: parent.verticalCenter
+                y: View.statusBarHeight
+                height: Devices.standardTitleBarHeight - 2*xMargin
+                width: height
                 text: Awesome.fa_search
+                fontSize: 12*Devices.fontDensity
+                textFont.family: Awesome.family
+                textColor: "#ffffff"
+                highlightColor: "#44ffffff"
+                radius: 4*Devices.density
+                onClicked: {
+                    AsemanServices.meikade.pushAction("Search (from header)", null)
+                    showSearch()
+                }
+                property real xMargin: 10*Devices.density
             }
         }
     }
@@ -264,7 +285,7 @@ Rectangle {
                     radius: 0
                     highlightColor: "#88666666"
                     onClicked: {
-                        networkFeatures.pushAction("Search (from header)")
+                        AsemanServices.meikade.pushAction("Search (from header)", null)
                         showSearch()
                     }
 
@@ -278,6 +299,11 @@ Rectangle {
                 }
             }
         }
+    }
+
+    Auth.UserAccountDialogs {
+        id: userAccount
+        anchors.fill: parent
     }
 
     function back() {

@@ -26,20 +26,18 @@ contains(DEFINES,OLD_DATABASE) {
 
 DEFINES += DISABLE_KEYCHAIN
 include(qmake/qtcAddDeployment.pri)
+include(AsemanClientLib/AsemanClientLib.pri)
 include(asemantools/asemantools.pri)
 qtcAddDeployment()
 
 QT += sql qml quick xml
 
 SOURCES += main.cpp \
-    listobject.cpp \
     userdata.cpp \
     threadeddatabase.cpp \
     threadedfilesystem.cpp \
     backuper.cpp \
     resourcemanager.cpp \
-    hashobject.cpp \
-    systeminfo.cpp \
     meikade.cpp \
     meikadedatabase.cpp \
     SimpleQtCryptor/simpleqtcryptor.cpp \
@@ -52,18 +50,14 @@ SOURCES += main.cpp \
     poetscriptinstallerqueue.cpp \
     poetimageprovider.cpp \
     apilayer.cpp \
-    networkfeatures.cpp \
     xmldownloaderproxymodel.cpp
 
 HEADERS += \
-    listobject.h \
     userdata.h \
     threadeddatabase.h \
     threadedfilesystem.h \
     backuper.h \
     resourcemanager.h \
-    hashobject.h \
-    systeminfo.h \
     meikade.h \
     meikade_macros.h \
     meikadedatabase.h \
@@ -78,9 +72,10 @@ HEADERS += \
     poetscriptinstallerqueue.h \
     poetimageprovider.h \
     apilayer.h \
-    networkfeatures.h \
     xmldownloaderproxymodel.h \
-    poetremover.h
+    poetremover.h \
+    services/meikade1.h \
+    services/auth1.h
 
 OTHER_FILES += \
     android/AndroidManifest.xml \

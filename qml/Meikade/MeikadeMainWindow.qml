@@ -20,6 +20,7 @@ import QtQuick 2.0
 import AsemanTools 1.1
 import Meikade 1.0
 import QtQuick.Controls.Material 2.1
+import "globals"
 import "."
 
 AsemanWindow {
@@ -37,5 +38,10 @@ AsemanWindow {
 
     MeikadeWindow {
         anchors.fill: parent
+    }
+
+    Component.onCompleted: {
+        DownloaderQueue.destination = AsemanApp.homePath + "/cache"
+        AsemanServices.init()
     }
 }

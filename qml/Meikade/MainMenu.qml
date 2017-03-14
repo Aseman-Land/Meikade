@@ -51,35 +51,28 @@ Item {
                 sourceSize: Qt.size(width*2,height*2)
             }
 
-            Image {
+            CachedImage {
                 id: menu_adv
                 anchors.fill: menu_cover
                 fillMode: Image.PreserveAspectFit
-                source: networkFeatures.advertisePhoto
                 asynchronous: true
                 sourceSize: menu_cover.sourceSize
                 clip: true
 
-                property Item advItem
-                property string advertiseQml: networkFeatures.advertiseQml
-                onAdvertiseQmlChanged: {
-                    if(advItem) {
-                        advItem.visible = 0
-                        Tools.deleteItemDelay(10, advItem)
-                        advItem = null
-                    }
-                    if(advertiseQml.length == 0)
-                        return
+                property string advertiseLink
 
-                    advItem = Meikade.createObject(advertiseQml)
-                    advItem.parent = parent
+                Component.onCompleted: {
+                    AsemanServices.meikade.getAdvertise(function(res, error){
+                        menu_adv.source = res.image
+                        menu_adv.advertiseLink = res.link
+                    })
                 }
             }
 
             MouseArea {
                 anchors.fill: parent
-                visible: networkFeatures.advertiseLink.trim().length != 0
-                onClicked: Qt.openUrlExternally(networkFeatures.advertiseLink)
+                visible: menu_adv.advertiseLink.trim().length != 0
+                onClicked: Qt.openUrlExternally(menu_adv.advertiseLink)
             }
         }
 
@@ -140,7 +133,7 @@ Item {
                 id: marea
                 anchors.fill: parent
                 onClicked: {
-                    networkFeatures.pushAction( ("Menu Action: %1").arg(fileName) )
+                    AsemanServices.meikade.pushAction( ("Menu Action: %1").arg(fileName), null )
                     mmenu.selected(fileName)
                 }
             }

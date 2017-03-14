@@ -49,7 +49,7 @@ Rectangle {
             if(catId > 0)
                 poems_page.catId = catId
         }
-        networkFeatures.pushAction( ("Poem Selected: %1").arg(poemId) )
+        AsemanServices.meikade.pushAction( ("Poem Selected: %1").arg(poemId), null )
     }
 
     Poems {

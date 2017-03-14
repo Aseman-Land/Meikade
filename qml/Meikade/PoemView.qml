@@ -646,7 +646,7 @@ Rectangle {
                 if( favorited ) {
                     UserData.favorite(poemId,vid)
                     showTooltip( qsTr("Favorited") )
-                    networkFeatures.pushAction( ("Poem Favorited: %1").arg(poemId) )
+                    AsemanServices.meikade.pushAction( ("Poem Favorited: %1").arg(poemId), null )
                 } else {
                     UserData.unfavorite(poemId,vid)
                     showTooltip( qsTr("Unfavorited") )
@@ -672,7 +672,7 @@ Rectangle {
 
                     var message = poem_edit.text + "\n\n" + poet
 
-                    networkFeatures.pushAction( ("Copy Verse: %1:%2").arg(poem_edit.poemId).arg(poem_edit.vid) )
+                    AsemanServices.meikade.pushAction( ("Copy Verse: %1:%2").arg(poem_edit.poemId).arg(poem_edit.vid), null )
                     Devices.clipboard = message
                     hideBottomPanel()
                 }
@@ -694,7 +694,7 @@ Rectangle {
                         catId = Database.parentOf(catId)
                     }
 
-                    networkFeatures.pushAction( ("Share Verse: %1:%2").arg(poem_edit.poemId).arg(poem_edit.vid) )
+                    AsemanServices.meikade.pushAction( ("Share Verse: %1:%2").arg(poem_edit.poemId).arg(poem_edit.vid), null )
                     var message = poem_edit.text + "\n\n" + poet
                     Devices.share(subject,message)
                     hideBottomPanel()
@@ -715,7 +715,7 @@ Rectangle {
                         catId = Database.parentOf(catId)
                     }
 
-                    networkFeatures.pushAction( ("Share Image: %1:%2").arg(poem_edit.poemId).arg(poem_edit.vid) )
+                    AsemanServices.meikade.pushAction( ("Share Image: %1:%2").arg(poem_edit.poemId).arg(poem_edit.vid), null )
                     stickerDialog = sticker_dialog_component.createObject(view)
                     stickerDialog.text = poem_edit.text
                     stickerDialog.poet = poet
@@ -732,7 +732,7 @@ Rectangle {
                 onClicked: {
                     poem_edit.favorited = !poem_edit.favorited
                     if(poem_edit.favorited)
-                        networkFeatures.pushAction( ("Verse Favorited: %1:%2").arg(poem_edit.poemId).arg(poem_edit.vid) )
+                        AsemanServices.meikade.pushAction( ("Verse Favorited: %1:%2").arg(poem_edit.poemId).arg(poem_edit.vid), null )
                     hideBottomPanel()
                 }
             }

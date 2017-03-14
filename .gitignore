@@ -30,3 +30,10 @@ Makefile*
 #QtCtreator Qml
 *.qmlproject.user
 *.qmlproject.user.*
+
+AsemanClientLib/asemanclientsocket.cpp
+AsemanClientLib/asemanclientsocket.h
+AsemanClientLib/asemantrustsolverengine.cpp
+AsemanClientLib/asemantrustsolverengine.h
+AsemanGlobals/AsemanGlobals.pri
+AsemanGlobals/asemanserverenums.h

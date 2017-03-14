@@ -1,1 +1,2 @@
 singleton MeikadeGlobals 1.0 MeikadeGlobals.qml
+singleton AsemanServices 1.0 AsemanServices.qml

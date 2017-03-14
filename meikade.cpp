@@ -23,17 +23,15 @@
 #include "threadeddatabase.h"
 #include "threadedfilesystem.h"
 #include "backuper.h"
-#include "listobject.h"
-#include "hashobject.h"
-#include "systeminfo.h"
 #include "stickerwriter.h"
 #include "threadedsearchmodel.h"
 #include "p7zipextractor.h"
 #include "xmldownloadermodel.h"
 #include "meikade_macros.h"
-#include "networkfeatures.h"
 #include "poetimageprovider.h"
 #include "xmldownloaderproxymodel.h"
+#include "services/meikade1.h"
+#include "services/auth1.h"
 #include "asemantools/asemandevices.h"
 #include "asemantools/asemanquickview.h"
 #include "asemantools/asemanapplication.h"
@@ -41,6 +39,12 @@
 
 #ifdef Q_OS_ANDROID
 #include "asemantools/asemanjavalayer.h"
+#endif
+
+#ifdef ASEMAN_FALCON_SERVER
+#include "asemanclientsocket.h"
+#else
+#include "asemanabstractclientsocket.h"
 #endif
 
 #include <QQuickView>
@@ -97,7 +101,6 @@ public:
     UserData *user_db;
     ThreadedFileSystem *threaded_fs;
     Backuper *backuper;
-    SystemInfo *system;
 
     AsemanDevices *devices;
 #ifdef Q_OS_ANDROID
@@ -140,9 +143,16 @@ Meikade::Meikade(QObject *parent) :
     qmlRegisterType<PoetImageProvider>("Meikade", 1, 0, "PoetImageProvider");
     qmlRegisterType<StickerModel>("Meikade", 1, 0, "StickerModel");
     qmlRegisterType<StickerWriter>("Meikade", 1, 0, "StickerWriter");
-    qmlRegisterType<NetworkFeatures>("Meikade", 1, 0, "NetworkFeatures");
     qmlRegisterType<ThreadedSearchModel>("Meikade", 1, 0, "ThreadedSearchModel");
     qmlRegisterUncreatableType<MeikadeDatabase>("Meikade", 1, 0, "MeikadeDatabase", "");
+
+#ifdef ASEMANCLIENTSOCKET_H
+    qmlRegisterType<AsemanClientSocket>("AsemanServer", 1, 0, "ClientSocket");
+#else
+    qmlRegisterType<AsemanAbstractClientSocket>("AsemanServer", 1, 0, "ClientSocket");
+#endif
+    qmlRegisterType<Meikade1>("AsemanServer", 1, 0, "Meikade");
+    qmlRegisterType<Auth1>("AsemanServer", 1, 0, "Auth");
 
     QDir().mkpath(HOME_PATH);
     init_languages();
@@ -547,7 +557,6 @@ void Meikade::start()
     p->poem_db = new MeikadeDatabase(p->threaded_fs,this);
     p->user_db = new UserData(this);
     p->backuper = new Backuper();
-    p->system = new SystemInfo(this);
     p->devices = new AsemanDevices(this);
 
     p->viewer = new AsemanQmlEngine();
@@ -556,7 +565,6 @@ void Meikade::start()
     p->viewer->rootContext()->setContextProperty( "Database", p->poem_db  );
     p->viewer->rootContext()->setContextProperty( "UserData", p->user_db  );
     p->viewer->rootContext()->setContextProperty( "Backuper", p->backuper );
-    p->viewer->rootContext()->setContextProperty( "System"  , p->system   );
     p->viewer->rootContext()->setContextProperty( "ThreadedFileSystem", p->threaded_fs );
     p->viewer->load(QUrl("qrc:///qml/Meikade/main.qml"));
 //    p->viewer->setIcon( QIcon(":/qml/Meikade/icons/meikade.png") );

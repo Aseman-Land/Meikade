@@ -126,7 +126,7 @@ BackHandlerView {
                                 showConfigure(item.dstFile)
                             } else {
                                 checkbox.checked = !checkbox.checked
-                                networkFeatures.pushAction( ("Configure: %1 changed to %2").arg(item.prprt).arg(checkbox.checked) )
+                                AsemanServices.meikade.pushAction( ("Configure: %1 changed to %2").arg(item.prprt).arg(checkbox.checked), null )
                             }
                         }
                     }

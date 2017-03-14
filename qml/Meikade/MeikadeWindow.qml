@@ -44,7 +44,6 @@ MeikadeWindowBase {
     property bool fontsLoaded: false
 
     property bool animations: Meikade.animations
-    property alias networkFeatures: network_features
 
     readonly property variant areaFrame: page_manager.mainItem? page_manager.mainItem.areaFrame : 0
     property variant mainDialog
@@ -101,12 +100,6 @@ MeikadeWindowBase {
         id: xml_model
     }
 
-    NetworkFeatures {
-        id: network_features
-        activePush: Meikade.activePush
-        onShowMessage: messageDialog.show(network_message_component, {"message":message, "destUrl":url})
-    }
-
     Connections {
         target: Database
         onCopyError: showCopyErrorMessage()
@@ -136,6 +129,11 @@ MeikadeWindowBase {
                 main.blockBack = false
             }
         }
+    }
+
+    Connections {
+        target: AsemanServices
+        onIncommingMessage: messageDialog.show(network_message_component, {"message":message, "destUrl":msgUrl})
     }
 
     FontLoader {
@@ -348,7 +346,7 @@ MeikadeWindowBase {
         id: start_report_timer
         interval: 2000
         repeat: false
-        onTriggered: networkFeatures.pushDeviceModel(AT.Devices.deviceName, AT.Devices.lcdPhysicalSize, AT.Devices.density)
+        onTriggered: AsemanServices.meikade.pushDeviceModel(AT.Devices.deviceName, AT.Devices.lcdPhysicalSize, AT.Devices.density, null)
         Component.onCompleted: start()
     }
 

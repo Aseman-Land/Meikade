@@ -342,7 +342,7 @@ Item {
                                 catId = Database.parentOf(catId)
                             }
 
-                            networkFeatures.pushAction( ("Share Image: %1").arg(poem_header.poemId) )
+                            AsemanServices.meikade.pushAction( ("Share Image: %1").arg(poem_header.poemId), null )
                             stickerDialog = sticker_dialog_component.createObject(view)
                             stickerDialog.text = getPoemText(false)
                             stickerDialog.poet = poet
@@ -353,7 +353,7 @@ Item {
                         font.family: AsemanApp.globalFont.family
                         font.pixelSize: 9*Devices.fontDensity
                         onTriggered: {
-                            networkFeatures.pushAction( ("Share Poem: %1").arg(poem_header.poemId) )
+                            AsemanServices.meikade.pushAction( ("Share Poem: %1").arg(poem_header.poemId), null )
                             var subject = Database.poemName(poem_header.poemId)
                             var catId = Database.poemCat(poem_header.poemId)
                             while( catId ) {
@@ -370,7 +370,7 @@ Item {
                         font.family: AsemanApp.globalFont.family
                         font.pixelSize: 9*Devices.fontDensity
                         onTriggered: {
-                            networkFeatures.pushAction( ("Copy Poem: %1").arg(poem_header.poemId) )
+                            AsemanServices.meikade.pushAction( ("Copy Poem: %1").arg(poem_header.poemId), null )
                             var message = getPoemText(true)
                             Devices.clipboard = message
                             showTooltip(qsTr("Copied..."))

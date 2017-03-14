@@ -100,9 +100,9 @@ Item {
                     }
 
                     if(catId == 0)
-                        networkFeatures.pushAction( ("Poet Selected: %1").arg(identifier) )
+                        AsemanServices.meikade.pushAction( ("Poet Selected: %1").arg(identifier), null )
                     else
-                        networkFeatures.pushAction( ("Cat Selected: %1").arg(identifier) )
+                        AsemanServices.meikade.pushAction( ("Cat Selected: %1").arg(identifier), null )
                 }
             }
         }

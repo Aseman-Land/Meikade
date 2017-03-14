@@ -18,6 +18,7 @@
 
 import QtQuick 2.0
 import AsemanTools 1.0
+import "globals"
 
 AsemanObject {
     id: analizer
@@ -48,7 +49,7 @@ AsemanObject {
             return
 
         timer.stop()
-        networkFeatures.pushActivity(objectName, timer.count*100, comment)
+        AsemanServices.meikade.pushActivity(objectName, timer.count*100, comment, null)
     }
 
     Component.onDestruction: end()
