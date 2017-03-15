@@ -49,7 +49,6 @@ SOURCES += main.cpp \
     poetscriptinstaller.cpp \
     poetscriptinstallerqueue.cpp \
     poetimageprovider.cpp \
-    apilayer.cpp \
     xmldownloaderproxymodel.cpp
 
 HEADERS += \
@@ -71,7 +70,6 @@ HEADERS += \
     poetscriptinstaller.h \
     poetscriptinstallerqueue.h \
     poetimageprovider.h \
-    apilayer.h \
     xmldownloaderproxymodel.h \
     poetremover.h \
     services/meikade1.h \
@@ -92,6 +90,11 @@ DISTFILES += \
     android/gradle/wrapper/gradle-wrapper.jar \
     android/gradlew \
     android/res/values/libs.xml \
+    android/build.gradle \
+    android/gradle/wrapper/gradle-wrapper.properties \
+    android/gradlew.bat \
+    android/gradle/wrapper/gradle-wrapper.jar \
+    android/gradlew \
     android/build.gradle \
     android/gradle/wrapper/gradle-wrapper.properties \
     android/gradlew.bat

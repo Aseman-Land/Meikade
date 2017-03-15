@@ -35,7 +35,8 @@ Rectangle {
     property variant sidePoemsListObject
 
     readonly property real sideMargin: sidePoemsListObject? parent.width/2 : 0
-    readonly property bool titleBarHide: title_bar.hide
+    readonly property bool titleBarHide: !forceTitleBarShow && title_bar.hide && (localPortrait || Devices.isMobile)
+    property bool forceTitleBarShow: false
 
     ListObject {
         id: list
@@ -134,7 +135,7 @@ Rectangle {
         width: parent.width
         color: MeikadeGlobals.masterColor
         shadow: true
-        y: hide? -Devices.standardTitleBarHeight : 0
+        y: titleBarHide? -Devices.standardTitleBarHeight : 0
 
         property bool hide: false
 
@@ -463,8 +464,6 @@ Rectangle {
     }
 
     function hideHeader() {
-        if(!Devices.isMobile)
-            return
         title_bar.hide = true
     }
 

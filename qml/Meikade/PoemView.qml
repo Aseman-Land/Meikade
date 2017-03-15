@@ -30,9 +30,6 @@ Rectangle {
     property int poemId: -1
     property variant poemsArray: new Array
 
-    property bool onEdit: view_list.selectedIndex != -1
-    property bool allowEditMode: false
-
     property alias header: view_list.header
     property alias count: view_list.count
 
@@ -273,13 +270,12 @@ Rectangle {
         delegate: Rectangle {
             id: item
             width: view_list.width
-            height: editMode? pitem.height + edit_frame.height + extraHeight : pitem.height + extraHeight
-            color: Meikade.nightTheme? "#222222" : "#ffffff"
+            height: pitem.height + extraHeight
+            color: MeikadeGlobals.backgroundAlternativeColor
 //            clip: true
 
             property real extraHeight: single? txt_frame.height : 0
             property alias press: marea.pressed
-            property bool editMode: allowEditMode? view_list.selectedIndex == index : 0
             property bool anim: false
 
             property variant checkItem
@@ -365,18 +361,17 @@ Rectangle {
                 }
                 onClicked: {
                     if( view.editable ) {
-                        selectMode = true
-                        if(checkItem) {
+                        if(selectMode) {
+                            selectMode = true
                             checkItem.checked = !checkItem.checked
                             if(checkItem.checked)
                                 selectionHash.insert(model.verseId, pitem.text)
                             else
                                 selectionHash.remove(model.verseId)
                         } else {
-                            var itemObj = showBottomPanel(share_component, true)
-                            itemObj.poemId = pitem.pid
-                            itemObj.vid = pitem.vid
-                            itemObj.text = pitem.text
+                            var point = view.mapFromItem(pitem, 0, 0)
+                            var edit = poemEdit_component.createObject(view, {"vid": verseId, "pid": poemId})
+                            edit.start(point.y)
                         }
                     }
 
@@ -421,42 +416,6 @@ Rectangle {
                         str = Database.catName(poet) + ", " + Database.catName(book) + ", " + str
                         text = str
                     }
-                }
-            }
-
-            Item {
-                id: edit_frame
-                anchors.left: parent.left
-                anchors.right: parent.right
-                anchors.top: pitem.bottom
-                height: 80*Devices.density
-
-                property bool editMode: item.editMode
-                property variant itemObj
-
-                onEditModeChanged: {
-                    if( editMode ) {
-                        if( itemObj )
-                            return
-
-                        var component = Qt.createComponent("PoemEdit.qml")
-                        itemObj = component.createObject(edit_frame)
-                        itemObj.poemId = pitem.pid
-                        itemObj.vid = pitem.vid
-                        itemObj.text = pitem.text
-                        itemObj.anchors.fill = edit_frame
-                        itemObj.pressChanged.connect(edit_frame.pressChanged)
-                    } else {
-                        if( !itemObj )
-                            return
-
-                        itemObj.hidePicker()
-                        Meikade.timer(400,itemObj,"deleteLater")
-                    }
-                }
-
-                function pressChanged() {
-                    view_list.interactive = !itemObj.press
                 }
             }
 
@@ -614,131 +573,6 @@ Rectangle {
         }
     }
 
-    MouseArea {
-        anchors.fill: parent
-        onClicked: AsemanApp.back()
-        visible: bottomPanel.item? true : false
-    }
-
-    Component {
-        id: share_component
-        Column {
-            id: poem_edit
-            width: parent.width
-
-            property int poemId
-            property int vid
-            property bool favorited: false
-            property bool signalBlocker: false
-            property string text
-
-            onVidChanged: {
-                if( vid == -1 )
-                    return
-                signalBlocker = true
-                favorited = UserData.isFavorited(poemId,vid)
-                signalBlocker = false
-            }
-            onFavoritedChanged: {
-                if( signalBlocker )
-                    return
-
-                if( favorited ) {
-                    UserData.favorite(poemId,vid)
-                    showTooltip( qsTr("Favorited") )
-                    AsemanServices.meikade.pushAction( ("Poem Favorited: %1").arg(poemId), null )
-                } else {
-                    UserData.unfavorite(poemId,vid)
-                    showTooltip( qsTr("Unfavorited") )
-                }
-            }
-
-            Button {
-                width: parent.width
-                height: 40*Devices.density
-                text:   qsTr("Copy")
-                textColor: "#333333"
-                textFont.bold: false
-                textFont.pixelSize: 9*globalFontDensity*Devices.fontDensity
-                onClicked: {
-                    var subject = Database.poemName(poem_edit.poemId)
-                    var poet
-                    var catId = Database.poemCat(poem_edit.poemId)
-                    while( catId ) {
-                        poet = Database.catName(catId)
-                        subject = Database.catName(catId) + ", " + subject
-                        catId = Database.parentOf(catId)
-                    }
-
-                    var message = poem_edit.text + "\n\n" + poet
-
-                    AsemanServices.meikade.pushAction( ("Copy Verse: %1:%2").arg(poem_edit.poemId).arg(poem_edit.vid), null )
-                    Devices.clipboard = message
-                    hideBottomPanel()
-                }
-            }
-            Button {
-                width: parent.width
-                height: 40*Devices.density
-                text:   qsTr("Share")
-                textColor: "#333333"
-                textFont.bold: false
-                textFont.pixelSize: 9*globalFontDensity*Devices.fontDensity
-                onClicked: {
-                    var subject = Database.poemName(poem_edit.poemId)
-                    var poet
-                    var catId = Database.poemCat(poem_edit.poemId)
-                    while( catId ) {
-                        poet = Database.catName(catId)
-                        subject = Database.catName(catId) + ", " + subject
-                        catId = Database.parentOf(catId)
-                    }
-
-                    AsemanServices.meikade.pushAction( ("Share Verse: %1:%2").arg(poem_edit.poemId).arg(poem_edit.vid), null )
-                    var message = poem_edit.text + "\n\n" + poet
-                    Devices.share(subject,message)
-                    hideBottomPanel()
-                }
-            }
-            Button {
-                width: parent.width
-                height: 40*Devices.density
-                text:   qsTr("Share Image")
-                textColor: "#333333"
-                textFont.bold: false
-                textFont.pixelSize: 9*globalFontDensity*Devices.fontDensity
-                onClicked: {
-                    var poet
-                    var catId = Database.poemCat(poem_edit.poemId)
-                    while( catId ) {
-                        poet = Database.catName(catId)
-                        catId = Database.parentOf(catId)
-                    }
-
-                    AsemanServices.meikade.pushAction( ("Share Image: %1:%2").arg(poem_edit.poemId).arg(poem_edit.vid), null )
-                    stickerDialog = sticker_dialog_component.createObject(view)
-                    stickerDialog.text = poem_edit.text
-                    stickerDialog.poet = poet
-                    hideBottomPanel()
-                }
-            }
-            Button {
-                width: parent.width
-                height: 40*Devices.density
-                text: poem_edit.favorited? qsTr("Unfavorite") : qsTr("Favorite")
-                textColor: "#333333"
-                textFont.bold: false
-                textFont.pixelSize: 9*globalFontDensity*Devices.fontDensity
-                onClicked: {
-                    poem_edit.favorited = !poem_edit.favorited
-                    if(poem_edit.favorited)
-                        AsemanServices.meikade.pushAction( ("Verse Favorited: %1:%2").arg(poem_edit.poemId).arg(poem_edit.vid), null )
-                    hideBottomPanel()
-                }
-            }
-        }
-    }
-
     function goTo(vid){
         view_list.goTo(vid)
     }
@@ -776,6 +610,14 @@ Rectangle {
         var idx = poemsArray.indexOf(poemId)-1
         if(idx >= 0)
             view.poemId = poemsArray[idx]
+    }
+
+    Component {
+        id: poemEdit_component
+        PoemEdit {
+            anchors.fill: parent
+            textColor: view.textColor
+        }
     }
 
     Component {

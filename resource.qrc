@@ -17,7 +17,6 @@
         <file>qml/Meikade/MenuTypeA.qml</file>
         <file>qml/Meikade/Notes.qml</file>
         <file>qml/Meikade/OmenFrame.qml</file>
-        <file>qml/Meikade/PoemEdit.qml</file>
         <file>qml/Meikade/PoemHeader.qml</file>
         <file>qml/Meikade/PoemItem.qml</file>
         <file>qml/Meikade/Poems.qml</file>
@@ -25,7 +24,6 @@
         <file>qml/Meikade/PoemView.qml</file>
         <file>qml/Meikade/SearchBar.qml</file>
         <file>qml/Meikade/SearchList.qml</file>
-        <file>qml/Meikade/SearchMenu.qml</file>
         <file>qml/Meikade/TabBar.qml</file>
         <file>qml/Meikade/WaitDialog.qml</file>
         <file>qml/Meikade/icons/back_32.png</file>
@@ -156,5 +154,6 @@
         <file>qml/Meikade/auth/UserAccountDialogs.qml</file>
         <file>qml/Meikade/certificates/falcon.crt</file>
         <file>qml/Meikade/globals/AsemanServices.qml</file>
+        <file>qml/Meikade/PoemEdit.qml</file>
     </qresource>
 </RCC>

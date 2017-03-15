@@ -16,192 +16,123 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-import QtQuick 2.0
+import QtQuick 2.3
+import QtGraphicalEffects 1.0
+import QtQuick.Controls 2.1 as QtControls
+import QtQuick.Layouts 1.3
 import AsemanTools 1.0
+import "globals"
 
-Rectangle {
-    id: poem_edit
-    width: 100
-    height: 62
-    color: "#363636"
+Item {
+    id: poemEdit
 
-    property int vid
-    property int poemId
-    property bool actived: false
-    property variant currentItem
-    property real destOpacity: 1
-    property bool favorited: false
-    property string text
+    property alias vid: poemItem.vid
+    property alias pid: poemItem.pid
+    property alias textColor: poemItem.textColor
 
-    property alias press: note.press
+    NullMouseArea { anchors.fill: parent }
 
-    onVidChanged: {
-        if( vid == -1 )
-            return
-        privates.signalBlocker = true
-        note.text = UserData.note(poemId,vid)
-        favorited = UserData.isFavorited(poemId,vid)
-        privates.signalBlocker = false
-    }
-
-    onPoemIdChanged: {
-        var name = Database.poemName(poemId)
-        var catId = Database.poemCat(poemId)
-        while( catId ) {
-            name = Database.catName(catId) + ", " + name
-            catId = Database.parentOf(catId)
-        }
-    }
-
-    onFavoritedChanged: {
-        if( privates.signalBlocker )
-            return
-        if( favorited ) {
-            UserData.favorite(poemId,vid)
-            main.showTooltip( qsTr("Favorited") )
-        } else {
-            UserData.unfavorite(poemId,vid)
-            main.showTooltip( qsTr("Unfavorited") )
-        }
-    }
-
-    QtObject {
-        id: privates
-        property bool signalBlocker: false
-    }
-
-    Row {
-        id: row
+    Rectangle {
+        id: background
         anchors.fill: parent
+        color: MeikadeGlobals.backgroundAlternativeColor
+        opacity: 0
 
-        Column {
-            id: tools_column
-            height: parent.height
-            width: 42*Devices.density
-
-            Button {
-                id: paste
-                height: width
-                width: parent.width
-                icon: "icons/paste.png"
-                iconHeight: 18*Devices.density
-                normalColor: "#904F73"
-                highlightColor: "#EC4334"
-                onClicked: note.paste()
-            }
-
-            Button {
-                id: copy
-                height: width
-                width: parent.width
-                icon: "icons/copy.png"
-                iconHeight: 18*Devices.density
-                normalColor: "#4774A7"
-                highlightColor: "#EC4334"
-                onClicked: note.copy()
-            }
+        Behavior on opacity {
+            NumberAnimation { easing.type: Easing.OutCubic; duration: poemItem.activeAnim? 400 : 0 }
         }
+    }
+
+    QtControls.BusyIndicator {
+        id: busyIndicator
+        anchors.centerIn: parent
+        height: 48*Devices.density
+        width: height
+        running: false
+        transformOrigin: Item.Center
+    }
+
+    AsemanFlickable {
+        id: flick
+        anchors.fill: parent
+        contentWidth: flickScene.width
+        contentHeight: flickScene.height
 
         Item {
-            id: note_back
-            width: row.width - tools_column.width - share_column.width
-            height: row.height
+            id: flickScene
+            width: flick.width
+            height: editColumn.y + editColumn.height
 
-            TextEdit {
-                id: note_placeholder
-                anchors.fill: note
-                font: note.font
-                color: "#cccccc"
-                visible: note.text.length == 0
-            }
+            PoemItem {
+                id: poemItem
+                width: parent.width
+                color: "#00000000"
+                font.pixelSize: Devices.isMobile? 9*fontScale*globalFontDensity*Devices.fontDensity : 10*fontScale*globalFontDensity*Devices.fontDensity
+                font.family: globalPoemFontFamily
 
-            TextAreaCore {
-                id: note
-                anchors.fill: parent
-                anchors.margins: 4*Devices.density
-                font.pixelSize: 10*globalFontDensity*Devices.fontDensity
-                font.family: AsemanApp.globalFont.family
-                wrapMode: Text.Wrap
-                selectionColor: "#0d80ec"
-                selectedTextColor: "#ffffff"
-                color: "#ffffff"
-                pickersColor: "#cccccc"
-                pickersStrokeColor: "#ffffff"
-                inputMethodHints: Qt.ImhNoPredictiveText
-                horizontalAlignment: Meikade.languageDirection == Qt.LeftToRight? Text.AlignLeft : Text.AlignRight
-
-                onTextChanged: {
-                    save_timer.restart()
+                Behavior on y {
+                    NumberAnimation { easing.type: Easing.OutCubic; duration: poemItem.activeAnim? 400 : 0 }
                 }
 
-                Timer{
-                    id: save_timer
-                    interval: 500*animations
-                    repeat: false
-                    onTriggered: UserData.setNote(poem_edit.poemId,poem_edit.vid, note.text)
-                }
-            }
-        }
-
-        Column {
-            id: share_column
-            height: parent.height
-            width: 42*Devices.density
-
-            Button {
-                id: favorite
-                height: width
-                width: parent.width
-                icon: poem_edit.favorited? "icons/favorites.png" : "icons/unfavorites.png"
-                iconHeight: 18*Devices.density
-                normalColor: "#A79B48"
-                highlightColor: "#EC4334"
-                onClicked: poem_edit.favorited = !poem_edit.favorited
+                property bool activeAnim: false
             }
 
-            Button {
-                id: share
-                height: width
-                width: parent.width
-                icon: "icons/share.png"
-                iconHeight: 18*Devices.density
-                normalColor: "#4F9082"
-                highlightColor: "#EC4334"
-                onClicked: {
-                    var subject = Database.poemName(poem_edit.poemId)
-                    var poet
-                    var catId = Database.poemCat(poem_edit.poemId)
-                    while( catId ) {
-                        poet = Database.catName(catId)
-                        subject = Database.catName(catId) + ", " + subject
-                        catId = Database.parentOf(catId)
+            Column {
+                id: editColumn
+                y: poemItem.height + 10*Devices.density
+                anchors.left: parent.left
+                anchors.right: parent.right
+                anchors.margins: 10*Devices.density
+                visible: !busyIndicator.running
+
+                QtControls.TextArea {
+                    width: parent.width
+                    height: {
+                        var min = 200*Devices.density
+                        var res = flick.height - poemItem.height - saveBtn.height - 10*Devices.density
+                        if(res < min)
+                            res = min
+                        return res
                     }
-
-                    var message = poem_edit.text + "\n\n" + poet
-                    Devices.share(subject,message)
+                    font.pixelSize: 10*fontScale*globalFontDensity*Devices.fontDensity
+                    font.family: AsemanApp.globalFont.family
+                    color: MeikadeGlobals.foregroundColor
+                    placeholderText: qsTr("Write a note about this verse...")
+                    horizontalAlignment: View.defaultLayout? TextEdit.AlignLeft : TextEdit.AlignRight
                 }
+
+                Item { width: 1; height: saveBtn.height }
             }
         }
     }
 
-    function refresh(){
-        var tmp = poem_edit.vid
-        poem_edit.vid = -1
-        poem_edit.vid = tmp
+    QtControls.Button {
+        id: saveBtn
+        anchors.bottom: parent.bottom
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.margins: 10*Devices.density
+        visible: !busyIndicator.running
+        highlighted: true
+        text: qsTr("Save")
     }
 
-    function hidePicker() {
-        note.hidePicker()
-    }
+    function start(startY) {
+        forceTitleBarShow = true
+        busyIndicator.running = true
+        poemItem.activeAnim = false
+        poemItem.y = startY
+        poemItem.activeAnim = true
+        poemItem.y = 0
+        background.opacity = 1
 
-
-    Connections{
-        target: Meikade
-        onCurrentLanguageChanged: initTranslations()
+        Tools.jsDelayCall(2000, function(){ busyIndicator.running = false })
+        BackHandler.pushHandler(poemEdit, function() {
+            forceTitleBarShow = false
+            busyIndicator.running = true
+            poemItem.y = startY
+            background.opacity = 0
+            Tools.jsDelayCall(400, function(){ poemEdit.destroy() })
+        })
     }
-
-    function initTranslations(){
-        note_placeholder.text = qsTr("Note...")
-    }
-    Component.onCompleted: initTranslations()
 }
