@@ -19,6 +19,7 @@
 import QtQuick 2.3
 import QtGraphicalEffects 1.0
 import QtQuick.Controls 2.1 as QtControls
+import QtQuick.Controls.Material 2.1
 import QtQuick.Layouts 1.3
 import AsemanTools 1.0
 import "globals"
@@ -54,9 +55,28 @@ Item {
 
     AsemanFlickable {
         id: flick
-        anchors.fill: parent
+        width: parent.width
+        anchors.top: parent.top
+        anchors.bottom: saveBtn.top
+        flickableDirection: Flickable.VerticalFlick
         contentWidth: flickScene.width
         contentHeight: flickScene.height
+        clip: true
+
+        function ensureVisible(r)
+        {
+            var pnt = textArea.mapToItem(flickScene, r.x, r.y)
+
+            if (contentX >= pnt.x)
+                contentX = pnt.x;
+            else if (contentX+width <= pnt.x+r.width)
+                contentX = pnt.x+r.width-width;
+
+            if (contentY >= pnt.y)
+                contentY = pnt.y;
+            else if (contentY+height <= pnt.y+r.height)
+                contentY = pnt.y+r.height-height;
+        }
 
         Item {
             id: flickScene
@@ -77,6 +97,18 @@ Item {
                 property bool activeAnim: false
             }
 
+            Rectangle {
+                id: shadow_rct
+                height: 3*Devices.density
+                width: parent.width
+                y: poemItem.height
+                visible: !Devices.isIOS && !busyIndicator.running
+                gradient: Gradient {
+                    GradientStop { position: 0.0; color: "#33000000" }
+                    GradientStop { position: 1.0; color: "#00000000" }
+                }
+            }
+
             Column {
                 id: editColumn
                 y: poemItem.height + 10*Devices.density
@@ -86,32 +118,52 @@ Item {
                 visible: !busyIndicator.running
 
                 QtControls.TextArea {
+                    id: textArea
                     width: parent.width
                     height: {
-                        var min = 200*Devices.density
-                        var res = flick.height - poemItem.height - saveBtn.height - 10*Devices.density
+                        var min = 150*Devices.density
+                        var res = flick.height - poemItem.height - 10*Devices.density
                         if(res < min)
                             res = min
+
+                        var extra = 20*Devices.density
+                        if(contentHeight+extra > res)
+                            res = contentHeight+extra
                         return res
                     }
                     font.pixelSize: 10*fontScale*globalFontDensity*Devices.fontDensity
                     font.family: AsemanApp.globalFont.family
                     color: MeikadeGlobals.foregroundColor
+                    selectByMouse: Devices.isDesktop
+                    selectedTextColor: "#ffffff"
+                    selectionColor: "#03A9F4"
                     placeholderText: qsTr("Write a note about this verse...")
-                    horizontalAlignment: View.defaultLayout? TextEdit.AlignLeft : TextEdit.AlignRight
-                }
+                    wrapMode: TextEdit.WrapAtWordBoundaryOrAnywhere
+                    inputMethodHints: {
+                        var deviceName = Devices.deviceName.toLowerCase()
+                        if(deviceName.indexOf("htc") >= 0 || deviceName.indexOf("huawei") >= 0)
+                            return Qt.ImhNone
+                        else
+                            return Qt.ImhNoPredictiveText
+                    }
+                    onCursorRectangleChanged: flick.ensureVisible(cursorRectangle)
 
-                Item { width: 1; height: saveBtn.height }
+                    TextCursorArea {
+                        textItem: textArea
+                        cursorParent: poemEdit
+                    }
+                }
             }
         }
     }
 
     QtControls.Button {
         id: saveBtn
-        anchors.bottom: parent.bottom
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.margins: 10*Devices.density
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: Devices.keyboardHeight
         visible: !busyIndicator.running
         highlighted: true
         text: qsTr("Save")

@@ -111,6 +111,9 @@ BackHandlerView {
                 anchors.leftMargin: View.defaultLayout? 20*Devices.density : anchors.margins
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: View.defaultLayout? Text.AlignLeft : Text.AlignRight
+                selectByMouse: Devices.isDesktop
+                selectedTextColor: "#ffffff"
+                selectionColor: "#03A9F4"
                 inputMethodHints: {
                     var deviceName = Devices.deviceName.toLowerCase()
                     if(deviceName.indexOf("htc") >= 0 || deviceName.indexOf("huawei") >= 0)
@@ -120,8 +123,13 @@ BackHandlerView {
                 }
                 color: "#dddddd"
                 font.family: AsemanApp.globalFont.family
-                font.pixelSize: Devices.fontDensity*11
+                font.pixelSize: Devices.fontDensity*9
                 onTextChanged: refresh()
+
+                TextCursorArea {
+                    textItem: txt
+                    cursorParent: search_bar
+                }
 
                 Button {
                     anchors.top: parent.top

@@ -25,6 +25,50 @@ Dialog {
     ColumnLayout {
 
         TextField {
+            id: usernameField
+            Layout.preferredWidth: emailField.Layout.preferredWidth
+            placeholderText: qsTr("Username")
+            selectByMouse: true
+            inputMethodHints: Qt.ImhNoPredictiveText
+            color: {
+                if(focus || errorAvailable == -1)
+                    return MeikadeGlobals.foregroundColor
+                if(errorAvailable)
+                    return "#ff0000"
+                else
+                    return Material.color(Material.Teal)
+            }
+            validator: RegExpValidator{regExp: /\w+/i }
+            onTextChanged: errorAvailable = -1
+            onFocusChanged: {
+                if(focus || text.length < 5)
+                    return
+                if(errorAvailable != -1)
+                    return
+
+                unameBusyIndicator.running = true
+                AsemanServices.auth.checkUsername(text, function(result, error){
+                    errorAvailable = (result? 1 : 0)
+                    unameBusyIndicator.running = false
+                })
+            }
+
+            BusyIndicator {
+                id: unameBusyIndicator
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.right: parent.right
+                anchors.rightMargin: -12*Devices.density
+                height: 46*Devices.density
+                width: height
+                running: false
+                transformOrigin: Item.Center
+                scale: 0.5
+            }
+
+            property int errorAvailable: -1
+        }
+
+        TextField {
             id: emailField
             Layout.preferredWidth: signupDialog.parent.width - 100*Devices.density
             placeholderText: qsTr("Email")
@@ -38,7 +82,7 @@ Dialog {
                 else
                     return Material.color(Material.Teal)
             }
-            validator: RegExpValidator{regExp: /\w+@\w+\.\w+/i }
+            validator: RegExpValidator{regExp: /(\w|\.)+@\w+\.\w+/i }
             onTextChanged: errorAvailable = -1
             onFocusChanged: {
                 if(focus || text.length < 5)
@@ -47,7 +91,7 @@ Dialog {
                     return
 
                 busyIndicator.running = true
-                AsemanServices.auth.checkUsername(text, function(result, error){
+                AsemanServices.auth.checkEmail(text, function(result, error){
                     errorAvailable = (result? 1 : 0)
                     busyIndicator.running = false
                 })
@@ -86,6 +130,7 @@ Dialog {
             text: qsTr("Sign-Up")
             highlighted: true
             flat: true
+            enabled: !emailField.errorAvailable && !usernameField.errorAvailable
             Layout.preferredWidth: emailField.Layout.preferredWidth
         }
     }

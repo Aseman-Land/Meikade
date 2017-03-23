@@ -19,6 +19,7 @@
 import QtQuick 2.0
 import AsemanTools 1.1
 import Meikade 1.0
+import QtQuick.Controls 2.1 as QtControls
 import QtQuick.Controls.Material 2.1
 import "globals"
 import "."

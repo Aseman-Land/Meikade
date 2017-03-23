@@ -44,6 +44,38 @@ public:
         return id;
     }
 
+    qint64 checkEmail(QString email, QObject *base = 0, Callback<bool> callBack = 0) {
+        qint64 id = pushRequest(_service, _version, "checkEmail", QVariantList() << QVariant::fromValue<QString>(email));
+        _calls[id] = "checkEmail";
+        pushBase(id, base);
+        callBackPush<bool>(id, callBack);
+        return id;
+    }
+
+    qint64 resetPasswordSendEmail(QString email, QObject *base = 0, Callback<bool> callBack = 0) {
+        qint64 id = pushRequest(_service, _version, "resetPasswordSendEmail", QVariantList() << QVariant::fromValue<QString>(email));
+        _calls[id] = "resetPasswordSendEmail";
+        pushBase(id, base);
+        callBackPush<bool>(id, callBack);
+        return id;
+    }
+
+    qint64 resetPassword(QString token, QString newPassword, QObject *base = 0, Callback<bool> callBack = 0) {
+        qint64 id = pushRequest(_service, _version, "resetPassword", QVariantList() << QVariant::fromValue<QString>(token) << QVariant::fromValue<QString>(newPassword));
+        _calls[id] = "resetPassword";
+        pushBase(id, base);
+        callBackPush<bool>(id, callBack);
+        return id;
+    }
+
+    qint64 changePassword(QString oldPassword, QString newPassword, QObject *base = 0, Callback<bool> callBack = 0) {
+        qint64 id = pushRequest(_service, _version, "changePassword", QVariantList() << QVariant::fromValue<QString>(oldPassword) << QVariant::fromValue<QString>(newPassword));
+        _calls[id] = "changePassword";
+        pushBase(id, base);
+        callBackPush<bool>(id, callBack);
+        return id;
+    }
+
     qint64 signUp(QString userName, QString password, QString email, QString firstName, QString lastName, QObject *base = 0, Callback<bool> callBack = 0) {
         qint64 id = pushRequest(_service, _version, "signUp", QVariantList() << QVariant::fromValue<QString>(userName) << QVariant::fromValue<QString>(password) << QVariant::fromValue<QString>(email) << QVariant::fromValue<QString>(firstName) << QVariant::fromValue<QString>(lastName));
         _calls[id] = "signUp";
@@ -60,8 +92,8 @@ public:
         return id;
     }
 
-    qint64 loginUsingGoogle(QString googleId, QString tokenId, QString fullName, QObject *base = 0, Callback<bool> callBack = 0) {
-        qint64 id = pushRequest(_service, _version, "loginUsingGoogle", QVariantList() << QVariant::fromValue<QString>(googleId) << QVariant::fromValue<QString>(tokenId) << QVariant::fromValue<QString>(fullName));
+    qint64 loginUsingGoogle(QString googleId, QString tokenId, QString fullName, QString device, int application, QObject *base = 0, Callback<bool> callBack = 0) {
+        qint64 id = pushRequest(_service, _version, "loginUsingGoogle", QVariantList() << QVariant::fromValue<QString>(googleId) << QVariant::fromValue<QString>(tokenId) << QVariant::fromValue<QString>(fullName) << QVariant::fromValue<QString>(device) << QVariant::fromValue<int>(application));
         _calls[id] = "loginUsingGoogle";
         pushBase(id, base);
         callBackPush<bool>(id, callBack);
@@ -100,6 +132,26 @@ public Q_SLOTS:
             callBackJs(jsCallback, result, error);
         });
     }
+    qint64 checkEmail(QString email, const QJSValue &jsCallback) {
+        return checkEmail(email, this, [this, jsCallback](qint64, const bool &result, const CallbackError &error) {
+            callBackJs(jsCallback, result, error);
+        });
+    }
+    qint64 resetPasswordSendEmail(QString email, const QJSValue &jsCallback) {
+        return resetPasswordSendEmail(email, this, [this, jsCallback](qint64, const bool &result, const CallbackError &error) {
+            callBackJs(jsCallback, result, error);
+        });
+    }
+    qint64 resetPassword(QString token, QString newPassword, const QJSValue &jsCallback) {
+        return resetPassword(token, newPassword, this, [this, jsCallback](qint64, const bool &result, const CallbackError &error) {
+            callBackJs(jsCallback, result, error);
+        });
+    }
+    qint64 changePassword(QString oldPassword, QString newPassword, const QJSValue &jsCallback) {
+        return changePassword(oldPassword, newPassword, this, [this, jsCallback](qint64, const bool &result, const CallbackError &error) {
+            callBackJs(jsCallback, result, error);
+        });
+    }
     qint64 signUp(QString userName, QString password, QString email, QString firstName, QString lastName, const QJSValue &jsCallback) {
         return signUp(userName, password, email, firstName, lastName, this, [this, jsCallback](qint64, const bool &result, const CallbackError &error) {
             callBackJs(jsCallback, result, error);
@@ -110,8 +162,8 @@ public Q_SLOTS:
             callBackJs(jsCallback, result, error);
         });
     }
-    qint64 loginUsingGoogle(QString googleId, QString tokenId, QString fullName, const QJSValue &jsCallback) {
-        return loginUsingGoogle(googleId, tokenId, fullName, this, [this, jsCallback](qint64, const bool &result, const CallbackError &error) {
+    qint64 loginUsingGoogle(QString googleId, QString tokenId, QString fullName, QString device, int application, const QJSValue &jsCallback) {
+        return loginUsingGoogle(googleId, tokenId, fullName, device, application, this, [this, jsCallback](qint64, const bool &result, const CallbackError &error) {
             callBackJs(jsCallback, result, error);
         });
     }
@@ -132,6 +184,10 @@ Q_SIGNALS:
     void pingAnswer(qint64 id, QString result);
     void disconnected(QString sessionId);
     void checkUsernameAnswer(qint64 id, bool result);
+    void checkEmailAnswer(qint64 id, bool result);
+    void resetPasswordSendEmailAnswer(qint64 id, bool result);
+    void resetPasswordAnswer(qint64 id, bool result);
+    void changePasswordAnswer(qint64 id, bool result);
     void signUpAnswer(qint64 id, bool result);
     void logInAnswer(qint64 id, QString result);
     void loginUsingGoogleAnswer(qint64 id, bool result);
@@ -150,6 +206,26 @@ protected:
             callBackCall<bool>(id, result.value<bool>());
             _calls.remove(id);
             Q_EMIT checkUsernameAnswer(id, result.value<bool>());
+        } else
+        if(method == "checkEmail") {
+            callBackCall<bool>(id, result.value<bool>());
+            _calls.remove(id);
+            Q_EMIT checkEmailAnswer(id, result.value<bool>());
+        } else
+        if(method == "resetPasswordSendEmail") {
+            callBackCall<bool>(id, result.value<bool>());
+            _calls.remove(id);
+            Q_EMIT resetPasswordSendEmailAnswer(id, result.value<bool>());
+        } else
+        if(method == "resetPassword") {
+            callBackCall<bool>(id, result.value<bool>());
+            _calls.remove(id);
+            Q_EMIT resetPasswordAnswer(id, result.value<bool>());
+        } else
+        if(method == "changePassword") {
+            callBackCall<bool>(id, result.value<bool>());
+            _calls.remove(id);
+            Q_EMIT changePasswordAnswer(id, result.value<bool>());
         } else
         if(method == "signUp") {
             callBackCall<bool>(id, result.value<bool>());
