@@ -129,6 +129,8 @@ BackHandlerView {
                 TextCursorArea {
                     textItem: txt
                     cursorParent: search_bar
+                    backgroundColor: MeikadeGlobals.backgroundColor
+                    color: MeikadeGlobals.alternativeColor
                 }
 
                 Button {

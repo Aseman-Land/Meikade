@@ -151,6 +151,8 @@ Item {
                     TextCursorArea {
                         textItem: textArea
                         cursorParent: poemEdit
+                        backgroundColor: MeikadeGlobals.backgroundColor
+                        color: MeikadeGlobals.alternativeColor
                     }
                 }
             }
