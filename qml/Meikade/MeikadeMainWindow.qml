@@ -28,6 +28,8 @@ AsemanWindow {
     width: 1024
     height: 680
     visible: true
+    tooltip.color: MeikadeGlobals.masterColor
+    tooltip.textColor: "#ffffff"
 
     Material.theme: Meikade.nightTheme? Material.Dark : Material.Light
 

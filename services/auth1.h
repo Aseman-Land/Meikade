@@ -11,13 +11,25 @@ class Auth1: public AsemanAbstractAgentClient
 {
     Q_OBJECT
     Q_ENUMS(ActiveSessionResult)
+    Q_ENUMS(Errors)
 
 public:
     enum ActiveSessionResult {
-        actived = 0xC851D0,
-        expired = 0x32D062,
-        invalidSessionId = 0x47D0CE,
-        invalidApp = 0x7FD066
+        Actived = 0xC851D0,
+        Expired = 0x32D062,
+        InvalidSessionId = 0x47D0CE,
+        InvalidApp = 0x7FD066
+    };
+    enum Errors {
+        ErrorIncorrectUerName = 0x1,
+        ErrorCantChangePassword = 0x2,
+        ErrorIncorrectPassword = 0x4,
+        ErrorUnknownError = 0x8,
+        ErrorPasswordIsShort = 0x10,
+        ErrorUsernameExists = 0x20,
+        ErrorIncorrectSession = 0x40,
+        ErrorIncorrectAppId = 0x80,
+        ErrorExpiredSession = 0x100
     };
 
     Auth1(QObject *parent = Q_NULLPTR) :
@@ -68,16 +80,16 @@ public:
         return id;
     }
 
-    qint64 changePassword(QString oldPassword, QString newPassword, QObject *base = 0, Callback<bool> callBack = 0) {
-        qint64 id = pushRequest(_service, _version, "changePassword", QVariantList() << QVariant::fromValue<QString>(oldPassword) << QVariant::fromValue<QString>(newPassword));
+    qint64 changePassword(QString userName, QString oldPassword, QString newPassword, QObject *base = 0, Callback<bool> callBack = 0) {
+        qint64 id = pushRequest(_service, _version, "changePassword", QVariantList() << QVariant::fromValue<QString>(userName) << QVariant::fromValue<QString>(oldPassword) << QVariant::fromValue<QString>(newPassword));
         _calls[id] = "changePassword";
         pushBase(id, base);
         callBackPush<bool>(id, callBack);
         return id;
     }
 
-    qint64 signUp(QString userName, QString password, QString email, QString firstName, QString lastName, QObject *base = 0, Callback<bool> callBack = 0) {
-        qint64 id = pushRequest(_service, _version, "signUp", QVariantList() << QVariant::fromValue<QString>(userName) << QVariant::fromValue<QString>(password) << QVariant::fromValue<QString>(email) << QVariant::fromValue<QString>(firstName) << QVariant::fromValue<QString>(lastName));
+    qint64 signUp(QString userName, QString password, QString email, QString fullName, QObject *base = 0, Callback<bool> callBack = 0) {
+        qint64 id = pushRequest(_service, _version, "signUp", QVariantList() << QVariant::fromValue<QString>(userName) << QVariant::fromValue<QString>(password) << QVariant::fromValue<QString>(email) << QVariant::fromValue<QString>(fullName));
         _calls[id] = "signUp";
         pushBase(id, base);
         callBackPush<bool>(id, callBack);
@@ -92,14 +104,6 @@ public:
         return id;
     }
 
-    qint64 loginUsingGoogle(QString googleId, QString tokenId, QString fullName, QString device, int application, QObject *base = 0, Callback<bool> callBack = 0) {
-        qint64 id = pushRequest(_service, _version, "loginUsingGoogle", QVariantList() << QVariant::fromValue<QString>(googleId) << QVariant::fromValue<QString>(tokenId) << QVariant::fromValue<QString>(fullName) << QVariant::fromValue<QString>(device) << QVariant::fromValue<int>(application));
-        _calls[id] = "loginUsingGoogle";
-        pushBase(id, base);
-        callBackPush<bool>(id, callBack);
-        return id;
-    }
-
     qint64 logOut(QString sessionId, int application, QObject *base = 0, Callback<bool> callBack = 0) {
         qint64 id = pushRequest(_service, _version, "logOut", QVariantList() << QVariant::fromValue<QString>(sessionId) << QVariant::fromValue<int>(application));
         _calls[id] = "logOut";
@@ -108,11 +112,11 @@ public:
         return id;
     }
 
-    qint64 activeSession(QString sessionId, int application, QObject *base = 0, Callback<int> callBack = 0) {
+    qint64 activeSession(QString sessionId, int application, QObject *base = 0, Callback<bool> callBack = 0) {
         qint64 id = pushRequest(_service, _version, "activeSession", QVariantList() << QVariant::fromValue<QString>(sessionId) << QVariant::fromValue<int>(application));
         _calls[id] = "activeSession";
         pushBase(id, base);
-        callBackPush<int>(id, callBack);
+        callBackPush<bool>(id, callBack);
         return id;
     }
 
@@ -147,23 +151,18 @@ public Q_SLOTS:
             callBackJs(jsCallback, result, error);
         });
     }
-    qint64 changePassword(QString oldPassword, QString newPassword, const QJSValue &jsCallback) {
-        return changePassword(oldPassword, newPassword, this, [this, jsCallback](qint64, const bool &result, const CallbackError &error) {
+    qint64 changePassword(QString userName, QString oldPassword, QString newPassword, const QJSValue &jsCallback) {
+        return changePassword(userName, oldPassword, newPassword, this, [this, jsCallback](qint64, const bool &result, const CallbackError &error) {
             callBackJs(jsCallback, result, error);
         });
     }
-    qint64 signUp(QString userName, QString password, QString email, QString firstName, QString lastName, const QJSValue &jsCallback) {
-        return signUp(userName, password, email, firstName, lastName, this, [this, jsCallback](qint64, const bool &result, const CallbackError &error) {
+    qint64 signUp(QString userName, QString password, QString email, QString fullName, const QJSValue &jsCallback) {
+        return signUp(userName, password, email, fullName, this, [this, jsCallback](qint64, const bool &result, const CallbackError &error) {
             callBackJs(jsCallback, result, error);
         });
     }
     qint64 logIn(QString userName, QString password, QString device, int application, const QJSValue &jsCallback) {
         return logIn(userName, password, device, application, this, [this, jsCallback](qint64, const QString &result, const CallbackError &error) {
-            callBackJs(jsCallback, result, error);
-        });
-    }
-    qint64 loginUsingGoogle(QString googleId, QString tokenId, QString fullName, QString device, int application, const QJSValue &jsCallback) {
-        return loginUsingGoogle(googleId, tokenId, fullName, device, application, this, [this, jsCallback](qint64, const bool &result, const CallbackError &error) {
             callBackJs(jsCallback, result, error);
         });
     }
@@ -173,7 +172,7 @@ public Q_SLOTS:
         });
     }
     qint64 activeSession(QString sessionId, int application, const QJSValue &jsCallback) {
-        return activeSession(sessionId, application, this, [this, jsCallback](qint64, const int &result, const CallbackError &error) {
+        return activeSession(sessionId, application, this, [this, jsCallback](qint64, const bool &result, const CallbackError &error) {
             callBackJs(jsCallback, result, error);
         });
     }
@@ -190,67 +189,69 @@ Q_SIGNALS:
     void changePasswordAnswer(qint64 id, bool result);
     void signUpAnswer(qint64 id, bool result);
     void logInAnswer(qint64 id, QString result);
-    void loginUsingGoogleAnswer(qint64 id, bool result);
     void logOutAnswer(qint64 id, bool result);
-    void activeSessionAnswer(qint64 id, int result);
+    void activeSessionAnswer(qint64 id, bool result);
 
 protected:
+    void processError(qint64 id, const CallbackError &error) {
+        processResult(id, QVariant(), error);
+    }
+
     void processAnswer(qint64 id, const QVariant &result) {
+        processResult(id, result, CallbackError());
+    }
+
+    void processResult(qint64 id, const QVariant &result, const CallbackError &error) {
         const QString method = _calls.value(id);
         if(method == "ping") {
-            callBackCall<QString>(id, result.value<QString>());
+            callBackCall<QString>(id, result.value<QString>(), error);
             _calls.remove(id);
             Q_EMIT pingAnswer(id, result.value<QString>());
         } else
         if(method == "checkUsername") {
-            callBackCall<bool>(id, result.value<bool>());
+            callBackCall<bool>(id, result.value<bool>(), error);
             _calls.remove(id);
             Q_EMIT checkUsernameAnswer(id, result.value<bool>());
         } else
         if(method == "checkEmail") {
-            callBackCall<bool>(id, result.value<bool>());
+            callBackCall<bool>(id, result.value<bool>(), error);
             _calls.remove(id);
             Q_EMIT checkEmailAnswer(id, result.value<bool>());
         } else
         if(method == "resetPasswordSendEmail") {
-            callBackCall<bool>(id, result.value<bool>());
+            callBackCall<bool>(id, result.value<bool>(), error);
             _calls.remove(id);
             Q_EMIT resetPasswordSendEmailAnswer(id, result.value<bool>());
         } else
         if(method == "resetPassword") {
-            callBackCall<bool>(id, result.value<bool>());
+            callBackCall<bool>(id, result.value<bool>(), error);
             _calls.remove(id);
             Q_EMIT resetPasswordAnswer(id, result.value<bool>());
         } else
         if(method == "changePassword") {
-            callBackCall<bool>(id, result.value<bool>());
+            callBackCall<bool>(id, result.value<bool>(), error);
             _calls.remove(id);
             Q_EMIT changePasswordAnswer(id, result.value<bool>());
         } else
         if(method == "signUp") {
-            callBackCall<bool>(id, result.value<bool>());
+            callBackCall<bool>(id, result.value<bool>(), error);
             _calls.remove(id);
             Q_EMIT signUpAnswer(id, result.value<bool>());
         } else
         if(method == "logIn") {
-            callBackCall<QString>(id, result.value<QString>());
+            callBackCall<QString>(id, result.value<QString>(), error);
             _calls.remove(id);
             Q_EMIT logInAnswer(id, result.value<QString>());
         } else
-        if(method == "loginUsingGoogle") {
-            callBackCall<bool>(id, result.value<bool>());
-            _calls.remove(id);
-            Q_EMIT loginUsingGoogleAnswer(id, result.value<bool>());
-        } else
         if(method == "logOut") {
-            callBackCall<bool>(id, result.value<bool>());
+            callBackCall<bool>(id, result.value<bool>(), error);
             _calls.remove(id);
             Q_EMIT logOutAnswer(id, result.value<bool>());
         } else
         if(method == "activeSession") {
-            callBackCall<int>(id, result.value<int>());
+            callBackCall<bool>(id, result.value<bool>(), error);
             _calls.remove(id);
-            Q_EMIT activeSessionAnswer(id, result.value<int>());
+            Q_EMIT activeSessionAnswer(id, result.value<bool>());
         } else
             Q_UNUSED(result);
     }

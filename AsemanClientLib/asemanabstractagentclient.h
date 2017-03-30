@@ -13,13 +13,7 @@ class ASEMANCLIENTLIBSHARED_EXPORT AsemanAbstractAgentClient : public QObject
     Q_PROPERTY(AsemanAbstractClientSocket* socket READ socket WRITE setSocket NOTIFY socketChanged)
 
 public:
-    class CallbackError {
-    public:
-        CallbackError() : errorCode(0), null(true) {}
-        qint32 errorCode;
-        QString errorText;
-        bool null;
-    };
+    typedef AsemanAbstractClientSocket::CallbackError CallbackError;
 
     template<typename T>
     using Callback = std::function<void (qint64,T,CallbackError)>;
@@ -38,6 +32,7 @@ public Q_SLOTS:
 
 protected:
     virtual void processAnswer(qint64 id, const QVariant &result) = 0;
+    virtual void processError(qint64 id, const CallbackError &result) = 0;
     virtual void processSignals(const QString &signalName, const QVariantList &args) = 0;
 
     void pushBase(qint64 msgId, QObject *base) {
@@ -60,7 +55,7 @@ protected:
 
         QVariantMap errorMap;
         errorMap["code"] = error.errorCode;
-        errorMap["text"] = error.errorText;
+        errorMap["value"] = error.errorValue;
         errorMap["null"] = error.null;
 
         QJSValueList args;

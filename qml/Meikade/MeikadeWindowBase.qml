@@ -27,7 +27,6 @@ Rectangle {
     property alias rollerDialog: roller_dialog
     property alias bottomPanel: bottom_panel
     property alias pointerDialog: point_dialog
-    property alias tooltip: tool_tip
     property alias messageDialog: message_dialog
 
     property color subMessageBackground: "#66ffffff"
@@ -73,8 +72,8 @@ Rectangle {
         z: 11
     }
 
-    function showTooltip( text ){
-        tooltip.showText(text)
+    function showTooltip( text ) {
+        View.root.showTooltip(text)
     }
 
     function showSubMessage( item_component ){

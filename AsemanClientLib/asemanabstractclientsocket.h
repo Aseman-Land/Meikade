@@ -33,6 +33,14 @@ public:
     AsemanAbstractClientSocket(QObject *parent = Q_NULLPTR);
     ~AsemanAbstractClientSocket();
 
+    class CallbackError {
+    public:
+        CallbackError() : errorCode(0), null(true) {}
+        qint32 errorCode;
+        QVariant errorValue;
+        bool null;
+    };
+
     void setHostAddress(const QString &hostAddress) {
         if(hostAddress == _hostAddress)
             return;
@@ -115,6 +123,7 @@ Q_SIGNALS:
     void autoTrustChanged();
     void connected();
     void answer(qint64 id, const QVariant &result);
+    void error(qint64 id, const CallbackError &result);
     void error(const QString &text);
     void signalEmitted(const QString &signalName, const QVariantList &args);
 

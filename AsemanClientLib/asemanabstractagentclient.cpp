@@ -22,6 +22,7 @@ void AsemanAbstractAgentClient::setSocket(AsemanAbstractClientSocket *socket)
     if(p->socket)
     {
         disconnect(p->socket.data(), &AsemanAbstractClientSocket::answer, this, &AsemanAbstractAgentClient::processAnswer);
+        disconnect(p->socket.data(), static_cast<void (AsemanAbstractClientSocket::*)(qint64,const CallbackError &)>(&AsemanAbstractClientSocket::error), this, &AsemanAbstractAgentClient::processError);
         disconnect(p->socket.data(), &AsemanAbstractClientSocket::signalEmitted, this, &AsemanAbstractAgentClient::processSignals);
     }
 
@@ -29,6 +30,7 @@ void AsemanAbstractAgentClient::setSocket(AsemanAbstractClientSocket *socket)
     if(p->socket)
     {
         connect(p->socket.data(), &AsemanAbstractClientSocket::answer, this, &AsemanAbstractAgentClient::processAnswer);
+        connect(p->socket.data(), static_cast<void (AsemanAbstractClientSocket::*)(qint64,const CallbackError &)>(&AsemanAbstractClientSocket::error), this, &AsemanAbstractAgentClient::processError);
         connect(p->socket.data(), &AsemanAbstractClientSocket::signalEmitted, this, &AsemanAbstractAgentClient::processSignals);
     }
 

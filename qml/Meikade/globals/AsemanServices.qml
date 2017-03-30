@@ -9,6 +9,11 @@ AsemanObject {
     property alias socket: asemanSocket
     property alias auth: asemanAuth
     property alias meikade: asemanMeikade
+    property alias authSettings: auth_settings
+
+    readonly property int meikadeAppId: 35816
+    readonly property bool loggedIn: auth_settings.sessionId.length
+    property bool sessionActivated: false
 
     signal incommingMessage(string message, string msgUrl)
 
@@ -17,6 +22,7 @@ AsemanObject {
 //        hostAddress: "127.0.0.1"
         autoTrust: true
         certificate: "../certificates/falcon.crt"
+        onConnected: activeSession()
     }
 
     Server.Auth {
@@ -30,9 +36,11 @@ AsemanObject {
     }
 
     Settings {
-        id: messagesSettings
+        id: auth_settings
         category: "General"
-        source: AsemanApp.homePath + "/messages.ini"
+        source: AsemanApp.homePath + "/auth.ini"
+
+        property string sessionId
     }
 
     Timer {
@@ -57,5 +65,29 @@ AsemanObject {
 
     function init() {
         asemanSocket.wake()
+    }
+
+    function activeSession(callback) {
+        if(!loggedIn)
+            return
+
+        auth.activeSession(auth_settings.sessionId, meikadeAppId, function(res, error) {
+            if(res) {
+                View.root.showTooltip( qsTr("Logged In :)") )
+                sessionActivated = true
+            } else {
+                switch(error.code) {
+                case Server.Auth.ErrorIncorrectSession:
+                case Server.Auth.ErrorIncorrectAppId:
+                case Server.Auth.ErrorExpiredSession:
+                    authSettings.sessionId = ""
+                    sessionActivated = false
+                    break;
+                }
+
+                View.root.showTooltip( qsTr("Login error :(") + "\n" + error.value )
+            }
+            if(callback != undefined) callback()
+        })
     }
 }

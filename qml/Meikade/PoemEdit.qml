@@ -22,6 +22,7 @@ import QtQuick.Controls 2.1 as QtControls
 import QtQuick.Controls.Material 2.1
 import QtQuick.Layouts 1.3
 import AsemanTools 1.0
+import AsemanTools.Awesome 1.0
 import "globals"
 
 Item {
@@ -29,7 +30,30 @@ Item {
 
     property alias vid: poemItem.vid
     property alias pid: poemItem.pid
+    property int poetId
+    property int catId
     property alias textColor: poemItem.textColor
+
+    signal forceTitleBarShowRequest(bool stt)
+
+    onPidChanged: {
+        var cat = Database.poemCat(pid)
+
+        var poet
+        var book
+        while( cat ) {
+            book = poet
+            poet = cat
+            cat = Database.parentOf(cat)
+        }
+
+        poet_txt.text = Database.catName(poet)
+        book_txt.text = Database.catName(book)
+        poem_txt.text = Database.poemName(pid)
+
+        poetId = poet
+        catId = book? book : -1
+    }
 
     NullMouseArea { anchors.fill: parent }
 
@@ -50,7 +74,6 @@ Item {
         height: 48*Devices.density
         width: height
         running: false
-        transformOrigin: Item.Center
     }
 
     AsemanFlickable {
@@ -97,21 +120,103 @@ Item {
                 property bool activeAnim: false
             }
 
-            Rectangle {
+            Item {
                 id: shadow_rct
-                height: 3*Devices.density
                 width: parent.width
                 y: poemItem.height
-                visible: !Devices.isIOS && !busyIndicator.running
-                gradient: Gradient {
-                    GradientStop { position: 0.0; color: "#33000000" }
-                    GradientStop { position: 1.0; color: "#00000000" }
+                visible: !busyIndicator.running
+                height: 32*Devices.density
+
+                Rectangle {
+                    width: parent.width
+                    height: 1*Devices.density
+                    anchors.bottom: parent.bottom
+                    color: MeikadeGlobals.masterColor
+                    opacity: 0.3
+                }
+
+                Row {
+                    anchors.right: View.defaultLayout? undefined : parent.right
+                    anchors.left: View.defaultLayout? parent.left : undefined
+                    anchors.verticalCenter: parent.verticalCenter
+                    layoutDirection: View.layoutDirection
+                    anchors.margins: spacing
+                    spacing: 4*Devices.density
+
+                    Text {
+                        id: linkText
+                        anchors.verticalCenter: parent.verticalCenter
+                        font.pixelSize: 8*globalFontDensity*Devices.fontDensity
+                        font.family: Awesome.family
+                        text: View.defaultLayout? Awesome.fa_chevron_right : Awesome.fa_chevron_left
+                        color: MeikadeGlobals.masterColor
+                    }
+
+                    Text {
+                        id: poet_txt
+                        anchors.verticalCenter: parent.verticalCenter
+                        font.pixelSize: 8*globalFontDensity*Devices.fontDensity
+                        font.family: AsemanApp.globalFont.family
+                        wrapMode: TextInput.WordWrap
+                        color: MeikadeGlobals.masterColor
+                        horizontalAlignment: Text.AlignHCenter
+
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: {
+                                page.backToPoet(poetId)
+                            }
+                        }
+                    }
+
+                    Text {
+                        anchors.verticalCenter: parent.verticalCenter
+                        font.pixelSize: 8*globalFontDensity*Devices.fontDensity
+                        font.family: Awesome.family
+                        text: linkText.text
+                        color: MeikadeGlobals.masterColor
+                    }
+
+                    Text {
+                        id: book_txt
+                        anchors.verticalCenter: parent.verticalCenter
+                        font.pixelSize: 8*globalFontDensity*Devices.fontDensity
+                        font.family: AsemanApp.globalFont.family
+                        wrapMode: TextInput.WordWrap
+                        color: MeikadeGlobals.masterColor
+                        horizontalAlignment: Text.AlignHCenter
+
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: {
+                                page.backToCats(catId, poetId)
+                            }
+                        }
+                    }
+
+                    Text {
+                        anchors.verticalCenter: parent.verticalCenter
+                        font.pixelSize: 8*globalFontDensity*Devices.fontDensity
+                        font.family: Awesome.family
+                        text: linkText.text
+                        color: MeikadeGlobals.masterColor
+                    }
+
+                    Text {
+                        id: poem_txt
+                        anchors.verticalCenter: parent.verticalCenter
+                        font.pixelSize: 8*globalFontDensity*Devices.fontDensity
+                        font.family: AsemanApp.globalFont.family
+                        wrapMode: TextInput.WordWrap
+                        color: MeikadeGlobals.masterColor
+                        horizontalAlignment: Text.AlignHCenter
+                    }
                 }
             }
 
             Column {
                 id: editColumn
-                y: poemItem.height + 10*Devices.density
+                y: shadow_rct.y + shadow_rct.height + 10*Devices.density
                 anchors.left: parent.left
                 anchors.right: parent.right
                 anchors.margins: 10*Devices.density
@@ -159,6 +264,13 @@ Item {
         }
     }
 
+    ScrollBar {
+        scrollArea: flick; height: flick.height-View.navigationBarHeight
+        x: View.defaultLayout? parent.width-width : 0; anchors.top: flick.top
+        color: Meikade.nightTheme? "#ffffff" : MeikadeGlobals.masterColor
+        LayoutMirroring.enabled: View.layoutDirection == Qt.RightToLeft
+    }
+
     QtControls.Button {
         id: saveBtn
         anchors.left: parent.left
@@ -172,7 +284,7 @@ Item {
     }
 
     function start(startY) {
-        forceTitleBarShow = true
+        forceTitleBarShowRequest(true)
         busyIndicator.running = true
         poemItem.activeAnim = false
         poemItem.y = startY
@@ -182,7 +294,7 @@ Item {
 
         Tools.jsDelayCall(2000, function(){ busyIndicator.running = false })
         BackHandler.pushHandler(poemEdit, function() {
-            forceTitleBarShow = false
+            forceTitleBarShowRequest(false)
             busyIndicator.running = true
             poemItem.y = startY
             background.opacity = 0

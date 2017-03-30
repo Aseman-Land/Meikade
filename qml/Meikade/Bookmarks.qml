@@ -28,6 +28,8 @@ BackHandlerView {
     viewMode: false
 
     readonly property string title: qsTr("Bookmarks")
+    readonly property bool titleBarHide: !forceTitleBarShow && header.hide && (localPortrait || Devices.isMobile)
+    property bool forceTitleBarShow: false
 
     QtObject {
         id: privates
@@ -44,9 +46,8 @@ BackHandlerView {
 
     Rectangle {
         id: bookmark_frame
-        anchors.top: parent.top
+        anchors.top: header.bottom
         anchors.bottom: parent.bottom
-        anchors.topMargin: headerHeight+View.statusBarHeight
         anchors.right: View.defaultLayout? undefined : parent.right
         anchors.left: View.defaultLayout? parent.left : undefined
         width: localPortrait? parent.width : parent.width*1/3
@@ -85,11 +86,11 @@ BackHandlerView {
 
     PoemView {
         id: poem
-        anchors.top: parent.top
+        anchors.top: header.bottom
         anchors.bottom: parent.bottom
-        anchors.topMargin: headerHeight+View.statusBarHeight
         width: localPortrait? parent.width : parent.width*2/3
         clip: true
+        allowHideHeader: true
         rememberBar: true
         x: {
             switch(View.layoutDirection) {
@@ -100,6 +101,7 @@ BackHandlerView {
                 return  bookmarks.viewMode? parent.width - width : parent.width
             }
         }
+        onForceTitleBarShowRequest: forceTitleBarShow = stt
 
         Behavior on x {
             NumberAnimation { easing.type: Easing.OutCubic; duration: animations*400 }
@@ -111,6 +113,13 @@ BackHandlerView {
         width: parent.width
         height: View.statusBarHeight + Devices.standardTitleBarHeight
         color: MeikadeGlobals.masterColor
+        y: titleBarHide? -Devices.standardTitleBarHeight : 0
+
+        property bool hide: false
+
+        Behavior on y {
+            NumberAnimation { easing.type: Easing.OutCubic; duration: 300 }
+        }
 
         TitleBarShadow {
             width: header.width
@@ -131,9 +140,19 @@ BackHandlerView {
         }
     }
 
+    function hideHeader() {
+        header.hide = true
+    }
+
+    function showHeader() {
+        header.hide = false
+    }
+
     Component.onCompleted: {
         refresh()
+        MeikadeGlobals.categoriesList.append(this)
     }
+    Component.onDestruction: MeikadeGlobals.categoriesList.removeAll(this)
 
     ActivityAnalizer { object: bookmarks; comment: "" }
 }

@@ -78,6 +78,7 @@ Rectangle {
     }
 
     signal itemSelected( int pid, int vid )
+    signal forceTitleBarShowRequest(bool stt)
 
     Connections {
         target: Meikade
@@ -617,6 +618,7 @@ Rectangle {
         PoemEdit {
             anchors.fill: parent
             textColor: view.textColor
+            onForceTitleBarShowRequest: view.forceTitleBarShowRequest(stt)
         }
     }
 
@@ -640,10 +642,12 @@ Rectangle {
 
             function close() {
                 x = View.defaultLayout? parent.width : -width
+                view.forceTitleBarShowRequest(false)
             }
 
             Component.onCompleted: {
                 x = 0
+                view.forceTitleBarShowRequest(true)
                 BackHandler.pushHandler(sdlg, sdlg.close)
             }
             Component.onDestruction: {

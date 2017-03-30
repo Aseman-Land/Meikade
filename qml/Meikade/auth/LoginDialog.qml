@@ -4,6 +4,7 @@ import QtQuick 2.7
 import QtQuick.Controls 2.1
 import QtQuick.Layouts 1.3
 import QtQuick.Controls.Material 2.1
+import AsemanServer 1.0 as Server
 import "."
 import "../globals"
 
@@ -14,6 +15,7 @@ Dialog {
     y: parent.height/2 - height/2
     dim: true
     modal: true
+    closePolicy: Popup.CloseOnPressOutside
 
     signal signupRequest()
 
@@ -44,16 +46,21 @@ Dialog {
         }
 
         TextField {
-            id: emailField
-            Layout.preferredWidth: loginDialog.parent.width - 100*Devices.density
-            placeholderText: qsTr("Email")
+            id: usernameField
+            Layout.preferredWidth: {
+                var res = loginDialog.parent.width - 100*Devices.density
+                if(res > 350*Devices.density)
+                    res = 350*Devices.density
+                return res
+            }
+            placeholderText: qsTr("Username")
             inputMethodHints: Qt.ImhNoPredictiveText
             selectByMouse: true
-            validator: RegExpValidator{regExp: /\w+@\w+\.\w+/i }
+            validator: RegExpValidator{regExp: /\w+/i }
         }
         TextField {
             id: passwordField
-            Layout.preferredWidth: emailField.Layout.preferredWidth
+            Layout.preferredWidth: usernameField.Layout.preferredWidth
             placeholderText: qsTr("Password")
             echoMode: TextInput.Password
             passwordMaskDelay: 1000
@@ -62,14 +69,29 @@ Dialog {
 
         Button {
             text: qsTr("Log-In")
+            enabled: !usernameField.errorAvailable && !passwordField.errorAvailable
             highlighted: true
             flat: true
-            Layout.preferredWidth: emailField.Layout.preferredWidth
+            Layout.preferredWidth: usernameField.Layout.preferredWidth
+            onClicked: {
+                var dlg = showGlobalWait( qsTr("Please Wait..."), true )
+                AsemanServices.auth.logIn(usernameField.text, passwordField.text, Devices.deviceName, AsemanServices.meikadeAppId, function(res, error){
+                    if(!res || !error.null) {
+                        dlg.destroy()
+                        showTooltip(error.value)
+                        return
+                    }
+
+                    loginDialog.close()
+                    AsemanServices.authSettings.sessionId = res
+                    AsemanServices.activeSession( function(){ dlg.destroy() } )
+                })
+            }
         }
     }
 
     function clear() {
-        emailField.clear()
+        usernameField.clear()
         passwordField.clear()
     }
 }

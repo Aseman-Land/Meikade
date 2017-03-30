@@ -264,9 +264,11 @@ MeikadeWindowBase {
                 return true
             if(!MeikadeGlobals.categoriesList.last())
                 return true
+            if(MeikadeGlobals.categoriesList.last().titleBarHide)
+                return false
             if(pageManager.currentItem && pageManager.currentItem.title)
                 return true
-            return !MeikadeGlobals.categoriesList.last().titleBarHide
+            return true
         }
 
         Row {

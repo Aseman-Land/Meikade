@@ -148,7 +148,6 @@
         <file>qml/Meikade/globals/MeikadeGlobals.qml</file>
         <file>qml/Meikade/globals/qmldir</file>
         <file>qml/Meikade/auth/LoginDialog.qml</file>
-        <file>qml/Meikade/auth/LoginPhoneDialog.qml</file>
         <file>qml/Meikade/auth/qmldir</file>
         <file>qml/Meikade/auth/SignupDialog.qml</file>
         <file>qml/Meikade/auth/UserAccountDialogs.qml</file>

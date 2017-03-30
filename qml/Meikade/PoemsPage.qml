@@ -35,6 +35,8 @@ Rectangle {
     property int duration: 400
     property int easingType: Easing.OutQuad
 
+    signal forceTitleBarShowRequest(bool stt)
+
     onViewModeChanged: {
         if( viewMode )
             BackHandler.pushHandler(poems_page, poems_page.back)
@@ -99,6 +101,7 @@ Rectangle {
         width: localPortrait? parent.width : parent.width*2/3
         height: parent.height
         allowHideHeader: true
+        onForceTitleBarShowRequest: poems_page.forceTitleBarShowRequest(stt)
         x: {
             switch(View.layoutDirection) {
             case Qt.RightToLeft:

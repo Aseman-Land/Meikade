@@ -236,6 +236,7 @@ Rectangle {
             width: parent.width
             height: parent.height
             x: inited? 0 : (View.defaultLayout? width : -width )
+            onForceTitleBarShowRequest: forceTitleBarShow = stt
 
             property bool inited: false
             property bool outside: false

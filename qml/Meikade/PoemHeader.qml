@@ -175,7 +175,7 @@ Item {
             Text {
                 id: linkText
                 anchors.verticalCenter: parent.verticalCenter
-                font.pixelSize: 10*globalFontDensity*Devices.fontDensity
+                font.pixelSize: 9*globalFontDensity*Devices.fontDensity
                 font.family: Awesome.family
                 text: View.defaultLayout? Awesome.fa_chevron_right : Awesome.fa_chevron_left
                 color: poem_header.color
@@ -184,7 +184,7 @@ Item {
             Text {
                 id: poet_txt
                 anchors.verticalCenter: parent.verticalCenter
-                font.pixelSize: 10*globalFontDensity*Devices.fontDensity
+                font.pixelSize: 9*globalFontDensity*Devices.fontDensity
                 font.family: AsemanApp.globalFont.family
                 wrapMode: TextInput.WordWrap
                 color: poem_header.color
@@ -200,7 +200,7 @@ Item {
 
             Text {
                 anchors.verticalCenter: parent.verticalCenter
-                font.pixelSize: 10*globalFontDensity*Devices.fontDensity
+                font.pixelSize: 9*globalFontDensity*Devices.fontDensity
                 font.family: Awesome.family
                 text: linkText.text
                 color: poem_header.color
@@ -209,7 +209,7 @@ Item {
             Text {
                 id: book_txt
                 anchors.verticalCenter: parent.verticalCenter
-                font.pixelSize: 10*globalFontDensity*Devices.fontDensity
+                font.pixelSize: 9*globalFontDensity*Devices.fontDensity
                 font.family: AsemanApp.globalFont.family
                 wrapMode: TextInput.WordWrap
                 color: poem_header.color

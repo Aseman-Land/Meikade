@@ -117,35 +117,43 @@ Q_SIGNALS:
     void pushDeviceModelAnswer(qint64 id, bool result);
 
 protected:
+    void processError(qint64 id, const CallbackError &error) {
+        processResult(id, QVariant(), error);
+    }
+
     void processAnswer(qint64 id, const QVariant &result) {
+        processResult(id, result, CallbackError());
+    }
+
+    void processResult(qint64 id, const QVariant &result, const CallbackError &error) {
         const QString method = _calls.value(id);
         if(method == "ping") {
-            callBackCall<QString>(id, result.value<QString>());
+            callBackCall<QString>(id, result.value<QString>(), error);
             _calls.remove(id);
             Q_EMIT pingAnswer(id, result.value<QString>());
         } else
         if(method == "lastMessage") {
-            callBackCall<QVariantMap>(id, result.value<QVariantMap>());
+            callBackCall<QVariantMap>(id, result.value<QVariantMap>(), error);
             _calls.remove(id);
             Q_EMIT lastMessageAnswer(id, result.value<QVariantMap>());
         } else
         if(method == "getAdvertise") {
-            callBackCall<QVariantMap>(id, result.value<QVariantMap>());
+            callBackCall<QVariantMap>(id, result.value<QVariantMap>(), error);
             _calls.remove(id);
             Q_EMIT getAdvertiseAnswer(id, result.value<QVariantMap>());
         } else
         if(method == "pushActivity") {
-            callBackCall<bool>(id, result.value<bool>());
+            callBackCall<bool>(id, result.value<bool>(), error);
             _calls.remove(id);
             Q_EMIT pushActivityAnswer(id, result.value<bool>());
         } else
         if(method == "pushAction") {
-            callBackCall<bool>(id, result.value<bool>());
+            callBackCall<bool>(id, result.value<bool>(), error);
             _calls.remove(id);
             Q_EMIT pushActionAnswer(id, result.value<bool>());
         } else
         if(method == "pushDeviceModel") {
-            callBackCall<bool>(id, result.value<bool>());
+            callBackCall<bool>(id, result.value<bool>(), error);
             _calls.remove(id);
             Q_EMIT pushDeviceModelAnswer(id, result.value<bool>());
         } else

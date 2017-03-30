@@ -12,7 +12,6 @@ Item {
 
     SignupDialog {
         id: signupDialog
-        onClosed: loginDialog.open()
     }
 
     LoginDialog {
@@ -21,10 +20,6 @@ Item {
             signupDialog.open()
             signupDialog.clear()
         }
-    }
-
-    LoginPhoneDialog {
-        id: login2Dialog
     }
 
     function open() {
