@@ -53,7 +53,9 @@ Item {
 
         poetId = poet
         catId = book? book : -1
+        refresh()
     }
+    onVidChanged: refresh()
 
     NullMouseArea { anchors.fill: parent }
 
@@ -124,7 +126,7 @@ Item {
                 id: shadow_rct
                 width: parent.width
                 y: poemItem.height
-                visible: !busyIndicator.running
+                visible: editColumn.visible
                 height: 32*Devices.density
 
                 Rectangle {
@@ -220,7 +222,7 @@ Item {
                 anchors.left: parent.left
                 anchors.right: parent.right
                 anchors.margins: 10*Devices.density
-                visible: !busyIndicator.running
+                visible: false
 
                 QtControls.TextArea {
                     id: textArea
@@ -278,27 +280,45 @@ Item {
         anchors.margins: 10*Devices.density
         anchors.bottom: parent.bottom
         anchors.bottomMargin: Devices.keyboardHeight
-        visible: !busyIndicator.running
+        visible: editColumn.visible
         highlighted: true
         text: qsTr("Save")
+        onClicked: {
+            busyIndicator.running = true
+            AsemanServices.meikade.addNote(pid, vid, textArea.text, function(res, error){
+                busyIndicator.running = false
+                if(!error.null || !res) showTooltip(error.value)
+            })
+        }
     }
 
     function start(startY) {
         forceTitleBarShowRequest(true)
-        busyIndicator.running = true
         poemItem.activeAnim = false
         poemItem.y = startY
         poemItem.activeAnim = true
         poemItem.y = 0
         background.opacity = 1
 
-        Tools.jsDelayCall(2000, function(){ busyIndicator.running = false })
+        Tools.jsDelayCall(400, function(){ editColumn.visible = true })
         BackHandler.pushHandler(poemEdit, function() {
             forceTitleBarShowRequest(false)
+            editColumn.visible = false
             busyIndicator.running = true
             poemItem.y = startY
             background.opacity = 0
             Tools.jsDelayCall(400, function(){ poemEdit.destroy() })
+        })
+    }
+
+    function refresh() {
+        if(!vid || !pid) return
+        busyIndicator.running = true
+        AsemanServices.meikade.note(pid, vid, function(res, error){
+            busyIndicator.running = false
+            editColumn.visible = true
+            textArea.text = res
+            if(!error.null) showTooltip(error.value)
         })
     }
 }

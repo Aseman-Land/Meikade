@@ -10,8 +10,15 @@
 class Meikade1: public AsemanAbstractAgentClient
 {
     Q_OBJECT
+    Q_ENUMS(Errors)
 
 public:
+    enum Errors {
+        ErrorUnknownError = 0x0,
+        ErrorNoteNotFound = 0x1,
+        ErrorSessionError = 0x2,
+        ErrorUserNotFound = 0x4
+    };
 
     Meikade1(QObject *parent = Q_NULLPTR) :
         AsemanAbstractAgentClient(parent),
@@ -69,6 +76,22 @@ public:
         return id;
     }
 
+    qint64 addNote(int poemId, int verseId, QString text, QObject *base = 0, Callback<bool> callBack = 0) {
+        qint64 id = pushRequest(_service, _version, "addNote", QVariantList() << QVariant::fromValue<int>(poemId) << QVariant::fromValue<int>(verseId) << QVariant::fromValue<QString>(text));
+        _calls[id] = "addNote";
+        pushBase(id, base);
+        callBackPush<bool>(id, callBack);
+        return id;
+    }
+
+    qint64 note(int poemId, int verseId, QObject *base = 0, Callback<QString> callBack = 0) {
+        qint64 id = pushRequest(_service, _version, "note", QVariantList() << QVariant::fromValue<int>(poemId) << QVariant::fromValue<int>(verseId));
+        _calls[id] = "note";
+        pushBase(id, base);
+        callBackPush<QString>(id, callBack);
+        return id;
+    }
+
 
 #ifdef QT_QML_LIB
 public Q_SLOTS:
@@ -105,6 +128,16 @@ public Q_SLOTS:
             callBackJs(jsCallback, result, error);
         });
     }
+    qint64 addNote(int poemId, int verseId, QString text, const QJSValue &jsCallback) {
+        return addNote(poemId, verseId, text, this, [this, jsCallback](qint64, const bool &result, const CallbackError &error) {
+            callBackJs(jsCallback, result, error);
+        });
+    }
+    qint64 note(int poemId, int verseId, const QJSValue &jsCallback) {
+        return note(poemId, verseId, this, [this, jsCallback](qint64, const QString &result, const CallbackError &error) {
+            callBackJs(jsCallback, result, error);
+        });
+    }
 
 #endif //QT_QML_LIB
 
@@ -115,6 +148,8 @@ Q_SIGNALS:
     void pushActivityAnswer(qint64 id, bool result);
     void pushActionAnswer(qint64 id, bool result);
     void pushDeviceModelAnswer(qint64 id, bool result);
+    void addNoteAnswer(qint64 id, bool result);
+    void noteAnswer(qint64 id, QString result);
 
 protected:
     void processError(qint64 id, const CallbackError &error) {
@@ -156,6 +191,21 @@ protected:
             callBackCall<bool>(id, result.value<bool>(), error);
             _calls.remove(id);
             Q_EMIT pushDeviceModelAnswer(id, result.value<bool>());
+        } else
+        if(method == "addNote") {
+            callBackCall<bool>(id, result.value<bool>(), error);
+            _calls.remove(id);
+            Q_EMIT addNoteAnswer(id, result.value<bool>());
+        } else
+        if(method == "note") {
+            callBackCall<QString>(id, result.value<QString>(), error);
+            _calls.remove(id);
+            Q_EMIT noteAnswer(id, result.value<QString>());
+        } else
+        if(method == "note") {
+            callBackCall<QString>(id, result.value<QString>(), error);
+            _calls.remove(id);
+            Q_EMIT noteAnswer(id, result.value<QString>());
         } else
             Q_UNUSED(result);
     }

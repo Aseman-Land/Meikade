@@ -279,6 +279,7 @@ Rectangle {
             property alias press: marea.pressed
             property bool anim: false
 
+            property PoemEdit editItem
             property variant checkItem
 
             Behavior on height {
@@ -320,6 +321,7 @@ Rectangle {
                 textColor: item.press? view.highlightTextColor : view.textColor
                 vid: verseId
                 pid: poemId
+                visible: !item.editItem
                 highlight: view_list.highlightedVid == vid
                 font.pixelSize: Devices.isMobile? 9*fontScale*globalFontDensity*Devices.fontDensity : 10*fontScale*globalFontDensity*Devices.fontDensity
                 font.family: globalPoemFontFamily
@@ -371,8 +373,8 @@ Rectangle {
                                 selectionHash.remove(model.verseId)
                         } else {
                             var point = view.mapFromItem(pitem, 0, 0)
-                            var edit = poemEdit_component.createObject(view, {"vid": verseId, "pid": poemId})
-                            edit.start(point.y)
+                            item.editItem = poemEdit_component.createObject(view, {"vid": verseId, "pid": poemId})
+                            item.editItem.start(point.y)
                         }
                     }
 

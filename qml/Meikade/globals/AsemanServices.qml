@@ -14,6 +14,7 @@ AsemanObject {
     readonly property int meikadeAppId: 35816
     readonly property bool loggedIn: auth_settings.sessionId.length
     property bool sessionActivated: false
+    property bool loggining: true
 
     signal incommingMessage(string message, string msgUrl)
 
@@ -68,9 +69,12 @@ AsemanObject {
     }
 
     function activeSession(callback) {
-        if(!loggedIn)
+        if(!loggedIn) {
+            loggining = false
             return
+        }
 
+        loggining = true
         auth.activeSession(auth_settings.sessionId, meikadeAppId, function(res, error) {
             if(res) {
                 View.root.showTooltip( qsTr("Logged In :)") )
@@ -87,6 +91,7 @@ AsemanObject {
 
                 View.root.showTooltip( qsTr("Login error :(") + "\n" + error.value )
             }
+            loggining = false
             if(callback != undefined) callback()
         })
     }
