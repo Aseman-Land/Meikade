@@ -12,6 +12,7 @@ AsemanObject {
     property color foregroundColor: Material.foreground
 
     Material.theme: Meikade.nightTheme? Material.Dark : Material.Light
+    Material.background: Meikade.nightTheme? "#313131" : "#eaeaea"
 
     property alias categoriesList: _categoriesList
 
