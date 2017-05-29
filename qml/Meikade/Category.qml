@@ -78,7 +78,7 @@ Item {
                 anchors.margins: 12*Devices.density
                 font.pixelSize: 30*globalFontDensity*Devices.fontDensity
                 font.family: Awesome.family
-                opacity: 0.5
+                opacity: 0.3
                 color: MeikadeGlobals.foregroundColor
                 text: View.defaultLayout? Awesome.fa_angle_right : Awesome.fa_angle_left
             }
