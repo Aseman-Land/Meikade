@@ -92,6 +92,22 @@ public:
         return id;
     }
 
+    qint64 getPoemNotes(int poemId, int offset, int limit, QObject *base = 0, Callback<QVariantMap> callBack = 0) {
+        qint64 id = pushRequest(_service, _version, "getPoemNotes", QVariantList() << QVariant::fromValue<int>(poemId) << QVariant::fromValue<int>(offset) << QVariant::fromValue<int>(limit));
+        _calls[id] = "getPoemNotes";
+        pushBase(id, base);
+        callBackPush<QVariantMap>(id, callBack);
+        return id;
+    }
+
+    qint64 getNotes(int offset, int limit, QObject *base = 0, Callback<QVariantList> callBack = 0) {
+        qint64 id = pushRequest(_service, _version, "getNotes", QVariantList() << QVariant::fromValue<int>(offset) << QVariant::fromValue<int>(limit));
+        _calls[id] = "getNotes";
+        pushBase(id, base);
+        callBackPush<QVariantList>(id, callBack);
+        return id;
+    }
+
 
 #ifdef QT_QML_LIB
 public Q_SLOTS:
@@ -138,6 +154,16 @@ public Q_SLOTS:
             callBackJs(jsCallback, result, error);
         });
     }
+    qint64 getPoemNotes(int poemId, int offset, int limit, const QJSValue &jsCallback) {
+        return getPoemNotes(poemId, offset, limit, this, [this, jsCallback](qint64, const QVariantMap &result, const CallbackError &error) {
+            callBackJs(jsCallback, result, error);
+        });
+    }
+    qint64 getNotes(int offset, int limit, const QJSValue &jsCallback) {
+        return getNotes(offset, limit, this, [this, jsCallback](qint64, const QVariantList &result, const CallbackError &error) {
+            callBackJs(jsCallback, result, error);
+        });
+    }
 
 #endif //QT_QML_LIB
 
@@ -150,6 +176,8 @@ Q_SIGNALS:
     void pushDeviceModelAnswer(qint64 id, bool result);
     void addNoteAnswer(qint64 id, bool result);
     void noteAnswer(qint64 id, QString result);
+    void getPoemNotesAnswer(qint64 id, QVariantMap result);
+    void getNotesAnswer(qint64 id, QVariantList result);
 
 protected:
     void processError(qint64 id, const CallbackError &error) {
@@ -202,10 +230,15 @@ protected:
             _calls.remove(id);
             Q_EMIT noteAnswer(id, result.value<QString>());
         } else
-        if(method == "note") {
-            callBackCall<QString>(id, result.value<QString>(), error);
+        if(method == "getPoemNotes") {
+            callBackCall<QVariantMap>(id, result.value<QVariantMap>(), error);
             _calls.remove(id);
-            Q_EMIT noteAnswer(id, result.value<QString>());
+            Q_EMIT getPoemNotesAnswer(id, result.value<QVariantMap>());
+        } else
+        if(method == "getNotes") {
+            callBackCall<QVariantList>(id, result.value<QVariantList>(), error);
+            _calls.remove(id);
+            Q_EMIT getNotesAnswer(id, result.value<QVariantList>());
         } else
             Q_UNUSED(result);
     }

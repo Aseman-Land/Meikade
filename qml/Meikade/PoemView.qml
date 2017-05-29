@@ -47,6 +47,7 @@ Rectangle {
     property bool allowHideHeader: false
 
     property variant stickerDialog
+    readonly property bool loggedIn: AsemanServices.loggedIn
 
     onPoemIdChanged: {
         view_list.refresh()
@@ -67,7 +68,9 @@ Rectangle {
         }
 
         img.source = filePath
+        reloadOnlines()
     }
+    onLoggedInChanged: reloadOnlines()
 
     onSelectModeChanged: {
         selectionHash.clear()
@@ -88,6 +91,10 @@ Rectangle {
     HashObject {
         id: selectionHash
         onCountChanged: if(count == 0) selectMode = false
+    }
+
+    HashObject {
+        id: notesHash
     }
 
     Timer {
@@ -271,7 +278,7 @@ Rectangle {
         delegate: Rectangle {
             id: item
             width: view_list.width
-            height: pitem.height + extraHeight
+            height: pitem.height + (noteRect.visible?noteRect.height:0) + extraHeight
             color: MeikadeGlobals.backgroundAlternativeColor
 //            clip: true
 
@@ -336,7 +343,7 @@ Rectangle {
                     anchors.bottom: parent.bottom
                     width: 25*Devices.density
                     color: Qt.lighter(MeikadeGlobals.masterColor)
-                    visible: item.press || item.height != pitem.height + item.extraHeight
+                    visible: item.press
 
                     Text {
                         anchors.centerIn: parent
@@ -348,19 +355,59 @@ Rectangle {
                 }
             }
 
+            Item {
+                id: noteRect
+                anchors.top: pitem.bottom
+                anchors.left: pitem.left
+                anchors.right: pitem.right
+                height: noteText.height + 10*Devices.density
+                visible: noteText.text.length
+
+                Rectangle {
+                    y: -10*Devices.density
+                    height: noteText.height + 10*Devices.density
+                    width: 2*Devices.density
+                    color: "#FFC107"
+                    x: View.defaultLayout? 40*Devices.density : parent.width - width - 40*Devices.density
+                }
+
+                Text {
+                    id: noteText
+                    width: parent.width - 100*Devices.density
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                    maximumLineCount: 3
+                    elide: Text.ElideRight
+                    font.pixelSize: 8*Devices.fontDensity
+                    color: MeikadeGlobals.foregroundColor
+                    opacity: 0.6
+                    text: {
+                        if(notesHash.count == 0)
+                            return ""
+                        else
+                        if(notesHash.contains(verseId))
+                            return notesHash.value(verseId)
+                        else
+                            return ""
+                    }
+                }
+            }
+
             ItemDelegate {
                 id: marea
                 anchors.fill: parent
                 z: 10
                 onPressAndHold: {
-                    selectMode = true
-                    checkItem.checked = true
-                    selectionHash.insert(model.verseId, pitem.text)
-                    if(fake_header.visible)
-                        fake_header.showMenu()
-                    else
-                    if(view_list.headerItem)
-                        view_list.headerItem.showMenu()
+                    if( view.editable ) {
+                        selectMode = true
+                        checkItem.checked = true
+                        selectionHash.insert(model.verseId, pitem.text)
+                        if(fake_header.visible)
+                            fake_header.showMenu()
+                        else
+                        if(view_list.headerItem)
+                            view_list.headerItem.showMenu()
+                    }
                 }
                 onClicked: {
                     if( view.editable ) {
@@ -451,6 +498,7 @@ Rectangle {
             font.pixelSize: Devices.isMobile? 11*globalFontDensity*Devices.fontDensity : 13*globalFontDensity*Devices.fontDensity
             font.family: globalPoemFontFamily
             z: 100
+            busy: fake_header.busy
             onHeightChanged: {
                 header_back.headerHeight = height+view_list.y
                 view_list.positionViewAtBeginning()
@@ -615,12 +663,30 @@ Rectangle {
             view.poemId = poemsArray[idx]
     }
 
+    function reloadOnlines() {
+        notesHash.clear()
+        if(!loggedIn) return
+        fake_header.busy = true
+        AsemanServices.meikade.getPoemNotes(poemId, 0, 100, function(res, error){
+            fake_header.busy = false
+            for(var i in res)
+                notesHash.insert(i, res[i])
+            if(!error.null || !res) {
+                showTooltip(error.value)
+            }
+        })
+    }
+
     Component {
         id: poemEdit_component
         PoemEdit {
             anchors.fill: parent
             textColor: view.textColor
             onForceTitleBarShowRequest: view.forceTitleBarShowRequest(stt)
+            onNoteChanged: {
+                notesHash.remove(vid)
+                notesHash.insert(vid, text)
+            }
         }
     }
 

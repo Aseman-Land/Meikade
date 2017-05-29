@@ -21,6 +21,7 @@ import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.3
 import AsemanTools 1.0
 import AsemanTools.Awesome 1.0
+import QtQuick.Controls.Material 2.1
 import "globals"
 
 Item {
@@ -35,6 +36,7 @@ Item {
     property bool toolsOpened: false
     property alias font: txt1.font
     property color color: "#ffffff"
+    property alias busy: busyIndicator.running
 
     signal nextRequest()
     signal previousRequest()
@@ -231,6 +233,18 @@ Item {
             anchors.left: View.defaultLayout? undefined : parent.left
             anchors.verticalCenter: parent.verticalCenter
             spacing: 1*Devices.density
+            layoutDirection: View.layoutDirection
+
+            BusyIndicator {
+                id: busyIndicator
+                anchors.verticalCenter: parent.verticalCenter
+                height: 46*Devices.density
+                width: height
+                running: false
+                transformOrigin: Item.Center
+                scale: 0.5
+                Material.accent: "#ffffff"
+            }
 
             Button {
                 id: menu

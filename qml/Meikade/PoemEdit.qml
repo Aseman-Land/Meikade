@@ -32,9 +32,11 @@ Item {
     property alias pid: poemItem.pid
     property int poetId
     property int catId
+    property real startY
     property alias textColor: poemItem.textColor
 
     signal forceTitleBarShowRequest(bool stt)
+    signal noteChanged(string text)
 
     onPidChanged: {
         var cat = Database.poemCat(pid)
@@ -254,6 +256,9 @@ Item {
                             return Qt.ImhNoPredictiveText
                     }
                     onCursorRectangleChanged: flick.ensureVisible(cursorRectangle)
+                    onTextChanged: changed = true
+
+                    property bool changed: false
 
                     TextCursorArea {
                         textItem: textArea
@@ -285,14 +290,58 @@ Item {
         text: qsTr("Save")
         onClicked: {
             busyIndicator.running = true
-            AsemanServices.meikade.addNote(pid, vid, textArea.text, function(res, error){
+            var text = textArea.text
+            AsemanServices.meikade.addNote(pid, vid, text, function(res, error){
                 busyIndicator.running = false
-                if(!error.null || !res) showTooltip(error.value)
+                textArea.changed = false
+                if(!error.null || !res) {
+                    showTooltip(error.value)
+                    textArea.changed = true
+                } else {
+                    poemEdit.noteChanged(text)
+                }
             })
         }
     }
 
+    QtControls.Dialog {
+        id: discardDialog
+        x: parent.width/2 - width/2
+        y: parent.height/2 - height/2
+        dim: true
+        modal: true
+        title: qsTr("Warning")
+        closePolicy: QtControls.Popup.CloseOnPressOutside
+
+        onVisibleChanged: {
+            if(visible)
+                BackHandler.pushHandler(discardDialog, function(){discardDialog.visible = false})
+            else
+                BackHandler.removeHandler(discardDialog)
+        }
+
+        QtControls.Label {
+            text: qsTr("Do you want to discard changes?")
+        }
+
+        footer: QtControls.DialogButtonBox {
+            standardButtons: QtControls.DialogButtonBox.Discard | QtControls.DialogButtonBox.Cancel
+            onClicked: {
+                switch(button.QtControls.DialogButtonBox.buttonRole) {
+                case 2:
+                    poemEdit.close()
+                    discardDialog.close()
+                    break
+                case 1:
+                    discardDialog.close()
+                    break
+                }
+            }
+        }
+    }
+
     function start(startY) {
+        poemEdit.startY = startY
         forceTitleBarShowRequest(true)
         poemItem.activeAnim = false
         poemItem.y = startY
@@ -300,14 +349,15 @@ Item {
         poemItem.y = 0
         background.opacity = 1
 
-        Tools.jsDelayCall(400, function(){ editColumn.visible = true })
-        BackHandler.pushHandler(poemEdit, function() {
-            forceTitleBarShowRequest(false)
-            editColumn.visible = false
-            busyIndicator.running = true
-            poemItem.y = startY
-            background.opacity = 0
-            Tools.jsDelayCall(400, function(){ poemEdit.destroy() })
+        BackHandler.pushHandler(poemEdit, function(){
+            if(textArea.changed) {
+                discardDialog.open()
+                return false
+            } else {
+                poemEdit.close()
+                return true
+            }
+
         })
     }
 
@@ -318,7 +368,17 @@ Item {
             busyIndicator.running = false
             editColumn.visible = true
             textArea.text = res
+            textArea.changed = false
             if(!error.null) showTooltip(error.value)
         })
+    }
+
+    function close() {
+        forceTitleBarShowRequest(false)
+        editColumn.visible = false
+        busyIndicator.running = true
+        poemItem.y = poemEdit.startY
+        background.opacity = 0
+        Tools.jsDelayCall(400, function(){ poemEdit.destroy() })
     }
 }
