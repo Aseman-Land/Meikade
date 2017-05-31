@@ -28,7 +28,7 @@ Rectangle {
     id: search_list
     width: 100
     height: 62
-    color: MeikadeGlobals.backgroundColor
+    color: MeikadeGlobals.backgroundAlternativeColor
 
     property alias keyword: tmodel.keyword
     property alias poetId: tmodel.poet

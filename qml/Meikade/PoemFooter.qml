@@ -25,7 +25,7 @@ import "globals"
 
 Rectangle {
     height: 40*Devices.density
-    color: MeikadeGlobals.backgroundColor
+    color: MeikadeGlobals.backgroundAlternativeColor
 
     signal nextRequest()
     signal previousRequest()
