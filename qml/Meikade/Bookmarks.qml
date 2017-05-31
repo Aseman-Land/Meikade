@@ -16,8 +16,11 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-import QtQuick 2.0
+import QtQuick 2.7
+import QtQuick.Controls 2.1
 import AsemanTools 1.0
+import AsemanTools.Awesome 1.0
+import QtQml 2.2
 import "globals"
 
 BackHandlerView {
@@ -30,6 +33,8 @@ BackHandlerView {
     readonly property string title: qsTr("Bookmarks")
     readonly property bool titleBarHide: !forceTitleBarShow && header.hide && (localPortrait || Devices.isMobile)
     property bool forceTitleBarShow: false
+    property alias itemsSpacing: category_list.spacing
+    property real topMargin: itemsSpacing
 
     QtObject {
         id: privates
@@ -51,21 +56,148 @@ BackHandlerView {
         anchors.right: View.defaultLayout? undefined : parent.right
         anchors.left: View.defaultLayout? parent.left : undefined
         width: localPortrait? parent.width : parent.width*1/3
-        color: "#ffffff"
+        color: MeikadeGlobals.backgroundColor
 
-        PoemView {
-            id: poem_view
+        AsemanListView {
+            id: category_list
             anchors.fill: parent
-            color: "#00000000"
-            header: Item {}
+            topMargin: bookmarks.topMargin
+            bottomMargin: View.navigationBarHeight + spacing
             clip: true
-            editable: false
-            headerVisible: false
-            onItemSelected: {
-                poem.poemId = pid
-                poem.goTo(vid)
-                poem.highlightItem(vid)
-                bookmarks.viewMode = true
+            spacing: 8*Devices.density
+            model: ListModel {}
+            delegate: Item {
+                id: item
+                x: category_list.spacing
+                width: category_list.width - 2*x
+                height: 86*Devices.density
+
+                MaterialFrame {
+                    anchors.fill: parent
+                    color: MeikadeGlobals.backgroundAlternativeColor
+                }
+                Column {
+                    anchors.fill: parent
+
+                    CategoryItem {
+                        width: parent.width
+                        height: parent.height - separator.height - stats.height
+                        cid: identifier
+                        root: true
+                    }
+
+                    Rectangle {
+                        id: separator
+                        width: parent.width
+                        height: 1*Devices.density
+                        color: MeikadeGlobals.backgroundColor
+                    }
+
+                    Row {
+                        id: stats
+                        layoutDirection: View.layoutDirection
+                        rightPadding: 10*Devices.density
+                        leftPadding: 10*Devices.density
+                        width: parent.width
+                        height: 30*Devices.density
+                        spacing: 5*Devices.density
+
+                        Text {
+                            id: fav_icon
+                            anchors.verticalCenter: parent.verticalCenter
+                            font.pixelSize: 15*globalFontDensity*Devices.fontDensity
+                            font.family: Awesome.family
+                            color: Qt.lighter(MeikadeGlobals.masterColor)
+                            text: Meikade.nightTheme? Awesome.fa_heart : Awesome.fa_heart_o
+                        }
+
+                        Text {
+                            anchors.verticalCenter: parent.verticalCenter
+                            text: View.layoutDirection == Qt.RightToLeft?
+                                      Number(pcount).toLocaleString(Qt.locale("fa_IR"), "f", 0) + qsTr(" poem, ") + Number(vcount).toLocaleString(Qt.locale("fa_IR"), "f", 0) + qsTr(" single beit") :
+                                      Number(pcount).toLocaleString(Qt.locale("en_EN"), "f", 0) + qsTr(" poem, ") + Number(vcount).toLocaleString(Qt.locale("en_EN"), "f", 0) + qsTr(" single beit")
+                            font.pixelSize: Devices.isMobile? 8*globalFontDensity*Devices.fontDensity : 9*globalFontDensity*Devices.fontDensity
+                            font.family: AsemanApp.globalFont.family
+                            wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                            color: Meikade.nightTheme? Qt.darker(MeikadeGlobals.foregroundColor) : Qt.darker(MeikadeGlobals.backgroundColor)
+                        }
+                    }
+                }
+
+                ItemDelegate {
+                    id: marea
+                    anchors.fill: parent
+                    onClicked: {
+                        console.log(identifier)
+                    }
+                }
+            }
+
+            HashObject {
+                id: poet_poem
+            }
+
+            HashObject {
+                id: poet_verse
+            }
+
+            function refresh() {
+                model.clear()
+                poet_poem.clear()
+                poet_verse.clear()
+
+                var list = UserData.favorites()
+                for( var i=0; i<list.length; i++ ) {
+                    var sid = list[i]
+                    var pid = UserData.extractPoemIdFromStringId(sid)
+                    var vid = UserData.extractVerseIdFromStringId(sid)
+
+                    var poet
+                    var cat = Database.poemCat(pid)
+                    while(cat) {
+                        poet = cat
+                        cat = Database.parentOf(cat)
+                    }
+
+                    var verse_count, poem_count
+                    if(vid != 0) {
+                        if(poet_verse.contains(poet)) {
+                            verse_count = poet_verse.value(poet)
+                            verse_count++
+                            poet_verse.remove(poet)
+                            poet_verse.insert(poet, verse_count)
+                        }
+                        else {
+                            verse_count = 1
+                            poem_count = 0
+                            poet_verse.insert(poet, verse_count)
+                            poet_poem.insert(poet, poem_count)
+                        }
+                    }
+                    else {
+                        if(poet_poem.contains(poet)) {
+                            poem_count = poet_poem.value(poet)
+                            poem_count++
+                            poet_poem.remove(poet)
+                            poet_poem.insert(poet, poem_count)
+                        }
+                        else {
+                            poem_count = 1
+                            verse_count = 0
+                            poet_poem.insert(poet, poem_count)
+                            poet_verse.insert(poet, verse_count)
+                        }
+                    }
+                }
+
+                var poets = Database.poets()
+                for(var j=0; j<poets.length; j++)
+                    if(poet_poem.contains(poets[j]) && poet_verse.contains(poets[j]))
+                        model.append({"identifier":poets[j],
+                                      "pcount":poet_poem.value(poets[j]),
+                                      "vcount":poet_verse.value(poets[j])})
+
+                focus = true
             }
         }
 
@@ -128,16 +260,7 @@ BackHandlerView {
     }
 
     function refresh() {
-        var verses_str = UserData.favorites()
-
-        poem_view.clear()
-        for( var i=0; i<verses_str.length; i++ ) {
-            var sid = verses_str[i]
-            var pid = UserData.extractPoemIdFromStringId(sid)
-            var vid = UserData.extractVerseIdFromStringId(sid)
-
-            poem_view.add( pid, vid )
-        }
+        category_list.refresh()
     }
 
     function hideHeader() {
