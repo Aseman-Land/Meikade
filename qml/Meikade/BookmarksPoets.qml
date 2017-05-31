@@ -30,8 +30,6 @@ Rectangle {
     color: MeikadeGlobals.backgroundColor
 
     readonly property string title: qsTr("Bookmarks")
-    readonly property bool titleBarHide: !forceTitleBarShow && header.hide && (localPortrait || Devices.isMobile)
-    property bool forceTitleBarShow: false
     property alias itemsSpacing: category_list.spacing
     property real topMargin: itemsSpacing
 
@@ -199,7 +197,7 @@ Rectangle {
         width: parent.width
         height: View.statusBarHeight + Devices.standardTitleBarHeight
         color: MeikadeGlobals.masterColor
-        y: titleBarHide? -Devices.standardTitleBarHeight : 0
+        y: 0
 
         property bool hide: false
 
@@ -217,19 +215,5 @@ Rectangle {
         category_list.refresh()
     }
 
-    function hideHeader() {
-        header.hide = true
-    }
-
-    function showHeader() {
-        header.hide = false
-    }
-
-    Component.onCompleted: {
-        refresh()
-        MeikadeGlobals.categoriesList.append(this)
-    }
-    Component.onDestruction: MeikadeGlobals.categoriesList.removeAll(this)
-
-    ActivityAnalizer { object: bookmark_poets; comment: "" }
+    Component.onCompleted: refresh()
 }
