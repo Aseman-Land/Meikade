@@ -189,6 +189,8 @@ Rectangle {
         id: bookmarks_component
         Bookmarks {
             anchors.fill: parent
+
+            Component.onCompleted: BackHandler.pushHandler(this, destroy)
         }
     }
 
