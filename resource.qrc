@@ -154,5 +154,6 @@
         <file>qml/Meikade/certificates/falcon.crt</file>
         <file>qml/Meikade/globals/AsemanServices.qml</file>
         <file>qml/Meikade/PoemEdit.qml</file>
+        <file>qml/Meikade/BookmarksPoets.qml</file>
     </qresource>
 </RCC>
