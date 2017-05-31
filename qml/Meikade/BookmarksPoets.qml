@@ -114,7 +114,7 @@ BackHandlerView {
                     id: marea
                     anchors.fill: parent
                     onClicked: {
-                        console.log(identifier)
+                        bookmarks_component.createObject(bookmark_poets, {"poetId": identifier})
                     }
                 }
             }
@@ -188,6 +188,12 @@ BackHandlerView {
         }
     }
 
+    Component {
+        id: bookmarks_component
+        Bookmarks {
+            anchors.fill: parent
+        }
+    }
 
     Rectangle {
         id: header
