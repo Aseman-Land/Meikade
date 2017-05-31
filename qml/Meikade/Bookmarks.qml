@@ -150,6 +150,12 @@ BackHandlerView {
             if(poet == poetId)
                 poem_view.add( pid, vid )
         }
+
+        if(poem_view.count == 0) {
+            BackHandler.removeHandler(bookmarks)
+            BackHandler.pushHandler(bookmarks, bookmarks.destroy)
+            BackHandler.back()
+        }
     }
 
     function hideHeader() {

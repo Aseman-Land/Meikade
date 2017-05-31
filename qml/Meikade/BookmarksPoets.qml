@@ -33,6 +33,13 @@ Rectangle {
     property alias itemsSpacing: category_list.spacing
     property real topMargin: itemsSpacing
 
+    Connections {
+        target: UserData
+        onFavorited: category_list.refresh()
+        onUnfavorited: category_list.refresh()
+        onNoteChanged: category_list.refresh()
+    }
+
     Rectangle {
         id: b_frame
         anchors.top: header.bottom
