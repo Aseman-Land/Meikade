@@ -23,12 +23,11 @@ import AsemanTools.Awesome 1.0
 import QtQml 2.2
 import "globals"
 
-BackHandlerView {
+Rectangle {
     id: bookmark_poets
     anchors.fill: parent
     clip: true
     color: MeikadeGlobals.backgroundColor
-    viewMode: false
 
     readonly property string title: qsTr("Bookmarks")
     readonly property bool titleBarHide: !forceTitleBarShow && header.hide && (localPortrait || Devices.isMobile)
