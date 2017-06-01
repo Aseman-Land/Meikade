@@ -111,8 +111,10 @@ Rectangle {
                     color: "#ffffff"
 
                     Component.onCompleted: {
+                        var str
+                        var others = qsTr("Other Poems")
                         var cat = Database.poemCat(poem.pid)
-                        var str = Database.catName(cat)
+                        var cname = Database.catName(cat)
 
                         var poet
                         var book
@@ -122,11 +124,18 @@ Rectangle {
                             cat = Database.parentOf(cat)
                         }
 
+                        var pname = Database.catName(poet)
                         var bname = Database.catName(book)
-                        if(bname != str)
-                            str = bname + qsTr(", ") + str
 
-                        str = Database.catName(poet) + qsTr(", ") + str
+                        if(cname == pname)
+                            str = others
+                        else
+                        if(bname == cname)
+                            str = bname
+                        else
+                            str = bname + qsTr(", ") + cname
+
+                        str = pname + qsTr(", ") + str
                         text = str
                     }
                 }
