@@ -104,8 +104,8 @@ Rectangle {
                         Text {
                             anchors.verticalCenter: parent.verticalCenter
                             text: View.layoutDirection == Qt.RightToLeft?
-                                      Number(pcount).toLocaleString(Qt.locale("fa_IR"), "f", 0) + qsTr(" poem, ") + Number(vcount).toLocaleString(Qt.locale("fa_IR"), "f", 0) + qsTr(" single beit") :
-                                      Number(pcount).toLocaleString(Qt.locale("en_EN"), "f", 0) + qsTr(" poem, ") + Number(vcount).toLocaleString(Qt.locale("en_EN"), "f", 0) + qsTr(" single beit")
+                                      Number(pcount).toLocaleString(Qt.locale("fa_IR"), "f", 0) + qsTr(" Poem, ") + Number(vcount).toLocaleString(Qt.locale("fa_IR"), "f", 0) + qsTr(" Single Beit") :
+                                      Number(pcount).toLocaleString(Qt.locale("en_EN"), "f", 0) + qsTr(" Poem, ") + Number(vcount).toLocaleString(Qt.locale("en_EN"), "f", 0) + qsTr(" Single Beit")
                             font.pixelSize: Devices.isMobile? 8*globalFontDensity*Devices.fontDensity : 9*globalFontDensity*Devices.fontDensity
                             font.family: AsemanApp.globalFont.family
                             wrapMode: Text.WrapAtWordBoundaryOrAnywhere

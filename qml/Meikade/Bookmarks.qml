@@ -52,12 +52,11 @@ BackHandlerView {
         anchors.right: View.defaultLayout? undefined : parent.right
         anchors.left: View.defaultLayout? parent.left : undefined
         width: localPortrait? parent.width : parent.width*1/3
-        color: "#ffffff"
+        color: MeikadeGlobals.backgroundAlternativeColor
 
-        PoemView {
-            id: poem_view
+        BookmarksView {
+            id: bookmark_view
             anchors.fill: parent
-            color: "#00000000"
             header: Item {}
             clip: true
             editable: false
@@ -134,7 +133,7 @@ BackHandlerView {
 
         var verses_str = UserData.favorites()
 
-        poem_view.clear()
+        bookmark_view.clear()
         for( var i=0; i<verses_str.length; i++ ) {
             var sid = verses_str[i]
             var pid = UserData.extractPoemIdFromStringId(sid)
@@ -148,10 +147,10 @@ BackHandlerView {
             }
 
             if(poet == poetId)
-                poem_view.add( pid, vid )
+                bookmark_view.add( pid, vid )
         }
 
-        if(poem_view.count == 0) {
+        if(bookmark_view.count == 0) {
             BackHandler.pushHandler(bookmarks, bookmarks.destroy)
             BackHandler.back()
         }
