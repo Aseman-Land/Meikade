@@ -152,7 +152,6 @@ BackHandlerView {
         }
 
         if(poem_view.count == 0) {
-            BackHandler.removeHandler(bookmarks)
             BackHandler.pushHandler(bookmarks, bookmarks.destroy)
             BackHandler.back()
         }
