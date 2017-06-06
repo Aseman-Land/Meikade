@@ -24,6 +24,7 @@ import AsemanTools.Awesome 1.0
 import QtQuick.Controls 2.0
 import QtQuick.Controls.Material 2.0
 import QtQuick.Layouts 1.3
+import "globals"
 
 Rectangle {
     id: xml_page
@@ -78,7 +79,7 @@ Rectangle {
         font.pixelSize: 11*globalFontDensity*Devices.fontDensity
         font.family: AsemanApp.globalFont.family
         text: qsTr("Fetching poet lists...")
-        color: "#333333"
+        color: MeikadeGlobals.foregroundColor
         visible: list_indicator.running
     }
 
@@ -87,7 +88,7 @@ Rectangle {
         font.pixelSize: 11*globalFontDensity*Devices.fontDensity
         font.family: AsemanApp.globalFont.family
         text: qsTr("Can't connect to the server")
-        color: "#333333"
+        color: MeikadeGlobals.foregroundColor
         visible: xml_model.errors.length != 0 || (xml_model.count == 0 && !list_indicator.running)
     }
 
@@ -105,7 +106,7 @@ Rectangle {
         id: view
         width: parent.width
         anchors.top: tabBar.bottom
-        anchors.bottom: parent.bottom
+        anchors.bottom: indicator.top
         currentIndex: 0
         onCurrentIndexChanged: tabBar.currentIndex = currentIndex
         interactive: false
@@ -122,16 +123,24 @@ Rectangle {
         XmlDownloaderPageItem { type: (1<<19) }
     }
 
-    PageIndicator {
-        count: view.count
-        currentIndex: view.currentIndex
-        opacity: 0.8
+    Rectangle {
+        id: indicator
+        anchors.bottom: parent.bottom
+        width: parent.width
+        height: 20*Devices.density
+        color: MeikadeGlobals.backgroundAlternativeColor
 
-        LayoutMirroring.enabled: View.reverseLayout
-        LayoutMirroring.childrenInherit: true
+        PageIndicator {
+            count: view.count
+            currentIndex: view.currentIndex
+            opacity: 0.8
 
-        anchors.bottom: view.bottom
-        anchors.horizontalCenter: parent.horizontalCenter
+            LayoutMirroring.enabled: View.reverseLayout
+            LayoutMirroring.childrenInherit: true
+
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.verticalCenter: parent.verticalCenter
+        }
     }
 
     Popup {
@@ -157,7 +166,7 @@ Rectangle {
 
             Label{
                 Layout.preferredWidth: 200*Devices.density
-                color: "#333333"
+                color: MeikadeGlobals.foregroundColor
                 font.pixelSize: 12*Devices.fontDensity
                 horizontalAlignment: Label.AlignHCenter
                 text: removePopup.poetName
