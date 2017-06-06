@@ -98,7 +98,7 @@ Rectangle {
         fontSize: 10*Devices.fontDensity
         currentIndex: 0
         onCurrentIndexChanged: if(view) view.currentIndex = currentIndex
-        model: [qsTr("New Poets"), qsTr("Updates"), qsTr("Installeds"), qsTr("All"), qsTr("Classic"), qsTr("Modern")]
+        model: [qsTr("Classic"), qsTr("Between"), qsTr("Modern"), qsTr("Updates"), qsTr("Installeds")]
     }
 
     SwipeView {
@@ -113,12 +113,13 @@ Rectangle {
         LayoutMirroring.enabled: View.reverseLayout
         LayoutMirroring.childrenInherit: true
 
+        XmlDownloaderPageItem { type: (1<<1) }
+        //From new poets to between
         XmlDownloaderPageItem { type: (1<<0) }
+        XmlDownloaderPageItem { type: (1<<2) }
+        //Put updates and new poets together
         XmlDownloaderPageItem { type: (1<<20) }
         XmlDownloaderPageItem { type: (1<<19) }
-        XmlDownloaderPageItem { type: (1<<10)-1 }
-        XmlDownloaderPageItem { type: (1<<1) }
-        XmlDownloaderPageItem { type: (1<<2) }
     }
 
     PageIndicator {
