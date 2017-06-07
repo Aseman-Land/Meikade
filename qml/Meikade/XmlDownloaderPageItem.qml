@@ -16,12 +16,13 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-import QtQuick 2.0
+import QtQuick 2.7
 import QtQuick.Controls 2.1
 import AsemanTools 1.0
 import Meikade 1.0
 import AsemanTools.Awesome 1.0
 import QtQuick.Layouts 1.3
+import "globals"
 
 Item {
     clip: true
@@ -40,7 +41,9 @@ Item {
     AsemanListView {
         id: listv
         anchors.fill: parent
+        topMargin: spacing
         model: proxyModel
+        spacing: 8*Devices.density
 //        header: Item {
 //            width: listv.width
 //            height: title_txt.height + 4*Devices.density
@@ -62,8 +65,14 @@ Item {
 //        }
 
         delegate: Item {
-            width: listv.width
+            x: listv.spacing
+            width: listv.width - 2*x
             height: 54*Devices.density
+
+            MaterialFrame {
+                anchors.fill: parent
+                color: MeikadeGlobals.backgroundAlternativeColor
+            }
 
             PoetImageProvider {
                 id: image_provider
@@ -96,13 +105,14 @@ Item {
                     horizontalAlignment: View.defaultLayout? Text.AlignLeft : Text.AlignRight
                     font.pixelSize: 10*globalFontDensity*Devices.fontDensity
                     font.family: AsemanApp.globalFont.family
+                    color: MeikadeGlobals.foregroundColor
                 }
 
                 Text {
                     anchors.verticalCenter: parent.verticalCenter
                     font.pixelSize: 9*globalFontDensity*Devices.fontDensity
                     font.family: AsemanApp.globalFont.family
-                    color: "#888888"
+                    color: Meikade.nightTheme? Qt.darker(MeikadeGlobals.foregroundColor) : Qt.lighter(MeikadeGlobals.foregroundColor)
                     text: {
                         if(model.installing)
                             return qsTr("Installing")
@@ -142,7 +152,7 @@ Item {
                             if(model.installed)
                                 return "#3c994b"
                             else
-                                return "#3d3d3d"
+                                return MeikadeGlobals.backgroundColor
                         }
                         text: {
                             if(model.updateAvailable)
@@ -181,7 +191,7 @@ Item {
             Rectangle {
                 width: parent.width
                 height: 1*Devices.density
-                color: "#e5e5e5"
+                color: MeikadeGlobals.backgroundColor
                 anchors.bottom: parent.bottom
             }
 

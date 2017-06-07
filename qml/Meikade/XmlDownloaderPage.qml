@@ -30,6 +30,7 @@ Rectangle {
     id: xml_page
     anchors.fill: parent
     clip: true
+    color: MeikadeGlobals.backgroundColor
 
     readonly property string title: qsTr("Store")
 
@@ -96,6 +97,8 @@ Rectangle {
         id: tabBar
         anchors.top: header.bottom
         width: parent.width
+        color: MeikadeGlobals.backgroundAlternativeColor
+        textColor: MeikadeGlobals.foregroundColor
         fontSize: 10*Devices.fontDensity
         currentIndex: 0
         onCurrentIndexChanged: if(view) view.currentIndex = currentIndex
@@ -127,19 +130,29 @@ Rectangle {
         id: indicator
         anchors.bottom: parent.bottom
         width: parent.width
-        height: 20*Devices.density
+        height: 21*Devices.density
         color: MeikadeGlobals.backgroundAlternativeColor
 
-        PageIndicator {
-            count: view.count
-            currentIndex: view.currentIndex
-            opacity: 0.8
+        Column {
+            anchors.fill: parent
 
-            LayoutMirroring.enabled: View.reverseLayout
-            LayoutMirroring.childrenInherit: true
+            Rectangle {
+                width: parent.width
+                height: 1*Devices.density
+                color: MeikadeGlobals.backgroundColor
+            }
 
-            anchors.horizontalCenter: parent.horizontalCenter
-            anchors.verticalCenter: parent.verticalCenter
+            PageIndicator {
+                count: view.count
+                currentIndex: view.currentIndex
+                opacity: 0.8
+
+                LayoutMirroring.enabled: View.reverseLayout
+                LayoutMirroring.childrenInherit: true
+
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.verticalCenter: parent.verticalCenter
+            }
         }
     }
 
