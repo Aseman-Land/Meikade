@@ -19,6 +19,7 @@
 import QtQuick 2.0
 import AsemanTools 1.0
 import AsemanTools.Awesome 1.0
+import "globals"
 
 Item {
     width: 100
@@ -142,7 +143,7 @@ Item {
                     anchors.centerIn: parent
                     font.pixelSize: 15*globalFontDensity*Devices.fontDensity
                     font.family: Awesome.family
-                    color: "#99ff0000"
+                    color: Qt.lighter(MeikadeGlobals.masterColor)
                     text: Awesome.fa_close
                 }
             }
@@ -151,7 +152,7 @@ Item {
         header: Item {
             id: header
             width: prefrences.width
-            height: 100*Devices.density + title.height
+            height: 90*Devices.density + title.height
 
             Text {
                 id: title
@@ -165,12 +166,18 @@ Item {
                 wrapMode: TextInput.WordWrap
             }
 
-            Rectangle {
+            Button {
                 id: header_back
-                width: header.width
-                height: 60*Devices.density
                 anchors.top: title.bottom
-                color: press? "#880d80ec" : "#00000000"
+                anchors.margins: 10*Devices.density
+                anchors.horizontalCenter: header.horizontalCenter
+                width: header.width - 20*Devices.density
+                height: 40*Devices.density
+
+                MaterialFrame {
+                    anchors.fill: parent
+                    color: Qt.lighter("#313131")
+                }
 
                 property alias press: hmarea.pressed
 
@@ -178,7 +185,7 @@ Item {
                     id: backup_txt
                     anchors.left: parent.left
                     anchors.right: parent.right
-                    anchors.margins: 30*Devices.density
+                    anchors.margins: 10*Devices.density
                     y: parent.height/2 - height/2
                     font.pixelSize: 11*globalFontDensity*Devices.fontDensity
                     font.family: AsemanApp.globalFont.family
@@ -199,20 +206,19 @@ Item {
                 anchors.bottom: header.bottom
                 anchors.left: header.left
                 anchors.right: header.right
-                anchors.margins: 10*Devices.density
                 anchors.bottomMargin: 0*Devices.density
-                height: 2*Devices.density
-                color: "#ffffff"
+                height: message.height
+                color: Qt.lighter(MeikadeGlobals.masterColor)
 
                 Text {
                     id: message
                     font.pixelSize: 9*globalFontDensity*Devices.fontDensity
                     font.family: AsemanApp.globalFont.family
-                    color: splitter.color
-                    anchors.bottom: parent.top
+                    color: "#ffffff"
                     anchors.left: parent.left
                     anchors.right: parent.right
-                    anchors.bottomMargin: -5*Devices.density
+                    anchors.leftMargin: 10*Devices.density
+                    anchors.rightMargin: 10*Devices.density
                 }
             }
 
