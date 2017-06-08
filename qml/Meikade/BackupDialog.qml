@@ -90,19 +90,26 @@ Item {
         anchors.fill: parent
         anchors.topMargin: 4*Devices.density
         anchors.bottomMargin: 4*Devices.density
+        spacing: 7*Devices.density
         highlightMoveDuration: 250
         clip: true
         model: ListModel {}
         delegate: Rectangle {
             id: item
-            width: prefrences.width
+            x: prefrences.spacing
+            width: prefrences.width - 2*prefrences.spacing
             height: txt.height + 30*Devices.density
-            color: press? "#880d80ec" : "#00000000"
+            color: "transparent"
 
             property string file: path
             property alias press: marea.pressed
 
             onPressChanged: hideRollerDialog()
+
+            MaterialFrame {
+                anchors.fill: parent
+                color: Qt.lighter("#313131")
+            }
 
             Text{
                 id: txt
@@ -134,6 +141,7 @@ Item {
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.rightMargin: 10*Devices.density
                 normalColor: "#00000000"
+                highlightColor: "#3d3d3d"
                 onClicked: {
                     msg_item.filePath = item.file
                     showRollerDialog( item.mapToItem(main,0,0).y, item.mapToItem(main,0,item.height).y, msg_item )
@@ -152,7 +160,7 @@ Item {
         header: Item {
             id: header
             width: prefrences.width
-            height: 90*Devices.density + title.height
+            height: 100*Devices.density + title.height
 
             Text {
                 id: title
@@ -206,7 +214,7 @@ Item {
                 anchors.bottom: header.bottom
                 anchors.left: header.left
                 anchors.right: header.right
-                anchors.bottomMargin: 0*Devices.density
+                anchors.bottomMargin: 7*Devices.density
                 height: message.height
                 color: Qt.lighter(MeikadeGlobals.masterColor)
 
@@ -228,7 +236,7 @@ Item {
             }
 
             function initTranslations(){
-                backup_txt.text  = qsTr("Create new Backup")
+                backup_txt.text  = qsTr("Create New Backup")
                 message.text     = qsTr("AVAILABLE BACKUPS")
                 title.text       = qsTr("Create and restore backup from your notes and bookmarks.")
             }
