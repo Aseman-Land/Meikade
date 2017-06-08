@@ -44,25 +44,6 @@ Item {
         topMargin: spacing
         model: proxyModel
         spacing: 8*Devices.density
-//        header: Item {
-//            width: listv.width
-//            height: title_txt.height + 4*Devices.density
-
-//            Text {
-//                id: title_txt
-//                anchors.left: parent.left
-//                anchors.right: parent.right
-//                anchors.leftMargin: 8*Devices.density
-//                anchors.rightMargin: 8*Devices.density
-//                anchors.verticalCenter: parent.verticalCenter
-//                font.pixelSize: 9*globalFontDensity*Devices.fontDensity
-//                font.family: AsemanApp.globalFont.family
-//                color: "#888888"
-//                wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-//                text: qsTr("Poets list, you can download from the Aseman team servers...")
-//                visible: listv.count != 0
-//            }
-//        }
 
         delegate: Item {
             x: listv.spacing
@@ -87,14 +68,15 @@ Item {
                 spacing: 10*Devices.density
                 layoutDirection: View.layoutDirection
 
-                Image {
+                RoundedImage {
                     anchors.verticalCenter: parent.verticalCenter
                     Layout.preferredHeight: 38*Devices.density
                     Layout.preferredWidth: Layout.preferredHeight
 
-                    sourceSize: Qt.size(width,height)
+                    radius: 5*Devices.density
                     fillMode: Image.PreserveAspectFit
-                    source: image_provider.path
+                    source: "icons/menu-back.jpg"
+                    smooth: true
                 }
 
                 Text {

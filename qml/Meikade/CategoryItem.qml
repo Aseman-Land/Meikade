@@ -34,7 +34,7 @@ RowLayout {
         poet: root? Database.catPoetId(cid) : 0
     }
 
-    Image {
+    RoundedImage {
         id: img
 
         Layout.preferredHeight: root? parent.height - 8*Devices.density : 0
@@ -42,12 +42,13 @@ RowLayout {
         Layout.alignment: Qt.AlignHCenter
         Layout.margins: 4*Devices.density
 
-        sourceSize: Qt.size(width,height)
+        radius: 5*Devices.density
         fillMode: Image.PreserveAspectFit
         source: root? image_provider.path : ""
+        smooth: true
     }
 
-    Text{
+    Text {
         id: txt
 
         Layout.fillWidth: true
