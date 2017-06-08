@@ -18,6 +18,7 @@
 
 import QtQuick 2.0
 import AsemanTools 1.0
+import "globals"
 
 Rectangle {
     anchors.fill: parent
@@ -84,7 +85,7 @@ Rectangle {
                         font.pixelSize: 12*globalFontDensity*Devices.fontDensity
                         font.bold: true
                         wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                        color: "#333333"
+                        color: MeikadeGlobals.foregroundColor
                         text: qsTr("About Nile Group")
                     }
                 }
@@ -96,7 +97,7 @@ Rectangle {
                     font.family: AsemanApp.globalFont.family
                     font.pixelSize: 9*globalFontDensity*Devices.fontDensity
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                    color: "#333333"
+                    color: MeikadeGlobals.foregroundColor
                     text: qsTr("Nile is an Iranian software corporation that makes software for Desktop computers, Android, iOS, Mac, Windows Phone, Ubuntu Phone and ...\n"+
                                "Nile create Free and OpenSource projects.")
 

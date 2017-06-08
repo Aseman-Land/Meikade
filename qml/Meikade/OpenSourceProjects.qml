@@ -18,11 +18,12 @@
 
 import QtQuick 2.0
 import AsemanTools 1.0
+import "globals"
 
 Rectangle {
     anchors.fill: parent
     clip: true
-    color: "#ffffff"
+    color: MeikadeGlobals.backgroundColor
 
     readonly property string title: qsTr("OpenSource Projecs")
 
@@ -46,7 +47,7 @@ Rectangle {
         anchors.margins: 8*Devices.density
         font.family: AsemanApp.globalFont.family
         font.pixelSize: 9*globalFontDensity*Devices.fontDensity
-        color: "#333333"
+        color: MeikadeGlobals.foregroundColor
         text: qsTr("List of other opensource projects used in Meikade.")
         wrapMode: Text.WrapAtWordBoundaryOrAnywhere
     }
@@ -86,7 +87,7 @@ Rectangle {
                         font.pixelSize: 14*globalFontDensity*Devices.fontDensity
                         font.family: AsemanApp.globalFont.family
                         anchors.left: parent.left
-                        color: "#333333"
+                        color: MeikadeGlobals.foregroundColor
                         text: title
                     }
 
@@ -96,7 +97,7 @@ Rectangle {
                         font.family: AsemanApp.globalFont.family
                         anchors.right: parent.right
                         anchors.bottom: parent.bottom
-                        color: "#666666"
+                        color: MeikadeGlobals.foregroundColor
                         text: license
                     }
                 }
@@ -108,7 +109,7 @@ Rectangle {
                     anchors.left: parent.left
                     anchors.right: parent.right
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                    color: "#555555"
+                    color: MeikadeGlobals.foregroundColor
                     text: description
                 }
 
@@ -146,7 +147,7 @@ Rectangle {
         scrollArea: preference_list; height: preference_list.height - View.navigationBarHeight
         width: 6*Devices.density
         anchors.right: preference_list.right; anchors.top: preference_list.top;
-        color: "#000000"
+        color: Meikade.nightTheme? Qt.darker(MeikadeGlobals.foregroundColor) : Qt.lighter(MeikadeGlobals.foregroundColor)
     }
 
     Connections{

@@ -18,9 +18,11 @@
 
 import QtQuick 2.0
 import AsemanTools 1.0
+import "globals"
 
 AsemanAbout {
     anchors.fill: parent
     headerColor: "#333333"
-    color: "#ffffff"
+    color: MeikadeGlobals.backgroundColor
+    textsColor: MeikadeGlobals.foregroundColor
 }

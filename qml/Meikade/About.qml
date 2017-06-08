@@ -82,7 +82,7 @@ Rectangle {
                     font.bold: true
                     text: qsTr("Meikade is a free and opensource application by Aseman Team")
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                    color: "#333333"
+                    color: MeikadeGlobals.foregroundColor
                 }
 
                 Text {
@@ -91,7 +91,7 @@ Rectangle {
                     font.pixelSize: 9*globalFontDensity*Devices.fontDensity
                     text: qsTr("Meikade is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.")
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                    color: "#333333"
+                    color: MeikadeGlobals.foregroundColor
                 }
 
                 Item {width: 20; height: 30*Devices.density}
@@ -103,7 +103,7 @@ Rectangle {
                     font.bold: true
                     text: qsTr("Meikade Members:")
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                    color: "#333333"
+                    color: MeikadeGlobals.foregroundColor
                 }
 
                 Text {
@@ -116,7 +116,7 @@ Rectangle {
                                " - Hasan Noruzi (Idea Processing)\n"+
                                " - Amin Hatami (Logo Designer)")
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                    color: "#333333"
+                    color: MeikadeGlobals.foregroundColor
                 }
             }
         }
@@ -144,7 +144,7 @@ Rectangle {
         font.pixelSize: 9*globalFontDensity*Devices.fontDensity
         text: AsemanApp.applicationVersion
         wrapMode: Text.WordWrap
-        color: "#333333"
+        color: MeikadeGlobals.foregroundColor
         horizontalAlignment: Text.AlignRight
     }
 }
