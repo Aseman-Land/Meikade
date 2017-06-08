@@ -102,7 +102,7 @@ Rectangle {
         fontSize: 10*Devices.fontDensity
         currentIndex: 0
         onCurrentIndexChanged: if(view) view.currentIndex = currentIndex
-        model: [qsTr("Classic"), qsTr("Between"), qsTr("Modern"), qsTr("Updates"), qsTr("Installeds")]
+        model: [qsTr("Classic"), qsTr("In Between"), qsTr("Modern"), qsTr("Updates"), qsTr("Installed")]
     }
 
     SwipeView {
@@ -151,7 +151,6 @@ Rectangle {
                 LayoutMirroring.childrenInherit: true
 
                 anchors.horizontalCenter: parent.horizontalCenter
-                anchors.verticalCenter: parent.verticalCenter
             }
         }
     }

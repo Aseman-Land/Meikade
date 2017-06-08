@@ -75,7 +75,7 @@ Item {
 
                     radius: 5*Devices.density
                     fillMode: Image.PreserveAspectFit
-                    source: "icons/menu-back.jpg"
+                    source: image_provider.path
                     smooth: true
                 }
 
@@ -134,7 +134,7 @@ Item {
                             if(model.installed)
                                 return "#3c994b"
                             else
-                                return MeikadeGlobals.backgroundColor
+                                return Meikade.nightTheme? Qt.darker(MeikadeGlobals.foregroundColor) : Qt.lighter(MeikadeGlobals.foregroundColor)
                         }
                         text: {
                             if(model.updateAvailable)

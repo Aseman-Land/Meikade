@@ -153,10 +153,10 @@ BackHandlerView {
                     model.append({ "name": qsTr("Languages"), "file": "LanguageSelector.qml", "check": false, "pr":""})
                     model.append({ "name": qsTr("Data Location"), "file": "DatabaseLocation.qml", "check": false, "pr":""})
                     model.append({ "name": qsTr("Night Theme"), "file": "", "check": true, "pr":"nightTheme"})
-                    model.append({ "name": qsTr("Phrase"), "file": "", "check": true, "pr":"phrase"})
+                    model.append({ "name": qsTr("Omen Explanation"), "file": "", "check": true, "pr":"phrase"})
                     if(Devices.isAndroid)
                         model.append({ "name": qsTr("Keep screen on"), "file": "", "check": true, "pr":"keepScreenOn"})
-                    model.append({ "name": qsTr("Send anonymous data to improve meikade."), "file": "", "check": true, "pr":"activePush"})
+                    model.append({ "name": qsTr("Send anonymous data to improve meikade"), "file": "", "check": true, "pr":"activePush"})
                 }
             }
 
