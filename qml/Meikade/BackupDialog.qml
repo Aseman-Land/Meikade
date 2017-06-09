@@ -17,6 +17,10 @@
 */
 
 import QtQuick 2.0
+import QtQuick.Controls 2.0
+import QtQuick.Controls.Material 2.0
+import QtQuick.Layouts 1.3
+import Meikade 1.0
 import AsemanTools 1.0
 import AsemanTools.Awesome 1.0
 import "globals"
@@ -30,58 +34,6 @@ Item {
         target: Backuper
         onSuccess: {
             prefrences.refresh()
-        }
-    }
-
-    Item {
-        id: msg_item
-        height: 54*Devices.density
-        visible: false
-
-        property string filePath
-
-        Text {
-            id: delete_warn
-            font.pixelSize: 17*globalFontDensity*Devices.fontDensity
-            font.family: AsemanApp.globalFont.family
-            anchors.margins: 10*Devices.density
-            anchors.left: parent.left
-            anchors.right: parent.horizontalCenter
-            anchors.verticalCenter: parent.verticalCenter
-            horizontalAlignment: Text.AlignHCenter
-            color: "#ffffff"
-        }
-
-        Button {
-            id: yes_button
-            anchors.top: parent.top
-            anchors.bottom: parent.bottom
-            anchors.right: no_button.left
-            anchors.rightMargin: 5*Devices.density
-            anchors.margins: 10*Devices.density
-            width: parent.width/4 - 5*Devices.density
-            normalColor: "#aaC80000"
-            onClicked: {
-                if( msg_item.filePath != "" )
-                    Meikade.removeFile(msg_item.filePath)
-
-                hideRollerDialog()
-                prefrences.refresh()
-            }
-        }
-
-        Button {
-            id: no_button
-            anchors.top: parent.top
-            anchors.bottom: parent.bottom
-            anchors.right: parent.right
-            anchors.rightMargin: 5*Devices.density
-            anchors.margins: 10*Devices.density
-            width: parent.width/4 - 5*Devices.density
-            normalColor: "#66ffffff"
-            onClicked: {
-                hideRollerDialog()
-            }
         }
     }
 
@@ -143,8 +95,8 @@ Item {
                 normalColor: "#00000000"
                 highlightColor: "#3d3d3d"
                 onClicked: {
-                    msg_item.filePath = item.file
-                    showRollerDialog( item.mapToItem(main,0,0).y, item.mapToItem(main,0,item.height).y, msg_item )
+                    removePopup.filePath = item.file
+                    removePopup.open()
                 }
 
                 Text {
@@ -269,18 +221,54 @@ Item {
         LayoutMirroring.enabled: View.layoutDirection == Qt.RightToLeft
     }
 
-    Connections{
-        target: Meikade
-        onCurrentLanguageChanged: initTranslations()
-    }
+    Popup {
+        id: removePopup
 
-    function initTranslations(){
-        delete_warn.text = qsTr("Are you sure?")
-        yes_button.text  = qsTr("Delete")
-        no_button.text   = qsTr("Cancel")
-    }
+        Material.theme: Material.Dark
 
-    Component.onCompleted: {
-        initTranslations()
+        property string filePath
+
+        x: parent.width/2 - width/2
+        y: parent.height/2 - height/2
+        modal: true
+        focus: true
+
+        onVisibleChanged: {
+            if(visible) {
+                BackHandler.pushHandler(removePopup, function(){removePopup.visible = false})
+            } else {
+                BackHandler.removeHandler(removePopup)
+            }
+        }
+
+        ColumnLayout {
+
+            Label {
+                Layout.preferredWidth: 200*Devices.density
+                color: "#ffffff"
+                font.pixelSize: 14*Devices.fontDensity
+                horizontalAlignment: Label.AlignHCenter
+                text: qsTr("Are you sure?")
+            }
+
+            Button {
+                text: qsTr("Delete")
+                onClicked: {
+                    if(removePopup.filePath != "")
+                        Meikade.removeFile(removePopup.filePath)
+
+                    removePopup.close()
+                    prefrences.refresh()
+                }
+
+                textColor: "#F44336"
+                highlightColor: Qt.lighter("#313131")
+                fontSize: 11*Devices.fontDensity
+                height: 40*Devices.density
+
+                Layout.preferredWidth: 0
+                Layout.fillWidth: true
+            }
+        }
     }
 }

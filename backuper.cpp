@@ -115,10 +115,8 @@ void BackuperCore::makeBackup()
 {
     QString path = BACKUP_PATH;
     QDir().mkpath(path);
-    QString dest = path + "/mkdb_[" + QDateTime::currentDateTime().toString("yyyy") + "_"
-            + QDateTime::currentDateTime().toString("MM") + "_"
-            + QDateTime::currentDateTime().toString("dd") + "]["
-            + QDateTime::currentDateTime().toString("hh:mm") + "].mkdb";
+    QString dest = path + "/mkdb_[" + QDateTime::currentDateTime().toString("yyyy-MM-dd") + "]["
+                                    + QDateTime::currentDateTime().toString("hh:mm") + "].mkdb";
 
     ResourceManager rsrc( dest, true );
     rsrc.writeHead();
