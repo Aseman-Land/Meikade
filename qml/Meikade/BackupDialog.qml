@@ -259,6 +259,7 @@ Item {
 
                     removePopup.close()
                     prefrences.refresh()
+                    View.root.showTooltip(qsTr("Backup Removed"))
                 }
 
                 textColor: "#F44336"
