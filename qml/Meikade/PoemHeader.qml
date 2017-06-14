@@ -58,6 +58,8 @@ Item {
 
         poet_txt.text = Database.catName(poet)
         book_txt.text = Database.catName(book)
+        if(book_txt.text.length == 0)
+            book_txt.text = qsTr("Other Poems")
 
         poetId = poet
         catId = book? book : -1
@@ -220,7 +222,8 @@ Item {
                 MouseArea {
                     anchors.fill: parent
                     onClicked: {
-                        page.backToCats(catId, poetId)
+                        if(catId != -1)
+                            page.backToCats(catId, poetId)
                     }
                 }
             }
