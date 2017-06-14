@@ -99,7 +99,7 @@ Rectangle {
                     indicator.active = true
                     progress_rect.visible = true
                     AsemanServices.meikade.pushAction( ("Image saved with image %1").arg(frame_image.source==""?"off":"on"), null )
-                    writer.save(Devices.picturesLocation + "/Meikade", Qt.size(1280, 1280/frame.ratio))
+                    writer.save(Devices.picturesLocation + "/Meikade", Qt.size(1080, 1080/frame.ratio))
                 }
             }
         }
