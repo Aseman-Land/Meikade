@@ -136,7 +136,6 @@ Rectangle {
         id: title_bar
         width: parent.width
         color: MeikadeGlobals.masterColor
-        shadow: true
         y: titleBarHide? -Devices.standardTitleBarHeight : 0
 
         property bool hide: false
@@ -296,7 +295,6 @@ Rectangle {
                 id: header
                 width: parent.width
                 color: title_bar.color
-                shadow: true
 
                 Button {
                     x: View.reverseLayout? 0 : parent.width - width

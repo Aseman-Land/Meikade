@@ -195,6 +195,7 @@ Rectangle {
     TitleBarShadow {
         width: parent.width
         anchors.top: header_back.bottom
+        visible: !Devices.isIOS
     }
 
     ScrollBar {

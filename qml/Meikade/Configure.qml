@@ -59,6 +59,7 @@ BackHandlerView {
         TitleBarShadow {
             width: parent.width
             anchors.top: parent.bottom
+            visible: !Devices.isIOS
         }
     }
 

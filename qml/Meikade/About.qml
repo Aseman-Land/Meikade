@@ -38,6 +38,7 @@ Rectangle {
 
         TitleBarShadow {
             width: header.width
+            visible: !Devices.isIOS
             anchors.top: header.bottom
         }
     }

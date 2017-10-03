@@ -538,6 +538,7 @@ Rectangle {
                 TitleBarShadow {
                     anchors.top: fsview.top
                     width: parent.width
+                    visible: !Devices.isIOS
                 }
             }
 

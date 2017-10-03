@@ -17,7 +17,6 @@
 */
 
 #include "poetscriptinstaller.h"
-#include "p7zipextractor.h"
 #include "asemantools/asemanapplication.h"
 #include "meikade_macros.h"
 #include "poetremover.h"
@@ -34,7 +33,6 @@
 class PoetScriptInstallerPrivate
 {
 public:
-    P7ZipExtractor *p7zip;
     QSqlDatabase db;
     QString path;
 };
@@ -43,7 +41,6 @@ PoetScriptInstaller::PoetScriptInstaller(QObject *parent) :
     QObject(parent)
 {
     p = new PoetScriptInstallerPrivate;
-    p->p7zip = 0;
 
 #ifdef Q_OS_ANDROID
     p->path = ANDROID_OLD_DB_PATH "/data.sqlite";
@@ -56,29 +53,23 @@ PoetScriptInstaller::PoetScriptInstaller(QObject *parent) :
 
 void PoetScriptInstaller::installFile(const QString &path, int poetId, const QDateTime &date, bool removeFile)
 {
-    if(!p->p7zip)
-        p->p7zip = new P7ZipExtractor(this);
-
-    const QString &tmp = AsemanApplication::tempPath();
-    const QString tmpDir = tmp + "/" + QUuid::createUuid().toString();
-
-    p->p7zip->extract(path, tmpDir);
-    if(removeFile)
-        QFile::remove(path);
-
-    QFile file(tmpDir + "/script.sql");
+    QFile file(path);
     if(!file.open(QFile::ReadOnly))
     {
         emit finished(true);
-        file.remove();
+        if(removeFile)
+            file.remove();
         return;
     }
 
-    install(file.readAll(), poetId, date);
+    QByteArray data = qUncompress( file.readAll() );
     file.close();
-    file.remove();
 
-    QDir().rmdir(tmpDir);
+    if(removeFile)
+        file.remove();
+
+    install(data, poetId, date);
+
     emit finished(false);
 }
 

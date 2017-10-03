@@ -349,6 +349,10 @@ QString Meikade::resourcePathAbs()
     static QString *resourcePath = 0;
     if( !resourcePath )
     {
+#ifdef Q_OS_IOS
+        QFileInfo inf(QCoreApplication::applicationDirPath() + "/");
+        resourcePath = new QString(inf.filePath());
+#else
 #ifdef Q_OS_MAC
         QFileInfo inf(QCoreApplication::applicationDirPath() + "/../Resources");
         resourcePath = new QString(inf.filePath());
@@ -358,6 +362,7 @@ QString Meikade::resourcePathAbs()
             resourcePath = new QString(inf.filePath());
         else
             resourcePath = new QString(QCoreApplication::applicationDirPath());
+#endif
 #endif
     }
     return *resourcePath + "/";

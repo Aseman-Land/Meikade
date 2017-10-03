@@ -94,30 +94,14 @@ void ThreadedFileSystem::extract_prv(const QString &src, int counter, const QStr
     for( int i=0; i<counter; i++ )
     {
         const QString & src_path = src + QString::number(i);
-        const QString & zip_path = temp + "/" + QFileInfo(src_path).fileName() + ".7z";
-        const QString & file_path = temp + "/" + QFileInfo(src_path).fileName();
 
-        QFile::remove(zip_path);
-        QFile::remove(file_path);
-
-        bool done = QFile::copy(src_path, zip_path);
-        if( !done )
-        {
-            dstFile.close();
-            dstFile.remove();
-            emit extractError();
-            return;
-        }
         percent += sml_step;
         emit extractProgress(percent);
 
-
-        p->p7zip->extract( zip_path, temp );
-        QFile::remove(zip_path);
         percent += sml_step;
         emit extractProgress(percent);
 
-        QFile tmpFile(file_path);
+        QFile tmpFile(src_path);
         if( !tmpFile.exists() || !tmpFile.open(QFile::ReadOnly) )
         {
             dstFile.close();
@@ -126,7 +110,7 @@ void ThreadedFileSystem::extract_prv(const QString &src, int counter, const QStr
             return;
         }
 
-        QByteArray data = tmpFile.readAll();
+        QByteArray data = qUncompress( tmpFile.readAll() );
         if( dstFile.write(data) == -1 )
         {
             dstFile.close();

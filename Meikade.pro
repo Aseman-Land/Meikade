@@ -6,6 +6,8 @@ folder_03.source = translations
 folder_03.target = files
 DEPLOYMENTFOLDERS += folder_01 folder_02 folder_03
 
+QT += widgets
+
 ios {
     QTPLUGIN += qsqlite
     QMAKE_INFO_PLIST = iOS/info.plist
@@ -13,6 +15,9 @@ ios {
     folder_04.source = iOS/splash/Default-568h@2x.png
     folder_04.target = .
     DEPLOYMENTFOLDERS += folder_04
+
+    ios_icon.files = $$files($$PWD/iOS/icons/*.png)
+    QMAKE_BUNDLE_DATA += ios_icon
 }
 android {
     ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android

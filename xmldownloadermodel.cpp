@@ -477,7 +477,10 @@ void XmlDownloaderModel::finished(const QByteArray &data)
             QDomElement urlElement = revision.firstChildElement("Url");
             QDomElement thumbElement = revision.firstChildElement("Thumb");
 
-            const QString &url = urlElement.text();
+            QString url = urlElement.text();
+            if(url.right(3) == ".7z")
+                url = url.left(url.size()-3) + ".zip";
+
             const QString &thumb = thumbElement.text();
 
             const qint64 fileSize = urlElement.attribute("size").toLongLong();

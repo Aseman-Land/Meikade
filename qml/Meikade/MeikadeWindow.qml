@@ -49,6 +49,7 @@ MeikadeWindowBase {
     readonly property variant areaFrame: page_manager.mainItem? page_manager.mainItem.areaFrame : 0
     property variant mainDialog
 
+    property variant searchPage
     property variant init_wait
     property string meikadeTitle: qsTr("Meikade")
 
@@ -224,6 +225,7 @@ MeikadeWindowBase {
     AT.SideMenu {
         id: sidebar
         anchors.fill: parent
+        menuType: menuTypeMaterial
         delegate: MouseArea {
             anchors.fill: parent
 
@@ -284,6 +286,9 @@ MeikadeWindowBase {
                 height: 20*AT.Devices.density
                 width: height
                 ratio: {
+                    if(searchPage)
+                        return fakeRatio
+                    else
                     if(catPage && catPage.count>1)
                         return fakeRatio
                     else
@@ -296,6 +301,9 @@ MeikadeWindowBase {
                 }
 
                 property real fakeRatio: {
+                    if(searchPage)
+                        return 1
+                    else
                     if(catPage && catPage.count>1)
                         return 1
                     else
@@ -435,10 +443,11 @@ MeikadeWindowBase {
     }
 
     function showSearch() {
+        if(searchPage) return
         var component = Qt.createComponent("SearchBar.qml")
-        var object = component.createObject(pageManager.currentItem)
-        AT.BackHandler.pushHandler(object, function(){ object.destroy() })
-        object.focusOnText()
+        searchPage = component.createObject(pageManager.currentItem)
+        AT.BackHandler.pushHandler(searchPage, function(){ searchPage.destroy() })
+        searchPage.focusOnText()
     }
 
     Component {

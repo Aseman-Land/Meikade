@@ -22,9 +22,12 @@
 #include <QAndroidJniEnvironment>
 #include <QAndroidJniObject>
 #else
+#ifdef Q_OS_IOS
+#else
 #include <QProcess>
 #include <QCoreApplication>
 #include <QDir>
+#endif
 #endif
 
 #ifndef Q_OS_ANDROID
@@ -56,6 +59,8 @@ P7ZipExtractor::P7ZipExtractor(QObject *parent) :
 
 void P7ZipExtractor::extract(const QString &path, const QString & dest)
 {
+#ifdef Q_OS_IOS
+#else
 #ifdef Q_OS_ANDROID
     jstring jpath = p->env->NewString(reinterpret_cast<const jchar*>(path.constData()), path.length());
     jstring jdest = p->env->NewString(reinterpret_cast<const jchar*>(dest.constData()), dest.length());
@@ -71,6 +76,7 @@ void P7ZipExtractor::extract(const QString &path, const QString & dest)
     prc.start(COMMAND, args);
     prc.waitForReadyRead();
     prc.waitForFinished();
+#endif
 #endif
 }
 

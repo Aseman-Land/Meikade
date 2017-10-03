@@ -239,6 +239,7 @@ BackHandlerView {
     TitleBarShadow {
         width: parent.width
         anchors.top: search_frame.bottom
+        visible: !Devices.isIOS
     }
 
     function show() {
