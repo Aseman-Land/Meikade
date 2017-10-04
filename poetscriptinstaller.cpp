@@ -89,7 +89,7 @@ void PoetScriptInstaller::install(const QString &scr, int poetId, const QDateTim
         query.prepare(scr);
         int res = query.exec();
         if(!res)
-            qDebug() << __PRETTY_FUNCTION__ << query.lastError().text();
+            qDebug() << __PRETTY_FUNCTION__ << query.lastError().text() << scr;
 
         from = pos+2;
     }
@@ -122,6 +122,8 @@ void PoetScriptInstaller::initDb()
     p->db = QSqlDatabase::addDatabase("QSQLITE", QUuid::createUuid().toString());
     p->db.setDatabaseName(p->path);
     p->db.open();
+
+    qDebug() << p->path << p->db.lastError().text();
 }
 
 PoetScriptInstaller::~PoetScriptInstaller()

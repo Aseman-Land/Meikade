@@ -33,6 +33,7 @@
 #include <QDir>
 #include <QDebug>
 #include <QThread>
+#include <QStandardPaths>
 
 const QString sort_string = QString::fromUtf8("اَُِبپتثجچحخدذرزژسشصضطظعغفقکگلمنوهی");
 
@@ -122,6 +123,8 @@ MeikadeDatabase::MeikadeDatabase(ThreadedFileSystem *tfs, QObject *parent) :
     p->db = QSqlDatabase::addDatabase("QSQLITE",DATA_DB_CONNECTION);
     p->db.setDatabaseName(dbPath);
     p->db.open();
+
+    qDebug() << dbPath << p->db.lastError().text();
 
     init_buffer();
 #else

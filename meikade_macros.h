@@ -21,6 +21,7 @@
 
 #include <QtGlobal>
 #include <QDir>
+#include <QStandardPaths>
 
 #define DATA_DB_CONNECTION "data_sqlite"
 #define THREADED_DATA_DB_CONNECTION "threaded_data_sqlite"
@@ -35,9 +36,9 @@
 #define TRANSLATIONS_PATH QString("assets:/files/translations")
 #else
 #ifdef Q_OS_IOS
-#define HOME_PATH QString(QDir::homePath() + "/configs/")
-#define BACKUP_PATH QString(QDir::homePath() + "/backups/")
-#define TEMP_PATH   QString(QDir::homePath() + "/tmp/")
+#define HOME_PATH QString(QStandardPaths::standardLocations(QStandardPaths::QStandardPaths::AppDataLocation).first() + "/configs/")
+#define BACKUP_PATH QString(QStandardPaths::standardLocations(QStandardPaths::QStandardPaths::AppDataLocation).first() + "/backups/")
+#define TEMP_PATH   QString(QStandardPaths::standardLocations(QStandardPaths::QStandardPaths::AppDataLocation).first() + "/tmp/")
 #define TRANSLATIONS_PATH QString(QCoreApplication::applicationDirPath() + "/files/translations/")
 #else
 #ifdef Q_OS_WIN
