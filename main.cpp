@@ -19,17 +19,15 @@
 #include <QGuiApplication>
 
 #include "meikade.h"
-#include "asemantools/asemanqttools.h"
-#include "asemantools/asemanapplication.h"
 
 int main(int argc, char *argv[])
 {
 //    QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
-    AsemanApplication app(argc, argv);
-    app.setGlobalFont(QFont("IRAN-Sans"));
+    QGuiApplication app(argc, argv);
+//    app.setGlobalFont(QFont("IRAN-Sans"));
 
-    QGuiApplication::setFont(app.globalFont());
+//    QGuiApplication::setFont(app.globalFont());
 
     Meikade meikade;
     meikade.start();

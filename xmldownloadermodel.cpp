@@ -23,10 +23,9 @@
 
 #include "xmldownloadermodel.h"
 #include "poetscriptinstallerqueue.h"
-#include "asemantools/asemandownloader.h"
-#include "asemantools/asemanapplication.h"
 #include "meikade.h"
 #include "meikadedatabase.h"
+#include "aseman/asemandownloader.h"
 
 #include <QDebug>
 #include <QDomDocument>
@@ -705,7 +704,7 @@ void XmlDownloaderModel::startDownload(const QModelIndex &index)
 
     if(!p->downloaders.contains(unit.guid))
     {
-        const QString tmpFile = AsemanApplication::tempPath() + "/" + QUuid::createUuid().toString() + "." + unit.compress;
+        const QString tmpFile = Meikade::tempPath() + "/" + QUuid::createUuid().toString() + "." + unit.compress;
 
         AsemanDownloader *downloader = new AsemanDownloader(this);
         downloader->setPath(unit.url.toString());

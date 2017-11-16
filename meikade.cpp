@@ -32,14 +32,6 @@
 #include "xmldownloaderproxymodel.h"
 #include "services/meikade1.h"
 #include "services/auth1.h"
-#include "asemantools/asemandevices.h"
-#include "asemantools/asemanquickview.h"
-#include "asemantools/asemanapplication.h"
-#include "asemantools/asemanqmlengine.h"
-
-#ifdef Q_OS_ANDROID
-#include "asemantools/asemanjavalayer.h"
-#endif
 
 #ifdef ASEMAN_FALCON_SERVER
 #include "asemanclientsocket.h"
@@ -53,6 +45,7 @@
 #include <QQmlComponent>
 #include <QCloseEvent>
 #include <QGuiApplication>
+#include <QQmlApplicationEngine>
 #include <QQuickItem>
 #include <QScreen>
 #include <QDesktopServices>
@@ -96,16 +89,11 @@ Meikade *meikade_instance = 0;
 class MeikadePrivate
 {
 public:
-    AsemanQmlEngine *viewer;
+    QQmlApplicationEngine *viewer;
     MeikadeDatabase *poem_db;
     UserData *user_db;
     ThreadedFileSystem *threaded_fs;
     Backuper *backuper;
-
-    AsemanDevices *devices;
-#ifdef Q_OS_ANDROID
-    AsemanJavaLayer *java_layer;
-#endif
 
     bool close;
     int hide_keyboard_timer;
@@ -146,13 +134,7 @@ Meikade::Meikade(QObject *parent) :
     qmlRegisterType<ThreadedSearchModel>("Meikade", 1, 0, "ThreadedSearchModel");
     qmlRegisterUncreatableType<MeikadeDatabase>("Meikade", 1, 0, "MeikadeDatabase", "");
 
-#ifdef ASEMANCLIENTSOCKET_H
-    qmlRegisterType<AsemanClientSocket>("AsemanServer", 1, 0, "ClientSocket");
-#else
-    qmlRegisterType<AsemanAbstractClientSocket>("AsemanServer", 1, 0, "ClientSocket");
-#endif
-    qmlRegisterType<Meikade1>("AsemanServer", 1, 0, "Meikade");
-    qmlRegisterType<Auth1>("AsemanServer", 1, 0, "Auth");
+    qmlRegisterType<Meikade1>("AsemanClient.Services", 1, 0, "Meikade");
 
     QDir().mkpath(HOME_PATH);
     init_languages();
@@ -382,6 +364,19 @@ QString Meikade::resourcePath()
 #endif
 }
 
+QString Meikade::tempPath()
+{
+#ifdef Q_OS_ANDROID
+    return "/sdcard/" + QCoreApplication::organizationDomain() + "/" + QCoreApplication::applicationName() + "/temp";
+#else
+#ifdef Q_OS_IOS
+    return QStandardPaths::standardLocations(QStandardPaths::QStandardPaths::AppDataLocation).first() + "/tmp/";
+#else
+    return QDir::tempPath();
+#endif
+#endif
+}
+
 Meikade *Meikade::instance()
 {
     return meikade_instance;
@@ -554,17 +549,12 @@ void Meikade::start()
     if( p->viewer )
         return;
 
-#ifdef Q_OS_ANDROID
-    p->java_layer = AsemanJavaLayer::instance();
-#endif
-
     p->threaded_fs = new ThreadedFileSystem(this);
     p->poem_db = new MeikadeDatabase(p->threaded_fs,this);
     p->user_db = new UserData(this);
     p->backuper = new Backuper();
-    p->devices = new AsemanDevices(this);
 
-    p->viewer = new AsemanQmlEngine();
+    p->viewer = new QQmlApplicationEngine();
     p->viewer->addImportPath(":/qml/");
     p->viewer->rootContext()->setContextProperty( "Meikade" , this );
     p->viewer->rootContext()->setContextProperty( "Database", p->poem_db  );
@@ -595,7 +585,7 @@ bool Meikade::eventFilter(QObject *o, QEvent *e)
         case QEvent::Close:
         {
             QCloseEvent *ce = static_cast<QCloseEvent*>(e);
-            if( p->close || p->devices->isDesktop() )
+            if( p->close )
                 ce->accept();
             else
             {

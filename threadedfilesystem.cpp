@@ -18,7 +18,7 @@
 
 #include "threadedfilesystem.h"
 #include "p7zipextractor.h"
-#include "asemantools/asemanapplication.h"
+#include "meikade.h"
 
 #include <QFile>
 #include <QFileInfo>
@@ -84,7 +84,7 @@ void ThreadedFileSystem::extract_prv(const QString &src, int counter, const QStr
         return;
     }
 
-    const QString & temp = AsemanApplication::tempPath();
+    const QString & temp = Meikade::tempPath();
     QDir().mkpath(temp);
 
     qreal percent = 0;

@@ -17,9 +17,9 @@
 */
 
 #include "poetscriptinstaller.h"
-#include "asemantools/asemanapplication.h"
 #include "meikade_macros.h"
 #include "poetremover.h"
+#include "meikade.h"
 
 #include <QDir>
 #include <QUuid>

@@ -22,7 +22,6 @@
 #include "threadedfilesystem.h"
 #include "meikade_macros.h"
 #include "meikade.h"
-#include "asemantools/asemanapplication.h"
 
 #include <QSqlDatabase>
 #include <QSqlQuery>
@@ -34,6 +33,7 @@
 #include <QDebug>
 #include <QThread>
 #include <QStandardPaths>
+#include <QCoreApplication>
 
 const QString sort_string = QString::fromUtf8("اَُِبپتثجچحخدذرزژسشصضطظعغفقکگلمنوهی");
 
@@ -122,7 +122,8 @@ MeikadeDatabase::MeikadeDatabase(ThreadedFileSystem *tfs, QObject *parent) :
 
     p->db = QSqlDatabase::addDatabase("QSQLITE",DATA_DB_CONNECTION);
     p->db.setDatabaseName(dbPath);
-    p->db.open();
+    if(!p->db.open())
+        qDebug() << __PRETTY_FUNCTION__ << p->db.lastError().text();
 
     qDebug() << dbPath << p->db.lastError().text();
 

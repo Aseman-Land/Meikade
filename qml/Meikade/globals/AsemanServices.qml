@@ -1,7 +1,9 @@
 pragma Singleton
 
 import QtQuick 2.0
-import AsemanServer 1.0 as Server
+import AsemanClient 1.0 as Client
+import AsemanClient.CoreServices 1.0 as CoreServices
+import AsemanClient.Services 1.0 as Services
 import QtQuick 2.7
 import AsemanTools 1.0
 
@@ -18,7 +20,7 @@ AsemanObject {
 
     signal incommingMessage(string message, string msgUrl)
 
-    Server.ClientSocket {
+    Client.ClientSocket {
         id: asemanSocket
 //        hostAddress: "127.0.0.1"
         autoTrust: true
@@ -26,12 +28,12 @@ AsemanObject {
         onConnected: activeSession()
     }
 
-    Server.Auth {
+    CoreServices.Auth {
         id: asemanAuth
         socket: asemanSocket
     }
 
-    Server.Meikade {
+    Services.Meikade {
         id: asemanMeikade
         socket: asemanSocket
     }
@@ -81,9 +83,9 @@ AsemanObject {
                 sessionActivated = true
             } else {
                 switch(error.code) {
-                case Server.Auth.ErrorIncorrectSession:
-                case Server.Auth.ErrorIncorrectAppId:
-                case Server.Auth.ErrorExpiredSession:
+                case CoreServices.Auth.ErrorIncorrectSession:
+                case CoreServices.Auth.ErrorIncorrectAppId:
+                case CoreServices.Auth.ErrorExpiredSession:
                     authSettings.sessionId = ""
                     sessionActivated = false
                     break;

@@ -19,7 +19,7 @@
 #ifndef XMLDOWNLOADERPROXYMODEL_H
 #define XMLDOWNLOADERPROXYMODEL_H
 
-#include "asemantools/asemanabstractlistmodel.h"
+#include "aseman/asemanabstractlistmodel.h"
 #include "xmldownloadermodel.h"
 
 class XmlDownloaderProxyModelPrivate;

@@ -22,9 +22,8 @@
 #define THUMB_DEFAULT QString(":/qml/Meikade/poets/default.png")
 
 #include "poetimageprovider.h"
-#include "asemantools/asemandownloader.h"
-#include "asemantools/asemanapplication.h"
 #include "meikade_macros.h"
+#include "aseman/asemandownloader.h"
 
 #include <QPointer>
 #include <QFileInfo>

@@ -30,10 +30,12 @@ contains(DEFINES,OLD_DATABASE) {
 }
 
 DEFINES += DISABLE_KEYCHAIN
+include(aseman/aseman.pri)
 include(qmake/qtcAddDeployment.pri)
-include(AsemanClientLib/AsemanClientLib.pri)
-include(asemantools/asemantools.pri)
 qtcAddDeployment()
+
+LIBS += -L$$OUT_PWD/../build/lib -lasemanclient
+INCLUDEPATH += $$[QT_INSTALL_HEADERS]/aseman/client/
 
 QT += sql qml quick xml
 

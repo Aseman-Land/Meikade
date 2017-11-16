@@ -68,6 +68,7 @@ public:
 
     static QString resourcePathAbs();
     static QString resourcePath();
+    static QString tempPath();
     static Meikade *instance();
 
     Q_INVOKABLE int languageDirection();
