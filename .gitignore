@@ -37,3 +37,4 @@ AsemanClientLib/asemantrustsolverengine.cpp
 AsemanClientLib/asemantrustsolverengine.h
 AsemanGlobals/AsemanGlobals.pri
 AsemanGlobals/asemanserverenums.h
+*.DS_Store
