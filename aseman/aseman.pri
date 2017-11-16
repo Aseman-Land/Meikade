@@ -6,3 +6,10 @@ HEADERS += \
 SOURCES += \
     $$PWD/asemanabstractlistmodel.cpp \
     $$PWD/asemandownloader.cpp
+
+ios {
+    HEADERS += \
+        $$PWD/osxviewcontroller.h
+    SOURCES += \
+        $$PWD/osxviewcontroller.mm
+}

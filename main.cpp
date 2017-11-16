@@ -17,6 +17,7 @@
 */
 
 #include <QGuiApplication>
+#include <QFont>
 
 #include "meikade.h"
 
@@ -25,9 +26,7 @@ int main(int argc, char *argv[])
 //    QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
     QGuiApplication app(argc, argv);
-//    app.setGlobalFont(QFont("IRAN-Sans"));
-
-//    QGuiApplication::setFont(app.globalFont());
+    QGuiApplication::setFont(QFont("IRAN-Sans"));
 
     Meikade meikade;
     meikade.start();
