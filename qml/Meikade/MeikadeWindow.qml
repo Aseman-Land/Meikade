@@ -119,21 +119,6 @@ MeikadeWindowBase {
     }
 
     Connections {
-        target: Backuper
-        onActiveChanged: {
-            if( Backuper.active ) {
-                showWaitDialog()
-                UserData.disconnect()
-                main.blockBack = true
-            } else {
-                hideMainDialog()
-                UserData.reconnect()
-                main.blockBack = false
-            }
-        }
-    }
-
-    Connections {
         target: AsemanServices
         onIncommingMessage: messageDialog.show(network_message_component, {"message":message, "destUrl":msgUrl})
     }

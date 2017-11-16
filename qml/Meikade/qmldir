@@ -4,7 +4,6 @@ Category 1.0 Category.qml
 TitleBarShadow 1.0 TitleBarShadow.qml
 HafezOmenDescription 1.0 HafezOmenDescription.qml
 MainMenuItem 1.0 MainMenuItem.qml
-BackupDialog 1.0 BackupDialog.qml
 PoemHeader 1.0 PoemHeader.qml
 AboutAseman 1.0 AboutAseman.qml
 DatabaseLocation 1.0 DatabaseLocation.qml

@@ -23,12 +23,6 @@ android {
     ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
 }
 
-contains(DEFINES,OLD_DATABASE) {
-    folder_05.source = data
-    folder_05.target = database
-    DEPLOYMENTFOLDERS += folder_05
-}
-
 DEFINES += DISABLE_KEYCHAIN
 include(aseman/aseman.pri)
 include(qmake/qtcAddDeployment.pri)
@@ -43,12 +37,8 @@ SOURCES += main.cpp \
     userdata.cpp \
     threadeddatabase.cpp \
     threadedfilesystem.cpp \
-    backuper.cpp \
-    resourcemanager.cpp \
     meikade.cpp \
     meikadedatabase.cpp \
-    SimpleQtCryptor/simpleqtcryptor.cpp \
-    p7zipextractor.cpp \
     stickermodel.cpp \
     stickerwriter.cpp \
     threadedsearchmodel.cpp \
@@ -62,14 +52,9 @@ HEADERS += \
     userdata.h \
     threadeddatabase.h \
     threadedfilesystem.h \
-    backuper.h \
-    resourcemanager.h \
     meikade.h \
     meikade_macros.h \
     meikadedatabase.h \
-    SimpleQtCryptor/serpent_sbox.h \
-    SimpleQtCryptor/simpleqtcryptor.h \
-    p7zipextractor.h \
     stickermodel.h \
     stickerwriter.h \
     threadedsearchmodel.h \
@@ -79,8 +64,7 @@ HEADERS += \
     poetimageprovider.h \
     xmldownloaderproxymodel.h \
     poetremover.h \
-    services/meikade1.h \
-    services/auth1.h
+    services/meikade1.h
 
 OTHER_FILES += \
     android/AndroidManifest.xml \

@@ -22,16 +22,13 @@
 #include "userdata.h"
 #include "threadeddatabase.h"
 #include "threadedfilesystem.h"
-#include "backuper.h"
 #include "stickerwriter.h"
 #include "threadedsearchmodel.h"
-#include "p7zipextractor.h"
 #include "xmldownloadermodel.h"
 #include "meikade_macros.h"
 #include "poetimageprovider.h"
 #include "xmldownloaderproxymodel.h"
 #include "services/meikade1.h"
-#include "services/auth1.h"
 
 #ifdef ASEMAN_FALCON_SERVER
 #include "asemanclientsocket.h"
@@ -93,7 +90,6 @@ public:
     MeikadeDatabase *poem_db;
     UserData *user_db;
     ThreadedFileSystem *threaded_fs;
-    Backuper *backuper;
 
     bool close;
     int hide_keyboard_timer;
@@ -552,14 +548,12 @@ void Meikade::start()
     p->threaded_fs = new ThreadedFileSystem(this);
     p->poem_db = new MeikadeDatabase(p->threaded_fs,this);
     p->user_db = new UserData(this);
-    p->backuper = new Backuper();
 
     p->viewer = new QQmlApplicationEngine();
     p->viewer->addImportPath(":/qml/");
     p->viewer->rootContext()->setContextProperty( "Meikade" , this );
     p->viewer->rootContext()->setContextProperty( "Database", p->poem_db  );
     p->viewer->rootContext()->setContextProperty( "UserData", p->user_db  );
-    p->viewer->rootContext()->setContextProperty( "Backuper", p->backuper );
     p->viewer->rootContext()->setContextProperty( "ThreadedFileSystem", p->threaded_fs );
     p->viewer->load(QUrl("qrc:///qml/Meikade/main.qml"));
 //    p->viewer->setIcon( QIcon(":/qml/Meikade/icons/meikade.png") );
@@ -633,8 +627,5 @@ Meikade::~Meikade()
 
     if( p->viewer )
         delete p->viewer;
-    if( p->backuper )
-        delete p->backuper;
-
     delete p;
 }

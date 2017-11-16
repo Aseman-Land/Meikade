@@ -122,8 +122,6 @@ void PoetScriptInstaller::initDb()
     p->db = QSqlDatabase::addDatabase("QSQLITE", QUuid::createUuid().toString());
     p->db.setDatabaseName(p->path);
     p->db.open();
-
-    qDebug() << p->path << p->db.lastError().text();
 }
 
 PoetScriptInstaller::~PoetScriptInstaller()

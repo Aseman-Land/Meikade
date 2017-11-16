@@ -102,7 +102,6 @@ MeikadeDatabase::MeikadeDatabase(ThreadedFileSystem *tfs, QObject *parent) :
 
     const QString dbPath = databasePath();
 
-#ifndef OLD_DATABASE
     p->initialized = true;
 #ifdef Q_OS_ANDROID
     if(!QFileInfo::exists(ANDROID_OLD_DB_PATH "/data.sqlite"))
@@ -125,13 +124,7 @@ MeikadeDatabase::MeikadeDatabase(ThreadedFileSystem *tfs, QObject *parent) :
     if(!p->db.open())
         qDebug() << __PRETTY_FUNCTION__ << p->db.lastError().text();
 
-    qDebug() << dbPath << p->db.lastError().text();
-
     init_buffer();
-#else
-    p->initialized = false;
-    initialize();
-#endif
 }
 
 void MeikadeDatabase::setDatabaseLocation(int dbLocation)

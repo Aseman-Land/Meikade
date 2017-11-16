@@ -17,7 +17,6 @@
 */
 
 #include "threadedfilesystem.h"
-#include "p7zipextractor.h"
 #include "meikade.h"
 
 #include <QFile>
@@ -44,15 +43,12 @@ class ThreadedFileSystemPrivate
 {
 public:
     ThreadedFileSystemThread *thread;
-    P7ZipExtractor *p7zip;
 };
 
 ThreadedFileSystem::ThreadedFileSystem(QObject *parent) :
     QObject()
 {
     p = new ThreadedFileSystemPrivate;
-    p->p7zip = 0;
-
     p->thread = new ThreadedFileSystemThread(this,parent);
 
     moveToThread( p->thread );
@@ -71,9 +67,6 @@ void ThreadedFileSystem::extract(const QString &src, int counter, const QString 
 
 void ThreadedFileSystem::extract_prv(const QString &src, int counter, const QString &dst)
 {
-    if( !p->p7zip )
-        p->p7zip = new P7ZipExtractor(this);
-
     QFile::remove(dst);
     QFile dstFile(dst);
     if( !dstFile.open(QFile::WriteOnly) )
