@@ -458,9 +458,9 @@ void Meikade::setKeepScreenOn(bool stt, bool force)
     if( keepScreenOn() == stt && !force )
         return;
 
-#ifdef Q_OS_ANDROID
-    AsemanJavaLayer::instance()->setKeepScreenOn(stt);
-#endif
+//#ifdef Q_OS_ANDROID
+//    AsemanJavaLayer::instance()->setKeepScreenOn(stt);
+//#endif
     settings()->setValue("General/keepScreenOn", stt);
     emit keepScreenOnChanged();
 }
