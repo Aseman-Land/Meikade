@@ -84,13 +84,12 @@ Rectangle {
         onPoemSelected: cat_item.poemSelected(pid, rect)
     }
 
-    MaterialFrame {
+    ItemPane {
         id: item
         x: category.itemsSpacing
         width: category.width - 2*x
         height: 55*Devices.density
         opacity: startInit? 0 : 1
-        color: MeikadeGlobals.backgroundAlternativeColor
         visible: cat_title.cid != 0
 
         Behavior on opacity {

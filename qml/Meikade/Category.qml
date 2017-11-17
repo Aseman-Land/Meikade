@@ -59,9 +59,8 @@ Item {
             width: category_list.width - 2*x
             height: 55*Devices.density
 
-            MaterialFrame {
+            ItemPane {
                 anchors.fill: parent
-                color: MeikadeGlobals.backgroundAlternativeColor
             }
 
             CategoryItem {

@@ -62,9 +62,8 @@ Rectangle {
                 width: category_list.width - 2*x
                 height: 86*Devices.density
 
-                MaterialFrame {
+                ItemPane {
                     anchors.fill: parent
-                    color: MeikadeGlobals.backgroundAlternativeColor
                 }
                 Column {
                     anchors.fill: parent

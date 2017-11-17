@@ -128,12 +128,11 @@ Rectangle {
         bottomMargin: View.navigationBarHeight + spacing
         clip: true
         model: ListModel {}
-        delegate: MaterialFrame {
+        delegate: ItemPane {
             id: item
             x: poems_list.spacing
             width: poems_list.width - 2*x
             height: txt.height + 30*Devices.density
-            color: MeikadeGlobals.backgroundAlternativeColor
 
             property int pid: identifier
             property bool hasFavorite: false

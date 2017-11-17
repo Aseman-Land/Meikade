@@ -50,9 +50,8 @@ Item {
             width: listv.width - 2*x
             height: 54*Devices.density
 
-            MaterialFrame {
+            ItemPane {
                 anchors.fill: parent
-                color: MeikadeGlobals.backgroundAlternativeColor
             }
 
             PoetImageProvider {
