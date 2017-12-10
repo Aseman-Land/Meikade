@@ -127,7 +127,7 @@ void ThreadedSearchModel::setDatabase(MeikadeDatabase *db)
         return;
 
     p->database = db;
-    emit databaseChanged();
+    Q_EMIT databaseChanged();
 
     refresh();
 }
@@ -143,7 +143,7 @@ void ThreadedSearchModel::setKeyword(const QString &keyword)
         return;
 
     p->keyword = keyword;
-    emit keywordChanged();
+    Q_EMIT keywordChanged();
 
     refresh();
 }
@@ -159,7 +159,7 @@ void ThreadedSearchModel::setPoet(int pid)
         return;
 
     p->poet = pid;
-    emit poetChanged();
+    Q_EMIT poetChanged();
 
     refresh();
 }
@@ -178,7 +178,7 @@ void ThreadedSearchModel::setDelay(int ms)
     if(p->timer->isActive())
         refresh();
 
-    emit delayChanged();
+    Q_EMIT delayChanged();
 }
 
 int ThreadedSearchModel::delay() const
@@ -192,7 +192,7 @@ void ThreadedSearchModel::setStepCount(int count)
         return;
 
     p->stepCount = count;
-    emit stepCountChanged();
+    Q_EMIT stepCountChanged();
 }
 
 int ThreadedSearchModel::stepCount() const
@@ -213,7 +213,7 @@ bool ThreadedSearchModel::finished() const
 void ThreadedSearchModel::refresh()
 {
     p->refreshing = false;
-    emit refreshingChanged();
+    Q_EMIT refreshingChanged();
 
     p->timer->stop();
     p->timer->start();
@@ -226,8 +226,8 @@ void ThreadedSearchModel::more()
 
     p->refreshing = p->threaded->next(p->stepCount);
     p->finished = !p->refreshing;
-    emit finishedChanged();
-    emit refreshingChanged();
+    Q_EMIT finishedChanged();
+    Q_EMIT refreshingChanged();
 }
 
 void ThreadedSearchModel::refresh_prv()
@@ -235,7 +235,7 @@ void ThreadedSearchModel::refresh_prv()
     beginResetModel();
     p->list.clear();
     endResetModel();
-    emit countChanged();
+    Q_EMIT countChanged();
 
     if(p->keyword.isEmpty())
         return;
@@ -278,19 +278,19 @@ void ThreadedSearchModel::founded(int poem, int vorder)
     p->list << item;
     endInsertRows();
 
-    emit countChanged();
+    Q_EMIT countChanged();
 }
 
 void ThreadedSearchModel::fetchDone()
 {
     p->refreshing = false;
-    emit refreshingChanged();
+    Q_EMIT refreshingChanged();
 }
 
 void ThreadedSearchModel::noMoreResult()
 {
     p->finished = true;
-    emit finishedChanged();
+    Q_EMIT finishedChanged();
 }
 
 ThreadedSearchModel::~ThreadedSearchModel()

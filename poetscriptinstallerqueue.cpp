@@ -121,16 +121,16 @@ void PoetScriptInstallerQueue::finishedSlt(bool error)
     {
         case PoetScriptInstallerQueueUnit::Install:
         if(error)
-            emit PoetScriptInstallerQueue::error(p->current.file, p->current.guid);
+            Q_EMIT PoetScriptInstallerQueue::error(p->current.file, p->current.guid);
         else
-            emit PoetScriptInstallerQueue::finished(p->current.file, p->current.guid);
+            Q_EMIT PoetScriptInstallerQueue::finished(p->current.file, p->current.guid);
         break;
 
     case PoetScriptInstallerQueueUnit::Remove:
         if(error)
-            emit PoetScriptInstallerQueue::removeError(p->current.guid);
+            Q_EMIT PoetScriptInstallerQueue::removeError(p->current.guid);
         else
-            emit PoetScriptInstallerQueue::removed(p->current.guid);
+            Q_EMIT PoetScriptInstallerQueue::removed(p->current.guid);
         break;
     }
 

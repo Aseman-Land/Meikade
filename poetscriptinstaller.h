@@ -28,15 +28,15 @@ class PoetScriptInstaller : public QObject
     Q_OBJECT
 public:
     PoetScriptInstaller(QObject *parent = 0);
-    ~PoetScriptInstaller();
+    virtual ~PoetScriptInstaller();
 
-public slots:
+public Q_SLOTS:
     void installFile(const QString &path, int poetId, const QDateTime &date, bool removeFile = true);
     void install(const QString &script, int poetId, const QDateTime &date);
     void remove(int poetId);
 
-signals:
-    void finished(bool error);
+Q_SIGNALS:
+    void finished(int poetId, bool installed, const QString &error);
 
 private:
     void initDb();

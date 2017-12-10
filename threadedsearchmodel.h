@@ -42,7 +42,7 @@ public:
     };
 
     ThreadedSearchModel(QObject *parent = 0);
-    ~ThreadedSearchModel();
+    virtual ~ThreadedSearchModel();
 
     int id( const QModelIndex &index ) const;
 
@@ -70,11 +70,11 @@ public:
     bool refreshing() const;
     bool finished() const;
 
-public slots:
+public Q_SLOTS:
     void refresh();
     void more();
 
-signals:
+Q_SIGNALS:
     void countChanged();
     void keywordChanged();
     void databaseChanged();
@@ -84,7 +84,7 @@ signals:
     void finishedChanged();
     void poetChanged();
 
-private slots:
+private Q_SLOTS:
     void refresh_prv();
     void founded( int poem, int vorder );
     void fetchDone();

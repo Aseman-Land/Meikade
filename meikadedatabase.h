@@ -45,7 +45,7 @@ public:
     };
 
     MeikadeDatabase( ThreadedFileSystem *tfs, QObject *parent = 0);
-    ~MeikadeDatabase();
+    virtual ~MeikadeDatabase();
 
     Q_INVOKABLE bool initialized() const;
     int count() const;
@@ -59,7 +59,7 @@ public:
 
     bool copyingDatabase() const;
 
-signals:
+Q_SIGNALS:
     void initializeFinished();
     void extractProgress(int percent);
     void copyError();
@@ -68,7 +68,7 @@ signals:
     void databaseLocationChanged();
     void copyingDatabaseChanged();
 
-public slots:
+public Q_SLOTS:
     void initialize();
     void refresh();
 
@@ -102,7 +102,7 @@ private:
     void fetchPoem(int pid );
     bool checkUpdate();
 
-private slots:
+private Q_SLOTS:
     void initialize_prv(const QString & dst);
 
 private:
@@ -123,7 +123,7 @@ public:
         start();
     }
 
-signals:
+Q_SIGNALS:
     void copyFinished(const QString &source, const QString &destination, bool result);
 
 protected:

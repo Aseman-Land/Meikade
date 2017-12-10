@@ -43,7 +43,7 @@ class Meikade : public QObject
 
 public:
     Meikade(QObject *parent = 0);
-    ~Meikade();
+    virtual ~Meikade();
 
     Q_INVOKABLE bool fileExists( const QString & file );
 
@@ -108,13 +108,13 @@ public:
 
     static QSettings *settings();
 
-public slots:
+public Q_SLOTS:
     void start();
     void close();
 
     void timer( int interval, QObject *obj, const QString & member );
 
-signals:
+Q_SIGNALS:
     void closeRequest();
     void poemsFontChanged();
     void animationsChanged();

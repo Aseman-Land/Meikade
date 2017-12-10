@@ -124,7 +124,7 @@
         <file>qml/Meikade/icons/button-random.png</file>
         <file>qml/Meikade/MeikadeNews1.qml</file>
         <file>qml/Meikade/icons/tik-dark.png</file>
-        <file>qml/Meikade/XmlDownloaderPage.qml</file>
+        <file>qml/Meikade/StorePage.qml</file>
         <file>qml/Meikade/icons/download.png</file>
         <file>qml/Meikade/icons/installed.png</file>
         <file>qml/Meikade/icons/down.png</file>
@@ -143,7 +143,7 @@
         <file>qml/Meikade/LanguageInitializer.qml</file>
         <file>qml/Meikade/PoemFooter.qml</file>
         <file>qml/Meikade/DatabaseLocation.qml</file>
-        <file>qml/Meikade/XmlDownloaderPageItem.qml</file>
+        <file>qml/Meikade/StorePageItem.qml</file>
         <file>qml/Meikade/globals/MeikadeGlobals.qml</file>
         <file>qml/Meikade/globals/qmldir</file>
         <file>qml/Meikade/auth/LoginDialog.qml</file>

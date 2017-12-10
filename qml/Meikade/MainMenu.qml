@@ -144,7 +144,7 @@ Item {
             model.append({"name":qsTr("Meikade")           , "icon": Awesome.fa_home, "fileName":""                      , "type": "A"})
             model.append({"name":qsTr("Search")            , "icon": Awesome.fa_search, "fileName":"SearchBar.qml"            , "type": "A"})
             model.append({"name":qsTr("Bookmarks")         , "icon": Awesome.fa_bookmark_o, "fileName":"BookmarksPoets.qml"         , "type": "A"})
-            model.append({"name":qsTr("Store")             , "icon": Awesome.fa_shopping_cart, "fileName":"XmlDownloaderPage.qml" , "type": "A"})
+            model.append({"name":qsTr("Store")             , "icon": Awesome.fa_shopping_cart, "fileName":"StorePage.qml" , "type": "A"})
 //            model.append({"name":qsTr("Notes")             , "icon": Awesome.fa_sticky_note, "fileName":"Notes.qml"             , "type": "A"})
             model.append({"name":qsTr("Configure")         , "icon": Awesome.fa_cog, "fileName":"Configure.qml"         , "type": "C"})
             model.append({"name":qsTr("OpenSource Projecs"), "icon": Awesome.fa_code_fork, "fileName":"OpenSourceProjects.qml", "type": "C"})

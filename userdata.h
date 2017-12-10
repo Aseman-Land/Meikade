@@ -28,9 +28,9 @@ class UserData : public QObject
     Q_OBJECT
 public:
     UserData(QObject *parent = 0);
-    ~UserData();
+    virtual ~UserData();
 
-public slots:
+public Q_SLOTS:
     void favorite( int pid, int vid );
     void unfavorite( int pid, int vid );
     bool isFavorited( int pid, int vid );
@@ -46,7 +46,7 @@ public slots:
     void disconnect();
     void reconnect();
 
-signals:
+Q_SIGNALS:
     void favorited( int pid, int vid );
     void unfavorited( int pid, int vid );
     void noteChanged( int pid, int vid );

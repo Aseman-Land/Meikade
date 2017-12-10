@@ -57,7 +57,7 @@ void PoetImageProvider::setPoet(int poet)
     p->poet = poet;
     refresh();
 
-    emit poetChanged();
+    Q_EMIT poetChanged();
 }
 
 int PoetImageProvider::poet() const
@@ -96,7 +96,7 @@ void PoetImageProvider::refresh()
     }
 
     p->path = result;
-    emit pathChanged();
+    Q_EMIT pathChanged();
 }
 
 void PoetImageProvider::finished(const QByteArray &data)
@@ -116,7 +116,7 @@ void PoetImageProvider::finished(const QByteArray &data)
         return;
 
     p->path = result;
-    emit pathChanged();
+    Q_EMIT pathChanged();
 }
 
 PoetImageProvider::~PoetImageProvider()

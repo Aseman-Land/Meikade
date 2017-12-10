@@ -27,13 +27,13 @@ class ThreadedFileSystem : public QObject
     Q_OBJECT
 public:
     ThreadedFileSystem(QObject *parent = 0);
-    ~ThreadedFileSystem();
+    virtual ~ThreadedFileSystem();
 
-public slots:
+public Q_SLOTS:
     void copy( const QString & src, const QString & dst );
     void extract( const QString & src, int counter, const QString & dst );
 
-signals:
+Q_SIGNALS:
     void copyFinished( const QString & dst );
     void copyError();
 
@@ -42,7 +42,7 @@ signals:
 
     void extractProgress( int percent );
 
-private slots:
+private Q_SLOTS:
     void copy_prv( const QString & src, const QString & dst );
     void extract_prv( const QString & src, int counter, const QString & dst );
 

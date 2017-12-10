@@ -56,7 +56,7 @@ void PoetScriptInstaller::installFile(const QString &path, int poetId, const QDa
     QFile file(path);
     if(!file.open(QFile::ReadOnly))
     {
-        emit finished(true);
+        Q_EMIT finished(poetId, false, "Can't open file: " + path);
         if(removeFile)
             file.remove();
         return;
@@ -70,7 +70,7 @@ void PoetScriptInstaller::installFile(const QString &path, int poetId, const QDa
 
     install(data, poetId, date);
 
-    emit finished(false);
+    Q_EMIT finished(poetId, true, QString());
 }
 
 void PoetScriptInstaller::install(const QString &scr, int poetId, const QDateTime &date)
@@ -108,7 +108,7 @@ void PoetScriptInstaller::remove(int poetId)
     initDb();
     PoetRemover::removePoetCat(p->db, poetId);
     PoetRemover::vacuum(p->db);
-    emit finished(false);
+    Q_EMIT finished(poetId, false, QString());
 }
 
 void PoetScriptInstaller::initDb()

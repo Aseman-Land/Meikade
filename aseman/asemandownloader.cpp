@@ -68,7 +68,7 @@ void AsemanDownloader::setDestination(const QString &dest)
         return;
 
     p->dest = dest;
-    emit destinationChanged();
+    Q_EMIT destinationChanged();
 }
 
 QString AsemanDownloader::destination() const
@@ -82,7 +82,7 @@ void AsemanDownloader::setPath(const QString &path)
         return;
 
     p->path = path;
-    emit pathChanged();
+    Q_EMIT pathChanged();
 }
 
 QString AsemanDownloader::path() const
@@ -96,7 +96,7 @@ void AsemanDownloader::setDownloaderId(int id)
         return;
 
     p->downloader_id = id;
-    emit downloaderIdChanged();
+    Q_EMIT downloaderIdChanged();
 }
 
 int AsemanDownloader::downloaderId() const
@@ -152,8 +152,8 @@ void AsemanDownloader::downloadFinished(QNetworkReply *reply)
     p->reply = 0;
     if (reply->error())
     {
-        emit error( QStringList()<<"Failed" );
-        emit failed();
+        Q_EMIT error( QStringList()<<"Failed" );
+        Q_EMIT failed();
         Q_EMIT downloadingChanged();
         return;
     }
@@ -170,8 +170,8 @@ void AsemanDownloader::downloadFinished(QNetworkReply *reply)
         QFile file(p->dest);
         if( !file.open(QFile::WriteOnly) )
         {
-            emit error( QStringList()<<"Can't write to file." );
-            emit failed();
+            Q_EMIT error( QStringList()<<"Can't write to file." );
+            Q_EMIT failed();
             Q_EMIT downloadingChanged();
             Q_EMIT totalBytesChanged();
             Q_EMIT recievedBytesChanged();
@@ -184,8 +184,8 @@ void AsemanDownloader::downloadFinished(QNetworkReply *reply)
 
     const QByteArray & res = reply->readAll();
 
-    emit finished( res );
-    emit finishedWithId( p->downloader_id, res );
+    Q_EMIT finished( res );
+    Q_EMIT finishedWithId( p->downloader_id, res );
     Q_EMIT downloadingChanged();
     Q_EMIT totalBytesChanged();
     Q_EMIT recievedBytesChanged();
@@ -198,7 +198,7 @@ void AsemanDownloader::sslErrors(const QList<QSslError> &list)
     foreach (const QSslError &error, list)
         res << error.errorString();
 #endif
-    emit error(res);
+    Q_EMIT error(res);
 }
 
 void AsemanDownloader::downloadProgress(qint64 bytesReceived, qint64 bytesTotal)
@@ -206,12 +206,12 @@ void AsemanDownloader::downloadProgress(qint64 bytesReceived, qint64 bytesTotal)
     if( p->total_bytes != bytesTotal )
     {
         p->total_bytes = bytesTotal;
-        emit totalBytesChanged();
+        Q_EMIT totalBytesChanged();
     }
     if( p->recieved_bytes != bytesReceived )
     {
         p->recieved_bytes = bytesReceived;
-        emit recievedBytesChanged();
+        Q_EMIT recievedBytesChanged();
     }
 }
 

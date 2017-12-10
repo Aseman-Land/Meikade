@@ -28,21 +28,21 @@ class PoetScriptInstallerQueue : public QObject
     Q_OBJECT
 public:
     PoetScriptInstallerQueue(QObject *parent = 0);
-    ~PoetScriptInstallerQueue();
+    virtual ~PoetScriptInstallerQueue();
 
     bool isActive();
 
-public slots:
+public Q_SLOTS:
     void append(const QString &file, const QString &guid, int poetId, const QDateTime &date);
     void remove(const QString &guid, int poetId);
 
-signals:
+Q_SIGNALS:
     void error(const QString &file, const QString &guid);
     void finished(const QString &file, const QString &guid);
     void removed(const QString &guid);
     void removeError(const QString &guid);
 
-private slots:
+private Q_SLOTS:
     void finishedSlt(bool error);
 
 private:

@@ -255,7 +255,7 @@ void MeikadeDatabase::initialize()
 void MeikadeDatabase::refresh()
 {
     init_buffer();
-    emit poetsChanged();
+    Q_EMIT poetsChanged();
 }
 
 void MeikadeDatabase::initialize_prv(const QString &dst)
@@ -279,7 +279,7 @@ void MeikadeDatabase::initialize_prv(const QString &dst)
     p->initialized = true;
     init_buffer();
 
-    emit initializeFinished();
+    Q_EMIT initializeFinished();
 }
 
 QList<int> MeikadeDatabase::rootChilds() const

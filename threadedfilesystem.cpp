@@ -31,7 +31,7 @@ public:
     ThreadedFileSystemThread(QObject *child, QObject *parent): QThread(parent){
         child_obj = child;
     }
-    ~ThreadedFileSystemThread() {
+    virtual ~ThreadedFileSystemThread() {
         delete child_obj;
     }
 
@@ -73,7 +73,7 @@ void ThreadedFileSystem::extract_prv(const QString &src, int counter, const QStr
     {
         dstFile.close();
         dstFile.remove();
-        emit extractError();
+        Q_EMIT extractError();
         return;
     }
 
@@ -89,17 +89,17 @@ void ThreadedFileSystem::extract_prv(const QString &src, int counter, const QStr
         const QString & src_path = src + QString::number(i);
 
         percent += sml_step;
-        emit extractProgress(percent);
+        Q_EMIT extractProgress(percent);
 
         percent += sml_step;
-        emit extractProgress(percent);
+        Q_EMIT extractProgress(percent);
 
         QFile tmpFile(src_path);
         if( !tmpFile.exists() || !tmpFile.open(QFile::ReadOnly) )
         {
             dstFile.close();
             dstFile.remove();
-            emit extractError();
+            Q_EMIT extractError();
             return;
         }
 
@@ -108,27 +108,27 @@ void ThreadedFileSystem::extract_prv(const QString &src, int counter, const QStr
         {
             dstFile.close();
             dstFile.remove();
-            emit extractError();
+            Q_EMIT extractError();
             return;
         }
         if( !dstFile.flush() )
         {
             dstFile.close();
             dstFile.remove();
-            emit extractError();
+            Q_EMIT extractError();
             return;
         }
 
         tmpFile.close();
         tmpFile.remove();
         percent += sml_step;
-        emit extractProgress(percent);
+        Q_EMIT extractProgress(percent);
     }
 
     dstFile.close();
 
-    emit extractProgress(100);
-    emit extractFinished(dst);
+    Q_EMIT extractProgress(100);
+    Q_EMIT extractFinished(dst);
 }
 
 void ThreadedFileSystem::copy_prv(const QString &src, const QString &dst)
@@ -141,16 +141,16 @@ void ThreadedFileSystem::copy_prv(const QString &src, const QString &dst)
         QFile::remove(dst);
     else
     {
-        emit copyFinished(dst);
+        Q_EMIT copyFinished(dst);
         return;
     }
 
 
     bool done = QFile::copy(src,dst);
     if( done )
-        emit copyFinished(dst);
+        Q_EMIT copyFinished(dst);
     else
-        emit copyError();
+        Q_EMIT copyError();
 }
 
 ThreadedFileSystem::~ThreadedFileSystem()

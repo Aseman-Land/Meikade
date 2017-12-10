@@ -121,7 +121,7 @@ bool ThreadedDatabase::next(int length)
 {
     if( p->length == -1 )
     {
-        emit noMoreResult();
+        Q_EMIT noMoreResult();
         return false;
     }
 
@@ -141,7 +141,7 @@ void ThreadedDatabase::run()
         {
             DESTROY_QUERY
             p->terminate = false;
-            emit terminated();
+            Q_EMIT terminated();
             return;
         }
 
@@ -176,13 +176,13 @@ void ThreadedDatabase::run()
         {
             DESTROY_QUERY
             p->length = -1;
-            emit noMoreResult();
+            Q_EMIT noMoreResult();
             return;
         }
 
         QSqlRecord record = p->find_query->record();
         if( !p->reset )
-            emit found( record.value(0).toInt(), record.value(1).toInt() );
+            Q_EMIT found( record.value(0).toInt(), record.value(1).toInt() );
 
         p->pointer++;
     }

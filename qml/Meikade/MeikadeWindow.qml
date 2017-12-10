@@ -98,10 +98,6 @@ MeikadeWindowBase {
         Component.onCompleted: start()
     }
 
-    XmlDownloaderModel {
-        id: xml_model
-    }
-
     Connections {
         target: Database
         onCopyError: showCopyErrorMessage()
@@ -342,7 +338,7 @@ MeikadeWindowBase {
         id: start_report_timer
         interval: 2000
         repeat: false
-        onTriggered: AsemanServices.meikade.pushDeviceModel(AT.Devices.deviceName, AT.Devices.lcdPhysicalSize, AT.Devices.density, null)
+        onTriggered: AsemanServices.meikade.pushDeviceModel(AT.Devices.deviceName, AT.Devices.deviceId, AT.Devices.lcdPhysicalSize, AT.Devices.density, null)
         Component.onCompleted: start()
     }
 

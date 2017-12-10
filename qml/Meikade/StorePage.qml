@@ -21,6 +21,7 @@ import AsemanTools 1.0
 import AsemanTools 1.1 as AT
 import Meikade 1.0
 import AsemanTools.Awesome 1.0
+import AsemanClient.CoreServices 1.0 as CoreServices
 import QtQuick.Controls 2.0
 import QtQuick.Controls.Material 2.0
 import QtQuick.Layouts 1.3
@@ -33,6 +34,14 @@ Rectangle {
     color: MeikadeGlobals.backgroundColor
 
     readonly property string title: qsTr("Store")
+
+    CoreServices.GeneralModel {
+        id: gmodel
+        agent: AsemanServices.meikade
+        method: AsemanServices.meikade.name_getStoreCategories
+        arguments: []
+        uniqueKeyField: "id"
+    }
 
     Rectangle {
         id: header
@@ -63,37 +72,6 @@ Rectangle {
         }
     }
 
-    Indicator {
-        id: list_indicator
-        width: parent.width
-        anchors.top: tabBar.bottom
-        height: 100*Devices.density
-        light: false
-        modern: true
-        indicatorSize: 20*Devices.density
-        running: xml_model.refreshing && (view.currentItem && view.currentItem.count == 0)
-    }
-
-    Text {
-        anchors.horizontalCenter: list_indicator.horizontalCenter
-        anchors.top: list_indicator.verticalCenter
-        anchors.topMargin: 30*Devices.density
-        font.pixelSize: 11*globalFontDensity*Devices.fontDensity
-        font.family: AsemanApp.globalFont.family
-        text: qsTr("Fetching poet lists...")
-        color: MeikadeGlobals.foregroundColor
-        visible: list_indicator.running
-    }
-
-    Text {
-        anchors.centerIn: list_indicator
-        font.pixelSize: 11*globalFontDensity*Devices.fontDensity
-        font.family: AsemanApp.globalFont.family
-        text: qsTr("Can't connect to the server")
-        color: MeikadeGlobals.foregroundColor
-        visible: xml_model.errors.length != 0 || (xml_model.count == 0 && !list_indicator.running)
-    }
-
     AT.TabBar {
         id: tabBar
         anchors.top: header.bottom
@@ -102,58 +80,16 @@ Rectangle {
         textColor: MeikadeGlobals.foregroundColor
         fontSize: 10*Devices.fontDensity
         currentIndex: 0
-        onCurrentIndexChanged: if(view) view.currentIndex = currentIndex
-        model: [qsTr("Classic"), qsTr("In Between"), qsTr("Modern"), qsTr("Updates"), qsTr("Installed")]
+        onCurrentIndexChanged: if(view) view.category = gmodel.get(currentIndex).id
+        model: gmodel
+        displayRole: "name"
     }
 
-    SwipeView {
+    StorePageItem {
         id: view
         width: parent.width
         anchors.top: tabBar.bottom
-        anchors.bottom: indicator.top
-        currentIndex: 0
-        onCurrentIndexChanged: tabBar.currentIndex = currentIndex
-        interactive: false
-
-        LayoutMirroring.enabled: View.reverseLayout
-        LayoutMirroring.childrenInherit: true
-
-        XmlDownloaderPageItem { type: (1<<1) }
-        //From new poets to between
-        XmlDownloaderPageItem { type: (1<<0) }
-        XmlDownloaderPageItem { type: (1<<2) }
-        //Put updates and new poets together
-        XmlDownloaderPageItem { type: (1<<20) }
-        XmlDownloaderPageItem { type: (1<<19) }
-    }
-
-    Rectangle {
-        id: indicator
         anchors.bottom: parent.bottom
-        width: parent.width
-        height: 21*Devices.density
-        color: MeikadeGlobals.backgroundAlternativeColor
-
-        Column {
-            anchors.fill: parent
-
-            Rectangle {
-                width: parent.width
-                height: 1*Devices.density
-                color: MeikadeGlobals.backgroundColor
-            }
-
-            PageIndicator {
-                count: view.count
-                currentIndex: view.currentIndex
-                opacity: 0.8
-
-                LayoutMirroring.enabled: View.reverseLayout
-                LayoutMirroring.childrenInherit: true
-
-                anchors.horizontalCenter: parent.horizontalCenter
-            }
-        }
     }
 
     Popup {
@@ -218,6 +154,5 @@ Rectangle {
         }
     }
 
-    Component.onCompleted: xml_model.refresh()
     ActivityAnalizer { object: xml_page }
 }

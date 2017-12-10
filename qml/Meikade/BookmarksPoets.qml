@@ -194,9 +194,37 @@ Rectangle {
     Component {
         id: bookmarks_component
         Bookmarks {
-            anchors.fill: parent
+            width: parent.width
+            height: parent.height
+            x: {
+                var res = 0
+                if(inited) return res
+                switch(View.layoutDirection) {
+                case Qt.RightToLeft:
+                    res = -parent.width
+                    break
 
-            Component.onCompleted: BackHandler.pushHandler(this, destroy)
+                default:
+                case Qt.LeftToRight:
+                    res = parent.width
+                    break
+                }
+                return res
+            }
+
+            property bool inited: false
+
+            Behavior on x {
+                NumberAnimation { easing.type: Easing.OutCubic; duration: 300 }
+            }
+
+            Component.onCompleted: {
+                inited = true
+                BackHandler.pushHandler(this, function() {
+                    inited = false
+                    Tools.jsDelayCall(300, destroy)
+                })
+            }
         }
     }
 

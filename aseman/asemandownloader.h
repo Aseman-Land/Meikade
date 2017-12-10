@@ -53,11 +53,11 @@ public:
 
     bool downloading() const;
 
-public slots:
+public Q_SLOTS:
     void start();
     void stop();
 
-signals:
+Q_SIGNALS:
     void recievedBytesChanged();
     void totalBytesChanged();
     void destinationChanged();
@@ -69,7 +69,7 @@ signals:
     void finishedWithId( int id, const QByteArray & data );
     void failed();
 
-private slots:
+private Q_SLOTS:
     void downloadFinished(QNetworkReply *reply);
     void sslErrors(const QList<QSslError> &list);
     void downloadProgress(qint64 bytesReceived, qint64 bytesTotal);

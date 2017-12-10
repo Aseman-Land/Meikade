@@ -21,6 +21,7 @@ import QtQuick.Controls 2.1
 import AsemanTools 1.0
 import Meikade 1.0
 import AsemanTools.Awesome 1.0
+import AsemanClient.CoreServices 1.0 as CoreServices
 import QtQuick.Layouts 1.3
 import "globals"
 
@@ -30,20 +31,39 @@ Item {
     LayoutMirroring.enabled: false
     LayoutMirroring.childrenInherit: true
 
-    property alias type: proxyModel.type
-    property alias count: listv.count
+    property int type
+    property int category
 
-    XmlDownloaderProxyModel{
-        id: proxyModel
-        model: xml_model
+    onCategoryChanged: gmodel.clear()
+
+    CoreServices.GeneralModel {
+        id: gmodel
+        agent: AsemanServices.meikade
+        method: AsemanServices.meikade.name_getStoreItems
+        arguments: [
+            "", category, offset, limit
+        ]
+        uniqueKeyField: "id"
     }
 
     AsemanListView {
         id: listv
         anchors.fill: parent
         topMargin: spacing
-        model: proxyModel
+        model: gmodel
         spacing: 8*Devices.density
+
+        footer: Item {
+            width: listv.width
+            height: listv.height/3
+
+            BusyIndicator {
+                anchors.centerIn: parent
+                height: 48*Devices.density
+                width: height
+                running: gmodel.refreshing
+            }
+        }
 
         delegate: Item {
             x: listv.spacing
@@ -54,9 +74,12 @@ Item {
                 anchors.fill: parent
             }
 
-            PoetImageProvider {
-                id: image_provider
-                poet: model.poetId
+            PoetInstaller {
+                id: installer
+                poetId: model.poetId
+                date: model.date
+                socket: AsemanServices.socket
+                source: model.path
             }
 
             RowLayout {
@@ -67,22 +90,20 @@ Item {
                 spacing: 10*Devices.density
                 layoutDirection: View.layoutDirection
 
-                RoundedImage {
+                CoreServices.RemoteImage {
                     anchors.verticalCenter: parent.verticalCenter
                     Layout.preferredHeight: 38*Devices.density
                     Layout.preferredWidth: Layout.preferredHeight
-
-                    radius: 5*Devices.density
                     fillMode: Image.PreserveAspectFit
-                    source: image_provider.path
-                    smooth: true
+                    socket: AsemanServices.socket
+                    source: model.thumb
                 }
 
                 Text {
                     anchors.verticalCenter: parent.verticalCenter
                     Layout.fillWidth: true
 
-                    text: model.poetName
+                    text: model.name
                     horizontalAlignment: View.defaultLayout? Text.AlignLeft : Text.AlignRight
                     font.pixelSize: 10*globalFontDensity*Devices.fontDensity
                     font.family: AsemanApp.globalFont.family
@@ -95,23 +116,23 @@ Item {
                     font.family: AsemanApp.globalFont.family
                     color: Meikade.nightTheme? Qt.darker(MeikadeGlobals.foregroundColor) : Qt.lighter(MeikadeGlobals.foregroundColor)
                     text: {
-                        if(model.installing)
+                        if(installer.installing)
                             return qsTr("Installing")
                         else
-                        if(model.removingState)
+                        if(installer.uninstalling)
                             return qsTr("Removing")
                         else
-                        if(model.downloadingState)
+                        if(installer.downloading)
                             return qsTr("Downloading")
                         else
-                        if(model.updateAvailable)
+                        if(installer.updateAvailable)
                             return qsTr("Update")
                         else
-                        if(model.installed)
+                        if(installer.installed)
                             return qsTr("Installed")
                         else
-                        if(model.downloadError)
-                            return qsTr("Error")
+                        if(installer.error.length)
+                            return installer.error
                         else
                             return qsTr("Free")
                     }
@@ -127,19 +148,19 @@ Item {
                         font.pixelSize: 15*globalFontDensity*Devices.fontDensity
                         font.family: Awesome.family
                         color: {
-                            if(model.updateAvailable)
+                            if(installer.updateAvailable)
                                 return "#0d80ec"
                             else
-                            if(model.installed)
+                            if(installer.installed)
                                 return "#3c994b"
                             else
                                 return Meikade.nightTheme? Qt.darker(MeikadeGlobals.foregroundColor) : Qt.lighter(MeikadeGlobals.foregroundColor)
                         }
                         text: {
-                            if(model.updateAvailable)
+                            if(installer.updateAvailable)
                                 return Awesome.fa_download
                             else
-                            if(model.installed)
+                            if(installer.installed)
                                 return Awesome.fa_check_square_o
                             else
                                 return Awesome.fa_plus
@@ -147,14 +168,14 @@ Item {
                         visible: !indicator.running
                     }
 
-                    Indicator {
+                    BusyIndicator {
                         id: indicator
                         anchors.centerIn: parent
-                        width: 18*Devices.density
+                        width: 48*Devices.density
                         height: width
-                        light: false
-                        modern: true
-                        running: model.installing || model.downloadingState || model.downloadedStatus || model.removingState
+                        scale: 0.5
+                        transformOrigin: Item.Center
+                        running: installer.installing || installer.uninstalling || installer.downloading
                     }
                 }
             }
@@ -163,8 +184,8 @@ Item {
                 width: parent.width
                 height: 3*Devices.density
                 anchors.bottom: parent.bottom
-                visible: indicator.running
-                percent: 100*model.downloadedBytes/model.fileSize
+                visible: indicator.running && !installer.uninstalling
+                percent: 100*installer.progress
                 transform: Scale { origin.x: width/2; origin.y: height/2; xScale: View.defaultLayout?1:-1}
                 color: "#00000000"
             }
@@ -180,21 +201,23 @@ Item {
                 id: marea
                 anchors.fill: parent
                 onClicked: {
-                    if(model.installed) {
+                    if(installer.installed) {
                         if(!indicator.running) {
-                            removePopup.poetName = model.poetName
-                            removePopup.updateCallback = model.updateAvailable? function(){ model.downloadingState = true } : null
-                            removePopup.deleteCallback = function(){ model.removingState = true }
+                            removePopup.poetName = model.name
+                            removePopup.updateCallback = installer.updateAvailable? function(){ installer.install() } : null
+                            removePopup.deleteCallback = function(){ installer.remove() }
                             removePopup.open()
                         }
 
                         return
                     }
 
-                    model.downloadingState = true
+                    installer.install()
                     AsemanServices.meikade.pushAction( ("Poet Download: %1").arg(model.poetId), null )
                 }
             }
+
+            Component.onCompleted: if(index == listv.count-20) gmodel.more()
         }
     }
 

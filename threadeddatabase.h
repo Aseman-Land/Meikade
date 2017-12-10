@@ -28,16 +28,16 @@ class ThreadedDatabase : public QThread
     Q_OBJECT
 public:
     ThreadedDatabase(MeikadeDatabase *pdb, QObject *parent = 0);
-    ~ThreadedDatabase();
+    virtual ~ThreadedDatabase();
 
-public slots:
+public Q_SLOTS:
     void initialize();
     void terminateThread();
 
     void find( const QString & keyword, int poet = -1 );
     bool next( int length = 100 );
 
-signals:
+Q_SIGNALS:
     void found( int poem_id, int vorder );
     void noMoreResult();
     void terminated();

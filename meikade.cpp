@@ -24,16 +24,15 @@
 #include "threadedfilesystem.h"
 #include "stickerwriter.h"
 #include "threadedsearchmodel.h"
-#include "xmldownloadermodel.h"
 #include "meikade_macros.h"
 #include "poetimageprovider.h"
-#include "xmldownloaderproxymodel.h"
-#include "services/meikade1.h"
+#include "services/meikade2.h"
 
 #ifdef ASEMAN_FALCON_SERVER
 #include "asemanclientsocket.h"
 #else
 #include "asemanabstractclientsocket.h"
+#include "poetinstaller.h"
 #endif
 
 #include <QQuickView>
@@ -122,15 +121,14 @@ Meikade::Meikade(QObject *parent) :
     if(keepScreenOn())
         setKeepScreenOn(true, true);
 
-    qmlRegisterType<XmlDownloaderModel>("Meikade", 1, 0, "XmlDownloaderModel");
-    qmlRegisterType<XmlDownloaderProxyModel>("Meikade", 1, 0, "XmlDownloaderProxyModel");
     qmlRegisterType<PoetImageProvider>("Meikade", 1, 0, "PoetImageProvider");
+    qmlRegisterType<PoetInstaller>("Meikade", 1, 0, "PoetInstaller");
     qmlRegisterType<StickerModel>("Meikade", 1, 0, "StickerModel");
     qmlRegisterType<StickerWriter>("Meikade", 1, 0, "StickerWriter");
     qmlRegisterType<ThreadedSearchModel>("Meikade", 1, 0, "ThreadedSearchModel");
     qmlRegisterUncreatableType<MeikadeDatabase>("Meikade", 1, 0, "MeikadeDatabase", "");
 
-    qmlRegisterType<Meikade1>("AsemanClient.Services", 1, 0, "Meikade");
+    qmlRegisterType<Meikade2>("AsemanClient.Services", 1, 0, "Meikade");
 
     QDir().mkpath(HOME_PATH);
     init_languages();
@@ -291,8 +289,8 @@ void Meikade::setCurrentLanguage(const QString &lang)
     translate_8 = Meikade::tr("8");
     translate_9 = Meikade::tr("9");
 
-    emit currentLanguageChanged();
-    emit languageDirectionChanged();
+    Q_EMIT currentLanguageChanged();
+    Q_EMIT languageDirectionChanged();
 }
 
 QString Meikade::currentLanguage() const
@@ -415,7 +413,7 @@ void Meikade::setAnimations(bool stt)
         return;
 
     settings()->setValue("General/animations",stt);
-    emit animationsChanged();
+    Q_EMIT animationsChanged();
 }
 
 bool Meikade::animations() const
@@ -432,7 +430,7 @@ void Meikade::setNightTheme(bool stt)
     settings()->setValue("General/nightTheme",stt);
     p->nightTheme = stt;
 
-    emit nightThemeChanged();
+    Q_EMIT nightThemeChanged();
 }
 
 bool Meikade::nightTheme() const
@@ -462,7 +460,7 @@ void Meikade::setKeepScreenOn(bool stt, bool force)
 //    AsemanJavaLayer::instance()->setKeepScreenOn(stt);
 //#endif
     settings()->setValue("General/keepScreenOn", stt);
-    emit keepScreenOnChanged();
+    Q_EMIT keepScreenOnChanged();
 }
 
 bool Meikade::keepScreenOn() const
@@ -476,7 +474,7 @@ void Meikade::setPhrase(bool stt)
         return;
 
     settings()->setValue("General/tabir", stt);
-    emit phraseChanged();
+    Q_EMIT phraseChanged();
 }
 
 bool Meikade::phrase() const
@@ -490,7 +488,7 @@ void Meikade::setActivePush(bool stt)
         return;
 
     settings()->setValue("General/activePush", stt);
-    emit activePushChanged();
+    Q_EMIT activePushChanged();
 }
 
 bool Meikade::activePush() const
@@ -512,7 +510,7 @@ void Meikade::setPoemsFont(const QString &name)
 
     p->poem_font = name;
     settings()->setValue("General/PoemFont",p->poem_font);
-    emit poemsFontChanged();
+    Q_EMIT poemsFontChanged();
 }
 
 QString Meikade::poemsFont() const
@@ -531,7 +529,7 @@ void Meikade::setRunCount(int cnt)
         return;
 
     settings()->setValue("General/runCount", cnt);
-    emit runCountChanged();
+    Q_EMIT runCountChanged();
 }
 
 QSettings *Meikade::settings()
@@ -584,7 +582,7 @@ bool Meikade::eventFilter(QObject *o, QEvent *e)
             else
             {
                 ce->ignore();
-                emit closeRequest();
+                Q_EMIT closeRequest();
             }
         }
             break;

@@ -64,7 +64,7 @@ public:
     };
 
     StickerModel(QObject *parent = 0);
-    ~StickerModel();
+    virtual ~StickerModel();
 
     StickerModelItem itemOf( const QModelIndex &index ) const;
 
@@ -83,10 +83,10 @@ public:
     void setFontFamily(const QString &f);
     QString fontFamily() const;
 
-public slots:
+public Q_SLOTS:
     void refresh();
 
-signals:
+Q_SIGNALS:
     void countChanged();
     void stateChanged();
 

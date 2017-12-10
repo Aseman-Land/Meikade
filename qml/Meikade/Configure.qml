@@ -21,6 +21,7 @@ import AsemanTools 1.0
 import AsemanTools 1.0 as AT
 import QtQuick.Controls 2.0
 import QtQuick.Controls.Material 2.0
+import "globals"
 
 BackHandlerView {
     id: configure

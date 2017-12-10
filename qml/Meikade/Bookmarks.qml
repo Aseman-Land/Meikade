@@ -22,7 +22,6 @@ import "globals"
 
 BackHandlerView {
     id: bookmarks
-    anchors.fill: parent
     clip: true
     color: MeikadeGlobals.backgroundColor
     viewMode: false

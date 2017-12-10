@@ -32,13 +32,13 @@ HafezOmen 1.0 HafezOmen.qml
 ActivityAnalizer 1.0 ActivityAnalizer.qml
 OpenSourceProjects 1.0 OpenSourceProjects.qml
 PoemEdit 1.0 PoemEdit.qml
-XmlDownloaderPageItem 1.0 XmlDownloaderPageItem.qml
+StorePageItem 1.0 StorePageItem.qml
 PoemView 1.0 PoemView.qml
 Bookmarks 1.0 Bookmarks.qml
 BackHandlerView 1.0 BackHandlerView.qml
 CategoryPageItem 1.0 CategoryPageItem.qml
 main 1.0 main.qml
-XmlDownloaderPage 1.0 XmlDownloaderPage.qml
+StorePage 1.0 StorePage.qml
 MeikadeWindow 1.0 MeikadeWindow.qml
 PoemItem 1.0 PoemItem.qml
 MainMenu 1.0 MainMenu.qml

@@ -153,38 +153,6 @@ Rectangle {
 
             Button {
                 anchors.verticalCenter: parent.verticalCenter
-                height: Devices.standardTitleBarHeight - 2*xMargin
-                width: height
-                text: AsemanServices.loggining? "" : Awesome.fa_user
-                fontSize: 13*Devices.fontDensity
-                textFont.family: Awesome.family
-                textColor: "#ffffff"
-                highlightColor: "#44ffffff"
-                radius: 4*Devices.density
-                onClicked: {
-                    if(AsemanServices.loggining)
-                        return
-                    if(AsemanServices.sessionActivated)
-                        return
-                    else
-                        userAccount.open()
-                }
-
-                property real xMargin: 10*Devices.density
-
-                QtControls.BusyIndicator {
-                    anchors.centerIn: parent
-                    height: 46*Devices.density
-                    width: height
-                    running: AsemanServices.loggining
-                    transformOrigin: Item.Center
-                    scale: 0.5
-                    Material.accent: "#ffffff"
-                }
-            }
-
-            Button {
-                anchors.verticalCenter: parent.verticalCenter
                 y: View.statusBarHeight
                 height: Devices.standardTitleBarHeight - 2*xMargin
                 width: height
@@ -442,7 +410,7 @@ Rectangle {
     }
 
     function showStore() {
-        var ocomponent = Qt.createComponent("XmlDownloaderPage.qml")
+        var ocomponent = Qt.createComponent("StorePage.qml")
         if(ocomponent.status == Component.Ready)
             pageManager.append(ocomponent)
         else if(ocomponent.status == Component.Error) {

@@ -30,20 +30,20 @@ class StickerWriter : public QObject
 
 public:
     StickerWriter(QObject *parent = 0);
-    ~StickerWriter();
+    virtual ~StickerWriter();
 
     void setItem(QQuickItem *item);
     QQuickItem *item() const;
 
-public slots:
+public Q_SLOTS:
     void save(const QString &dest, const QSize &size);
 
-signals:
+Q_SIGNALS:
     void itemChanged();
     void saved(const QString &dest);
     void failed();
 
-private slots:
+private Q_SLOTS:
     void ready();
 
 private:

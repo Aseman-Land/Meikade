@@ -9,41 +9,23 @@ import AsemanTools 1.0
 
 AsemanObject {
     property alias socket: asemanSocket
-    property alias auth: asemanAuth
     property alias meikade: asemanMeikade
-    property alias authSettings: auth_settings
 
     readonly property int meikadeAppId: 35816
-    readonly property bool loggedIn: auth_settings.sessionId.length
-    property bool sessionActivated: false
-    property bool loggining: true
+    readonly property bool loggedIn: false
 
     signal incommingMessage(string message, string msgUrl)
 
     Client.ClientSocket {
         id: asemanSocket
-//        hostAddress: "127.0.0.1"
+        hostAddress: "aseman.co"
         autoTrust: true
         certificate: "../certificates/falcon.crt"
-        onConnected: activeSession()
-    }
-
-    CoreServices.Auth {
-        id: asemanAuth
-        socket: asemanSocket
     }
 
     Services.Meikade {
         id: asemanMeikade
         socket: asemanSocket
-    }
-
-    Settings {
-        id: auth_settings
-        category: "General"
-        source: AsemanApp.homePath + "/auth.ini"
-
-        property string sessionId
     }
 
     Timer {
@@ -68,33 +50,5 @@ AsemanObject {
 
     function init() {
         asemanSocket.wake()
-    }
-
-    function activeSession(callback) {
-        if(!loggedIn) {
-            loggining = false
-            return
-        }
-
-        loggining = true
-        auth.activeSession(auth_settings.sessionId, meikadeAppId, function(res, error) {
-            if(res) {
-                View.root.showTooltip( qsTr("Logged In :)") )
-                sessionActivated = true
-            } else {
-                switch(error.code) {
-                case CoreServices.Auth.ErrorIncorrectSession:
-                case CoreServices.Auth.ErrorIncorrectAppId:
-                case CoreServices.Auth.ErrorExpiredSession:
-                    authSettings.sessionId = ""
-                    sessionActivated = false
-                    break;
-                }
-
-                View.root.showTooltip( qsTr("Login error :(") + "\n" + error.value )
-            }
-            loggining = false
-            if(callback != undefined) callback()
-        })
     }
 }

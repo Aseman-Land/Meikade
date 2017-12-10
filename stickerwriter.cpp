@@ -44,7 +44,7 @@ void StickerWriter::setItem(QQuickItem *item)
         return;
 
     p->item = item;
-    emit itemChanged();
+    Q_EMIT itemChanged();
 }
 
 QQuickItem *StickerWriter::item() const
@@ -56,14 +56,14 @@ void StickerWriter::save(const QString &dest, const QSize &size)
 {
     if(!p->item)
     {
-        emit failed();
+        Q_EMIT failed();
         return;
     }
 
     p->result = p->item->grabToImage(size);
     if(!p->result)
     {
-        emit failed();
+        Q_EMIT failed();
         return;
     }
 
@@ -82,7 +82,7 @@ void StickerWriter::ready()
     QImageWriter writer(p->dest);
     writer.write(img);
 
-    emit saved(p->dest);
+    Q_EMIT saved(p->dest);
 }
 
 StickerWriter::~StickerWriter()

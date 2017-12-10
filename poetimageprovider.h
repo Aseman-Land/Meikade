@@ -31,21 +31,21 @@ class PoetImageProvider : public QObject
 
 public:
     PoetImageProvider(QObject *parent = 0);
-    ~PoetImageProvider();
+    virtual ~PoetImageProvider();
 
     void setPoet(int poet);
     int poet() const;
 
     QUrl path() const;
 
-public slots:
+public Q_SLOTS:
     void refresh();
 
-signals:
+Q_SIGNALS:
     void poetChanged();
     void pathChanged();
 
-private slots:
+private Q_SLOTS:
     void finished( const QByteArray & data );
 
 private:

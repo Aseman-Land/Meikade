@@ -20,7 +20,7 @@
         <translation type="vanished">میکده یک برنامه‌ی آزاد و منبع‌باز است که توسط تیم تحقیقاتی سیالان منتشر شده است</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/About.qml" line="28"/>
+        <location filename="../qml/Meikade/About.qml" line="31"/>
         <source>About</source>
         <translation>درباره می‌کده</translation>
     </message>
@@ -29,22 +29,22 @@
         <translation type="vanished">می‌کده یک برنامه‌ی آزاد و منبع‌باز است که توسط گروه نیل طراحی و پیاده‌سازی شده است</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/About.qml" line="80"/>
+        <location filename="../qml/Meikade/About.qml" line="84"/>
         <source>Meikade is a free and opensource application by Aseman Team</source>
         <translation>می‌کده یک برنامه‌ی آزاد و منبع‌باز است که توسط تیم آسمان طراحی و پیاده‌سازی شده است</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/About.qml" line="89"/>
+        <location filename="../qml/Meikade/About.qml" line="93"/>
         <source>Meikade is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.</source>
         <translation>می‌کده یک برنامه‌ی آزاد است. این به این معنی است که می‌کده حامی آزادی‌های کاربر است. بنابراین شما می‌توانید آن را تحت قوانین نسخه‌ی سوم مجوز GPL که توسط FSF ارایه شده است دوباره منتشر کنید، آن را به دوستان خود بدهید و یا در آن تغییرات ایجاد کنید.</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/About.qml" line="101"/>
+        <location filename="../qml/Meikade/About.qml" line="105"/>
         <source>Meikade Members:</source>
         <translation>تیم توسعه‌ی می‌کده:</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/About.qml" line="110"/>
+        <location filename="../qml/Meikade/About.qml" line="114"/>
         <source> - Bardia Daneshvar (Project Founder, Project Architect and Developer)
  - AmirHosein Mousavi (Director of Public Relations and Developer)
  - Pourya Daneshvar (Designer)
@@ -109,7 +109,7 @@
 - حسن نوروزی (ایده پرداز)</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/About.qml" line="133"/>
+        <location filename="../qml/Meikade/About.qml" line="132"/>
         <source>Meikade Github</source>
         <translation>گیت‌هاب می‌کده</translation>
     </message>
@@ -128,13 +128,13 @@
         <translation type="vanished">درباره‌ی گروه نیل:</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/AboutNileTeam.qml" line="9"/>
-        <location filename="../qml/Meikade/AboutNileTeam.qml" line="70"/>
+        <location filename="../qml/Meikade/AboutNileTeam.qml" line="28"/>
+        <location filename="../qml/Meikade/AboutNileTeam.qml" line="90"/>
         <source>About Nile Group</source>
         <translation>درباره‌ی گروه نیل</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/AboutNileTeam.qml" line="82"/>
+        <location filename="../qml/Meikade/AboutNileTeam.qml" line="102"/>
         <source>Nile is an Iranian software corporation that makes software for Desktop computers, Android, iOS, Mac, Windows Phone, Ubuntu Phone and ...
 Nile create Free and OpenSource projects.</source>
         <translation>نیل، گروه تولید کننده‌ی نرم‌افزار است که بیشتر بر روی برنامه‌های کاربردی برای سیستم‌عامل‌های دسکتاپ، اندروید، آی‌او‌اس، ویندوز موبایل و ... کار می‌کند.
@@ -143,7 +143,7 @@ Nile create Free and OpenSource projects.</source>
 گروه نیل جز معدود تیم‌هایی است که در ایران به صورت جدی بر روی نرم‌افزارهای آزاد کار می‌کند و از قوانین آن پیروی می‌کند.</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/AboutNileTeam.qml" line="104"/>
+        <location filename="../qml/Meikade/AboutNileTeam.qml" line="124"/>
         <source>Home Page</source>
         <translation>صفحه خانگی</translation>
     </message>
@@ -151,243 +151,93 @@ Nile create Free and OpenSource projects.</source>
 <context>
     <name>AboutPageAseman</name>
     <message>
-        <location filename="../asemantools/build/qml/AsemanTools/AsemanTools/AboutPageAseman.qml" line="7"/>
-        <location filename="../asemantools/buildkde/qml/AsemanTools/AsemanTools/AboutPageAseman.qml" line="7"/>
-        <location filename="../asemantools/build-5.4/qml/AsemanTools/AsemanTools/AboutPageAseman.qml" line="7"/>
-        <location filename="../asemantools/qml/AsemanTools/AboutPageAseman.qml" line="7"/>
         <source>Aseman</source>
-        <translation>آسمان</translation>
+        <translation type="vanished">آسمان</translation>
     </message>
     <message>
-        <location filename="../asemantools/build/qml/AsemanTools/AsemanTools/AboutPageAseman.qml" line="42"/>
-        <location filename="../asemantools/buildkde/qml/AsemanTools/AsemanTools/AboutPageAseman.qml" line="42"/>
-        <location filename="../asemantools/build-5.4/qml/AsemanTools/AsemanTools/AboutPageAseman.qml" line="42"/>
-        <location filename="../asemantools/qml/AsemanTools/AboutPageAseman.qml" line="42"/>
         <source>Aseman Team</source>
-        <translation>تیم آسمان</translation>
+        <translation type="vanished">تیم آسمان</translation>
     </message>
     <message>
-        <location filename="../asemantools/build/qml/AsemanTools/AsemanTools/AboutPageAseman.qml" line="52"/>
-        <location filename="../asemantools/buildkde/qml/AsemanTools/AsemanTools/AboutPageAseman.qml" line="52"/>
-        <location filename="../asemantools/build-5.4/qml/AsemanTools/AsemanTools/AboutPageAseman.qml" line="52"/>
-        <location filename="../asemantools/qml/AsemanTools/AboutPageAseman.qml" line="52"/>
-        <source>Aseman is a non-profit organization, exists to support and lead the free, open source and cross-platform projects and researches.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../asemantools/build/qml/AsemanTools/AsemanTools/AboutPageAseman.qml" line="62"/>
-        <location filename="../asemantools/buildkde/qml/AsemanTools/AsemanTools/AboutPageAseman.qml" line="62"/>
-        <location filename="../asemantools/build-5.4/qml/AsemanTools/AsemanTools/AboutPageAseman.qml" line="62"/>
-        <location filename="../asemantools/qml/AsemanTools/AboutPageAseman.qml" line="62"/>
-        <source>The Goal of the Aseman is to provide free and secure products to keep people’s freedom and their privacy.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../asemantools/build/qml/AsemanTools/AsemanTools/AboutPageAseman.qml" line="74"/>
-        <location filename="../asemantools/buildkde/qml/AsemanTools/AsemanTools/AboutPageAseman.qml" line="74"/>
-        <location filename="../asemantools/build-5.4/qml/AsemanTools/AsemanTools/AboutPageAseman.qml" line="74"/>
-        <location filename="../asemantools/qml/AsemanTools/AboutPageAseman.qml" line="74"/>
         <source>Home</source>
-        <translation>Home</translation>
-    </message>
-</context>
-<context>
-    <name>AppWindow</name>
-    <message>
-        <location filename="../asemantools/Demos/RegularApp/AppWindow.qml" line="18"/>
-        <source>Hello World</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../asemantools/Demos/RegularApp/AppWindow.qml" line="110"/>
-        <source>SlidePageManager</source>
-        <translation type="unfinished"></translation>
+        <translation type="vanished">Home</translation>
     </message>
 </context>
 <context>
     <name>AsemanAbout</name>
     <message>
-        <location filename="../asemantools/build/qml/AsemanTools/AsemanTools/AsemanAbout.qml" line="50"/>
-        <location filename="../asemantools/buildkde/qml/AsemanTools/AsemanTools/AsemanAbout.qml" line="75"/>
-        <location filename="../asemantools/build-5.4/qml/AsemanTools/AsemanTools/AsemanAbout.qml" line="50"/>
-        <location filename="../asemantools/qml/AsemanTools/AsemanAbout.qml" line="75"/>
-        <source>Aseman is a non-profit organization, exists to support and lead the free, open source and cross-platform projects and researches.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../asemantools/build/qml/AsemanTools/AsemanTools/AsemanAbout.qml" line="67"/>
-        <location filename="../asemantools/buildkde/qml/AsemanTools/AsemanTools/AsemanAbout.qml" line="90"/>
-        <location filename="../asemantools/build-5.4/qml/AsemanTools/AsemanTools/AsemanAbout.qml" line="67"/>
-        <location filename="../asemantools/qml/AsemanTools/AsemanAbout.qml" line="90"/>
-        <source>The Goal of the Aseman is to provide free and secure products to keep people’s freedom and their privacy.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../asemantools/build/qml/AsemanTools/AsemanTools/AsemanAbout.qml" line="80"/>
-        <location filename="../asemantools/buildkde/qml/AsemanTools/AsemanTools/AsemanAbout.qml" line="107"/>
-        <location filename="../asemantools/build-5.4/qml/AsemanTools/AsemanTools/AsemanAbout.qml" line="80"/>
-        <location filename="../asemantools/qml/AsemanTools/AsemanAbout.qml" line="107"/>
         <source>Home Page</source>
-        <translation type="unfinished">صفحه خانگی</translation>
-    </message>
-</context>
-<context>
-    <name>AsemanAppExample</name>
-    <message>
-        <location filename="../asemantools/Demos/RegularApp/static/AsemanAppExample.qml" line="26"/>
-        <source>Paths</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../asemantools/Demos/RegularApp/static/AsemanAppExample.qml" line="48"/>
-        <source>Statuses</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../asemantools/Demos/RegularApp/static/AsemanAppExample.qml" line="94"/>
-        <source>App Details</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../asemantools/Demos/RegularApp/static/AsemanAppExample.qml" line="114"/>
-        <source>Methods</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../asemantools/Demos/RegularApp/static/AsemanAppExample.qml" line="145"/>
-        <source>AsemanApp</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>AsemanContributorsModel</name>
-    <message>
-        <location filename="../asemantools/asemancontributorsmodel.cpp" line="76"/>
-        <location filename="../asemantools/asemancontributorsmodel.cpp" line="78"/>
-        <source>%1 - %2</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../asemantools/asemancontributorsmodel.cpp" line="80"/>
-        <source>%1 (%2)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../asemantools/asemancontributorsmodel.cpp" line="80"/>
-        <source>%1 (%2) - %3</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>AsemanFontHandler</name>
-    <message>
-        <location filename="../asemantools/asemanfonthandler.cpp" line="250"/>
-        <source>Select font</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">صفحه خانگی</translation>
     </message>
 </context>
 <context>
     <name>AsemanTools</name>
     <message>
-        <location filename="../asemantools/asemantools.cpp" line="65"/>
         <source>0</source>
-        <translation>۰</translation>
+        <translation type="vanished">۰</translation>
     </message>
     <message>
-        <location filename="../asemantools/asemantools.cpp" line="66"/>
         <source>1</source>
-        <translation>۱</translation>
+        <translation type="vanished">۱</translation>
     </message>
     <message>
-        <location filename="../asemantools/asemantools.cpp" line="67"/>
         <source>2</source>
-        <translation>۲</translation>
+        <translation type="vanished">۲</translation>
     </message>
     <message>
-        <location filename="../asemantools/asemantools.cpp" line="68"/>
         <source>3</source>
-        <translation>۳</translation>
+        <translation type="vanished">۳</translation>
     </message>
     <message>
-        <location filename="../asemantools/asemantools.cpp" line="69"/>
         <source>4</source>
-        <translation>۴</translation>
+        <translation type="vanished">۴</translation>
     </message>
     <message>
-        <location filename="../asemantools/asemantools.cpp" line="70"/>
         <source>5</source>
-        <translation>۵</translation>
+        <translation type="vanished">۵</translation>
     </message>
     <message>
-        <location filename="../asemantools/asemantools.cpp" line="71"/>
         <source>6</source>
-        <translation>۶</translation>
+        <translation type="vanished">۶</translation>
     </message>
     <message>
-        <location filename="../asemantools/asemantools.cpp" line="72"/>
         <source>7</source>
-        <translation>۷</translation>
+        <translation type="vanished">۷</translation>
     </message>
     <message>
-        <location filename="../asemantools/asemantools.cpp" line="73"/>
         <source>8</source>
-        <translation>۸</translation>
+        <translation type="vanished">۸</translation>
     </message>
     <message>
-        <location filename="../asemantools/asemantools.cpp" line="74"/>
         <source>9</source>
-        <translation>۹</translation>
-    </message>
-    <message>
-        <location filename="../asemantools/asemantools.cpp" line="243"/>
-        <source>Aseman is a not-for-profit research and software development team launched in February 2014 focusing on development of products, technologies and solutions in order to publish them as open-source projects accessible to all people in the universe. Currently, we are focusing on design and development of software applications and tools which have direct connection with end users.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../asemantools/asemantools.cpp" line="244"/>
-        <source>By enabling innovative projects and distributing software to millions of users globally, the lab is working to accelerate the growth of high-impact open source software projects and promote an open source culture of accessibility and increased productivity around the world. The lab partners with industry leaders and policy makers to bring open source technologies to new sectors, including education, health and government.</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>BackHandlerExample</name>
-    <message>
-        <location filename="../asemantools/Demos/RegularApp/static/BackHandlerExample.qml" line="38"/>
-        <source>BackHandler</source>
-        <translation type="unfinished"></translation>
+        <translation type="vanished">۹</translation>
     </message>
 </context>
 <context>
     <name>BackupDialog</name>
     <message>
-        <location filename="../qml/Meikade/BackupDialog.qml" line="225"/>
         <source>Create new Backup</source>
-        <translation>بکاپ گرفتن</translation>
+        <translation type="vanished">بکاپ گرفتن</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/BackupDialog.qml" line="226"/>
         <source>AVAILABLE BACKUPS</source>
-        <translation>بکاپ‌های موجود</translation>
+        <translation type="vanished">بکاپ‌های موجود</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/BackupDialog.qml" line="227"/>
         <source>Create and restore backup from your notes and bookmarks.</source>
-        <translation>از این صفحه می‌توانید از نوشته‌ها و علاقه‌مند‌ی‌های خود بکاپ بگیرید و آن‌ها را بازیابی کنید.</translation>
+        <translation type="vanished">از این صفحه می‌توانید از نوشته‌ها و علاقه‌مند‌ی‌های خود بکاپ بگیرید و آن‌ها را بازیابی کنید.</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/BackupDialog.qml" line="264"/>
         <source>Are you sure?</source>
-        <translation>آیا مطمینی؟</translation>
+        <translation type="vanished">آیا مطمینی؟</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/BackupDialog.qml" line="265"/>
         <source>Delete</source>
-        <translation>پاک کردن</translation>
+        <translation type="vanished">پاک کردن</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/BackupDialog.qml" line="266"/>
         <source>Cancel</source>
-        <translation>انصراف</translation>
+        <translation type="vanished">انصراف</translation>
     </message>
 </context>
 <context>
@@ -405,9 +255,48 @@ Nile create Free and OpenSource projects.</source>
         <translation type="obsolete">برگرد</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/Bookmarks.qml" line="29"/>
+        <location filename="../qml/Meikade/Bookmarks.qml" line="30"/>
         <source>Bookmarks</source>
         <translation>علاقه‌مندی‌ها</translation>
+    </message>
+</context>
+<context>
+    <name>BookmarksPoets</name>
+    <message>
+        <location filename="../qml/Meikade/BookmarksPoets.qml" line="32"/>
+        <source>Bookmarks</source>
+        <translation>علاقه‌مندی‌ها</translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/BookmarksPoets.qml" line="106"/>
+        <location filename="../qml/Meikade/BookmarksPoets.qml" line="107"/>
+        <source> Poem, </source>
+        <translation> شعر، </translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/BookmarksPoets.qml" line="106"/>
+        <location filename="../qml/Meikade/BookmarksPoets.qml" line="107"/>
+        <source> Single Beit</source>
+        <translation> بیت</translation>
+    </message>
+</context>
+<context>
+    <name>BookmarksView</name>
+    <message>
+        <location filename="../qml/Meikade/BookmarksView.qml" line="115"/>
+        <source>Other Poems</source>
+        <translation>اشعار دیگر</translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/BookmarksView.qml" line="136"/>
+        <location filename="../qml/Meikade/BookmarksView.qml" line="138"/>
+        <source>, </source>
+        <translation>، </translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/BookmarksView.qml" line="157"/>
+        <source>Verse</source>
+        <translation>مصراع</translation>
     </message>
 </context>
 <context>
@@ -428,7 +317,7 @@ contact@aseman.org</translation>
 <context>
     <name>CategoryEmptyArea</name>
     <message>
-        <location filename="../qml/Meikade/CategoryEmptyArea.qml" line="53"/>
+        <location filename="../qml/Meikade/CategoryEmptyArea.qml" line="71"/>
         <source>To Start, Download new poet</source>
         <translation>برای شروع شاعران دلخواه خود را اضافه کنید</translation>
     </message>
@@ -436,7 +325,7 @@ contact@aseman.org</translation>
 <context>
     <name>CategoryItem</name>
     <message>
-        <location filename="../qml/Meikade/CategoryItem.qml" line="56"/>
+        <location filename="../qml/Meikade/CategoryItem.qml" line="58"/>
         <source>Other Poems</source>
         <translation>اشعار دیگر</translation>
     </message>
@@ -448,20 +337,20 @@ contact@aseman.org</translation>
         <translation type="vanished">شاعران دیگر</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/CategoryPage.qml" line="407"/>
-        <location filename="../qml/Meikade/CategoryPage.qml" line="413"/>
-        <location filename="../qml/Meikade/CategoryPage.qml" line="418"/>
+        <location filename="../qml/Meikade/CategoryPage.qml" line="435"/>
+        <location filename="../qml/Meikade/CategoryPage.qml" line="441"/>
+        <location filename="../qml/Meikade/CategoryPage.qml" line="446"/>
         <source>Add Poet</source>
         <translation>اضافه کردن شاعر</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/CategoryPage.qml" line="408"/>
-        <location filename="../qml/Meikade/CategoryPage.qml" line="414"/>
+        <location filename="../qml/Meikade/CategoryPage.qml" line="436"/>
+        <location filename="../qml/Meikade/CategoryPage.qml" line="442"/>
         <source>Random Poem</source>
         <translation>شعر تصادفی</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/CategoryPage.qml" line="409"/>
+        <location filename="../qml/Meikade/CategoryPage.qml" line="437"/>
         <source>Hafez Omen</source>
         <translation>فال حافظ</translation>
     </message>
@@ -469,26 +358,19 @@ contact@aseman.org</translation>
 <context>
     <name>CheckBox</name>
     <message>
-        <location filename="../asemantools/build/qml/AsemanTools/AsemanTools/CheckBox.qml" line="108"/>
-        <location filename="../asemantools/buildkde/qml/AsemanTools/AsemanTools/CheckBox.qml" line="108"/>
-        <location filename="../asemantools/build-5.4/qml/AsemanTools/AsemanTools/CheckBox.qml" line="108"/>
         <source>On</source>
-        <translation>On</translation>
+        <translation type="vanished">On</translation>
     </message>
     <message>
-        <location filename="../asemantools/build/qml/AsemanTools/AsemanTools/CheckBox.qml" line="109"/>
-        <location filename="../asemantools/buildkde/qml/AsemanTools/AsemanTools/CheckBox.qml" line="109"/>
-        <location filename="../asemantools/build-5.4/qml/AsemanTools/AsemanTools/CheckBox.qml" line="109"/>
         <source>Off</source>
-        <translation>Off</translation>
+        <translation type="vanished">Off</translation>
     </message>
 </context>
 <context>
     <name>Configure</name>
     <message>
-        <location filename="../qml/Meikade/Configure.qml" line="150"/>
         <source>Backup &amp; Restore</source>
-        <translation>بکاپ و بازیابی</translation>
+        <translation type="vanished">بکاپ و بازیابی</translation>
     </message>
     <message>
         <source>Display</source>
@@ -519,8 +401,17 @@ contact@aseman.org</translation>
     </message>
     <message>
         <location filename="../qml/Meikade/Configure.qml" line="156"/>
-        <source>Phrase</source>
+        <source>Omen Explanation</source>
         <translation>نمایش تعبیر</translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/Configure.qml" line="159"/>
+        <source>Send anonymous data to improve meikade</source>
+        <translation>ارسال اطلاعات فنی برنامه به منظور بهبود میکده</translation>
+    </message>
+    <message>
+        <source>Phrase</source>
+        <translation type="vanished">نمایش تعبیر</translation>
     </message>
     <message>
         <location filename="../qml/Meikade/Configure.qml" line="158"/>
@@ -528,12 +419,11 @@ contact@aseman.org</translation>
         <translation>روشن ماندن صفحه</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/Configure.qml" line="159"/>
         <source>Send anonymous data to improve meikade.</source>
-        <translation>ارسال اطلاعات فنی برنامه به منظور بهبود میکده.</translation>
+        <translation type="vanished">ارسال اطلاعات فنی برنامه به منظور بهبود میکده.</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/Configure.qml" line="35"/>
+        <location filename="../qml/Meikade/Configure.qml" line="36"/>
         <source>Configure</source>
         <translation>تنظیمات</translation>
     </message>
@@ -545,64 +435,35 @@ contact@aseman.org</translation>
 <context>
     <name>CopyErrorMessage</name>
     <message>
-        <location filename="../qml/Meikade/CopyErrorMessage.qml" line="18"/>
+        <location filename="../qml/Meikade/CopyErrorMessage.qml" line="36"/>
         <source>Error extracting database. There is no free space on your sd-card.
 Meikade need 150MB free space on your memory.</source>
         <translation>خطا... بر روی حافظه‌ی داخلی دستگاه شما فضای کافی برای داده‌های می‌کده نیست.
 می‌کده برای داده‌های خود نیاز به ۱۵۰ مگابایت فضای خالی دارد.</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/CopyErrorMessage.qml" line="29"/>
+        <location filename="../qml/Meikade/CopyErrorMessage.qml" line="47"/>
         <source>Dismiss</source>
         <translation>بستن</translation>
     </message>
 </context>
 <context>
-    <name>CountriesModelExample</name>
-    <message>
-        <location filename="../asemantools/Demos/RegularApp/models/CountriesModelExample.qml" line="18"/>
-        <source>Filter...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../asemantools/Demos/RegularApp/models/CountriesModelExample.qml" line="51"/>
-        <source>CountriesModel</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>CursorPicker</name>
     <message>
-        <location filename="../asemantools/build/qml/AsemanTools/AsemanTools/CursorPicker.qml" line="362"/>
-        <location filename="../asemantools/buildkde/qml/AsemanTools/AsemanTools/CursorPicker.qml" line="362"/>
-        <location filename="../asemantools/build-5.4/qml/AsemanTools/AsemanTools/CursorPicker.qml" line="362"/>
-        <location filename="../asemantools/qml/AsemanTools/CursorPicker.qml" line="362"/>
         <source>Copy</source>
-        <translation>کپی</translation>
+        <translation type="vanished">کپی</translation>
     </message>
     <message>
-        <location filename="../asemantools/build/qml/AsemanTools/AsemanTools/CursorPicker.qml" line="363"/>
-        <location filename="../asemantools/buildkde/qml/AsemanTools/AsemanTools/CursorPicker.qml" line="363"/>
-        <location filename="../asemantools/build-5.4/qml/AsemanTools/AsemanTools/CursorPicker.qml" line="363"/>
-        <location filename="../asemantools/qml/AsemanTools/CursorPicker.qml" line="363"/>
         <source>Cut</source>
-        <translation>کات</translation>
+        <translation type="vanished">کات</translation>
     </message>
     <message>
-        <location filename="../asemantools/build/qml/AsemanTools/AsemanTools/CursorPicker.qml" line="364"/>
-        <location filename="../asemantools/buildkde/qml/AsemanTools/AsemanTools/CursorPicker.qml" line="364"/>
-        <location filename="../asemantools/build-5.4/qml/AsemanTools/AsemanTools/CursorPicker.qml" line="364"/>
-        <location filename="../asemantools/qml/AsemanTools/CursorPicker.qml" line="364"/>
         <source>Paste</source>
-        <translation>پیست</translation>
+        <translation type="vanished">پیست</translation>
     </message>
     <message>
-        <location filename="../asemantools/build/qml/AsemanTools/AsemanTools/CursorPicker.qml" line="365"/>
-        <location filename="../asemantools/buildkde/qml/AsemanTools/AsemanTools/CursorPicker.qml" line="365"/>
-        <location filename="../asemantools/build-5.4/qml/AsemanTools/AsemanTools/CursorPicker.qml" line="365"/>
-        <location filename="../asemantools/qml/AsemanTools/CursorPicker.qml" line="365"/>
         <source>Delete</source>
-        <translation>پاک کردن</translation>
+        <translation type="vanished">پاک کردن</translation>
     </message>
 </context>
 <context>
@@ -629,114 +490,18 @@ Meikade need 150MB free space on your memory.</source>
         <translation type="vanished">PM</translation>
     </message>
     <message>
-        <location filename="../asemantools/build/qml/AsemanTools/AsemanTools/DateTimeChooser.qml" line="183"/>
-        <location filename="../asemantools/buildkde/qml/AsemanTools/AsemanTools/DateTimeChooser.qml" line="183"/>
-        <location filename="../asemantools/build-5.4/qml/AsemanTools/AsemanTools/DateTimeChooser.qml" line="183"/>
-        <location filename="../asemantools/qml/AsemanTools/DateTimeChooser.qml" line="183"/>
         <source>Date</source>
-        <translation>تاریخ</translation>
+        <translation type="vanished">تاریخ</translation>
     </message>
     <message>
-        <location filename="../asemantools/build/qml/AsemanTools/AsemanTools/DateTimeChooser.qml" line="194"/>
-        <location filename="../asemantools/buildkde/qml/AsemanTools/AsemanTools/DateTimeChooser.qml" line="194"/>
-        <location filename="../asemantools/build-5.4/qml/AsemanTools/AsemanTools/DateTimeChooser.qml" line="194"/>
-        <location filename="../asemantools/qml/AsemanTools/DateTimeChooser.qml" line="194"/>
         <source>Time</source>
-        <translation>زمان</translation>
-    </message>
-</context>
-<context>
-    <name>DesktopExample</name>
-    <message>
-        <location filename="../asemantools/Demos/RegularApp/static/DesktopExample.qml" line="25"/>
-        <source>Methods</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../asemantools/Demos/RegularApp/static/DesktopExample.qml" line="74"/>
-        <source>Properties</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../asemantools/Demos/RegularApp/static/DesktopExample.qml" line="131"/>
-        <source>Desktop</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>DevicesExample</name>
-    <message>
-        <location filename="../asemantools/Demos/RegularApp/static/DevicesExample.qml" line="26"/>
-        <source>Device Properties</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../asemantools/Demos/RegularApp/static/DevicesExample.qml" line="52"/>
-        <source>Screen Properties</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../asemantools/Demos/RegularApp/static/DevicesExample.qml" line="72"/>
-        <source>Densities</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../asemantools/Demos/RegularApp/static/DevicesExample.qml" line="88"/>
-        <source>Operating System</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../asemantools/Demos/RegularApp/static/DevicesExample.qml" line="112"/>
-        <source>Paths</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../asemantools/Demos/RegularApp/static/DevicesExample.qml" line="132"/>
-        <source>Methods</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../asemantools/Demos/RegularApp/static/DevicesExample.qml" line="172"/>
-        <source>Devices</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>DownloaderExample</name>
-    <message>
-        <location filename="../asemantools/Demos/RegularApp/nongraphical/DownloaderExample.qml" line="28"/>
-        <source>Download Link: http://...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../asemantools/Demos/RegularApp/nongraphical/DownloaderExample.qml" line="46"/>
-        <source>Downloading to the RAM...
-To download to memory, use destination property.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../asemantools/Demos/RegularApp/nongraphical/DownloaderExample.qml" line="62"/>
-        <source>Downloader</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>EncrypterExample</name>
-    <message>
-        <location filename="../asemantools/Demos/RegularApp/nongraphical/EncrypterExample.qml" line="30"/>
-        <source>Encrypt Key</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../asemantools/Demos/RegularApp/nongraphical/EncrypterExample.qml" line="70"/>
-        <source>Encrypter</source>
-        <translation type="unfinished"></translation>
+        <translation type="vanished">زمان</translation>
     </message>
 </context>
 <context>
     <name>FavoriteMessage</name>
     <message>
-        <location filename="../qml/Meikade/FavoriteMessage.qml" line="18"/>
+        <location filename="../qml/Meikade/FavoriteMessage.qml" line="36"/>
         <source>Thank you for choosing Meikade.
 If you are like this app, please rate us on Google play or Bazaar.
 Thank you.</source>
@@ -745,78 +510,37 @@ Thank you.</source>
 ممنون.</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/FavoriteMessage.qml" line="29"/>
+        <location filename="../qml/Meikade/FavoriteMessage.qml" line="47"/>
         <source>Cancel</source>
         <translation>انصراف</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/FavoriteMessage.qml" line="41"/>
+        <location filename="../qml/Meikade/FavoriteMessage.qml" line="59"/>
         <source>OK</source>
         <translation>امتیاز دادن</translation>
     </message>
 </context>
 <context>
-    <name>FileSystemModelExample</name>
-    <message>
-        <location filename="../asemantools/Demos/RegularApp/models/FileSystemModelExample.qml" line="18"/>
-        <source>Parent Folder</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../asemantools/Demos/RegularApp/models/FileSystemModelExample.qml" line="58"/>
-        <source>FileSystemModel</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>GetPassDialog</name>
     <message>
-        <location filename="../asemantools/build/qml/AsemanTools/AsemanTools/GetPassDialog.qml" line="172"/>
-        <location filename="../asemantools/buildkde/qml/AsemanTools/AsemanTools/GetPassDialog.qml" line="172"/>
-        <location filename="../asemantools/build-5.4/qml/AsemanTools/AsemanTools/GetPassDialog.qml" line="172"/>
-        <location filename="../asemantools/qml/AsemanTools/GetPassDialog.qml" line="172"/>
         <source>Paste</source>
-        <translation>پیست</translation>
+        <translation type="vanished">پیست</translation>
     </message>
     <message>
-        <location filename="../asemantools/build/qml/AsemanTools/AsemanTools/GetPassDialog.qml" line="260"/>
-        <location filename="../asemantools/buildkde/qml/AsemanTools/AsemanTools/GetPassDialog.qml" line="260"/>
-        <location filename="../asemantools/build-5.4/qml/AsemanTools/AsemanTools/GetPassDialog.qml" line="260"/>
-        <location filename="../asemantools/qml/AsemanTools/GetPassDialog.qml" line="260"/>
         <source>Please enter the password</source>
-        <translation>لطفا پسورد خود را وارد کنید</translation>
+        <translation type="vanished">لطفا پسورد خود را وارد کنید</translation>
     </message>
     <message>
-        <location filename="../asemantools/build/qml/AsemanTools/AsemanTools/GetPassDialog.qml" line="261"/>
-        <location filename="../asemantools/buildkde/qml/AsemanTools/AsemanTools/GetPassDialog.qml" line="261"/>
-        <location filename="../asemantools/build-5.4/qml/AsemanTools/AsemanTools/GetPassDialog.qml" line="261"/>
-        <location filename="../asemantools/qml/AsemanTools/GetPassDialog.qml" line="261"/>
         <source>password</source>
-        <translation>پسورد</translation>
+        <translation type="vanished">پسورد</translation>
     </message>
     <message>
-        <location filename="../asemantools/build/qml/AsemanTools/AsemanTools/GetPassDialog.qml" line="262"/>
-        <location filename="../asemantools/buildkde/qml/AsemanTools/AsemanTools/GetPassDialog.qml" line="262"/>
-        <location filename="../asemantools/build-5.4/qml/AsemanTools/AsemanTools/GetPassDialog.qml" line="262"/>
-        <location filename="../asemantools/qml/AsemanTools/GetPassDialog.qml" line="262"/>
         <source>Done</source>
-        <translation>انجام شد</translation>
+        <translation type="vanished">انجام شد</translation>
     </message>
     <message>
-        <location filename="../asemantools/build/qml/AsemanTools/AsemanTools/GetPassDialog.qml" line="263"/>
-        <location filename="../asemantools/buildkde/qml/AsemanTools/AsemanTools/GetPassDialog.qml" line="263"/>
-        <location filename="../asemantools/build-5.4/qml/AsemanTools/AsemanTools/GetPassDialog.qml" line="263"/>
-        <location filename="../asemantools/qml/AsemanTools/GetPassDialog.qml" line="263"/>
         <source>Incorrect!</source>
-        <translation>اشتباه است!</translation>
-    </message>
-</context>
-<context>
-    <name>GraphicalComponentsExample</name>
-    <message>
-        <location filename="../asemantools/Demos/RegularApp/graphical/GraphicalComponentsExample.qml" line="62"/>
-        <source>Graphical Components</source>
-        <translation type="unfinished"></translation>
+        <translation type="vanished">اشتباه است!</translation>
     </message>
 </context>
 <context>
@@ -844,28 +568,12 @@ Thank you.</source>
         <translation type="obsolete">مِی‌کده</translation>
     </message>
     <message>
-        <location filename="../asemantools/build/qml/AsemanTools/AsemanTools/Header.qml" line="77"/>
-        <location filename="../asemantools/build/qml/AsemanTools/AsemanTools/Header.qml" line="118"/>
-        <location filename="../asemantools/buildkde/qml/AsemanTools/AsemanTools/Header.qml" line="77"/>
-        <location filename="../asemantools/buildkde/qml/AsemanTools/AsemanTools/Header.qml" line="118"/>
-        <location filename="../asemantools/build-5.4/qml/AsemanTools/AsemanTools/Header.qml" line="77"/>
-        <location filename="../asemantools/build-5.4/qml/AsemanTools/AsemanTools/Header.qml" line="118"/>
-        <location filename="../asemantools/qml/AsemanTools/Header.qml" line="77"/>
-        <location filename="../asemantools/qml/AsemanTools/Header.qml" line="118"/>
         <source>Back</source>
-        <translation>برگرد</translation>
+        <translation type="vanished">برگرد</translation>
     </message>
     <message>
         <source>Search</source>
         <translation type="obsolete">جستجو</translation>
-    </message>
-</context>
-<context>
-    <name>ImageColorAnalizorExample</name>
-    <message>
-        <location filename="../asemantools/Demos/RegularApp/nongraphical/ImageColorAnalizorExample.qml" line="76"/>
-        <source>ImageColorAnalizor</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -881,108 +589,44 @@ Thank you.</source>
     </message>
 </context>
 <context>
-    <name>JalaliCalendarObject</name>
-    <message>
-        <location filename="../asemantools/asemancalendarconvertercore.cpp" line="414"/>
-        <source>Farvardin</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../asemantools/asemancalendarconvertercore.cpp" line="417"/>
-        <source>Ordibehesht</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../asemantools/asemancalendarconvertercore.cpp" line="420"/>
-        <source>Khordad</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../asemantools/asemancalendarconvertercore.cpp" line="423"/>
-        <source>Tir</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../asemantools/asemancalendarconvertercore.cpp" line="426"/>
-        <source>Mordad</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../asemantools/asemancalendarconvertercore.cpp" line="429"/>
-        <source>Shahrivar</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../asemantools/asemancalendarconvertercore.cpp" line="432"/>
-        <source>Mehr</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../asemantools/asemancalendarconvertercore.cpp" line="435"/>
-        <source>Abaan</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../asemantools/asemancalendarconvertercore.cpp" line="438"/>
-        <source>Aazar</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../asemantools/asemancalendarconvertercore.cpp" line="441"/>
-        <source>Dey</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../asemantools/asemancalendarconvertercore.cpp" line="444"/>
-        <source>Bahman</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../asemantools/asemancalendarconvertercore.cpp" line="447"/>
-        <source>Esfand</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../asemantools/asemancalendarconvertercore.cpp" line="459"/>
-        <source>Shanbe</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../asemantools/asemancalendarconvertercore.cpp" line="462"/>
-        <source>1Shanbe</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../asemantools/asemancalendarconvertercore.cpp" line="465"/>
-        <source>2Shanbe</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../asemantools/asemancalendarconvertercore.cpp" line="468"/>
-        <source>3Shanbe</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../asemantools/asemancalendarconvertercore.cpp" line="471"/>
-        <source>4Shanbe</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../asemantools/asemancalendarconvertercore.cpp" line="474"/>
-        <source>5Shanbe</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../asemantools/asemancalendarconvertercore.cpp" line="477"/>
-        <source>Jome</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>LanguageSelector</name>
     <message>
         <source>Language changed</source>
         <translation type="vanished">زبان برنامه تغییر کرد</translation>
+    </message>
+</context>
+<context>
+    <name>LoginDialog</name>
+    <message>
+        <location filename="../qml/Meikade/auth/LoginDialog.qml" line="12"/>
+        <location filename="../qml/Meikade/auth/LoginDialog.qml" line="70"/>
+        <source>Log-In</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/auth/LoginDialog.qml" line="32"/>
+        <source>Google Account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/auth/LoginDialog.qml" line="37"/>
+        <source>Signup</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/auth/LoginDialog.qml" line="55"/>
+        <source>Username</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/auth/LoginDialog.qml" line="63"/>
+        <source>Password</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/auth/LoginDialog.qml" line="76"/>
+        <source>Please Wait...</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -992,22 +636,22 @@ Thank you.</source>
         <translation type="vanished">صفحه خانگی</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/MainMenu.qml" line="146"/>
+        <location filename="../qml/Meikade/MainMenu.qml" line="144"/>
         <source>Meikade</source>
         <translation>مِی‌کده</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/MainMenu.qml" line="147"/>
+        <location filename="../qml/Meikade/MainMenu.qml" line="145"/>
         <source>Search</source>
         <translation>جستجو</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/MainMenu.qml" line="148"/>
+        <location filename="../qml/Meikade/MainMenu.qml" line="146"/>
         <source>Bookmarks</source>
         <translation>علاقه‌مندی‌ها</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/MainMenu.qml" line="149"/>
+        <location filename="../qml/Meikade/MainMenu.qml" line="147"/>
         <source>Store</source>
         <translation>فروشگاه</translation>
     </message>
@@ -1028,63 +672,24 @@ Thank you.</source>
         <translation type="obsolete">یادداشت‌ها</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/MainMenu.qml" line="151"/>
+        <location filename="../qml/Meikade/MainMenu.qml" line="149"/>
         <source>Configure</source>
         <translation>تنظیمات</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/MainMenu.qml" line="152"/>
+        <location filename="../qml/Meikade/MainMenu.qml" line="150"/>
         <source>OpenSource Projecs</source>
         <translation>پروژه‌های منبع باز</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/MainMenu.qml" line="153"/>
+        <location filename="../qml/Meikade/MainMenu.qml" line="151"/>
         <source>About</source>
         <translation>درباره می‌کده</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/MainMenu.qml" line="155"/>
+        <location filename="../qml/Meikade/MainMenu.qml" line="153"/>
         <source>About Aseman</source>
         <translation>درباره تیم آسمان</translation>
-    </message>
-</context>
-<context>
-    <name>MainPage</name>
-    <message>
-        <location filename="../asemantools/Demos/RegularApp/global/MainPage.qml" line="30"/>
-        <source>Home</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../asemantools/Demos/RegularApp/global/MainPage.qml" line="31"/>
-        <source>Page</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>MapDownloaderExample</name>
-    <message>
-        <location filename="../asemantools/Demos/RegularApp/nongraphical/MapDownloaderExample.qml" line="38"/>
-        <source>Altitude</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../asemantools/Demos/RegularApp/nongraphical/MapDownloaderExample.qml" line="44"/>
-        <source>Longitude</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../asemantools/Demos/RegularApp/nongraphical/MapDownloaderExample.qml" line="81"/>
-        <source>MapDownloader</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>MaterialButtonExample</name>
-    <message>
-        <location filename="../asemantools/Demos/RegularApp/graphical/MaterialButtonExample.qml" line="43"/>
-        <source>MaterialDesignButton</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1105,57 +710,57 @@ Thank you.</source>
 <context>
     <name>Meikade</name>
     <message>
-        <location filename="../meikade.cpp" line="295"/>
+        <location filename="../meikade.cpp" line="281"/>
         <source>0</source>
         <translation>۰</translation>
     </message>
     <message>
-        <location filename="../meikade.cpp" line="296"/>
+        <location filename="../meikade.cpp" line="282"/>
         <source>1</source>
         <translation>۱</translation>
     </message>
     <message>
-        <location filename="../meikade.cpp" line="297"/>
+        <location filename="../meikade.cpp" line="283"/>
         <source>2</source>
         <translation>۲</translation>
     </message>
     <message>
-        <location filename="../meikade.cpp" line="298"/>
+        <location filename="../meikade.cpp" line="284"/>
         <source>3</source>
         <translation>۳</translation>
     </message>
     <message>
-        <location filename="../meikade.cpp" line="299"/>
+        <location filename="../meikade.cpp" line="285"/>
         <source>4</source>
         <translation>۴</translation>
     </message>
     <message>
-        <location filename="../meikade.cpp" line="300"/>
+        <location filename="../meikade.cpp" line="286"/>
         <source>5</source>
         <translation>۵</translation>
     </message>
     <message>
-        <location filename="../meikade.cpp" line="301"/>
+        <location filename="../meikade.cpp" line="287"/>
         <source>6</source>
         <translation>۶</translation>
     </message>
     <message>
-        <location filename="../meikade.cpp" line="302"/>
+        <location filename="../meikade.cpp" line="288"/>
         <source>7</source>
         <translation>۷</translation>
     </message>
     <message>
-        <location filename="../meikade.cpp" line="303"/>
+        <location filename="../meikade.cpp" line="289"/>
         <source>8</source>
         <translation>۸</translation>
     </message>
     <message>
-        <location filename="../meikade.cpp" line="304"/>
+        <location filename="../meikade.cpp" line="290"/>
         <source>9</source>
         <translation>۹</translation>
     </message>
     <message>
-        <location filename="../meikade.cpp" line="497"/>
+        <location filename="../meikade.cpp" line="501"/>
         <source>Meikade&apos;s hafez omen is different from other omens.
 It&apos;s calculate omen using natural random algorithms. Another apps calculate omen using machine algorithms.</source>
         <translation>فال حافظ می‌کده دارای روشی کاملا متفاوت برای تفال زدن می‌باشد. می‌کده بر خلاف روش‌های ماشینی و الگوریتم‌های ریاضی که تقریبا همیشه استفاده می‌‌شوند، از روش‌های طبیعی و به کمک حرکت انگشتان شما بر روی صفحه برای شما فال می‌گیرد.
@@ -1167,14 +772,14 @@ It&apos;s calculate omen using natural random algorithms. Another apps calculate
 <context>
     <name>MeikadeNews1</name>
     <message>
-        <location filename="../qml/Meikade/MeikadeNews1.qml" line="30"/>
+        <location filename="../qml/Meikade/MeikadeNews1.qml" line="48"/>
         <source>We change some poets on meikade.</source>
         <translation>سخنی با اهالی ادب و یاران می‌کده:
 نسخه حاضر دارای تغییراتی در محتوا می‌باشد که در آن اشعار شاعرانی که در قید حیات هستند و تعدادی از شعرای معاصر که چند سالی از وفات آنها می‌گذرد، با توجه به قوانین کپی رایت و حقوق مادی و معنوی آثار، از پایگاه داده برنامه حذف گردید. در مقابل، آثار تعدادی از شعرا که توسط کاربران درخواست شده بود، به برنامه اضافه گردید. ما همچنان در حال تلاش برای پیداکردن راهی مناسب برای بهبود در محتوا هستیم. هدف ما در می‌کده بیشتر از اینکه جمع‌آوری بانک بزرگی از اشعار شمار زیادی از شاعران باشد، جلب رضایت کاربران از راه کاربردی‌بودن و صحت عملکرد برنامه و همچنین جلب رضایت شاعران و هنرمندان از راه پاسداری از زحمات ایشان می‌باشد. بنابراین از صبر و بردباری شما برای توسعه و بهبود محتوا سپاسگزاریم. منتظر قابلیت‌های خوب در نسخه‌های بعد باشید.
 با احترام، گروه نیل.</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/MeikadeNews1.qml" line="48"/>
+        <location filename="../qml/Meikade/MeikadeNews1.qml" line="66"/>
         <source>OK</source>
         <translation>Ok</translation>
     </message>
@@ -1194,61 +799,21 @@ It&apos;s calculate omen using natural random algorithms. Another apps calculate
         <translation type="vanished">فال حافظ</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/MeikadeWindow.qml" line="52"/>
+        <location filename="../qml/Meikade/MeikadeWindow.qml" line="54"/>
         <location filename="../qml/Meikade/MeikadeWindow.qml" line="423"/>
         <source>Meikade</source>
         <translation>مِی‌کده</translation>
     </message>
 </context>
 <context>
-    <name>MenuControllerExample</name>
-    <message>
-        <location filename="../asemantools/Demos/RegularApp/graphical/MenuControllerExample.qml" line="23"/>
-        <source>MenuController</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>MessageDialogOkCancelWarning</name>
     <message>
-        <location filename="../asemantools/build/qml/AsemanTools/AsemanTools/MessageDialogOkCancelWarning.qml" line="38"/>
-        <location filename="../asemantools/buildkde/qml/AsemanTools/AsemanTools/MessageDialogOkCancelWarning.qml" line="38"/>
-        <location filename="../asemantools/build-5.4/qml/AsemanTools/AsemanTools/MessageDialogOkCancelWarning.qml" line="38"/>
-        <location filename="../asemantools/qml/AsemanTools/MessageDialogOkCancelWarning.qml" line="38"/>
         <source>Cancel</source>
-        <translation>انصراف</translation>
+        <translation type="vanished">انصراف</translation>
     </message>
     <message>
-        <location filename="../asemantools/build/qml/AsemanTools/AsemanTools/MessageDialogOkCancelWarning.qml" line="52"/>
-        <location filename="../asemantools/buildkde/qml/AsemanTools/AsemanTools/MessageDialogOkCancelWarning.qml" line="52"/>
-        <location filename="../asemantools/build-5.4/qml/AsemanTools/AsemanTools/MessageDialogOkCancelWarning.qml" line="52"/>
-        <location filename="../asemantools/qml/AsemanTools/MessageDialogOkCancelWarning.qml" line="52"/>
         <source>OK</source>
-        <translation>تایید</translation>
-    </message>
-</context>
-<context>
-    <name>ModelComponentExamples</name>
-    <message>
-        <location filename="../asemantools/Demos/RegularApp/models/ModelComponentExamples.qml" line="48"/>
-        <source>Model Components</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>NetworkSleepManagerExample</name>
-    <message>
-        <location filename="../asemantools/Demos/RegularApp/nongraphical/NetworkSleepManagerExample.qml" line="40"/>
-        <source>NetworkSleepManager</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>NonGraphicalComponentsExample</name>
-    <message>
-        <location filename="../asemantools/Demos/RegularApp/nongraphical/NonGraphicalComponentsExample.qml" line="67"/>
-        <source>Non-Graphical Components</source>
-        <translation type="unfinished"></translation>
+        <translation type="vanished">تایید</translation>
     </message>
 </context>
 <context>
@@ -1263,32 +828,14 @@ It&apos;s calculate omen using natural random algorithms. Another apps calculate
     </message>
 </context>
 <context>
-    <name>NotificationExample</name>
-    <message>
-        <location filename="../asemantools/Demos/RegularApp/nongraphical/NotificationExample.qml" line="27"/>
-        <source>Title</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../asemantools/Demos/RegularApp/nongraphical/NotificationExample.qml" line="33"/>
-        <source>Body text</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../asemantools/Demos/RegularApp/nongraphical/NotificationExample.qml" line="51"/>
-        <source>Notification</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>OpenSourceProjects</name>
     <message>
-        <location filename="../qml/Meikade/OpenSourceProjects.qml" line="27"/>
+        <location filename="../qml/Meikade/OpenSourceProjects.qml" line="28"/>
         <source>OpenSource Projecs</source>
         <translation>پروژه‌های منبع باز</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/OpenSourceProjects.qml" line="50"/>
+        <location filename="../qml/Meikade/OpenSourceProjects.qml" line="52"/>
         <source>List of other opensource projects used in Meikade.</source>
         <translation>لیست پروژه‌های منبع بازی که در میکده از آن‌ها استفاده شده است.</translation>
     </message>
@@ -1300,12 +847,8 @@ It&apos;s calculate omen using natural random algorithms. Another apps calculate
 <context>
     <name>PasteButton</name>
     <message>
-        <location filename="../asemantools/build/qml/AsemanTools/AsemanTools/PasteButton.qml" line="46"/>
-        <location filename="../asemantools/buildkde/qml/AsemanTools/AsemanTools/PasteButton.qml" line="46"/>
-        <location filename="../asemantools/build-5.4/qml/AsemanTools/AsemanTools/PasteButton.qml" line="46"/>
-        <location filename="../asemantools/qml/AsemanTools/PasteButton.qml" line="46"/>
         <source>Paste</source>
-        <translation>پیست</translation>
+        <translation type="vanished">پیست</translation>
     </message>
 </context>
 <context>
@@ -1354,72 +897,94 @@ It&apos;s calculate omen using natural random algorithms. Another apps calculate
 <context>
     <name>PoemEdit</name>
     <message>
-        <location filename="../qml/Meikade/PoemEdit.qml" line="61"/>
         <source>Favorited</source>
-        <translation>به علاقه‌مند‌ی‌ها اضافه شد</translation>
+        <translation type="vanished">به علاقه‌مند‌ی‌ها اضافه شد</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/PoemEdit.qml" line="64"/>
         <source>Unfavorited</source>
-        <translation>از علاقه‌مند‌ی‌ها پاک شد</translation>
+        <translation type="vanished">از علاقه‌مند‌ی‌ها پاک شد</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/PoemEdit.qml" line="204"/>
         <source>Note...</source>
-        <translation>نوشته...</translation>
+        <translation type="vanished">نوشته...</translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/PoemEdit.qml" line="249"/>
+        <source>Write a note about this verse...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/PoemEdit.qml" line="290"/>
+        <source>Save</source>
+        <translation type="unfinished">ذخیره</translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/PoemEdit.qml" line="313"/>
+        <source>Warning</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/PoemEdit.qml" line="324"/>
+        <source>Do you want to discard changes?</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>PoemHeader</name>
     <message>
-        <location filename="../qml/Meikade/PoemHeader.qml" line="70"/>
-        <location filename="../qml/Meikade/PoemHeader.qml" line="301"/>
+        <location filename="../qml/Meikade/PoemHeader.qml" line="62"/>
+        <source>Other Poems</source>
+        <translation>اشعار دیگر</translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/PoemHeader.qml" line="75"/>
+        <location filename="../qml/Meikade/PoemHeader.qml" line="319"/>
         <source>Favorited</source>
         <translation>به علاقه‌مند‌ی‌ها اضافه شد</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/PoemHeader.qml" line="73"/>
-        <location filename="../qml/Meikade/PoemHeader.qml" line="299"/>
+        <location filename="../qml/Meikade/PoemHeader.qml" line="78"/>
+        <location filename="../qml/Meikade/PoemHeader.qml" line="317"/>
         <source>Unfavorited</source>
         <translation>از علاقه‌مند‌ی‌ها پاک شد</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/PoemHeader.qml" line="282"/>
+        <location filename="../qml/Meikade/PoemHeader.qml" line="300"/>
         <source>Unfavorite</source>
         <translation>حذف از علاقه‌مندی‌ها</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/PoemHeader.qml" line="282"/>
+        <location filename="../qml/Meikade/PoemHeader.qml" line="300"/>
         <source>Favorite</source>
         <translation>اضافه به علاقه‌مندی‌ها</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/PoemHeader.qml" line="326"/>
+        <location filename="../qml/Meikade/PoemHeader.qml" line="344"/>
         <source>Cancel Select</source>
         <translation>لغو انتخاب</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/PoemHeader.qml" line="326"/>
+        <location filename="../qml/Meikade/PoemHeader.qml" line="344"/>
         <source>Select</source>
         <translation>انتخاب</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/PoemHeader.qml" line="332"/>
+        <location filename="../qml/Meikade/PoemHeader.qml" line="350"/>
         <source>Share Image</source>
         <translation>به اشتراک گذاری تصویر</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/PoemHeader.qml" line="351"/>
+        <location filename="../qml/Meikade/PoemHeader.qml" line="369"/>
         <source>Share</source>
         <translation>به اشتراک گذاری</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/PoemHeader.qml" line="368"/>
+        <location filename="../qml/Meikade/PoemHeader.qml" line="386"/>
         <source>Copy</source>
         <translation>کپی</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/PoemHeader.qml" line="375"/>
+        <location filename="../qml/Meikade/PoemHeader.qml" line="393"/>
         <source>Copied...</source>
         <translation>کپی شد...</translation>
     </message>
@@ -1427,73 +992,43 @@ It&apos;s calculate omen using natural random algorithms. Another apps calculate
 <context>
     <name>PoemView</name>
     <message>
-        <location filename="../qml/Meikade/PoemView.qml" line="186"/>
+        <location filename="../qml/Meikade/PoemView.qml" line="194"/>
         <source>Phrase</source>
         <translation>تعبیر</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/PoemView.qml" line="615"/>
         <source>Favorited</source>
-        <translation>به علاقه‌مند‌ی‌ها اضافه شد</translation>
+        <translation type="vanished">به علاقه‌مند‌ی‌ها اضافه شد</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/PoemView.qml" line="619"/>
         <source>Unfavorited</source>
-        <translation>از علاقه‌مند‌ی‌ها پاک شد</translation>
+        <translation type="vanished">از علاقه‌مند‌ی‌ها پاک شد</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/PoemView.qml" line="626"/>
         <source>Copy</source>
-        <translation>کپی</translation>
+        <translation type="vanished">کپی</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/PoemView.qml" line="650"/>
         <source>Share</source>
-        <translation>به اشتراک گذاری</translation>
+        <translation type="vanished">به اشتراک گذاری</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/PoemView.qml" line="673"/>
         <source>Share Image</source>
-        <translation>به اشتراک گذاری تصویر</translation>
+        <translation type="vanished">به اشتراک گذاری تصویر</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/PoemView.qml" line="695"/>
         <source>Unfavorite</source>
-        <translation>حذف از علاقه‌مندی‌ها</translation>
+        <translation type="vanished">حذف از علاقه‌مندی‌ها</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/PoemView.qml" line="695"/>
         <source>Favorite</source>
-        <translation>اضافه به علاقه‌مندی‌ها</translation>
-    </message>
-</context>
-<context>
-    <name>QmlControls</name>
-    <message>
-        <location filename="../asemantools/Demos/RegularApp/global/QmlControls.qml" line="11"/>
-        <source>Switch</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../asemantools/Demos/RegularApp/global/QmlControls.qml" line="22"/>
-        <source>Check Box</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../asemantools/Demos/RegularApp/global/QmlControls.qml" line="29"/>
-        <source>Press Me 1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../asemantools/Demos/RegularApp/global/QmlControls.qml" line="33"/>
-        <source>Press Me 2</source>
-        <translation type="unfinished"></translation>
+        <translation type="vanished">اضافه به علاقه‌مندی‌ها</translation>
     </message>
 </context>
 <context>
     <name>SearchBar</name>
     <message>
-        <location filename="../qml/Meikade/SearchBar.qml" line="90"/>
+        <location filename="../qml/Meikade/SearchBar.qml" line="97"/>
         <source>Search</source>
         <translation>جستجو</translation>
     </message>
@@ -1509,17 +1044,17 @@ It&apos;s calculate omen using natural random algorithms. Another apps calculate
         <translation type="vanished">بیشتر</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/SearchList.qml" line="66"/>
+        <location filename="../qml/Meikade/SearchList.qml" line="67"/>
         <source>Not found</source>
         <translation>پیدا نشد</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/SearchList.qml" line="236"/>
+        <location filename="../qml/Meikade/SearchList.qml" line="237"/>
         <source>All Poets</source>
         <translation>همه‌ی شعرا</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/SearchList.qml" line="268"/>
+        <location filename="../qml/Meikade/SearchList.qml" line="269"/>
         <source>Search in:</source>
         <translation>جستجو در:</translation>
     </message>
@@ -1529,64 +1064,70 @@ It&apos;s calculate omen using natural random algorithms. Another apps calculate
     </message>
 </context>
 <context>
-    <name>SettingsExample</name>
-    <message>
-        <location filename="../asemantools/Demos/RegularApp/nongraphical/SettingsExample.qml" line="20"/>
-        <source>Settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>ShareDialog</name>
     <message>
-        <location filename="../asemantools/build/qml/AsemanTools/AsemanTools/ShareDialog.qml" line="55"/>
-        <location filename="../asemantools/buildkde/qml/AsemanTools/AsemanTools/ShareDialog.qml" line="55"/>
-        <location filename="../asemantools/build-5.4/qml/AsemanTools/AsemanTools/ShareDialog.qml" line="55"/>
-        <location filename="../asemantools/qml/AsemanTools/ShareDialog.qml" line="55"/>
         <source>Select Application</source>
-        <translation>برنامه را انتخاب کنید</translation>
+        <translation type="vanished">برنامه را انتخاب کنید</translation>
     </message>
 </context>
 <context>
-    <name>SideMenuExample</name>
+    <name>SignupDialog</name>
     <message>
-        <location filename="../asemantools/Demos/RegularApp/graphical/SideMenuExample.qml" line="18"/>
-        <source>SideMenu</source>
+        <location filename="../qml/Meikade/auth/SignupDialog.qml" line="12"/>
+        <location filename="../qml/Meikade/auth/SignupDialog.qml" line="164"/>
+        <source>Sign-Up</source>
         <translation type="unfinished"></translation>
     </message>
-</context>
-<context>
-    <name>StaticComponentsExample</name>
     <message>
-        <location filename="../asemantools/Demos/RegularApp/static/StaticComponentsExample.qml" line="67"/>
-        <source>Static Components</source>
+        <location filename="../qml/Meikade/auth/SignupDialog.qml" line="31"/>
+        <source>Username</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/auth/SignupDialog.qml" line="83"/>
+        <source>Email</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/auth/SignupDialog.qml" line="129"/>
+        <source>Password</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/auth/SignupDialog.qml" line="148"/>
+        <source>Full name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/auth/SignupDialog.qml" line="170"/>
+        <source>Please Wait...</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>StickerDialog</name>
     <message>
-        <location filename="../qml/Meikade/StickerDialog.qml" line="63"/>
+        <location filename="../qml/Meikade/StickerDialog.qml" line="83"/>
         <source>Share</source>
         <translation>به اشتراک گذاری</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/StickerDialog.qml" line="80"/>
+        <location filename="../qml/Meikade/StickerDialog.qml" line="96"/>
         <source>Save</source>
         <translation>ذخیره</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/StickerDialog.qml" line="301"/>
+        <location filename="../qml/Meikade/StickerDialog.qml" line="318"/>
         <source>Font</source>
         <translation>قلم</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/StickerDialog.qml" line="479"/>
+        <location filename="../qml/Meikade/StickerDialog.qml" line="496"/>
         <source>Select Image</source>
         <translation>انتخاب تصویر</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/StickerDialog.qml" line="496"/>
+        <location filename="../qml/Meikade/StickerDialog.qml" line="510"/>
         <source>Unset</source>
         <translation>حذف</translation>
     </message>
@@ -1594,129 +1135,76 @@ It&apos;s calculate omen using natural random algorithms. Another apps calculate
 <context>
     <name>StickerModel</name>
     <message>
-        <location filename="../stickermodel.cpp" line="124"/>
+        <location filename="../stickermodel.cpp" line="144"/>
         <source>Size</source>
         <translation>اندازه</translation>
     </message>
     <message>
-        <location filename="../stickermodel.cpp" line="130"/>
+        <location filename="../stickermodel.cpp" line="150"/>
         <source>Color</source>
         <translation>رنگ</translation>
     </message>
     <message>
-        <location filename="../stickermodel.cpp" line="136"/>
+        <location filename="../stickermodel.cpp" line="156"/>
         <source>Image</source>
         <translation>عکس</translation>
     </message>
     <message>
-        <location filename="../stickermodel.cpp" line="142"/>
+        <location filename="../stickermodel.cpp" line="162"/>
         <source>Sticker</source>
         <translation>شکل</translation>
     </message>
     <message>
-        <location filename="../stickermodel.cpp" line="148"/>
+        <location filename="../stickermodel.cpp" line="168"/>
         <source>Font</source>
         <translation>قلم</translation>
     </message>
     <message>
-        <location filename="../stickermodel.cpp" line="154"/>
+        <location filename="../stickermodel.cpp" line="174"/>
         <source>Logo</source>
         <translation>نشانه</translation>
     </message>
     <message>
-        <location filename="../stickermodel.cpp" line="171"/>
+        <location filename="../stickermodel.cpp" line="191"/>
         <source>1:1</source>
         <translation>1:1</translation>
     </message>
     <message>
-        <location filename="../stickermodel.cpp" line="176"/>
+        <location filename="../stickermodel.cpp" line="196"/>
         <source>4:3</source>
         <translation>4:3</translation>
     </message>
     <message>
-        <location filename="../stickermodel.cpp" line="181"/>
+        <location filename="../stickermodel.cpp" line="201"/>
         <source>3:4</source>
         <translation>3:4</translation>
     </message>
     <message>
-        <location filename="../stickermodel.cpp" line="186"/>
+        <location filename="../stickermodel.cpp" line="206"/>
         <source>16:9</source>
         <translation>16:9</translation>
     </message>
     <message>
-        <location filename="../stickermodel.cpp" line="191"/>
+        <location filename="../stickermodel.cpp" line="211"/>
         <source>16:6</source>
         <translation>16:6</translation>
     </message>
     <message>
-        <location filename="../stickermodel.cpp" line="287"/>
+        <location filename="../stickermodel.cpp" line="334"/>
         <source>Meikade Logo</source>
         <translation>نشانه‌ی می‌کده</translation>
     </message>
     <message>
-        <location filename="../stickermodel.cpp" line="293"/>
+        <location filename="../stickermodel.cpp" line="340"/>
         <source>Poet Name</source>
         <translation>نام شاعر</translation>
     </message>
 </context>
 <context>
-    <name>TextToolsExample</name>
+    <name>StorePage</name>
     <message>
-        <location filename="../asemantools/Demos/RegularApp/static/TextToolsExample.qml" line="26"/>
-        <source>htmlWidth(string)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../asemantools/Demos/RegularApp/static/TextToolsExample.qml" line="59"/>
-        <source>TextTools</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>ToolsExample</name>
-    <message>
-        <location filename="../asemantools/Demos/RegularApp/static/ToolsExample.qml" line="44"/>
-        <source>Tools</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>ViewExample</name>
-    <message>
-        <location filename="../asemantools/Demos/RegularApp/static/ViewExample.qml" line="26"/>
-        <source>Heights</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../asemantools/Demos/RegularApp/static/ViewExample.qml" line="41"/>
-        <source>Objects</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../asemantools/Demos/RegularApp/static/ViewExample.qml" line="56"/>
-        <source>Other</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../asemantools/Demos/RegularApp/static/ViewExample.qml" line="96"/>
-        <source>View</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>WaitDialog</name>
-    <message>
-        <location filename="../qml/Meikade/WaitDialog.qml" line="51"/>
-        <source>Please Wait</source>
-        <translation>لطفا صبر کنید</translation>
-    </message>
-</context>
-<context>
-    <name>XmlDownloaderPage</name>
-    <message>
-        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="62"/>
         <source>Fetching poet lists...</source>
-        <translation>در حال دریافت اطلاعات...</translation>
+        <translation type="vanished">در حال دریافت اطلاعات...</translation>
     </message>
     <message>
         <source>Can&apos;t connect to the server!</source>
@@ -1731,52 +1219,45 @@ It&apos;s calculate omen using natural random algorithms. Another apps calculate
         <translation type="vanished">- رایگان</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="15"/>
+        <location filename="../qml/Meikade/StorePage.qml" line="36"/>
         <source>Store</source>
         <translation>فروشگاه</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="71"/>
         <source>Can&apos;t connect to the server</source>
-        <translation>خطا در برقراری ارتباط با سرور</translation>
+        <translation type="vanished">خطا در برقراری ارتباط با سرور</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="83"/>
         <source>New Poets</source>
-        <translation>تازه‌ها</translation>
+        <translation type="vanished">تازه‌ها</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="83"/>
         <source>Updates</source>
-        <translation>به‌روزرسانی</translation>
+        <translation type="vanished">به‌روزرسانی</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="83"/>
         <source>All</source>
-        <translation>همه</translation>
+        <translation type="vanished">همه</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="83"/>
         <source>Classic</source>
-        <translation>کلاسیک</translation>
+        <translation type="vanished">کلاسیک</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="83"/>
         <source>Modern</source>
-        <translation>معاصر</translation>
+        <translation type="vanished">معاصر</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="83"/>
         <source>Installeds</source>
-        <translation>نصب شده‌ها</translation>
+        <translation type="vanished">نصب شده‌ها</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="147"/>
+        <location filename="../qml/Meikade/StorePage.qml" line="143"/>
         <source>Update</source>
         <translation>به‌روزرسانی</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/XmlDownloaderPage.qml" line="163"/>
+        <location filename="../qml/Meikade/StorePage.qml" line="159"/>
         <source>Delete</source>
         <translation>پاک کردن</translation>
     </message>
@@ -1806,50 +1287,56 @@ It&apos;s calculate omen using natural random algorithms. Another apps calculate
     </message>
 </context>
 <context>
-    <name>XmlDownloaderPageItem</name>
+    <name>StorePageItem</name>
     <message>
         <source>Poets list, you can download from NileGroup servers...</source>
         <translation type="vanished">لیست شعرایی که با کلیک کردن بر روی آن‌ها می‌توانید آن‌ها را از سرورهای گروه نیل دریافت کنید...</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/XmlDownloaderPageItem.qml" line="40"/>
         <source>Poets list, you can download from the Aseman team servers...</source>
-        <translation>لیست شعرایی که با کلیک کردن بر روی آن‌ها می‌توانید آن‌ها را از سرورهای تیم آسمان دریافت کنید...</translation>
+        <translation type="vanished">لیست شعرایی که با کلیک کردن بر روی آن‌ها می‌توانید آن‌ها را از سرورهای تیم آسمان دریافت کنید...</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/XmlDownloaderPageItem.qml" line="90"/>
+        <location filename="../qml/Meikade/StorePageItem.qml" line="120"/>
         <source>Installing</source>
         <translation>در حال نصب</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/XmlDownloaderPageItem.qml" line="93"/>
+        <location filename="../qml/Meikade/StorePageItem.qml" line="123"/>
         <source>Removing</source>
         <translation>درحال پاک کردن</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/XmlDownloaderPageItem.qml" line="96"/>
+        <location filename="../qml/Meikade/StorePageItem.qml" line="126"/>
         <source>Downloading</source>
         <translation>در حال دریافت</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/XmlDownloaderPageItem.qml" line="99"/>
+        <location filename="../qml/Meikade/StorePageItem.qml" line="129"/>
         <source>Update</source>
         <translation>به‌روزرسانی</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/XmlDownloaderPageItem.qml" line="102"/>
+        <location filename="../qml/Meikade/StorePageItem.qml" line="132"/>
         <source>Installed</source>
         <translation>نصب شده</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/XmlDownloaderPageItem.qml" line="105"/>
         <source>Error</source>
-        <translation>خطا</translation>
+        <translation type="vanished">خطا</translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/XmlDownloaderPageItem.qml" line="107"/>
+        <location filename="../qml/Meikade/StorePageItem.qml" line="137"/>
         <source>Free</source>
         <translation>رایگان</translation>
+    </message>
+</context>
+<context>
+    <name>WaitDialog</name>
+    <message>
+        <location filename="../qml/Meikade/WaitDialog.qml" line="51"/>
+        <source>Please Wait</source>
+        <translation>لطفا صبر کنید</translation>
     </message>
 </context>
 </TS>

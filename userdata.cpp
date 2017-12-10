@@ -79,7 +79,7 @@ void UserData::favorite(int pid, int vid)
     query.bindValue(":vid",vid);
     query.bindValue(":date" ,QString::number(QDateTime::currentDateTime().toMSecsSinceEpoch()));
     query.exec();
-    emit favorited(pid,vid);
+    Q_EMIT favorited(pid,vid);
 }
 
 void UserData::unfavorite(int pid, int vid)
@@ -89,7 +89,7 @@ void UserData::unfavorite(int pid, int vid)
     query.bindValue(":pid",pid);
     query.bindValue(":vid",vid);
     query.exec();
-    emit unfavorited(pid,vid);
+    Q_EMIT unfavorited(pid,vid);
 }
 
 bool UserData::isFavorited(int pid, int vid)
@@ -143,7 +143,7 @@ void UserData::setNote(int pid, int vid, const QString &note)
         query.bindValue(":date" ,QString::number(QDateTime::currentDateTime().toMSecsSinceEpoch()));
         query.exec();
     }
-    emit noteChanged(pid,vid);
+    Q_EMIT noteChanged(pid,vid);
 }
 
 QString UserData::note(int pid, int vid)

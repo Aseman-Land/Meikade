@@ -121,7 +121,7 @@ void StickerModel::setState(int state)
         return;
 
     p->state = state;
-    emit stateChanged();
+    Q_EMIT stateChanged();
 
     refresh();
 }

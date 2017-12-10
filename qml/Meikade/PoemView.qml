@@ -410,6 +410,13 @@ Rectangle {
                     }
                 }
                 onClicked: {
+                    if(!AsemanServices.loggedIn) {
+                        selectMode = true
+                        checkItem.checked = !checkItem.checked
+                        selectionHash.insert(model.verseId, pitem.text)
+                        return
+                    }
+
                     if( view.editable ) {
                         if(selectMode) {
                             selectMode = true

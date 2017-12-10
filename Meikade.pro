@@ -42,11 +42,10 @@ SOURCES += main.cpp \
     stickermodel.cpp \
     stickerwriter.cpp \
     threadedsearchmodel.cpp \
-    xmldownloadermodel.cpp \
     poetscriptinstaller.cpp \
     poetscriptinstallerqueue.cpp \
     poetimageprovider.cpp \
-    xmldownloaderproxymodel.cpp
+    poetinstaller.cpp
 
 HEADERS += \
     userdata.h \
@@ -58,13 +57,13 @@ HEADERS += \
     stickermodel.h \
     stickerwriter.h \
     threadedsearchmodel.h \
-    xmldownloadermodel.h \
     poetscriptinstaller.h \
     poetscriptinstallerqueue.h \
     poetimageprovider.h \
-    xmldownloaderproxymodel.h \
     poetremover.h \
-    services/meikade1.h
+    services/meikade1.h \
+    services/meikade2.h \
+    poetinstaller.h
 
 OTHER_FILES += \
     android/AndroidManifest.xml \
