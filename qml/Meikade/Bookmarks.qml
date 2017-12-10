@@ -26,7 +26,7 @@ BackHandlerView {
     color: MeikadeGlobals.backgroundColor
     viewMode: false
 
-    readonly property int poetId: -1
+    property int poetId: -1
     readonly property string title: qsTr("Bookmarks")
     readonly property bool titleBarHide: !forceTitleBarShow && header.hide && (localPortrait || Devices.isMobile)
     property bool forceTitleBarShow: false
