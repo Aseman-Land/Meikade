@@ -24,10 +24,12 @@
 #include "poetimageprovider.h"
 #include "meikade_macros.h"
 #include "aseman/asemandownloader.h"
+#include "meikade.h"
 
 #include <QPointer>
 #include <QFileInfo>
 #include <QDir>
+#include <QFileInfo>
 
 class PoetImageProviderPrivate
 {
@@ -35,6 +37,7 @@ public:
     int poet;
     QUrl path;
     QString downloadPath;
+    QString downloadPath_new;
 
     QPointer<AsemanDownloader> downloader;
 };
@@ -45,8 +48,10 @@ PoetImageProvider::PoetImageProvider(QObject *parent) :
     p = new PoetImageProviderPrivate;
     p->poet = 0;
     p->downloadPath = HOME_PATH + "/thumbs/poets";
+    p->downloadPath_new = Meikade::instance()->thumbsPath();
 
     QDir().mkpath(p->downloadPath);
+    QDir().mkpath(p->downloadPath_new);
 }
 
 void PoetImageProvider::setPoet(int poet)
@@ -72,50 +77,14 @@ QUrl PoetImageProvider::path() const
 
 void PoetImageProvider::refresh()
 {
-    if(p->downloader)
-        return;
-    if(!p->poet)
-        return;
-
-    QUrl result;
-    if(QFileInfo::exists(THUMB_QRC_LINK))
-        result = "qrc" + THUMB_QRC_LINK;
-    else
-    if(QFileInfo::exists(THUMB_DNL_LINK))
-        result = QUrl::fromLocalFile(THUMB_DNL_LINK);
-    else
+    p->path = QUrl::fromLocalFile(p->downloadPath_new + "/" + QString::number(p->poet) + ".png");
+    if(!QFileInfo::exists(p->path.toLocalFile()))
     {
-        p->downloader = new AsemanDownloader(this);
-        p->downloader->setPath(THUMB_WEB_LINK);
-        p->downloader->setDestination(THUMB_DNL_LINK);
-
-        connect(p->downloader, SIGNAL(finished(QByteArray)), SLOT(finished(QByteArray)));
-
-        p->downloader->start();
-        result = "qrc" + THUMB_DEFAULT;
+        p->path = QUrl::fromLocalFile(p->downloadPath + "/" + QString::number(p->poet) + ".png");
+        if(!QFileInfo::exists(p->path.toLocalFile()))
+            p->path.clear();
     }
 
-    p->path = result;
-    Q_EMIT pathChanged();
-}
-
-void PoetImageProvider::finished(const QByteArray &data)
-{
-    Q_UNUSED(data)
-
-    if(p->downloader)
-    {
-        p->downloader->deleteLater();
-        p->downloader = 0;
-    }
-
-    QUrl result;
-    if(QFileInfo::exists(THUMB_DNL_LINK))
-        result = QUrl::fromLocalFile(THUMB_DNL_LINK);
-    else
-        return;
-
-    p->path = result;
     Q_EMIT pathChanged();
 }
 

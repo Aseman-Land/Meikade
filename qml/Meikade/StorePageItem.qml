@@ -23,6 +23,7 @@ import Meikade 1.0
 import AsemanTools.Awesome 1.0
 import AsemanClient.CoreServices 1.0 as CoreServices
 import QtQuick.Layouts 1.3
+import QtGraphicalEffects 1.0
 import "globals"
 
 Item {
@@ -32,7 +33,7 @@ Item {
     LayoutMirroring.childrenInherit: true
 
     property int type
-    property int category
+    property int category: 1
 
     onCategoryChanged: gmodel.clear()
 
@@ -41,7 +42,7 @@ Item {
         agent: AsemanServices.meikade
         method: AsemanServices.meikade.name_getStoreItems
         arguments: [
-            "", category, offset, limit
+            "", category, offset, limit, Database.poetsDates
         ]
         uniqueKeyField: "id"
     }
@@ -90,13 +91,38 @@ Item {
                 spacing: 10*Devices.density
                 layoutDirection: View.layoutDirection
 
-                CoreServices.RemoteImage {
+                Item {
                     anchors.verticalCenter: parent.verticalCenter
-                    Layout.preferredHeight: 38*Devices.density
+                    Layout.preferredHeight: 40*Devices.density
                     Layout.preferredWidth: Layout.preferredHeight
-                    fillMode: Image.PreserveAspectFit
-                    socket: AsemanServices.socket
-                    source: model.thumb
+
+                    Rectangle {
+                        id: mask
+                        anchors.fill: parent
+                        visible: false
+                        radius: 8*Devices.density
+                    }
+
+                    CoreServices.RemoteImage {
+                        id: poetImg
+                        anchors.fill: parent
+                        visible: false
+                        fillMode: Image.PreserveAspectFit
+                        socket: AsemanServices.socket
+                        receiveMethod: CoreServices.RemoteFile.ReceiveMediaNormal
+                        source: model.thumb
+                        destination: {
+                            var path = Meikade.thumbsPath
+                            Tools.mkDir(path)
+                            return Devices.localFilesPrePath + path + "/" + model.poetId + ".png"
+                        }
+                    }
+
+                    OpacityMask {
+                        anchors.fill: parent
+                        source: poetImg
+                        maskSource: mask
+                    }
                 }
 
                 Text {

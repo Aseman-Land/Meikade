@@ -24,7 +24,7 @@
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
-    QGuiApplication::setFont(QFont("IRAN-Sans"));
+    QGuiApplication::setFont(QFont("IRAN-sans"));
 
     Meikade meikade;
     meikade.start();

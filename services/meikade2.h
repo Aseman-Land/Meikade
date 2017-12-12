@@ -153,8 +153,8 @@ public:
     }
 
     QString name_getStoreItems() const { return "getStoreItems"; }
-    qint64 getStoreItems(QString keyword, int category, int offset, int limit, QObject *base = 0, Callback<QVariantList> callBack = 0) {
-        qint64 id = pushRequest("getStoreItems", QVariantList() << QVariant::fromValue<QString>(keyword) << QVariant::fromValue<int>(category) << QVariant::fromValue<int>(offset) << QVariant::fromValue<int>(limit));
+    qint64 getStoreItems(QString keyword, int category, int offset, int limit, QVariantMap currentList, QObject *base = 0, Callback<QVariantList> callBack = 0) {
+        qint64 id = pushRequest("getStoreItems", QVariantList() << QVariant::fromValue<QString>(keyword) << QVariant::fromValue<int>(category) << QVariant::fromValue<int>(offset) << QVariant::fromValue<int>(limit) << QVariant::fromValue<QVariantMap>(currentList));
         _calls[id] = "getStoreItems";
         pushBase(id, base);
         callBackPush<QVariantList>(id, callBack);
@@ -244,8 +244,8 @@ public Q_SLOTS:
             callBackJs(jsCallback, result, error);
         });
     }
-    qint64 getStoreItems(QString keyword, int category, int offset, int limit, const QJSValue &jsCallback) {
-        return getStoreItems(keyword, category, offset, limit, this, [this, jsCallback](qint64, const QVariantList &result, const CallbackError &error) {
+    qint64 getStoreItems(QString keyword, int category, int offset, int limit, QVariantMap currentList, const QJSValue &jsCallback) {
+        return getStoreItems(keyword, category, offset, limit, currentList, this, [this, jsCallback](qint64, const QVariantList &result, const CallbackError &error) {
             callBackJs(jsCallback, result, error);
         });
     }

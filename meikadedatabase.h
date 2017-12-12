@@ -36,6 +36,7 @@ class MeikadeDatabase : public QObject
     Q_PROPERTY(int containsHafez READ containsHafez NOTIFY countChanged)
     Q_PROPERTY(int databaseLocation READ databaseLocation WRITE setDatabaseLocation NOTIFY databaseLocationChanged)
     Q_PROPERTY(bool copyingDatabase READ copyingDatabase NOTIFY copyingDatabaseChanged)
+    Q_PROPERTY(QVariantMap poetsDates READ poetsDates NOTIFY poetsChanged)
 
 public:
     enum DatabaseLocation {
@@ -58,6 +59,7 @@ public:
     static QString databasePath(int dbLocation);
 
     bool copyingDatabase() const;
+    QVariantMap poetsDates();
 
 Q_SIGNALS:
     void initializeFinished();

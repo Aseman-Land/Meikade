@@ -312,6 +312,11 @@ QQuickItem *Meikade::createObject(const QString &code)
     return result;
 }
 
+QString Meikade::thumbsPath() const
+{
+    return HOME_PATH + "/thumbs/poets/2";
+}
+
 MeikadeDatabase *Meikade::database() const
 {
     return p->poem_db;

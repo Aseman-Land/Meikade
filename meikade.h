@@ -39,6 +39,7 @@ class Meikade : public QObject
     Q_PROPERTY(bool keepScreenOn READ keepScreenOn WRITE setKeepScreenOn NOTIFY keepScreenOnChanged)
     Q_PROPERTY(bool phrase READ phrase WRITE setPhrase NOTIFY phraseChanged)
     Q_PROPERTY(bool activePush READ activePush WRITE setActivePush NOTIFY activePushChanged)
+    Q_PROPERTY(QString thumbsPath READ thumbsPath NOTIFY fakeSignal)
     Q_OBJECT
 
 public:
@@ -63,6 +64,8 @@ public:
     Q_INVOKABLE QString currentLanguage() const;
 
     Q_INVOKABLE QQuickItem *createObject(const QString &code);
+
+    QString thumbsPath() const;
 
     MeikadeDatabase *database() const;
 
@@ -122,6 +125,7 @@ Q_SIGNALS:
     void keepScreenOnChanged();
     void phraseChanged();
     void activePushChanged();
+    void fakeSignal();
 
     void currentLanguageChanged();
     void languageDirectionChanged();

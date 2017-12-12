@@ -443,6 +443,19 @@ int MeikadeDatabase::versePosition(int pid, int vid)
     return p->fetchedPoemData[vid]["position"].toInt();
 }
 
+QVariantMap MeikadeDatabase::poetsDates()
+{
+    QVariantMap res;
+    QHashIterator<int, QHash<QString,QVariant> > i(p->poets);
+    while(i.hasNext())
+    {
+        i.next();
+        qint32 poetId = catPoetId(i.key());
+        res[ QString::number(poetId) ] = i.value().value("lastUpdate").toDateTime();
+    }
+    return res;
+}
+
 QVariant MeikadeDatabase::value(const QString &key, const QVariant &defaultValue) const
 {
     return p->values.value(key, defaultValue);

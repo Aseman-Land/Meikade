@@ -131,7 +131,6 @@
         <file>qml/Meikade/poets/default.png</file>
         <file>qml/Meikade/icons/shop.png</file>
         <file>qml/Meikade/icons/button-random-white.png</file>
-        <file>qml/Meikade/qmldir</file>
         <file>qml/Meikade/ActivityAnalizer.qml</file>
         <file>qml/Meikade/stickers/icons/open.png</file>
         <file>qml/Meikade/MeikadeWindowBase.qml</file>

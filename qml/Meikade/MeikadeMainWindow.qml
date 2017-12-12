@@ -30,6 +30,7 @@ AsemanWindow {
     visible: true
     tooltip.color: MeikadeGlobals.masterColor
     tooltip.textColor: "#ffffff"
+    font.family: "IRAN-sans"
 
     Material.theme: Meikade.nightTheme? Material.Dark : Material.Light
 

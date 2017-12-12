@@ -45,9 +45,6 @@ Q_SIGNALS:
     void poetChanged();
     void pathChanged();
 
-private Q_SLOTS:
-    void finished( const QByteArray & data );
-
 private:
     PoetImageProviderPrivate *p;
 };

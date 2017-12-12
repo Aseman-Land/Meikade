@@ -41,6 +41,7 @@ Rectangle {
         method: AsemanServices.meikade.name_getStoreCategories
         arguments: []
         uniqueKeyField: "id"
+        onCountChanged: if(view) view.category = gmodel.get(0).id
     }
 
     Rectangle {
