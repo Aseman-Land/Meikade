@@ -41,14 +41,7 @@ PoetScriptInstaller::PoetScriptInstaller(QObject *parent) :
     QObject(parent)
 {
     p = new PoetScriptInstallerPrivate;
-
-#ifdef Q_OS_ANDROID
-    p->path = ANDROID_OLD_DB_PATH "/data.sqlite";
-    if(!QFileInfo::exists(p->path))
-        p->path = HOME_PATH + "/data.sqlite";
-#else
     p->path = HOME_PATH + "/data.sqlite";
-#endif
 }
 
 void PoetScriptInstaller::installFile(const QString &path, int poetId, const QDateTime &date, bool removeFile)

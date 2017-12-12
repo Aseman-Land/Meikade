@@ -23,32 +23,33 @@
 #include <QDir>
 #include <QStandardPaths>
 
+#include <asemanapplication.h>
+
 #define DATA_DB_CONNECTION "data_sqlite"
 #define THREADED_DATA_DB_CONNECTION "threaded_data_sqlite"
 #define USERDATAS_DB_CONNECTION "userdata_sqlite"
 
 #ifdef Q_OS_ANDROID
-#define HOME_PATH QDir::homePath()
-#define ANDROID_OLD_DB_PATH "/sdcard/NileGroup/Meikade/"
+#define HOME_PATH AsemanApplication::homePath()
 #define ANDROID_SDCARD1_DB_PATH "/storage/sdcard1/NileGroup/Meikade/"
-#define BACKUP_PATH ANDROID_OLD_DB_PATH "/backups"
-#define TEMP_PATH   HOME_PATH "/temp"
+#define BACKUP_PATH "/sdcard/NileGroup/Meikade/backups"
+#define TEMP_PATH HOME_PATH + "/temp"
 #define TRANSLATIONS_PATH QString("assets:/files/translations")
 #else
 #ifdef Q_OS_IOS
-#define HOME_PATH QString(QStandardPaths::standardLocations(QStandardPaths::QStandardPaths::AppDataLocation).first() + "/configs/")
-#define BACKUP_PATH QString(QStandardPaths::standardLocations(QStandardPaths::QStandardPaths::AppDataLocation).first() + "/backups/")
-#define TEMP_PATH   QString(QStandardPaths::standardLocations(QStandardPaths::QStandardPaths::AppDataLocation).first() + "/tmp/")
+#define HOME_PATH QString(AsemanApplication::homePath() + "/configs/")
+#define BACKUP_PATH QString(AsemanApplication::homePath() + "/backups/")
+#define TEMP_PATH   QString(AsemanApplication::homePath() + "/tmp/")
 #define TRANSLATIONS_PATH QString(QCoreApplication::applicationDirPath() + "/files/translations/")
 #else
 #ifdef Q_OS_WIN
-#define HOME_PATH QString(QDir::homePath() + "/AppData/Local/NileGroup/meikade")
-#define BACKUP_PATH QDir::homePath()
+#define HOME_PATH AsemanApplication::homePath()
+#define BACKUP_PATH AsemanApplication::homePath()
 #define TEMP_PATH   QDir::tempPath()
 #define TRANSLATIONS_PATH QString(QCoreApplication::applicationDirPath() + "/files/translations/")
 #else
-#define HOME_PATH QString(QDir::homePath() + "/.config/nilegroup/meikade")
-#define BACKUP_PATH QDir::homePath()
+#define HOME_PATH AsemanApplication::homePath()
+#define BACKUP_PATH AsemanApplication::homePath()
 #define TEMP_PATH   QDir::tempPath()
 #define TRANSLATIONS_PATH QString(QCoreApplication::applicationDirPath() + "/files/translations/")
 #endif

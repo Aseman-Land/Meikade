@@ -335,10 +335,9 @@ MeikadeWindowBase {
     }
 
     Timer {
-        id: start_report_timer
         interval: 2000
         repeat: false
-        onTriggered: AsemanServices.meikade.pushDeviceModel(AT.Devices.deviceName, AT.Devices.deviceId, AT.Devices.lcdPhysicalSize, AT.Devices.density, null)
+        onTriggered: AsemanServices.meikade.pushDeviceModel(AT.Devices.deviceId, AT.Devices.deviceDetails, null)
         Component.onCompleted: start()
     }
 

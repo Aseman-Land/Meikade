@@ -116,7 +116,7 @@ Nile create Free and OpenSource projects.</source>
 <context>
     <name>CategoryItem</name>
     <message>
-        <location filename="../qml/Meikade/CategoryItem.qml" line="58"/>
+        <location filename="../qml/Meikade/CategoryItem.qml" line="59"/>
         <source>Other Poems</source>
         <translation type="unfinished"></translation>
     </message>
@@ -177,6 +177,59 @@ Nile create Free and OpenSource projects.</source>
     <message>
         <location filename="../qml/Meikade/Configure.qml" line="158"/>
         <source>Keep screen on</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Contact</name>
+    <message>
+        <location filename="../qml/Meikade/Contact.qml" line="52"/>
+        <source>Full name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/Contact.qml" line="61"/>
+        <source>Email</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/Contact.qml" line="70"/>
+        <source>Your Message</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/Contact.qml" line="82"/>
+        <source>Send</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/Contact.qml" line="89"/>
+        <source>Name is too short</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/Contact.qml" line="93"/>
+        <source>Email is too short</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/Contact.qml" line="97"/>
+        <source>Your message is too short</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/Contact.qml" line="106"/>
+        <source>Your message sent</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/Contact.qml" line="108"/>
+        <source>Can&apos;t send your message</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/Contact.qml" line="142"/>
+        <source>Contact</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -321,11 +374,16 @@ Thank you.</source>
     </message>
     <message>
         <location filename="../qml/Meikade/MainMenu.qml" line="151"/>
+        <source>Contact</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/Meikade/MainMenu.qml" line="152"/>
         <source>About</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/MainMenu.qml" line="153"/>
+        <location filename="../qml/Meikade/MainMenu.qml" line="154"/>
         <source>About Aseman</source>
         <translation type="unfinished"></translation>
     </message>
@@ -383,7 +441,7 @@ Thank you.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../meikade.cpp" line="501"/>
+        <location filename="../meikade.cpp" line="506"/>
         <source>Meikade&apos;s hafez omen is different from other omens.
 It&apos;s calculate omen using natural random algorithms. Another apps calculate omen using machine algorithms.</source>
         <translation type="unfinished"></translation>
@@ -406,7 +464,7 @@ It&apos;s calculate omen using natural random algorithms. Another apps calculate
     <name>MeikadeWindow</name>
     <message>
         <location filename="../qml/Meikade/MeikadeWindow.qml" line="54"/>
-        <location filename="../qml/Meikade/MeikadeWindow.qml" line="423"/>
+        <location filename="../qml/Meikade/MeikadeWindow.qml" line="422"/>
         <source>Meikade</source>
         <translation type="unfinished"></translation>
     </message>
@@ -679,12 +737,12 @@ It&apos;s calculate omen using natural random algorithms. Another apps calculate
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/StorePage.qml" line="143"/>
+        <location filename="../qml/Meikade/StorePage.qml" line="126"/>
         <source>Update</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/StorePage.qml" line="159"/>
+        <location filename="../qml/Meikade/StorePage.qml" line="142"/>
         <source>Delete</source>
         <translation type="unfinished"></translation>
     </message>
@@ -692,32 +750,32 @@ It&apos;s calculate omen using natural random algorithms. Another apps calculate
 <context>
     <name>StorePageItem</name>
     <message>
-        <location filename="../qml/Meikade/StorePageItem.qml" line="120"/>
+        <location filename="../qml/Meikade/StorePageItem.qml" line="146"/>
         <source>Installing</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/StorePageItem.qml" line="123"/>
+        <location filename="../qml/Meikade/StorePageItem.qml" line="149"/>
         <source>Removing</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/StorePageItem.qml" line="126"/>
+        <location filename="../qml/Meikade/StorePageItem.qml" line="152"/>
         <source>Downloading</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/StorePageItem.qml" line="129"/>
+        <location filename="../qml/Meikade/StorePageItem.qml" line="155"/>
         <source>Update</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/StorePageItem.qml" line="132"/>
+        <location filename="../qml/Meikade/StorePageItem.qml" line="158"/>
         <source>Installed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Meikade/StorePageItem.qml" line="137"/>
+        <location filename="../qml/Meikade/StorePageItem.qml" line="163"/>
         <source>Free</source>
         <translation type="unfinished"></translation>
     </message>

@@ -29,7 +29,9 @@ include(qmake/qtcAddDeployment.pri)
 qtcAddDeployment()
 
 LIBS += -lasemantools -lasemanclient
-INCLUDEPATH += $$[QT_INSTALL_HEADERS]/aseman/client/
+INCLUDEPATH += \
+    $$[QT_INSTALL_HEADERS]/aseman/client/ \
+    $$[QT_INSTALL_HEADERS]/asemantools
 
 QT += sql qml quick xml
 

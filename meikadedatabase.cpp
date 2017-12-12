@@ -103,17 +103,12 @@ MeikadeDatabase::MeikadeDatabase(ThreadedFileSystem *tfs, QObject *parent) :
     const QString dbPath = databasePath();
 
     p->initialized = true;
+    if(!QFileInfo::exists(databasePath()) )
 #ifdef Q_OS_ANDROID
-    if(!QFileInfo::exists(ANDROID_OLD_DB_PATH "/data.sqlite"))
-#endif
-    {
-        if(!QFileInfo::exists(databasePath()) )
-#ifdef Q_OS_ANDROID
-            QFile::copy("assets:/database/data.sqlite", dbPath);
+        QFile::copy("assets:/database/data.sqlite", dbPath);
 #else
-            QFile::copy(QCoreApplication::applicationDirPath() + "/database/data.sqlite", dbPath);
+        QFile::copy(QCoreApplication::applicationDirPath() + "/database/data.sqlite", dbPath);
 #endif
-    }
 
     Meikade::settings()->setValue("initialize/data_db",true);
     QFile(dbPath).setPermissions(QFileDevice::ReadUser|QFileDevice::WriteUser|
@@ -190,10 +185,7 @@ QString MeikadeDatabase::databasePath(int dbLocation)
     default:
     case ApplicationMemoryDatabase:
     case InternalMemoryDatabase:
-        if(QFileInfo::exists(ANDROID_OLD_DB_PATH "/data.sqlite"))
-            return ANDROID_OLD_DB_PATH "/data.sqlite";
-        else
-            return HOME_PATH + "/data.sqlite";
+        return HOME_PATH + "/data.sqlite";
         break;
     }
 #else
@@ -230,7 +222,6 @@ void MeikadeDatabase::initialize()
 
 #ifdef Q_OS_ANDROID
     p->src = "assets:/database/data/data";
-    QDir().mkpath(ANDROID_OLD_DB_PATH);
 #else
     p->src = "database/data/data";
 #endif

@@ -155,5 +155,6 @@
         <file>qml/Meikade/BookmarksPoets.qml</file>
         <file>qml/Meikade/BookmarksView.qml</file>
         <file>qml/Meikade/ItemPane.qml</file>
+        <file>qml/Meikade/Contact.qml</file>
     </qresource>
 </RCC>

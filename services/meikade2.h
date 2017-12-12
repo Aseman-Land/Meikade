@@ -13,6 +13,7 @@
 #define ASEMAN_AGENT_NOTE_CALLBACK ASEMAN_AGENT_CALLBACK(QString)
 #define ASEMAN_AGENT_GETPOEMNOTES_CALLBACK ASEMAN_AGENT_CALLBACK(QVariantMap)
 #define ASEMAN_AGENT_GETNOTES_CALLBACK ASEMAN_AGENT_CALLBACK(QVariantList)
+#define ASEMAN_AGENT_CONTACTUS_CALLBACK ASEMAN_AGENT_CALLBACK(bool)
 #define ASEMAN_AGENT_GETSTOREITEMS_CALLBACK ASEMAN_AGENT_CALLBACK(QVariantList)
 #define ASEMAN_AGENT_GETSTOREITEM_CALLBACK ASEMAN_AGENT_CALLBACK(QVariantMap)
 #define ASEMAN_AGENT_GETSTORECATEGORIES_CALLBACK ASEMAN_AGENT_CALLBACK(QVariantList)
@@ -37,6 +38,7 @@ class Meikade2: public AsemanAbstractAgentClient
     Q_PROPERTY(QString name_note READ name_note NOTIFY fakeSignal)
     Q_PROPERTY(QString name_getPoemNotes READ name_getPoemNotes NOTIFY fakeSignal)
     Q_PROPERTY(QString name_getNotes READ name_getNotes NOTIFY fakeSignal)
+    Q_PROPERTY(QString name_contactUs READ name_contactUs NOTIFY fakeSignal)
     Q_PROPERTY(QString name_getStoreItems READ name_getStoreItems NOTIFY fakeSignal)
     Q_PROPERTY(QString name_getStoreItem READ name_getStoreItem NOTIFY fakeSignal)
     Q_PROPERTY(QString name_getStoreCategories READ name_getStoreCategories NOTIFY fakeSignal)
@@ -108,8 +110,8 @@ public:
     }
 
     QString name_pushDeviceModel() const { return "pushDeviceModel"; }
-    qint64 pushDeviceModel(QString device, QString deviceId, double screen, double density, QObject *base = 0, Callback<bool> callBack = 0) {
-        qint64 id = pushRequest("pushDeviceModel", QVariantList() << QVariant::fromValue<QString>(device) << QVariant::fromValue<QString>(deviceId) << QVariant::fromValue<double>(screen) << QVariant::fromValue<double>(density));
+    qint64 pushDeviceModel(QString deviceId, QVariantMap map, QObject *base = 0, Callback<bool> callBack = 0) {
+        qint64 id = pushRequest("pushDeviceModel", QVariantList() << QVariant::fromValue<QString>(deviceId) << QVariant::fromValue<QVariantMap>(map));
         _calls[id] = "pushDeviceModel";
         pushBase(id, base);
         callBackPush<bool>(id, callBack);
@@ -149,6 +151,15 @@ public:
         _calls[id] = "getNotes";
         pushBase(id, base);
         callBackPush<QVariantList>(id, callBack);
+        return id;
+    }
+
+    QString name_contactUs() const { return "contactUs"; }
+    qint64 contactUs(QString name, QString email, QString msg, QString deviceId, QObject *base = 0, Callback<bool> callBack = 0) {
+        qint64 id = pushRequest("contactUs", QVariantList() << QVariant::fromValue<QString>(name) << QVariant::fromValue<QString>(email) << QVariant::fromValue<QString>(msg) << QVariant::fromValue<QString>(deviceId));
+        _calls[id] = "contactUs";
+        pushBase(id, base);
+        callBackPush<bool>(id, callBack);
         return id;
     }
 
@@ -219,8 +230,8 @@ public Q_SLOTS:
             callBackJs(jsCallback, result, error);
         });
     }
-    qint64 pushDeviceModel(QString device, QString deviceId, double screen, double density, const QJSValue &jsCallback) {
-        return pushDeviceModel(device, deviceId, screen, density, this, [this, jsCallback](qint64, const bool &result, const CallbackError &error) {
+    qint64 pushDeviceModel(QString deviceId, QVariantMap map, const QJSValue &jsCallback) {
+        return pushDeviceModel(deviceId, map, this, [this, jsCallback](qint64, const bool &result, const CallbackError &error) {
             callBackJs(jsCallback, result, error);
         });
     }
@@ -241,6 +252,11 @@ public Q_SLOTS:
     }
     qint64 getNotes(int offset, int limit, const QJSValue &jsCallback) {
         return getNotes(offset, limit, this, [this, jsCallback](qint64, const QVariantList &result, const CallbackError &error) {
+            callBackJs(jsCallback, result, error);
+        });
+    }
+    qint64 contactUs(QString name, QString email, QString msg, QString deviceId, const QJSValue &jsCallback) {
+        return contactUs(name, email, msg, deviceId, this, [this, jsCallback](qint64, const bool &result, const CallbackError &error) {
             callBackJs(jsCallback, result, error);
         });
     }
@@ -289,6 +305,8 @@ Q_SIGNALS:
     void getPoemNotesError(qint64 id, qint32 errorCode, const QVariant &errorValue);
     void getNotesAnswer(qint64 id, QVariantList result);
     void getNotesError(qint64 id, qint32 errorCode, const QVariant &errorValue);
+    void contactUsAnswer(qint64 id, bool result);
+    void contactUsError(qint64 id, qint32 errorCode, const QVariant &errorValue);
     void getStoreItemsAnswer(qint64 id, QVariantList result);
     void getStoreItemsError(qint64 id, qint32 errorCode, const QVariant &errorValue);
     void getStoreItemAnswer(qint64 id, QVariantMap result);
@@ -368,6 +386,12 @@ protected:
             _calls.remove(id);
             if(error.null) Q_EMIT getNotesAnswer(id, result.value<QVariantList>());
             else Q_EMIT getNotesError(id, error.errorCode, error.errorValue);
+        } else
+        if(method == "contactUs") {
+            callBackCall<bool>(id, result.value<bool>(), error);
+            _calls.remove(id);
+            if(error.null) Q_EMIT contactUsAnswer(id, result.value<bool>());
+            else Q_EMIT contactUsError(id, error.errorCode, error.errorValue);
         } else
         if(method == "getStoreItems") {
             callBackCall<QVariantList>(id, result.value<QVariantList>(), error);
