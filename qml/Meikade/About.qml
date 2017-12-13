@@ -113,9 +113,31 @@ Rectangle {
                     font.pixelSize: 9*globalFontDensity*Devices.fontDensity
                     text: qsTr(" - Bardia Daneshvar (Project Founder, Project Architect and Developer)\n"+
                                " - AmirHosein Mousavi (Director of Public Relations and Developer)\n"+
-                               " - Pourya Daneshvar (Designer)\n"+
-                               " - Hasan Noruzi (Idea Processing)\n"+
                                " - Amin Hatami (Logo Designer)")
+                    wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                    color: MeikadeGlobals.foregroundColor
+                }
+
+                Item {width: 20; height: 30*Devices.density}
+
+                Text {
+                    width: parent.width
+                    font.family: AsemanApp.globalFont.family
+                    font.pixelSize: 10*globalFontDensity*Devices.fontDensity
+                    font.bold: true
+                    text: qsTr("Thanks to:")
+                    wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                    color: MeikadeGlobals.foregroundColor
+                }
+
+                Text {
+                    width: parent.width
+                    font.family: AsemanApp.globalFont.family
+                    font.pixelSize: 9*globalFontDensity*Devices.fontDensity
+                    text: qsTr(" - Pourya Daneshvar\n"+
+                               " - Hasan Noruzi\n"+
+                               " - Hootan Baraary\n"+
+                               " - Mansooreh Zamani")
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                     color: MeikadeGlobals.foregroundColor
                 }
