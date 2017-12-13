@@ -419,8 +419,8 @@ Rectangle {
     }
 
     Connections{
-        target: Meikade
-        onCurrentLanguageChanged: initTranslations()
+        target: MeikadeGlobals.translator
+        onLocaleNameChanged: initTranslations()
     }
 
     Connections {

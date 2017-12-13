@@ -32,9 +32,6 @@ class Meikade : public QObject
     Q_PROPERTY(QString poemsFont READ poemsFont WRITE setPoemsFont NOTIFY poemsFontChanged)
     Q_PROPERTY(bool animations READ animations WRITE setAnimations NOTIFY animationsChanged)
     Q_PROPERTY(QString resourcePath READ resourcePath NOTIFY resourcePathChanged)
-    Q_PROPERTY(QString currentLanguage READ currentLanguage WRITE setCurrentLanguage NOTIFY currentLanguageChanged)
-    Q_PROPERTY(int runCount READ runCount WRITE setRunCount NOTIFY runCountChanged)
-    Q_PROPERTY(int  languageDirection  READ languageDirection NOTIFY languageDirectionChanged )
     Q_PROPERTY(bool nightTheme READ nightTheme WRITE setNightTheme NOTIFY nightThemeChanged)
     Q_PROPERTY(bool keepScreenOn READ keepScreenOn WRITE setKeepScreenOn NOTIFY keepScreenOnChanged)
     Q_PROPERTY(bool phrase READ phrase WRITE setPhrase NOTIFY phraseChanged)
@@ -59,10 +56,6 @@ public:
     Q_INVOKABLE QStringList availableFonts();
     Q_INVOKABLE qreal fontPointScale( const QString & fontName );
 
-    Q_INVOKABLE QStringList languages();
-    Q_INVOKABLE void setCurrentLanguage( const QString & lang );
-    Q_INVOKABLE QString currentLanguage() const;
-
     Q_INVOKABLE QQuickItem *createObject(const QString &code);
 
     QString thumbsPath() const;
@@ -73,8 +66,6 @@ public:
     static QString resourcePath();
     static QString tempPath();
     static Meikade *instance();
-
-    Q_INVOKABLE int languageDirection();
 
     Q_INVOKABLE qint64 mSecsSinceEpoch() const;
 
@@ -106,9 +97,6 @@ public:
     void setPoemsFont( const QString & name );
     QString poemsFont() const;
 
-    int runCount() const;
-    void setRunCount( int cnt );
-
     static QSettings *settings();
 
 public Q_SLOTS:
@@ -127,17 +115,10 @@ Q_SIGNALS:
     void activePushChanged();
     void fakeSignal();
 
-    void currentLanguageChanged();
-    void languageDirectionChanged();
     void resourcePathChanged();
-
-    void runCountChanged();
 
 protected:
     bool eventFilter(QObject *o, QEvent *e);
-
-private:
-    void init_languages();
 
 private:
     MeikadePrivate *p;

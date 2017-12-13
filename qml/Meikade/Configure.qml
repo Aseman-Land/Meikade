@@ -33,7 +33,7 @@ BackHandlerView {
 
     Material.theme: Material.Dark
 
-    readonly property string title: qsTr("Configure")
+    readonly property string title: qsTr("Configure") + MeikadeGlobals.translator.refresher
 
     Rectangle {
         id: header
@@ -110,8 +110,8 @@ BackHandlerView {
                         anchors.left: parent.left
                         anchors.right: parent.right
                         anchors.margins: 30*Devices.density
-                        anchors.leftMargin: Meikade.languageDirection == Qt.RightToLeft? 30*Devices.density + checkbox.width : 30*Devices.density
-                        anchors.rightMargin: Meikade.languageDirection != Qt.RightToLeft? 30*Devices.density + checkbox.width : 30*Devices.density
+                        anchors.leftMargin: View.layoutDirection == Qt.RightToLeft? 30*Devices.density + checkbox.width : 30*Devices.density
+                        anchors.rightMargin: View.layoutDirection != Qt.RightToLeft? 30*Devices.density + checkbox.width : 30*Devices.density
                         y: parent.height/2 - height/2
                         font.pixelSize: 10*globalFontDensity*Devices.fontDensity
                         font.family: AsemanApp.globalFont.family
@@ -135,7 +135,7 @@ BackHandlerView {
 
                     Switch {
                         id: checkbox
-                        x: Meikade.languageDirection == Qt.RightToLeft? 20 : item.width - width - 20
+                        x: View.layoutDirection == Qt.RightToLeft? 20 : item.width - width - 20
                         anchors.verticalCenter: parent.verticalCenter
                         visible: item.checkable
                         checked: item.prprt.length==0? false : Meikade.property(Meikade,item.prprt)
@@ -203,8 +203,8 @@ BackHandlerView {
     }
 
     Connections{
-        target: Meikade
-        onCurrentLanguageChanged: initTranslations()
+        target: MeikadeGlobals.translator
+        onLocaleNameChanged: initTranslations()
     }
 
     function initTranslations(){

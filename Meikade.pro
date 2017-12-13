@@ -45,7 +45,6 @@ SOURCES += main.cpp \
     stickerwriter.cpp \
     threadedsearchmodel.cpp \
     poetscriptinstaller.cpp \
-    poetscriptinstallerqueue.cpp \
     poetimageprovider.cpp \
     poetinstaller.cpp
 
@@ -60,7 +59,6 @@ HEADERS += \
     stickerwriter.h \
     threadedsearchmodel.h \
     poetscriptinstaller.h \
-    poetscriptinstallerqueue.h \
     poetimageprovider.h \
     poetremover.h \
     services/meikade1.h \

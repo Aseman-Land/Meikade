@@ -34,12 +34,6 @@ AsemanWindow {
 
     Material.theme: Meikade.nightTheme? Material.Dark : Material.Light
 
-    Connections {
-        target: Meikade
-        onLanguageDirectionChanged: View.layoutDirection = Meikade.languageDirection
-        Component.onCompleted: View.layoutDirection = Meikade.languageDirection
-    }
-
     MeikadeWindow {
         anchors.fill: parent
     }

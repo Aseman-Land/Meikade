@@ -88,7 +88,7 @@ Rectangle {
         Row {
             anchors.fill: parent
             anchors.margins: 10*Devices.density
-            layoutDirection: Meikade.languageDirection==Qt.LeftToRight? Qt.RightToLeft : Qt.LeftToRight
+            layoutDirection: View.layoutDirection==Qt.LeftToRight? Qt.RightToLeft : Qt.LeftToRight
 
             QtControls.Button {
                 anchors.verticalCenter: parent.verticalCenter
@@ -270,7 +270,7 @@ Rectangle {
             anchors.bottomMargin: View.navigationBarHeight
             model: smodel
             orientation: Qt.Horizontal
-            layoutDirection: Meikade.languageDirection
+            layoutDirection: View.layoutDirection
             clip: true
             delegate: Rectangle {
                 height: listv.height
@@ -501,7 +501,7 @@ Rectangle {
                     Row {
                         anchors.fill: parent
                         anchors.margins: 10*Devices.density
-                        layoutDirection: Meikade.languageDirection==Qt.LeftToRight? Qt.RightToLeft : Qt.LeftToRight
+                        layoutDirection: View.layoutDirection==Qt.LeftToRight? Qt.RightToLeft : Qt.LeftToRight
 
                         QtControls.Button {
                             anchors.verticalCenter: parent.verticalCenter

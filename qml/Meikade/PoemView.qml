@@ -347,7 +347,7 @@ Rectangle {
 
                     Text {
                         anchors.centerIn: parent
-                        text: Meikade.currentLanguage != "Persian"? index+1 : Meikade.numberToArabicString(index+1)
+                        text: MeikadeGlobals.localeName != "fa"? index+1 : Meikade.numberToArabicString(index+1)
                         color: "#ffffff"
                         font.pixelSize: 9*fontScale*globalFontDensity*Devices.fontDensity
                         font.family: AsemanApp.globalFont.family
@@ -410,12 +410,8 @@ Rectangle {
                     }
                 }
                 onClicked: {
-                    if(!AsemanServices.loggedIn) {
+                    if(!AsemanServices.loggedIn)
                         selectMode = true
-                        checkItem.checked = !checkItem.checked
-                        selectionHash.insert(model.verseId, pitem.text)
-                        return
-                    }
 
                     if( view.editable ) {
                         if(selectMode) {

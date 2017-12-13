@@ -18,6 +18,7 @@
 
 import QtQuick 2.0
 import AsemanTools 1.0
+import "globals"
 
 Item {
     id: wait_dialog
@@ -33,6 +34,7 @@ Item {
         font.bold: true
         font.family: AsemanApp.globalFont.family
         color: "#ffffff"
+        text: qsTr("Please Wait") + MeikadeGlobals.translator.refresher
     }
 
     CradleIndicator {
@@ -41,15 +43,4 @@ Item {
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.topMargin: 10*Devices.density
     }
-
-    Connections{
-        target: Meikade
-        onCurrentLanguageChanged: initTranslations()
-    }
-
-    function initTranslations(){
-        txt.text = qsTr("Please Wait")
-    }
-
-    Component.onCompleted: initTranslations()
 }

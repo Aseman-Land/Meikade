@@ -21,6 +21,7 @@ import AsemanTools 1.0
 import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.3
 import QtQuick.Controls.Material 2.0
+import "globals"
 
 Popup {
     id: popup
@@ -55,23 +56,28 @@ Popup {
             Layout.fillWidth: true
             Layout.fillHeight: true
             anchors.horizontalCenter: parent.horizontalCenter
-            model: [ "English", "فارسی" ]
-            onCurrentIndexChanged: {
-                switch(listViewTumbler.currentIndex)
-                {
-                case 0:
-                    Meikade.currentLanguage = "English"
-                    break
-                case 1:
-                    Meikade.currentLanguage = "Persian"
-                    break
+            model: ListModel {}
+            delegate: RadioButton {
+                text: model.name
+                checked: MeikadeGlobals.localeName == model.code
+                width: listViewTumbler.width
+                onClicked: {
+                    if(!checked)
+                        return
+
+                    MeikadeGlobals.localeName = model.code
+                    listViewTumbler.currentIndex = index
                 }
             }
 
-            delegate: RadioButton {
-                text: listViewTumbler.model[index]
-                checked: listViewTumbler.currentIndex == index
-                onCheckedChanged: if(checked) listViewTumbler.currentIndex = index
+            Component.onCompleted: {
+                model.clear()
+
+                var langs = MeikadeGlobals.translator.translations
+                for(var l in langs)
+                    model.append({"code": l, "name": langs[l]})
+
+                focus = true
             }
         }
 
@@ -86,13 +92,6 @@ Popup {
 
             Layout.preferredWidth: 0
             Layout.fillWidth: true
-        }
-
-        Component.onCompleted: {
-            if(Meikade.currentLanguage == "Persian")
-                listViewTumbler.currentIndex = 1
-            else
-                listViewTumbler.currentIndex = 0
         }
     }
 }

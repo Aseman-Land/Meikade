@@ -54,32 +54,6 @@
 #include <QLocale>
 #include <qmath.h>
 
-QString translate_0 = "0";
-QString translate_1 = "1";
-QString translate_2 = "2";
-QString translate_3 = "3";
-QString translate_4 = "4";
-QString translate_5 = "5";
-QString translate_6 = "6";
-QString translate_7 = "7";
-QString translate_8 = "8";
-QString translate_9 = "9";
-
-QString translateNumbers( QString input )
-{
-    input.replace("0",translate_0);
-    input.replace("1",translate_1);
-    input.replace("2",translate_2);
-    input.replace("3",translate_3);
-    input.replace("4",translate_4);
-    input.replace("5",translate_5);
-    input.replace("6",translate_6);
-    input.replace("7",translate_7);
-    input.replace("8",translate_8);
-    input.replace("9",translate_9);
-    return input;
-}
-
 Meikade *meikade_instance = 0;
 
 class MeikadePrivate
@@ -93,12 +67,6 @@ public:
     bool close;
     int hide_keyboard_timer;
 
-    QTranslator *translator;
-
-    QHash<QString,QVariant> languages;
-    QHash<QString,QLocale> locales;
-    QString language;
-
     QString poem_font;
     bool nightTheme;
 };
@@ -109,7 +77,6 @@ Meikade::Meikade(QObject *parent) :
     p = new MeikadePrivate;
     p->viewer = 0;
     p->hide_keyboard_timer = 0;
-    p->translator = new QTranslator(this);
     p->poem_font = settings()->value("General/PoemFont","IRAN-Sans").toString();
     p->nightTheme = settings()->value("General/nightTheme",false).toBool();
 #ifdef Q_OS_ANDROID
@@ -131,7 +98,6 @@ Meikade::Meikade(QObject *parent) :
     qmlRegisterType<Meikade2>("AsemanClient.Services", 1, 0, "Meikade");
 
     QDir().mkpath(HOME_PATH);
-    init_languages();
 
     if(!meikade_instance)
         meikade_instance = this;
@@ -259,45 +225,6 @@ qreal Meikade::fontPointScale(const QString &fontName)
         return 1;
 }
 
-QStringList Meikade::languages()
-{
-    QStringList res = p->languages.keys();
-    res.sort();
-    return res;
-}
-
-void Meikade::setCurrentLanguage(const QString &lang)
-{
-    if( p->language == lang )
-        return;
-
-    QGuiApplication::removeTranslator(p->translator);
-    p->translator->load(p->languages.value(lang).toString(),"languages");
-    QGuiApplication::installTranslator(p->translator);
-    p->language = lang;
-
-    settings()->setValue("General/Language",lang);
-
-    translate_0 = Meikade::tr("0");
-    translate_1 = Meikade::tr("1");
-    translate_2 = Meikade::tr("2");
-    translate_3 = Meikade::tr("3");
-    translate_4 = Meikade::tr("4");
-    translate_5 = Meikade::tr("5");
-    translate_6 = Meikade::tr("6");
-    translate_7 = Meikade::tr("7");
-    translate_8 = Meikade::tr("8");
-    translate_9 = Meikade::tr("9");
-
-    Q_EMIT currentLanguageChanged();
-    Q_EMIT languageDirectionChanged();
-}
-
-QString Meikade::currentLanguage() const
-{
-    return p->language;
-}
-
 QQuickItem *Meikade::createObject(const QString &code)
 {
     if(!p->viewer || !p->viewer)
@@ -379,11 +306,6 @@ QString Meikade::tempPath()
 Meikade *Meikade::instance()
 {
     return meikade_instance;
-}
-
-int Meikade::languageDirection()
-{
-    return p->locales.value(currentLanguage()).textDirection();
 }
 
 qint64 Meikade::mSecsSinceEpoch() const
@@ -523,20 +445,6 @@ QString Meikade::poemsFont() const
     return p->poem_font;
 }
 
-int Meikade::runCount() const
-{
-    return settings()->value("General/runCount",0).toInt();
-}
-
-void Meikade::setRunCount(int cnt)
-{
-    if( runCount() == cnt )
-        return;
-
-    settings()->setValue("General/runCount", cnt);
-    Q_EMIT runCountChanged();
-}
-
 QSettings *Meikade::settings()
 {
     static QSettings *stngs = new QSettings( HOME_PATH + "/config.ini", QSettings::IniFormat );
@@ -595,32 +503,6 @@ bool Meikade::eventFilter(QObject *o, QEvent *e)
     }
 
     return QObject::eventFilter(o,e);
-}
-
-void Meikade::init_languages()
-{
-    QDir dir(TRANSLATIONS_PATH);
-    QStringList languages = dir.entryList( QDir::Files );
-    if( !languages.contains("lang-en.qm") )
-        languages.prepend("lang-en.qm");
-
-    for( int i=0 ; i<languages.size() ; i++ )
-     {
-         QString locale_str = languages[i];
-             locale_str.truncate( locale_str.lastIndexOf('.') );
-             locale_str.remove( 0, locale_str.indexOf('-') + 1 );
-
-         QLocale locale(locale_str);
-
-         QString  lang = QLocale::languageToString(locale.language());
-         QVariant data = TRANSLATIONS_PATH + "/" + languages[i];
-
-         p->languages.insert( lang, data );
-         p->locales.insert( lang , locale );
-
-         if( lang == settings()->value("General/Language","Persian").toString() )
-             setCurrentLanguage( lang );
-    }
 }
 
 Meikade::~Meikade()

@@ -18,6 +18,7 @@
 
 import QtQuick 2.0
 import AsemanTools 1.0
+import "globals"
 
 Item {
     id: init_wait
@@ -37,6 +38,7 @@ Item {
         font.pixelSize: 12*globalFontDensity*Devices.fontDensity
         font.bold: true
         color: "#ffffff"
+        text: qsTr("Installing Database") + MeikadeGlobals.translator.refresher
     }
 
     CradleIndicator {
@@ -63,15 +65,4 @@ Item {
             progressbar.percent = percent
         }
     }
-
-    Connections{
-        target: Meikade
-        onCurrentLanguageChanged: initTranslations()
-    }
-
-    function initTranslations(){
-        init_txt.text = qsTr("Installing Database")
-    }
-
-    Component.onCompleted: initTranslations()
 }

@@ -33,7 +33,7 @@ Item {
         anchors.fill: parent
         highlightMoveDuration: 250
         orientation: Qt.Horizontal
-        layoutDirection: Meikade.languageDirection
+        layoutDirection: View.layoutDirection
 
         property int selectedIndex: 0
 

@@ -51,14 +51,9 @@ MeikadeWindowBase {
 
     property variant searchPage
     property variant init_wait
-    property string meikadeTitle: qsTr("Meikade")
+    property string meikadeTitle: qsTr("Meikade") + MeikadeGlobals.translator.refresher
 
     readonly property bool localPortrait: catPage? (catPage.width<catPage.height || AT.Devices.isMobile) : portrait
-
-    Connections{
-        target: Meikade
-        onCurrentLanguageChanged: initTranslations()
-    }
 
     QtObject {
         id: privates
@@ -74,14 +69,13 @@ MeikadeWindowBase {
     }
 
     Component.onCompleted: {
-        initTranslations()
         if( !Database.initialized() ) {
             var initWaitComponent = Qt.createComponent("InitializeWait.qml")
             init_wait = initWaitComponent.createObject(main)
         }
 
-        Meikade.runCount++
-        switch(Meikade.runCount)
+        MeikadeGlobals.execCount++
+        switch(MeikadeGlobals.execCount)
         {
         case 1:
             showLanguageSetup()
@@ -107,7 +101,7 @@ MeikadeWindowBase {
                 init_wait.destroy()
             }
 
-            if(AT.AsemanApp.applicationVersion == "3.1.1" && Meikade.runCount > 1)
+            if(AT.AsemanApp.applicationVersion == "3.1.1" && MeikadeGlobals.execCount > 1)
                 showNews(1)
             else
                 Meikade.setMeikadeNews(1, true)
@@ -416,10 +410,6 @@ MeikadeWindowBase {
                 font_loader_component.createObject(main, {"fontName": fonts[i]})
 
         fontsLoaded = true
-    }
-
-    function initTranslations(){
-        meikadeTitle = qsTr("Meikade")
     }
 
     function showSearch() {

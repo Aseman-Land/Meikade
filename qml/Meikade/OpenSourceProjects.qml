@@ -150,16 +150,4 @@ Rectangle {
         anchors.right: preference_list.right; anchors.top: preference_list.top;
         color: Meikade.nightTheme? Qt.darker(MeikadeGlobals.foregroundColor) : Qt.lighter(MeikadeGlobals.foregroundColor)
     }
-
-    Connections{
-        target: Meikade
-        onCurrentLanguageChanged: initTranslations()
-    }
-
-    function initTranslations(){
-    }
-
-    Component.onCompleted: {
-        initTranslations()
-    }
 }

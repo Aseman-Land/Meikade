@@ -18,6 +18,7 @@
 
 import QtQuick 2.0
 import AsemanTools 1.0
+import "globals"
 
 Item {
 
@@ -30,6 +31,7 @@ Item {
         wrapMode: Text.WrapAtWordBoundaryOrAnywhere
         horizontalAlignment: Text.AlignHCenter
         color: "#666666"
+        text: qsTr("To Start, Download new poet") + MeikadeGlobals.translator.refresher
     }
 
     Canvas {
@@ -60,18 +62,5 @@ Item {
         }
 
         Component.onCompleted: requestPaint()
-    }
-
-    Connections{
-        target: Meikade
-        onCurrentLanguageChanged: initTranslations()
-    }
-
-    function initTranslations(){
-        txt.text = qsTr("To Start, Download new poet")
-    }
-
-    Component.onCompleted: {
-        initTranslations()
     }
 }

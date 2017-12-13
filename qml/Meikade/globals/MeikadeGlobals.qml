@@ -15,9 +15,42 @@ AsemanObject {
     Material.background: Meikade.nightTheme? "#313131" : "#eaeaea"
 
     property alias categoriesList: _categoriesList
+    property string profilePath: AsemanApp.homePath
+
+    property alias darkMode: settings.darkMode
+    property alias execCount: settings.execCount
+    property alias localeName: settings.localeName
+    property alias languageSelected: settings.languageSelected
+
+    property alias translator: translationManager
 
     ListObject {
         id: _categoriesList
+    }
+
+    Settings {
+        id: settings
+        source: profilePath + "/settings.ini"
+        category: "General"
+
+        property bool darkMode: false
+        property string localeName: "en"
+        property bool languageSelected: false
+        property int execCount: 0
+    }
+
+    TranslationManager {
+        id: translationManager
+        sourceDirectory: Devices.resourcePath + "/files/translations"
+        delimiters: "-"
+        fileName: "lang"
+        localeName: settings.localeName
+
+        function refreshLayouts() {
+            View.layoutDirection = textDirection
+        }
+        Component.onCompleted: refreshLayouts()
+        onLocaleNameChanged: refreshLayouts()
     }
 }
 

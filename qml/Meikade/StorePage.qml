@@ -39,7 +39,7 @@ Rectangle {
         id: gmodel
         agent: AsemanServices.meikade
         method: AsemanServices.meikade.name_getStoreCategories
-        arguments: []
+        arguments: [ MeikadeGlobals.localeName ]
         uniqueKeyField: "id"
         onCountChanged: if(view) view.category = gmodel.get(0).id
     }

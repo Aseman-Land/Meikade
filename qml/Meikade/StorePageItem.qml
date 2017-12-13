@@ -17,8 +17,8 @@
 */
 
 import QtQuick 2.7
-import QtQuick.Controls 2.1
 import AsemanTools 1.0
+import QtQuick.Controls 2.1 as QtControls
 import Meikade 1.0
 import AsemanTools.Awesome 1.0
 import AsemanClient.CoreServices 1.0 as CoreServices
@@ -42,7 +42,7 @@ Item {
         agent: AsemanServices.meikade
         method: AsemanServices.meikade.name_getStoreItems
         arguments: [
-            "", category, offset, limit, Database.poetsDates
+            MeikadeGlobals.localeName, "", category, offset, limit, Database.poetsDates
         ]
         uniqueKeyField: "id"
     }
@@ -58,11 +58,30 @@ Item {
             width: listv.width
             height: listv.height/3
 
-            BusyIndicator {
+            QtControls.BusyIndicator {
                 anchors.centerIn: parent
                 height: 48*Devices.density
                 width: height
                 running: gmodel.refreshing
+            }
+
+            Column {
+                anchors.centerIn: parent
+                visible: !gmodel.refreshing && gmodel.errorCode
+
+                QtControls.Label {
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    text: gmodel.errorValue? gmodel.errorValue : ""
+                }
+
+                QtControls.Button {
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    text: qsTr("Refresh")
+                    onClicked: {
+                        gmodel.clear()
+                        gmodel.refresh()
+                    }
+                }
             }
         }
 
@@ -194,7 +213,7 @@ Item {
                         visible: !indicator.running
                     }
 
-                    BusyIndicator {
+                    QtControls.BusyIndicator {
                         id: indicator
                         anchors.centerIn: parent
                         width: 48*Devices.density
@@ -223,7 +242,7 @@ Item {
                 anchors.bottom: parent.bottom
             }
 
-            ItemDelegate {
+            QtControls.ItemDelegate {
                 id: marea
                 anchors.fill: parent
                 onClicked: {

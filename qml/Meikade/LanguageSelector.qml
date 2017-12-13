@@ -20,6 +20,7 @@ import QtQuick 2.0
 import QtQuick.Controls 2.0
 import AsemanTools 1.0
 import AsemanTools.Awesome 1.0
+import "globals"
 
 Item {
     anchors.fill: parent
@@ -48,7 +49,7 @@ Item {
                 anchors.left: parent.left
                 anchors.right: parent.right
                 anchors.margins: 10*Devices.density
-                checked: Meikade.currentLanguage == item.text
+                checked: MeikadeGlobals.localeName == model.code
                 text: parent.text
                 ButtonGroup.group: radioGroup
             }
@@ -58,7 +59,7 @@ Item {
                 anchors.fill: parent
                 onClicked: {
                     radioBtn.checked = true
-                    Meikade.setCurrentLanguage(item.text)
+                    MeikadeGlobals.localeName = model.code
                 }
             }
         }
@@ -67,9 +68,9 @@ Item {
         Component.onCompleted: {
             model.clear()
 
-            var langs = Meikade.languages()
-            for( var i=0; i<langs.length; i++ )
-                model.append({"name": langs[i]})
+            var langs = MeikadeGlobals.translator.translations
+            for(var l in langs)
+                model.append({"code": l, "name": langs[l]})
 
             focus = true
         }
