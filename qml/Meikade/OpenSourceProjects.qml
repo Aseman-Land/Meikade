@@ -131,15 +131,10 @@ Rectangle {
 
         Component.onCompleted: {
             model.clear()
-
-//            model.append({"title": "Droid fonts", "license": "Apache License v2", "link": "https://www.google.com/fonts/specimen/Droid+Sans", "description": "Droid Sans is a humanist sans serif typeface designed by Steve Matteson, Type Director of Ascender Corp."})
             model.append({"title": "Ganjoor", "license": "GNU GPL v2", "link": "http://ganjoor.net", "description": "Persian poetry web site called ganjoor which includes a .NET based Windows client and a SQLite copy of site database."})
             model.append({"title": "Qt Framework " + Tools.qtVersion(), "license": "GNU GPL v3", "link": "http://qt.io", "description": "Qt is a cross-platform application and UI framework for developers using C++ or QML, a CSS & JavaScript like language."})
-            model.append({"title": "QtSingleApplication", "license": "GNU GPL v3", "link": "https://github.com/lycis/QtDropbox/", "description": "The QtSingleApplication component provides support for applications that can be only started once per user."})
-//            model.append({"title": "Saaghar", "license": "GNU GPL v3", "link": "https://sourceforge.net/projects/saaghar/", "description": "Saaghar is a Persian poetry software written by C++ under Qt framework, it uses ganjoor database as its database. It has tab feature in both its Viewer and its Search page that cause it be suitable for research goals."})
             model.append({"title": "Aseman Qt Tools", "license": "GNU GPL v3", "link": "https://github.com/aseman-labs/aseman-qt-tools", "description": "Some tools, creating for Aseman Qt projects and used on many of Aseman's projects."})
-            model.append({"title": "SimpleQtCryptor", "license": "GNU GPL v3", "link": "http://zo0ok.com/techfindings/archives/595", "description": "Simple Qt encryption library and tools."})
-
+            model.append({"title": "Font Awesome", "license": "MIT License", "link": "http://fontawesome.io", "description": "Font Awesome gives you scalable vector icons that can instantly be customized."})
             focus = true
         }
     }
