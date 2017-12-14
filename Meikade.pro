@@ -34,7 +34,7 @@ INCLUDEPATH += \
     $$[QT_INSTALL_HEADERS]/aseman/client/ \
     $$[QT_INSTALL_HEADERS]/asemantools
 
-QT += sql qml quick xml
+QT += sql qml quick
 
 SOURCES += main.cpp \
     userdata.cpp \
