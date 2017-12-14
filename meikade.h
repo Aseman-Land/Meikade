@@ -64,7 +64,6 @@ public:
 
     static QString resourcePathAbs();
     static QString resourcePath();
-    static QString tempPath();
     static Meikade *instance();
 
     Q_INVOKABLE qint64 mSecsSinceEpoch() const;

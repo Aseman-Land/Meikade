@@ -33,7 +33,7 @@
 #define HOME_PATH AsemanApplication::homePath()
 #define ANDROID_SDCARD1_DB_PATH "/storage/sdcard1/NileGroup/Meikade/"
 #define BACKUP_PATH "/sdcard/NileGroup/Meikade/backups"
-#define TEMP_PATH HOME_PATH + "/temp"
+#define TEMP_PATH QString(AsemanApplication::homePath() + "/tmp/")
 #define TRANSLATIONS_PATH QString("assets:/files/translations")
 #else
 #ifdef Q_OS_IOS
@@ -45,12 +45,12 @@
 #ifdef Q_OS_WIN
 #define HOME_PATH AsemanApplication::homePath()
 #define BACKUP_PATH AsemanApplication::homePath()
-#define TEMP_PATH   QDir::tempPath()
+#define TEMP_PATH   AsemanApplication::tempPath()
 #define TRANSLATIONS_PATH QString(QCoreApplication::applicationDirPath() + "/files/translations/")
 #else
 #define HOME_PATH AsemanApplication::homePath()
 #define BACKUP_PATH AsemanApplication::homePath()
-#define TEMP_PATH   QDir::tempPath()
+#define TEMP_PATH   AsemanApplication::tempPath()
 #define TRANSLATIONS_PATH QString(QCoreApplication::applicationDirPath() + "/files/translations/")
 #endif
 #endif

@@ -18,6 +18,7 @@
 
 #include "threadedfilesystem.h"
 #include "meikade.h"
+#include "meikade_macros.h"
 
 #include <QFile>
 #include <QFileInfo>
@@ -77,7 +78,7 @@ void ThreadedFileSystem::extract_prv(const QString &src, int counter, const QStr
         return;
     }
 
-    const QString & temp = Meikade::tempPath();
+    const QString & temp = TEMP_PATH;
     QDir().mkpath(temp);
 
     qreal percent = 0;

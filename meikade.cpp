@@ -290,19 +290,6 @@ QString Meikade::resourcePath()
 #endif
 }
 
-QString Meikade::tempPath()
-{
-#ifdef Q_OS_ANDROID
-    return "/sdcard/" + QCoreApplication::organizationDomain() + "/" + QCoreApplication::applicationName() + "/temp";
-#else
-#ifdef Q_OS_IOS
-    return QStandardPaths::standardLocations(QStandardPaths::QStandardPaths::AppDataLocation).first() + "/tmp/";
-#else
-    return QDir::tempPath();
-#endif
-#endif
-}
-
 Meikade *Meikade::instance()
 {
     return meikade_instance;

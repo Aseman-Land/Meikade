@@ -2,6 +2,7 @@
 #include "poetscriptinstaller.h"
 #include "meikade.h"
 #include "meikadedatabase.h"
+#include "meikade_macros.h"
 
 #include <asemanremotefile.h>
 
@@ -248,7 +249,7 @@ void PoetInstaller::install()
     AsemanRemoteFile *file = PoetInstaller::Private::files.value(p->socket).value(p->source);
     if(!file)
     {
-        const QString tmpFile = Meikade::tempPath() + "/" + QUuid::createUuid().toString();
+        const QString tmpFile = TEMP_PATH + "/" + QUuid::createUuid().toString();
 
         file = new AsemanRemoteFile();
         file->setSocket(p->socket);
@@ -281,6 +282,10 @@ void PoetInstaller::install()
         PoetInstaller::Private::files[file->socket()].remove(file->source());
         file->deleteLater();
     });
+    connect(file, &AsemanRemoteFile::error, this, [this](qint32 errorCode, const QVariant &errorValue){
+        Q_UNUSED(errorCode)
+        setError(errorValue.toString());
+    });
 }
 
 void PoetInstaller::remove()
@@ -311,7 +316,6 @@ void PoetInstaller::initInstaller()
     }, Qt::QueuedConnection);
     connect(installer, &PoetScriptInstaller::finished, Meikade::instance(), [](int poetId, bool installed, const QString &error){
         Q_UNUSED(installed)
-        Q_UNUSED(error)
         PoetInstaller::Private::installingStatus.remove(poetId);
         Meikade::instance()->database()->refresh();
     }, Qt::QueuedConnection);
