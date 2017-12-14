@@ -20,6 +20,7 @@ ios {
     QMAKE_BUNDLE_DATA += ios_icon
 }
 android {
+    QT += androidextras
     ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
 }
 

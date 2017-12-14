@@ -66,12 +66,21 @@ Item {
                 }
             }
 
-            MouseArea{
+            MouseArea {
                 id: marea
                 anchors.fill: parent
                 onClicked: {
-                    radioBtn.checked = true
-                    Database.databaseLocation = model.type
+                    if(model.type == MeikadeDatabase.ExternalSdCardDatabase) {
+                        AsemanApp.requestPermissions(["android.permission.WRITE_EXTERNAL_STORAGE"], function(res) {
+                            if(res["android.permission.WRITE_EXTERNAL_STORAGE"] == true) {
+                                Database.databaseLocation = model.type
+                                radioBtn.checked = true
+                            }
+                        })
+                    } else {
+                        radioBtn.checked = true
+                        Database.databaseLocation = model.type
+                    }
                 }
             }
         }
