@@ -18,7 +18,7 @@ AsemanObject {
 
     Client.ClientSocket {
         id: asemanSocket
-        hostAddress: "aseman.co"
+//        hostAddress: "aseman.co"
         autoTrust: true
         certificate: "../certificates/falcon.crt"
     }
