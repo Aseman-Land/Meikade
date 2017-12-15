@@ -181,6 +181,7 @@ Item {
                         else
                             return qsTr("Free")
                     }
+                    visible: false
                 }
 
                 Item {
