@@ -167,7 +167,8 @@ void ThreadedDatabase::run()
             p->reset = false;
             i = -1;
             p->mutex.unlock();
-            p->find_query->exec();
+            if(!p->find_query->exec())
+                qDebug() << __PRETTY_FUNCTION__ << p->find_query->lastError().text();
         }
         if(!p->find_query)
             return;

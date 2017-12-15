@@ -35,11 +35,43 @@ AsemanWindow {
     Material.theme: Meikade.nightTheme? Material.Dark : Material.Light
 
     MeikadeWindow {
+        id: meikadeWindow
         anchors.fill: parent
     }
 
     Component.onCompleted: {
         DownloaderQueue.destination = AsemanApp.homePath + "/cache"
         AsemanServices.init()
+        checkChangelog()
+    }
+
+    function checkChangelog() {
+        if(MeikadeGlobals.lastCheckedVersion.length && AsemanApp.applicationVersion != MeikadeGlobals.lastCheckedVersion) {
+            AsemanServices.meikade.getChangeLog(Devices.platformType, AsemanApp.applicationVersion, function(res, error){
+                if(!error.null) return
+                var text = qsTr("<h3>Changelog:</h3><br />%1").arg(res)
+                meikadeWindow.showMessage(text, "")
+                MeikadeGlobals.lastCheckedVersion = AsemanApp.applicationVersion
+            })
+        } else {
+            AsemanServices.meikade.getLastVersion(Devices.platformType, function(res, error){
+                if(!error.null) return
+
+                var version = res.version
+                var notify = res.notify
+                var changelog = res.changelog
+                var storeLink = res.storeLink
+
+                if(MeikadeGlobals.lastUpdateCheckedVersion.length == 0 || version == AsemanApp.applicationVersion) {
+                    MeikadeGlobals.lastUpdateCheckedVersion = version
+                }
+                if(MeikadeGlobals.lastUpdateCheckedVersion == version)
+                    return
+
+                var text = qsTr("<h3>New version:</h3><br />%1").arg(changelog)
+                meikadeWindow.showMessage(text, storeLink).okText = qsTr("Update")
+                MeikadeGlobals.lastUpdateCheckedVersion = version
+            })
+        }
     }
 }

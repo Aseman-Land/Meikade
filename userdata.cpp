@@ -78,7 +78,8 @@ void UserData::favorite(int pid, int vid)
     query.bindValue(":pid",pid);
     query.bindValue(":vid",vid);
     query.bindValue(":date" ,QString::number(QDateTime::currentDateTime().toMSecsSinceEpoch()));
-    query.exec();
+    if(!query.exec())
+        qDebug() << __PRETTY_FUNCTION__ << query.lastError().text();
     Q_EMIT favorited(pid,vid);
 }
 
@@ -88,7 +89,8 @@ void UserData::unfavorite(int pid, int vid)
     query.prepare("DELETE FROM favorites WHERE poem_id=:pid AND vorder=:vid" );
     query.bindValue(":pid",pid);
     query.bindValue(":vid",vid);
-    query.exec();
+    if(!query.exec())
+        qDebug() << __PRETTY_FUNCTION__ << query.lastError().text();
     Q_EMIT unfavorited(pid,vid);
 }
 
@@ -98,7 +100,8 @@ bool UserData::isFavorited(int pid, int vid)
     query.prepare("SELECT poem_id FROM favorites WHERE poem_id=:pid AND vorder=:vid" );
     query.bindValue(":pid",pid);
     query.bindValue(":vid",vid);
-    query.exec();
+    if(!query.exec())
+        qDebug() << __PRETTY_FUNCTION__ << query.lastError().text();
 
     return query.next();
 }
@@ -109,7 +112,8 @@ QStringList UserData::favorites()
 
     QSqlQuery query(p->db);
     query.prepare("SELECT poem_id, vorder, date FROM favorites");
-    query.exec();
+    if(!query.exec())
+        qDebug() << __PRETTY_FUNCTION__ << query.lastError().text();
 
     while( query.next() )
     {
@@ -131,7 +135,8 @@ void UserData::setNote(int pid, int vid, const QString &note)
         query.prepare("DELETE FROM notes WHERE poem_id=:pid AND vorder=:vid" );
         query.bindValue(":pid",pid);
         query.bindValue(":vid",vid);
-        query.exec();
+        if(!query.exec())
+            qDebug() << __PRETTY_FUNCTION__ << query.lastError().text();
     }
     else
     {
@@ -141,7 +146,8 @@ void UserData::setNote(int pid, int vid, const QString &note)
         query.bindValue(":vid",vid);
         query.bindValue(":note" ,note);
         query.bindValue(":date" ,QString::number(QDateTime::currentDateTime().toMSecsSinceEpoch()));
-        query.exec();
+        if(!query.exec())
+            qDebug() << __PRETTY_FUNCTION__ << query.lastError().text();
     }
     Q_EMIT noteChanged(pid,vid);
 }
@@ -152,7 +158,8 @@ QString UserData::note(int pid, int vid)
     query.prepare("SELECT text FROM notes WHERE poem_id=:pid AND vorder=:vid");
     query.bindValue(":pid",pid);
     query.bindValue(":vid",vid);
-    query.exec();
+    if(!query.exec())
+        qDebug() << __PRETTY_FUNCTION__ << query.lastError().text();
 
     if( !query.next() )
         return QString();
@@ -167,7 +174,8 @@ QStringList UserData::notes()
 
     QSqlQuery query(p->db);
     query.prepare("SELECT poem_id, vorder, date FROM notes");
-    query.exec();
+    if(!query.exec())
+        qDebug() << __PRETTY_FUNCTION__ << query.lastError().text();
 
     while( query.next() )
     {

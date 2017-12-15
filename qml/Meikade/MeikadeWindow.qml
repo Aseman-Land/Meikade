@@ -80,7 +80,7 @@ MeikadeWindowBase {
         case 1:
             showLanguageSetup()
             break
-        case 2:
+        case 5:
             showFavoriteMessage()
             break
         }
@@ -100,17 +100,12 @@ MeikadeWindowBase {
                 init_wait.visible = false
                 init_wait.destroy()
             }
-
-            if(AT.AsemanApp.applicationVersion == "3.1.1" && MeikadeGlobals.execCount > 1)
-                showNews(1)
-            else
-                Meikade.setMeikadeNews(1, true)
         }
     }
 
     Connections {
         target: AsemanServices
-        onIncommingMessage: messageDialog.show(network_message_component, {"message":message, "destUrl":msgUrl})
+        onIncommingMessage: showMessage(message, msgUrl)
     }
 
     FontLoader {
@@ -382,15 +377,6 @@ MeikadeWindowBase {
         messageDialog.show(component)
     }
 
-    function showNews(num) {
-        if(Meikade.meikadeNews(num))
-            return
-
-        var component = Qt.createComponent("MeikadeNews" + num + ".qml")
-        messageDialog.show(component)
-        Meikade.setMeikadeNews(num, true)
-    }
-
     function showCopyErrorMessage() {
         var component = Qt.createComponent("CopyErrorMessage.qml")
         messageDialog.show(component)
@@ -418,6 +404,10 @@ MeikadeWindowBase {
         searchPage = component.createObject(pageManager.currentItem)
         AT.BackHandler.pushHandler(searchPage, function(){ searchPage.destroy() })
         searchPage.focusOnText()
+    }
+
+    function showMessage(message, msgUrl) {
+        return messageDialog.show(network_message_component, {"message":message, "destUrl":msgUrl})
     }
 
     Component {

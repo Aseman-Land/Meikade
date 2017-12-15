@@ -21,6 +21,8 @@ AsemanObject {
 //        hostAddress: "aseman.co"
         autoTrust: true
         certificate: "../certificates/falcon.crt"
+        onError: console.debug("AsemanServices.qml: ", errorCode, errorValue)
+        onGeneralError: console.debug("AsemanServices.qml: ", text)
     }
 
     Services.Meikade {

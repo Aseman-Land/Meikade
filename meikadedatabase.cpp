@@ -302,7 +302,8 @@ QList<int> MeikadeDatabase::catPoems(int cat)
     QSqlQuery query( p->db );
     query.prepare("SELECT id, title, url, cat_id FROM poem WHERE cat_id=:cat");
     query.bindValue(":cat",cat);
-    query.exec();
+    if(!query.exec())
+        qDebug() << __PRETTY_FUNCTION__ << query.lastError().text();
 
     while( query.next() )
     {
@@ -324,7 +325,8 @@ QString MeikadeDatabase::poemName(int id)
         QSqlQuery query( p->db );
         query.prepare("SELECT title FROM poem WHERE id=:id");
         query.bindValue(":id",id);
-        query.exec();
+        if(!query.exec())
+            qDebug() << __PRETTY_FUNCTION__ << query.lastError().text();
 
         if( !query.next() )
             return 0;
@@ -342,7 +344,8 @@ int MeikadeDatabase::poemCat(int id)
         QSqlQuery query( p->db );
         query.prepare("SELECT cat_id FROM poem WHERE id=:id");
         query.bindValue(":id",id);
-        query.exec();
+        if(!query.exec())
+            qDebug() << __PRETTY_FUNCTION__ << query.lastError().text();
 
         if( !query.next() )
             return 0;
@@ -363,7 +366,8 @@ QString MeikadeDatabase::poemPhrase(int id)
         QSqlQuery query( p->db );
         query.prepare("SELECT phrase FROM poem WHERE id=:id");
         query.bindValue(":id",id);
-        query.exec();
+        if(!query.exec())
+            qDebug() << __PRETTY_FUNCTION__ << query.lastError().text();
 
         if( !query.next() )
             return 0;
@@ -381,7 +385,8 @@ QList<int> MeikadeDatabase::poemVerses(int id)
     QSqlQuery query( p->db );
     query.prepare("SELECT vorder FROM verse WHERE poem_id=:id");
     query.bindValue(":id",id);
-    query.exec();
+    if(!query.exec())
+        qDebug() << __PRETTY_FUNCTION__ << query.lastError().text();
 
     while( query.next() )
     {
@@ -498,7 +503,8 @@ void MeikadeDatabase::init_buffer()
 
     QSqlQuery cats_query( p->db );
     cats_query.prepare("SELECT id, parent_id, poet_id, text, url FROM cat");
-    cats_query.exec();
+    if(!cats_query.exec())
+        qDebug() << __PRETTY_FUNCTION__ << cats_query.lastError().text();
 
     while( cats_query.next() )
     {
@@ -515,6 +521,8 @@ void MeikadeDatabase::init_buffer()
     QSqlQuery poets_query( p->db );
     poets_query.prepare("SELECT id, name, cat_id, description, lastUpdate FROM poet");
     poets_query.exec();
+    if(!poets_query.exec())
+        qDebug() << __PRETTY_FUNCTION__ << poets_query.lastError().text();
 
     while( poets_query.next() )
     {
@@ -552,7 +560,8 @@ void MeikadeDatabase::fetchPoem(int pid)
     QSqlQuery query(p->db);
     query.prepare("SELECT vorder, text, position FROM verse WHERE poem_id=:pid");
     query.bindValue(":pid",pid);
-    query.exec();
+    if(!query.exec())
+        qDebug() << __PRETTY_FUNCTION__ << query.lastError().text();
 
     while( query.next() )
     {

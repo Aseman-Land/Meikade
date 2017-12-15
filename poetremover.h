@@ -31,14 +31,16 @@ void begin(QSqlDatabase & db)
 {
     QSqlQuery query(db);
     query.prepare("BEGIN");
-    query.exec();
+    if(!query.exec())
+        qDebug() << __PRETTY_FUNCTION__ << query.lastError().text();
 }
 
 void commit(QSqlDatabase & db)
 {
     QSqlQuery query(db);
     query.prepare("COMMIT");
-    query.exec();
+    if(!query.exec())
+        qDebug() << __PRETTY_FUNCTION__ << query.lastError().text();
 }
 
 void removePoem( QSqlDatabase & db, int poem_id )
@@ -46,7 +48,8 @@ void removePoem( QSqlDatabase & db, int poem_id )
     QSqlQuery delete_verse_query(db);
     delete_verse_query.prepare("DELETE FROM verse WHERE poem_id=:pid");
     delete_verse_query.bindValue(":pid", poem_id);
-    delete_verse_query.exec();
+    if(!delete_verse_query.exec())
+        qDebug() << __PRETTY_FUNCTION__ << delete_verse_query.lastError().text();
 }
 
 void removeCatChild( QSqlDatabase & db, int parent_id )
@@ -54,7 +57,8 @@ void removeCatChild( QSqlDatabase & db, int parent_id )
     QSqlQuery query(db);
     query.prepare("SELECT id FROM cat WHERE parent_id=:pid");
     query.bindValue(":pid", parent_id);
-    query.exec();
+    if(!query.exec())
+        qDebug() << __PRETTY_FUNCTION__ << query.lastError().text();
 
     while( query.next() )
     {
@@ -65,7 +69,8 @@ void removeCatChild( QSqlDatabase & db, int parent_id )
     QSqlQuery poem_query(db);
     poem_query.prepare("SELECT id FROM poem WHERE cat_id=:cid");
     poem_query.bindValue(":cid", parent_id);
-    poem_query.exec();
+    if(!poem_query.exec())
+        qDebug() << __PRETTY_FUNCTION__ << poem_query.lastError().text();
 
     while( poem_query.next() )
     {
@@ -76,12 +81,14 @@ void removeCatChild( QSqlDatabase & db, int parent_id )
     QSqlQuery delete_poem_query(db);
     delete_poem_query.prepare("DELETE FROM poem WHERE cat_id=:cid");
     delete_poem_query.bindValue(":cid", parent_id);
-    delete_poem_query.exec();
+    if(!delete_poem_query.exec())
+        qDebug() << __PRETTY_FUNCTION__ << delete_poem_query.lastError().text();
 
     QSqlQuery delete_cat_query(db);
     delete_cat_query.prepare("DELETE FROM cat WHERE parent_id=:pid");
     delete_cat_query.bindValue(":pid", parent_id);
-    delete_cat_query.exec();
+    if(!delete_cat_query.exec())
+        qDebug() << __PRETTY_FUNCTION__ << delete_cat_query.lastError().text();
 }
 
 void removePoetCat( QSqlDatabase & db, int poet_id )
@@ -89,7 +96,8 @@ void removePoetCat( QSqlDatabase & db, int poet_id )
     QSqlQuery poetName(db);
     poetName.prepare("SELECT name FROM poet WHERE id=:pid");
     poetName.bindValue(":pid", poet_id);
-    poetName.exec();
+    if(!poetName.exec())
+        qDebug() << __PRETTY_FUNCTION__ << poetName.lastError().text();
 
     if(!poetName.next())
         return;
@@ -99,7 +107,8 @@ void removePoetCat( QSqlDatabase & db, int poet_id )
     QSqlQuery query(db);
     query.prepare("SELECT id FROM cat WHERE poet_id=:pid");
     query.bindValue(":pid", poet_id);
-    query.exec();
+    if(!query.exec())
+        qDebug() << __PRETTY_FUNCTION__ << query.lastError().text();
 
     while( query.next() )
     {
@@ -110,12 +119,14 @@ void removePoetCat( QSqlDatabase & db, int poet_id )
     QSqlQuery delete_cat_query(db);
     delete_cat_query.prepare("DELETE FROM cat WHERE poet_id=:pid");
     delete_cat_query.bindValue(":pid", poet_id);
-    delete_cat_query.exec();
+    if(!delete_cat_query.exec())
+        qDebug() << __PRETTY_FUNCTION__ << delete_cat_query.lastError().text();
 
     QSqlQuery delete_poet_query(db);
     delete_poet_query.prepare("DELETE FROM poet WHERE id=:id");
     delete_poet_query.bindValue(":id", poet_id);
-    delete_poet_query.exec();
+    if(!delete_poet_query.exec())
+        qDebug() << __PRETTY_FUNCTION__ << delete_poet_query.lastError().text();
 
     commit(db);
 }
@@ -126,7 +137,8 @@ void setPoemPoet(QSqlDatabase & db, int poem, int poet)
     query.prepare("UPDATE verse SET poet=:poet WHERE poem_id=:poem_id");
     query.bindValue(":poem_id", poem);
     query.bindValue(":poet", poet);
-    query.exec();
+    if(!query.exec())
+        qDebug() << __PRETTY_FUNCTION__ << query.lastError().text();
 }
 
 int findCatPoet(QSqlDatabase & db, int cid)
@@ -134,7 +146,8 @@ int findCatPoet(QSqlDatabase & db, int cid)
     QSqlQuery query(db);
     query.prepare("SELECT poet_id FROM cat WHERE id=:id");
     query.bindValue(":id", cid);
-    query.exec();
+    if(!query.exec())
+        qDebug() << __PRETTY_FUNCTION__ << query.lastError().text();
 
     if(!query.next())
         return -1;
@@ -146,7 +159,8 @@ void indexVersesPoets(QSqlDatabase & db)
 {
     QSqlQuery query(db);
     query.prepare("SELECT id, cat_id FROM poem");
-    query.exec();
+    if(!query.exec())
+        qDebug() << __PRETTY_FUNCTION__ << query.lastError().text();
 
     while( query.next() )
     {
@@ -163,7 +177,8 @@ void vacuum(QSqlDatabase & db)
 {
     QSqlQuery query(db);
     query.prepare("VACUUM");
-    query.exec();
+    if(!query.exec())
+        qDebug() << __PRETTY_FUNCTION__ << query.lastError().text();
 }
 }
 
