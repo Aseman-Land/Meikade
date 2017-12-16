@@ -39,6 +39,14 @@ AsemanWindow {
         anchors.fill: parent
     }
 
+    CrashController {
+        onCrashed: AsemanServices.sendLogs()
+        Component.onCompleted: {
+            Logger.start()
+            Logger.debug("Log started: %1".arg(Logger.path))
+        }
+    }
+
     Component.onCompleted: {
         DownloaderQueue.destination = AsemanApp.homePath + "/cache"
         AsemanServices.init()

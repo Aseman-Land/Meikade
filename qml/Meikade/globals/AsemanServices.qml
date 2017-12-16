@@ -53,4 +53,9 @@ AsemanObject {
     function init() {
         asemanSocket.wake()
     }
+
+    function sendLogs() {
+        var log = Tools.readText(Logger.path)
+        AsemanServices.meikade.submiteLog(Devices.deviceId, Devices.platformType, AsemanApp.applicationVersion, log, null);
+    }
 }
