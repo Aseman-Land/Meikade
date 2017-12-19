@@ -49,7 +49,7 @@ UserData::UserData(QObject *parent) :
 
     if( !Meikade::settings()->value("initialize/userdata_db",false).toBool() )
 #ifdef Q_OS_ANDROID
-        QFile::copy("assets:/database/userdata.sqlite",p->path);
+        QFile::copy(":/database/userdata.sqlite",p->path);
 #else
         QFile::copy(QCoreApplication::applicationDirPath() + "/database/userdata.sqlite",p->path);
 #endif
@@ -58,7 +58,9 @@ UserData::UserData(QObject *parent) :
 
     p->db = QSqlDatabase::addDatabase("QSQLITE",USERDATAS_DB_CONNECTION);
     p->db.setDatabaseName(p->path);
+
     reconnect();
+    initDb();
 }
 
 void UserData::disconnect()
@@ -71,6 +73,29 @@ void UserData::reconnect()
     p->db.open();
 }
 
+void UserData::initDb()
+{
+    QFile file(":/database/userdata.sql");
+    file.open(QFile::ReadOnly);
+
+    QString script = QString(file.readAll()).replace("\r\n", "\n");
+
+    int pos = 0;
+    int from = 0;
+    while( (pos=script.indexOf(";\n", from)) != -1 )
+    {
+        const QString &scr = script.mid(from, pos-from);
+
+        QSqlQuery query(p->db);
+        query.prepare(scr);
+        int res = query.exec();
+        if(!res)
+            qDebug() << __PRETTY_FUNCTION__ << "SQL Error:" << query.lastError().text() << scr;
+
+        from = pos+2;
+    }
+}
+
 void UserData::favorite(int pid, int vid)
 {
     QSqlQuery query(p->db);
@@ -79,7 +104,7 @@ void UserData::favorite(int pid, int vid)
     query.bindValue(":vid",vid);
     query.bindValue(":date" ,QString::number(QDateTime::currentDateTime().toMSecsSinceEpoch()));
     if(!query.exec())
-        qDebug() << __PRETTY_FUNCTION__ << query.lastError().text();
+        qDebug() << __PRETTY_FUNCTION__ << "SQL Error:" << query.lastError().text();
     Q_EMIT favorited(pid,vid);
 }
 
@@ -90,7 +115,7 @@ void UserData::unfavorite(int pid, int vid)
     query.bindValue(":pid",pid);
     query.bindValue(":vid",vid);
     if(!query.exec())
-        qDebug() << __PRETTY_FUNCTION__ << query.lastError().text();
+        qDebug() << __PRETTY_FUNCTION__ << "SQL Error:" << query.lastError().text();
     Q_EMIT unfavorited(pid,vid);
 }
 
@@ -101,7 +126,7 @@ bool UserData::isFavorited(int pid, int vid)
     query.bindValue(":pid",pid);
     query.bindValue(":vid",vid);
     if(!query.exec())
-        qDebug() << __PRETTY_FUNCTION__ << query.lastError().text();
+        qDebug() << __PRETTY_FUNCTION__ << "SQL Error:" << query.lastError().text();
 
     return query.next();
 }
@@ -113,7 +138,7 @@ QStringList UserData::favorites()
     QSqlQuery query(p->db);
     query.prepare("SELECT poem_id, vorder, date FROM favorites");
     if(!query.exec())
-        qDebug() << __PRETTY_FUNCTION__ << query.lastError().text();
+        qDebug() << __PRETTY_FUNCTION__ << "SQL Error:" << query.lastError().text();
 
     while( query.next() )
     {
@@ -136,7 +161,7 @@ void UserData::setNote(int pid, int vid, const QString &note)
         query.bindValue(":pid",pid);
         query.bindValue(":vid",vid);
         if(!query.exec())
-            qDebug() << __PRETTY_FUNCTION__ << query.lastError().text();
+            qDebug() << __PRETTY_FUNCTION__ << "SQL Error:" << query.lastError().text();
     }
     else
     {
@@ -147,7 +172,7 @@ void UserData::setNote(int pid, int vid, const QString &note)
         query.bindValue(":note" ,note);
         query.bindValue(":date" ,QString::number(QDateTime::currentDateTime().toMSecsSinceEpoch()));
         if(!query.exec())
-            qDebug() << __PRETTY_FUNCTION__ << query.lastError().text();
+            qDebug() << __PRETTY_FUNCTION__ << "SQL Error:" << query.lastError().text();
     }
     Q_EMIT noteChanged(pid,vid);
 }
@@ -159,7 +184,7 @@ QString UserData::note(int pid, int vid)
     query.bindValue(":pid",pid);
     query.bindValue(":vid",vid);
     if(!query.exec())
-        qDebug() << __PRETTY_FUNCTION__ << query.lastError().text();
+        qDebug() << __PRETTY_FUNCTION__ << "SQL Error:" << query.lastError().text();
 
     if( !query.next() )
         return QString();
@@ -175,7 +200,7 @@ QStringList UserData::notes()
     QSqlQuery query(p->db);
     query.prepare("SELECT poem_id, vorder, date FROM notes");
     if(!query.exec())
-        qDebug() << __PRETTY_FUNCTION__ << query.lastError().text();
+        qDebug() << __PRETTY_FUNCTION__ << "SQL Error:" << query.lastError().text();
 
     while( query.next() )
     {

@@ -58,4 +58,12 @@ AsemanObject {
         var log = Tools.readText(Logger.path)
         AsemanServices.meikade.submiteLog(Devices.deviceId, Devices.platformType, AsemanApp.applicationVersion, log, null);
     }
+
+    function checkLogs() {
+        var txt = "SQL Error"
+        var log = Tools.readText(Logger.path)
+        var idx = log.indexOf(txt)
+        if(idx != -1)
+            sendLogs()
+    }
 }

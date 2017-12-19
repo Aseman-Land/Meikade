@@ -40,8 +40,10 @@ AsemanWindow {
     }
 
     CrashController {
+        id: crashController
         onCrashed: AsemanServices.sendLogs()
         Component.onCompleted: {
+            AsemanServices.checkLogs()
             Logger.start()
             Logger.debug("Log started: %1".arg(Logger.path))
         }

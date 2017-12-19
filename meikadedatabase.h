@@ -101,6 +101,7 @@ public Q_SLOTS:
 
 private:
     void init_buffer();
+    void initDb();
     void fetchPoem(int pid );
     bool checkUpdate();
 

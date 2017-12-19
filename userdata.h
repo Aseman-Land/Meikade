@@ -52,6 +52,9 @@ Q_SIGNALS:
     void noteChanged( int pid, int vid );
 
 private:
+    void initDb();
+
+private:
     UserDataPrivates *p;
 };
 
