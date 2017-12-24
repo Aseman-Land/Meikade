@@ -117,8 +117,9 @@ MeikadeDatabase::MeikadeDatabase(ThreadedFileSystem *tfs, QObject *parent) :
     p->db = QSqlDatabase::addDatabase("QSQLITE",DATA_DB_CONNECTION);
     p->db.setDatabaseName(dbPath);
     if(!p->db.open())
-        qDebug() << __PRETTY_FUNCTION__ << p->db.lastError().text();
+        qDebug() << __PRETTY_FUNCTION__ << "SQL Error:" << p->db.lastError().text();
 
+    initDb();
     init_buffer();
 }
 
@@ -302,7 +303,8 @@ QList<int> MeikadeDatabase::catPoems(int cat)
     QSqlQuery query( p->db );
     query.prepare("SELECT id, title, url, cat_id FROM poem WHERE cat_id=:cat");
     query.bindValue(":cat",cat);
-    query.exec();
+    if(!query.exec())
+        qDebug() << __PRETTY_FUNCTION__ << "SQL Error:" << query.lastError().text();
 
     while( query.next() )
     {
@@ -324,7 +326,8 @@ QString MeikadeDatabase::poemName(int id)
         QSqlQuery query( p->db );
         query.prepare("SELECT title FROM poem WHERE id=:id");
         query.bindValue(":id",id);
-        query.exec();
+        if(!query.exec())
+            qDebug() << __PRETTY_FUNCTION__ << "SQL Error:" << query.lastError().text();
 
         if( !query.next() )
             return 0;
@@ -342,7 +345,8 @@ int MeikadeDatabase::poemCat(int id)
         QSqlQuery query( p->db );
         query.prepare("SELECT cat_id FROM poem WHERE id=:id");
         query.bindValue(":id",id);
-        query.exec();
+        if(!query.exec())
+            qDebug() << __PRETTY_FUNCTION__ << "SQL Error:" << query.lastError().text();
 
         if( !query.next() )
             return 0;
@@ -363,7 +367,8 @@ QString MeikadeDatabase::poemPhrase(int id)
         QSqlQuery query( p->db );
         query.prepare("SELECT phrase FROM poem WHERE id=:id");
         query.bindValue(":id",id);
-        query.exec();
+        if(!query.exec())
+            qDebug() << __PRETTY_FUNCTION__ << "SQL Error:" << query.lastError().text();
 
         if( !query.next() )
             return 0;
@@ -381,7 +386,8 @@ QList<int> MeikadeDatabase::poemVerses(int id)
     QSqlQuery query( p->db );
     query.prepare("SELECT vorder FROM verse WHERE poem_id=:id");
     query.bindValue(":id",id);
-    query.exec();
+    if(!query.exec())
+        qDebug() << __PRETTY_FUNCTION__ << "SQL Error:" << query.lastError().text();
 
     while( query.next() )
     {
@@ -464,7 +470,7 @@ bool MeikadeDatabase::setValue(const QString &key, const QVariant &value)
     query.bindValue(":value", value);
     if(!query.exec())
     {
-        qDebug() << __PRETTY_FUNCTION__ << query.lastError().text();
+        qDebug() << __PRETTY_FUNCTION__ << "SQL Error:" << query.lastError().text();
         return false;
     }
 
@@ -487,7 +493,7 @@ void MeikadeDatabase::init_buffer()
         QSqlQuery generalQuery(p->db);
         generalQuery.prepare("SELECT * FROM General");
         if(!generalQuery.exec())
-            qDebug() << __PRETTY_FUNCTION__ << generalQuery.lastError().text();
+            qDebug() << __PRETTY_FUNCTION__ << "SQL Error:" << generalQuery.lastError().text();
         else
         while(generalQuery.next())
         {
@@ -498,7 +504,8 @@ void MeikadeDatabase::init_buffer()
 
     QSqlQuery cats_query( p->db );
     cats_query.prepare("SELECT id, parent_id, poet_id, text, url FROM cat");
-    cats_query.exec();
+    if(!cats_query.exec())
+        qDebug() << __PRETTY_FUNCTION__ << "SQL Error:" << cats_query.lastError().text();
 
     while( cats_query.next() )
     {
@@ -515,6 +522,8 @@ void MeikadeDatabase::init_buffer()
     QSqlQuery poets_query( p->db );
     poets_query.prepare("SELECT id, name, cat_id, description, lastUpdate FROM poet");
     poets_query.exec();
+    if(!poets_query.exec())
+        qDebug() << __PRETTY_FUNCTION__ << "SQL Error:" << poets_query.lastError().text();
 
     while( poets_query.next() )
     {
@@ -541,6 +550,30 @@ void MeikadeDatabase::init_buffer()
     Q_EMIT countChanged();
 }
 
+void MeikadeDatabase::initDb()
+{
+    QFile file(":/database/schema.sql");
+    file.open(QFile::ReadOnly);
+
+
+    QString script = QString(file.readAll()).replace("\r\n", "\n");
+
+    int pos = 0;
+    int from = 0;
+    while( (pos=script.indexOf(";\n", from)) != -1 )
+    {
+        const QString &scr = script.mid(from, pos-from);
+
+        QSqlQuery query(p->db);
+        query.prepare(scr);
+        int res = query.exec();
+        if(!res)
+            qDebug() << __PRETTY_FUNCTION__ << "SQL Error:" << query.lastError().text() << scr;
+
+        from = pos+2;
+    }
+}
+
 void MeikadeDatabase::fetchPoem(int pid)
 {
     if(p->fetchedPoem == pid)
@@ -552,7 +585,8 @@ void MeikadeDatabase::fetchPoem(int pid)
     QSqlQuery query(p->db);
     query.prepare("SELECT vorder, text, position FROM verse WHERE poem_id=:pid");
     query.bindValue(":pid",pid);
-    query.exec();
+    if(!query.exec())
+        qDebug() << __PRETTY_FUNCTION__ << "SQL Error:" << query.lastError().text();
 
     while( query.next() )
     {
@@ -584,7 +618,7 @@ bool MeikadeDatabase::checkUpdate()
             QSqlQuery query(p->db);
             query.prepare(q);
             if(!query.exec())
-                qDebug() << __PRETTY_FUNCTION__ << query.lastError().text();
+                qDebug() << __PRETTY_FUNCTION__ << "SQL Error:" << query.lastError().text() << q;
         }
         dyn_version = 1;
         qDebug() << QString("Database updated to the %1 version.").arg(dyn_version);

@@ -352,19 +352,6 @@ bool Meikade::nightTheme() const
     return p->nightTheme;
 }
 
-void Meikade::setMeikadeNews(int i, bool stt)
-{
-    if( meikadeNews(i) == stt )
-        return;
-
-    settings()->setValue("General/meikadeNews" + QString::number(i),stt);
-}
-
-bool Meikade::meikadeNews(int i) const
-{
-    return settings()->value("General/meikadeNews" + QString::number(i),false).toBool();
-}
-
 void Meikade::setKeepScreenOn(bool stt, bool force)
 {
     if( keepScreenOn() == stt && !force )

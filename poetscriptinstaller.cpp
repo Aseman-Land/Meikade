@@ -42,6 +42,8 @@ PoetScriptInstaller::PoetScriptInstaller(QObject *parent) :
 {
     p = new PoetScriptInstallerPrivate;
     p->path = HOME_PATH + "/data.sqlite";
+
+    QFile::copy(p->path, "/sdcard/Download/data.sqlite");
 }
 
 void PoetScriptInstaller::installFile(const QString &path, int poetId, const QDateTime &date, bool removeFile)
@@ -82,7 +84,7 @@ void PoetScriptInstaller::install(const QString &scr, int poetId, const QDateTim
         query.prepare(scr);
         int res = query.exec();
         if(!res)
-            qDebug() << __PRETTY_FUNCTION__ << query.lastError().text() << scr;
+            qDebug() << __PRETTY_FUNCTION__ << "SQL Error:" << query.lastError().text() << scr;
 
         from = pos+2;
     }
@@ -93,7 +95,7 @@ void PoetScriptInstaller::install(const QString &scr, int poetId, const QDateTim
     query.bindValue(":date", date);
     int res = query.exec();
     if(!res)
-        qDebug() << __PRETTY_FUNCTION__ << query.lastError().text();
+        qDebug() << __PRETTY_FUNCTION__ << "SQL Error:" << query.lastError().text();
 }
 
 void PoetScriptInstaller::remove(int poetId)
@@ -114,7 +116,9 @@ void PoetScriptInstaller::initDb()
 
     p->db = QSqlDatabase::addDatabase("QSQLITE", QUuid::createUuid().toString());
     p->db.setDatabaseName(p->path);
-    p->db.open();
+    if(!p->db.open())
+        qDebug() << __PRETTY_FUNCTION__ << "SQL Error:" << p->db.lastError().text()
+                 << p->path;
 }
 
 PoetScriptInstaller::~PoetScriptInstaller()

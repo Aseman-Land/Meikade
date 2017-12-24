@@ -99,7 +99,14 @@ Rectangle {
                     indicator.active = true
                     progress_rect.visible = true
                     AsemanServices.meikade.pushAction( ("Image saved with image %1").arg(frame_image.source==""?"off":"on"), null )
-                    writer.save(Devices.picturesLocation + "/Meikade", Qt.size(1080, 1080/frame.ratio))
+                    AsemanApp.requestPermissions(["android.permission.WRITE_EXTERNAL_STORAGE",
+                                                  "android.permission.READ_EXTERNAL_STORAGE"],
+                                                 function(res) {
+                        if(res["android.permission.WRITE_EXTERNAL_STORAGE"] == true &&
+                           res["android.permission.READ_EXTERNAL_STORAGE"] == true) {
+                            writer.save(Devices.picturesLocation + "/Meikade", Qt.size(1080, 1080/frame.ratio))
+                        }
+                    })
                 }
             }
         }

@@ -62,7 +62,6 @@ HEADERS += \
     poetscriptinstaller.h \
     poetimageprovider.h \
     poetremover.h \
-    services/meikade1.h \
     services/meikade2.h \
     poetinstaller.h
 

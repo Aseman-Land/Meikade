@@ -156,5 +156,7 @@
         <file>qml/Meikade/BookmarksView.qml</file>
         <file>qml/Meikade/ItemPane.qml</file>
         <file>qml/Meikade/Contact.qml</file>
+        <file>database/schema.sql</file>
+        <file>database/userdata.sql</file>
     </qresource>
 </RCC>

@@ -42,6 +42,7 @@ Rectangle {
         arguments: [ MeikadeGlobals.localeName ]
         uniqueKeyField: "id"
         onCountChanged: if(view) view.category = gmodel.get(0).id
+        onArgumentsChanged: clear()
     }
 
     Rectangle {

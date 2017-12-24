@@ -79,9 +79,6 @@ public:
     void setNightTheme( bool stt );
     bool nightTheme() const;
 
-    Q_INVOKABLE void setMeikadeNews(int i, bool stt);
-    Q_INVOKABLE bool meikadeNews(int i) const;
-
     void setKeepScreenOn(bool stt, bool force = false);
     bool keepScreenOn() const;
 

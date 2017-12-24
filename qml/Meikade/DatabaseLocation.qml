@@ -71,8 +71,11 @@ Item {
                 anchors.fill: parent
                 onClicked: {
                     if(model.type == MeikadeDatabase.ExternalSdCardDatabase) {
-                        AsemanApp.requestPermissions(["android.permission.WRITE_EXTERNAL_STORAGE"], function(res) {
-                            if(res["android.permission.WRITE_EXTERNAL_STORAGE"] == true) {
+                        AsemanApp.requestPermissions(["android.permission.WRITE_EXTERNAL_STORAGE",
+                                                      "android.permission.READ_EXTERNAL_STORAGE"],
+                                                     function(res) {
+                            if(res["android.permission.WRITE_EXTERNAL_STORAGE"] == true &&
+                               res["android.permission.READ_EXTERNAL_STORAGE"] == true) {
                                 Database.databaseLocation = model.type
                                 radioBtn.checked = true
                             }

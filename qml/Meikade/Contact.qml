@@ -98,6 +98,7 @@ QtControls.Page {
                         }
 
                         indicator.running = true
+                        AsemanServices.sendLogs()
                         AsemanServices.meikade.contactUs(fName.text, email.text, body.text, Devices.deviceId, function(res, error){
                             indicator.running = false
                             if(res) {

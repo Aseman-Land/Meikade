@@ -20,6 +20,8 @@ AsemanObject {
     property alias darkMode: settings.darkMode
     property alias execCount: settings.execCount
     property alias localeName: settings.localeName
+    property alias lastCheckedVersion: settings.lastCheckedVersion
+    property alias lastUpdateCheckedVersion: settings.lastUpdateCheckedVersion
     property alias languageSelected: settings.languageSelected
 
     property alias translator: translationManager
@@ -37,6 +39,8 @@ AsemanObject {
         property string localeName: "en"
         property bool languageSelected: false
         property int execCount: 0
+        property string lastCheckedVersion
+        property string lastUpdateCheckedVersion
     }
 
     TranslationManager {
