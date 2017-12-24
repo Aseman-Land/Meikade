@@ -135,6 +135,7 @@ Rectangle {
                     font.family: AsemanApp.globalFont.family
                     font.pixelSize: 9*globalFontDensity*Devices.fontDensity
                     text: qsTr(" - Pourya Daneshvar\n"+
+                               " - Arman Farajollahifar\n"+
                                " - Hasan Noruzi\n"+
                                " - Hootan Baraary\n"+
                                " - Mansooreh Zamani")
