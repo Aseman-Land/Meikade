@@ -21,6 +21,11 @@
 
 #include "meikade.h"
 
+#ifdef Q_OS_MACX
+#include "mac/macmanager.h"
+#include <QTimer>
+#endif
+
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
@@ -28,6 +33,12 @@ int main(int argc, char *argv[])
 
     Meikade meikade;
     meikade.start();
+
+#ifdef Q_OS_MACX
+        QTimer::singleShot(1000, [](){
+            MacManager::removeTitlebarFromWindow();
+        });
+#endif
 
     return app.exec();
 }

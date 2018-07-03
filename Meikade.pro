@@ -24,12 +24,27 @@ android {
     ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
 }
 
+osx {
+    SOURCES += \
+        mac/macmanager.mm
+    HEADERS += \
+        mac/macmanager.h
+
+    LIBS += $$[QT_INSTALL_LIBS]/libasemantools.dylib
+    LIBS += $$[QT_INSTALL_LIBS]/libasemanclient.dylib
+    macx:LIBS += -framework Foundation -framework Cocoa
+    macx:INCLUDEPATH += /System/Library/Frameworks/Foundation.framework/Versions/C/Headers \
+    /System/Library/Frameworks/AppKit.framework/Headers \
+    /System/Library/Frameworks/Cocoa.framework/Headers
+} else {
+    LIBS += -lasemantools -lasemanclient
+}
+
 DEFINES += DISABLE_KEYCHAIN
 include(aseman/aseman.pri)
 include(qmake/qtcAddDeployment.pri)
 qtcAddDeployment()
 
-LIBS += -lasemantools -lasemanclient
 INCLUDEPATH += \
     $$[QT_INSTALL_HEADERS]/aseman/client/ \
     $$[QT_INSTALL_HEADERS]/asemantools
