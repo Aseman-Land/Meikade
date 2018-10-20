@@ -19,7 +19,7 @@
 import QtQuick 2.0
 import QtQuick.Controls 2.1 as QtControls
 import QtQuick.Controls.Material 2.1
-import AsemanTools 1.1
+import AsemanQml.Base 2.0
 import "globals"
 
 Rectangle {

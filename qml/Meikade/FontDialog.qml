@@ -17,8 +17,8 @@
 */
 
 import QtQuick 2.0
-import AsemanTools 1.0
-import AsemanTools.Awesome 1.0
+import AsemanQml.Base 2.0
+import AsemanQml.Awesome 2.0
 
 Item {
     anchors.fill: parent

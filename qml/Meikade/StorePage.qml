@@ -17,10 +17,10 @@
 */
 
 import QtQuick 2.0
-import AsemanTools 1.0
-import AsemanTools 1.1 as AT
+import AsemanQml.Base 2.0
+import AsemanQml.Base 2.0 as AT
 import Meikade 1.0
-import AsemanTools.Awesome 1.0
+import AsemanQml.Awesome 2.0
 import AsemanClient.CoreServices 1.0 as CoreServices
 import QtQuick.Controls 2.0
 import QtQuick.Controls.Material 2.0

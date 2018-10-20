@@ -16,8 +16,8 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-import AsemanTools 1.1
-import AsemanTools.MaterialIcons 1.0
+import AsemanQml.Base 2.0
+import AsemanQml.MaterialIcons 2.0
 import QtQuick 2.5
 import QtQuick.Controls 2.1 as QtControls
 import QtQuick.Layouts 1.3

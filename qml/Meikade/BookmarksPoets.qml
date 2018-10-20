@@ -18,8 +18,8 @@
 
 import QtQuick 2.7
 import QtQuick.Controls 2.1
-import AsemanTools 1.0
-import AsemanTools.Awesome 1.0
+import AsemanQml.Base 2.0
+import AsemanQml.Awesome 2.0
 import QtQml 2.2
 import "globals"
 

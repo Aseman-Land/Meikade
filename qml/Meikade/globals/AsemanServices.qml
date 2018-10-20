@@ -5,7 +5,7 @@ import AsemanClient 1.0 as Client
 import AsemanClient.CoreServices 1.0 as CoreServices
 import AsemanClient.Services 1.0 as Services
 import QtQuick 2.7
-import AsemanTools 1.0
+import AsemanQml.Base 2.0
 
 AsemanObject {
     property alias socket: asemanSocket
@@ -18,7 +18,7 @@ AsemanObject {
 
     Client.ClientSocket {
         id: asemanSocket
-//        hostAddress: "aseman.co"
+        hostAddress: "meikade.com"
         autoTrust: true
         certificate: "../certificates/falcon.crt"
         onError: console.debug("AsemanServices.qml: ", errorCode, errorValue)
@@ -56,7 +56,7 @@ AsemanObject {
 
     function sendLogs() {
         var log = Tools.readText(Logger.path)
-        AsemanServices.meikade.submiteLog(Devices.deviceId, Devices.platformType, AsemanApp.applicationVersion, log, null);
+        meikade.submiteLog(Devices.deviceId, Devices.platformType, AsemanApp.applicationVersion, log, null);
     }
 
     function checkLogs() {

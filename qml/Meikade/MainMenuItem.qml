@@ -18,7 +18,7 @@
 
 import QtQuick 2.0
 import QtQuick.Controls 2.1
-import AsemanTools 1.0
+import AsemanQml.Base 2.0
 
 Item {
     id: menu_item

@@ -17,7 +17,7 @@
 */
 
 import QtQuick 2.2
-import AsemanTools 1.0
+import AsemanQml.Base 2.0
 
 Item {
     id: animation_item

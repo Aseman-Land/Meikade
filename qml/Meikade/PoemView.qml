@@ -20,7 +20,7 @@ import QtQuick 2.3
 import QtGraphicalEffects 1.0
 import QtQuick.Controls 2.1
 import QtQuick.Layouts 1.3
-import AsemanTools 1.0
+import AsemanQml.Base 2.0
 import "globals"
 
 Rectangle {

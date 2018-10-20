@@ -17,11 +17,11 @@
 */
 
 import QtQuick 2.0
-import AsemanTools 1.0
+import AsemanQml.Base 2.0
 import Meikade 1.0
 import QtQuick.Controls 2.1 as QtControls
 import QtQuick.Controls.Material 2.0
-import AsemanTools.Awesome 1.0
+import AsemanQml.Awesome 2.0
 import "globals"
 
 Rectangle {

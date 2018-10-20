@@ -21,6 +21,7 @@
 #define ASEMAN_AGENT_GETSTOREITEM_CALLBACK ASEMAN_AGENT_CALLBACK(QVariantMap)
 #define ASEMAN_AGENT_GETSTORECATEGORIES_CALLBACK ASEMAN_AGENT_CALLBACK(QVariantList)
 #define ASEMAN_AGENT_SETSTOREDOWNLOADED_CALLBACK ASEMAN_AGENT_CALLBACK(bool)
+#define ASEMAN_AGENT_ADMINHOWMANYUSERS_CALLBACK ASEMAN_AGENT_CALLBACK(int)
 
 
 #ifdef QT_QML_LIB
@@ -49,13 +50,18 @@ class Meikade2: public AsemanAbstractAgentClient
     Q_PROPERTY(QString name_getStoreItem READ name_getStoreItem NOTIFY fakeSignal)
     Q_PROPERTY(QString name_getStoreCategories READ name_getStoreCategories NOTIFY fakeSignal)
     Q_PROPERTY(QString name_setStoreDownloaded READ name_setStoreDownloaded NOTIFY fakeSignal)
+    Q_PROPERTY(QString name_adminHowManyUsers READ name_adminHowManyUsers NOTIFY fakeSignal)
 
 public:
     enum Errors {
-        ErrorUnknownError = 0x0,
         ErrorNoteNotFound = 0x1,
-        ErrorSessionError = 0x2,
-        ErrorUserNotFound = 0x4
+        ErrorUserNotFound = 0x4,
+        ErrorUnknownError = 0x41F7C0,
+        ErrorSessionError = 0x620299,
+        ErrorPermissionDenied = 0x1D240,
+        ErrorOpenFile = 0x8B9D3D,
+        ErrorInvalidFileName = 0xD2512F,
+        ErrorNotTrusted = 0x9F68A8
     };
 
     Meikade2(QObject *parent = Q_NULLPTR) :
@@ -66,13 +72,13 @@ public:
     virtual ~Meikade2() {
     }
 
-    virtual qint64 pushRequest(const QString &method, const QVariantList &args, qint32 priority) {
-        return AsemanAbstractAgentClient::pushRequest(_service, _version, method, args, priority);
+    virtual qint64 pushRequest(const QString &method, const QVariantList &args, qint32 priority, bool hasResult) {
+        return AsemanAbstractAgentClient::pushRequest(_service, _version, method, args, priority, hasResult);
     }
 
     QString name_ping() const { return "ping"; }
-    qint64 ping(int num, QObject *base = 0, Callback<QString> callBack = 0, qint32 priority = ASM_DEFAULT_PRIORITY) {
-        qint64 id = pushRequest("ping", QVariantList() << QVariant::fromValue<int>(num), priority);
+    Q_INVOKABLE qint64 ping(int num, QObject *base = 0, Callback<QString> callBack = 0, qint32 priority = ASM_DEFAULT_PRIORITY) {
+        qint64 id = pushRequest("ping", QVariantList() << QVariant::fromValue<int>(num), priority, true);
         _calls[id] = "ping";
         pushBase(id, base);
         callBackPush<QString>(id, callBack);
@@ -80,8 +86,8 @@ public:
     }
 
     QString name_lastMessage() const { return "lastMessage"; }
-    qint64 lastMessage(QObject *base = 0, Callback<QVariantMap> callBack = 0, qint32 priority = ASM_DEFAULT_PRIORITY) {
-        qint64 id = pushRequest("lastMessage", QVariantList(), priority);
+    Q_INVOKABLE qint64 lastMessage(QObject *base = 0, Callback<QVariantMap> callBack = 0, qint32 priority = ASM_DEFAULT_PRIORITY) {
+        qint64 id = pushRequest("lastMessage", QVariantList(), priority, true);
         _calls[id] = "lastMessage";
         pushBase(id, base);
         callBackPush<QVariantMap>(id, callBack);
@@ -89,8 +95,8 @@ public:
     }
 
     QString name_getAdvertise() const { return "getAdvertise"; }
-    qint64 getAdvertise(QObject *base = 0, Callback<QVariantMap> callBack = 0, qint32 priority = ASM_DEFAULT_PRIORITY) {
-        qint64 id = pushRequest("getAdvertise", QVariantList(), priority);
+    Q_INVOKABLE qint64 getAdvertise(QObject *base = 0, Callback<QVariantMap> callBack = 0, qint32 priority = ASM_DEFAULT_PRIORITY) {
+        qint64 id = pushRequest("getAdvertise", QVariantList(), priority, true);
         _calls[id] = "getAdvertise";
         pushBase(id, base);
         callBackPush<QVariantMap>(id, callBack);
@@ -98,8 +104,8 @@ public:
     }
 
     QString name_getLastVersion() const { return "getLastVersion"; }
-    qint64 getLastVersion(QString platform, QObject *base = 0, Callback<QVariantMap> callBack = 0, qint32 priority = ASM_DEFAULT_PRIORITY) {
-        qint64 id = pushRequest("getLastVersion", QVariantList() << QVariant::fromValue<QString>(platform), priority);
+    Q_INVOKABLE qint64 getLastVersion(QString platform, QObject *base = 0, Callback<QVariantMap> callBack = 0, qint32 priority = ASM_DEFAULT_PRIORITY) {
+        qint64 id = pushRequest("getLastVersion", QVariantList() << QVariant::fromValue<QString>(platform), priority, true);
         _calls[id] = "getLastVersion";
         pushBase(id, base);
         callBackPush<QVariantMap>(id, callBack);
@@ -107,8 +113,8 @@ public:
     }
 
     QString name_getChangeLog() const { return "getChangeLog"; }
-    qint64 getChangeLog(QString platform, QString version, QObject *base = 0, Callback<QString> callBack = 0, qint32 priority = ASM_DEFAULT_PRIORITY) {
-        qint64 id = pushRequest("getChangeLog", QVariantList() << QVariant::fromValue<QString>(platform) << QVariant::fromValue<QString>(version), priority);
+    Q_INVOKABLE qint64 getChangeLog(QString platform, QString version, QObject *base = 0, Callback<QString> callBack = 0, qint32 priority = ASM_DEFAULT_PRIORITY) {
+        qint64 id = pushRequest("getChangeLog", QVariantList() << QVariant::fromValue<QString>(platform) << QVariant::fromValue<QString>(version), priority, true);
         _calls[id] = "getChangeLog";
         pushBase(id, base);
         callBackPush<QString>(id, callBack);
@@ -116,8 +122,8 @@ public:
     }
 
     QString name_submiteLog() const { return "submiteLog"; }
-    qint64 submiteLog(QString deviceId, QString platform, QString version, QString log, QObject *base = 0, Callback<bool> callBack = 0, qint32 priority = ASM_DEFAULT_PRIORITY) {
-        qint64 id = pushRequest("submiteLog", QVariantList() << QVariant::fromValue<QString>(deviceId) << QVariant::fromValue<QString>(platform) << QVariant::fromValue<QString>(version) << QVariant::fromValue<QString>(log), priority);
+    Q_INVOKABLE qint64 submiteLog(QString deviceId, QString platform, QString version, QString log, QObject *base = 0, Callback<bool> callBack = 0, qint32 priority = ASM_DEFAULT_PRIORITY) {
+        qint64 id = pushRequest("submiteLog", QVariantList() << QVariant::fromValue<QString>(deviceId) << QVariant::fromValue<QString>(platform) << QVariant::fromValue<QString>(version) << QVariant::fromValue<QString>(log), priority, true);
         _calls[id] = "submiteLog";
         pushBase(id, base);
         callBackPush<bool>(id, callBack);
@@ -125,8 +131,8 @@ public:
     }
 
     QString name_pushActivity() const { return "pushActivity"; }
-    qint64 pushActivity(QString type, int time, QString comment, QObject *base = 0, Callback<bool> callBack = 0, qint32 priority = ASM_DEFAULT_PRIORITY) {
-        qint64 id = pushRequest("pushActivity", QVariantList() << QVariant::fromValue<QString>(type) << QVariant::fromValue<int>(time) << QVariant::fromValue<QString>(comment), priority);
+    Q_INVOKABLE qint64 pushActivity(QString type, int time, QString comment, QObject *base = 0, Callback<bool> callBack = 0, qint32 priority = ASM_DEFAULT_PRIORITY) {
+        qint64 id = pushRequest("pushActivity", QVariantList() << QVariant::fromValue<QString>(type) << QVariant::fromValue<int>(time) << QVariant::fromValue<QString>(comment), priority, true);
         _calls[id] = "pushActivity";
         pushBase(id, base);
         callBackPush<bool>(id, callBack);
@@ -134,8 +140,8 @@ public:
     }
 
     QString name_pushAction() const { return "pushAction"; }
-    qint64 pushAction(QString action, QObject *base = 0, Callback<bool> callBack = 0, qint32 priority = ASM_DEFAULT_PRIORITY) {
-        qint64 id = pushRequest("pushAction", QVariantList() << QVariant::fromValue<QString>(action), priority);
+    Q_INVOKABLE qint64 pushAction(QString action, QObject *base = 0, Callback<bool> callBack = 0, qint32 priority = ASM_DEFAULT_PRIORITY) {
+        qint64 id = pushRequest("pushAction", QVariantList() << QVariant::fromValue<QString>(action), priority, true);
         _calls[id] = "pushAction";
         pushBase(id, base);
         callBackPush<bool>(id, callBack);
@@ -143,8 +149,8 @@ public:
     }
 
     QString name_pushDeviceModel() const { return "pushDeviceModel"; }
-    qint64 pushDeviceModel(QString deviceId, QVariantMap map, QObject *base = 0, Callback<bool> callBack = 0, qint32 priority = ASM_DEFAULT_PRIORITY) {
-        qint64 id = pushRequest("pushDeviceModel", QVariantList() << QVariant::fromValue<QString>(deviceId) << QVariant::fromValue<QVariantMap>(map), priority);
+    Q_INVOKABLE qint64 pushDeviceModel(QString deviceId, QVariantMap map, QObject *base = 0, Callback<bool> callBack = 0, qint32 priority = ASM_DEFAULT_PRIORITY) {
+        qint64 id = pushRequest("pushDeviceModel", QVariantList() << QVariant::fromValue<QString>(deviceId) << QVariant::fromValue<QVariantMap>(map), priority, true);
         _calls[id] = "pushDeviceModel";
         pushBase(id, base);
         callBackPush<bool>(id, callBack);
@@ -152,8 +158,8 @@ public:
     }
 
     QString name_addNote() const { return "addNote"; }
-    qint64 addNote(int poemId, int verseId, QString text, QObject *base = 0, Callback<bool> callBack = 0, qint32 priority = ASM_DEFAULT_PRIORITY) {
-        qint64 id = pushRequest("addNote", QVariantList() << QVariant::fromValue<int>(poemId) << QVariant::fromValue<int>(verseId) << QVariant::fromValue<QString>(text), priority);
+    Q_INVOKABLE qint64 addNote(int poemId, int verseId, QString text, QObject *base = 0, Callback<bool> callBack = 0, qint32 priority = ASM_DEFAULT_PRIORITY) {
+        qint64 id = pushRequest("addNote", QVariantList() << QVariant::fromValue<int>(poemId) << QVariant::fromValue<int>(verseId) << QVariant::fromValue<QString>(text), priority, true);
         _calls[id] = "addNote";
         pushBase(id, base);
         callBackPush<bool>(id, callBack);
@@ -161,8 +167,8 @@ public:
     }
 
     QString name_note() const { return "note"; }
-    qint64 note(int poemId, int verseId, QObject *base = 0, Callback<QString> callBack = 0, qint32 priority = ASM_DEFAULT_PRIORITY) {
-        qint64 id = pushRequest("note", QVariantList() << QVariant::fromValue<int>(poemId) << QVariant::fromValue<int>(verseId), priority);
+    Q_INVOKABLE qint64 note(int poemId, int verseId, QObject *base = 0, Callback<QString> callBack = 0, qint32 priority = ASM_DEFAULT_PRIORITY) {
+        qint64 id = pushRequest("note", QVariantList() << QVariant::fromValue<int>(poemId) << QVariant::fromValue<int>(verseId), priority, true);
         _calls[id] = "note";
         pushBase(id, base);
         callBackPush<QString>(id, callBack);
@@ -170,8 +176,8 @@ public:
     }
 
     QString name_getPoemNotes() const { return "getPoemNotes"; }
-    qint64 getPoemNotes(int poemId, int offset, int limit, QObject *base = 0, Callback<QVariantMap> callBack = 0, qint32 priority = ASM_DEFAULT_PRIORITY) {
-        qint64 id = pushRequest("getPoemNotes", QVariantList() << QVariant::fromValue<int>(poemId) << QVariant::fromValue<int>(offset) << QVariant::fromValue<int>(limit), priority);
+    Q_INVOKABLE qint64 getPoemNotes(int poemId, int offset, int limit, QObject *base = 0, Callback<QVariantMap> callBack = 0, qint32 priority = ASM_DEFAULT_PRIORITY) {
+        qint64 id = pushRequest("getPoemNotes", QVariantList() << QVariant::fromValue<int>(poemId) << QVariant::fromValue<int>(offset) << QVariant::fromValue<int>(limit), priority, true);
         _calls[id] = "getPoemNotes";
         pushBase(id, base);
         callBackPush<QVariantMap>(id, callBack);
@@ -179,8 +185,8 @@ public:
     }
 
     QString name_getNotes() const { return "getNotes"; }
-    qint64 getNotes(int offset, int limit, QObject *base = 0, Callback<QVariantList> callBack = 0, qint32 priority = ASM_DEFAULT_PRIORITY) {
-        qint64 id = pushRequest("getNotes", QVariantList() << QVariant::fromValue<int>(offset) << QVariant::fromValue<int>(limit), priority);
+    Q_INVOKABLE qint64 getNotes(int offset, int limit, QObject *base = 0, Callback<QVariantList> callBack = 0, qint32 priority = ASM_DEFAULT_PRIORITY) {
+        qint64 id = pushRequest("getNotes", QVariantList() << QVariant::fromValue<int>(offset) << QVariant::fromValue<int>(limit), priority, true);
         _calls[id] = "getNotes";
         pushBase(id, base);
         callBackPush<QVariantList>(id, callBack);
@@ -188,8 +194,8 @@ public:
     }
 
     QString name_contactUs() const { return "contactUs"; }
-    qint64 contactUs(QString name, QString email, QString msg, QString deviceId, QObject *base = 0, Callback<bool> callBack = 0, qint32 priority = ASM_DEFAULT_PRIORITY) {
-        qint64 id = pushRequest("contactUs", QVariantList() << QVariant::fromValue<QString>(name) << QVariant::fromValue<QString>(email) << QVariant::fromValue<QString>(msg) << QVariant::fromValue<QString>(deviceId), priority);
+    Q_INVOKABLE qint64 contactUs(QString name, QString email, QString msg, QString deviceId, QObject *base = 0, Callback<bool> callBack = 0, qint32 priority = ASM_DEFAULT_PRIORITY) {
+        qint64 id = pushRequest("contactUs", QVariantList() << QVariant::fromValue<QString>(name) << QVariant::fromValue<QString>(email) << QVariant::fromValue<QString>(msg) << QVariant::fromValue<QString>(deviceId), priority, true);
         _calls[id] = "contactUs";
         pushBase(id, base);
         callBackPush<bool>(id, callBack);
@@ -197,8 +203,8 @@ public:
     }
 
     QString name_getStoreItems() const { return "getStoreItems"; }
-    qint64 getStoreItems(QString locale, QString keyword, int category, int offset, int limit, QVariantMap currentList, QObject *base = 0, Callback<QVariantList> callBack = 0, qint32 priority = ASM_DEFAULT_PRIORITY) {
-        qint64 id = pushRequest("getStoreItems", QVariantList() << QVariant::fromValue<QString>(locale) << QVariant::fromValue<QString>(keyword) << QVariant::fromValue<int>(category) << QVariant::fromValue<int>(offset) << QVariant::fromValue<int>(limit) << QVariant::fromValue<QVariantMap>(currentList), priority);
+    Q_INVOKABLE qint64 getStoreItems(QString locale, QString keyword, int category, int offset, int limit, QVariantMap currentList, QObject *base = 0, Callback<QVariantList> callBack = 0, qint32 priority = ASM_DEFAULT_PRIORITY) {
+        qint64 id = pushRequest("getStoreItems", QVariantList() << QVariant::fromValue<QString>(locale) << QVariant::fromValue<QString>(keyword) << QVariant::fromValue<int>(category) << QVariant::fromValue<int>(offset) << QVariant::fromValue<int>(limit) << QVariant::fromValue<QVariantMap>(currentList), priority, true);
         _calls[id] = "getStoreItems";
         pushBase(id, base);
         callBackPush<QVariantList>(id, callBack);
@@ -206,8 +212,8 @@ public:
     }
 
     QString name_getStoreItem() const { return "getStoreItem"; }
-    qint64 getStoreItem(QString iid, QObject *base = 0, Callback<QVariantMap> callBack = 0, qint32 priority = ASM_DEFAULT_PRIORITY) {
-        qint64 id = pushRequest("getStoreItem", QVariantList() << QVariant::fromValue<QString>(iid), priority);
+    Q_INVOKABLE qint64 getStoreItem(QString iid, QObject *base = 0, Callback<QVariantMap> callBack = 0, qint32 priority = ASM_DEFAULT_PRIORITY) {
+        qint64 id = pushRequest("getStoreItem", QVariantList() << QVariant::fromValue<QString>(iid), priority, true);
         _calls[id] = "getStoreItem";
         pushBase(id, base);
         callBackPush<QVariantMap>(id, callBack);
@@ -215,8 +221,8 @@ public:
     }
 
     QString name_getStoreCategories() const { return "getStoreCategories"; }
-    qint64 getStoreCategories(QString locale, QObject *base = 0, Callback<QVariantList> callBack = 0, qint32 priority = ASM_DEFAULT_PRIORITY) {
-        qint64 id = pushRequest("getStoreCategories", QVariantList() << QVariant::fromValue<QString>(locale), priority);
+    Q_INVOKABLE qint64 getStoreCategories(QString locale, QObject *base = 0, Callback<QVariantList> callBack = 0, qint32 priority = ASM_DEFAULT_PRIORITY) {
+        qint64 id = pushRequest("getStoreCategories", QVariantList() << QVariant::fromValue<QString>(locale), priority, true);
         _calls[id] = "getStoreCategories";
         pushBase(id, base);
         callBackPush<QVariantList>(id, callBack);
@@ -224,11 +230,20 @@ public:
     }
 
     QString name_setStoreDownloaded() const { return "setStoreDownloaded"; }
-    qint64 setStoreDownloaded(QString deviceId, QString iid, QObject *base = 0, Callback<bool> callBack = 0, qint32 priority = ASM_DEFAULT_PRIORITY) {
-        qint64 id = pushRequest("setStoreDownloaded", QVariantList() << QVariant::fromValue<QString>(deviceId) << QVariant::fromValue<QString>(iid), priority);
+    Q_INVOKABLE qint64 setStoreDownloaded(QString deviceId, QString iid, QObject *base = 0, Callback<bool> callBack = 0, qint32 priority = ASM_DEFAULT_PRIORITY) {
+        qint64 id = pushRequest("setStoreDownloaded", QVariantList() << QVariant::fromValue<QString>(deviceId) << QVariant::fromValue<QString>(iid), priority, true);
         _calls[id] = "setStoreDownloaded";
         pushBase(id, base);
         callBackPush<bool>(id, callBack);
+        return id;
+    }
+
+    QString name_adminHowManyUsers() const { return "adminHowManyUsers"; }
+    Q_INVOKABLE qint64 adminHowManyUsers(QObject *base = 0, Callback<int> callBack = 0, qint32 priority = ASM_DEFAULT_PRIORITY) {
+        qint64 id = pushRequest("adminHowManyUsers", QVariantList(), priority, true);
+        _calls[id] = "adminHowManyUsers";
+        pushBase(id, base);
+        callBackPush<int>(id, callBack);
         return id;
     }
 
@@ -328,6 +343,11 @@ public Q_SLOTS:
             callBackJs(jsCallback, result, error);
         }, priority);
     }
+    qint64 adminHowManyUsers(const QJSValue &jsCallback, qint32 priority = ASM_DEFAULT_PRIORITY) {
+        return adminHowManyUsers(this, [this, jsCallback](qint64, const int &result, const CallbackError &error) {
+            callBackJs(jsCallback, result, error);
+        }, priority);
+    }
 
 #endif //QT_QML_LIB
 
@@ -369,6 +389,8 @@ Q_SIGNALS:
     void getStoreCategoriesError(qint64 id, qint32 errorCode, const QVariant &errorValue);
     void setStoreDownloadedAnswer(qint64 id, bool result);
     void setStoreDownloadedError(qint64 id, qint32 errorCode, const QVariant &errorValue);
+    void adminHowManyUsersAnswer(qint64 id, int result);
+    void adminHowManyUsersError(qint64 id, qint32 errorCode, const QVariant &errorValue);
 
 protected:
     void processError(qint64 id, const CallbackError &error) {
@@ -488,6 +510,12 @@ protected:
             _calls.remove(id);
             if(error.null) Q_EMIT setStoreDownloadedAnswer(id, result.value<bool>());
             else Q_EMIT setStoreDownloadedError(id, error.errorCode, error.errorValue);
+        } else
+        if(method == "adminHowManyUsers") {
+            callBackCall<int>(id, result.value<int>(), error);
+            _calls.remove(id);
+            if(error.null) Q_EMIT adminHowManyUsersAnswer(id, result.value<int>());
+            else Q_EMIT adminHowManyUsersError(id, error.errorCode, error.errorValue);
         } else
             Q_UNUSED(result);
         if(!error.null) Q_EMIT AsemanAbstractAgentClient::error(id, error.errorCode, error.errorValue);

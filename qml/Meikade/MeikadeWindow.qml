@@ -19,8 +19,8 @@
 import QtQuick 2.0
 import QtGraphicalEffects 1.0
 import QtQuick.Controls 2.1
-import AsemanTools 1.1 as AT
-import AsemanTools.Awesome 1.0
+import AsemanQml.Base 2.0 as AT
+import AsemanQml.Awesome 2.0
 import Meikade 1.0
 import QtQuick.Dialogs 1.1
 import "."
