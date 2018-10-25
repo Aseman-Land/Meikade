@@ -9,12 +9,10 @@ DEPLOYMENTFOLDERS += folder_01 folder_02 folder_03
 QT += widgets
 
 ios {
-    QTPLUGIN += qsqlite
     QMAKE_INFO_PLIST = iOS/info.plist
 
-    folder_04.source = iOS/splash/Default-568h@2x.png
-    folder_04.target = .
-    DEPLOYMENTFOLDERS += folder_04
+    app_launch_images.files = $$PWD/iOS/Launch.xib $$files($$PWD/iOS/splash/LaunchImage*.png)
+    QMAKE_BUNDLE_DATA += app_launch_images
 
     ios_icon.files = $$files($$PWD/iOS/icons/*.png)
     QMAKE_BUNDLE_DATA += ios_icon
