@@ -12,7 +12,7 @@ AsemanObject {
     property color foregroundColor: Material.foreground
 
     Material.theme: Meikade.nightTheme? Material.Dark : Material.Light
-    Material.background: Meikade.nightTheme? "#313131" : "#eaeaea"
+//    Material.background: Meikade.nightTheme? "#313131" : "#eaeaea"
 
     property alias categoriesList: _categoriesList
     property string profilePath: AsemanApp.homePath
@@ -25,6 +25,7 @@ AsemanObject {
     property alias languageSelected: settings.languageSelected
 
     property alias translator: translationManager
+    property bool iosStyle: Devices.isIOS// || Devices.isDesktop
 
     ListObject {
         id: _categoriesList

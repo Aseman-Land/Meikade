@@ -23,6 +23,7 @@ import QtQuick.Controls.Material 2.1
 import QtQuick.Layouts 1.3
 import AsemanQml.Base 2.0
 import AsemanQml.Awesome 2.0
+import AsemanQml.Controls 2.0
 import "globals"
 
 Item {

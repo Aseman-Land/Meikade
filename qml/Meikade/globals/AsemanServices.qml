@@ -30,6 +30,12 @@ AsemanObject {
         socket: asemanSocket
     }
 
+    Settings {
+        id: messagesSettings
+        source: AsemanApp.homePath + "/messages.ini"
+        category: "General"
+    }
+
     Timer {
         id: checkMessageTimer
         interval: 5*60*1000
@@ -38,12 +44,11 @@ AsemanObject {
         onTriggered: {
             meikade.lastMessage(function(res, error){
                 if(res.uuid) {
-                    if(messagesSettings.value(res.uuid, 0) == 0)
+                    if(messagesSettings.value(res.uuid, 0) == 1)
                         return
 
                     incommingMessage(res.message, res.urlAction)
                     messagesSettings.setValue(res.uuid, 1)
-                    messageDialog.show(network_message_component, {"message":message, "destUrl":url})
                 }
             })
         }

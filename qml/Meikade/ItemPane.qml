@@ -9,5 +9,5 @@ Pane {
 //    radius: 3*Devices.density
 //    shadowColor: "#88000000"
     padding: 0
-    Material.elevation: Devices.isIOS? 0*Devices.density : 1*Devices.density
+    Material.elevation: MeikadeGlobals.iosStyle? 0*Devices.density : 1*Devices.density
 }

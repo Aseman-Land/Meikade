@@ -20,6 +20,7 @@ import QtQuick 2.0
 import QtGraphicalEffects 1.0
 import QtQuick.Controls 2.1 as QtControls
 import AsemanQml.Base 2.0
+import AsemanQml.Controls 2.0
 import Meikade 1.0
 import AsemanQml.Awesome 2.0
 import "globals"
@@ -83,6 +84,7 @@ Rectangle {
             text: qsTr("Share")
             backButtonText: ""
             statusBar: false
+            shadow: !MeikadeGlobals.iosStyle
         }
 
         Row {
@@ -503,6 +505,7 @@ Rectangle {
                         text: qsTr("Select Image")
                         backButtonText: ""
                         statusBar: false
+                        shadow: !MeikadeGlobals.iosStyle
                     }
 
                     Row {
@@ -545,7 +548,7 @@ Rectangle {
                 TitleBarShadow {
                     anchors.top: fsview.top
                     width: parent.width
-                    visible: !Devices.isIOS
+                    visible: !MeikadeGlobals.iosStyle
                 }
             }
 

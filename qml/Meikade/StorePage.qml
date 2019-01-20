@@ -19,6 +19,7 @@
 import QtQuick 2.0
 import AsemanQml.Base 2.0
 import AsemanQml.Base 2.0 as AT
+import AsemanQml.Controls 2.0 as AC
 import Meikade 1.0
 import AsemanQml.Awesome 2.0
 import AsemanClient.CoreServices 1.0 as CoreServices
@@ -70,11 +71,11 @@ Rectangle {
         TitleBarShadow {
             width: parent.width
             anchors.top: parent.bottom
-            visible: !Devices.isIOS
+            visible: !MeikadeGlobals.iosStyle
         }
     }
 
-    AT.TabBar {
+    AC.TabBar {
         id: tabBar
         anchors.top: header.bottom
         width: parent.width

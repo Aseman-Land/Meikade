@@ -18,6 +18,7 @@
 
 import QtQuick 2.0
 import AsemanQml.Base 2.0
+import AsemanQml.Controls 2.0
 import AsemanQml.Awesome 2.0
 import QtQuick.Controls 2.0 as QtControls
 import QtQuick.Controls.Material 2.1
@@ -136,6 +137,7 @@ Rectangle {
         id: title_bar
         width: parent.width
         color: MeikadeGlobals.masterColor
+        shadow: !MeikadeGlobals.iosStyle
         y: titleBarHide? -Devices.standardTitleBarHeight : 0
 
         property bool hide: false
@@ -263,6 +265,7 @@ Rectangle {
                 id: header
                 width: parent.width
                 color: title_bar.color
+                shadow: !MeikadeGlobals.iosStyle
 
                 Button {
                     x: View.reverseLayout? 0 : parent.width - width

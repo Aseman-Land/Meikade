@@ -21,6 +21,7 @@ import QtQuick.Controls 2.1
 import QtGraphicalEffects 1.0
 import AsemanQml.Base 2.0
 import AsemanQml.Awesome 2.0
+import AsemanQml.Controls 2.0
 import "globals"
 
 Rectangle {
@@ -194,7 +195,7 @@ Rectangle {
     TitleBarShadow {
         width: parent.width
         anchors.top: header_back.bottom
-        visible: !Devices.isIOS
+        visible: !MeikadeGlobals.iosStyle
     }
 
     ScrollBar {

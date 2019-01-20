@@ -158,5 +158,13 @@
         <file>qml/Meikade/Contact.qml</file>
         <file>database/schema.sql</file>
         <file>database/userdata.sql</file>
+        <file>qml/Meikade/pages/MainWindow.qml</file>
+        <file>qml/Meikade/pages/MainWindow_android.qml</file>
+        <file>qml/Meikade/pages/MainWindow_ios.qml</file>
+        <file>qml/Meikade/models/CategoryModel.qml</file>
+        <file>qml/Meikade/icons/meikade.svg</file>
+        <file>qml/Meikade/icons/meikade_t_dark.png</file>
+        <file>qml/Meikade/icons/meikade_t_light.png</file>
+        <file>qml/Meikade/icons/meikade_t.png</file>
     </qresource>
 </RCC>

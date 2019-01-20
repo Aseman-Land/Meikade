@@ -18,6 +18,7 @@
 
 import QtQuick 2.0
 import AsemanQml.Base 2.0
+import AsemanQml.Controls 2.0
 import "globals"
 
 Rectangle {
@@ -35,7 +36,7 @@ Rectangle {
 
         TitleBarShadow {
             width: header.width
-            visible: !Devices.isIOS
+            visible: !MeikadeGlobals.iosStyle
             anchors.top: header.bottom
         }
     }

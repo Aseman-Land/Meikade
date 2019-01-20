@@ -19,6 +19,7 @@
 import QtQuick 2.0
 import AsemanQml.Base 2.0
 import AsemanQml.Base 2.0 as AT
+import AsemanQml.Controls 2.0 as AC
 import QtQuick.Controls 2.0
 import QtQuick.Controls.Material 2.0
 import "globals"
@@ -60,7 +61,7 @@ BackHandlerView {
         TitleBarShadow {
             width: parent.width
             anchors.top: parent.bottom
-            visible: !Devices.isIOS
+            visible: !MeikadeGlobals.iosStyle
         }
     }
 
@@ -160,7 +161,7 @@ BackHandlerView {
                 }
             }
 
-            AT.ScrollBar {
+            AC.ScrollBar {
                 scrollArea: prefrences; height: prefrences.height
                 anchors.right: prefrences.right; anchors.top: prefrences.top; color: "#ffffff"
                 LayoutMirroring.enabled: View.layoutDirection == Qt.RightToLeft

@@ -20,6 +20,7 @@ import QtQuick 2.0
 import QtGraphicalEffects 1.0
 import QtQuick.Controls 2.1
 import AsemanQml.Base 2.0 as AT
+import AsemanQml.Controls 2.0 as AC
 import AsemanQml.Awesome 2.0
 import Meikade 1.0
 import QtQuick.Dialogs 1.1
@@ -114,10 +115,11 @@ MeikadeWindowBase {
         onStatusChanged: if(status == FontLoader.Ready) AT.AsemanApp.globalFont.family = name
     }
 
-    AT.SlidePageManager {
+    AC.SlidePageManager {
         id: page_manager
         anchors.fill: parent
-        direction: Qt.Vertical
+        direction: MeikadeGlobals.iosStyle? Qt.Horizontal : Qt.Vertical
+        gestureBackable: MeikadeGlobals.iosStyle
         mainComponent: Item {
             id: frame
             anchors.fill: parent
@@ -192,10 +194,11 @@ MeikadeWindowBase {
         }
     }
 
-    AT.SideMenu {
+    AC.SideMenu {
         id: sidebar
         anchors.fill: parent
         menuType: menuTypeMaterial
+        visible: !MeikadeGlobals.iosStyle
         delegate: MouseArea {
             anchors.fill: parent
 
@@ -250,11 +253,12 @@ MeikadeWindowBase {
             layoutDirection: AT.View.layoutDirection
             spacing: 10*AT.Devices.density
 
-            AT.MenuIcon {
+            AC.MenuIcon {
                 id: menuIcon
                 anchors.verticalCenter: parent.verticalCenter
                 height: 20*AT.Devices.density
                 width: height
+                visible: !MeikadeGlobals.iosStyle || ratio == 1
                 ratio: {
                     if(searchPage)
                         return fakeRatio
@@ -383,7 +387,7 @@ MeikadeWindowBase {
     }
 
     function back(){
-        return AT.AsemanApp.back()
+        return AC.AsemanApp.back()
     }
 
     function loadFonts() {

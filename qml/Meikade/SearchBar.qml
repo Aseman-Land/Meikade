@@ -18,6 +18,7 @@
 
 import QtQuick 2.0
 import AsemanQml.Base 2.0
+import AsemanQml.Controls 2.0
 import QtQuick.Controls 2.0 as QtControls
 import AsemanQml.Awesome 2.0
 import "globals"
@@ -239,7 +240,7 @@ BackHandlerView {
     TitleBarShadow {
         width: parent.width
         anchors.top: search_frame.bottom
-        visible: !Devices.isIOS
+        visible: !MeikadeGlobals.iosStyle
     }
 
     function show() {

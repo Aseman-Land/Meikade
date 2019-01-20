@@ -18,15 +18,13 @@
 
 import QtQuick 2.0
 import AsemanQml.Base 2.0
+import AsemanQml.Controls 2.0
 
 Rectangle {
     id: smain
     focus: true
 
-    property alias pasteButton: paste_btn
-    property alias rollerDialog: roller_dialog
     property alias bottomPanel: bottom_panel
-    property alias pointerDialog: point_dialog
     property alias messageDialog: message_dialog
 
     property color subMessageBackground: "#66ffffff"
@@ -37,30 +35,14 @@ Rectangle {
 
     property real panelWidth: width
 
-    PointingDialog{
-        id: point_dialog
-        z: 9
-    }
-
     BottomPanel {
         id: bottom_panel
-        z: 10
-    }
-
-    RollerDialog {
-        id: roller_dialog
-        anchors.fill: parent
         z: 10
     }
 
     MessageDialog {
         id: message_dialog
         anchors.fill: parent
-        z: 10
-    }
-
-    PasteButton {
-        id: paste_btn
         z: 10
     }
 
@@ -104,23 +86,6 @@ Rectangle {
     function hideBottomPanel() {
         if( bottom_panel.item )
             bottom_panel.hide()
-    }
-
-    function showPointDialog( item, x, y, width, height ){
-        point_dialog.item = item
-        point_dialog.pointingTo(x,y,width,height)
-    }
-
-    function hidePointDialog(){
-        point_dialog.hide()
-    }
-
-    function showRollerDialog( y1, y2, item ){
-        roller_dialog.show(y1,y2,item)
-    }
-
-    function hideRollerDialog(){
-        roller_dialog.hide()
     }
 
     Component {

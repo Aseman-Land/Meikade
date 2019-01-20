@@ -17,6 +17,7 @@
 */
 
 import AsemanQml.Base 2.0
+import AsemanQml.Controls 2.0
 import AsemanQml.MaterialIcons 2.0
 import QtQuick 2.5
 import QtQuick.Controls 2.1 as QtControls
@@ -140,5 +141,6 @@ QtControls.Page {
         color: MeikadeGlobals.masterColor
         titleFont.pixelSize: 10*Devices.fontDensity
         text: qsTr("Contact")
+        shadow: !MeikadeGlobals.iosStyle
     }
 }

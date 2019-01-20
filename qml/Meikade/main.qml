@@ -18,6 +18,7 @@
 
 import QtQuick 2.7
 import AsemanQml.Base 2.0
+import AsemanQml.Controls 2.0
 
 AsemanApplication {
     id: app
@@ -29,6 +30,7 @@ AsemanApplication {
     organizationDomain: "NileGroup"
 //    organizationName: "Aseman Team"
     windowIcon: "icons/meikade.png"
+//    source: "pages/MainWindow.qml"
     source: "MeikadeMainWindow.qml"
 
     FontLoader {
