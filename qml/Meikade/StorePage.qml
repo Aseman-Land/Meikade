@@ -22,7 +22,7 @@ import AsemanQml.Base 2.0 as AT
 import AsemanQml.Controls 2.0 as AC
 import Meikade 1.0
 import AsemanQml.Awesome 2.0
-import AsemanClient.CoreServices 1.0 as CoreServices
+import Falcon 1.0 as Falcon
 import QtQuick.Controls 2.0
 import QtQuick.Controls.Material 2.0
 import QtQuick.Layouts 1.3
@@ -36,7 +36,7 @@ Rectangle {
 
     readonly property string title: qsTr("Store")
 
-    CoreServices.GeneralModel {
+    Falcon.GeneralModel {
         id: gmodel
         agent: AsemanServices.meikade
         method: AsemanServices.meikade.name_getStoreCategories

@@ -1,8 +1,7 @@
 pragma Singleton
 
 import QtQuick 2.0
-import AsemanClient 1.0 as Client
-import AsemanClient.CoreServices 1.0 as CoreServices
+import Falcon 1.0 as Falcon
 import AsemanClient.Services 1.0 as Services
 import QtQuick 2.7
 import AsemanQml.Base 2.0
@@ -16,7 +15,7 @@ AsemanObject {
 
     signal incommingMessage(string message, string msgUrl)
 
-    Client.ClientSocket {
+    Falcon.ClientSocket {
         id: asemanSocket
         hostAddress: "meikade.com"
         autoTrust: true

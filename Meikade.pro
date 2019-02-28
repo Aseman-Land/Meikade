@@ -27,11 +27,7 @@ include(aseman/aseman.pri)
 include(qmake/qtcAddDeployment.pri)
 qtcAddDeployment()
 
-LIBS += -lasemanclient
-INCLUDEPATH += \
-    $$[QT_INSTALL_HEADERS]/aseman/client/
-
-QT += sql qml quick asemancore asemangui asemanqml
+QT += sql qml quick asemancore asemangui asemanqml falcon
 
 SOURCES += main.cpp \
     userdata.cpp \

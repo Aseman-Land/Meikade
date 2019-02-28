@@ -22,7 +22,7 @@ import AsemanQml.Controls 2.0
 import QtQuick.Controls 2.1 as QtControls
 import Meikade 1.0
 import AsemanQml.Awesome 2.0
-import AsemanClient.CoreServices 1.0 as CoreServices
+import Falcon 1.0 as Falcon
 import QtQuick.Layouts 1.3
 import QtGraphicalEffects 1.0
 import "globals"
@@ -38,7 +38,7 @@ Item {
 
     onCategoryChanged: gmodel.clear()
 
-    CoreServices.GeneralModel {
+    Falcon.GeneralModel {
         id: gmodel
         agent: AsemanServices.meikade
         method: AsemanServices.meikade.name_getStoreItems
@@ -123,13 +123,13 @@ Item {
                         radius: 8*Devices.density
                     }
 
-                    CoreServices.RemoteImage {
+                    Falcon.RemoteImage {
                         id: poetImg
                         anchors.fill: parent
                         visible: false
                         fillMode: Image.PreserveAspectFit
                         socket: AsemanServices.socket
-                        receiveMethod: CoreServices.RemoteFile.ReceiveMediaNormal
+                        receiveMethod: Falcon.RemoteFile.ReceiveMediaNormal
                         source: model.thumb
                         destination: {
                             var path = Meikade.thumbsPath
