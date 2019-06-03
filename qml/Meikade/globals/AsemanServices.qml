@@ -1,7 +1,7 @@
 pragma Singleton
 
 import QtQuick 2.0
-import Falcon 1.0 as Falcon
+import Falcon.Base 1.0 as Falcon
 import AsemanClient.Services 1.0 as Services
 import QtQuick 2.7
 import AsemanQml.Base 2.0
