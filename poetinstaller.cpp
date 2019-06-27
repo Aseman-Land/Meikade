@@ -265,9 +265,9 @@ void PoetInstaller::install()
     QDateTime date = p->date;
 
     QPointer<PoetInstaller> dis = this;
-    connect(file, &AsemanRemoteFile::finalPathChanged, file, [dis, file, date, poetId](){
+    connect(file, &AsemanRemoteFile::downloadingChanged, file, [dis, file, date, poetId](){
         QString path = file->finalPath().toLocalFile();
-        if(path.isEmpty())
+        if(path.isEmpty() || file->downloading())
             return;
 
         if(dis)
