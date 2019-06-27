@@ -22,7 +22,7 @@ import AsemanQml.Base 2.0 as AT
 import AsemanQml.Controls 2.0 as AC
 import Meikade 1.0
 import AsemanQml.Awesome 2.0
-import Falcon 1.0 as Falcon
+import Falcon.Base 1.0 as Falcon
 import QtQuick.Controls 2.0
 import QtQuick.Controls.Material 2.0
 import QtQuick.Layouts 1.3

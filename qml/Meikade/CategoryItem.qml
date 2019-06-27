@@ -37,11 +37,10 @@ RowLayout {
     RoundedImage {
         id: img
 
-        anchors.verticalCenter: parent.verticalCenter
         Layout.preferredHeight: 40*Devices.density
         Layout.preferredWidth: root? Layout.preferredHeight : 0
-        Layout.alignment: Qt.AlignHCenter
-        Layout.margins: root? y : y/2
+//        Layout.alignment: Qt.AlignCenter
+        Layout.margins: root? (item.height - height)/2 : (item.height - height)/4
 
         radius: 8*Devices.density
         fillMode: Image.PreserveAspectFit

@@ -22,7 +22,7 @@ import AsemanQml.Controls 2.0
 import QtQuick.Controls 2.1 as QtControls
 import Meikade 1.0
 import AsemanQml.Awesome 2.0
-import Falcon 1.0 as Falcon
+import Falcon.Base 1.0 as Falcon
 import QtQuick.Layouts 1.3
 import QtGraphicalEffects 1.0
 import "globals"
@@ -112,7 +112,6 @@ Item {
                 layoutDirection: View.layoutDirection
 
                 Item {
-                    anchors.verticalCenter: parent.verticalCenter
                     Layout.preferredHeight: 40*Devices.density
                     Layout.preferredWidth: Layout.preferredHeight
 
@@ -146,7 +145,6 @@ Item {
                 }
 
                 Text {
-                    anchors.verticalCenter: parent.verticalCenter
                     Layout.fillWidth: true
 
                     text: model.name
@@ -157,7 +155,6 @@ Item {
                 }
 
                 Text {
-                    anchors.verticalCenter: parent.verticalCenter
                     font.pixelSize: 9*globalFontDensity*Devices.fontDensity
                     font.family: AsemanApp.globalFont.family
                     color: Meikade.nightTheme? Qt.darker(MeikadeGlobals.foregroundColor) : Qt.lighter(MeikadeGlobals.foregroundColor)
@@ -208,7 +205,7 @@ Item {
                                 return Awesome.fa_download
                             else
                             if(installer.installed)
-                                return Awesome.fa_check_square_o
+                                return Awesome.fa_check
                             else
                                 return Awesome.fa_plus
                         }

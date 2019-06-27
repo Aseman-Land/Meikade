@@ -48,7 +48,6 @@ Rectangle {
 
         Item {
             id: title_column
-            anchors.verticalCenter: parent.verticalCenter
             Layout.fillWidth: true
         }
 

@@ -109,7 +109,6 @@ Item {
                 spacing: 25*Devices.density
 
                 Text {
-                    anchors.verticalCenter: parent.verticalCenter
                     font.pixelSize: 14*globalFontDensity*Devices.fontDensity
                     font.family: Awesome.family
                     color: MeikadeGlobals.foregroundColor
@@ -120,8 +119,6 @@ Item {
 
                 Text {
                     Layout.fillWidth: true
-
-                    anchors.verticalCenter: parent.verticalCenter
                     font.pixelSize: 9*globalFontDensity*Devices.fontDensity
                     font.family: AsemanApp.globalFont.family
                     color: MeikadeGlobals.foregroundColor

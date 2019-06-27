@@ -112,7 +112,6 @@ Item {
 
         Column {
             id: title_column
-            anchors.verticalCenter: parent.verticalCenter
             anchors.left: parent.left
             anchors.right: parent.right
             spacing: 10*Devices.density
