@@ -25,7 +25,7 @@ AsemanObject {
     property alias languageSelected: settings.languageSelected
 
     property alias translator: translationManager
-    property bool iosStyle: Devices.isIOS// || Devices.isDesktop
+    property bool iosStyle: false// || Devices.isDesktop
 
     ListObject {
         id: _categoriesList
@@ -37,7 +37,7 @@ AsemanObject {
         category: "General"
 
         property bool darkMode: false
-        property string localeName: "en"
+        property string localeName: "fa"
         property bool languageSelected: false
         property int execCount: 0
         property string lastCheckedVersion

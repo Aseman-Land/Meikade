@@ -37,4 +37,8 @@ AsemanApplication {
         source: Meikade.resourcePath + "/fonts/IRAN-Sans.ttf"
         onStatusChanged: if(status == FontLoader.Ready) AsemanApp.globalFont.family = name
     }
+
+    MeikadeMainWindow {
+        visible: true
+    }
 }
