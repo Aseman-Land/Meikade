@@ -118,8 +118,8 @@ MeikadeWindowBase {
     AC.SlidePageManager {
         id: page_manager
         anchors.fill: parent
-        direction: MeikadeGlobals.iosStyle? Qt.Horizontal : Qt.Vertical
-        gestureBackable: MeikadeGlobals.iosStyle
+        direction: AT.Devices.isIOS? Qt.Horizontal : Qt.Vertical
+        gestureBackable: AT.Devices.isIOS
         mainComponent: Item {
             id: frame
             anchors.fill: parent
@@ -198,7 +198,7 @@ MeikadeWindowBase {
         id: sidebar
         anchors.fill: parent
         menuType: menuTypeMaterial
-        visible: !MeikadeGlobals.iosStyle
+        visible: !AT.Devices.isIOS || page_manager.count == 0
         delegate: MouseArea {
             anchors.fill: parent
 
