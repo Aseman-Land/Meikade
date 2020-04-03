@@ -1,13 +1,13 @@
 /*
-    Copyright (C) 2017 Aseman Team
-    http://aseman.co
+    Copyright (C) 2019 Aseman Team
+    http://aseman.io
 
-    Meikade is free software: you can redistribute it and/or modify
+    This project is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
 
-    Meikade is distributed in the hope that it will be useful,
+    This project is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
@@ -17,17 +17,22 @@
 */
 
 #include <QGuiApplication>
-#include <QFont>
-
-#include "meikade.h"
+#include <QQmlApplicationEngine>
 
 int main(int argc, char *argv[])
 {
-    QGuiApplication app(argc, argv);
-    QGuiApplication::setFont(QFont("IRAN-sans"));
+    QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
-    Meikade meikade;
-    meikade.start();
+    QGuiApplication app(argc, argv);
+
+    QQmlApplicationEngine engine;
+    const QUrl url(QStringLiteral("qrc:/main.qml"));
+    QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
+                     &app, [url](QObject *obj, const QUrl &objUrl) {
+        if (!obj && url == objUrl)
+            QCoreApplication::exit(-1);
+    }, Qt::QueuedConnection);
+    engine.load(url);
 
     return app.exec();
 }
