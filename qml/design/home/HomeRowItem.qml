@@ -9,13 +9,16 @@ Item {
     property string type
     property variant modelData
 
+    signal clicked(string link)
+
     DelegateSwitch {
         id: dswitch
 
         Component {
-            HomeRecentRow {
+            HomeDynamicRow {
                 width: rowItem.width
                 model.data: modelData
+                onClicked: rowItem.clicked(link)
             }
         }
         Component {
@@ -23,15 +26,26 @@ Item {
             HomeStaticRow {
                 width: rowItem.width
                 model.data: modelData
+                onClicked: rowItem.clicked(link)
+            }
+        }
+        Component {
+            id: flexibleStaticComponent
+            HomeFlexibleRow {
+                width: rowItem.width
+                model.data: modelData
+                onClicked: rowItem.clicked(link)
             }
         }
 
         current: {
             switch (type) {
-            case "recents":
+            case "dynamic":
                 return 0;
             case "static":
                 return 1;
+            case "flexible":
+                return 2;
             default:
                 return -1;
             }

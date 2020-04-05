@@ -1,5 +1,5 @@
 import QtQuick 2.12
-import design 1.0
+import MeikadeDesign 1.0
 import AsemanQml.Base 2.0
 import QtQuick.Controls 2.3
 import QtQuick.Layouts 1.3
@@ -12,10 +12,16 @@ Item {
     height: Constants.height
 
     property alias list: list
+    property alias headerItem: headerItem
+
+    signal linkRequest(string link)
 
     AsemanListView {
         id: list
-        anchors.fill: parent
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.top: headerItem.bottom
+        anchors.bottom: parent.bottom
         anchors.leftMargin: spacing
         anchors.rightMargin: spacing
         spacing: 10 * Devices.density
@@ -33,9 +39,15 @@ Item {
         }
 
         delegate: HomeRowItem {
+            id: rowItem
             width: list.width
             type: model.type
             modelData: model.modelData
+
+            Connections {
+                target: rowItem
+                onClicked: homeForm.linkRequest(link)
+            }
 
             Rectangle {
                 width: homeForm.width
@@ -61,20 +73,6 @@ Item {
 
         section.criteria: ViewSection.FullString
         section.property: "section"
-        section.delegate: Item {
-            width: list.width
-            height: sectionTxt.text.length ? 40 * Devices.density : 0
-
-            Label {
-                id: sectionTxt
-                anchors.left: parent.left
-                anchors.right: parent.right
-                anchors.bottom: parent.bottom
-                anchors.bottomMargin: list.spacing
-                font.pixelSize: 10 * Devices.fontDensity
-                text: section
-            }
-        }
     }
 
     ScrollBar {
@@ -83,5 +81,14 @@ Item {
         anchors.top: list.top
         color: Material.primary
         scrollArea: list
+    }
+
+    Header {
+        id: headerItem
+        color: Material.primary
+        anchors.left: parent.left
+        anchors.right: parent.right
+        text: qsTr("Meikade")
+        anchors.top: parent.top
     }
 }

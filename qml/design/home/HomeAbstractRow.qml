@@ -2,6 +2,8 @@ import QtQuick 2.12
 
 Rectangle {
     color: "transparent"
+
+    signal clicked(string link)
 }
 
 /*##^##

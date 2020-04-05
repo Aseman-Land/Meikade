@@ -1,10 +1,10 @@
 import QtQuick 2.12
-import design 1.0
+import MeikadeDesign 1.0
 import AsemanQml.Base 2.0
 import QtQuick.Controls 2.3
 
 RoundedItem {
-    radius: 5 * Devices.density
+    radius: Constants.radius
     property alias button: button
 
     ItemDelegate {

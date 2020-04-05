@@ -1,5 +1,5 @@
 import QtQuick 2.12
-import design 1.0
+import MeikadeDesign 1.0
 import AsemanQml.Base 2.0
 import QtQuick.Controls 2.3
 import AsemanQml.Controls 2.0
@@ -17,11 +17,10 @@ Page {
     property alias homePage: homePage
     property alias footerListView: footerListView
     property alias swipeView: swipeView
-    property alias headerItem: headerItem
 
     Rectangle {
         id: swipeView
-        anchors.top: headerItem.bottom
+        anchors.top: parent.top
         anchors.bottom: footerItem.top
         anchors.right: parent.right
         anchors.left: parent.left
@@ -114,14 +113,5 @@ Page {
                 }
             }
         }
-    }
-
-    Header {
-        id: headerItem
-        color: Material.primary
-        anchors.left: parent.left
-        anchors.right: parent.right
-        text: qsTr("Meikade")
-        anchors.top: parent.top
     }
 }

@@ -11,6 +11,9 @@ Item {
     property string image
     property color color
     property string type
+    property string link
+
+    signal clicked()
 
     DelegateSwitch {
         id: dswitch
@@ -22,6 +25,7 @@ Item {
                 description.text: delg.description
                 image.source: delg.image
                 background.color: delg.color
+                button.onClicked: delg.clicked()
             }
         }
         Component {
@@ -30,6 +34,7 @@ Item {
                 title.text: delg.title
                 image.source: delg.image
                 background.color: delg.color
+                button.onClicked: delg.clicked()
             }
         }
 

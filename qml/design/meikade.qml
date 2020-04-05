@@ -1,5 +1,5 @@
 import QtQuick 2.12
-import design 1.0
+import MeikadeDesign 1.0
 import "home"
 
 MainForm {
@@ -7,7 +7,7 @@ MainForm {
     width: Constants.width
     height: Constants.height
 
-    HomePage {
+    HomeDemo {
         parent: form.homePage
         anchors.fill: parent
     }

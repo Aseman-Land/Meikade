@@ -1,0 +1,5 @@
+singleton AsemanGlobals 1.0 AsemanGlobals.qml
+singleton GlobalObjects 1.0 GlobalObjects.qml
+singleton GlobalMethods 1.0 GlobalMethods.qml
+singleton Bootstrap 1.0 Bootstrap.qml
+singleton ViewController 1.0 ViewController.qml
