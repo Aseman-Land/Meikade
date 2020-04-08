@@ -32,7 +32,7 @@ AsemanObject {
         ViewportControllerRoute {
             route: /popup\:\/auth\/float/
             component: authFloatComponent
-            viewportType: "ios-popup"
+            viewportType: "none"
         }
     }
 
@@ -45,7 +45,6 @@ AsemanObject {
         id: authFloatComponent
         Auth {
             anchors.fill: parent
-            viewport: viewController.viewport
         }
     }
 }
