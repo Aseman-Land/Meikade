@@ -7,7 +7,7 @@ import QtQuick.Controls.Material 2.0
 AbstractDelegate {
     id: adel
     width: Constants.width
-    height: 100
+    height: 100 * Devices.density
     property alias image: image
     property alias title: title
     property alias background: background

@@ -8,4 +8,9 @@ MainForm {
         parent: form.homePage
         anchors.fill: parent
     }
+
+    Search {
+        parent: form.searchPage
+        anchors.fill: parent
+    }
 }

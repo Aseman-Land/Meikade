@@ -8,7 +8,7 @@ import AsemanQml.Base 2.0
 AbstractDelegate {
     id: delItem
     width: 400
-    height: 100
+    height: 100 * Devices.density
     property alias description: description
     property alias image: image
     property alias title: title
