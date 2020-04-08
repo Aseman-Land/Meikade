@@ -1,5 +1,7 @@
 import QtQuick 2.0
+import QtQuick.Controls 2.0
 import "../design"
+import "../globals"
 
 MainForm {
     id: form
@@ -11,6 +13,11 @@ MainForm {
 
     Search {
         parent: form.searchPage
+        anchors.fill: parent
+    }
+
+    MyMeikade {
+        parent: form.myMeikadePage
         anchors.fill: parent
     }
 }

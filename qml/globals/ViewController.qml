@@ -3,6 +3,7 @@ pragma Singleton
 import QtQuick 2.0
 import AsemanQml.Base 2.0
 import AsemanQml.Viewport 2.0
+import "../pages"
 
 AsemanObject {
     id: viewController
@@ -25,13 +26,26 @@ AsemanObject {
         ViewportControllerRoute {
             route: /popup\:\/search\/domains/
             component: domainComponent
-            viewportType: "popup"
+            viewportType: "ios-popup"
+        }
+
+        ViewportControllerRoute {
+            route: /popup\:\/auth\/float/
+            component: authFloatComponent
+            viewportType: "ios-popup"
         }
     }
 
     Component {
         id: domainComponent
         Rectangle {
+        }
+    }
+    Component {
+        id: authFloatComponent
+        Auth {
+            anchors.fill: parent
+            viewport: viewController.viewport
         }
     }
 }

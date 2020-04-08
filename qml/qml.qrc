@@ -20,5 +20,7 @@
         <file>models/HomeDemoModel.qml</file>
         <file>pages/Search.qml</file>
         <file>models/SearchDemoModel.qml</file>
+        <file>pages/Auth.qml</file>
+        <file>pages/MyMeikade.qml</file>
     </qresource>
 </RCC>
