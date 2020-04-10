@@ -9,11 +9,10 @@ import QtQuick.Layouts 1.3
 import QtQuick.Controls.Material 2.0
 import "../home/delegates" as Delegates
 
-Rectangle {
+Item {
     id: searchForm
     width: Constants.width
     height: Constants.height
-    color: Constants.background
     property alias keywordField: keywordField
     property alias domainBtn: domainBtn
     property alias gridView: gridView

@@ -7,6 +7,7 @@ SOURCES += \
 INCLUDED_RESOURCE_FILES += \
     $$files($$PWD/qml/design/*.qml, true) \
     $$files($$PWD/qml/design/*.png, true) \
+    $$files($$PWD/qml/design/*.jpg, true) \
     $$files($$PWD/qml/design/qmldir, true)
 
 meikadeQml.files = $$INCLUDED_RESOURCE_FILES

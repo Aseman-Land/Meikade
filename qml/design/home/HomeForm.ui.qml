@@ -88,7 +88,7 @@ Item {
         color: Material.primary
         anchors.left: parent.left
         anchors.right: parent.right
-        text: qsTr("Meikade")
+        text: qsTr("Meikade") + Translations.refresher
         anchors.top: parent.top
     }
 }

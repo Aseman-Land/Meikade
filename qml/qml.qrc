@@ -1,6 +1,7 @@
 <RCC>
     <qresource prefix="/">
         <file>qtquickcontrols2.conf</file>
+        <file>design/mymeikade/MyMeikadeDemo.qml</file>
     </qresource>
     <qresource prefix="/qml">
         <file>main.qml</file>
@@ -22,5 +23,6 @@
         <file>models/SearchDemoModel.qml</file>
         <file>pages/Auth.qml</file>
         <file>pages/MyMeikade.qml</file>
+        <file>models/MyMeikadeDemoModel.qml</file>
     </qresource>
 </RCC>
