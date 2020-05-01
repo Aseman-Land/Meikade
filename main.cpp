@@ -18,15 +18,26 @@
 
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include <QQuickStyle>
+#include <QQmlContext>
 
 int main(int argc, char *argv[])
 {
+    bool androidStyle;
+#ifdef Q_OS_ANDROID
+    androidStyle = true;
+    QQuickStyle::setStyle("Material");
+#else
+    androidStyle = false;
+    QQuickStyle::setStyle("IOSStyle");
+#endif
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
     QGuiApplication app(argc, argv);
 
     QQmlApplicationEngine engine;
-    engine.addImportPath(":/qml/design/imports/");
+    engine.addImportPath(":/qml/imports/");
+    engine.rootContext()->setContextProperty("isAndroidStyle", androidStyle);
     const QUrl url(QStringLiteral("qrc:/qml/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
                      &app, [url](QObject *obj, const QUrl &objUrl) {

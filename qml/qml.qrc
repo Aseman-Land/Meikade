@@ -1,28 +1,9 @@
 <RCC>
     <qresource prefix="/">
         <file>qtquickcontrols2.conf</file>
-        <file>design/mymeikade/MyMeikadeDemo.qml</file>
     </qresource>
     <qresource prefix="/qml">
         <file>main.qml</file>
         <file>MainWindow.qml</file>
-        <file>globals/AsemanGlobals.qml</file>
-        <file>globals/Bootstrap.qml</file>
-        <file>globals/GlobalMethods.qml</file>
-        <file>globals/GlobalObjects.qml</file>
-        <file>globals/qmldir</file>
-        <file>fonts/BYekan.ttf</file>
-        <file>fonts/DroidNaskh-Regular.ttf</file>
-        <file>fonts/IRANSans_Regular.ttf</file>
-        <file>fonts/Ubuntu-R.ttf</file>
-        <file>pages/Home.qml</file>
-        <file>pages/MainPage.qml</file>
-        <file>globals/ViewController.qml</file>
-        <file>models/HomeDemoModel.qml</file>
-        <file>pages/Search.qml</file>
-        <file>models/SearchDemoModel.qml</file>
-        <file>pages/Auth.qml</file>
-        <file>pages/MyMeikade.qml</file>
-        <file>models/MyMeikadeDemoModel.qml</file>
     </qresource>
 </RCC>

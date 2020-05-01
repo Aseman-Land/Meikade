@@ -1,0 +1,5 @@
+AuthView 1.0 auth/AuthView.qml
+HomeView 1.0 home/HomeView.qml
+MainView 1.0 MainForm.ui.qml
+MyMeikadeView 1.0 mymeikade/MyMeikadeView.qml
+SearchView 1.0 search/SearchForm.ui.qml
