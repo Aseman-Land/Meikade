@@ -75,7 +75,7 @@ Item {
         section.property: "section"
     }
 
-    ScrollBar {
+    HScrollBar {
         anchors.right: parent.right
         anchors.bottom: list.bottom
         anchors.top: list.top

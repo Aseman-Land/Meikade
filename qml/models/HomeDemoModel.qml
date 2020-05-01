@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import AsemanQml.Base 2.0
+import AsemanQml.Models 2.0
 
 AsemanListModel {
     data: [

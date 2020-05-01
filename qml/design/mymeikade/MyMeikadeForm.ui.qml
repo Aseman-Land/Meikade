@@ -181,7 +181,7 @@ Rectangle {
         }
     }
 
-    ScrollBar {
+    HScrollBar {
         anchors.right: parent.right
         anchors.bottom: gridView.bottom
         anchors.top: gridView.top

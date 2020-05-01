@@ -19,19 +19,19 @@ AsemanObject {
 
         ViewportControllerRoute {
             route: /main:\/\/test\/.*/
-            component: "hiComponent"
+            source: "hiComponent"
             viewportType: "popup"
         }
 
         ViewportControllerRoute {
             route: /popup\:\/search\/domains/
-            component: domainComponent
+            sourceComponent: domainComponent
             viewportType: "ios-popup"
         }
 
         ViewportControllerRoute {
             route: /popup\:\/auth\/float/
-            component: authFloatComponent
+            sourceComponent: authFloatComponent
             viewportType: "ios-popup"
         }
     }

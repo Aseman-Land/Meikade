@@ -3,7 +3,6 @@ import MeikadeDesign 1.0
 import AsemanQml.Base 2.0
 import AsemanQml.MaterialIcons 2.0
 import AsemanQml.Controls 2.0
-import AsemanQml.Controls 2.0 as AsemanControls
 import QtQuick.Controls 2.3
 import QtQuick.Layouts 1.3
 import QtQuick.Controls.Material 2.0
@@ -119,7 +118,7 @@ Item {
         }
     }
 
-    AsemanControls.ScrollBar {
+    HScrollBar {
         anchors.right: parent.right
         anchors.bottom: gridView.bottom
         anchors.top: gridView.top
