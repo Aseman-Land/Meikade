@@ -33,7 +33,7 @@ AsemanWindow {
 
     Rectangle {
         anchors.fill: parent
-        color: Material.primary
+        color: Colors.primary
         visible: waitTimer.running
 
         BusyIndicator {

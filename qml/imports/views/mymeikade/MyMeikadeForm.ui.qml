@@ -103,7 +103,7 @@ Rectangle {
             sourceSize.width: width * 1.2
             sourceSize.height: height * 1.2
             fillMode: Image.PreserveAspectCrop
-            source: "images/cover.jpg"
+            source: "../images/cover.jpg"
 
             ColumnLayout {
                 anchors.centerIn: parent
@@ -123,7 +123,7 @@ Rectangle {
 
                         Label {
                             anchors.centerIn: parent
-                            color: Material.primary
+                            color: Colors.primary
                             font.pixelSize: 32 * Devices.fontDensity
                             font.family: MaterialIcons.family
                             text: MaterialIcons.mdi_account
@@ -185,7 +185,7 @@ Rectangle {
         anchors.right: parent.right
         anchors.bottom: gridView.bottom
         anchors.top: gridView.top
-        color: Material.primary
+        color: Colors.primary
         scrollArea: gridView
     }
 }

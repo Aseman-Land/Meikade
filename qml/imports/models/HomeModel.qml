@@ -16,7 +16,7 @@ AsemanListModel {
                     color: "#18f",
                     image: "",
                     type: "fullback",
-                    link: "popup:/test"
+                    link: "page:/poet"
                 }
             ]
         },
@@ -32,7 +32,7 @@ AsemanListModel {
                     color: "#18f",
                     image: "",
                     type: "normal",
-                    link: "popup:/test"
+                    link: "page:/poet"
                 },
                 {
                     title: "Title 1",
@@ -40,7 +40,7 @@ AsemanListModel {
                     color: "#18f",
                     image: "",
                     type: "normal",
-                    link: "popup:/test"
+                    link: "page:/poet"
                 }
             ]
         },
@@ -56,7 +56,7 @@ AsemanListModel {
                     color: "#18f",
                     image: "",
                     type: "fullback",
-                    link: "popup:/test"
+                    link: "page:/poet"
                 },
                 {
                     title: "Title 1",
@@ -64,7 +64,7 @@ AsemanListModel {
                     color: "#18f",
                     image: "",
                     type: "fullback",
-                    link: "popup:/test"
+                    link: "page:/poet"
                 }
             ]
         },
@@ -80,7 +80,7 @@ AsemanListModel {
                     color: "#18f",
                     image: "",
                     type: "fullback",
-                    link: "popup:/test"
+                    link: "page:/poet"
                 },
                 {
                     title: "Title 1",
@@ -88,7 +88,7 @@ AsemanListModel {
                     color: "#18f",
                     image: "",
                     type: "fullback",
-                    link: "popup:/test"
+                    link: "page:/poet"
                 },
                 {
                     title: "Title 2",
@@ -96,7 +96,7 @@ AsemanListModel {
                     color: "#18f",
                     image: "",
                     type: "fullback",
-                    link: "popup:/test"
+                    link: "page:/poet"
                 },
                 {
                     title: "Title 3",
@@ -104,7 +104,7 @@ AsemanListModel {
                     color: "#18f",
                     image: "",
                     type: "fullback",
-                    link: "popup:/test"
+                    link: "page:/poet"
                 }
             ]
         },

@@ -122,7 +122,7 @@ Item {
         anchors.right: parent.right
         anchors.bottom: gridView.bottom
         anchors.top: gridView.top
-        color: Material.primary
+        color: Colors.primary
         scrollArea: gridView
     }
 
@@ -150,7 +150,7 @@ Item {
 
     Header {
         id: headerItem
-        color: Material.primary
+        color: Colors.primary
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.top: parent.top

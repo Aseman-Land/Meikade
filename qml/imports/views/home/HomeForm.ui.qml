@@ -79,13 +79,13 @@ Item {
         anchors.right: parent.right
         anchors.bottom: list.bottom
         anchors.top: list.top
-        color: Material.primary
+        color: Colors.primary
         scrollArea: list
     }
 
     Header {
         id: headerItem
-        color: Material.primary
+        color: Colors.primary
         anchors.left: parent.left
         anchors.right: parent.right
         text: qsTr("Meikade") + Translations.refresher

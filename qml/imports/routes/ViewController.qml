@@ -18,15 +18,25 @@ AsemanObject {
         id: viewport
 
         ViewportControllerRoute {
+            route: /\w+\:\/poet(?:\?\.+)?/
+            source: "PoetRoute.qml"
+        }
+
+        ViewportControllerRoute {
+            route: /\w+\:\/poet\/bio(?:\?\.+)?/
+            source: "PoetBioRoute.qml"
+        }
+
+        ViewportControllerRoute {
             route: /popup\:\/search\/domains/
             sourceComponent: domainComponent
-            viewportType: "ios-popup"
+            viewportType: "popup"
         }
 
         ViewportControllerRoute {
             route: /popup\:\/auth\/float/
             sourceComponent: authFloatComponent
-            viewportType: "ios-popup"
+            viewportType: "popup"
         }
     }
 
