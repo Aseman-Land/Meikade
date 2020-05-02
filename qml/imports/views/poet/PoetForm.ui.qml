@@ -196,7 +196,7 @@ Rectangle {
             Label {
                 id: profileLabel
                 font.pixelSize: 14 * Devices.fontDensity
-                scale: (9 + 5 * ratio) / 14
+                scale: (10 + 4 * ratio) / 14
                 color: Material.background
                 text: "Bardia Daneshvar"
                 anchors.centerIn: parent

@@ -48,5 +48,6 @@ Item {
         anchors.right: parent.right
         text: qsTr("Meikade") + Translations.refresher
         anchors.top: parent.top
+        titleFontSize: 10 * Devices.fontDensity
     }
 }
