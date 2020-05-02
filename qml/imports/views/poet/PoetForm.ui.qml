@@ -158,7 +158,7 @@ Rectangle {
                 height: Devices.standardTitleBarHeight
                 width: height
                 x: ratioAbs * (coverImage.width/2 - width/2) + (1 - ratioAbs) * (LayoutMirroring.enabled? parent.width - width - Devices.standardTitleBarHeight : Devices.standardTitleBarHeight)
-                y: ratioAbs * (coverImage.height/2 - height + 10 * Devices.density) + Devices.statusBarHeight
+                y: ratioAbs * (coverImage.height/2 - height + 5 * Devices.density)
                 scale: (34 + 16 * ratioAbs) / 50
 
                 Rectangle {

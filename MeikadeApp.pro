@@ -4,6 +4,10 @@ CONFIG += c++11
 SOURCES += \
     main.cpp
 
+ios {
+    include(objectivec/ios.pri)
+}
+
 INCLUDED_RESOURCE_FILES += \
     $$files($$PWD/qml/*.qml, true) \
     $$files($$PWD/qml/*.png, true) \
