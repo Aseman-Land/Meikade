@@ -137,7 +137,7 @@ Rectangle {
             id: coverImage
             anchors.left: parent.left
             anchors.right: parent.right
-            height: width * 2 / 5
+            height: width * 5 / 10
             sourceSize.width: width * 1.2
             sourceSize.height: height * 1.2
             fillMode: Image.PreserveAspectCrop
