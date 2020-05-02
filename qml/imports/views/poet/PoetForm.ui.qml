@@ -7,6 +7,7 @@ import AsemanQml.Controls 2.0
 import QtQuick.Controls.Material 2.0
 import globals 1.0
 import micros 1.0
+import models 1.0
 
 Rectangle {
     id: myMeikade
@@ -25,6 +26,7 @@ Rectangle {
     property alias profileLabel: profileLabel
     property alias settingsBtn: settingsBtn
 
+    readonly property real ratioAbs: Math.min(ratio, 1)
     readonly property real ratio: Math.max(
                                       0,
                                       coverImage.height + mapListener.result.y
@@ -40,15 +42,11 @@ Rectangle {
         dest: myMeikade
     }
 
-    AsemanGridView {
+    FlexiList {
         id: gridView
         anchors.fill: parent
-        anchors.leftMargin: 10 * Devices.density
-        anchors.rightMargin: 10 * Devices.density
-        cellWidth: gridView.width / Math.floor(
-                       gridView.width / (160 * Devices.density))
-        cellHeight: 70 * Devices.density
-        model: 50
+
+        model: PoetModel {}
 
         header: Item {
             width: gridView.width
@@ -58,39 +56,6 @@ Rectangle {
         footer: Item {
             width: gridView.width
             height: poetBioBack.height + 10 * Devices.density
-        }
-
-        delegate: Item {
-            width: gridView.cellWidth
-            height: gridView.cellHeight
-
-            RoundedItem {
-                anchors.fill: parent
-                anchors.margins: 4 * Devices.density
-                radius: Constants.radius
-
-                Rectangle {
-                    anchors.fill: parent
-                    color: Colors.lightBackground
-                }
-
-                Label {
-                    anchors.centerIn: parent
-                    font.pixelSize: 9 * Devices.fontDensity
-                    text: model.title
-                }
-
-                ItemDelegate {
-                    id: idel
-                    anchors.fill: parent
-                    hoverEnabled: false
-
-                    Connections {
-                        target: idel
-                        onClicked: myMeikade.clicked(model.link)
-                    }
-                }
-            }
         }
     }
 
@@ -177,23 +142,29 @@ Rectangle {
             sourceSize.height: height * 1.2
             fillMode: Image.PreserveAspectCrop
             source: "../images/cover.jpg"
+
+            Rectangle {
+                anchors.fill: parent
+                color: "#000"
+                opacity: (1 - ratioAbs) * 0.3
+            }
         }
 
         Item {
             anchors.fill: parent
             anchors.topMargin: Devices.statusBarHeight
 
-            RowLayout {
-                anchors.left: parent.left
-                anchors.right: parent.right
-                anchors.margins: Devices.standardTitleBarHeight
-                y: Devices.statusBarHeight
+            Item {
                 height: Devices.standardTitleBarHeight
-                spacing: 4 * Devices.density
+                width: height
+                x: ratioAbs * (coverImage.width/2 - width/2) + (1 - ratioAbs) * (LayoutMirroring.enabled? parent.width - width - Devices.standardTitleBarHeight : Devices.standardTitleBarHeight)
+                y: ratioAbs * (coverImage.height/2 - height + 10 * Devices.density) + Devices.statusBarHeight
+                scale: (34 + 16 * ratioAbs) / 50
 
                 Rectangle {
-                    Layout.preferredWidth: 34 * Devices.density
-                    Layout.preferredHeight: 34 * Devices.density
+                    anchors.centerIn: parent
+                    width: 50 * Devices.density
+                    height: 50 * Devices.density
                     radius: Constants.radius
                     Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
                     color: Material.background
@@ -228,6 +199,7 @@ Rectangle {
                 color: Material.background
                 text: "Bardia Daneshvar"
                 anchors.centerIn: parent
+                anchors.verticalCenterOffset: 30 * Devices.density * ratioAbs
             }
 
             Label {

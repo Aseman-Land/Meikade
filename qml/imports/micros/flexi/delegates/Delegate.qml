@@ -3,26 +3,28 @@ import AsemanQml.Base 2.0
 
 Item {
     id: delg
-    width: 400
-    height: dswitch.height
 
     property string title
-    property string description
+    property string subtitle
     property string image
     property color color
     property string type
     property string link
 
+    readonly property color foregroundColor: (color.r + color.g + color.b) / 3 < 0.5? "#fff" : "#333"
+
     signal clicked()
 
     DelegateSwitch {
         id: dswitch
+        anchors.fill: parent
 
         Component {
             NormalDelegate {
-                width: delg.width
+                anchors.fill: parent
                 title.text: delg.title
-                description.text: delg.description
+                title.color: foregroundColor
+                subtitle.text: delg.subtitle
                 image.source: delg.image
                 background.color: delg.color
                 button.onClicked: delg.clicked()
@@ -30,8 +32,9 @@ Item {
         }
         Component {
             FullBackgroundedDelegate {
-                width: delg.width
+                anchors.fill: parent
                 title.text: delg.title
+                title.color: foregroundColor
                 image.source: delg.image
                 background.color: delg.color
                 button.onClicked: delg.clicked()

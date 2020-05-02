@@ -14,6 +14,11 @@ AbstractDelegate {
     property alias background: background
 
     Rectangle {
+        anchors.fill: parent
+        color: Colors.primary
+    }
+
+    Rectangle {
         id: background
         anchors.fill: parent
         color: "#18f"
@@ -33,7 +38,7 @@ AbstractDelegate {
         anchors.verticalCenter: parent.verticalCenter
         anchors.right: parent.right
         anchors.left: parent.left
-        font.pixelSize: 10 * Devices.fontDensity
+        font.pixelSize: 9 * Devices.fontDensity
         text: "We needs change"
         wrapMode: Text.WrapAtWordBoundaryOrAnywhere
         verticalAlignment: Text.AlignVCenter

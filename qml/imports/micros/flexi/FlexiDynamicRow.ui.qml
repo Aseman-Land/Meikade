@@ -5,7 +5,7 @@ import AsemanQml.Models 2.0
 import globals 1.0
 import "delegates"
 
-HomeAbstractRow {
+FlexiAbstractRow {
     id: homeRow
     width: Constants.width
     height: 100 * Devices.density
@@ -26,7 +26,7 @@ HomeAbstractRow {
             height: listv.height
             title: model.title
             color: model.color
-            description: model.description
+            subtitle: model.subtitle
             image: model.image
             type: model.type
             link: model.link

@@ -8,6 +8,7 @@ Item {
 
     property string type
     property variant modelData
+    property ListView listView
 
     signal clicked(string link)
 
@@ -15,24 +16,36 @@ Item {
         id: dswitch
 
         Component {
-            HomeDynamicRow {
+            FlexiDynamicRow {
                 width: rowItem.width
+                listView: rowItem.listView
                 model.data: modelData
                 onClicked: rowItem.clicked(link)
             }
         }
         Component {
             id: staticComponent
-            HomeStaticRow {
+            FlexiStaticRow {
                 width: rowItem.width
+                listView: rowItem.listView
                 model.data: modelData
                 onClicked: rowItem.clicked(link)
             }
         }
         Component {
             id: flexibleStaticComponent
-            HomeFlexibleRow {
+            FlexiFlexibleRow {
                 width: rowItem.width
+                listView: rowItem.listView
+                model.data: modelData
+                onClicked: rowItem.clicked(link)
+            }
+        }
+        Component {
+            id: gridComponent
+            FlexiGridRow {
+                width: rowItem.width
+                listView: rowItem.listView
                 model.data: modelData
                 onClicked: rowItem.clicked(link)
             }
@@ -46,6 +59,8 @@ Item {
                 return 1;
             case "flexible":
                 return 2;
+            case "grid":
+                return 3;
             default:
                 return -1;
             }

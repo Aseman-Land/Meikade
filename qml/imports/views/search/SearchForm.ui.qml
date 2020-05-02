@@ -1,12 +1,12 @@
 import QtQuick 2.12
-import globals 1.0
 import AsemanQml.Base 2.0
 import AsemanQml.MaterialIcons 2.0
 import AsemanQml.Controls 2.0
 import QtQuick.Controls 2.3
 import QtQuick.Layouts 1.3
 import QtQuick.Controls.Material 2.0
-import "../home/delegates" as Delegates
+import globals 1.0
+import micros 1.0
 
 Item {
     id: searchForm
@@ -77,7 +77,7 @@ Item {
         }
     }
 
-    AsemanGridView {
+    FlexiList {
         id: gridView
         anchors.bottom: parent.bottom
         anchors.top: tabBar.bottom
@@ -85,36 +85,10 @@ Item {
         anchors.left: parent.left
         anchors.leftMargin: 10 * Devices.density
         anchors.rightMargin: 10 * Devices.density
-        cellWidth: gridView.width / Math.floor(
-                       gridView.width / (200 * Devices.density))
-        cellHeight: 108 * Devices.density
-        model: ListModel {}
 
         header: Item {
             width: gridView.width
             height: headerColumn.height
-        }
-
-        delegate: Item {
-            width: gridView.cellWidth
-            height: gridView.cellHeight
-
-            Delegates.NormalDelegate {
-                id: del
-                anchors.right: parent.right
-                anchors.left: parent.left
-                anchors.verticalCenter: parent.verticalCenter
-                anchors.margins: 4 * Devices.density
-                title.text: model.title
-                description.text: model.description
-                image.source: model.image
-                background.color: model.color
-
-                Connections {
-                    target: del.button
-                    onClicked: searchForm.clicked(model.link)
-                }
-            }
         }
     }
 

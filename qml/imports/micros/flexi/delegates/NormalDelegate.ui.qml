@@ -10,10 +10,15 @@ AbstractDelegate {
     id: delItem
     width: 400
     height: 100 * Devices.density
-    property alias description: description
+    property alias subtitle: subtitle
     property alias image: image
     property alias title: title
     property alias background: background
+
+    Rectangle {
+        anchors.fill: parent
+        color: Colors.primary
+    }
 
     Rectangle {
         id: background
@@ -31,7 +36,7 @@ AbstractDelegate {
         Label {
             id: title
             Layout.fillWidth: true
-            font.pixelSize: 10 * Devices.fontDensity
+            font.pixelSize: 9 * Devices.fontDensity
             text: "Title Poet"
             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
             verticalAlignment: Text.AlignVCenter
@@ -44,7 +49,7 @@ AbstractDelegate {
             Layout.fillWidth: true
 
             Label {
-                id: description
+                id: subtitle
                 Layout.fillWidth: true
                 font.pixelSize: 8 * Devices.fontDensity
                 text: "Short Description"
