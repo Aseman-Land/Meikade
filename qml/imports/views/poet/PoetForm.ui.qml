@@ -158,7 +158,7 @@ Rectangle {
             Item {
                 height: Devices.standardTitleBarHeight
                 width: height
-                x: ratioAbs * (coverImage.width/2 - width/2) + (1 - ratioAbs) * (LayoutMirroring.enabled? parent.width - width - Devices.standardTitleBarHeight : Devices.standardTitleBarHeight)
+                x: ratioAbs * (coverImage.width/2 - width/2) + (1 - ratioAbs) * (LayoutMirroring.enabled? parent.width - width - Devices.standardTitleBarHeight + 10 * Devices.density : Devices.standardTitleBarHeight - 10 * Devices.density)
                 y: ratioAbs * (coverImage.height/2 - height + 5 * Devices.density)
                 scale: (34 + 16 * ratioAbs) / 50
 
@@ -205,7 +205,7 @@ Rectangle {
 
             Label {
                 id: viewsLabel
-                anchors.horizontalCenter: profileLabel.horizontalCenter
+                anchors.horizontalCenter: parent.horizontalCenter
                 anchors.top: profileLabel.bottom
                 anchors.topMargin: 2 * Devices.density
                 font.pixelSize: 9 * Devices.fontDensity

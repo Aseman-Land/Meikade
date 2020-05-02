@@ -13,7 +13,7 @@ AsemanListModel {
                 {
                     title: "Title 0",
                     subtitle: "Description 0",
-                    color: "",
+                    color: "#333",
                     image: "",
                     type: "fullback",
                     link: "page:/poet",
@@ -30,7 +30,7 @@ AsemanListModel {
                 {
                     title: "Title 0",
                     subtitle: "Description 0",
-                    color: "",
+                    color: "#333",
                     image: "",
                     type: "normal",
                     link: "page:/poet",
@@ -39,7 +39,7 @@ AsemanListModel {
                 {
                     title: "Title 1",
                     subtitle: "Description 1",
-                    color: "",
+                    color: "#333",
                     image: "",
                     type: "normal",
                     link: "page:/poet",
@@ -56,7 +56,7 @@ AsemanListModel {
                 {
                     title: "Title 0",
                     subtitle: "Description 0",
-                    color: "",
+                    color: "#333",
                     image: "",
                     type: "fullback",
                     link: "page:/poet",
@@ -65,7 +65,7 @@ AsemanListModel {
                 {
                     title: "Title 1",
                     subtitle: "Description 1",
-                    color: "",
+                    color: "#333",
                     image: "",
                     type: "fullback",
                     link: "page:/poet",
@@ -82,7 +82,7 @@ AsemanListModel {
                 {
                     title: "Title 0",
                     subtitle: "Description 0",
-                    color: "",
+                    color: "#333",
                     image: "",
                     type: "fullback",
                     link: "page:/poet",
@@ -91,7 +91,7 @@ AsemanListModel {
                 {
                     title: "Title 1",
                     subtitle: "Description 1",
-                    color: "",
+                    color: "#333",
                     image: "",
                     type: "fullback",
                     link: "page:/poet",
@@ -100,7 +100,7 @@ AsemanListModel {
                 {
                     title: "Title 2",
                     subtitle: "Description 1",
-                    color: "",
+                    color: "#333",
                     image: "",
                     type: "fullback",
                     link: "page:/poet",
@@ -109,7 +109,7 @@ AsemanListModel {
                 {
                     title: "Title 3",
                     subtitle: "Description 1",
-                    color: "",
+                    color: "#333",
                     image: "",
                     type: "fullback",
                     link: "page:/poet",
@@ -126,7 +126,7 @@ AsemanListModel {
                 {
                     title: "Title 0",
                     subtitle: "Description 0",
-                    color: "",
+                    color: "#333",
                     image: "",
                     type: "fullback",
                     link: "page:/poet",
@@ -135,7 +135,7 @@ AsemanListModel {
                 {
                     title: "Title 1",
                     subtitle: "Description 1",
-                    color: "",
+                    color: "#333",
                     image: "",
                     type: "fullback",
                     link: "page:/poet",
@@ -144,7 +144,7 @@ AsemanListModel {
                 {
                     title: "Title 2",
                     subtitle: "Description 1",
-                    color: "",
+                    color: "#333",
                     image: "",
                     type: "fullback",
                     link: "page:/poet",
@@ -153,7 +153,7 @@ AsemanListModel {
                 {
                     title: "Title 3",
                     subtitle: "Description 1",
-                    color: "",
+                    color: "#333",
                     image: "",
                     type: "fullback",
                     link: "page:/poet",
@@ -162,7 +162,7 @@ AsemanListModel {
                 {
                     title: "Title 4",
                     subtitle: "Description 0",
-                    color: "",
+                    color: "#333",
                     image: "",
                     type: "fullback",
                     link: "page:/poet",
@@ -171,7 +171,7 @@ AsemanListModel {
                 {
                     title: "Title 5",
                     subtitle: "Description 1",
-                    color: "",
+                    color: "#333",
                     image: "",
                     type: "fullback",
                     link: "page:/poet",
@@ -180,7 +180,7 @@ AsemanListModel {
                 {
                     title: "Title 6",
                     subtitle: "Description 1",
-                    color: "",
+                    color: "#333",
                     image: "",
                     type: "fullback",
                     link: "page:/poet",
@@ -189,7 +189,7 @@ AsemanListModel {
                 {
                     title: "Title 7",
                     subtitle: "Description 1",
-                    color: "",
+                    color: "#333",
                     image: "",
                     type: "fullback",
                     link: "page:/poet",

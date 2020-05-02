@@ -8,7 +8,5 @@ import globals 1.0
 HomeView {
     id: home
 
-    list.onLinkRequest: Viewport.controller.trigger(link, {})
-
     list.model: HomeModel {}
 }

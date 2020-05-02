@@ -1,6 +1,7 @@
 import QtQuick 2.12
 import globals 1.0
 import AsemanQml.Base 2.0
+import AsemanQml.Viewport 2.0
 import QtQuick.Controls 2.3
 import QtQuick.Layouts 1.3
 import AsemanQml.Controls 2.0
@@ -17,6 +18,8 @@ AsemanListView {
     bottomMargin: spacing
 
     signal linkRequest(string link)
+
+    onLinkRequest: Viewport.controller.trigger(link)
 
     delegate: FlexiRowItem {
         id: rowItem

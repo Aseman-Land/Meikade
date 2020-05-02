@@ -5,6 +5,7 @@ import AsemanQml.Controls 2.0
 import QtQuick.Controls 2.3
 import QtQuick.Layouts 1.3
 import QtQuick.Controls.Material 2.0
+import QtQuick.Controls.IOSStyle 2.0
 import globals 1.0
 import micros 1.0
 
@@ -38,7 +39,7 @@ Item {
 
             Rectangle {
                 anchors.fill: parent
-                color: Material.background
+                color: Colors.background
             }
 
             RowLayout {
@@ -151,6 +152,7 @@ Item {
                 Layout.fillWidth: true
                 placeholderText: qsTr("Search") + Translations.refresher
                 Material.theme: Material.Dark
+                IOSStyle.theme: IOSStyle.Dark
                 font.pixelSize: 9 * Devices.fontDensity
                 background: Item {}
             }
