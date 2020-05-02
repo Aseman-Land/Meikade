@@ -25,6 +25,7 @@ Item {
                 title.text: delg.title
                 title.color: foregroundColor
                 subtitle.text: delg.subtitle
+                subtitle.color: foregroundColor
                 image.source: delg.image
                 background.color: delg.color
                 button.onClicked: delg.clicked()

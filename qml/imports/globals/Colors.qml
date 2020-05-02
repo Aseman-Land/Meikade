@@ -6,7 +6,7 @@ import QtQuick.Controls.IOSStyle 2.0
 import AsemanQml.Base 2.0
 
 QtObject {
-    property bool darkMode: false
+    readonly property bool darkMode: androidStyle? Material.theme == Material.Dark : IOSStyle.theme == IOSStyle.Dark
 
     readonly property bool androidStyle: isAndroidStyle? isAndroidStyle : false
 
@@ -18,6 +18,6 @@ QtObject {
     readonly property color headerText: "#ffffff"
     readonly property color header: primary
 
-    readonly property color lightBackground: Qt.darker(background, (androidStyle? (Material.theme == Material.Dark? 1 : 0.9) : (IOSStyle.theme == IOSStyle.Dark? 1 : 0.9)))
+    readonly property color lightBackground: Qt.darker(background, (androidStyle? (Material.theme == Material.Dark? 0.9 : 0.9) : (IOSStyle.theme == IOSStyle.Dark? 0.9 : 0.9)))
     readonly property color deepBackground: Qt.darker(background, (androidStyle? (Material.theme == Material.Dark? 1.4 : 1.05) : (IOSStyle.theme == IOSStyle.Dark? 1.4 : 1.05)))
 }

@@ -25,7 +25,7 @@ FlexiAbstractRow {
             width: 180 * Devices.density
             height: listv.height
             title: model.title
-            color: model.color
+            color: model.color.length? model.color : Colors.lightBackground
             subtitle: model.subtitle
             image: model.image
             type: model.type

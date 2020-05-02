@@ -83,6 +83,7 @@ Rectangle {
             anchors.left: parent.left
             anchors.right: parent.right
             height: 100 * Devices.density
+            color: Colors.lightBackground
         }
 
         ItemDelegate {

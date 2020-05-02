@@ -41,7 +41,7 @@ FlexiAbstractRow {
                     anchors.fill: parent
                     title: model.title
                     subtitle: model.subtitle
-                    color: model.color
+                    color: model.color.length? model.color : Colors.lightBackground
                     image: model.image
                     type: model.type
                     link: model.link

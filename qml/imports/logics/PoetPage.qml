@@ -8,4 +8,5 @@ PoetView {
     height: Constants.height
 
     bioBtn.onClicked: Viewport.controller.trigger("popup:/poet/bio")
+    menuBtn.onClicked: Viewport.viewport.closeLast()
 }

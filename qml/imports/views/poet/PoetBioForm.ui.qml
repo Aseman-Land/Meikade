@@ -12,6 +12,11 @@ Page {
     width: Constants.width
     height: Constants.height
 
+    Rectangle {
+        anchors.fill: parent
+        color: Colors.deepBackground
+    }
+
     AsemanFlickable {
         id: flickable
         anchors.left: parent.left
@@ -48,7 +53,7 @@ Page {
 
     Rectangle {
         id: headerItem
-        color: Colors.deepBackground
+        color: Colors.lightBackground
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.top: parent.top

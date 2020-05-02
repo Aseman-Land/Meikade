@@ -5,6 +5,7 @@ import QtQuick.Controls 2.3
 import QtQuick.Layouts 1.3
 import AsemanQml.Controls 2.0
 import QtQuick.Controls.Material 2.0
+import QtQuick.Controls.IOSStyle 2.0
 import "flexi"
 
 AsemanListView {
@@ -30,7 +31,7 @@ AsemanListView {
         }
 
         Rectangle {
-            width: list.width
+            width: list.width + list.spacing * 2
             anchors.top: parent.top
             anchors.bottom: parent.bottom
             anchors.margins: -list.spacing / 2
@@ -40,13 +41,13 @@ AsemanListView {
         }
 
         Rectangle {
-            width: list.width
+            width: list.width + list.spacing * 2
             anchors.top: parent.top
             anchors.bottom: parent.bottom
             anchors.margins: -list.spacing / 2
             anchors.horizontalCenter: parent.horizontalCenter
             visible: model.background
-            color: Material.theme == Material.Dark ? "#000" : "#fff"
+            color: Colors.darkMode? "#000" : "#fff"
             z: -1
         }
     }

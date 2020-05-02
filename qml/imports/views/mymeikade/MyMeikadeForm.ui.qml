@@ -53,7 +53,7 @@ Rectangle {
 
                 Rectangle {
                     anchors.fill: parent
-                    color: Qt.lighter(Material.background, 1.3)
+                    color: Colors.lightBackground
                 }
 
                 ColumnLayout {
@@ -114,7 +114,7 @@ Rectangle {
                     Layout.preferredHeight: 92 * Devices.density
                     radius: height / 2
                     Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
-                    color: Material.background
+                    color: "#fff"
 
                     RoundedItem {
                         anchors.fill: parent
@@ -147,14 +147,14 @@ Rectangle {
                 Label {
                     id: profileLabel
                     font.pixelSize: 9 * Devices.fontDensity
-                    color: Material.background
+                    color: "#fff"
                     text: "Bardia Daneshvar"
 
                     Rectangle {
                         anchors.fill: parent
                         anchors.margins: -8 * Devices.density
                         radius: Constants.radius
-                        color: Material.foreground
+                        color: "#222"
                         z: -1
                         opacity: 0.6
                     }
