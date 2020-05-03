@@ -1,3 +1,6 @@
 FooterItem 1.0 FooterItem.ui.qml
 Separator 1.0 Separator.ui.qml
 FlexiList 1.0 FlexiList.qml
+WaitDialog 1.0 WaitDialog.ui.qml
+EscapeItem 1.0 EscapeItem.qml
+TextFormater 1.0 TextFormater.qml

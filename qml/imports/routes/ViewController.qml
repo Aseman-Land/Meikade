@@ -5,51 +5,44 @@ import AsemanQml.Base 2.0
 import AsemanQml.Viewport 2.0
 import logics 1.0
 
-AsemanObject {
+ViewportController {
     id: viewController
 
-    property alias viewport: viewport.viewport
+    property int waitCount: 0
+    property variant waitObj
 
-    function trigger(url, properties) {
-        viewport.trigger(url, properties)
-    }
-
-    ViewportController {
-        id: viewport
-
-        ViewportControllerRoute {
-            route: /\w+\:\/poet(?:\?\.+)?/
-            source: "PoetRoute.qml"
-        }
-
-        ViewportControllerRoute {
-            route: /\w+\:\/poet\/bio(?:\?\.+)?/
-            source: "PoetBioRoute.qml"
-        }
-
-        ViewportControllerRoute {
-            route: /popup\:\/search\/domains/
-            sourceComponent: domainComponent
-            viewportType: "popup"
-        }
-
-        ViewportControllerRoute {
-            route: /popup\:\/auth\/float/
-            sourceComponent: authFloatComponent
-            viewportType: "popup"
+    onWaitCountChanged: {
+        if (waitCount) {
+            if (!waitObj) waitObj = trigger("dialog:/wait");
+        } else {
+            if (waitObj) waitObj.close()
         }
     }
 
-    Component {
-        id: domainComponent
-        Rectangle {
-        }
+    ViewportControllerRoute {
+        route: /\w+\:\/poet(?:\?\.+)?/
+        source: "PoetRoute.qml"
     }
-    Component {
-        id: authFloatComponent
-        AuthPage {
-            anchors.fill: parent
-            viewport: viewController.viewport
-        }
+
+    ViewportControllerRoute {
+        route: /\w+\:\/poet\/bio(?:\?\.+)?/
+        source: "PoetBioRoute.qml"
+    }
+
+    ViewportControllerRoute {
+        route: /popup\:\/auth\/float/
+        source: "AuthRoute.qml"
+        viewportType: "popup"
+    }
+
+    ViewportControllerRoute {
+        route: /dialog:\/general\/error.*/
+        source: "ErrorDialogRoute.qml"
+    }
+
+    ViewportControllerRoute {
+        route: /dialog:\/wait/
+        source: "WaitDialogRoute.qml"
     }
 }
+

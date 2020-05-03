@@ -5,3 +5,4 @@ MyMeikadeView 1.0 mymeikade/MyMeikadeView.qml
 SearchView 1.0 search/SearchForm.ui.qml
 PoetView 1.0 poet/PoetForm.ui.qml
 PoetBioView 1.0 poet/PoetBioForm.ui.qml
+ErrorDialogView 1.0 dialogs/ErrorDialogForm.ui.qml
