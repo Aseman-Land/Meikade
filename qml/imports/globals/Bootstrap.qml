@@ -2,7 +2,6 @@ pragma Singleton
 
 import QtQuick 2.0
 import AsemanQml.Base 2.0
-import AsemanQml.Network 2.0
 
 AsemanObject {
     id: bstrap
@@ -12,9 +11,5 @@ AsemanObject {
 
     function init() {
         refresh()
-    }
-
-    NetworkRequestManager {
-        id: networkManager
     }
 }

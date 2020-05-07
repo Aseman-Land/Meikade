@@ -1,4 +1,5 @@
- HomeModel 1.0 HomeModel.qml
- MyMeikadeModel 1.0 MyMeikadeModel.qml
- SearchModel 1.0 SearchModel.qml
- PoetModel 1.0 PoetModel.qml
+HomeModel 1.0 HomeModel.qml
+MyMeikadeModel 1.0 MyMeikadeModel.qml
+SearchModel 1.0 SearchModel.qml
+PoetModel 1.0 PoetModel.qml
+RecentsModel 1.0 RecentsModel.qml

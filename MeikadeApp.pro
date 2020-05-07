@@ -4,15 +4,14 @@ CONFIG += c++11
 SOURCES += \
     main.cpp
 
-ios {
-    include(objectivec/ios.pri)
-}
+include(objectivec/ios.pri)
 
 INCLUDED_RESOURCE_FILES += \
     $$files($$PWD/qml/*.qml, true) \
     $$files($$PWD/qml/*.png, true) \
     $$files($$PWD/qml/*.jpg, true) \
     $$files($$PWD/qml/*.ttf, true) \
+    $$files($$PWD/qml/*.sql, true) \
     $$files($$PWD/qml/qmldir, true)
 
 meikadeQml.files = $$INCLUDED_RESOURCE_FILES

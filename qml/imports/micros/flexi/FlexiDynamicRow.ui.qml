@@ -11,9 +11,10 @@ FlexiAbstractRow {
     height: 100 * Devices.density
 
     property alias model: model
+    property alias list: list
 
     AsemanListView {
-        id: listv
+        id: list
         anchors.fill: parent
         orientation: ListView.Horizontal
         model: AsemanListModel {
@@ -23,7 +24,7 @@ FlexiAbstractRow {
         delegate: Delegate {
             id: itemDel
             width: 180 * Devices.density
-            height: listv.height
+            height: list.height
             title: model.title
             color: model.color.length? model.color : Colors.lightBackground
             subtitle: model.subtitle

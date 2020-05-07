@@ -1,0 +1,5 @@
+singleton UserDbUpdater 1.0 UserDbUpdater.qml
+UserGeneral 1.0 UserGeneral.qml
+UserActions 1.0 UserActions.qml
+UserNotes_old 1.0 UserNotes_old.qml
+UserFavorites_old 1.0 UserFavorites_old.qml

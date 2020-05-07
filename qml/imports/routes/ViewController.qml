@@ -20,12 +20,12 @@ ViewportController {
     }
 
     ViewportControllerRoute {
-        route: /\w+\:\/poet(?:\?\.+)?/
+        route: /\w+\:\/poet(?:\?.+)?/
         source: "PoetRoute.qml"
     }
 
     ViewportControllerRoute {
-        route: /\w+\:\/poet\/bio(?:\?\.+)?/
+        route: /\w+\:\/poet\/bio(?:\?.+)?/
         source: "PoetBioRoute.qml"
     }
 

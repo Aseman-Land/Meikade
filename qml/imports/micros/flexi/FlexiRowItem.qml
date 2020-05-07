@@ -50,6 +50,14 @@ Item {
                 onClicked: rowItem.clicked(link)
             }
         }
+        Component {
+            id: recentsComponent
+            FlexiRecentRow {
+                width: rowItem.width
+                listView: rowItem.listView
+                onClicked: rowItem.clicked(link)
+            }
+        }
 
         current: {
             switch (type) {
@@ -61,6 +69,8 @@ Item {
                 return 2;
             case "grid":
                 return 3;
+            case "recents":
+                return 4;
             default:
                 return -1;
             }

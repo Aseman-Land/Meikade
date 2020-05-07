@@ -9,6 +9,7 @@ AsemanListModel {
 
     HomeRequest {
         id: homeReq
+//        _debug: true
     }
 
     AsemanListModelSource {
