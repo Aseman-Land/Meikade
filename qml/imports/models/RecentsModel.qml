@@ -7,6 +7,11 @@ import queries 1.0
 
 AsemanListModel {
 
+    property int type
+
+    onTypeChanged: refresh()
+    Component.onCompleted: refresh()
+
     UserActions {
         id: actions
     }
@@ -14,6 +19,21 @@ AsemanListModel {
     HashObject {
         id: jsonsHash
     }
+
+    function refresh() {
+        data = actions.getItems(type, 0, 10)
+    }
+
+    function getJsonObj(json) {
+        var res = jsonsHash.value(json);
+        if (res)
+            return res;
+
+        res = Tools.jsonToVariant(json)
+        jsonsHash.insert(json, res);
+        return res;
+    }
+
 
     ModelFormatHint {
         path: "type"
@@ -66,20 +86,4 @@ AsemanListModel {
         path: "type"
         method: function() { return "normal"; }
     }
-
-    function refresh() {
-        data = actions.getItems(UserActions.TypePoetViewDate, 0, 10)
-    }
-
-    function getJsonObj(json) {
-        var res = jsonsHash.value(json);
-        if (res)
-            return res;
-
-        res = Tools.jsonToVariant(json)
-        jsonsHash.insert(json, res);
-        return res;
-    }
-
-    Component.onCompleted: refresh()
 }

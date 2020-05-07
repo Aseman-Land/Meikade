@@ -8,5 +8,9 @@ import "delegates"
 
 FlexiDynamicRow {
 
-    list.model: RecentsModel {}
+    property alias type: recentsModel.type
+
+    list.model: RecentsModel {
+        id: recentsModel
+    }
 }

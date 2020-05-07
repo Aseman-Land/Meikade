@@ -7,6 +7,14 @@ Item {
     height: dswitch.height
 
     property string type
+    readonly property string args: {
+        var idx = type.indexOf(":");
+        if (idx < 0)
+            return "";
+
+        return t.slice(idx+1);
+    }
+
     property variant modelData
     property ListView listView
 
@@ -55,12 +63,18 @@ Item {
             FlexiRecentRow {
                 width: rowItem.width
                 listView: rowItem.listView
+                type: args.length? args * 1 : 3
                 onClicked: rowItem.clicked(link)
             }
         }
 
         current: {
-            switch (type) {
+            var t = type
+            var idx = type.indexOf(":");
+            if (idx >= 0)
+                t = t.slice(0, idx)
+
+            switch (t) {
             case "dynamic":
                 return 0;
             case "static":
