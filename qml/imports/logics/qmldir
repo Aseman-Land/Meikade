@@ -5,3 +5,4 @@ MyMeikadePage 1.0 MyMeikadePage.qml
 SearchPage 1.0 SearchPage.qml
 PoetPage 1.0 PoetPage.qml
 PoetBioPage 1.0 PoetBioPage.qml
+ErrorDialog 1.0 ErrorDialog.qml

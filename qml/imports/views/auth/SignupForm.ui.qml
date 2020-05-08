@@ -1,6 +1,7 @@
 import QtQuick 2.12
 import globals 1.0
 import AsemanQml.Base 2.0
+import AsemanQml.MaterialIcons 2.0
 import QtQuick.Controls 2.3
 import QtQuick.Layouts 1.3
 import QtQuick.Controls.Material 2.0
@@ -16,8 +17,10 @@ Page {
 
     property alias cancelBtn: cancelBtn
     property alias loginLabel: loginLabel
-    property alias fnameTxt: fnameTxt
-    property alias lnameTxt: lnameTxt
+    property alias userTxt: userTxt
+    property alias passTxt: passTxt
+    property alias fullnameTxt: fullnameTxt
+    property alias emailTxt: emailTxt
     property alias sendBtn: sendBtn
     property alias backgroudMouseArea: backgroudMouseArea
 
@@ -43,7 +46,7 @@ Page {
                 anchors.right: parent.right
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.margins: 20 * Devices.density
-                spacing: 20 * Devices.density
+                spacing: 0
 
                 Label {
                     id: loginLabel
@@ -54,21 +57,96 @@ Page {
                 }
 
                 TextField {
-                    id: fnameTxt
+                    id: userTxt
                     Layout.fillWidth: true
-                    placeholder: qsTr("First Name") + Translations.refresher
-                    font.pixelSize: 15 * Devices.density
+                    Layout.preferredHeight: 48 * Devices.density
+                    placeholderText: qsTr("Username") + Translations.refresher
+                    font.pixelSize: 9 * Devices.fontDensity
+                    inputMethodHints: Qt.ImhDigitsOnly
                     horizontalAlignment: Text.AlignLeft
-                    inputMethodHints: Qt.ImhNoPredictiveText
+                    leftPadding: 34 * Devices.density
+                    onAccepted: passTxt.focus = true
+
+                    Label {
+                        anchors.left: parent.left
+                        anchors.verticalCenter: parent.verticalCenter
+                        anchors.verticalCenterOffset: 4 * Devices.density
+                        anchors.margins: 8 * Devices.density
+                        font.pixelSize: 12 * Devices.fontDensity
+                        font.family: MaterialIcons.family
+                        text: MaterialIcons.mdi_account
+                        color: Colors.accent
+                    }
                 }
 
                 TextField {
-                    id: lnameTxt
+                    id: passTxt
                     Layout.fillWidth: true
-                    placeholder: qsTr("Last Name") + Translations.refresher
-                    font.pixelSize: 15 * Devices.density
+                    Layout.preferredHeight: 48 * Devices.density
+                    placeholderText: qsTr("Password") + Translations.refresher
+                    font.pixelSize: 9 * Devices.fontDensity
+                    inputMethodHints: Qt.ImhDigitsOnly
                     horizontalAlignment: Text.AlignLeft
-                    inputMethodHints: Qt.ImhNoPredictiveText
+                    leftPadding: 34 * Devices.density
+                    echoMode: TextInput.Password
+                    passwordCharacter: '*'
+                    passwordMaskDelay: 500
+                    onAccepted: fullnameTxt.focus = true
+
+                    Label {
+                        anchors.left: parent.left
+                        anchors.verticalCenter: parent.verticalCenter
+                        anchors.verticalCenterOffset: 4 * Devices.density
+                        anchors.margins: 8 * Devices.density
+                        font.pixelSize: 12 * Devices.fontDensity
+                        font.family: MaterialIcons.family
+                        text: MaterialIcons.mdi_lock
+                        color: Colors.accent
+                    }
+                }
+
+                TextField {
+                    id: fullnameTxt
+                    Layout.fillWidth: true
+                    Layout.preferredHeight: 48 * Devices.density
+                    placeholderText: qsTr("Full Name") + Translations.refresher
+                    font.pixelSize: 9 * Devices.fontDensity
+                    horizontalAlignment: Text.AlignLeft
+                    leftPadding: 34 * Devices.density
+                    onAccepted: emailTxt.focus = true
+
+                    Label {
+                        anchors.left: parent.left
+                        anchors.verticalCenter: parent.verticalCenter
+                        anchors.verticalCenterOffset: 4 * Devices.density
+                        anchors.margins: 8 * Devices.density
+                        font.pixelSize: 12 * Devices.fontDensity
+                        font.family: MaterialIcons.family
+                        text: MaterialIcons.mdi_pencil
+                        color: Colors.accent
+                    }
+                }
+
+                TextField {
+                    id: emailTxt
+                    Layout.fillWidth: true
+                    Layout.preferredHeight: 48 * Devices.density
+                    placeholderText: qsTr("Email") + Translations.refresher
+                    font.pixelSize: 9 * Devices.fontDensity
+                    horizontalAlignment: Text.AlignLeft
+                    leftPadding: 34 * Devices.density
+                    onAccepted: sendBtn.focus = true
+
+                    Label {
+                        anchors.left: parent.left
+                        anchors.verticalCenter: parent.verticalCenter
+                        anchors.verticalCenterOffset: 4 * Devices.density
+                        anchors.margins: 8 * Devices.density
+                        font.pixelSize: 12 * Devices.fontDensity
+                        font.family: MaterialIcons.family
+                        text: MaterialIcons.mdi_email
+                        color: Colors.accent
+                    }
                 }
 
                 Button {
@@ -78,7 +156,7 @@ Page {
                     Layout.fillWidth: true
                     font.pixelSize: 9 * Devices.fontDensity
                     highlighted: true
-                    enabled: fnameTxt.length > 2 && lnameTxt.length > 2
+                    enabled: userTxt.length > 5 && passTxt.length > 5 && fullnameTxt.length > 2 && emailTxt.length > 5
                 }
             }
         }

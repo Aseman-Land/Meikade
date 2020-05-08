@@ -7,19 +7,21 @@ import routes 1.0
 
 NetworkRequest {
     id: req
-    contentType: 0//NetworkRequest.TypeJson
+    contentType: NetworkRequest.TypeJson
+    ignoreKeys: ["baseUrl", "refreshingState", "allowGlobalBusy", "networkManager", "allowShowErrors"]
     ignoreRegExp: /_\w+/
     headers: {
         "Content-Type": "application/json",
-        "Authorization": "Bearer " + AsemanGlobals.accessToken,
+        "User-token": AsemanGlobals.accessToken,
         "Accept-Language": "fa"
     }
 
     readonly property string baseUrl: "https://api.meikade.com/api"
     readonly property bool refreshingState: req.refreshing
     property bool allowGlobalBusy: false
+    property bool allowShowErrors: true
 
-    property alias _networkManager: networkManager
+    property alias networkManager: networkManager
     property bool _debug: false
 
     signal refreshRequest()
@@ -50,6 +52,9 @@ NetworkRequest {
     }
 
     function _showError(title, body) {
+        if (!allowShowErrors)
+            return;
+
         Tools.jsDelayCall(500, function() {
             ViewController.trigger("dialog:/general/error", {"title": title, "body": body})
         })

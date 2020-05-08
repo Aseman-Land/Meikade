@@ -12,6 +12,6 @@ BaseRequest {
         if (refreshing)
             return;
 
-        _networkManager.get(homeRequest)
+        networkManager.get(homeRequest)
     }
 }
