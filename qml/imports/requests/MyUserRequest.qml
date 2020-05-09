@@ -40,10 +40,10 @@ UserRequest {
     }
 
     function refresh() {
-        if (refreshing)
+        if (refreshing || AsemanGlobals.accessToken.length == 0)
             return;
 
-        networkManager.get(myUserReq)
+        networkManager.get(myUserReq);
     }
 
     function storeCache() {
@@ -51,7 +51,7 @@ UserRequest {
         if (json.length === 0 && AsemanGlobals.accessToken.length)
             return;
 
-        Tools.writeText(_cachePath, json)
+        Tools.writeText(_cachePath, json);
     }
 
     function readCache() {
@@ -59,7 +59,7 @@ UserRequest {
         if (json.length === 0)
             return;
 
-        _cache = Tools.jsonToVariant(json)
+        _cache = Tools.jsonToVariant(json);
     }
 
     function init() {}

@@ -12,12 +12,20 @@ Rectangle {
     width: Constants.width
     height: Constants.height
     color: Colors.deepBackground
+
     property alias gridView: gridView
     property alias coverImage: coverImage
     property alias avatarBtn: avatarBtn
     property alias avatar: avatar
     property alias profileLabel: profileLabel
     property alias settingsBtn: settingsBtn
+    property alias profileColumn: profileColumn
+    property alias authBtn: authBtn
+
+    property bool signedIn
+
+    readonly property real ratio: 1 + mapListener.result.y / coverImage.height
+    readonly property real ratioAbs: Math.max(0, ratio)
 
     signal clicked(string link)
 
@@ -58,11 +66,11 @@ Rectangle {
 
                 ColumnLayout {
                     anchors.centerIn: parent
-                    spacing: 4 * Devices.density
+                    spacing: 8 * Devices.density
 
                     Label {
                         Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
-                        font.pixelSize: 28 * Devices.fontDensity
+                        font.pixelSize: 18 * Devices.fontDensity
                         font.family: MaterialIcons.family
                         text: MaterialIcons[model.icon]
                     }
@@ -92,11 +100,12 @@ Rectangle {
         id: coverScene
         anchors.left: parent.left
         anchors.right: parent.right
-        height: mapListener.result.y + coverImage.height
+        height: Math.max(mapListener.result.y + coverImage.height, Devices.standardTitleBarHeight + Devices.statusBarHeight)
         clip: true
 
         Image {
             id: coverImage
+            y: Math.min(0, Math.max(mapListener.result.y / 2, (Devices.standardTitleBarHeight + Devices.statusBarHeight - height)/2))
             anchors.left: parent.left
             anchors.right: parent.right
             height: width * 9 / 16
@@ -105,9 +114,44 @@ Rectangle {
             fillMode: Image.PreserveAspectCrop
             source: "../images/cover.jpg"
 
+            Rectangle {
+                anchors.fill: parent
+                color: "#000"
+                opacity: (1 - ratioAbs) * 0.3
+            }
+
+            ItemDelegate {
+                id: authBtn
+                anchors.fill: parent
+                scale: Math.min(0.6 + ratioAbs*0.4, 1)
+                opacity: ratioAbs * 2 - 1
+                visible: opacity > 0 && !signedIn
+
+                Label {
+                    id: loginLabel
+                    anchors.centerIn: parent
+                    font.pixelSize: 10 * Devices.fontDensity
+                    color: "#fff"
+                    text: qsTr("Login / Register") + Translations.refresher
+
+                    Rectangle {
+                        anchors.fill: parent
+                        anchors.margins: -8 * Devices.density
+                        radius: Constants.radius
+                        color: "#222"
+                        z: -1
+                        opacity: 0.6
+                    }
+                }
+            }
+
             ColumnLayout {
+                id: profileColumn
                 anchors.centerIn: parent
                 spacing: 20 * Devices.density
+                scale: Math.min(0.6 + ratioAbs*0.4, 1)
+                opacity: ratioAbs * 2 - 1
+                visible: opacity > 0 && signedIn
 
                 Rectangle {
                     Layout.preferredWidth: 92 * Devices.density
@@ -147,6 +191,7 @@ Rectangle {
                 Label {
                     id: profileLabel
                     font.pixelSize: 9 * Devices.fontDensity
+                    Layout.alignment: Qt.AlignHCenter
                     color: "#fff"
                     text: "Bardia Daneshvar"
 
@@ -163,20 +208,30 @@ Rectangle {
         }
 
         Label {
-            anchors.top: parent.top
-            anchors.left: parent.left
-            anchors.topMargin: 8 * Devices.density + Devices.statusBarHeight
-            anchors.leftMargin: 8 * Devices.density
+            y: Devices.statusBarHeight
+            height: Devices.standardTitleBarHeight
+            anchors.horizontalCenter: parent.horizontalCenter
+            verticalAlignment: Text.AlignVCenter
+            font.pixelSize: 9 * Devices.fontDensity
+            text: signedIn? profileLabel.text : qsTr("My Meikade") + Translations.refresher
             color: "#fff"
-            font.pixelSize: 16 * Devices.fontDensity
-            font.family: MaterialIcons.family
-            text: MaterialIcons.mdi_settings
+            opacity: 1 - ratioAbs * 1.5
+        }
 
-            ItemDelegate {
-                id: settingsBtn
-                anchors.fill: parent
-                anchors.margins: -8 * Devices.density
-                z: -1
+        ItemDelegate {
+            id: settingsBtn
+            y: Devices.statusBarHeight
+            anchors.left: parent.left
+            height: Devices.standardTitleBarHeight
+            width: height
+
+            Label {
+                anchors.centerIn: parent
+                anchors.verticalCenterOffset: -3 * Devices.density
+                color: "#fff"
+                font.pixelSize: 16 * Devices.fontDensity
+                font.family: MaterialIcons.family
+                text: MaterialIcons.mdi_settings
             }
         }
     }
