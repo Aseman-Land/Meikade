@@ -30,6 +30,11 @@ ViewportController {
     }
 
     ViewportControllerRoute {
+        route: /\w+\:\/poet\/book(?:\?.+)?/
+        source: "PoetBooksRoute.qml"
+    }
+
+    ViewportControllerRoute {
         route: /\w+\:\/poets(?:\?.+)?/
         source: "PoetsListRoute.qml"
     }

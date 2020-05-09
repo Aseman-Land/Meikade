@@ -16,7 +16,7 @@ AsemanListModel {
                     color: "",
                     image: "",
                     type: "fullback",
-                    link: "page:/poet",
+                    link: "page:/poet/book",
                     heightRatio: 0.7
                 },
                 {
@@ -25,7 +25,7 @@ AsemanListModel {
                     color: "",
                     image: "",
                     type: "fullback",
-                    link: "page:/poet",
+                    link: "page:/poet/book",
                     heightRatio: 0.7
                 },
                 {
@@ -34,7 +34,7 @@ AsemanListModel {
                     color: "",
                     image: "",
                     type: "fullback",
-                    link: "page:/poet",
+                    link: "page:/poet/book",
                     heightRatio: 0.7
                 },
                 {
@@ -43,7 +43,7 @@ AsemanListModel {
                     color: "",
                     image: "",
                     type: "fullback",
-                    link: "page:/poet",
+                    link: "page:/poet/book",
                     heightRatio: 0.7
                 },
                 {
@@ -52,7 +52,7 @@ AsemanListModel {
                     color: "",
                     image: "",
                     type: "fullback",
-                    link: "page:/poet",
+                    link: "page:/poet/book",
                     heightRatio: 0.7
                 },
                 {
@@ -61,7 +61,7 @@ AsemanListModel {
                     color: "",
                     image: "",
                     type: "fullback",
-                    link: "page:/poet",
+                    link: "page:/poet/book",
                     heightRatio: 0.7
                 },
                 {
@@ -70,7 +70,7 @@ AsemanListModel {
                     color: "",
                     image: "",
                     type: "fullback",
-                    link: "page:/poet",
+                    link: "page:/poet/book",
                     heightRatio: 0.7
                 },
                 {
@@ -79,7 +79,7 @@ AsemanListModel {
                     color: "",
                     image: "",
                     type: "fullback",
-                    link: "page:/poet",
+                    link: "page:/poet/book",
                     heightRatio: 0.7
                 },
                 {
@@ -88,7 +88,7 @@ AsemanListModel {
                     color: "",
                     image: "",
                     type: "fullback",
-                    link: "page:/poet",
+                    link: "page:/poet/book",
                     heightRatio: 0.7
                 },
                 {
@@ -97,7 +97,7 @@ AsemanListModel {
                     color: "",
                     image: "",
                     type: "fullback",
-                    link: "page:/poet",
+                    link: "page:/poet/book",
                     heightRatio: 0.7
                 },
                 {
@@ -106,7 +106,7 @@ AsemanListModel {
                     color: "",
                     image: "",
                     type: "fullback",
-                    link: "page:/poet",
+                    link: "page:/poet/book",
                     heightRatio: 0.7
                 },
                 {
@@ -115,7 +115,7 @@ AsemanListModel {
                     color: "",
                     image: "",
                     type: "fullback",
-                    link: "page:/poet",
+                    link: "page:/poet/book",
                     heightRatio: 0.7
                 },
                 {
@@ -124,7 +124,7 @@ AsemanListModel {
                     color: "",
                     image: "",
                     type: "fullback",
-                    link: "page:/poet",
+                    link: "page:/poet/book",
                     heightRatio: 0.7
                 },
                 {
@@ -133,7 +133,7 @@ AsemanListModel {
                     color: "",
                     image: "",
                     type: "fullback",
-                    link: "page:/poet",
+                    link: "page:/poet/book",
                     heightRatio: 0.7
                 },
                 {
@@ -142,7 +142,7 @@ AsemanListModel {
                     color: "",
                     image: "",
                     type: "fullback",
-                    link: "page:/poet",
+                    link: "page:/poet/book",
                     heightRatio: 0.7
                 },
                 {
@@ -151,7 +151,7 @@ AsemanListModel {
                     color: "",
                     image: "",
                     type: "fullback",
-                    link: "page:/poet",
+                    link: "page:/poet/book",
                     heightRatio: 0.7
                 },
                 {
@@ -160,7 +160,7 @@ AsemanListModel {
                     color: "",
                     image: "",
                     type: "fullback",
-                    link: "page:/poet",
+                    link: "page:/poet/book",
                     heightRatio: 0.7
                 },
                 {
@@ -169,7 +169,7 @@ AsemanListModel {
                     color: "",
                     image: "",
                     type: "fullback",
-                    link: "page:/poet",
+                    link: "page:/poet/book",
                     heightRatio: 0.7
                 },
                 {
@@ -178,7 +178,7 @@ AsemanListModel {
                     color: "",
                     image: "",
                     type: "fullback",
-                    link: "page:/poet",
+                    link: "page:/poet/book",
                     heightRatio: 0.7
                 },
                 {
@@ -187,7 +187,7 @@ AsemanListModel {
                     color: "",
                     image: "",
                     type: "fullback",
-                    link: "page:/poet",
+                    link: "page:/poet/book",
                     heightRatio: 0.7
                 },
                 {
@@ -196,7 +196,7 @@ AsemanListModel {
                     color: "",
                     image: "",
                     type: "fullback",
-                    link: "page:/poet",
+                    link: "page:/poet/book",
                     heightRatio: 0.7
                 },
                 {
@@ -205,7 +205,7 @@ AsemanListModel {
                     color: "",
                     image: "",
                     type: "fullback",
-                    link: "page:/poet",
+                    link: "page:/poet/book",
                     heightRatio: 0.7
                 },
                 {
@@ -214,7 +214,7 @@ AsemanListModel {
                     color: "",
                     image: "",
                     type: "fullback",
-                    link: "page:/poet",
+                    link: "page:/poet/book",
                     heightRatio: 0.7
                 },
                 {
@@ -223,7 +223,7 @@ AsemanListModel {
                     color: "",
                     image: "",
                     type: "fullback",
-                    link: "page:/poet",
+                    link: "page:/poet/book",
                     heightRatio: 0.7
                 }
             ]

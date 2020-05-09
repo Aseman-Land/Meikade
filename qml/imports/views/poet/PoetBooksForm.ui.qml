@@ -10,14 +10,12 @@ import micros 1.0
 import models 1.0
 
 Rectangle {
-    id: poetsList
+    id: booksList
     width: Constants.width
     height: Constants.height
     color: Colors.deepBackground
-    property alias tabBarRepeater: tabBarRepeater
 
-    property alias tabBar: tabBar
-    property alias gridView: gridView
+    property alias gridView: listView
     property alias headerItem: headerItem
     property alias headerBtn: headerBtn
 
@@ -26,11 +24,11 @@ Rectangle {
     BusyIndicator {
         id: busyIndicator
         anchors.centerIn: parent
-        running: gridView.model && gridView.model.refreshing !== undefined && gridView.model.refreshing && gridView.count == 0
+        running: listView.model && listView.model.refreshing !== undefined && listView.model.refreshing && listView.count == 0
     }
 
-    FlexiList {
-        id: gridView
+    AsemanListView {
+        id: listView
         anchors.top: tabBar.bottom
         anchors.right: parent.right
         anchors.bottom: parent.bottom
@@ -45,42 +43,34 @@ Rectangle {
         anchors.right: parent.right
         anchors.left: parent.left
         color: Colors.header
-        text: qsTr("All Poets") + Translations.refresher
-        titleFontSize: 10 * Devices.fontDensity
 
         HeaderMenuButton {
             id: headerBtn
             ratio: 1
         }
-    }
 
-    Rectangle {
-        anchors.fill: tabBar
-        color: poetsList.color
-    }
+        ItemDelegate {
+            width: height
+            height: Devices.standardTitleBarHeight
+            anchors.bottom: parent.bottom
+            anchors.right: parent.right
 
-    TabBar {
-        id: tabBar
-        anchors.top: headerItem.bottom
-        anchors.right: parent.right
-        anchors.left: parent.left
-
-        Repeater {
-            id: tabBarRepeater
-            model: PoetCategoriesModel {}
-            TabButton {
-                font.pixelSize: 9 * Devices.fontDensity
-                text: model.title
+            Label {
+                anchors.centerIn: parent
+                font.family: MaterialIcons.family
+                font.pixelSize: 14 * Devices.fontDensity
+                text: MaterialIcons.mdi_dots_vertical
+                color: Colors.headerText
             }
         }
     }
 
     HScrollBar {
         anchors.right: parent.right
-        anchors.bottom: gridView.bottom
-        anchors.top: gridView.top
+        anchors.bottom: listView.bottom
+        anchors.top: listView.top
         anchors.bottomMargin: Devices.standardTitleBarHeight
         color: Colors.primary
-        scrollArea: gridView
+        scrollArea: listView
     }
 }
