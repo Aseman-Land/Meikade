@@ -30,6 +30,11 @@ ViewportController {
     }
 
     ViewportControllerRoute {
+        route: /\w+\:\/poets(?:\?.+)?/
+        source: "PoetsListRoute.qml"
+    }
+
+    ViewportControllerRoute {
         route: /popup\:\/auth\/float/
         source: "AuthRoute.qml"
         viewportType: "popup"
