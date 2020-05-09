@@ -212,7 +212,7 @@ Rectangle {
             height: Devices.standardTitleBarHeight
             anchors.horizontalCenter: parent.horizontalCenter
             verticalAlignment: Text.AlignVCenter
-            font.pixelSize: 9 * Devices.fontDensity
+            font.pixelSize: 10 * Devices.fontDensity
             text: signedIn? profileLabel.text : qsTr("My Meikade") + Translations.refresher
             color: "#fff"
             opacity: 1 - ratioAbs * 1.5
