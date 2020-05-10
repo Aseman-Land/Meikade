@@ -18,8 +18,13 @@ Rectangle {
     property alias gridView: listView
     property alias headerItem: headerItem
     property alias headerBtn: headerBtn
+    property alias navigationRepeater: navigationRepeater
+    property alias menuBtn: menuBtn
+    property alias avatar: avatar
+    property alias avatarBtn: avatarBtn
 
     signal clicked(string link)
+    signal navigationClicked(string link)
 
     BusyIndicator {
         id: busyIndicator
@@ -29,12 +34,62 @@ Rectangle {
 
     AsemanListView {
         id: listView
-        anchors.top: tabBar.bottom
+        anchors.top: headerItem.bottom
         anchors.right: parent.right
         anchors.bottom: parent.bottom
         anchors.left: parent.left
 
-        model: PoetModel {}
+        topMargin: 4 * Devices.density
+        bottomMargin: 4 * Devices.density
+
+        model: 20
+
+        delegate: Item {
+            id: del
+            width: listView.width
+            height: delRow.height + 40 * Devices.density
+
+            RoundedItem {
+                anchors.fill: parent
+                anchors.leftMargin: 8 * Devices.density
+                anchors.rightMargin: 8 * Devices.density
+                anchors.topMargin: 4 * Devices.density
+                anchors.bottomMargin: 4 * Devices.density
+                radius: Constants.radius
+
+                Rectangle {
+                    anchors.fill: parent
+                    color: Colors.lightBackground
+                }
+
+                ItemDelegate {
+                    id: itemDel
+                    anchors.fill: parent
+
+                    Connections {
+                        target: itemDel
+                        onClicked: booksList.clicked(model.link)
+                    }
+                }
+
+                RowLayout {
+                    id: delRow
+                    anchors.left: parent.left
+                    anchors.right: parent.right
+                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.margins: 20 * Devices.density
+
+                    Label {
+                        Layout.fillWidth: true
+                        font.pixelSize: 9 * Devices.fontDensity
+                        maximumLineCount: 3
+                        wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                        elide: Text.ElideRight
+                        text: model.title
+                    }
+                }
+            }
+        }
     }
 
     Header {
@@ -43,24 +98,109 @@ Rectangle {
         anchors.right: parent.right
         anchors.left: parent.left
         color: Colors.header
+        shadow: Devices.isAndroid
 
-        HeaderMenuButton {
-            id: headerBtn
-            ratio: 1
-        }
+        RowLayout {
+            anchors.fill: parent
+            anchors.topMargin: Devices.statusBarHeight
+            spacing: 4 * Devices.density
 
-        ItemDelegate {
-            width: height
-            height: Devices.standardTitleBarHeight
-            anchors.bottom: parent.bottom
-            anchors.right: parent.right
+            HeaderMenuButton {
+                id: headerBtn
+                ratio: 1
+            }
+
+            Rectangle {
+                Layout.preferredWidth: 32 * Devices.density
+                Layout.preferredHeight: 32 * Devices.density
+                radius: Constants.radius * 0.7
+                Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
+                color: Material.background
+
+                Label {
+                    anchors.centerIn: parent
+                    color: Colors.primary
+                    font.pixelSize: 18 * Devices.fontDensity
+                    font.family: MaterialIcons.family
+                    text: MaterialIcons.mdi_account
+                }
+
+                Image {
+                    id: avatar
+                    anchors.fill: parent
+                    sourceSize.width: width * 1.2
+                    sourceSize.height: height * 1.2
+                    fillMode: Image.PreserveAspectCrop
+                }
+
+                ItemDelegate {
+                    id: avatarBtn
+                    anchors.fill: parent
+                }
+            }
+
+            Repeater {
+                id: navigationRepeater
+                model: ListModel {
+                    ListElement {
+                        title: "Hello"
+                    }
+                    ListElement {
+                        title: "World"
+                    }
+                }
+
+                RowLayout {
+                    spacing: 0
+
+                    Label {
+                        font.family: MaterialIcons.family
+                        text: MaterialIcons.mdi_chevron_right
+                        font.pixelSize: 14 * Devices.fontDensity
+                        color: Colors.headerText
+                    }
+
+                    Label {
+                        text: model.title
+                        font.pixelSize: 9 * Devices.fontDensity
+                        color: Colors.headerText
+                        maximumLineCount: 1
+                        wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                        elide: Text.ElideRight
+
+                        ItemDelegate {
+                            id: navDel
+                            anchors.fill: parent
+                            anchors.margins: -14 * Devices.density
+                            z: -1
+
+                            Connections {
+                                target: navDel
+                                onClicked: booksList.navigationClicked(model.link)
+                            }
+                        }
+                    }
+                }
+            }
 
             Label {
-                anchors.centerIn: parent
-                font.family: MaterialIcons.family
-                font.pixelSize: 14 * Devices.fontDensity
-                text: MaterialIcons.mdi_dots_vertical
+                Layout.fillWidth: true
+                font.pixelSize: 10 * Devices.fontDensity
                 color: Colors.headerText
+            }
+
+            ItemDelegate {
+                id: menuBtn
+                Layout.preferredHeight: Devices.standardTitleBarHeight
+                Layout.preferredWidth: Devices.standardTitleBarHeight
+
+                Label {
+                    anchors.centerIn: parent
+                    font.family: MaterialIcons.family
+                    font.pixelSize: 14 * Devices.fontDensity
+                    text: MaterialIcons.mdi_dots_vertical
+                    color: Colors.headerText
+                }
             }
         }
     }

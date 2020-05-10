@@ -55,5 +55,6 @@ Item {
         text: qsTr("Meikade") + Translations.refresher
         anchors.top: parent.top
         titleFontSize: 10 * Devices.fontDensity
+        shadow: Devices.isAndroid
     }
 }

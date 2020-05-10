@@ -145,6 +145,7 @@ Page {
         anchors.right: parent.right
         text: qsTr("Authenticating") + Translations.refresher
         color: Colors.header
+        shadow: Devices.isAndroid
 
         RowLayout {
             anchors.left: parent.left

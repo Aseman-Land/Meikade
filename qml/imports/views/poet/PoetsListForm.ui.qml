@@ -47,6 +47,7 @@ Rectangle {
         color: Colors.header
         text: qsTr("All Poets") + Translations.refresher
         titleFontSize: 10 * Devices.fontDensity
+        shadow: Devices.isAndroid
 
         HeaderMenuButton {
             id: headerBtn

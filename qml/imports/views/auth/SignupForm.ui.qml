@@ -168,6 +168,7 @@ Page {
         anchors.right: parent.right
         text: qsTr("Signup") + Translations.refresher
         color: Colors.header
+        shadow: Devices.isAndroid
 
         RowLayout {
             anchors.left: parent.left
