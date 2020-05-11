@@ -5,3 +5,4 @@ PoetModel 1.0 PoetModel.qml
 RecentsModel 1.0 RecentsModel.qml
 PoetCategoriesModel 1.0 PoetCategoriesModel.qml
 PoetsModel 1.0 PoetsModel.qml
+CatsModel 1.0 CatsModel.qml

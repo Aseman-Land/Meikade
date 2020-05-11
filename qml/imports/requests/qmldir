@@ -4,3 +4,4 @@ LoginRequest 1.0 LoginRequest.qml
 RegisterRequest 1.0 RegisterRequest.qml
 UserRequest 1.0 UserRequest.qml
 PoetsRequest 1.0 PoetsRequest.qml
+CatsRequest 1.0 CatsRequest.qml

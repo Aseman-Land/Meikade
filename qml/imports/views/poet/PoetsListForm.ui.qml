@@ -9,11 +9,10 @@ import globals 1.0
 import micros 1.0
 import models 1.0
 
-Rectangle {
+Item {
     id: poetsList
     width: Constants.width
     height: Constants.height
-    color: Colors.deepBackground
     property alias tabBarRepeater: tabBarRepeater
 
     property alias tabBar: tabBar
@@ -22,6 +21,11 @@ Rectangle {
     property alias headerBtn: headerBtn
 
     signal clicked(string link)
+
+    Rectangle {
+        anchors.fill: parent
+        color: Colors.deepBackground
+    }
 
     BusyIndicator {
         id: busyIndicator
@@ -57,7 +61,7 @@ Rectangle {
 
     Rectangle {
         anchors.fill: tabBar
-        color: poetsList.color
+        color: Colors.deepBackground
     }
 
     TabBar {

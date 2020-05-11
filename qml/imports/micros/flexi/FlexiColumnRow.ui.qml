@@ -18,12 +18,11 @@ FlexiAbstractRow {
         dest: listView
     }
 
-    Grid {
+    Column {
         id: row
         anchors.left: parent.left
         anchors.right: parent.right
         spacing: 10 * Devices.density
-        columns: Math.floor( row.width / (180 * Devices.density))
 
         Repeater {
             id: rptr
@@ -31,7 +30,7 @@ FlexiAbstractRow {
                 id: model
             }
             delegate: Loader {
-                width: (hflexible.width - row.spacing * (row.columns - 1)) / row.columns
+                width: row.width
                 height: 100 * Devices.density * model.heightRatio
                 active: 0 < globalY + height && globalY < listView.height
 

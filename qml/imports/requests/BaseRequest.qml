@@ -9,7 +9,7 @@ NetworkRequest {
     id: req
     contentType: NetworkRequest.TypeJson
     ignoreKeys: ["baseUrl", "refreshingState", "allowGlobalBusy", "networkManager", "allowShowErrors"]
-    ignoreRegExp: /_\w+/
+    ignoreRegExp: /^_\w+$/
     headers: {
         "Content-Type": "application/json",
         "User-token": AsemanGlobals.accessToken,

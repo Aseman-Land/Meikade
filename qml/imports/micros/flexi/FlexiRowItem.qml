@@ -18,7 +18,7 @@ Item {
     property variant modelData
     property ListView listView
 
-    signal clicked(string link)
+    signal clicked(string link, variant properties)
 
     DelegateSwitch {
         id: dswitch
@@ -28,7 +28,7 @@ Item {
                 width: rowItem.width
                 listView: rowItem.listView
                 model.data: modelData
-                onClicked: rowItem.clicked(link)
+                onClicked: rowItem.clicked(link, properties)
             }
         }
         Component {
@@ -37,7 +37,7 @@ Item {
                 width: rowItem.width
                 listView: rowItem.listView
                 model.data: modelData
-                onClicked: rowItem.clicked(link)
+                onClicked: rowItem.clicked(link, properties)
             }
         }
         Component {
@@ -46,7 +46,7 @@ Item {
                 width: rowItem.width
                 listView: rowItem.listView
                 model.data: modelData
-                onClicked: rowItem.clicked(link)
+                onClicked: rowItem.clicked(link, properties)
             }
         }
         Component {
@@ -55,7 +55,16 @@ Item {
                 width: rowItem.width
                 listView: rowItem.listView
                 model.data: modelData
-                onClicked: rowItem.clicked(link)
+                onClicked: rowItem.clicked(link, properties)
+            }
+        }
+        Component {
+            id: columnComponent
+            FlexiColumnRow {
+                width: rowItem.width
+                listView: rowItem.listView
+                model.data: modelData
+                onClicked: rowItem.clicked(link, properties)
             }
         }
         Component {
@@ -64,7 +73,7 @@ Item {
                 width: rowItem.width
                 listView: rowItem.listView
                 type: args.length? args * 1 : 3
-                onClicked: rowItem.clicked(link)
+                onClicked: rowItem.clicked(link, properties)
             }
         }
 
@@ -83,8 +92,10 @@ Item {
                 return 2;
             case "grid":
                 return 3;
-            case "recents":
+            case "column":
                 return 4;
+            case "recents":
+                return 5;
             default:
                 return -1;
             }

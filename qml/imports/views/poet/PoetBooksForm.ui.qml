@@ -9,13 +9,12 @@ import globals 1.0
 import micros 1.0
 import models 1.0
 
-Rectangle {
+Item {
     id: booksList
     width: Constants.width
     height: Constants.height
-    color: Colors.deepBackground
 
-    property alias gridView: listView
+    property alias listView: listView
     property alias headerItem: headerItem
     property alias headerBtn: headerBtn
     property alias navigationRepeater: navigationRepeater
@@ -26,13 +25,18 @@ Rectangle {
     signal clicked(string link)
     signal navigationClicked(string link)
 
+    Rectangle {
+        anchors.fill: parent
+        color: Colors.deepBackground
+    }
+
     BusyIndicator {
         id: busyIndicator
         anchors.centerIn: parent
         running: listView.model && listView.model.refreshing !== undefined && listView.model.refreshing && listView.count == 0
     }
 
-    AsemanListView {
+    FlexiList {
         id: listView
         anchors.top: headerItem.bottom
         anchors.right: parent.right
@@ -41,55 +45,6 @@ Rectangle {
 
         topMargin: 4 * Devices.density
         bottomMargin: 4 * Devices.density
-
-        model: 20
-
-        delegate: Item {
-            id: del
-            width: listView.width
-            height: delRow.height + 40 * Devices.density
-
-            RoundedItem {
-                anchors.fill: parent
-                anchors.leftMargin: 8 * Devices.density
-                anchors.rightMargin: 8 * Devices.density
-                anchors.topMargin: 4 * Devices.density
-                anchors.bottomMargin: 4 * Devices.density
-                radius: Constants.radius
-
-                Rectangle {
-                    anchors.fill: parent
-                    color: Colors.lightBackground
-                }
-
-                ItemDelegate {
-                    id: itemDel
-                    anchors.fill: parent
-
-                    Connections {
-                        target: itemDel
-                        onClicked: booksList.clicked(model.link)
-                    }
-                }
-
-                RowLayout {
-                    id: delRow
-                    anchors.left: parent.left
-                    anchors.right: parent.right
-                    anchors.verticalCenter: parent.verticalCenter
-                    anchors.margins: 20 * Devices.density
-
-                    Label {
-                        Layout.fillWidth: true
-                        font.pixelSize: 9 * Devices.fontDensity
-                        maximumLineCount: 3
-                        wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                        elide: Text.ElideRight
-                        text: model.title
-                    }
-                }
-            }
-        }
     }
 
     Header {

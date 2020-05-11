@@ -5,5 +5,5 @@ Rectangle {
 
     property ListView listView
 
-    signal clicked(string link)
+    signal clicked(string link, variant properties)
 }

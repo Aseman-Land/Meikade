@@ -8,3 +8,4 @@ PoetBioPage 1.0 PoetBioPage.qml
 ErrorDialog 1.0 ErrorDialog.qml
 PoetsListPage 1.0 PoetsListPage.qml
 PoetBooksPage 1.0 PoetBooksPage.qml
+PoemPage 1.0 old/PoemView.qml

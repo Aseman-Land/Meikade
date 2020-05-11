@@ -17,9 +17,9 @@ AsemanListView {
     topMargin: spacing
     bottomMargin: spacing
 
-    signal linkRequest(string link)
+    signal linkRequest(string link, variant properties)
 
-    onLinkRequest: Viewport.controller.trigger(link)
+    onLinkRequest: Viewport.controller.trigger(link, properties)
 
     delegate: FlexiRowItem {
         id: rowItem
@@ -30,7 +30,7 @@ AsemanListView {
 
         Connections {
             target: rowItem
-            onClicked: list.linkRequest(link)
+            onClicked: list.linkRequest(link, properties)
         }
 
         Rectangle {

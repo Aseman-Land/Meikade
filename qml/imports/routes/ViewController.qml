@@ -20,6 +20,16 @@ ViewportController {
     }
 
     ViewportControllerRoute {
+        route: /\w+\:\/poet(?:\?.*catId\=.+)?/
+        source: "PoetBooksRoute.qml"
+    }
+
+    ViewportControllerRoute {
+        route: /\w+\:\/poet(?:\?.*poemId\=.+)?/
+        source: "PoemRoute.qml"
+    }
+
+    ViewportControllerRoute {
         route: /\w+\:\/poet(?:\?.+)?/
         source: "PoetRoute.qml"
     }
@@ -27,11 +37,6 @@ ViewportController {
     ViewportControllerRoute {
         route: /\w+\:\/poet\/bio(?:\?.+)?/
         source: "PoetBioRoute.qml"
-    }
-
-    ViewportControllerRoute {
-        route: /\w+\:\/poet\/book(?:\?.+)?/
-        source: "PoetBooksRoute.qml"
     }
 
     ViewportControllerRoute {

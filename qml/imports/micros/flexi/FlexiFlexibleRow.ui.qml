@@ -19,6 +19,7 @@ FlexiAbstractRow {
         anchors.right: parent.right
         spacing: 10 * Devices.density
         Repeater {
+            id: rptr
             model: AsemanListModel {
                 id: model
             }
@@ -35,7 +36,7 @@ FlexiAbstractRow {
 
                 Connections {
                     target: itemDel
-                    onClicked: hflexible.clicked(itemDel.link)
+                    onClicked: hflexible.clicked(itemDel.link, rptr.model.get(index))
                 }
             }
         }

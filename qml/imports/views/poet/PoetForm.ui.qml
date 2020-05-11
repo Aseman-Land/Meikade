@@ -9,11 +9,10 @@ import globals 1.0
 import micros 1.0
 import models 1.0
 
-Rectangle {
+Item {
     id: myMeikade
     width: Constants.width
     height: Constants.height
-    color: Colors.deepBackground
     property alias menuBtn: menuBtn
     property alias viewsLabel: viewsLabel
     property alias bioText: bioText
@@ -26,6 +25,8 @@ Rectangle {
     property alias profileLabel: profileLabel
     property alias settingsBtn: settingsBtn
 
+    property alias title: profileLabel.text
+
     readonly property real ratioAbs: Math.min(ratio, 1)
     readonly property real ratio: Math.max(
                                       0,
@@ -34,12 +35,21 @@ Rectangle {
                                   / (coverImage.height - Devices.standardTitleBarHeight
                                      - Devices.statusBarHeight)
 
-    signal clicked(string link)
+    Rectangle {
+        anchors.fill: parent
+        color: Colors.deepBackground
+    }
 
     PointMapListener {
         id: mapListener
         source: gridView.headerItem
         dest: myMeikade
+    }
+
+    BusyIndicator {
+        id: busyIndicator
+        anchors.centerIn: parent
+        running: gridView.model && gridView.model.refreshing !== undefined && gridView.model.refreshing && gridView.count == 0
     }
 
     FlexiList {
