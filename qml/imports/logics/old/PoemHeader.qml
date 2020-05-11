@@ -99,9 +99,10 @@ Item {
         layoutDirection: View.layoutDirection
 
         Button {
-            height: parent.height
+            Layout.preferredWidth: 30*Devices.density
+            Layout.fillHeight: true
             text: View.defaultLayout? Awesome.fa_angle_left : Awesome.fa_angle_right
-            width: 30*Devices.density
+            flat: true
             onClicked: previousRequest()
         }
 
@@ -139,9 +140,10 @@ Item {
         }
 
         Button {
-            height: parent.height
+            Layout.preferredWidth: 30*Devices.density
+            Layout.fillHeight: true
             text: View.defaultLayout? Awesome.fa_angle_right : Awesome.fa_angle_left
-            width: 30*Devices.density
+            flat: true
             onClicked: nextRequest()
         }
     }
@@ -155,8 +157,7 @@ Item {
         color: Qt.lighter(Colors.primary)
 
         Row {
-            anchors.right: View.defaultLayout? undefined : parent.right
-            anchors.left: View.defaultLayout? parent.left : undefined
+            anchors.right: parent.right
             anchors.verticalCenter: parent.verticalCenter
             layoutDirection: View.layoutDirection
             anchors.margins: spacing
@@ -218,27 +219,15 @@ Item {
         Row {
             id: menu_row
             height: 32*Devices.density
-            anchors.right: View.defaultLayout? parent.right : undefined
-            anchors.left: View.defaultLayout? undefined : parent.left
+            anchors.left: parent.left
             anchors.verticalCenter: parent.verticalCenter
             spacing: 1*Devices.density
-            layoutDirection: View.layoutDirection
-
-            BusyIndicator {
-                id: busyIndicator
-                anchors.verticalCenter: parent.verticalCenter
-                height: 46*Devices.density
-                width: height
-                running: false
-                transformOrigin: Item.Center
-                scale: 0.5
-                Material.accent: "#ffffff"
-            }
 
             Button {
                 id: menu
                 height: menu_row.height
                 width: height
+                flat: true
                 onClicked: optionsMenu.open()
 
                 Rectangle {
@@ -383,6 +372,17 @@ Item {
 //                        onTriggered: showSidePoem(poem_header.poemId)
 //                    }
                 }
+            }
+
+            BusyIndicator {
+                id: busyIndicator
+                anchors.verticalCenter: parent.verticalCenter
+                height: 46*Devices.density
+                width: height
+                running: false
+                transformOrigin: Item.Center
+                scale: 0.5
+                Material.accent: "#ffffff"
             }
         }
     }
