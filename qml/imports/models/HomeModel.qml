@@ -5,8 +5,6 @@ import requests 1.0
 import globals 1.0
 
 AsemanListModel {
-    cachePath: AsemanGlobals.cachePath + "/home.cache"
-
     property alias refreshing: homeReq.refreshing
 
     HomeRequest {

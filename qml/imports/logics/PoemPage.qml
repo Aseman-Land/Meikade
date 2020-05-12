@@ -15,5 +15,7 @@ PoemView {
 
     gridView.model: PoemVersesModel {
         id: poemModel
+        cachePath: AsemanGlobals.cachePath + "/poem-" + poemId + ".cache"
+        Component.onCompleted: console.debug(AsemanGlobals.cachePath + "/poem-" + poemId + ".cache")
     }
 }

@@ -8,5 +8,7 @@ import globals 1.0
 HomeView {
     id: home
 
-    list.model: HomeModel {}
+    list.model: HomeModel {
+        cachePath: AsemanGlobals.cachePath + "/home.cache"
+    }
 }

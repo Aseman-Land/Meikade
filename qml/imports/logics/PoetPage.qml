@@ -12,6 +12,7 @@ PoetView {
 
     gridView.model: CatsModel {
         id: catsModel
+        cachePath: AsemanGlobals.cachePath + "/poet-" + poetId + ".cache"
     }
 
     bioBtn.onClicked: Viewport.controller.trigger("popup:/poet/bio")

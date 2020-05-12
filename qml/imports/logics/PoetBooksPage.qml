@@ -13,5 +13,8 @@ PoetBooksView {
 
     headerBtn.onClicked: ViewportType.open = false
 
-    listView.model: CatsModel { id: catsModel }
+    listView.model: CatsModel {
+        id: catsModel
+        cachePath: AsemanGlobals.cachePath + "/poetbook-" + poetId + "-" + parentId + ".cache"
+    }
 }

@@ -85,7 +85,7 @@ Item {
         delegate: Item {
             id: del
             width: gridView.width
-            height: verseLabel.height + 20 * Devices.density
+            height: verseLabel.height + 10 * Devices.density
 
             LayoutMirroring.enabled: false
             LayoutMirroring.childrenInherit: true
@@ -103,10 +103,10 @@ Item {
                 anchors.left: parent.left
                 anchors.right: parent.right
                 anchors.verticalCenter: parent.verticalCenter
-                anchors.verticalCenterOffset: model.position === PoemVersesModel.PositionRight || model.position === PoemVersesModel.PositionCenteredVerse1? 10 * Devices.density :
-                                              (model.position === PoemVersesModel.PositionLeft || model.position === PoemVersesModel.PositionCenteredVerse2? -10 * Devices.density :
+                anchors.verticalCenterOffset: model.position === PoemVersesModel.PositionRight || model.position === PoemVersesModel.PositionCenteredVerse1? 4 * Devices.density :
+                                              (model.position === PoemVersesModel.PositionLeft || model.position === PoemVersesModel.PositionCenteredVerse2? -4 * Devices.density :
                                               0)
-                anchors.margins: 10 * Devices.density
+                anchors.margins: 20 * Devices.density
                 text: model.text
                 font.pixelSize: 10 * Devices.fontDensity
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
