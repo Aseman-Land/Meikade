@@ -30,9 +30,6 @@ Rectangle {
     height: Constants.height
     color: Colors.background
 
-    property int poemId: -1
-    property variant poemsArray: new Array
-
     property alias header: view_list.header
     property alias count: view_list.count
 
@@ -40,7 +37,6 @@ Rectangle {
     property color textColor: Colors.foreground
     property color highlightTextColor: Colors.foreground
 
-    property real fontScale: Meikade.fontPointScale(Meikade.poemsFont)
     property bool editable: true
     property bool headerVisible: true
 
@@ -50,29 +46,8 @@ Rectangle {
     property bool allowHideHeader: false
 
     property variant stickerDialog
-    readonly property bool loggedIn: AsemanServices.loggedIn
+    readonly property bool loggedIn: AsemanGlobals.accessToken.length != 0
 
-    onPoemIdChanged: {
-        view_list.refresh()
-
-        if(poemId!=-1) {
-            analizer.end()
-            analizer.begin()
-        }
-
-        var cat = Database.poemCat(poemId)
-        poemsArray = Database.catPoems(cat)
-
-        var fileName = cat
-        var filePath = "banners/" + fileName + ".jpg"
-        while( !Meikade.fileExists(filePath) ) {
-            fileName = Database.parentOf(fileName)
-            filePath = "banners/" + fileName + ".jpg"
-        }
-
-        img.source = filePath
-        reloadOnlines()
-    }
     onLoggedInChanged: reloadOnlines()
 
     onSelectModeChanged: {
@@ -86,14 +61,9 @@ Rectangle {
     signal itemSelected( int pid, int vid )
     signal forceTitleBarShowRequest(bool stt)
 
-    Connections {
-        target: Meikade
-        onPoemsFontChanged: view.fontScale = Meikade.fontPointScale(Meikade.poemsFont)
-    }
-
     HashObject {
         id: selectionHash
-        onCountChanged: if(count == 0) selectMode = false
+        onCountChanged: if(count === 0) selectMode = false
     }
 
     HashObject {
@@ -200,7 +170,7 @@ Rectangle {
             Text {
                 id: phrase_txt
                 width: parent.width
-                text: Meikade.phrase? Database.poemPhrase(view.poemId) : ""
+                text: "Phrase Text"
                 color: "#ffffff"
                 font.family: AsemanApp.globalFont.family
                 font.pixelSize: 12*Devices.density
@@ -248,7 +218,7 @@ Rectangle {
         footer: Rectangle {
             width: view_list.width
             height: phrase_txt.text.length==0? 1 : phrase_column.height + 40*Devices.density
-            color: phrase_txt.text.length==0? MeikadeGlobals.backgroundAlternativeColor
+            color: phrase_txt.text.length==0? Colors.deepBackground
                                             : "#00000000"
 
             Rectangle {
@@ -266,7 +236,7 @@ Rectangle {
                 transformOrigin: Item.Center
                 anchors.verticalCenter: parent.top
                 visible: phrase_txt.text.length!=0
-                color: MeikadeGlobals.backgroundAlternativeColor
+                color: Colors.background
             }
         }
 
@@ -277,7 +247,7 @@ Rectangle {
                 BackHandler.removeHandler(view)
         }
 
-        model: ListModel {}
+        model: 20
         delegate: Rectangle {
             id: item
             width: view_list.width
@@ -333,7 +303,7 @@ Rectangle {
                 pid: poemId
                 visible: !item.editItem
                 highlight: view_list.highlightedVid == vid
-                font.pixelSize: Devices.isMobile? 9*fontScale*Devices.fontDensity : 10*fontScale*Devices.fontDensity
+                font.pixelSize: Devices.isMobile? 9*Devices.fontDensity : 10*Devices.fontDensity
                 font.family: globalPoemFontFamily
 
                 Behavior on width {
@@ -352,7 +322,7 @@ Rectangle {
                         anchors.centerIn: parent
                         text: MeikadeGlobals.localeName != "fa"? index+1 : Meikade.numberToArabicString(index+1)
                         color: "#ffffff"
-                        font.pixelSize: 9*fontScale*Devices.fontDensity
+                        font.pixelSize: 9*Devices.fontDensity
                         font.family: AsemanApp.globalFont.family
                     }
                 }
@@ -413,7 +383,7 @@ Rectangle {
                     }
                 }
                 onClicked: {
-                    if(!AsemanServices.loggedIn)
+                    if(!loggedIn)
                         selectMode = true
 
                     if( view.editable ) {
@@ -500,9 +470,7 @@ Rectangle {
         header: PoemHeader {
             id: header
             width: view_list.width
-            poemId: view.poemId
             font.pixelSize: Devices.isMobile? 11*Devices.fontDensity : 13*Devices.fontDensity
-            font.family: globalPoemFontFamily
             z: 100
             busy: fake_header.busy
             onHeightChanged: {
@@ -605,9 +573,7 @@ Rectangle {
             id: fake_header
             width: parent.width
             anchors.bottom: parent.bottom
-            poemId: view.poemId
             font.pixelSize: Devices.isMobile? 11*Devices.fontDensity : 13*Devices.fontDensity
-            font.family: globalPoemFontFamily
         }
     }
 

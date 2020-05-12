@@ -29,9 +29,6 @@ Item {
     width: 100
     height: 190*Devices.density
 
-    property int poemId: -1
-    property int poetId: -1
-    property int catId: -1
     property bool favorited: false
     property bool toolsOpened: false
     property alias font: txt1.font
@@ -40,50 +37,6 @@ Item {
 
     signal nextRequest()
     signal previousRequest()
-
-    onPoemIdChanged: {
-        privates.signalBlocker = true
-        var cat = Database.poemCat(poemId)
-        txt1.text = Database.catName(cat)
-        txt2.text = Database.poemName(poemId)
-        favorited = UserData.isFavorited(poemId,0)
-
-        var poet
-        var book
-        while( cat ) {
-            book = poet
-            poet = cat
-            cat = Database.parentOf(cat)
-        }
-
-        poet_txt.text = Database.catName(poet)
-        book_txt.text = Database.catName(book)
-        if(book_txt.text.length == 0)
-            book_txt.text = qsTr("Other Poems")
-
-        poetId = poet
-        catId = book? book : -1
-
-        privates.signalBlocker = false
-    }
-
-    onFavoritedChanged: {
-        if( privates.signalBlocker )
-            return
-        if( favorited ) {
-            UserData.favorite(poemId,0)
-            main.showTooltip( qsTr("Favorited") )
-        } else {
-            UserData.unfavorite(poemId,0)
-            main.showTooltip( qsTr("Unfavorited") )
-        }
-    }
-
-    Connections {
-        target: UserData
-        onFavorited: if(pid == poem_header.poemId && vid == 0) favorited = true
-        onUnfavorited: if(pid == poem_header.poemId && vid == 0) favorited = false
-    }
 
     QtObject {
         id: privates
@@ -96,12 +49,11 @@ Item {
         anchors.left: parent.left
         anchors.right: parent.right
         height: parent.height - header.height
-        layoutDirection: View.layoutDirection
 
         Button {
             Layout.preferredWidth: 30*Devices.density
             Layout.fillHeight: true
-            text: View.defaultLayout? Awesome.fa_angle_left : Awesome.fa_angle_right
+            text: LayoutMirroring.enabled? Awesome.fa_angle_right : Awesome.fa_angle_left
             flat: true
             onClicked: previousRequest()
         }
@@ -142,7 +94,7 @@ Item {
         Button {
             Layout.preferredWidth: 30*Devices.density
             Layout.fillHeight: true
-            text: View.defaultLayout? Awesome.fa_angle_right : Awesome.fa_angle_left
+            text: LayoutMirroring.enabled? Awesome.fa_angle_left : Awesome.fa_angle_right
             flat: true
             onClicked: nextRequest()
         }
@@ -159,7 +111,6 @@ Item {
         Row {
             anchors.right: parent.right
             anchors.verticalCenter: parent.verticalCenter
-            layoutDirection: View.layoutDirection
             anchors.margins: spacing
             spacing: 4*Devices.density
 

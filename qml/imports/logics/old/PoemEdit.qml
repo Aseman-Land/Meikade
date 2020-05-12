@@ -114,7 +114,7 @@ Item {
                 id: poemItem
                 width: parent.width
                 color: "#00000000"
-                font.pixelSize: Devices.isMobile? 9*fontScale*Devices.fontDensity : 10*fontScale*Devices.fontDensity
+                font.pixelSize: Devices.isMobile? 9*Devices.fontDensity : 10*Devices.fontDensity
                 font.family: globalPoemFontFamily
 
                 Behavior on y {
@@ -240,7 +240,7 @@ Item {
                             res = contentHeight+extra
                         return res
                     }
-                    font.pixelSize: 10*fontScale*Devices.fontDensity
+                    font.pixelSize: 10*Devices.fontDensity
                     font.family: AsemanApp.globalFont.family
                     color: Colors.foreground
                     selectByMouse: Devices.isDesktop

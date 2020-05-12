@@ -25,14 +25,13 @@ import globals 1.0
 
 Rectangle {
     height: 40*Devices.density
-    color: MeikadeGlobals.backgroundAlternativeColor
+    color: Colors.deepBackground
 
     signal nextRequest()
     signal previousRequest()
 
     RowLayout {
         anchors.fill: parent
-        layoutDirection: View.layoutDirection
 
         Button {
             height: parent.height

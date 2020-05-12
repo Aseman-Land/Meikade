@@ -8,7 +8,7 @@ import AsemanQml.Base 2.0
 QtObject {
     readonly property bool darkMode: androidStyle? Material.theme == Material.Dark : IOSStyle.theme == IOSStyle.Dark
 
-    readonly property bool androidStyle: isAndroidStyle? isAndroidStyle : false
+    readonly property bool androidStyle: isAndroidStyle !== undefined? isAndroidStyle : false
 
     readonly property color primary: androidStyle? Material.primary : IOSStyle.primary
     readonly property color accent: androidStyle? Material.accent : IOSStyle.accent
