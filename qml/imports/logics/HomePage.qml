@@ -8,7 +8,10 @@ import globals 1.0
 HomeView {
     id: home
 
-    list.model: HomeModel {
-        cachePath: AsemanGlobals.cachePath + "/home.cache"
+    list {
+        onLinkRequest: Viewport.controller.trigger(link, properties)
+        model: HomeModel {
+            cachePath: AsemanGlobals.cachePath + "/home.cache"
+        }
     }
 }

@@ -20,6 +20,7 @@ Item {
     property alias coverScene: coverScene
     property alias profileLabel: titleLabel
     property alias settingsBtn: settingsBtn
+    property alias navigationRepeater: navigationRepeater
 
     property alias poet: titleLabel.text
     property alias title: subtitleLabel.text
@@ -231,7 +232,15 @@ Item {
             anchors.leftMargin: 8 * Devices.density
 
             Repeater {
-                model: 3
+                id: navigationRepeater
+                model: ListModel {
+                    ListElement {
+                        title: "Hello"
+                    }
+                    ListElement {
+                        title: "World"
+                    }
+                }
 
                 RowLayout {
                     spacing: 0
@@ -248,7 +257,7 @@ Item {
                     Label {
                         Layout.alignment: Qt.AlignVCenter
                         font.pixelSize: 9 * Devices.fontDensity
-                        text: "Title"
+                        text: model.title
                         color: "#fff"
                     }
                 }

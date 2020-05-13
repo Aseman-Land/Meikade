@@ -10,7 +10,10 @@ SearchView {
 
     onClicked: console.debug(link)
 
-    gridView.model: SearchModel {}
-
     domainBtn.onClicked: Viewport.controller.trigger("popup:/search/domains", {})
+
+    gridView {
+        onLinkRequest: Viewport.controller.trigger(link, properties)
+        model: SearchModel {}
+    }
 }

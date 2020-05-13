@@ -7,10 +7,15 @@ import models 1.0
 
 PoetsListView {
 
+    property string url
+
     headerBtn.onClicked: ViewportType.open = false
 
-    gridView.model: PoetsModel {
-        cachePath: AsemanGlobals.cachePath + "/poetslist.cache"
+    gridView {
+        onLinkRequest: Viewport.controller.trigger(link, properties)
+        model: PoetsModel {
+            cachePath: AsemanGlobals.cachePath + "/poetslist.cache"
+        }
     }
 
     tabBarRepeater.model: PoetCategoriesModel {

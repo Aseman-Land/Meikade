@@ -19,18 +19,15 @@ AsemanListView {
 
     signal linkRequest(string link, variant properties)
 
-    onLinkRequest: Viewport.controller.trigger(link, properties)
-
     delegate: FlexiRowItem {
         id: rowItem
         width: list.width
         type: model.type
         modelData: model.modelData
         listView: list
-
-        Connections {
-            target: rowItem
-            onClicked: list.linkRequest(link, properties)
+        onClicked: {
+            properties["properties"] = Tools.jsonToVariant( Tools.variantToJson(properties) )
+            list.linkRequest(link, properties)
         }
 
         Rectangle {

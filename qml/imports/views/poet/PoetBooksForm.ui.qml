@@ -22,8 +22,7 @@ Item {
     property alias avatar: avatar
     property alias avatarBtn: avatarBtn
 
-    signal clicked(string link)
-    signal navigationClicked(string link)
+    signal navigationClicked(string link, variant properties, int index)
 
     Rectangle {
         anchors.fill: parent
@@ -131,7 +130,7 @@ Item {
 
                             Connections {
                                 target: navDel
-                                onClicked: booksList.navigationClicked(model.link)
+                                onClicked: booksList.navigationClicked(model.link, model.properties, model.index)
                             }
                         }
                     }
