@@ -12,43 +12,60 @@ Page {
     width: Constants.width
     height: Constants.height
 
+    property alias scene: scene
+    property alias flickable: flickable
+    property alias progressBar: progressBar
+    property alias busyIndicator: busyIndicator
+    property alias closeBtn: closeBtn
+
     Rectangle {
         anchors.fill: parent
         color: Colors.deepBackground
     }
 
-    AsemanFlickable {
-        id: flickable
+    Item {
+        id: scene
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.top: headerItem.bottom
         anchors.bottom: parent.bottom
-        contentHeight: flickColumn.height
-        contentWidth: flickColumn.width
-        flickableDirection: Flickable.VerticalFlick
 
-        ColumnLayout {
-            id: flickColumn
-            width: flickable.width
+        AsemanFlickable {
+            id: flickable
+            anchors.fill: parent
+            contentHeight: flickColumn.height
+            contentWidth: flickColumn.width
+            flickableDirection: Flickable.VerticalFlick
 
-            Label {
-                id: bioText
-                Layout.margins: 14
-                Layout.fillHeight: true
-                Layout.fillWidth: true
-                font.pixelSize: 9 * Devices.fontDensity
-                wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                text: "Wissen Sie, wie Sie Pensionsrisiken minimieren sowie Pensionsverpflichtungen und #Volatilität reduzieren? Melden Sie sich jetzt an zum Webinar am 12. Mai! "
+            ColumnLayout {
+                id: flickColumn
+                width: flickable.width
+
+                Label {
+                    id: bioText
+                    Layout.margins: 14
+                    Layout.fillHeight: true
+                    Layout.fillWidth: true
+                    font.pixelSize: 9 * Devices.fontDensity
+                    wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                    text: "Wissen Sie, wie Sie Pensionsrisiken minimieren sowie Pensionsverpflichtungen und #Volatilität reduzieren? Melden Sie sich jetzt an zum Webinar am 12. Mai! "
+                }
             }
+        }
+
+        HScrollBar {
+            anchors.right: flickable.right
+            anchors.bottom: flickable.bottom
+            anchors.top: flickable.top
+            color: Colors.primary
+            scrollArea: flickable
         }
     }
 
-    HScrollBar {
-        anchors.right: flickable.right
-        anchors.bottom: flickable.bottom
-        anchors.top: flickable.top
-        color: Colors.primary
-        scrollArea: flickable
+    BusyIndicator {
+        id: busyIndicator
+        anchors.centerIn: parent
+        running: false
     }
 
     Rectangle {
@@ -58,6 +75,15 @@ Page {
         anchors.right: parent.right
         anchors.top: parent.top
         height: Devices.standardTitleBarHeight + Devices.statusBarHeight
+
+        ProgressBar {
+            id: progressBar
+            indeterminate: true
+            anchors.bottom: parent.bottom
+            anchors.right: parent.right
+            anchors.left: parent.left
+            visible: false
+        }
 
         RowLayout {
             anchors.left: parent.left
@@ -83,8 +109,8 @@ Page {
                 highlighted: true
                 radius: 6 * Devices.density
                 font.pixelSize: 8 * Devices.fontDensity
-                IOSStyle.accent: Qt.darker(Colors.deepBackground, 1.3)
-                Material.accent: Qt.darker(Colors.deepBackground, 1.3)
+                IOSStyle.accent: Qt.darker(Colors.primary, 1.3)
+                Material.accent: Qt.darker(Colors.primary, 1.3)
                 Material.theme: Material.Dark
                 Material.elevation: 0
             }

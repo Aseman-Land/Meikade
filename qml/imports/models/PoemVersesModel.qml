@@ -24,5 +24,10 @@ AsemanListModel {
     AsemanListModelSource {
         source: poemsReq.response
         path: "result"
+
+        ModelFormatHint {
+            path: "text"
+            method: function (arg) { return Tools.stringReplace(arg, "\\s+", " ", true); }
+        }
     }
 }

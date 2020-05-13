@@ -12,6 +12,7 @@ AsemanListModel {
 
     CatsRequest {
         id: catsReq
+        _debug: true
     }
 
     AsemanListModelSource {

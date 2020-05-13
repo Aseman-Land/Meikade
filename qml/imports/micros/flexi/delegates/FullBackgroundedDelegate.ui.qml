@@ -38,9 +38,12 @@ AbstractDelegate {
         anchors.verticalCenter: parent.verticalCenter
         anchors.right: parent.right
         anchors.left: parent.left
+        anchors.margins: 10 * Devices.density
         font.pixelSize: 9 * Devices.fontDensity
         text: "We needs change"
         wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+        maximumLineCount: 1
+        elide: Text.ElideRight
         verticalAlignment: Text.AlignVCenter
         horizontalAlignment: Text.AlignHCenter
         Material.foreground: Material.background

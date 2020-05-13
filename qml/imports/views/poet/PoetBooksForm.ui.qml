@@ -93,54 +93,73 @@ Item {
                 }
             }
 
-            Repeater {
-                id: navigationRepeater
-                model: ListModel {
-                    ListElement {
-                        title: "Hello"
-                    }
-                    ListElement {
-                        title: "World"
-                    }
-                }
+            Flickable {
+                id: navFlick
+                Layout.fillHeight: true
+                Layout.fillWidth: true
+                Layout.leftMargin: 8 * Devices.density
+                flickableDirection: Flickable.HorizontalFlick
+                contentWidth: navScene.width
+                contentHeight: navScene.height
+                clip: true
 
-                RowLayout {
-                    spacing: 0
+                Item {
+                    id: navScene
+                    height: navFlick.height
+                    width: Math.max(navFlick.width, navRow.width)
 
-                    Label {
-                        font.family: MaterialIcons.family
-                        text: MaterialIcons.mdi_chevron_right
-                        font.pixelSize: 14 * Devices.fontDensity
-                        color: Colors.headerText
-                    }
+                    RowLayout {
+                        id: navRow
+                        height: parent.height
+                        anchors.left: parent.left
+                        spacing: 4 * Devices.density
 
-                    Label {
-                        text: model.title
-                        font.pixelSize: 9 * Devices.fontDensity
-                        color: Colors.headerText
-                        maximumLineCount: 1
-                        wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                        elide: Text.ElideRight
+                        Repeater {
+                            id: navigationRepeater
+                            model: ListModel {
+                                ListElement {
+                                    title: "Hello"
+                                }
+                                ListElement {
+                                    title: "World"
+                                }
+                            }
 
-                        ItemDelegate {
-                            id: navDel
-                            anchors.fill: parent
-                            anchors.margins: -14 * Devices.density
-                            z: -1
+                            RowLayout {
+                                spacing: 0
+                                Layout.alignment: Qt.AlignVCenter
 
-                            Connections {
-                                target: navDel
-                                onClicked: booksList.navigationClicked(model.link, model.properties, model.index)
+                                Label {
+                                    font.family: MaterialIcons.family
+                                    text: LayoutMirroring.enabled? MaterialIcons.mdi_chevron_left : MaterialIcons.mdi_chevron_right
+                                    font.pixelSize: 14 * Devices.fontDensity
+                                    color: Colors.headerText
+                                }
+
+                                Label {
+                                    text: model.title
+                                    font.pixelSize: 9 * Devices.fontDensity
+                                    color: Colors.headerText
+                                    maximumLineCount: 1
+                                    wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                                    elide: Text.ElideRight
+
+                                    ItemDelegate {
+                                        id: navDel
+                                        anchors.fill: parent
+                                        anchors.margins: -14 * Devices.density
+                                        z: -1
+
+                                        Connections {
+                                            target: navDel
+                                            onClicked: booksList.navigationClicked(model.link, model.properties, model.index)
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
                 }
-            }
-
-            Label {
-                Layout.fillWidth: true
-                font.pixelSize: 10 * Devices.fontDensity
-                color: Colors.headerText
             }
 
             ItemDelegate {

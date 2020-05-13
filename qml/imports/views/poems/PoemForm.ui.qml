@@ -38,7 +38,7 @@ Item {
 
     Rectangle {
         anchors.fill: parent
-        color: Colors.deepBackground
+        color: Colors.background
     }
 
     PointMapListener {
@@ -164,33 +164,47 @@ Item {
 
             Label {
                 id: titleLabel
+                anchors.bottom: subtitleLabel.top
+                anchors.left: parent.left
+                anchors.right: parent.right
+                horizontalAlignment: Text.AlignHCenter
                 font.pixelSize: 10 * Devices.fontDensity
                 color: Material.background
                 text: "Bardia Daneshvar"
-                anchors.horizontalCenter: parent.horizontalCenter
-                anchors.bottom: subtitleLabel.top
-                anchors.bottomMargin: -8 * Devices.density
+                wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                maximumLineCount: 1
+                elide: Text.ElideRight
                 opacity: ratio
             }
 
             Label {
                 id: subtitleLabel
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.verticalCenterOffset: 10 * Devices.density * ratioAbs
+                anchors.left: parent.left
+                anchors.right: parent.right
+                horizontalAlignment: Text.AlignHCenter
                 font.pixelSize: 14 * Devices.fontDensity
                 scale: Math.min(1, (10 + 4 * ratio) / 14)
                 color: Material.background
                 text: "High Mountains of QML"
-                anchors.centerIn: parent
-                anchors.verticalCenterOffset: 10 * Devices.density * ratioAbs
+                wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                maximumLineCount: 1
+                elide: Text.ElideRight
             }
 
             Label {
                 id: viewsLabel
-                anchors.horizontalCenter: parent.horizontalCenter
                 anchors.top: subtitleLabel.bottom
-                anchors.topMargin: 10 * Devices.density
+                anchors.left: parent.left
+                anchors.right: parent.right
+                horizontalAlignment: Text.AlignHCenter
                 font.pixelSize: 8 * Devices.fontDensity
                 color: Material.background
                 text: "500 views in last week"
+                wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                maximumLineCount: 1
+                elide: Text.ElideRight
                 opacity: ratio
             }
         }
@@ -239,55 +253,63 @@ Item {
                 Layout.fillWidth: true
                 Layout.leftMargin: 8 * Devices.density
                 flickableDirection: Flickable.HorizontalFlick
-                contentWidth: navRow.width
-                contentHeight: navRow.height
+                contentWidth: navScene.width
+                contentHeight: navScene.height
 
-                RowLayout {
-                    id: navRow
+                Item {
+                    id: navScene
                     height: navFlick.height
+                    width: Math.max(navFlick.width, navRow.width)
 
-                    Repeater {
-                        id: navigationRepeater
-                        model: ListModel {
-                            ListElement {
-                                title: "Hello"
+                    RowLayout {
+                        id: navRow
+                        height: parent.height
+                        anchors.left: parent.left
+                        spacing: 4 * Devices.density
+
+                        Repeater {
+                            id: navigationRepeater
+                            model: ListModel {
+                                ListElement {
+                                    title: "Hello"
+                                }
+                                ListElement {
+                                    title: "World"
+                                }
                             }
-                            ListElement {
-                                title: "World"
-                            }
-                        }
 
-                        RowLayout {
-                            spacing: 0
-                            Layout.alignment: Qt.AlignVCenter
-
-                            Label {
+                            RowLayout {
+                                spacing: 0
                                 Layout.alignment: Qt.AlignVCenter
-                                font.pixelSize: 12 * Devices.fontDensity
-                                font.family: MaterialIcons.family
-                                text: MaterialIcons.mdi_chevron_right
-                                color: "#fff"
-                            }
 
-                            Label {
-                                Layout.alignment: Qt.AlignVCenter
-                                font.pixelSize: 9 * Devices.fontDensity
-                                text: model.title
-                                color: "#fff"
+                                Label {
+                                    Layout.alignment: Qt.AlignVCenter
+                                    font.pixelSize: 12 * Devices.fontDensity
+                                    font.family: MaterialIcons.family
+                                    text: LayoutMirroring.enabled? MaterialIcons.mdi_chevron_left : MaterialIcons.mdi_chevron_right
+                                    color: "#fff"
+                                }
 
-                                ItemDelegate {
-                                    id: navDel
-                                    anchors.left: parent.left
-                                    anchors.right: parent.right
-                                    anchors.verticalCenter: parent.verticalCenter
-                                    height: headerFooter.height
-                                    anchors.margins: -4 * Devices.density
+                                Label {
+                                    Layout.alignment: Qt.AlignVCenter
+                                    font.pixelSize: 9 * Devices.fontDensity
+                                    text: model.title
+                                    color: "#fff"
 
-                                    Connections {
-                                        target: navDel
-                                        onClicked: myMeikade.navigationClicked(model.link, model.properties, model.index)
+                                    ItemDelegate {
+                                        id: navDel
+                                        anchors.left: parent.left
+                                        anchors.right: parent.right
+                                        anchors.verticalCenter: parent.verticalCenter
+                                        height: headerFooter.height
+                                        anchors.margins: -4 * Devices.density
+
+                                        Connections {
+                                            target: navDel
+                                            onClicked: myMeikade.navigationClicked(model.link, model.properties, model.index)
+                                        }
+
                                     }
-
                                 }
                             }
                         }

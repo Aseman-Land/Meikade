@@ -39,6 +39,8 @@ AbstractDelegate {
             font.pixelSize: 9 * Devices.fontDensity
             text: "Title Poet"
             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+            maximumLineCount: 1
+            elide: Text.ElideRight
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: Text.AlignLeft
             Material.foreground: Material.background
@@ -55,6 +57,8 @@ AbstractDelegate {
                 text: "Short Description"
                 Layout.alignment: Qt.AlignLeft | Qt.AlignTop
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                maximumLineCount: 1
+                elide: Text.ElideRight
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignLeft
                 Material.foreground: Material.background
