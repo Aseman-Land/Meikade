@@ -6,6 +6,16 @@ SOURCES += \
 
 include(objectivec/ios.pri)
 
+ios {
+    QMAKE_INFO_PLIST = iOS/info.plist
+
+    app_launch_images.files = $$PWD/iOS/Launch.xib $$files($$PWD/iOS/splash/LaunchImage*.png)
+    QMAKE_BUNDLE_DATA += app_launch_images
+
+    ios_icon.files = $$files($$PWD/iOS/icons/*.png)
+    QMAKE_BUNDLE_DATA += ios_icon
+}
+
 INCLUDED_RESOURCE_FILES += \
     $$files($$PWD/qml/*.qml, true) \
     $$files($$PWD/qml/*.png, true) \
