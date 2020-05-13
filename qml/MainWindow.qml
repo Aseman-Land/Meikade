@@ -15,6 +15,9 @@ AsemanWindow {
     height: 820
     visible: true
 
+    LayoutMirroring.enabled: Devices.isTouchDevice
+    LayoutMirroring.childrenInherit: true
+
     Timer {
         id: waitTimer
         interval: 1000

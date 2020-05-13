@@ -61,7 +61,6 @@ Page {
                     Layout.preferredHeight: 48 * Devices.density
                     placeholderText: qsTr("Username") + Translations.refresher
                     font.pixelSize: 10 * Devices.fontDensity
-                    inputMethodHints: Qt.ImhDigitsOnly
                     horizontalAlignment: Text.AlignHCenter
                     onAccepted: passTxt.focus = true
 
@@ -83,7 +82,6 @@ Page {
                     Layout.preferredHeight: 48 * Devices.density
                     placeholderText: qsTr("Password") + Translations.refresher
                     font.pixelSize: 10 * Devices.fontDensity
-                    inputMethodHints: Qt.ImhDigitsOnly
                     horizontalAlignment: Text.AlignHCenter
                     echoMode: TextInput.Password
                     visible: userTxt.length > 5
@@ -109,7 +107,7 @@ Page {
                     Layout.fillWidth: true
                     font.pixelSize: 9 * Devices.fontDensity
                     highlighted: true
-                    //                    enabled: userTxt.length > 5 && passTxt.length > 5
+//                    enabled: userTxt.length > 5 && passTxt.length > 5
                 }
 
                 Button {

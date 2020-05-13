@@ -20,7 +20,7 @@ Page {
 
     Rectangle {
         anchors.fill: parent
-        color: Colors.deepBackground
+        color: Colors.background
     }
 
     Item {
@@ -64,6 +64,7 @@ Page {
 
     BusyIndicator {
         id: busyIndicator
+        Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
         anchors.centerIn: parent
         running: false
     }
@@ -99,7 +100,11 @@ Page {
                 font.pixelSize: 12 * Devices.fontDensity
                 horizontalAlignment: Text.AlignLeft
                 text: qsTr("Biography") + Translations.refresher
+            }
+
+            Item {
                 Layout.fillWidth: true
+                Layout.preferredHeight: 2
             }
 
             RoundButton {

@@ -21,6 +21,7 @@ Item {
     property alias profileLabel: titleLabel
     property alias settingsBtn: settingsBtn
     property alias navigationRepeater: navigationRepeater
+    property alias statusBarRect: statusBarRect
 
     property alias poet: titleLabel.text
     property alias title: subtitleLabel.text
@@ -88,7 +89,7 @@ Item {
         delegate: Item {
             id: del
             width: gridView.width
-            height: verseLabel.height + 10 * Devices.density
+            height: verseLabel.height + 20 * Devices.density
 
             LayoutMirroring.enabled: false
             LayoutMirroring.childrenInherit: true
@@ -240,25 +241,31 @@ Item {
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.top: coverScene.bottom
+        anchors.topMargin: -1 * Devices.density
         height: 30 * Devices.density
         color: Qt.lighter(Colors.primary)
 
         RowLayout {
-            anchors.fill: parent
+            anchors.left: parent.left
+            anchors.right: parent.right
+            anchors.verticalCenter: parent.verticalCenter
+            height: headerFooter.height * 2
             anchors.rightMargin: -1 * Devices.density
 
             Flickable {
                 id: navFlick
                 Layout.fillHeight: true
                 Layout.fillWidth: true
+                Layout.alignment: Qt.AlignVCenter
                 Layout.leftMargin: 8 * Devices.density
                 flickableDirection: Flickable.HorizontalFlick
                 contentWidth: navScene.width
-                contentHeight: navScene.height
+                contentHeight: navFlick.height
 
                 Item {
                     id: navScene
-                    height: navFlick.height
+                    anchors.verticalCenter: parent.verticalCenter
+                    height: headerFooter.height
                     width: Math.max(navFlick.width, navRow.width)
 
                     RowLayout {
@@ -319,7 +326,8 @@ Item {
 
             ItemDelegate {
                 Layout.preferredWidth: 30 * Devices.density
-                Layout.fillHeight: true
+                Layout.preferredHeight: headerFooter.height
+                Layout.alignment: Qt.AlignVCenter
 
                 Rectangle {
                     anchors.fill: parent
@@ -340,5 +348,14 @@ Item {
                 }
             }
         }
+    }
+
+    Rectangle {
+        id: statusBarRect
+        anchors.left: parent.left
+        anchors.right: parent.right
+        height: Devices.statusBarHeight
+        color: Colors.primary
+        opacity: headerVisible? 0 : 1
     }
 }

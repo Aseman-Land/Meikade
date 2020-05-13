@@ -9,6 +9,7 @@ import models 1.0
 PoetView {
     width: Constants.width
     height: Constants.height
+    clip: true
 
     property string url
     property variant properties

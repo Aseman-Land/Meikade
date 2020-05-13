@@ -62,7 +62,6 @@ Page {
                     Layout.preferredHeight: 48 * Devices.density
                     placeholderText: qsTr("Username") + Translations.refresher
                     font.pixelSize: 9 * Devices.fontDensity
-                    inputMethodHints: Qt.ImhDigitsOnly
                     horizontalAlignment: Text.AlignLeft
                     leftPadding: 34 * Devices.density
                     onAccepted: passTxt.focus = true
@@ -85,7 +84,6 @@ Page {
                     Layout.preferredHeight: 48 * Devices.density
                     placeholderText: qsTr("Password") + Translations.refresher
                     font.pixelSize: 9 * Devices.fontDensity
-                    inputMethodHints: Qt.ImhDigitsOnly
                     horizontalAlignment: Text.AlignLeft
                     leftPadding: 34 * Devices.density
                     echoMode: TextInput.Password

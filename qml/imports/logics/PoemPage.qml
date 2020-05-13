@@ -8,6 +8,7 @@ import models 1.0
 PoemView {
     width: Constants.width
     height: Constants.height
+    clip: true
 
     property alias poemId: poemModel.poemId
     property alias navigData: navigModel.data
@@ -18,6 +19,9 @@ PoemView {
     }
 
     Behavior on coverScene.y {
+        NumberAnimation { easing.type: Easing.OutCubic; duration: 300 }
+    }
+    Behavior on statusBarRect.opacity {
         NumberAnimation { easing.type: Easing.OutCubic; duration: 300 }
     }
 
