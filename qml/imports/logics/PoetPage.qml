@@ -38,6 +38,7 @@ PoetView {
                 "properties": Tools.jsonToVariant( Tools.variantToJson(properties) )
             };
             properties["navigData"] = navigData;
+            properties["poet"] = title;
 
             Viewport.controller.trigger(link, properties)
         }

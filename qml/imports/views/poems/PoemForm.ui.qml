@@ -34,6 +34,8 @@ Item {
                                   / (coverImage.height - Devices.standardTitleBarHeight
                                      - Devices.statusBarHeight)
 
+    signal navigationClicked(string link, variant properties, int index)
+
     Rectangle {
         anchors.fill: parent
         color: Colors.deepBackground
@@ -167,7 +169,7 @@ Item {
                 text: "Bardia Daneshvar"
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.bottom: subtitleLabel.top
-                anchors.bottomMargin: 8 * Devices.density
+                anchors.bottomMargin: -8 * Devices.density
                 opacity: ratio
             }
 
@@ -229,47 +231,83 @@ Item {
 
         RowLayout {
             anchors.fill: parent
-            anchors.leftMargin: 8 * Devices.density
+            anchors.rightMargin: -1 * Devices.density
 
-            Repeater {
-                id: navigationRepeater
-                model: ListModel {
-                    ListElement {
-                        title: "Hello"
-                    }
-                    ListElement {
-                        title: "World"
-                    }
-                }
+            Flickable {
+                id: navFlick
+                Layout.fillHeight: true
+                Layout.fillWidth: true
+                Layout.leftMargin: 8 * Devices.density
+                flickableDirection: Flickable.HorizontalFlick
+                contentWidth: navRow.width
+                contentHeight: navRow.height
 
                 RowLayout {
-                    spacing: 0
-                    Layout.alignment: Qt.AlignVCenter
+                    id: navRow
+                    height: navFlick.height
 
-                    Label {
-                        Layout.alignment: Qt.AlignVCenter
-                        font.pixelSize: 12 * Devices.fontDensity
-                        font.family: MaterialIcons.family
-                        text: MaterialIcons.mdi_chevron_right
-                        color: "#fff"
-                    }
+                    Repeater {
+                        id: navigationRepeater
+                        model: ListModel {
+                            ListElement {
+                                title: "Hello"
+                            }
+                            ListElement {
+                                title: "World"
+                            }
+                        }
 
-                    Label {
-                        Layout.alignment: Qt.AlignVCenter
-                        font.pixelSize: 9 * Devices.fontDensity
-                        text: model.title
-                        color: "#fff"
+                        RowLayout {
+                            spacing: 0
+                            Layout.alignment: Qt.AlignVCenter
+
+                            Label {
+                                Layout.alignment: Qt.AlignVCenter
+                                font.pixelSize: 12 * Devices.fontDensity
+                                font.family: MaterialIcons.family
+                                text: MaterialIcons.mdi_chevron_right
+                                color: "#fff"
+                            }
+
+                            Label {
+                                Layout.alignment: Qt.AlignVCenter
+                                font.pixelSize: 9 * Devices.fontDensity
+                                text: model.title
+                                color: "#fff"
+
+                                ItemDelegate {
+                                    id: navDel
+                                    anchors.left: parent.left
+                                    anchors.right: parent.right
+                                    anchors.verticalCenter: parent.verticalCenter
+                                    height: headerFooter.height
+                                    anchors.margins: -4 * Devices.density
+
+                                    Connections {
+                                        target: navDel
+                                        onClicked: myMeikade.navigationClicked(model.link, model.properties, model.index)
+                                    }
+
+                                }
+                            }
+                        }
                     }
                 }
-            }
-
-            Label {
-                Layout.fillWidth: true
             }
 
             ItemDelegate {
-                Layout.fillHeight: true
                 Layout.preferredWidth: 30 * Devices.density
+                Layout.fillHeight: true
+
+                Rectangle {
+                    anchors.fill: parent
+                    z: -1
+                    rotation: LayoutMirroring.enabled? 90 : -90
+                    gradient: Gradient {
+                        GradientStop { position: 0.0; color: "transparent" }
+                        GradientStop { position: 0.7; color: headerFooter.color }
+                    }
+                }
 
                 Label {
                     anchors.centerIn: parent

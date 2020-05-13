@@ -21,6 +21,14 @@ PoemView {
         NumberAnimation { easing.type: Easing.OutCubic; duration: 300 }
     }
 
+    onNavigationClicked: {
+        if (index + 1 == navigModel.count)
+            return;
+
+        properties["navigData"] = navigModel.data.slice(0, index+1);
+        Viewport.controller.trigger(link, properties)
+    }
+
     navigationRepeater.model: navigModel
 
     menuBtn.onClicked: ViewportType.open = false
@@ -28,6 +36,5 @@ PoemView {
     gridView.model: PoemVersesModel {
         id: poemModel
         cachePath: AsemanGlobals.cachePath + "/poem-" + poemId + ".cache"
-        Component.onCompleted: console.debug(AsemanGlobals.cachePath + "/poem-" + poemId + ".cache")
     }
 }

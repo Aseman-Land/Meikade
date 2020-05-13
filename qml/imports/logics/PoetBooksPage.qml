@@ -13,6 +13,7 @@ PoetBooksView {
     property alias id: catsModel.poetId
     property alias catId: catsModel.parentId
     property string title
+    property string poet
     property string url
     property alias navigData: navigModel.data
 
@@ -28,13 +29,8 @@ PoetBooksView {
     onNavigationClicked: {
         if (index + 1 == navigModel.count)
             return;
-        if (index + 2 == navigModel.count) {
-            ViewportType.open = false;
-            return;
-        }
 
         properties["navigData"] = navigModel.data.slice(0, index+1);
-        console.debug(Tools.variantToJson(properties))
         Viewport.controller.trigger(link, properties)
     }
 
@@ -46,7 +42,9 @@ PoetBooksView {
                 "link": link,
                 "properties": Tools.jsonToVariant( Tools.variantToJson(properties) )
             };
+
             properties["navigData"] = navigData;
+            properties["poet"] = poet
 
             Viewport.controller.trigger(link, properties)
         }
