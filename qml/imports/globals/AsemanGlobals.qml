@@ -8,6 +8,7 @@ import globals 1.0
 AsemanObject {
     readonly property string cachePath: AsemanApp.homePath + "/cache"
     property alias languageInited: _settings.languageInited
+    property alias language: _settings.language
 
     property alias settings: _settings
     property alias accessToken: _auth.accessToken
@@ -22,6 +23,7 @@ AsemanObject {
         source: AsemanApp.homePath + "/ui-settings.ini"
 
         property bool languageInited: false
+        property string language: "fa"
     }
 
     Settings {

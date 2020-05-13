@@ -15,7 +15,7 @@ AsemanWindow {
     height: 820
     visible: true
 
-    LayoutMirroring.enabled: Devices.isTouchDevice
+    LayoutMirroring.enabled: GTranslations.textDirection === Qt.RightToLeft
     LayoutMirroring.childrenInherit: true
 
     Timer {
