@@ -45,6 +45,9 @@ Rectangle {
         cellHeight: 108 * Devices.density
         model: 5
 
+        LayoutMirroring.enabled: false
+        LayoutMirroring.childrenInherit: true
+
         header: Item {
             width: gridView.width
             height: coverImage.height + 10 * Devices.density

@@ -81,6 +81,7 @@ AsemanListView {
             anchors.right: parent.right
             anchors.bottom: parent.bottom
             anchors.bottomMargin: list.spacing
+            horizontalAlignment: Text.AlignLeft
             font.pixelSize: 10 * Devices.fontDensity
             text: sectionItem.text
 
