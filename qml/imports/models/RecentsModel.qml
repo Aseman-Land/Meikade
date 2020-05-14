@@ -21,7 +21,9 @@ AsemanListModel {
     }
 
     function refresh() {
-        data = actions.getItems(type, 0, 10)
+        Tools.jsDelayCall(10, function(){
+            data = actions.getItems(type, 0, 10)
+        })
     }
 
     function getJsonObj(json) {

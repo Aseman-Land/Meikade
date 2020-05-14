@@ -32,7 +32,9 @@ int main(int argc, char *argv[])
     androidStyle = false;
     QQuickStyle::setStyle("IOSStyle");
 #endif
+
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+    QCoreApplication::setAttribute(Qt::AA_ShareOpenGLContexts);
 
     QGuiApplication app(argc, argv);
 
