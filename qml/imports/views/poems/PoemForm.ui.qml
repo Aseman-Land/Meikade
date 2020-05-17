@@ -13,6 +13,8 @@ Item {
     id: myMeikade
     width: Constants.width
     height: Constants.height
+    clip: true
+
     property alias menuBtn: menuBtn
     property alias viewsLabel: viewsLabel
     property alias gridView: gridView
@@ -137,6 +139,7 @@ Item {
         y: headerVisible? 0 : -Devices.standardTitleBarHeight
         anchors.left: parent.left
         anchors.right: parent.right
+        anchors.margins: -1
         height: Math.max(
                     Math.min(coverImage.height,
                              mapListener.result.y + coverImage.height),

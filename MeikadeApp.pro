@@ -1,4 +1,4 @@
-QT += quick qml quickcontrols2 webview
+QT += quick qml quickcontrols2 webview sql
 CONFIG += c++11
 
 SOURCES += \

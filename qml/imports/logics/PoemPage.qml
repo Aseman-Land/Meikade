@@ -47,6 +47,14 @@ PoemView {
         navigData[navigData.length-1].link = link;
 
         dis.navigData = navigData;
+
+        properties.navigData = navigData;
+        properties.neighbors = Tools.toVariantList(neighbors);
+        properties.neighborsIndex = neighborsIndex;
+
+        properties = Tools.toVariantMap(properties)
+
+        userActionTimer.restart();
     }
 
     AsemanListModel {
@@ -75,7 +83,7 @@ PoemView {
 
     Timer {
         id: userActionTimer
-        interval: 1000
+        interval: 10000
         repeat: false
         running: true
         onTriggered: {

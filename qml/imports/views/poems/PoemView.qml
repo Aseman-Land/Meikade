@@ -55,7 +55,7 @@ Rectangle {
             poemView.changeRequest(unit.link, unit.title, unit.subtitle)
         }
 
-        property int nextIndex
+        property int nextIndex: neighborsIndex
     }
 
     MouseArea {
