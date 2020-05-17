@@ -8,7 +8,8 @@ BaseRequest {
 
     property int poem_id
 
-    onRefreshRequest: refresh()
+    Component.onCompleted: refresh()
+    onPoem_idChanged: Tools.jsDelayCall(10, refresh)
 
     function refresh() {
         if (refreshing)

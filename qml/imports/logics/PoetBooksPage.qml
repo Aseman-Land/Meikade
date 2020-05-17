@@ -43,8 +43,28 @@ PoetBooksView {
             var navigData = navigModel.data;
             navigData[navigData.length] = Tools.toVariantMap(properties);
 
+            var neighborsIndex = 0;
+            var neighbors = new Array;
+            try {
+                for (var i in catsModel.data) {
+                    var item = catsModel.data[i];
+                    for (var j in item.modelData) {
+                        var unit = item.modelData[j];
+                        if (unit.link.indexOf("poemId=") <= 0)
+                            continue;
+
+                        if (unit.link == link)
+                            neighborsIndex = neighbors.length;
+
+                        neighbors[neighbors.length] = {"title": unit.title, "link": unit.link, "subtitle": unit.subtitle};
+                    }
+                }
+            } catch (e) {}
+
             var prp = Tools.toVariantMap(properties);
             prp["navigData"] = navigData;
+            prp["neighbors"] = neighbors;
+            prp["neighborsIndex"] = neighborsIndex;
             prp["poet"] = poet;
             prp["poetImage"] = poetImage;
 

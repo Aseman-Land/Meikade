@@ -13,6 +13,8 @@ PoemView {
     height: Constants.height
     clip: true
 
+    ViewportType.gestureWidth: 100 * Devices.density
+
     property string url
     property variant properties
 
@@ -21,6 +23,31 @@ PoemView {
     property int id
     property alias poemId: poemModel.poemId
     property alias navigData: navigModel.data
+
+    onChangeRequest: {
+        url = link;
+        dis.title = title;
+        properties.title = title;
+        properties.subtitle = subtitle;
+
+        var poemIds = Tools.stringRegExp(link, "poemId\\=(\\d+)", false);
+        var ids = Tools.stringRegExp(link, "id\\=(\\d+)", false);
+
+        var poemId = poemIds[0][1];
+
+        poemModel.cachePath = "";
+        poemModel.clear();
+        poemModel.cachePath = AsemanGlobals.cachePath + "/poem-" + poemId + ".cache";
+
+        dis.poemId = poemIds[0][1];
+        dis.id = ids[0][1];
+
+        var navigData = Tools.toVariantList(dis.navigData)
+        navigData[navigData.length-1].title = title;
+        navigData[navigData.length-1].link = link;
+
+        dis.navigData = navigData;
+    }
 
     AsemanListModel {
         id: navigModel
@@ -57,29 +84,24 @@ PoemView {
         }
     }
 
-    Behavior on coverScene.y {
-        NumberAnimation { easing.type: Easing.OutCubic; duration: 300 }
-    }
-    Behavior on statusBarRect.opacity {
-        NumberAnimation { easing.type: Easing.OutCubic; duration: 300 }
-    }
+    form {
+        onNavigationClicked: {
+            if (index + 1 == navigModel.count)
+                return;
 
-    onNavigationClicked: {
-        if (index + 1 == navigModel.count)
-            return;
+            var properties = navigModel.get(index);
+            properties["navigData"] = navigModel.data.slice(0, index+1);
 
-        var properties = navigModel.get(index);
-        properties["navigData"] = navigModel.data.slice(0, index+1);
+            Viewport.controller.trigger(link, properties);
+        }
 
-        Viewport.controller.trigger(link, properties);
-    }
+        navigationRepeater.model: navigModel
 
-    navigationRepeater.model: navigModel
+        menuBtn.onClicked: ViewportType.open = false
 
-    menuBtn.onClicked: ViewportType.open = false
-
-    gridView.model: PoemVersesModel {
-        id: poemModel
-        cachePath: AsemanGlobals.cachePath + "/poem-" + poemId + ".cache"
+        gridView.model: PoemVersesModel {
+            id: poemModel
+            cachePath: AsemanGlobals.cachePath + "/poem-" + poemId + ".cache"
+        }
     }
 }
