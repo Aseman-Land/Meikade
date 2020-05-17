@@ -19,13 +19,7 @@ PoetView {
 
     AsemanListModel {
         id: navigModel
-        data: [
-            {
-                "title": title,
-                "link": url,
-                "properties": Tools.jsonToVariant( Tools.variantToJson(properties) )
-            }
-        ]
+        data: [properties]
     }
 
     bioBtn.onClicked: Viewport.controller.trigger("popup:/poet/bio")
@@ -34,16 +28,14 @@ PoetView {
     gridView {
         onLinkRequest: {
             var navigData = navigModel.data;
-            navigData[navigData.length] = {
-                "title": properties.title,
-                "link": link,
-                "properties": Tools.jsonToVariant( Tools.variantToJson(properties) )
-            };
-            properties["navigData"] = navigData;
-            properties["poet"] = dis.title;
-            properties["poetImage"] = dis.image;
+            navigData[navigData.length] = Tools.toVariantMap(properties);
 
-            Viewport.controller.trigger(link, properties)
+            var prp = Tools.toVariantMap(properties);
+            prp["navigData"] = navigData;
+            prp["poet"] = dis.title;
+            prp["poetImage"] = dis.image;
+
+            Viewport.controller.trigger(link, prp);
         }
         model: CatsModel {
             id: catsModel

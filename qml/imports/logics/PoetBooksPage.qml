@@ -12,10 +12,12 @@ PoetBooksView {
 
     property alias id: catsModel.poetId
     property alias catId: catsModel.parentId
-    property string title
-    property string poet
-    property string url
     property alias navigData: navigModel.data
+    property string poet
+    property string poetImage
+
+    property string url
+    property variant properties
 
     AsemanListModel {
         id: navigModel
@@ -30,23 +32,23 @@ PoetBooksView {
         if (index + 1 == navigModel.count)
             return;
 
+        var properties = navigModel.get(index);
         properties["navigData"] = navigModel.data.slice(0, index+1);
+
         Viewport.controller.trigger(link, properties)
     }
 
     listView {
         onLinkRequest: {
             var navigData = navigModel.data;
-            navigData[navigData.length] = {
-                "title": properties.title,
-                "link": link,
-                "properties": Tools.jsonToVariant( Tools.variantToJson(properties) )
-            };
+            navigData[navigData.length] = Tools.toVariantMap(properties);
 
-            properties["navigData"] = navigData;
-            properties["poet"] = poet;
+            var prp = Tools.toVariantMap(properties);
+            prp["navigData"] = navigData;
+            prp["poet"] = poet;
+            prp["poetImage"] = poetImage;
 
-            Viewport.controller.trigger(link, properties)
+            Viewport.controller.trigger(link, prp);
         }
         model: CatsModel {
             id: catsModel

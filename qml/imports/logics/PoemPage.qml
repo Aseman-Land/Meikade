@@ -16,9 +16,9 @@ PoemView {
     property string url
     property variant properties
 
-    property int poetId
     property string poetImage
 
+    property int id
     property alias poemId: poemModel.poemId
     property alias navigData: navigModel.data
 
@@ -31,7 +31,7 @@ PoemView {
         id: actionQuery
         type: Query.UserActions.TypePoemViewDate
         poemId: dis.poemId
-        poetId: dis.poetId
+        poetId: dis.id
         declined: 0
         synced: 0
         updatedAt: Tools.dateToSec(new Date)
@@ -48,7 +48,7 @@ PoemView {
 
     Timer {
         id: userActionTimer
-        interval: 10000
+        interval: 1000
         repeat: false
         running: true
         onTriggered: {
@@ -68,8 +68,10 @@ PoemView {
         if (index + 1 == navigModel.count)
             return;
 
+        var properties = navigModel.get(index);
         properties["navigData"] = navigModel.data.slice(0, index+1);
-        Viewport.controller.trigger(link, properties)
+
+        Viewport.controller.trigger(link, properties);
     }
 
     navigationRepeater.model: navigModel

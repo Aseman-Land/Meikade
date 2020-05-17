@@ -25,6 +25,8 @@ Item {
 
     property alias poet: titleLabel.text
     property alias title: subtitleLabel.text
+    property alias cover: coverImage.source
+
     property bool headerVisible: true
 
     readonly property real ratioAbs: Math.min(ratio, 1)
@@ -35,7 +37,7 @@ Item {
                                   / (coverImage.height - Devices.standardTitleBarHeight
                                      - Devices.statusBarHeight)
 
-    signal navigationClicked(string link, variant properties, int index)
+    signal navigationClicked(string link, int index)
 
     Rectangle {
         anchors.fill: parent
@@ -313,7 +315,7 @@ Item {
 
                                         Connections {
                                             target: navDel
-                                            onClicked: myMeikade.navigationClicked(model.link, model.properties, model.index)
+                                            onClicked: myMeikade.navigationClicked(model.link, model.index)
                                         }
 
                                     }

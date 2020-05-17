@@ -25,10 +25,7 @@ AsemanListView {
         type: model.type
         modelData: model.modelData
         listView: list
-        onClicked: {
-            properties["properties"] = Tools.jsonToVariant( Tools.variantToJson(properties) )
-            list.linkRequest(link, properties)
-        }
+        onClicked: list.linkRequest(link, properties)
 
         Rectangle {
             width: list.width + list.spacing * 2
