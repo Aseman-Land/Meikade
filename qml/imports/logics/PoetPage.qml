@@ -7,6 +7,7 @@ import globals 1.0
 import models 1.0
 
 PoetView {
+    id: dis
     width: Constants.width
     height: Constants.height
     clip: true
@@ -39,7 +40,8 @@ PoetView {
                 "properties": Tools.jsonToVariant( Tools.variantToJson(properties) )
             };
             properties["navigData"] = navigData;
-            properties["poet"] = title;
+            properties["poet"] = dis.title;
+            properties["poetImage"] = dis.image;
 
             Viewport.controller.trigger(link, properties)
         }

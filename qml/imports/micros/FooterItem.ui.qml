@@ -31,6 +31,7 @@ ItemDelegate {
         }
         Label {
             id: title
+            Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
             text: qsTr("Label") + Translations.refresher
             font.capitalization: Font.AllUppercase
             font.pixelSize: 7 * Devices.fontDensity

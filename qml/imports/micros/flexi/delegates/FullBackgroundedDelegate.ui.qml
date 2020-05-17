@@ -42,7 +42,7 @@ AbstractDelegate {
         font.pixelSize: 9 * Devices.fontDensity
         text: "We needs change"
         wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-        maximumLineCount: 1
+        maximumLineCount: 2
         elide: Text.ElideRight
         verticalAlignment: Text.AlignVCenter
         horizontalAlignment: Text.AlignHCenter

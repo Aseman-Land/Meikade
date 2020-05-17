@@ -72,7 +72,7 @@ Item {
             FlexiRecentRow {
                 width: rowItem.width
                 listView: rowItem.listView
-                type: args.length? args * 1 : 3
+                type: args.length? args * 1 : 5
                 onClicked: rowItem.clicked(link, properties)
             }
         }

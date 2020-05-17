@@ -26,6 +26,7 @@ Item {
     property alias settingsBtn: settingsBtn
 
     property alias title: profileLabel.text
+    property alias image: avatar.source
 
     readonly property real ratioAbs: Math.min(ratio, 1)
     readonly property real ratio: Math.max(

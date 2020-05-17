@@ -44,7 +44,7 @@ PoetBooksView {
             };
 
             properties["navigData"] = navigData;
-            properties["poet"] = poet
+            properties["poet"] = poet;
 
             Viewport.controller.trigger(link, properties)
         }

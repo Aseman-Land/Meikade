@@ -5,3 +5,4 @@ singleton Fonts 1.0 Fonts.qml
 singleton Colors 1.0 Colors.qml
 singleton Sync 1.0 Sync.qml
 singleton GTranslations 1.0 GTranslations.qml
+singleton RefresherSignals 1.0 RefresherSignals.qml

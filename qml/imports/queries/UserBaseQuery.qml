@@ -5,7 +5,7 @@ import AsemanQml.Sql 2.0
 SqlObject {
     id: obj
     driver: SqlObject.SQLite
-    databaseName: "/home/bardia/userdata.sqlite"
+    databaseName: AsemanApp.homePath + "/userdata.sqlite"
 
     function begin() { query("BEGIN", {}); }
     function commit() { query("COMMIT", {}); }

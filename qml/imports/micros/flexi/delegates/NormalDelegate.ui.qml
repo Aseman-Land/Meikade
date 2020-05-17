@@ -27,9 +27,7 @@ AbstractDelegate {
     }
 
     ColumnLayout {
-        anchors.verticalCenter: parent.verticalCenter
-        anchors.right: parent.right
-        anchors.left: parent.left
+        anchors.fill: parent
         anchors.margins: 10 * Devices.density
         spacing: 10 * Devices.density
 
@@ -53,22 +51,23 @@ AbstractDelegate {
             Label {
                 id: subtitle
                 Layout.fillWidth: true
+                Layout.fillHeight: true
+                Layout.alignment: Qt.AlignTop | Qt.AlignLeft
                 font.pixelSize: 8 * Devices.fontDensity
                 text: "Short Description"
-                Layout.alignment: Qt.AlignLeft | Qt.AlignTop
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                 maximumLineCount: 1
                 elide: Text.ElideRight
-                verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignLeft
                 Material.foreground: Material.background
                 IOSStyle.foreground: IOSStyle.background
             }
 
-            RoundedImage {
+            CachedImage {
                 id: image
-                Layout.preferredWidth: 32 * Devices.density
-                Layout.preferredHeight: 32 * Devices.density
+                Layout.alignment: Qt.AlignBottom | Qt.AlignRight
+                height: 36 * Devices.density
+                width: 36 * Devices.density
                 sourceSize.width: 50 * Devices.density
                 sourceSize.height: 50 * Devices.density
                 fillMode: Image.PreserveAspectCrop
