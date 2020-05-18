@@ -18,14 +18,15 @@ FlexiAbstractRow {
         spacing: 10 * Devices.density
         Repeater {
             id: rptr
-            model: AsemanListModel {
+            model: FlexiSwitableModel {
                 id: model
             }
             delegate: Delegate {
                 id: itemDel
                 width: height
                 height: 100 * Devices.density
-                title: model.title
+                title: model.title + (isVerse? " - " + model.details.first_verse : "")
+                isVerse: model.details && model.details.first_verse? true : false
                 subtitle: model.subtitle
                 color: model.color.length? model.color : Colors.lightBackground
                 image: model.image

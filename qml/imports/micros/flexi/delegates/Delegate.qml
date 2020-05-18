@@ -10,6 +10,7 @@ Item {
     property color color
     property string type
     property string link
+    property bool isVerse
 
     readonly property color foregroundColor: (color.r + color.g + color.b) / 3 < 0.5? "#fff" : "#333"
 
@@ -22,9 +23,9 @@ Item {
         Component {
             NormalDelegate {
                 anchors.fill: parent
-                title.text: delg.title
+                title.text: Tools.stringReplace(delg.title, "\\s+", " ", true)
                 title.color: foregroundColor
-                subtitle.text: delg.subtitle
+                subtitle.text: Tools.stringReplace(delg.subtitle, "\\s+", " ", true)
                 subtitle.color: foregroundColor
                 image.source: delg.image
                 background.color: delg.color
@@ -34,11 +35,16 @@ Item {
         Component {
             FullBackgroundedDelegate {
                 anchors.fill: parent
-                title.text: delg.title
+                title.text: Tools.stringReplace(delg.title, "\\s+", " ", true)
                 title.color: foregroundColor
                 image.source: delg.image
                 background.color: delg.color
                 button.onClicked: delg.clicked()
+                Component.onCompleted: {
+                    if (!isVerse) {
+                        title.horizontalAlignment = Text.AlignHCenter;
+                    }
+                }
             }
         }
 

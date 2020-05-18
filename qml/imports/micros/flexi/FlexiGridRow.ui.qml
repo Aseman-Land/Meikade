@@ -27,7 +27,7 @@ FlexiAbstractRow {
 
         Repeater {
             id: rptr
-            model: AsemanListModel {
+            model: FlexiSwitableModel {
                 id: model
             }
             delegate: Loader {
@@ -40,7 +40,8 @@ FlexiAbstractRow {
                 sourceComponent: Delegate {
                     id: itemDel
                     anchors.fill: parent
-                    title: model.title
+                    title: model.title + (isVerse? " - " + model.details.first_verse : "")
+                    isVerse: model.details && model.details.first_verse? true : false
                     subtitle: model.subtitle
                     color: model.color.length? model.color : Colors.lightBackground
                     image: model.image

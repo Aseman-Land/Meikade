@@ -15,6 +15,8 @@ PoetBioView {
 
     closeBtn.onClicked: ViewportType.open = false
 
+    property alias link: webView.url
+
     Timer {
         id: visibleTimer
         running: true
@@ -27,6 +29,5 @@ PoetBioView {
         parent: bioPage.scene
         anchors.fill: parent
         visible: !visibleTimer.running && !loading
-        url: "https://fa.wikipedia.org/wiki/%D8%AD%D8%A7%D9%81%D8%B8"
     }
 }

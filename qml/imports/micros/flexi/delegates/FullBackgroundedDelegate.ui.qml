@@ -45,7 +45,6 @@ AbstractDelegate {
         maximumLineCount: 2
         elide: Text.ElideRight
         verticalAlignment: Text.AlignVCenter
-        horizontalAlignment: Text.AlignHCenter
         Material.foreground: Material.background
         IOSStyle.foreground: IOSStyle.background
     }

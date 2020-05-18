@@ -31,6 +31,7 @@ AsemanListModel {
                     var item = list[i];
                     var extraJson = Tools.jsonToVariant(item.extra);
                     extraJson["type"] = "normal";
+                    extraJson["switableTitle"] = extraJson.title;
 
                     data[data.length] = extraJson;
                 } catch (e) {}

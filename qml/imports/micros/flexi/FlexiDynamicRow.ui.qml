@@ -17,7 +17,7 @@ FlexiAbstractRow {
         id: list
         anchors.fill: parent
         orientation: ListView.Horizontal
-        model: AsemanListModel {
+        model: FlexiSwitableModel {
             id: model
         }
         spacing: 10 * Devices.density
@@ -25,7 +25,8 @@ FlexiAbstractRow {
             id: itemDel
             width: 180 * Devices.density
             height: list.height
-            title: model.title
+            title: model.title + (isVerse? " - " + model.details.first_verse : "")
+            isVerse: model.details && model.details.first_verse? true : false
             color: model.color.length? model.color : Colors.lightBackground
             subtitle: model.subtitle
             image: model.image

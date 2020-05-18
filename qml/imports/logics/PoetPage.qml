@@ -22,7 +22,7 @@ PoetView {
         data: [properties]
     }
 
-    bioBtn.onClicked: Viewport.controller.trigger("popup:/poet/bio")
+    bioBtn.onClicked: Viewport.controller.trigger("popup:/poet/bio", {"link": properties.details.wikipedia})
     menuBtn.onClicked: ViewportType.open = false
 
     gridView {
