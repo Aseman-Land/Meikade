@@ -125,6 +125,21 @@
     </message>
 </context>
 <context>
+    <name>PoetBooksPage</name>
+    <message>
+        <source>Enable offline</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Random poem</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Search on this book</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>PoetCategoriesModel</name>
     <message>
         <source>Classic</source>
@@ -139,6 +154,21 @@
     <name>PoetForm.ui</name>
     <message>
         <source>Biography</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>PoetPage</name>
+    <message>
+        <source>Enable offline</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Random poem</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Search on this poet</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

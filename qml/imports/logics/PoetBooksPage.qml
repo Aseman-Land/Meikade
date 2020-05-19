@@ -5,6 +5,7 @@ import AsemanQml.Viewport 2.0
 import globals 1.0
 import views 1.0
 import models 1.0
+import micros 1.0
 
 PoetBooksView {
     width: Constants.width
@@ -24,6 +25,7 @@ PoetBooksView {
         data: []
     }
 
+    menuBtn.onClicked: Viewport.viewport.append(menuComponent, {}, "menu")
     headerBtn.onClicked: ViewportType.open = false
 
     navigationRepeater.model: navigModel
@@ -73,6 +75,31 @@ PoetBooksView {
         model: CatsModel {
             id: catsModel
             cachePath: AsemanGlobals.cachePath + "/poetbook-" + poetId + "-" + parentId + ".cache"
+        }
+    }
+
+    Component {
+        id: menuComponent
+        MenuView {
+            x: LayoutMirroring.enabled? 30 * Devices.density : parent.width - 30 * Devices.density
+            y: 40 * Devices.density + Devices.statusBarHeight
+            width: 220 * Devices.density
+            ViewportType.transformOrigin: Qt.point(-20 * Devices.density, (LayoutMirroring.enabled? -20 * Devices.density : width + 20 * Devices.density))
+
+            model: ListModel {
+                ListElement {
+                    title: qsTr("Enable offline")
+                    icon: "mdi_download"
+                }
+                ListElement {
+                    title: qsTr("Random poem")
+                    icon: "mdi_shuffle"
+                }
+                ListElement {
+                    title: qsTr("Search on this book")
+                    icon: "mdi_magnify"
+                }
+            }
         }
     }
 }

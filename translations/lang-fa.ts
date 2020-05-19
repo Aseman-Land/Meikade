@@ -125,6 +125,21 @@
     </message>
 </context>
 <context>
+    <name>PoetBooksPage</name>
+    <message>
+        <source>Enable offline</source>
+        <translation>فعال کردن آفلاین</translation>
+    </message>
+    <message>
+        <source>Random poem</source>
+        <translation>شعر تصادفی</translation>
+    </message>
+    <message>
+        <source>Search on this book</source>
+        <translation>جستجو در کتاب</translation>
+    </message>
+</context>
+<context>
     <name>PoetCategoriesModel</name>
     <message>
         <source>Classic</source>
@@ -140,6 +155,21 @@
     <message>
         <source>Biography</source>
         <translation>درباره شاعر</translation>
+    </message>
+</context>
+<context>
+    <name>PoetPage</name>
+    <message>
+        <source>Enable offline</source>
+        <translation>فعال کردن آفلاین</translation>
+    </message>
+    <message>
+        <source>Random poem</source>
+        <translation>شعر تصادفی</translation>
+    </message>
+    <message>
+        <source>Search on this poet</source>
+        <translation>جستجو در شاعر</translation>
     </message>
 </context>
 <context>
