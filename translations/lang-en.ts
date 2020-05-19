@@ -171,6 +171,18 @@
         <source>Search on this poet</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Installing</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Downloading</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Disable Offline</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>PoetsListForm.ui</name>

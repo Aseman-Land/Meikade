@@ -171,6 +171,18 @@
         <source>Search on this poet</source>
         <translation>جستجو در شاعر</translation>
     </message>
+    <message>
+        <source>Installing</source>
+        <translation>درحال نصب</translation>
+    </message>
+    <message>
+        <source>Downloading</source>
+        <translation>درحال دانلود</translation>
+    </message>
+    <message>
+        <source>Disable Offline</source>
+        <translation>غیرفعال کردن آفلاین</translation>
+    </message>
 </context>
 <context>
     <name>PoetsListForm.ui</name>

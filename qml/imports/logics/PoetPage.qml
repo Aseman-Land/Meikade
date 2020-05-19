@@ -3,6 +3,8 @@ import AsemanQml.Base 2.0
 import AsemanQml.Models 2.0
 import AsemanQml.Viewport 2.0
 import AsemanQml.MaterialIcons 2.0
+import Meikade 1.0
+import queries 1.0
 import views 1.0
 import micros 1.0
 import globals 1.0
@@ -24,6 +26,20 @@ PoetView {
         id: navigModel
         data: [properties]
     }
+
+    DataOfflineInstaller {
+        id: offlineInstaller
+        poetId: dis.id
+        catId: 0
+    }
+
+    Behavior on downloadProgress {
+        NumberAnimation { duration: 300 }
+    }
+
+    downloadingProgressIndicator.running: offlineInstaller.installing || offlineInstaller.downloading
+    downloadProgress: offlineInstaller.size? (offlineInstaller.downloadedBytes / offlineInstaller.size) * 0.9 + 0.1 : 0.1
+    downloadProgressLabel.text: offlineInstaller.installing? qsTr("Installing") : qsTr("Downloading")
 
     settingsBtn.onClicked: Viewport.viewport.append(menuComponent, {}, "menu")
     bioBtn.onClicked: Viewport.controller.trigger("popup:/poet/bio", {"link": properties.details.wikipedia})
@@ -55,19 +71,31 @@ PoetView {
             width: 220 * Devices.density
             ViewportType.transformOrigin: Qt.point(-20 * Devices.density, (LayoutMirroring.enabled? -20 * Devices.density : width + 20 * Devices.density))
 
-            model: ListModel {
-                ListElement {
-                    title: qsTr("Enable offline")
-                    icon: "mdi_download"
+            onItemClicked: {
+                switch (index) {
+                case 0:
+                    offlineInstaller.download();
+                    break;
                 }
-                ListElement {
-                    title: qsTr("Random poem")
-                    icon: "mdi_shuffle"
-                }
-                ListElement {
-                    title: qsTr("Search on this poet")
-                    icon: "mdi_magnify"
-                }
+
+                ViewportType.open = false;
+            }
+
+            model: AsemanListModel {
+                data: [
+                    {
+                        title: catsModel.offline? qsTr("Disable Offline") : qsTr("Enable offline"),
+                        icon: "mdi_download"
+                    },
+                    {
+                        title: qsTr("Random poem"),
+                        icon: "mdi_shuffle"
+                    },
+                    {
+                        title: qsTr("Search on this poet"),
+                        icon: "mdi_magnify"
+                    }
+                ]
             }
         }
     }

@@ -1,5 +1,9 @@
 singleton UserDbUpdater 1.0 UserDbUpdater.qml
+singleton DataDbUpdater 1.0 DataDbUpdater.qml
+DataGeneral 1.0 DataGeneral.qml
 UserGeneral 1.0 UserGeneral.qml
+DataOffline 1.0 DataOffline.qml
+DataOfflineInstaller 1.0 DataOfflineInstaller.qml
 UserActions 1.0 UserActions.qml
 UserNotes_old 1.0 UserNotes_old.qml
 UserFavorites_old 1.0 UserFavorites_old.qml

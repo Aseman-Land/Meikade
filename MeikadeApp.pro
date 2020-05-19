@@ -1,8 +1,9 @@
-QT += quick qml quickcontrols2 webview sql
+QT += quick qml quickcontrols2 webview sql asemancore network
 CONFIG += c++11
 
 SOURCES += \
-    main.cpp
+    main.cpp \
+    meikadeofflinemanager.cpp
 
 include(objectivec/ios.pri)
 
@@ -53,3 +54,6 @@ RESOURCES += \
 
 QML_IMPORT_PATH += \
     $$PWD/qml/imports
+
+HEADERS += \
+    meikadeofflinemanager.h

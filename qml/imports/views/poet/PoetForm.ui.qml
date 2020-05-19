@@ -24,6 +24,8 @@ Item {
     property alias avatar: avatar
     property alias profileLabel: profileLabel
     property alias settingsBtn: settingsBtn
+    property alias downloadProgressLabel: downloadProgressLabel
+    property alias downloadingProgressIndicator: downloadingProgressIndicator
 
     property alias title: profileLabel.text
     property alias image: avatar.source
@@ -35,6 +37,8 @@ Item {
                                       - Devices.standardTitleBarHeight - Devices.statusBarHeight)
                                   / (coverImage.height - Devices.standardTitleBarHeight
                                      - Devices.statusBarHeight)
+
+    property real downloadProgress: 0.3
 
     Rectangle {
         anchors.fill: parent
@@ -215,6 +219,45 @@ Item {
                 anchors.verticalCenterOffset: 30 * Devices.density * ratioAbs
             }
 
+            Rectangle {
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.top: profileLabel.bottom
+                anchors.topMargin: 8 * Devices.density
+                width: downloadingProgressRow.width + 20 * Devices.density
+                height: 24 * Devices.density
+                radius: Constants.radius
+                color: "#88ffffff"
+                opacity: ratio
+                visible: downloadingProgressIndicator.running
+
+                Rectangle {
+                    anchors.top: parent.top
+                    anchors.bottom: parent.bottom
+                    anchors.left: parent.left
+                    width: parent.width * downloadProgress
+                    color: "#88ffffff"
+                    radius: Constants.radius
+                }
+
+                RowLayout {
+                    id: downloadingProgressRow
+                    anchors.centerIn: parent
+                    spacing: 2 * Devices.density
+
+                    BusyIndicator {
+                        id: downloadingProgressIndicator
+                        scale: 0.6
+                    }
+
+                    Label {
+                        id: downloadProgressLabel
+                        font.pixelSize: 8 * Devices.fontDensity
+                        text: "Downloading"
+                        color: "#000"
+                    }
+                }
+            }
+
             Label {
                 id: viewsLabel
                 anchors.horizontalCenter: parent.horizontalCenter
@@ -223,6 +266,7 @@ Item {
                 font.pixelSize: 9 * Devices.fontDensity
                 color: Material.background
                 text: "500 views in last week"
+                visible: !downloadingProgressIndicator.running
                 opacity: ratio
             }
         }
