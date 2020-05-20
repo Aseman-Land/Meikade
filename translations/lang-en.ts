@@ -135,7 +135,23 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Search on this book</source>
+        <source>Disable Offline</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Search on this poet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Installing</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Uninstalling</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Downloading</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -181,6 +197,10 @@
     </message>
     <message>
         <source>Disable Offline</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Uninstalling</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

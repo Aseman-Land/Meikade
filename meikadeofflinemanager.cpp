@@ -4,6 +4,7 @@
 #include <QNetworkRequest>
 #include <QNetworkReply>
 #include <QUrlQuery>
+#include <QUuid>
 #include <QUrl>
 #include <QDir>
 #include <QDataStream>
@@ -14,10 +15,16 @@
 #include <QSqlDatabase>
 #include <QSqlQuery>
 #include <QSqlRecord>
+#include <QSqlError>
+
+#define QUERY_EXEC(QUERY) \
+    if (!QUERY.exec()) qDebug() << __FUNCTION__ << __LINE__ << QUERY.lastError().text()
 
 class MeikadeOfflineItem::Private
 {
 public:
+    QString connectionName;
+
     QString sourceUrl;
     QString databasePath;
     qint32 poetId = 0;
@@ -38,6 +45,9 @@ MeikadeOfflineItem::MeikadeOfflineItem(QObject *parent) :
     QObject(parent)
 {
     p = new Private;
+    p->connectionName = QUuid::createUuid().toString();
+
+    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE", p->connectionName);
 
     Private::objects.insert(this);
 }
@@ -63,6 +73,16 @@ void MeikadeOfflineItem::setDatabasePath(const QString &databasePath)
         return;
 
     p->databasePath = databasePath;
+
+    QSqlDatabase db = QSqlDatabase::database(p->connectionName);
+    if (db.isOpen())
+        db.close();
+    if (p->databasePath.length())
+    {
+        db.setDatabaseName(p->databasePath);
+        db.open();
+    }
+
     connectToInstaller();
     Q_EMIT databasePathChanged();
 }
@@ -122,7 +142,25 @@ bool MeikadeOfflineItem::installing() const
     return p->currentInstaller? p->currentInstaller->installing() : 0;
 }
 
-void MeikadeOfflineItem::download()
+bool MeikadeOfflineItem::uninstalling() const
+{
+    return p->currentInstaller? p->currentInstaller->uninstalling() : 0;
+}
+
+bool MeikadeOfflineItem::installed() const
+{
+    QSqlDatabase db = QSqlDatabase::database(p->connectionName);
+
+    QSqlQuery q(db);
+    q.prepare("SELECT state FROM offline WHERE poet_id = :poet_id AND cat_id = :cat_id AND state = 1");
+    q.bindValue(":poet_id", p->poetId);
+    q.bindValue(":cat_id", p->catId <= 0? 0 : p->catId);
+    q.exec();
+
+    return q.next();
+}
+
+void MeikadeOfflineItem::install(bool active)
 {
     if (downloading() || installing())
         return;
@@ -131,10 +169,17 @@ void MeikadeOfflineItem::download()
     if (hash.isEmpty())
         return;
 
-    MeikadeOfflineItemInstaller *installer = new MeikadeOfflineItemInstaller(p->databasePath, p->sourceUrl, p->poetId, p->catId);
+    if (Private::installers.contains(hash))
+        Private::installers.take(hash)->deleteLater();
+
+    MeikadeOfflineItemInstaller *installer = new MeikadeOfflineItemInstaller(p->databasePath, (active? p->sourceUrl : ""), p->poetId, p->catId);
     installer->download();
 
     Private::installers[hash] = installer;
+    connect(installer, &MeikadeOfflineItemInstaller::doingChanged, installer, [installer, hash](){
+        if (!installer->downloading() && !installer->installing())
+            Private::installers.take(hash)->deleteLater();
+    });
 
     for (MeikadeOfflineItem *item: Private::objects)
         item->connectToInstaller(hash);
@@ -158,8 +203,8 @@ void MeikadeOfflineItem::connectToInstaller(const QString &hintHash)
     {
         disconnect(p->currentInstaller, &MeikadeOfflineItemInstaller::sizeChanged, this, &MeikadeOfflineItem::sizeChanged);
         disconnect(p->currentInstaller, &MeikadeOfflineItemInstaller::downloadedBytesChanged, this, &MeikadeOfflineItem::downloadedBytesChanged);
-        disconnect(p->currentInstaller, &MeikadeOfflineItemInstaller::downloadingChanged, this, &MeikadeOfflineItem::downloadingChanged);
-        disconnect(p->currentInstaller, &MeikadeOfflineItemInstaller::installingChanged, this, &MeikadeOfflineItem::installingChanged);
+        disconnect(p->currentInstaller, &MeikadeOfflineItemInstaller::downloadingChanged, this, &MeikadeOfflineItem::installedChanged);
+        disconnect(p->currentInstaller, &MeikadeOfflineItemInstaller::doingChanged, this, &MeikadeOfflineItem::doingChanged);
     }
 
     MeikadeOfflineItemInstaller *installer = Private::installers.value(hash);
@@ -167,16 +212,16 @@ void MeikadeOfflineItem::connectToInstaller(const QString &hintHash)
     {
         connect(installer, &MeikadeOfflineItemInstaller::sizeChanged, this, &MeikadeOfflineItem::sizeChanged);
         connect(installer, &MeikadeOfflineItemInstaller::downloadedBytesChanged, this, &MeikadeOfflineItem::downloadedBytesChanged);
-        connect(installer, &MeikadeOfflineItemInstaller::downloadingChanged, this, &MeikadeOfflineItem::downloadingChanged);
-        connect(installer, &MeikadeOfflineItemInstaller::installingChanged, this, &MeikadeOfflineItem::installingChanged);
+        connect(installer, &MeikadeOfflineItemInstaller::downloadingChanged, this, &MeikadeOfflineItem::installedChanged);
+        connect(installer, &MeikadeOfflineItemInstaller::doingChanged, this, &MeikadeOfflineItem::doingChanged);
 
         p->currentInstaller = installer;
     }
 
     Q_EMIT sizeChanged();
     Q_EMIT downloadedBytesChanged();
-    Q_EMIT downloadingChanged();
-    Q_EMIT installingChanged();
+    Q_EMIT doingChanged();
+    Q_EMIT installedChanged();
 }
 
 QString MeikadeOfflineItem::getHash() const
@@ -197,6 +242,8 @@ QString MeikadeOfflineItem::getHash() const
 MeikadeOfflineItem::~MeikadeOfflineItem()
 {
     Private::objects.remove(this);
+
+    QSqlDatabase::removeDatabase(p->connectionName);
     delete p;
 }
 
@@ -210,13 +257,19 @@ MeikadeOfflineItemInstaller::MeikadeOfflineItemInstaller(const QString &database
     mPoetId(poetId),
     mCatId(catId)
 {
+    qRegisterMetaType<MeikadeOfflineItemInstaller::InstallThread::PathUnit>("InstallThread::PathUnit");
 }
 
 void MeikadeOfflineItemInstaller::download()
 {
-    if (mReply || mInstalling)
+    if (mReply || mDoing)
         return;
 
+    if (mSourceUrl.isEmpty()) // It means it's uninstall mode.
+    {
+        install("");
+        return;
+    }
     if (mSourceUrl.right(1) != "/")
         mSourceUrl += "/";
 
@@ -263,25 +316,31 @@ void MeikadeOfflineItemInstaller::download()
 
 void MeikadeOfflineItemInstaller::install(const QString &filePath)
 {
-    mInstalling = true;
-    Q_EMIT installingChanged();
+    mDoing = true;
+    Q_EMIT doingChanged();
 
     if (!mThreads.contains(mDatabasePath))
         mThreads[mDatabasePath] = new InstallThread;
 
+    InstallThread::PathUnit unit;
+    unit.filePath = filePath;
+    unit.databasePath = mDatabasePath;
+    unit.poetId = mPoetId;
+    unit.catId = mCatId;
+
     InstallThread *thread = mThreads.value(mDatabasePath);
     thread->mutex.lock();
-    thread->filePaths << QPair<QString, QString>(filePath, mDatabasePath);
+    thread->filePaths << unit;
     thread->mutex.unlock();
 
     thread->start();
 
-    connect(thread, &InstallThread::pathFinished, this, [this, filePath](const QString &path){
-        if (filePath != path)
+    connect(thread, &InstallThread::pathFinished, this, [this, filePath](const InstallThread::PathUnit &unit){
+        if (unit.filePath != filePath || unit.poetId != mPoetId || unit.catId != mCatId)
             return;
 
-        mInstalling = false;
-        Q_EMIT installingChanged();
+        mDoing = false;
+        Q_EMIT doingChanged();
     });
 
 }
@@ -298,7 +357,12 @@ void MeikadeOfflineItemInstaller::stop()
 
 bool MeikadeOfflineItemInstaller::installing() const
 {
-    return mInstalling;
+    return mDoing && !mSourceUrl.isEmpty();
+}
+
+bool MeikadeOfflineItemInstaller::uninstalling() const
+{
+    return mDoing && mSourceUrl.isEmpty();
 }
 
 bool MeikadeOfflineItemInstaller::downloading() const
@@ -325,45 +389,76 @@ void MeikadeOfflineItemInstaller::InstallThread::run() {
     mutex.lock();
     while (filePaths.count())
     {
-        auto pair = filePaths.takeFirst();
+        auto unit = filePaths.takeFirst();
         mutex.unlock();
 
-        QString filePath = pair.first;
-        QString destPath = filePath.left(filePath.length() - 3);
-
-        QFile destFile(destPath);
-        destFile.open(QFile::WriteOnly);
-
-        QFile file(filePath);
-        file.open(QFile::ReadOnly);
-
-        destFile.write( qUncompress(file.readAll()) );
-
-        file.close();
-        destFile.close();
-
-        QFile::remove(filePath);
-
-        const QString hash = QCryptographicHash::hash(destPath.toUtf8(), QCryptographicHash::Md5).toHex();
-        const QString srcHash = hash + "_src";
-        const QString dstHash = hash + "_dst";
+        if (unit.filePath.isEmpty()) // Uninstall mode
         {
-            QSqlDatabase srcDb = QSqlDatabase::addDatabase("QSQLITE", srcHash);
-            srcDb.setDatabaseName(destPath);
-            srcDb.open();
+            const QString hash = QCryptographicHash::hash(unit.filePath.toUtf8(), QCryptographicHash::Md5).toHex();
+            {
+                QSqlDatabase dstDb = QSqlDatabase::addDatabase("QSQLITE", hash);
+                dstDb.setDatabaseName(unit.databasePath);
+                dstDb.open();
 
-            QSqlDatabase dstDb = QSqlDatabase::addDatabase("QSQLITE", dstHash);
-            dstDb.setDatabaseName(pair.second);
-            dstDb.open();
-
-            const QStringList &tables = srcDb.tables();
-            for (const QString &t: tables)
-                moveTables(srcDb, dstDb, t);
+                if (unit.catId > 0)
+                    deleteCat(dstDb, unit.poetId, unit.catId);
+                else
+                    deletePoet(dstDb, unit.poetId);
+            }
+            QSqlDatabase::removeDatabase(hash);
         }
-        QSqlDatabase::removeDatabase(srcHash);
-        QSqlDatabase::removeDatabase(dstHash);
+        else
+        {
+            QString filePath = unit.filePath;
+            QString destPath = filePath.left(filePath.length() - 3);
 
-        Q_EMIT pathFinished(filePath);
+            QFile destFile(destPath);
+            destFile.open(QFile::WriteOnly);
+
+            QFile file(filePath);
+            file.open(QFile::ReadOnly);
+
+            destFile.write( qUncompress(file.readAll()) );
+
+            file.close();
+            destFile.close();
+
+            QFile::remove(filePath);
+
+            const QString hash = QCryptographicHash::hash(destPath.toUtf8(), QCryptographicHash::Md5).toHex();
+            const QString srcHash = hash + "_src";
+            const QString dstHash = hash + "_dst";
+            {
+                QSqlDatabase srcDb = QSqlDatabase::addDatabase("QSQLITE", srcHash);
+                srcDb.setDatabaseName(destPath);
+                srcDb.open();
+
+                QSqlDatabase dstDb = QSqlDatabase::addDatabase("QSQLITE", dstHash);
+                dstDb.setDatabaseName(unit.databasePath);
+                dstDb.open();
+
+                const QStringList &tables = srcDb.tables();
+                for (const QString &t: tables)
+                    moveTables(srcDb, dstDb, t);
+
+                QSqlQuery q(dstDb);
+                q.prepare("INSERT OR REPLACE INTO offline (poet_id, cat_id, state) SELECT poet_id, id, 1 FROM cat WHERE poet_id = :poet_id");
+                q.bindValue(":poet_id", unit.poetId);
+                QUERY_EXEC(q);
+
+                if (unit.catId <= 0)
+                {
+                    QSqlQuery q(dstDb);
+                    q.prepare("INSERT OR REPLACE INTO offline (poet_id, cat_id, state) VALUES (:poet_id, 0, 1)");
+                    q.bindValue(":poet_id", unit.poetId);
+                    QUERY_EXEC(q);
+                }
+            }
+            QSqlDatabase::removeDatabase(srcHash);
+            QSqlDatabase::removeDatabase(dstHash);
+        }
+
+        Q_EMIT pathFinished(unit);
 
         mutex.lock();
     }
@@ -395,8 +490,71 @@ void MeikadeOfflineItemInstaller::InstallThread::moveTables(QSqlDatabase &srcDb,
         for (int i=0; i<r.count(); i++)
             q.addBindValue(r.value(i));
 
-        q.exec();
+        QUERY_EXEC(q);
     }
 
     QSqlQuery("COMMIT", dstDb).exec();
+}
+
+void MeikadeOfflineItemInstaller::InstallThread::deletePoet(QSqlDatabase &db, qint32 poetId)
+{
+    QSqlQuery q(db);
+    q.prepare("SELECT id FROM cat WHERE poet_id = :poet_id AND parent_id = 0");
+    q.bindValue(":poet_id", poetId);
+    QUERY_EXEC(q);
+
+    while (q.next())
+    {
+        QSqlRecord r = q.record();
+        deleteCat(db, poetId, r.value("id").toInt());
+    }
+}
+
+void MeikadeOfflineItemInstaller::InstallThread::deleteCat(QSqlDatabase &db, qint32 poetId, qint32 catId)
+{
+    QSqlQuery q(db);
+    q.prepare("DELETE FROM poet WHERE id = :poet_id");
+    q.bindValue(":poet_id", poetId);
+    QUERY_EXEC(q);
+
+    q.prepare("DELETE FROM offline WHERE poet_id = :poet_id AND cat_id = 0");
+    q.bindValue(":poet_id", poetId);
+    QUERY_EXEC(q);
+
+    q.prepare("DELETE FROM cat WHERE id = :cat_id");
+    q.bindValue(":cat_id", catId);
+    QUERY_EXEC(q);
+
+    q.prepare("DELETE FROM offline WHERE poet_id = :poet_id AND cat_id = :cat_id");
+    q.bindValue(":poet_id", poetId);
+    q.bindValue(":cat_id", catId);
+    QUERY_EXEC(q);
+
+    q.prepare("SELECT id FROM poem WHERE cat_id = :cat_id");
+    q.bindValue(":cat_id", catId);
+    QUERY_EXEC(q);
+
+    while (q.next())
+    {
+        QSqlRecord r = q.record();
+
+        QSqlQuery pq(db);
+        pq.prepare("DELETE FROM verse WHERE poem_id = :poem_id");
+        pq.bindValue(":poem_id", r.value("id"));
+        QUERY_EXEC(pq);
+    }
+
+    q.prepare("DELETE FROM poem WHERE cat_id = :cat_id");
+    q.bindValue(":cat_id", catId);
+    QUERY_EXEC(q);
+
+    q.prepare("SELECT id FROM cat WHERE parent_id = :cat_id");
+    q.bindValue(":cat_id", catId);
+    QUERY_EXEC(q);
+
+    while (q.next())
+    {
+        QSqlRecord r = q.record();
+        deleteCat(db, poetId, r.value("id").toInt());
+    }
 }

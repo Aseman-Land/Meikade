@@ -27,19 +27,14 @@ PoetView {
         data: [properties]
     }
 
-    DataOfflineInstaller {
-        id: offlineInstaller
-        poetId: dis.id
-        catId: 0
-    }
-
     Behavior on downloadProgress {
         NumberAnimation { duration: 300 }
     }
 
-    downloadingProgressIndicator.running: offlineInstaller.installing || offlineInstaller.downloading
-    downloadProgress: offlineInstaller.size? (offlineInstaller.downloadedBytes / offlineInstaller.size) * 0.9 + 0.1 : 0.1
-    downloadProgressLabel.text: offlineInstaller.installing? qsTr("Installing") : qsTr("Downloading")
+    downloadingProgressIndicator.running: catsModel.offlineInstaller.uninstalling || catsModel.offlineInstaller.installing || catsModel.offlineInstaller.downloading
+    downloadProgress: catsModel.offlineInstaller.size? (catsModel.offlineInstaller.downloadedBytes / catsModel.offlineInstaller.size) * 0.9 + 0.1 : 0.1
+    downloadProgressBar.visible: !catsModel.offlineInstaller.uninstalling
+    downloadProgressLabel.text: catsModel.offlineInstaller.installing? qsTr("Installing") : (catsModel.offlineInstaller.uninstalling? qsTr("Uninstalling") : qsTr("Downloading"))
 
     settingsBtn.onClicked: Viewport.viewport.append(menuComponent, {}, "menu")
     bioBtn.onClicked: Viewport.controller.trigger("popup:/poet/bio", {"link": properties.details.wikipedia})
@@ -74,7 +69,7 @@ PoetView {
             onItemClicked: {
                 switch (index) {
                 case 0:
-                    offlineInstaller.download();
+                    catsModel.offlineInstaller.install( !catsModel.offlineInstaller.installed );
                     break;
                 }
 
@@ -84,7 +79,7 @@ PoetView {
             model: AsemanListModel {
                 data: [
                     {
-                        title: catsModel.offline? qsTr("Disable Offline") : qsTr("Enable offline"),
+                        title: catsModel.offlineInstaller.installed? qsTr("Disable Offline") : qsTr("Enable offline"),
                         icon: "mdi_download"
                     },
                     {

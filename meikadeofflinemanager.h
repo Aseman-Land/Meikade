@@ -19,8 +19,10 @@ class MeikadeOfflineItem : public QObject
     Q_PROPERTY(qint32 catId READ catId WRITE setCatId NOTIFY catIdChanged)
     Q_PROPERTY(qint32 size READ size NOTIFY sizeChanged)
     Q_PROPERTY(qint32 downloadedBytes READ downloadedBytes NOTIFY downloadedBytesChanged)
-    Q_PROPERTY(bool downloading READ downloading NOTIFY downloadingChanged)
-    Q_PROPERTY(bool installing READ installing NOTIFY installingChanged)
+    Q_PROPERTY(bool downloading READ downloading NOTIFY doingChanged)
+    Q_PROPERTY(bool installing READ installing NOTIFY doingChanged)
+    Q_PROPERTY(bool uninstalling READ uninstalling NOTIFY doingChanged)
+    Q_PROPERTY(bool installed READ installed NOTIFY installedChanged)
 
     class Private;
 
@@ -44,6 +46,8 @@ public:
     qint32 downloadedBytes() const;
     bool downloading() const;
     bool installing() const;
+    bool uninstalling() const;
+    bool installed() const;
 
 Q_SIGNALS:
     void sourceUrlChanged();
@@ -55,11 +59,11 @@ Q_SIGNALS:
 
     void sizeChanged() const;
     void downloadedBytesChanged() const;
-    void downloadingChanged() const;
-    void installingChanged() const;
+    void doingChanged() const;
+    void installedChanged() const;
 
 public Q_SLOTS:
-    void download();
+    void install(bool active = true);
     void stop();
 
 private:
@@ -73,9 +77,9 @@ private:
 class MeikadeOfflineItemInstaller : public QObject
 {
     Q_OBJECT
+public:
     class InstallThread;
 
-public:
     MeikadeOfflineItemInstaller(const QString &databasePath, const QString &sourceUrl, qint32 poetId, qint32 catId, QObject *parent = Q_NULLPTR);
     virtual ~MeikadeOfflineItemInstaller();
 
@@ -83,6 +87,7 @@ public:
     qint64 downloadedBytes() const;
     bool downloading() const;
     bool installing() const;
+    bool uninstalling() const;
 
 public Q_SLOTS:
     void download();
@@ -93,7 +98,7 @@ Q_SIGNALS:
     void sizeChanged() const;
     void downloadedBytesChanged() const;
     void downloadingChanged() const;
-    void installingChanged() const;
+    void doingChanged() const;
 
 private:
     QString mDatabasePath;
@@ -102,7 +107,7 @@ private:
     qint32 mCatId;
     qint64 mSize = 0;
     qint64 mDownloadedBytes = 0;
-    bool mInstalling = false;
+    bool mDoing = false;
 
     QNetworkAccessManager mAccessManager;
     QNetworkReply *mReply = Q_NULLPTR;
@@ -114,18 +119,31 @@ class MeikadeOfflineItemInstaller::InstallThread: public QThread
 {
     Q_OBJECT
 public:
+    class PathUnit {
+    public:
+        QString databasePath;
+        QString filePath;
+        qint32 poetId;
+        qint32 catId;
+    };
+
     InstallThread(QObject *parent = Q_NULLPTR) : QThread(parent) {}
     virtual ~InstallThread() {}
 
-    QQueue< QPair<QString, QString> > filePaths;
+    QQueue<PathUnit> filePaths;
     QMutex mutex;
 
 Q_SIGNALS:
-    void pathFinished(const QString &path);
+    void pathFinished(const InstallThread::PathUnit &unit);
 
 protected:
     void run();
+
     void moveTables(QSqlDatabase &srcDb, QSqlDatabase &dstDb, const QString &table);
+    void deletePoet(QSqlDatabase &db, qint32 poetId);
+    void deleteCat(QSqlDatabase &db, qint32 poetId, qint32 catId);
 };
+
+Q_DECLARE_METATYPE(MeikadeOfflineItemInstaller::InstallThread::PathUnit)
 
 #endif // MEIKADEOFFLINEMANAGER_H

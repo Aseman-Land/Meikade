@@ -26,6 +26,7 @@ Item {
     property alias settingsBtn: settingsBtn
     property alias downloadProgressLabel: downloadProgressLabel
     property alias downloadingProgressIndicator: downloadingProgressIndicator
+    property alias downloadProgressBar: downloadProgressBar
 
     property alias title: profileLabel.text
     property alias image: avatar.source
@@ -231,6 +232,7 @@ Item {
                 visible: downloadingProgressIndicator.running
 
                 Rectangle {
+                    id: downloadProgressBar
                     anchors.top: parent.top
                     anchors.bottom: parent.bottom
                     anchors.left: parent.left

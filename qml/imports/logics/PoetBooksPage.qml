@@ -25,6 +25,11 @@ PoetBooksView {
         data: []
     }
 
+    downloadingProgressIndicator.running: catsModel.offlineInstaller.uninstalling || catsModel.offlineInstaller.installing || catsModel.offlineInstaller.downloading
+    downloadProgress: catsModel.offlineInstaller.size? (catsModel.offlineInstaller.downloadedBytes / catsModel.offlineInstaller.size) * 0.9 + 0.1 : 0.1
+    downloadProgressBar.visible: !catsModel.offlineInstaller.uninstalling
+    downloadProgressLabel.text: catsModel.offlineInstaller.installing? qsTr("Installing") : (catsModel.offlineInstaller.uninstalling? qsTr("Uninstalling") : qsTr("Downloading"))
+
     menuBtn.onClicked: Viewport.viewport.append(menuComponent, {}, "menu")
     headerBtn.onClicked: ViewportType.open = false
 
@@ -86,19 +91,31 @@ PoetBooksView {
             width: 220 * Devices.density
             ViewportType.transformOrigin: Qt.point(-20 * Devices.density, (LayoutMirroring.enabled? -20 * Devices.density : width + 20 * Devices.density))
 
-            model: ListModel {
-                ListElement {
-                    title: qsTr("Enable offline")
-                    icon: "mdi_download"
+            onItemClicked: {
+                switch (index) {
+                case 0:
+                    catsModel.offlineInstaller.install( !catsModel.offlineInstaller.installed );
+                    break;
                 }
-                ListElement {
-                    title: qsTr("Random poem")
-                    icon: "mdi_shuffle"
-                }
-                ListElement {
-                    title: qsTr("Search on this book")
-                    icon: "mdi_magnify"
-                }
+
+                ViewportType.open = false;
+            }
+
+            model: AsemanListModel {
+                data: [
+                    {
+                        title: catsModel.offlineInstaller.installed? qsTr("Disable Offline") : qsTr("Enable offline"),
+                        icon: "mdi_download"
+                    },
+                    {
+                        title: qsTr("Random poem"),
+                        icon: "mdi_shuffle"
+                    },
+                    {
+                        title: qsTr("Search on this poet"),
+                        icon: "mdi_magnify"
+                    }
+                ]
             }
         }
     }

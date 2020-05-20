@@ -21,6 +21,11 @@ Item {
     property alias menuBtn: menuBtn
     property alias avatar: avatar
     property alias avatarBtn: avatarBtn
+    property alias downloadProgressLabel: downloadProgressLabel
+    property alias downloadingProgressIndicator: downloadingProgressIndicator
+    property alias downloadProgressBar: downloadProgressBar
+
+    property real downloadProgress: 0.3
 
     signal navigationClicked(string link, int index)
 
@@ -158,6 +163,43 @@ Item {
                                 }
                             }
                         }
+                    }
+                }
+            }
+
+            Rectangle {
+                Layout.preferredWidth: downloadingProgressRow.width + 20 * Devices.density
+                Layout.preferredHeight: 24 * Devices.density
+                radius: Constants.radius
+                color: "#88ffffff"
+                opacity: ratio
+                visible: downloadingProgressIndicator.running
+
+                Rectangle {
+                    id: downloadProgressBar
+                    anchors.top: parent.top
+                    anchors.bottom: parent.bottom
+                    anchors.left: parent.left
+                    width: parent.width * downloadProgress
+                    color: "#88ffffff"
+                    radius: Constants.radius
+                }
+
+                RowLayout {
+                    id: downloadingProgressRow
+                    anchors.centerIn: parent
+                    spacing: 2 * Devices.density
+
+                    BusyIndicator {
+                        id: downloadingProgressIndicator
+                        scale: 0.6
+                    }
+
+                    Label {
+                        id: downloadProgressLabel
+                        font.pixelSize: 8 * Devices.fontDensity
+                        text: "Downloading"
+                        color: "#000"
                     }
                 }
             }

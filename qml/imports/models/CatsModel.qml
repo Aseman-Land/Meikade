@@ -11,14 +11,12 @@ AsemanListModel {
     property alias refreshing: catsReq.refreshing
     property alias poetId: catsReq.poet_id
     property alias parentId: catsReq.parent_id
-    property alias offline: offline.state
+    property alias offlineInstaller: offlineInstaller
 
-    DataOffline {
-        id: offline
-        poet_id: catsReq.poet_id
-        cat_id: catsReq.parent_id
-        onStateChanged: console.debug(state, model.count)
-        Component.onCompleted: fetch()
+    DataOfflineInstaller {
+        id: offlineInstaller
+        poetId: catsReq.poet_id
+        catId: catsReq.parent_id
     }
 
     CatsRequest {

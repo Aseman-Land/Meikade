@@ -20,6 +20,7 @@ ON offline (
   state COLLATE BINARY ASC
 );
 
-INSERT INTO offline (poet_id, cat_id, state) SELECT id, 0, 1 FROM poet;
+INSERT OR REPLACE INTO offline (poet_id, cat_id, state) SELECT id, 0, 1 FROM poet;
+INSERT OR REPLACE INTO offline (poet_id, cat_id, state) SELECT poet_id, id, 1 FROM cat;
 
 COMMIT;
