@@ -172,7 +172,6 @@ Item {
                 Layout.preferredHeight: 24 * Devices.density
                 radius: Constants.radius
                 color: "#88ffffff"
-                opacity: ratio
                 visible: downloadingProgressIndicator.running
 
                 Rectangle {
