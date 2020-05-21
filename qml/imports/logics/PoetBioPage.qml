@@ -11,11 +11,14 @@ PoetBioView {
 
     busyIndicator.running: Colors.androidStyle? false : webView.loading
     progressBar.visible: Colors.androidStyle? webView.loading : false
-    flickable.visible: false
+    flickable.visible: link.length == 0
+
+    bioText.text: text
 
     closeBtn.onClicked: ViewportType.open = false
 
-    property alias link: webView.url
+    property string text
+    property string link
 
     Timer {
         id: visibleTimer
@@ -27,7 +30,8 @@ PoetBioView {
     WebView {
         id: webView
         parent: bioPage.scene
+        url: bioPage.link
         anchors.fill: parent
-        visible: !visibleTimer.running && !loading
+        visible: !visibleTimer.running && !loading && bioPage.link.length
     }
 }

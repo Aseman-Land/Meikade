@@ -21,7 +21,10 @@ DataBaseQuery {
                     "link": "page:/poet?id=" + d.id,
                     "subtitle": qsTr("%1 books").arg(d.catCount),
                     "title": d.name,
-                    "type": "normal"
+                    "type": "normal",
+                    "details": {
+                        "description": d.description
+                    }
                 };
 
                 items[items.length] = item;

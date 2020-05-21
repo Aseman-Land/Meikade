@@ -17,6 +17,7 @@ Page {
     property alias progressBar: progressBar
     property alias busyIndicator: busyIndicator
     property alias closeBtn: closeBtn
+    property alias bioText: bioText
 
     Rectangle {
         anchors.fill: parent

@@ -21,7 +21,6 @@ PoetView {
     property alias id: catsModel.poetId
     property alias navigData: navigModel.data
 
-
     AsemanListModel {
         id: navigModel
         data: [properties]
@@ -33,13 +32,21 @@ PoetView {
 
     Component.onCompleted: avatar.source = Constants.thumbsBaseUrl + id + ".png"
 
+    bioBtn.onClicked: Viewport.controller.trigger("popup:/poet/bio", {"link": properties.details.wikipedia, "text": bioText.text})
+    bioText.text: {
+        try {
+            return properties.details.description;
+        } catch (e) {
+            return "";
+        }
+    }
+
     downloadingProgressIndicator.running: catsModel.offlineInstaller.uninstalling || catsModel.offlineInstaller.installing || catsModel.offlineInstaller.downloading
     downloadProgress: catsModel.offlineInstaller.size? (catsModel.offlineInstaller.downloadedBytes / catsModel.offlineInstaller.size) * 0.9 + 0.1 : 0.1
     downloadProgressBar.visible: !catsModel.offlineInstaller.uninstalling
     downloadProgressLabel.text: catsModel.offlineInstaller.installing? qsTr("Installing") : (catsModel.offlineInstaller.uninstalling? qsTr("Uninstalling") : qsTr("Downloading"))
 
     settingsBtn.onClicked: Viewport.viewport.append(menuComponent, {}, "menu")
-    bioBtn.onClicked: Viewport.controller.trigger("popup:/poet/bio", {"link": properties.details.wikipedia})
     menuBtn.onClicked: ViewportType.open = false
 
     gridView {
