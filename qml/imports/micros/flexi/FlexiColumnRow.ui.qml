@@ -16,7 +16,7 @@ FlexiAbstractRow {
     PointMapListener {
         id: mapListener
         source: row
-        dest: list
+        dest: listView
     }
 
     Column {
