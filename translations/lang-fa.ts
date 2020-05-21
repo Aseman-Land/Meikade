@@ -9,6 +9,21 @@
     </message>
 </context>
 <context>
+    <name>Delegate</name>
+    <message>
+        <source>All Poets</source>
+        <translation>همه شعرا</translation>
+    </message>
+    <message>
+        <source>Random Poem</source>
+        <translation>شعر تصادفی</translation>
+    </message>
+    <message>
+        <source>Hafiz&apos;s Faal</source>
+        <translation>فال حافظ</translation>
+    </message>
+</context>
+<context>
     <name>ErrorDialog</name>
     <message>
         <source>Ok</source>
@@ -20,6 +35,18 @@
     <message>
         <source>More</source>
         <translation>بیشتر</translation>
+    </message>
+    <message>
+        <source>Recents</source>
+        <translation>آخرین خوانده شده‌ها</translation>
+    </message>
+    <message>
+        <source>Explore</source>
+        <translation>می‌کده آنلاین</translation>
+    </message>
+    <message>
+        <source>Offline Poets</source>
+        <translation>شعرای آفلاین</translation>
     </message>
 </context>
 <context>

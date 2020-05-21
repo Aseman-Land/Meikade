@@ -82,7 +82,18 @@ AsemanListView {
             anchors.bottomMargin: list.spacing
             horizontalAlignment: Text.AlignLeft
             font.pixelSize: 10 * Devices.fontDensity
-            text: sectionItem.text
+            text: {
+                switch (sectionItem.text) {
+                case "Recents":
+                    return qsTr("Recents") + Translations.refresher;
+                case "Static":
+                    return qsTr("Explore") + Translations.refresher;
+                case "Offline Poets":
+                    return qsTr("Offline Poets") + Translations.refresher;
+                default:
+                    return sectionItem.text;
+                }
+            }
 
             Button {
                 anchors.right: parent.right

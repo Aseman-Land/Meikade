@@ -9,6 +9,21 @@
     </message>
 </context>
 <context>
+    <name>Delegate</name>
+    <message>
+        <source>All Poets</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Random Poem</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hafiz&apos;s Faal</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ErrorDialog</name>
     <message>
         <source>Ok</source>
@@ -19,6 +34,18 @@
     <name>FlexiList</name>
     <message>
         <source>More</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Recents</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Explore</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Offline Poets</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

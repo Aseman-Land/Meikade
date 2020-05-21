@@ -14,6 +14,19 @@ Item {
     property bool isVerse
     property bool moreHint
 
+    readonly property string displayTitle: {
+        switch (title) {
+        case "All Poets":
+            return qsTr("All Poets") + Translations.refresher;
+        case "Random Poem":
+            return qsTr("Random Poem") + Translations.refresher;
+        case "Hafiz's Faal":
+            return qsTr("Hafiz's Faal") + Translations.refresher;
+        default:
+            return title;
+        }
+    }
+
     readonly property int poetId: {
         var ids = Tools.stringRegExp(link, "id\\=(\\d+)", false)
         if (!ids || ids.length === 0)
@@ -36,7 +49,7 @@ Item {
         Component {
             NormalDelegate {
                 anchors.fill: parent
-                title.text: Tools.stringReplace(delg.title, "\\s+", " ", true)
+                title.text: Tools.stringReplace(delg.displayTitle, "\\s+", " ", true)
                 title.color: foregroundColor
                 subtitle.text: Tools.stringReplace(delg.subtitle, "\\s+", " ", true)
                 subtitle.color: foregroundColor
@@ -48,7 +61,7 @@ Item {
         Component {
             FullBackgroundedDelegate {
                 anchors.fill: parent
-                title.text: Tools.stringReplace(delg.title, "\\s+", " ", true)
+                title.text: Tools.stringReplace(delg.displayTitle, "\\s+", " ", true)
                 title.color: foregroundColor
                 image.source: delg.image
                 background.color: delg.color
