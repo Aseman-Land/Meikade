@@ -2,6 +2,7 @@ import QtQuick 2.0
 import AsemanQml.Base 2.0
 import AsemanQml.Models 2.0
 import requests 1.0
+import queries 1.0
 import globals 1.0
 
 AsemanListModel {
@@ -17,12 +18,20 @@ AsemanListModel {
         PositionSingle = 4
     }
 
+    DataOfflineVerses {
+        id: offlineVerses
+        poem_id: poemsReq.poem_id
+        onPoem_idChanged: Tools.jsDelayCall(100, function() { result = getItems() })
+
+        property variant result
+    }
+
     PoemVersesRequest {
         id: poemsReq
     }
 
     AsemanListModelSource {
-        source: poemsReq.response
+        source: poemsReq.response? poemsReq.response : offlineVerses.result
         path: "result"
 
         ModelFormatHint {

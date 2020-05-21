@@ -2,6 +2,7 @@ singleton UserDbUpdater 1.0 UserDbUpdater.qml
 singleton DataDbUpdater 1.0 DataDbUpdater.qml
 DataGeneral 1.0 DataGeneral.qml
 UserGeneral 1.0 UserGeneral.qml
+DataOfflineVerses 1.0 DataOfflineVerses.qml
 DataOfflineCats 1.0 DataOfflineCats.qml
 DataOfflinePoets 1.0 DataOfflinePoets.qml
 DataOfflineInstaller 1.0 DataOfflineInstaller.qml
