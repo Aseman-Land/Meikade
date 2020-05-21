@@ -69,36 +69,43 @@ Item {
                 ratio: 1
             }
 
-            RoundedItem {
+            Item {
                 Layout.preferredWidth: 32 * Devices.density
                 Layout.preferredHeight: 32 * Devices.density
-                radius: Constants.radius * 0.7
                 Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
 
-                Rectangle {
-                    anchors.fill: parent
-                    color: Colors.background
-                }
-
-                Label {
+                RoundedItem {
+                    radius: Constants.radius
+                    width: parent.width * 2
+                    height: parent.height * 2
                     anchors.centerIn: parent
-                    color: Colors.primary
-                    font.pixelSize: 18 * Devices.fontDensity
-                    font.family: MaterialIcons.family
-                    text: MaterialIcons.mdi_account
-                }
+                    scale: 0.5
 
-                CachedImage {
-                    id: avatar
-                    anchors.fill: parent
-                    sourceSize.width: width * 1.2
-                    sourceSize.height: height * 1.2
-                    fillMode: Image.PreserveAspectCrop
-                }
+                    Rectangle {
+                        anchors.fill: parent
+                        color: Colors.background
+                    }
 
-                ItemDelegate {
-                    id: avatarBtn
-                    anchors.fill: parent
+                    Label {
+                        anchors.centerIn: parent
+                        color: Colors.primary
+                        font.pixelSize: 36 * Devices.fontDensity
+                        font.family: MaterialIcons.family
+                        text: MaterialIcons.mdi_account
+                    }
+
+                    CachedImage {
+                        id: avatar
+                        anchors.fill: parent
+                        sourceSize.width: width * 1.2
+                        sourceSize.height: height * 1.2
+                        fillMode: Image.PreserveAspectCrop
+                    }
+
+                    ItemDelegate {
+                        id: avatarBtn
+                        anchors.fill: parent
+                    }
                 }
             }
 

@@ -181,8 +181,9 @@ Item {
 
                 RoundedItem {
                     anchors.centerIn: parent
-                    width: 50 * Devices.density
-                    height: 50 * Devices.density
+                    width: 100 * Devices.density
+                    height: 100 * Devices.density
+                    scale: 0.5
                     Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
                     radius: Constants.radius
 
@@ -194,7 +195,7 @@ Item {
                     Label {
                         anchors.centerIn: parent
                         color: Colors.primary
-                        font.pixelSize: 18 * Devices.fontDensity
+                        font.pixelSize: 36 * Devices.fontDensity
                         font.family: MaterialIcons.family
                         text: MaterialIcons.mdi_account
                     }

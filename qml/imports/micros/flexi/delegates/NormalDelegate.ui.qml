@@ -63,16 +63,23 @@ AbstractDelegate {
                 IOSStyle.foreground: IOSStyle.background
             }
 
-            CachedImage {
-                id: image
+            Item {
                 Layout.alignment: Qt.AlignBottom | Qt.AlignRight
                 height: 36 * Devices.density
                 width: 36 * Devices.density
-                sourceSize.width: 50 * Devices.density
-                sourceSize.height: 50 * Devices.density
-                fillMode: Image.PreserveAspectCrop
-                asynchronous: true
-                radius: delItem.radius
+
+                CachedImage {
+                    id: image
+                    width: parent.width * 2
+                    height: parent.height * 2
+                    anchors.centerIn: parent
+                    scale: 0.5
+                    sourceSize.width: 100 * Devices.density
+                    sourceSize.height: 100 * Devices.density
+                    fillMode: Image.PreserveAspectCrop
+                    asynchronous: true
+                    radius: delItem.radius
+                }
             }
         }
     }
