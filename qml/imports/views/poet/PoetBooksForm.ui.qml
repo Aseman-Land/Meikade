@@ -223,7 +223,6 @@ Item {
         anchors.right: parent.right
         anchors.bottom: listView.bottom
         anchors.top: listView.top
-        anchors.bottomMargin: Devices.standardTitleBarHeight
         color: Colors.primary
         scrollArea: listView
     }

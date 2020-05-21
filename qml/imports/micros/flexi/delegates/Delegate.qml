@@ -11,10 +11,14 @@ Item {
     property string type
     property string link
     property bool isVerse
+    property bool moreHint
 
     readonly property color foregroundColor: (color.r + color.g + color.b) / 3 < 0.5? "#fff" : "#333"
 
     signal clicked()
+    signal moreRequest()
+
+    Component.onCompleted: if (moreHint) moreRequest();
 
     DelegateSwitch {
         id: dswitch

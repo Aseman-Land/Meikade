@@ -19,6 +19,7 @@ Item {
     property ListView listView
 
     signal clicked(string link, variant properties)
+    signal moreRequest()
 
     DelegateSwitch {
         id: dswitch
@@ -29,6 +30,7 @@ Item {
                 listView: rowItem.listView
                 model.data: modelData
                 onClicked: rowItem.clicked(link, properties)
+                onMoreRequest: rowItem.moreRequest()
             }
         }
         Component {
@@ -38,6 +40,7 @@ Item {
                 listView: rowItem.listView
                 model.data: modelData
                 onClicked: rowItem.clicked(link, properties)
+                onMoreRequest: rowItem.moreRequest()
             }
         }
         Component {
@@ -47,6 +50,7 @@ Item {
                 listView: rowItem.listView
                 model.data: modelData
                 onClicked: rowItem.clicked(link, properties)
+                onMoreRequest: rowItem.moreRequest()
             }
         }
         Component {
@@ -56,6 +60,7 @@ Item {
                 listView: rowItem.listView
                 model.data: modelData
                 onClicked: rowItem.clicked(link, properties)
+                onMoreRequest: rowItem.moreRequest()
             }
         }
         Component {
@@ -65,6 +70,7 @@ Item {
                 listView: rowItem.listView
                 model.data: modelData
                 onClicked: rowItem.clicked(link, properties)
+                onMoreRequest: rowItem.moreRequest()
             }
         }
         Component {
@@ -74,6 +80,7 @@ Item {
                 listView: rowItem.listView
                 type: args.length? args * 1 : 5
                 onClicked: rowItem.clicked(link, properties)
+                onMoreRequest: rowItem.moreRequest()
             }
         }
 

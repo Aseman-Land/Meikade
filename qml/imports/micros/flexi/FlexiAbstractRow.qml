@@ -6,4 +6,5 @@ Rectangle {
     property ListView listView
 
     signal clicked(string link, variant properties)
+    signal moreRequest()
 }

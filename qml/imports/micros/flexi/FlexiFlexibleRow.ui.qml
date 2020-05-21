@@ -34,10 +34,12 @@ FlexiAbstractRow {
                 image: model.image
                 type: model.type
                 link: model.link
+                moreHint: model.moreHint? model.moreHint : false
 
                 Connections {
                     target: itemDel
                     onClicked: hflexible.clicked(itemDel.link, rptr.model.get(index))
+                    onMoreRequest: hflexible.moreRequest()
                 }
             }
         }

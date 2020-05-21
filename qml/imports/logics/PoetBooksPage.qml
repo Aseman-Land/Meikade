@@ -46,6 +46,7 @@ PoetBooksView {
     }
 
     listView {
+        onMoreRequest: catsModel.more()
         onLinkRequest: {
             var navigData = navigModel.data;
             navigData[navigData.length] = Tools.toVariantMap(properties);

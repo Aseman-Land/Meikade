@@ -18,6 +18,7 @@ AsemanListView {
     bottomMargin: spacing
 
     signal linkRequest(string link, variant properties)
+    signal moreRequest()
 
     delegate: FlexiRowItem {
         id: rowItem
@@ -26,6 +27,7 @@ AsemanListView {
         modelData: model.modelData
         listView: list
         onClicked: list.linkRequest(link, properties)
+        onMoreRequest: if (model.index === list.count-1) list.moreRequest()
 
         Rectangle {
             width: list.width + list.spacing * 2
