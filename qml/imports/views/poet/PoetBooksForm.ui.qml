@@ -69,12 +69,16 @@ Item {
                 ratio: 1
             }
 
-            Rectangle {
+            RoundedItem {
                 Layout.preferredWidth: 32 * Devices.density
                 Layout.preferredHeight: 32 * Devices.density
                 radius: Constants.radius * 0.7
                 Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
-                color: Material.background
+
+                Rectangle {
+                    anchors.fill: parent
+                    color: Colors.background
+                }
 
                 Label {
                     anchors.centerIn: parent
@@ -84,7 +88,7 @@ Item {
                     text: MaterialIcons.mdi_account
                 }
 
-                Image {
+                CachedImage {
                     id: avatar
                     anchors.fill: parent
                     sourceSize.width: width * 1.2

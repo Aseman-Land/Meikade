@@ -1,6 +1,7 @@
 import QtQuick 2.12
 import AsemanQml.Base 2.0
 import AsemanQml.Sql 2.0
+import globals 1.0
 
 DataBaseQuery {
     id: obj
@@ -16,7 +17,7 @@ DataBaseQuery {
                     "color": "",
                     "details": null,
                     "heightRatio": 1,
-                    "image": "",
+                    "image": Constants.thumbsBaseUrl + d.id + ".png",
                     "link": "page:/poet?id=" + d.id,
                     "subtitle": qsTr("%1 books").arg(d.catCount),
                     "title": d.name,

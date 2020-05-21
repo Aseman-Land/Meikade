@@ -20,6 +20,8 @@
 #define QUERY_EXEC(QUERY) \
     if (!QUERY.exec()) qDebug() << __FUNCTION__ << __LINE__ << QUERY.lastError().text()
 
+static QSet<MeikadeOfflineItemGlobal*> meikadeOfflineItemGlobal_objects;
+
 class MeikadeOfflineItem::Private
 {
 public:
@@ -258,6 +260,14 @@ MeikadeOfflineItemInstaller::MeikadeOfflineItemInstaller(const QString &database
     mCatId(catId)
 {
     qRegisterMetaType<MeikadeOfflineItemInstaller::InstallThread::PathUnit>("InstallThread::PathUnit");
+
+    connect(this, &MeikadeOfflineItemInstaller::doingChanged, this, [this](){
+        if (mDoing)
+            return;
+
+        for (MeikadeOfflineItemGlobal *g: meikadeOfflineItemGlobal_objects)
+            Q_EMIT g->offlineInstalled(mPoetId, mCatId);
+    });
 }
 
 void MeikadeOfflineItemInstaller::download()
@@ -456,6 +466,8 @@ void MeikadeOfflineItemInstaller::InstallThread::run() {
             }
             QSqlDatabase::removeDatabase(srcHash);
             QSqlDatabase::removeDatabase(dstHash);
+
+            QFile::remove(destPath);
         }
 
         Q_EMIT pathFinished(unit);
@@ -557,4 +569,17 @@ void MeikadeOfflineItemInstaller::InstallThread::deleteCat(QSqlDatabase &db, qin
         QSqlRecord r = q.record();
         deleteCat(db, poetId, r.value("id").toInt());
     }
+}
+
+
+
+MeikadeOfflineItemGlobal::MeikadeOfflineItemGlobal(QObject *parent) :
+    QObject(parent)
+{
+    meikadeOfflineItemGlobal_objects.insert(this);
+}
+
+MeikadeOfflineItemGlobal::~MeikadeOfflineItemGlobal()
+{
+    meikadeOfflineItemGlobal_objects.remove(this);
 }

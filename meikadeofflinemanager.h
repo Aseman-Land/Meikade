@@ -74,6 +74,17 @@ private:
     Private *p;
 };
 
+class MeikadeOfflineItemGlobal : public QObject
+{
+    Q_OBJECT
+public:
+    MeikadeOfflineItemGlobal(QObject *parent = Q_NULLPTR);
+    virtual ~MeikadeOfflineItemGlobal();
+
+Q_SIGNALS:
+    void offlineInstalled(qint32 poetId, qint32 catId);
+};
+
 class MeikadeOfflineItemInstaller : public QObject
 {
     Q_OBJECT

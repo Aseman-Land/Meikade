@@ -179,13 +179,17 @@ Item {
                 y: ratioAbs * (coverImage.height/2 - height + 5 * Devices.density)
                 scale: (34 + 16 * ratioAbs) / 50
 
-                Rectangle {
+                RoundedItem {
                     anchors.centerIn: parent
                     width: 50 * Devices.density
                     height: 50 * Devices.density
-                    radius: Constants.radius
                     Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
-                    color: Material.background
+                    radius: Constants.radius
+
+                    Rectangle {
+                        anchors.fill: parent
+                        color: Colors.background
+                    }
 
                     Label {
                         anchors.centerIn: parent
@@ -195,7 +199,7 @@ Item {
                         text: MaterialIcons.mdi_account
                     }
 
-                    Image {
+                    CachedImage {
                         id: avatar
                         anchors.fill: parent
                         sourceSize.width: width * 1.2

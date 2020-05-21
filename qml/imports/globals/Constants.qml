@@ -12,6 +12,9 @@ QtObject {
 
     readonly property string passwordSalt: "65ae7da2-acce-470e-9243-73fccd363ddc"
 
+    readonly property string thumbsBaseUrl: "https://meikade.com/offlines/thumbs/"
+    readonly property string offlinesUrl: "https://meikade.com/offlines/"
+
     function hashPassword(pass) {
         return Tools.hash(passwordSalt + pass + passwordSalt, Tools.Sha256);
     }

@@ -25,6 +25,8 @@ PoetBooksView {
         data: []
     }
 
+    Component.onCompleted: avatar.source = Constants.thumbsBaseUrl + id + ".png"
+
     downloadingProgressIndicator.running: catsModel.offlineInstaller.uninstalling || catsModel.offlineInstaller.installing || catsModel.offlineInstaller.downloading
     downloadProgress: catsModel.offlineInstaller.size? (catsModel.offlineInstaller.downloadedBytes / catsModel.offlineInstaller.size) * 0.9 + 0.1 : 0.1
     downloadProgressBar.visible: !catsModel.offlineInstaller.uninstalling
