@@ -33,7 +33,7 @@ FlexiAbstractRow {
             delegate: Loader {
                 width: row.width
                 height: 100 * Devices.density * model.heightRatio
-                active: 0 < globalY + height && globalY < list.height
+                active: 0 < globalY + height && globalY < listView.height
 
                 property real globalY: mapListener.result.y + y
 
