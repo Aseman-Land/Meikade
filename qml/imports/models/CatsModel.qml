@@ -28,38 +28,53 @@ AsemanListModel {
             if (model.count || !offlineInstaller.installed)
                 return;
 
-            var data = query("SELECT cat.id, cat.poet_id, cat.text, COUNT(poem.id) as poemsCount " +
-                             "FROM cat LEFT OUTER JOIN poem ON cat.id = poem.cat_id " +
-                             "WHERE cat.poet_id = :poet_id AND (:cat_id < 1 OR cat.id = :cat_id) " +
-                             " GROUP BY cat.id",
-                             {"poet_id": catsReq.poet_id, "cat_id": catsReq.parent_id});
             var items = new Array;
-            for (var i in data)
-            {
-                var d = data[i];
-                var item = {
-                    "color": "",
-                    "details": null,
-                    "heightRatio": 0.6,
-                    "image": "",
-                    "link": "page:/poet?id=" + d.poet_id + "&catId=" + d.id,
-                    "subtitle": d.poemsCount + " poems",
-                    "title": d.text,
-                    "type": "fullback"
-                };
+            var poemsCount = 0;
+            var catsCount = 0;
 
-                items[items.length] = item;
+            var analize = function(data, poemQuery) {
+                for (var i in data)
+                {
+                    var d = data[i];
+                    var item = {
+                        "color": "",
+                        "details": null,
+                        "heightRatio": 0.6,
+                        "image": "",
+                        "link": "page:/poet?id=" + d.poet_id + (poemQuery? "&poemId=" : "&catId=") + d.id,
+                        "subtitle": d.poemsCount + " poems",
+                        "title": d.text,
+                        "type": "fullback"
+                    };
+
+                    items[items.length] = item;
+                }
+
+                if (poemQuery)
+                    poemsCount = items.length;
+                else
+                    catsCount = items.length;
             }
+
+            analize( query("SELECT cat.id, cat.poet_id, cat.text, COUNT(poem.id) as poemsCount " +
+                           "FROM cat LEFT OUTER JOIN poem ON cat.id = poem.cat_id " +
+                           "WHERE cat.poet_id = :poet_id AND cat.parent_id = :cat_id " +
+                           " GROUP BY cat.id",
+                           {"poet_id": catsReq.poet_id, "cat_id": catsReq.parent_id}), false);
+
+            analize( query("SELECT id, " + catsReq.poet_id + " as poet_id, title as text, 0 as poemsCount " +
+                           "FROM poem WHERE cat_id = :cat_id ",
+                           {"cat_id": catsReq.parent_id}), true);
+
 
             var resItem = {
                 "background": false,
                 "color": "transparent",
                 "section": "",
-                "type": "grid",
+                "type": catsCount? "grid" : "column",
                 "modelData": items
             };
 
-            console.debug(Tools.variantToJson(resItem))
             result = [resItem];
         }
     }
