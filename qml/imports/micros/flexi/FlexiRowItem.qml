@@ -83,6 +83,15 @@ Item {
                 onMoreRequest: rowItem.moreRequest()
             }
         }
+        Component {
+            id: offlinePoetsComponent
+            FlexiOfflinePoetsRow {
+                width: rowItem.width
+                listView: rowItem.listView
+                onClicked: rowItem.clicked(link, properties)
+                onMoreRequest: rowItem.moreRequest()
+            }
+        }
 
         current: {
             var t = type
@@ -103,6 +112,8 @@ Item {
                 return 4;
             case "recents":
                 return 5;
+            case "offlines":
+                return 6;
             default:
                 return -1;
             }

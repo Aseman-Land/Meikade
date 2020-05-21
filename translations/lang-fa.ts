@@ -2,6 +2,13 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="fa_IR">
 <context>
+    <name>DataOfflinePoets</name>
+    <message>
+        <source>%1 books</source>
+        <translation>%1 کتاب</translation>
+    </message>
+</context>
+<context>
     <name>ErrorDialog</name>
     <message>
         <source>Ok</source>

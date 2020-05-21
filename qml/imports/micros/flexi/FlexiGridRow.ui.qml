@@ -11,6 +11,7 @@ FlexiAbstractRow {
     height: row.height
 
     property alias model: model
+    property alias list: list
 
     PointMapListener {
         id: mapListener
@@ -26,7 +27,7 @@ FlexiAbstractRow {
         columns: Math.floor( row.width / (180 * Devices.density))
 
         Repeater {
-            id: rptr
+            id: list
             model: FlexiSwitableModel {
                 id: model
             }
@@ -51,7 +52,7 @@ FlexiAbstractRow {
 
                     Connections {
                         target: itemDel
-                        onClicked: hflexible.clicked(itemDel.link, rptr.model.get(index))
+                        onClicked: hflexible.clicked(itemDel.link, list.model.get(index))
                         onMoreRequest: hflexible.moreRequest()
                     }
                 }
