@@ -18,7 +18,7 @@ AsemanListModel {
         {
             "title": qsTr("Manage Offlines") + Translations.refresher,
             "icon": "mdi_view_dashboard",
-            "link": "popup:/poets/manage"
+            "link": "float:/poets/manage"
         },
         {
             "title": qsTr("Sync") + Translations.refresher,
@@ -28,7 +28,7 @@ AsemanListModel {
         {
             "title": qsTr("Contact US") + Translations.refresher,
             "icon": "mdi_email",
-            "link": "popup:/auth/float"
+            "link": "float:/auth/float"
         }
     ]
 }

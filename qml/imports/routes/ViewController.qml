@@ -53,13 +53,13 @@ ViewportController {
 //        route: /\w+\:\/poems\/recents/
         route: /moreLink/
         source: "MostReadedPoemsRoute.qml"
-        viewportType: "popup"
+        viewportType: "float"
     }
 
     ViewportControllerRoute {
-        route: /popup\:\/auth\/float/
+        route: /\w+\:\/auth\/float/
         source: "AuthRoute.qml"
-        viewportType: "popup"
+        viewportType: "float"
     }
 
     ViewportControllerRoute {

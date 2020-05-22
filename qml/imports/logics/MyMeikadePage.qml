@@ -15,5 +15,5 @@ MyMeikadeView {
     onClicked: Viewport.controller.trigger(link, {})
 
     profileLabel.text: MyUserRequest._fullname
-    authBtn.onClicked: Viewport.controller.trigger("popup:/auth/float", {})
+    authBtn.onClicked: Viewport.controller.trigger("float:/auth/float", {})
 }
