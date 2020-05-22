@@ -217,7 +217,7 @@ Rectangle {
                             return;
 
                         yAnim.from = paper.y;
-                        if (paper.yRatio < 0.4) {
+                        if (paper.yRatio < 0.6) {
                             yAnim.to = paper.yMax;
                             paperItem.open = false;
                         } else {
