@@ -20,7 +20,8 @@ PoemView {
 
     property string poetImage
 
-    property int id
+    property alias id: dis.poetId
+    property int poetId
     property alias poemId: poemModel.poemId
     property alias navigData: navigModel.data
 

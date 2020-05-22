@@ -14,7 +14,9 @@ Rectangle {
 
     property color bookColor: Colors.primary
     property int count: 500
+    property int startId: 0
     readonly property int currentIndex: Math.min(Math.max(count * marea.mouseX, 0) / marea.width, randomList.count-1)
+    readonly property int currentItem: currentIndex>=0 && currentIndex < randomList.count? randomList.at(currentIndex) : -1
     property Item backScene: dis
     property Component delegate
 
@@ -24,7 +26,7 @@ Rectangle {
     function refresh() {
         randomList.clear();
         for (var i=0; i<count; i++) {
-            var idx = Math.floor(Math.random() * randomList.count);
+            var idx = Math.floor(Math.random() * (randomList.count+1));
             if (idx > randomList.count)
                 idx = randomList.count;
 
@@ -79,7 +81,7 @@ Rectangle {
                     anchors.centerIn: parent
                     font.pixelSize: 16 * Devices.fontDensity
                     color: "#333"
-                    text: currentIndex>=0 && currentIndex < randomList.count? randomList.at(currentIndex) : ""
+                    text: currentItem >= 0? currentItem : ""
                 }
             }
         }
@@ -173,8 +175,9 @@ Rectangle {
 
             onRatioChanged: if (ratio == 0) destroy()
 
+            Component.onDestruction: dis.refresh()
             Component.onCompleted: {
-                if (delegate) delegate.createObject(paper)
+                if (delegate) delegate.createObject(paper, {"poemId": startId + currentItem - 1, "currentItem": currentItem})
             }
 
             BackAction {
@@ -188,21 +191,62 @@ Rectangle {
             Rectangle {
                 anchors.fill: parent
                 color: "#000"
-                opacity: paperItem.ratio * 0.7
+                opacity: paper.yRatio * 0.7
             }
 
-            Rectangle {
-                id: paper
-                x: (marea.mouseX - marea.width/2) * (1 - paperItem.ratio)
-                width: parent.width
-                height: parent.height
-                y: ((column.y + row.y) * (row.height / height)) * (1 - paperItem.ratio)
-                scale: (row.height / height) * (1 - paperItem.ratio) * 0.9 + paperItem.ratio
-                transform: Rotation {
-                    origin.x: paper.width/2
-                    origin.y: paper.height/2
-                    axis { x: 0; y: 1; z: 0 }
-                    angle: 90 * (1 - paperItem.ratio)
+            NumberAnimation {
+                id: yAnim
+                easing.type: Easing.InOutCubic
+                duration: 200
+                target: paper
+                properties: "y"
+            }
+
+            MouseArea {
+                id: dragArea
+                anchors.fill: parent
+
+                drag {
+                    target: paper
+                    axis: Drag.YAxis
+                    minimumY: 0
+                    maximumY: paper.yMax * 0.8
+                    filterChildren: true
+                    onActiveChanged: {
+                        if (dragArea.drag.active)
+                            return;
+
+                        yAnim.from = paper.y;
+                        if (paper.yRatio < 0.6) {
+                            yAnim.to = paper.yMax;
+                            paperItem.open = false;
+                        } else {
+                            yAnim.to = 0;
+                            Tools.jsDelayCall(200, function(){
+                                paper.y = Qt.binding( function() { return paper.yMax * (1 - paperItem.ratio) } )
+                            })
+                        }
+                        paper.y = 0;
+                        yAnim.start();
+                    }
+                }
+
+                Rectangle {
+                    id: paper
+                    x: (Math.max(Math.min(marea.mouseX, marea.width), 0) - marea.width/2) * (1 - yRatio)
+                    width: parent.width
+                    height: parent.height
+                    y: yMax * (1 - paperItem.ratio)
+                    scale: (row.height / height) * (1 - yRatio) * 0.9 + yRatio
+                    transform: Rotation {
+                        origin.x: paper.width/2
+                        origin.y: paper.height/2
+                        axis { x: 0; y: 1; z: 0 }
+                        angle: 90 * (1 - paper.yRatio)
+                    }
+
+                    property real yRatio: 1 - (y / yMax)
+                    property real yMax: (column.y + row.y) * (row.height / height)
                 }
             }
         }

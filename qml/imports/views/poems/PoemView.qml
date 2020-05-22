@@ -64,7 +64,7 @@ Rectangle {
         width: poemView.width / 2
         height: poemView.height
         drag {
-            target: form
+            target: neighbors? form : null
             axis: Drag.XAxis
             minimumX: -poemView.width
             maximumX: poemView.width

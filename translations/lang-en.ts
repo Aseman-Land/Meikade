@@ -61,6 +61,28 @@
     </message>
 </context>
 <context>
+    <name>HafizFaalForm.ui</name>
+    <message>
+        <source>Hafiz Faal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>HafizFaalPage</name>
+    <message>
+        <source>Hafiz</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 Ghazal</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>HomeForm.ui</name>
     <message>
         <source>Meikade</source>
