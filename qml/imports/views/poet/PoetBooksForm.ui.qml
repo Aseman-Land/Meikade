@@ -5,6 +5,7 @@ import AsemanQml.Controls 2.0
 import QtQuick.Controls 2.3
 import QtQuick.Layouts 1.3
 import QtQuick.Controls.Material 2.0
+import QtQuick.Controls.IOSStyle 2.0
 import globals 1.0
 import micros 1.0
 import models 1.0
@@ -84,6 +85,7 @@ Item {
                     Rectangle {
                         anchors.fill: parent
                         color: Colors.background
+                        visible: avatar.status != Image.Ready
                     }
 
                     Label {
@@ -181,7 +183,7 @@ Item {
             Rectangle {
                 Layout.preferredWidth: downloadingProgressRow.width + 20 * Devices.density
                 Layout.preferredHeight: 24 * Devices.density
-                radius: Constants.radius
+                radius: downloadProgressBar.radius
                 color: "#88ffffff"
                 visible: downloadingProgressIndicator.running
 
@@ -192,7 +194,7 @@ Item {
                     anchors.left: parent.left
                     width: parent.width * downloadProgress
                     color: "#88ffffff"
-                    radius: Constants.radius
+                    radius: 7 * Devices.density
                 }
 
                 RowLayout {
@@ -203,6 +205,11 @@ Item {
                     BusyIndicator {
                         id: downloadingProgressIndicator
                         scale: 0.6
+                        Layout.preferredHeight: 28 * Devices.density
+                        Layout.preferredWidth: 28 * Devices.density
+                        IOSStyle.theme: IOSStyle.Light
+                        Material.theme: Material.Light
+                        Material.accent: "#000"
                     }
 
                     Label {

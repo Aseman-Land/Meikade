@@ -37,9 +37,9 @@ Item {
 
     AsemanListView {
         id: listView
-        anchors.top: headerItem.bottom
+        anchors.top: tabBar.bottom
         anchors.right: parent.right
-        anchors.bottom: tabBar.bottom
+        anchors.bottom: parent.bottom
         anchors.left: parent.left
 
         topMargin: 4 * Devices.density

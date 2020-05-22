@@ -57,6 +57,12 @@ ViewportController {
     }
 
     ViewportControllerRoute {
+        route: /\w+\:\/poem\/hafiz_faal/
+        source: "HafizFaalRoute.qml"
+        viewportType: "float"
+    }
+
+    ViewportControllerRoute {
         route: /\w+\:\/auth\/float/
         source: "AuthRoute.qml"
         viewportType: "float"

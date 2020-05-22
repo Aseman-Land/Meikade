@@ -11,3 +11,4 @@ ManageOfflinePoetsView 1.0 poet/ManageOfflinePoetsForm.ui.qml
 ErrorDialogView 1.0 dialogs/ErrorDialogForm.ui.qml
 PoemView 1.0 poems/PoemView.qml
 MostReadedPoemsView 1.0 poems/MostReadedPoemsForm.ui.qml
+HafizFaalView 1.0 randoms/HafizFaalForm.ui.qml
