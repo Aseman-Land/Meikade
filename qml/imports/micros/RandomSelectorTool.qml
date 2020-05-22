@@ -61,6 +61,10 @@ Rectangle {
                 x: Math.min(Math.max(marea.mouseX, 0), header.width) - width/2
                 visible: marea.pressed
 
+                Behavior on width {
+                    NumberAnimation { easing.type: Easing.OutCubic; duration: 300 }
+                }
+
                 Rectangle {
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.verticalCenter: parent.bottom
@@ -74,7 +78,8 @@ Rectangle {
                     id: indexLabel
                     anchors.centerIn: parent
                     font.pixelSize: 16 * Devices.fontDensity
-                    text: currentIndex>=0? randomList.at(currentIndex) : ""
+                    color: "#333"
+                    text: currentIndex>=0 && currentIndex < randomList.count? randomList.at(currentIndex) : ""
                 }
             }
         }
@@ -145,7 +150,7 @@ Rectangle {
         preventStealing: true
         onMouseXChanged: visualIndex = Math.max(0, Math.min(Math.floor(repeater.model * mouseX / width), repeater.model))
         onReleased: {
-            if (currentIndex >= 0) {
+            if (currentIndex >= 0 && currentIndex < randomList.count) {
                 var choice = randomList.at(currentIndex);
                 var obj = paperComponent.createObject(backScene)
                 obj.open = true
@@ -177,11 +182,18 @@ Rectangle {
             }
 
             Behavior on ratio {
-                NumberAnimation { easing.type: Easing.InOutCubic; duration: 1000 }
+                NumberAnimation { easing.type: Easing.InOutCubic; duration: 500 }
+            }
+
+            Rectangle {
+                anchors.fill: parent
+                color: "#000"
+                opacity: paperItem.ratio * 0.5
             }
 
             Rectangle {
                 id: paper
+                x: (marea.mouseX - marea.width/2) * (1 - paperItem.ratio)
                 width: parent.width
                 height: parent.height
                 y: ((column.y + row.y) * (row.height / height)) * (1 - paperItem.ratio)
