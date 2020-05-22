@@ -185,7 +185,7 @@ Rectangle {
             }
 
             Behavior on ratio {
-                NumberAnimation { easing.type: Easing.InOutCubic; duration: 500 }
+                NumberAnimation { easing.type: Easing.InOutCubic; duration: 400 }
             }
 
             Rectangle {
@@ -197,7 +197,7 @@ Rectangle {
             NumberAnimation {
                 id: yAnim
                 easing.type: Easing.InOutCubic
-                duration: 200
+                duration: 400
                 target: paper
                 properties: "y"
             }
@@ -217,32 +217,31 @@ Rectangle {
                             return;
 
                         yAnim.from = paper.y;
-                        if (paper.yRatio < 0.6) {
+                        if (paper.yRatio < 0.4) {
                             yAnim.to = paper.yMax;
                             paperItem.open = false;
                         } else {
                             yAnim.to = 0;
-                            Tools.jsDelayCall(200, function(){
+                            Tools.jsDelayCall(400, function(){
                                 paper.y = Qt.binding( function() { return paper.yMax * (1 - paperItem.ratio) } )
                             })
                         }
-                        paper.y = 0;
                         yAnim.start();
                     }
                 }
 
                 Rectangle {
                     id: paper
-                    x: (Math.max(Math.min(marea.mouseX, marea.width), 0) - marea.width/2) * (1 - yRatio)
+                    x: (Math.max(Math.min(marea.mouseX, marea.width), 0) - marea.width/2) * (1 - paperItem.ratio)
                     width: parent.width
                     height: parent.height
                     y: yMax * (1 - paperItem.ratio)
-                    scale: (row.height / height) * (1 - yRatio) * 0.9 + yRatio
+                    scale: (row.height / height) * (1 - yRatio) * 0.95 + yRatio
                     transform: Rotation {
                         origin.x: paper.width/2
                         origin.y: paper.height/2
                         axis { x: 0; y: 1; z: 0 }
-                        angle: 90 * (1 - paper.yRatio)
+                        angle: 90 * (1 - paperItem.ratio)
                     }
 
                     property real yRatio: 1 - (y / yMax)
