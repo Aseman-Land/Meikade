@@ -48,6 +48,10 @@
         <source>Offline Poets</source>
         <translation>شعرای آفلاین</translation>
     </message>
+    <message>
+        <source>Manage</source>
+        <translation>مدیریت</translation>
+    </message>
 </context>
 <context>
     <name>FooterItem.ui</name>
@@ -114,6 +118,48 @@
     </message>
 </context>
 <context>
+    <name>ManageOfflinePoetsForm.ui</name>
+    <message>
+        <source>Manage Offlines</source>
+        <translation>مدیریت آفلاین‌ها</translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation>خروج</translation>
+    </message>
+    <message>
+        <source>Poets</source>
+        <translation>شعرا</translation>
+    </message>
+    <message>
+        <source>Books</source>
+        <translation>کتاب‌ها</translation>
+    </message>
+</context>
+<context>
+    <name>MostReadedPoemsForm.ui</name>
+    <message>
+        <source>Poets</source>
+        <translation>شعرا</translation>
+    </message>
+    <message>
+        <source>Books</source>
+        <translation>کتاب‌ها</translation>
+    </message>
+    <message>
+        <source>Most Recents</source>
+        <translation>پرمراجعه‌ها</translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation>خروج</translation>
+    </message>
+    <message>
+        <source>Poems</source>
+        <translation>اشعار</translation>
+    </message>
+</context>
+<context>
     <name>MyMeikadeForm.ui</name>
     <message>
         <source>Login / Register</source>
@@ -136,7 +182,7 @@
     </message>
     <message>
         <source>Manage Poets</source>
-        <translation>مدیریت شعرا</translation>
+        <translation type="vanished">مدیریت شعرا</translation>
     </message>
     <message>
         <source>Sync</source>
@@ -145,6 +191,10 @@
     <message>
         <source>Contact US</source>
         <translation>تماس با ما</translation>
+    </message>
+    <message>
+        <source>Manage Offlines</source>
+        <translation>مدیریت آفلاین‌ها</translation>
     </message>
 </context>
 <context>

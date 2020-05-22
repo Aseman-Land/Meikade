@@ -9,3 +9,5 @@ ErrorDialog 1.0 ErrorDialog.qml
 PoetsListPage 1.0 PoetsListPage.qml
 PoetBooksPage 1.0 PoetBooksPage.qml
 PoemPage 1.0 PoemPage.qml
+ManageOfflinePoetsPage 1.0 ManageOfflinePoetsPage.qml
+MostReadedPoemsPage 1.0 MostReadedPoemsPage.qml

@@ -48,6 +48,10 @@
         <source>Offline Poets</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Manage</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FooterItem.ui</name>
@@ -114,6 +118,48 @@
     </message>
 </context>
 <context>
+    <name>ManageOfflinePoetsForm.ui</name>
+    <message>
+        <source>Manage Offlines</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Poets</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Books</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>MostReadedPoemsForm.ui</name>
+    <message>
+        <source>Poets</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Books</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Most Recents</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Poems</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>MyMeikadeForm.ui</name>
     <message>
         <source>Login / Register</source>
@@ -135,15 +181,15 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Manage Poets</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Sync</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Contact US</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Manage Offlines</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

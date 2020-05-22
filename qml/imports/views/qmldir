@@ -7,5 +7,7 @@ PoetView 1.0 poet/PoetForm.ui.qml
 PoetBioView 1.0 poet/PoetBioForm.ui.qml
 PoetsListView 1.0 poet/PoetsListForm.ui.qml
 PoetBooksView 1.0 poet/PoetBooksForm.ui.qml
+ManageOfflinePoetsView 1.0 poet/ManageOfflinePoetsForm.ui.qml
 ErrorDialogView 1.0 dialogs/ErrorDialogForm.ui.qml
 PoemView 1.0 poems/PoemView.qml
+MostReadedPoemsView 1.0 poems/MostReadedPoemsForm.ui.qml

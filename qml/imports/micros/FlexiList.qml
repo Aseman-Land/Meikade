@@ -59,6 +59,7 @@ AsemanListView {
         width: list.width
         height: text.length ? 40 * Devices.density : 0
 
+        property string fulltext: section
         property string text: {
             var idx = section.indexOf(":")
             if (idx >= 0)
@@ -99,11 +100,19 @@ AsemanListView {
                 anchors.right: parent.right
                 anchors.verticalCenter: parent.verticalCenter
                 visible: sectionItem.link.length
-                text: qsTr("More") + Translations.refresher
+                text: {
+                    switch (sectionItem.link) {
+                    case "manageLink":
+                        return qsTr("Manage") + Translations.refresher
+                    case "moreLink":
+                    default:
+                        return qsTr("More") + Translations.refresher
+                    }
+                }
                 flat: true
                 width: 50 * Devices.density
                 font.pixelSize: 8 * Devices.fontDensity
-                onClicked: list.linkRequest(sectionItem.link)
+                onClicked: list.linkRequest(sectionItem.link, {"fulltext": sectionItem.fulltext})
             }
         }
     }

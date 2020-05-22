@@ -45,6 +45,18 @@ ViewportController {
     }
 
     ViewportControllerRoute {
+        route: /\w+\:\/poets\/manage/
+        source: "ManageOfflinePoetsRoute.qml"
+    }
+
+    ViewportControllerRoute {
+//        route: /\w+\:\/poems\/recents/
+        route: /moreLink/
+        source: "MostReadedPoemsRoute.qml"
+        viewportType: "popup"
+    }
+
+    ViewportControllerRoute {
         route: /popup\:\/auth\/float/
         source: "AuthRoute.qml"
         viewportType: "popup"
