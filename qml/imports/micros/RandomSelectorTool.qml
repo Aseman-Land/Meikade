@@ -188,7 +188,7 @@ Rectangle {
             Rectangle {
                 anchors.fill: parent
                 color: "#000"
-                opacity: paperItem.ratio * 0.5
+                opacity: paperItem.ratio * 0.7
             }
 
             Rectangle {
