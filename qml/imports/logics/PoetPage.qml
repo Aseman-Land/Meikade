@@ -5,6 +5,7 @@ import AsemanQml.Viewport 2.0
 import AsemanQml.MaterialIcons 2.0
 import Meikade 1.0
 import queries 1.0
+import queries 1.0 as Query
 import views 1.0
 import micros 1.0
 import globals 1.0
@@ -28,6 +29,35 @@ PoetView {
 
     Behavior on downloadProgress {
         NumberAnimation { duration: 300 }
+    }
+
+    Query.UserActions {
+        id: actionQuery
+        type: Query.UserActions.TypePoetViewDate
+        poemId: 0
+        poetId: dis.id
+        declined: 0
+        synced: 0
+        updatedAt: Tools.dateToSec(new Date)
+        extra: {
+            var map = Tools.toVariantMap(properties);
+            map["title"] = title;
+            map["image"] = image;
+            map["link"] = url;
+
+            return Tools.variantToJson(map);
+        }
+    }
+
+    Timer {
+        id: userActionTimer
+        interval: 10000
+        repeat: false
+        running: true
+        onTriggered: {
+            actionQuery.push()
+            RefresherSignals.recentPoemsRefreshed()
+        }
     }
 
     Component.onCompleted: avatar.source = Constants.thumbsBaseUrl + id + ".png"

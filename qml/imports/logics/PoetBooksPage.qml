@@ -2,12 +2,14 @@ import QtQuick 2.12
 import AsemanQml.Base 2.0
 import AsemanQml.Models 2.0
 import AsemanQml.Viewport 2.0
+import queries 1.0 as Query
 import globals 1.0
 import views 1.0
 import models 1.0
 import micros 1.0
 
 PoetBooksView {
+    id: catId
     width: Constants.width
     height: Constants.height
 
@@ -23,6 +25,36 @@ PoetBooksView {
     AsemanListModel {
         id: navigModel
         data: []
+    }
+
+    Query.UserActions {
+        id: actionQuery
+        type: Query.UserActions.TypeCatViewDate
+        poemId: 0
+        poetId: dis.id
+        catId: dis.catId
+        declined: 0
+        synced: 0
+        updatedAt: Tools.dateToSec(new Date)
+        extra: {
+            var map = Tools.toVariantMap(properties);
+            map["title"] = poet;
+            map["image"] = poetImage;
+            map["link"] = url;
+
+            return Tools.variantToJson(map);
+        }
+    }
+
+    Timer {
+        id: userActionTimer
+        interval: 10000
+        repeat: false
+        running: true
+        onTriggered: {
+            actionQuery.push()
+            RefresherSignals.recentPoemsRefreshed()
+        }
     }
 
     Component.onCompleted: avatar.source = Constants.thumbsBaseUrl + id + ".png"

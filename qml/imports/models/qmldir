@@ -8,3 +8,4 @@ PoetsModel 1.0 PoetsModel.qml
 CatsModel 1.0 CatsModel.qml
 PoemVersesModel 1.0 PoemVersesModel.qml
 OfflinePoetsModel 1.0 OfflinePoetsModel.qml
+ManageOfflinePoetsModel 1.0 ManageOfflinePoetsModel.qml
