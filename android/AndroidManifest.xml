@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
-<manifest android:versionName="3.6.3" xmlns:android="http://schemas.android.com/apk/res/android" package="org.nilegroup.Meikade" android:installLocation="auto" android:versionCode="26">
-    <application android:label="Meikade" android:icon="@drawable/icon" android:name="land.aseman.android.AsemanApplication">
-        <activity android:label="@string/app_name" android:configChanges="orientation|uiMode|screenLayout|screenSize|smallestScreenSize|locale|fontScale|keyboard|keyboardHidden|navigation" android:name="land.aseman.android.AsemanActivity" android:theme="@style/splashScreenTheme">
+<manifest android:versionName="3.6.3" xmlns:android="http://schemas.android.com/apk/res/android" package="org.nilegroup.Meikade2" android:installLocation="auto" android:versionCode="26">
+    <application android:label="Meikade 2" android:icon="@drawable/icon" android:name="io.aseman.android.AsemanApplication">
+        <activity android:label="@string/app_name" android:configChanges="orientation|uiMode|screenLayout|screenSize|smallestScreenSize|locale|fontScale|keyboard|keyboardHidden|navigation" android:name="io.aseman.android.AsemanActivity" android:theme="@style/splashScreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
@@ -28,10 +28,11 @@
             <!--  Messages maps -->
         </activity>
     </application>
-    <uses-sdk android:targetSdkVersion="23" android:minSdkVersion="16"/>
+    <uses-sdk android:targetSdkVersion="23" android:minSdkVersion="21"/>
     <supports-screens android:normalScreens="true" android:smallScreens="true" android:anyDensity="true" android:largeScreens="true"/>
     <!-- %%INSERT_FEATURES -->
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 </manifest>

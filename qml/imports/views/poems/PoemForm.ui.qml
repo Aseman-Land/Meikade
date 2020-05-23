@@ -78,7 +78,7 @@ Item {
         running: gridView.model && gridView.model.refreshing !== undefined && gridView.model.refreshing && gridView.count == 0
     }
 
-    ListView {
+    AsemanListView {
         id: gridView
         anchors.fill: parent
 

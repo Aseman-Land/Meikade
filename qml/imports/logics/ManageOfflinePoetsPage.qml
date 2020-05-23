@@ -27,5 +27,6 @@ ManageOfflinePoetsView {
 
     OfflineCatsModel {
         id: catsModel
+        cachePath: AsemanGlobals.cachePath + "/catsofflinelist.cache"
     }
 }

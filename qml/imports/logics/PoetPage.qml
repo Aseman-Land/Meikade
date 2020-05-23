@@ -58,7 +58,7 @@ PoetView {
 
     Component.onCompleted: avatar.source = Constants.thumbsBaseUrl + id + ".png"
 
-    bioBtn.onClicked: Viewport.controller.trigger("popup:/poet/bio", {"link": properties.details.wikipedia, "text": bioText.text})
+    bioBtn.onClicked: Viewport.controller.trigger("float:/poet/bio", {"link": properties.details.wikipedia, "text": bioText.text})
     bioText.text: {
         try {
             return properties.details.description;
