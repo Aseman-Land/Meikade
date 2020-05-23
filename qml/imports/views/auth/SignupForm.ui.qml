@@ -28,7 +28,7 @@ Page {
         id: flickable
         anchors.fill: parent
         contentWidth: scene.width
-        contentHeight: scene.height + Devices.keyboardHeight
+        contentHeight: scene.height
 
         Item {
             id: scene
@@ -63,7 +63,9 @@ Page {
                     placeholderText: qsTr("Username") + Translations.refresher
                     font.pixelSize: 9 * Devices.fontDensity
                     horizontalAlignment: Text.AlignLeft
-                    leftPadding: 34 * Devices.density
+                    inputMethodHints: Qt.ImhLowercaseOnly | Qt.ImhNoAutoUppercase
+                    leftPadding: LayoutMirroring.enabled? 0 : 34 * Devices.density
+                    rightPadding: LayoutMirroring.enabled? 34 * Devices.density : 0
                     onAccepted: passTxt.focus = true
 
                     Label {
@@ -74,7 +76,7 @@ Page {
                         font.pixelSize: 12 * Devices.fontDensity
                         font.family: MaterialIcons.family
                         text: MaterialIcons.mdi_account
-                        color: Colors.accent
+                        color: Colors.primary
                     }
                 }
 
@@ -85,7 +87,8 @@ Page {
                     placeholderText: qsTr("Password") + Translations.refresher
                     font.pixelSize: 9 * Devices.fontDensity
                     horizontalAlignment: Text.AlignLeft
-                    leftPadding: 34 * Devices.density
+                    leftPadding: LayoutMirroring.enabled? 0 : 34 * Devices.density
+                    rightPadding: LayoutMirroring.enabled? 34 * Devices.density : 0
                     echoMode: TextInput.Password
                     passwordCharacter: '*'
                     passwordMaskDelay: 500
@@ -99,7 +102,7 @@ Page {
                         font.pixelSize: 12 * Devices.fontDensity
                         font.family: MaterialIcons.family
                         text: MaterialIcons.mdi_lock
-                        color: Colors.accent
+                        color: Colors.primary
                     }
                 }
 
@@ -110,7 +113,8 @@ Page {
                     placeholderText: qsTr("Full Name") + Translations.refresher
                     font.pixelSize: 9 * Devices.fontDensity
                     horizontalAlignment: Text.AlignLeft
-                    leftPadding: 34 * Devices.density
+                    leftPadding: LayoutMirroring.enabled? 0 : 34 * Devices.density
+                    rightPadding: LayoutMirroring.enabled? 34 * Devices.density : 0
                     onAccepted: emailTxt.focus = true
 
                     Label {
@@ -121,7 +125,7 @@ Page {
                         font.pixelSize: 12 * Devices.fontDensity
                         font.family: MaterialIcons.family
                         text: MaterialIcons.mdi_pencil
-                        color: Colors.accent
+                        color: Colors.primary
                     }
                 }
 
@@ -132,7 +136,8 @@ Page {
                     placeholderText: qsTr("Email") + Translations.refresher
                     font.pixelSize: 9 * Devices.fontDensity
                     horizontalAlignment: Text.AlignLeft
-                    leftPadding: 34 * Devices.density
+                    leftPadding: LayoutMirroring.enabled? 0 : 34 * Devices.density
+                    rightPadding: LayoutMirroring.enabled? 34 * Devices.density : 0
                     onAccepted: sendBtn.focus = true
 
                     Label {
@@ -143,7 +148,7 @@ Page {
                         font.pixelSize: 12 * Devices.fontDensity
                         font.family: MaterialIcons.family
                         text: MaterialIcons.mdi_email
-                        color: Colors.accent
+                        color: Colors.primary
                     }
                 }
 

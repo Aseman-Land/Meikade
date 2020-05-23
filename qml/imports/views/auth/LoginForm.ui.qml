@@ -26,7 +26,7 @@ Page {
         id: flickable
         anchors.fill: parent
         contentWidth: scene.width
-        contentHeight: scene.height + Devices.keyboardHeight
+        contentHeight: scene.height
 
         Item {
             id: scene
@@ -62,6 +62,7 @@ Page {
                     placeholderText: qsTr("Username") + Translations.refresher
                     font.pixelSize: 10 * Devices.fontDensity
                     horizontalAlignment: Text.AlignHCenter
+                    inputMethodHints: Qt.ImhLowercaseOnly | Qt.ImhNoAutoUppercase
                     onAccepted: passTxt.focus = true
 
                     Label {
@@ -72,7 +73,7 @@ Page {
                         font.pixelSize: 12 * Devices.fontDensity
                         font.family: MaterialIcons.family
                         text: MaterialIcons.mdi_account
-                        color: Colors.accent
+                        color: Colors.primary
                     }
                 }
 
@@ -97,7 +98,7 @@ Page {
                         font.pixelSize: 12 * Devices.fontDensity
                         font.family: MaterialIcons.family
                         text: MaterialIcons.mdi_lock
-                        color: Colors.accent
+                        color: Colors.primary
                     }
                 }
 

@@ -26,6 +26,7 @@ Page {
         mainItem: LoginForm {
             id: loginForm
             anchors.fill: parent
+            backgroudMouseArea.onClicked: Devices.hideKeyboard()
             sendBtn.onClicked: loginPage.loginRequest(userTxt.text, passTxt.text)
             passTxt.onAccepted: loginPage.loginRequest(userTxt.text, passTxt.text)
             signupBtn.onClicked: _viewport.append(signupComponent, {}, "page")
@@ -43,6 +44,7 @@ Page {
         id: signupComponent
         SignupForm {
             anchors.fill: parent
+            backgroudMouseArea.onClicked: Devices.hideKeyboard()
             sendBtn.onClicked: loginPage.signupRequest(userTxt.text, passTxt.text, fullnameTxt.text, emailTxt.text)
             emailTxt.onAccepted: loginPage.signupRequest(userTxt.text, passTxt.text, fullnameTxt.text, emailTxt.text)
             cancelBtn.onClicked: viewport.closeLast()
