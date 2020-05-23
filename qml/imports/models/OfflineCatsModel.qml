@@ -18,7 +18,7 @@ AsemanListModel {
     }
 
     function getItems() {
-        var res = poetsReq.query("SELECT poet.name AS subtitle, offline.cat_id as CatId, offline.poet_id as id, cat.text AS title " +
+        var res = poetsReq.query("SELECT poet.name AS subtitle, offline.cat_id as catId, offline.poet_id as id, cat.text AS title " +
                                  "FROM offline INNER JOIN cat ON offline.cat_id = cat.id INNER JOIN poet ON offline.poet_id = poet.id " +
                                  "WHERE offline.cat_id > 0");
 

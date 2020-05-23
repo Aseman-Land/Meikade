@@ -210,14 +210,14 @@ Rectangle {
                     target: paper
                     axis: Drag.YAxis
                     minimumY: 0
-                    maximumY: paper.yMax * 0.8
+                    maximumY: paper.height
                     filterChildren: true
                     onActiveChanged: {
                         if (dragArea.drag.active)
                             return;
 
                         yAnim.from = paper.y;
-                        if (paper.yRatio < 0.6) {
+                        if (paper.y > paper.height * 0.3) {
                             yAnim.to = paper.yMax;
                             paperItem.open = false;
                         } else {
@@ -236,7 +236,7 @@ Rectangle {
                     width: parent.width
                     height: parent.height
                     y: yMax * (1 - paperItem.ratio)
-                    scale: (row.height / height) * (1 - yRatio) * 0.95 + yRatio
+                    scale: (row.height / height) * (1 - paperItem.ratio) * 0.95 + paperItem.ratio
                     transform: Rotation {
                         origin.x: paper.width/2
                         origin.y: paper.height/2
