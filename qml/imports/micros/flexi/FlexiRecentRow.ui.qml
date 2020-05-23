@@ -10,6 +10,14 @@ FlexiDynamicRow {
 
     property alias type: recentsModel.type
 
+    Label {
+        anchors.centerIn: parent
+        font.pixelSize: 8 * Devices.fontDensity
+        text: qsTr("There is no recent item") + Translations.refresher
+        visible: recentsModel.count == 0
+        opacity: 0.6
+    }
+
     list.model: RecentsModel {
         id: recentsModel
     }
