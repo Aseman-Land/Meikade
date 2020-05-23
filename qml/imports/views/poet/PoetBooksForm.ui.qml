@@ -22,11 +22,9 @@ Item {
     property alias menuBtn: menuBtn
     property alias avatar: avatar
     property alias avatarBtn: avatarBtn
-    property alias downloadProgressLabel: downloadProgressLabel
-    property alias downloadingProgressIndicator: downloadingProgressIndicator
-    property alias downloadProgressBar: downloadProgressBar
+    property alias progressBar: progressBar
 
-    property real downloadProgress: 0.3
+    property real progress: progressBar.progress
 
     signal navigationClicked(string link, int index)
 
@@ -180,45 +178,8 @@ Item {
                 }
             }
 
-            Rectangle {
-                Layout.preferredWidth: downloadingProgressRow.width + 20 * Devices.density
-                Layout.preferredHeight: 24 * Devices.density
-                radius: downloadProgressBar.radius
-                color: "#88ffffff"
-                visible: downloadingProgressIndicator.running
-
-                Rectangle {
-                    id: downloadProgressBar
-                    anchors.top: parent.top
-                    anchors.bottom: parent.bottom
-                    anchors.left: parent.left
-                    width: parent.width * downloadProgress
-                    color: "#88ffffff"
-                    radius: 7 * Devices.density
-                }
-
-                RowLayout {
-                    id: downloadingProgressRow
-                    anchors.centerIn: parent
-                    spacing: 2 * Devices.density
-
-                    BusyIndicator {
-                        id: downloadingProgressIndicator
-                        scale: 0.6
-                        Layout.preferredHeight: 28 * Devices.density
-                        Layout.preferredWidth: 28 * Devices.density
-                        IOSStyle.theme: IOSStyle.Light
-                        Material.theme: Material.Light
-                        Material.accent: "#000"
-                    }
-
-                    Label {
-                        id: downloadProgressLabel
-                        font.pixelSize: 8 * Devices.fontDensity
-                        text: "Downloading"
-                        color: "#000"
-                    }
-                }
+            MinimalProgressBar {
+                id: progressBar
             }
 
             ItemDelegate {

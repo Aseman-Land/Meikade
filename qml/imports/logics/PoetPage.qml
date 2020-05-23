@@ -27,10 +27,6 @@ PoetView {
         data: [properties]
     }
 
-    Behavior on downloadProgress {
-        NumberAnimation { duration: 300 }
-    }
-
     Query.UserActions {
         id: actionQuery
         type: Query.UserActions.TypePoetViewDate
@@ -71,10 +67,10 @@ PoetView {
         }
     }
 
-    downloadingProgressIndicator.running: catsModel.offlineInstaller.uninstalling || catsModel.offlineInstaller.installing || catsModel.offlineInstaller.downloading
-    downloadProgress: catsModel.offlineInstaller.size? (catsModel.offlineInstaller.downloadedBytes / catsModel.offlineInstaller.size) * 0.9 + 0.1 : 0.1
-    downloadProgressBar.visible: !catsModel.offlineInstaller.uninstalling
-    downloadProgressLabel.text: catsModel.offlineInstaller.installing? qsTr("Installing") : (catsModel.offlineInstaller.uninstalling? qsTr("Uninstalling") : qsTr("Downloading"))
+    progressBar.running: catsModel.offlineInstaller.uninstalling || catsModel.offlineInstaller.installing || catsModel.offlineInstaller.downloading
+    progressBar.progress: catsModel.offlineInstaller.size? (catsModel.offlineInstaller.downloadedBytes / catsModel.offlineInstaller.size) * 0.9 + 0.1 : 0.1
+    progressBar.nonProgress: !catsModel.offlineInstaller.uninstalling
+    progressBar.label: catsModel.offlineInstaller.installing? qsTr("Installing") : (catsModel.offlineInstaller.uninstalling? qsTr("Uninstalling") : qsTr("Downloading"))
 
     settingsBtn.onClicked: Viewport.viewport.append(menuComponent, {}, "menu")
     menuBtn.onClicked: ViewportType.open = false

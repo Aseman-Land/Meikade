@@ -6,3 +6,4 @@ WaitDialog 1.0 WaitDialog.ui.qml
 EscapeItem 1.0 EscapeItem.qml
 TextFormater 1.0 TextFormater.qml
 RandomSelectorTool 1.0 RandomSelectorTool.qml
+MinimalProgressBar 1.0 MinimalProgressBar.qml

@@ -39,8 +39,6 @@ Item {
         anchors.right: parent.right
         anchors.bottom: parent.bottom
         anchors.left: parent.left
-
-        model: PoetModel {}
     }
 
     Header {
