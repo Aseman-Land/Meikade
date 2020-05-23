@@ -31,6 +31,7 @@ Item {
 
     property alias title: profileLabel.text
     property alias image: avatar.source
+    property int viewCount
 
     readonly property real ratioAbs: Math.min(ratio, 1)
     readonly property real ratio: Math.max(
@@ -279,8 +280,8 @@ Item {
                 anchors.topMargin: 2 * Devices.density
                 font.pixelSize: 9 * Devices.fontDensity
                 color: Material.background
-                text: "500 views in last week"
-                visible: !downloadingProgressIndicator.running
+                text: viewCount + " " + qsTr("Views")
+                visible: !downloadingProgressIndicator.running && viewCount
                 opacity: ratio
             }
         }

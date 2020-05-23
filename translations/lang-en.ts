@@ -61,6 +61,17 @@
     </message>
 </context>
 <context>
+    <name>GTranslations</name>
+    <message>
+        <source>Books</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Poems</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>HafizFaalForm.ui</name>
     <message>
         <source>Hafiz Faal</source>
@@ -180,6 +191,10 @@
         <source>Poems</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>There is no item here</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MyMeikadeForm.ui</name>
@@ -212,6 +227,13 @@
     </message>
     <message>
         <source>Manage Offlines</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>PoemForm.ui</name>
+    <message>
+        <source>Views</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -272,6 +294,10 @@
     <name>PoetForm.ui</name>
     <message>
         <source>Biography</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Views</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -49,9 +49,9 @@ Item {
         Component {
             NormalDelegate {
                 anchors.fill: parent
-                title.text: Tools.stringReplace(delg.displayTitle, "\\s+", " ", true)
+                title.text: GTranslations.translate(delg.displayTitle)
                 title.color: foregroundColor
-                subtitle.text: Tools.stringReplace(delg.subtitle, "\\s+", " ", true)
+                subtitle.text: GTranslations.translate(delg.subtitle)
                 subtitle.color: foregroundColor
                 image.source: delg.image.length? delg.image : Constants.thumbsBaseUrl + poetId + ".png"
                 background.color: delg.color
@@ -61,7 +61,7 @@ Item {
         Component {
             FullBackgroundedDelegate {
                 anchors.fill: parent
-                title.text: Tools.stringReplace(delg.displayTitle, "\\s+", " ", true)
+                title.text: GTranslations.translate(delg.displayTitle)
                 title.color: foregroundColor
                 image.source: delg.image
                 background.color: delg.color

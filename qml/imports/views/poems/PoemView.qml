@@ -17,6 +17,7 @@ Rectangle {
 
     property alias form: form
 
+    property alias viewCount: form.viewCount
     property alias poet: form.poet
     property alias title: form.title
     property alias cover: form.cover

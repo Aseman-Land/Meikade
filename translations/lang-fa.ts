@@ -22,6 +22,10 @@
         <source>Hafiz&apos;s Faal</source>
         <translation>فال حافظ</translation>
     </message>
+    <message>
+        <source>Books</source>
+        <translation type="vanished">کتاب</translation>
+    </message>
 </context>
 <context>
     <name>ErrorDialog</name>
@@ -58,6 +62,17 @@
     <message>
         <source>Label</source>
         <translation>برچسب</translation>
+    </message>
+</context>
+<context>
+    <name>GTranslations</name>
+    <message>
+        <source>Books</source>
+        <translation>کتاب</translation>
+    </message>
+    <message>
+        <source>Poems</source>
+        <translation>شهر</translation>
     </message>
 </context>
 <context>
@@ -170,7 +185,7 @@
     </message>
     <message>
         <source>Most Recents</source>
-        <translation>پرمراجعه‌ها</translation>
+        <translation>آخرین خوانده شده‌ها</translation>
     </message>
     <message>
         <source>Close</source>
@@ -179,6 +194,10 @@
     <message>
         <source>Poems</source>
         <translation>اشعار</translation>
+    </message>
+    <message>
+        <source>There is no item here</source>
+        <translation>هیچ عنوانی وجود ندارد</translation>
     </message>
 </context>
 <context>
@@ -217,6 +236,13 @@
     <message>
         <source>Manage Offlines</source>
         <translation>مدیریت آفلاین‌ها</translation>
+    </message>
+</context>
+<context>
+    <name>PoemForm.ui</name>
+    <message>
+        <source>Views</source>
+        <translation>باردید</translation>
     </message>
 </context>
 <context>
@@ -281,6 +307,10 @@
     <message>
         <source>Biography</source>
         <translation>درباره شاعر</translation>
+    </message>
+    <message>
+        <source>Views</source>
+        <translation>بازدید</translation>
     </message>
 </context>
 <context>

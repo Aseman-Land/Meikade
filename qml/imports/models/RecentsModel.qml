@@ -9,8 +9,10 @@ AsemanListModel {
     id: dis
 
     property int type
+    property int limit: 10
 
     onTypeChanged: refresh()
+    onLimitChanged: refresh()
     Component.onCompleted: refresh()
 
     Connections {
@@ -25,13 +27,12 @@ AsemanListModel {
     function refresh() {
         Tools.jsDelayCall(10, function(){
             var data = new Array;
-            var list = actions.getItems(type, 0, 10);
+            var list = actions.getItems(type, 0, dis.limit);
             for (var i in list) {
                 try {
                     var item = list[i];
                     var extraJson = Tools.jsonToVariant(item.extra);
                     extraJson["type"] = "normal";
-                    extraJson["switableTitle"] = extraJson.title;
 
                     data[data.length] = extraJson;
                 } catch (e) {}

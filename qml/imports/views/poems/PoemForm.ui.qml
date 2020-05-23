@@ -25,6 +25,7 @@ Item {
     property alias navigationRepeater: navigationRepeater
     property alias statusBarRect: statusBarRect
 
+    property int viewCount
     property alias poet: titleLabel.text
     property alias title: subtitleLabel.text
     property alias cover: coverImage.source
@@ -207,7 +208,8 @@ Item {
                 horizontalAlignment: Text.AlignHCenter
                 font.pixelSize: 8 * Devices.fontDensity
                 color: Material.background
-                text: "500 views in last week"
+                text: viewCount + " " + qsTr("Views")
+                visible: viewCount && !downloadingProgressIndicator.running
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                 maximumLineCount: 1
                 elide: Text.ElideRight

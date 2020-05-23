@@ -9,13 +9,14 @@ import models 1.0
 import micros 1.0
 
 PoetBooksView {
-    id: catId
+    id: dis
     width: Constants.width
     height: Constants.height
 
     property alias id: catsModel.poetId
     property alias catId: catsModel.parentId
     property alias navigData: navigModel.data
+    property string title
     property string poet
     property string poetImage
 
@@ -38,7 +39,8 @@ PoetBooksView {
         updatedAt: Tools.dateToSec(new Date)
         extra: {
             var map = Tools.toVariantMap(properties);
-            map["title"] = poet;
+            map["title"] = dis.title;
+            map["subtitle"] = poet;
             map["image"] = poetImage;
             map["link"] = url;
 

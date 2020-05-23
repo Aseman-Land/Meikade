@@ -109,6 +109,7 @@ AsemanListView {
                         return qsTr("More") + Translations.refresher
                     }
                 }
+                highlighted: true
                 flat: true
                 width: 50 * Devices.density
                 font.pixelSize: 8 * Devices.fontDensity

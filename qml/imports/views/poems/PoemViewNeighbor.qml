@@ -40,14 +40,5 @@ Rectangle {
             text: unit? unit.title : ""
             color: "#fff"
         }
-
-        Label {
-            Layout.fillWidth: true
-            horizontalAlignment: Text.AlignHCenter
-            wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-            font.pixelSize: 10 * Devices.fontDensity
-            text: unit? unit.subtitle : ""
-            color: "#fff"
-        }
     }
 }
