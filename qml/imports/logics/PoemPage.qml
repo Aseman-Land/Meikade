@@ -13,7 +13,7 @@ PoemView {
     height: Constants.height
     clip: true
 
-    ViewportType.gestureWidth: 60 * Devices.density
+    ViewportType.gestureWidth: 150 * Devices.density
 
     property string url
     property variant properties

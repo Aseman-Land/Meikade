@@ -62,7 +62,7 @@ Rectangle {
     MouseArea {
         id: marea
         anchors.centerIn: parent
-        width: poemView.width / 2
+        width: Devices.isAndroid? poemView.width : poemView.width / 2
         height: poemView.height
         drag {
             target: neighbors? form : null
