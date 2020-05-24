@@ -153,7 +153,7 @@ Item {
             y: Math.min(0, Math.max(mapListener.result.y / 2, (Devices.standardTitleBarHeight + Devices.statusBarHeight - height)/2))
             anchors.left: parent.left
             anchors.right: parent.right
-            height: width * 5 / 10
+            height: Math.max(width * 5 / 10, 200 * Devices.density)
             sourceSize.width: width * 1.2
             sourceSize.height: height * 1.2
             fillMode: Image.PreserveAspectCrop

@@ -172,6 +172,18 @@
         <source>Books</source>
         <translation>کتاب‌ها</translation>
     </message>
+    <message>
+        <source>Uninstalling</source>
+        <translation>غیرفعال کردن</translation>
+    </message>
+    <message>
+        <source>Downloading</source>
+        <translation>درحال دانلود</translation>
+    </message>
+    <message>
+        <source>Installing</source>
+        <translation>درحال نصب</translation>
+    </message>
 </context>
 <context>
     <name>MostReadedPoemsForm.ui</name>

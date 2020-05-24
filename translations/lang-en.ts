@@ -168,6 +168,18 @@
         <source>Books</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Uninstalling</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Downloading</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Installing</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MostReadedPoemsForm.ui</name>
