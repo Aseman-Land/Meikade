@@ -7,17 +7,11 @@ import models 1.0
 import "delegates"
 
 FlexiDynamicRow {
+    height: list.visible? 100 * Devices.density : 0
 
     property alias type: recentsModel.type
 
-    Label {
-        anchors.centerIn: parent
-        font.pixelSize: 8 * Devices.fontDensity
-        text: qsTr("There is no recent item") + Translations.refresher
-        visible: recentsModel.count == 0
-        opacity: 0.6
-    }
-
+    list.visible: recentsModel.count > 0
     list.model: RecentsModel {
         id: recentsModel
     }
