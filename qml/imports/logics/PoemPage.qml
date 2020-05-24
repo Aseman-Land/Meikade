@@ -6,6 +6,7 @@ import queries 1.0 as Query
 import views 1.0
 import globals 1.0
 import models 1.0
+import micros 1.0
 
 PoemView {
     id: dis
@@ -106,11 +107,57 @@ PoemView {
 
         navigationRepeater.model: navigModel
 
-        menuBtn.onClicked: ViewportType.open = false
+        menuBtn.onClicked: Viewport.viewport.append(menuComponent, {}, "menu")
+        backBtn.onClicked: ViewportType.open = false
 
         gridView.model: PoemVersesModel {
             id: poemModel
             cachePath: AsemanGlobals.cachePath + "/poem-" + poemId + ".cache"
+        }
+    }
+
+    Component {
+        id: menuComponent
+        MenuView {
+            x: LayoutMirroring.enabled? 30 * Devices.density : parent.width - 30 * Devices.density
+            y: form.menuBtnPosition.y + 30 * Devices.density
+            width: 220 * Devices.density
+            ViewportType.transformOrigin: Qt.point((LayoutMirroring.enabled? -20 * Devices.density : width + 20 * Devices.density), -20 * Devices.density)
+
+            onItemClicked: {
+                switch (index) {
+                case 0:
+                    catsModel.offlineInstaller.install( !catsModel.offlineInstaller.installed );
+                    break;
+                }
+
+                ViewportType.open = false;
+            }
+
+            model: AsemanListModel {
+                data: [
+                    {
+                        title: qsTr("Add to Bookmarks"),
+                        icon: "mdi_bookmark"
+                    },
+                    {
+                        title: qsTr("Copy"),
+                        icon: "mdi_content_copy"
+                    },
+                    {
+                        title: qsTr("Create Sticker"),
+                        icon: "mdi_sticker"
+                    },
+                    {
+                        title: qsTr("Share"),
+                        icon: "mdi_share_variant"
+                    },
+                    {
+                        title: qsTr("Select"),
+                        icon: "mdi_select"
+                    },
+                ]
+            }
         }
     }
 }

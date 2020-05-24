@@ -24,7 +24,7 @@ FlexiAbstractRow {
         anchors.left: parent.left
         anchors.right: parent.right
         spacing: 10 * Devices.density
-        columns: Math.floor( row.width / (150 * Devices.density))
+        columns: Math.floor( row.width / (160 * Devices.density))
 
         Repeater {
             id: list

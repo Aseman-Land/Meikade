@@ -250,6 +250,29 @@
     </message>
 </context>
 <context>
+    <name>PoemPage</name>
+    <message>
+        <source>Add to Bookmarks</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Create Sticker</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Share</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>PoetBioForm.ui</name>
     <message>
         <source>Biography</source>

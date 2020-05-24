@@ -15,13 +15,15 @@ Item {
     height: Constants.height
     clip: true
 
-    property alias menuBtn: menuBtn
+    property alias backBtn: backBtn
     property alias viewsLabel: viewsLabel
     property alias gridView: gridView
     property alias coverImage: coverImage
     property alias coverScene: coverScene
     property alias profileLabel: titleLabel
-    property alias settingsBtn: settingsBtn
+    property alias searchBtn: searchBtn
+    property alias menuBtn: menuBtn
+    property alias menuBtnPosition: menuBtnListener.result
     property alias navigationRepeater: navigationRepeater
     property alias statusBarRect: statusBarRect
 
@@ -45,6 +47,12 @@ Item {
     Rectangle {
         anchors.fill: parent
         color: Colors.background
+    }
+
+    PointMapListener {
+        id: menuBtnListener
+        source: menuBtn
+        dest: myMeikade
     }
 
     PointMapListener {
@@ -231,14 +239,14 @@ Item {
             text: MaterialIcons.mdi_magnify
 
             ItemDelegate {
-                id: settingsBtn
+                id: searchBtn
                 anchors.fill: parent
                 z: -1
             }
         }
 
         HeaderMenuButton {
-            id: menuBtn
+            id: backBtn
             ratio: 1
         }
     }
@@ -332,6 +340,7 @@ Item {
             }
 
             ItemDelegate {
+                id: menuBtn
                 Layout.preferredWidth: 30 * Devices.density
                 Layout.preferredHeight: headerFooter.height
                 Layout.alignment: Qt.AlignVCenter

@@ -258,6 +258,29 @@
     </message>
 </context>
 <context>
+    <name>PoemPage</name>
+    <message>
+        <source>Add to Bookmarks</source>
+        <translation>اضافه به علاقه‌مندی‌ها</translation>
+    </message>
+    <message>
+        <source>Copy</source>
+        <translation>کپی</translation>
+    </message>
+    <message>
+        <source>Create Sticker</source>
+        <translation>به اشتراک‌گذاری تصویری</translation>
+    </message>
+    <message>
+        <source>Share</source>
+        <translation>اشتراک‌گذاری</translation>
+    </message>
+    <message>
+        <source>Select</source>
+        <translation>انتخاب</translation>
+    </message>
+</context>
+<context>
     <name>PoetBioForm.ui</name>
     <message>
         <source>Biography</source>
