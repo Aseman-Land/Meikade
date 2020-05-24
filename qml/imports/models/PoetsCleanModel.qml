@@ -8,9 +8,6 @@ AsemanListModel {
     id: listModel
     property alias refreshing: poetsReq.refreshing
 
-    data: {
-    }
-
     PoetsRequest {
         id: poetsReq
         onResponseChanged: {

@@ -5,7 +5,7 @@ import AsemanQml.Sql 2.0
 SqlObject {
     id: obj
     driver: SqlObject.SQLite
-    databaseName: AsemanApp.homePath + "/data.sqlite"
+    databaseName: AsemanApp.homePath + "/database.sqlite"
 
     function begin() { query("BEGIN", {}); }
     function commit() { query("COMMIT", {}); }

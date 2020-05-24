@@ -37,7 +37,13 @@ CREATE TABLE IF NOT EXISTS verse (
   vorder INTEGER,
   position INTEGER,
   text TEXT,
-  poet INTEGER
+  poet INTEGER,
+  PRIMARY KEY (poem_id, vorder)
+);
+
+CREATE INDEX poet_cid
+ON poet (
+  cat_id ASC
 );
 
 CREATE INDEX cat_pid
@@ -45,14 +51,19 @@ ON cat (
   parent_id ASC
 );
 
+CREATE INDEX cat_poet
+ON cat (
+  poet_id ASC
+);
+
 CREATE INDEX poem_cid
 ON poem (
   cat_id ASC
 );
 
-CREATE INDEX verse_pid
+CREATE INDEX verse_poet
 ON verse (
-  poem_id ASC
+  poet ASC
 );
 
 COMMIT;

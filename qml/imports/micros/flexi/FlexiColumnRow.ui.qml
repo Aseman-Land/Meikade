@@ -35,7 +35,7 @@ FlexiAbstractRow {
                 height: 100 * Devices.density * model.heightRatio
                 active: 0 < globalY + height && globalY < listView.height
 
-                property real globalY: mapListener.result.y + y
+                property real globalY: mapListener.result.y + (model.index * (height + row.spacing))
 
                 sourceComponent: Delegate {
                     id: itemDel

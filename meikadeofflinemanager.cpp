@@ -18,7 +18,7 @@
 #include <QSqlError>
 
 #define QUERY_EXEC(QUERY) \
-    if (!QUERY.exec()) qDebug() << __FUNCTION__ << __LINE__ << QUERY.lastError().text()
+    if (!QUERY.exec()) qDebug() << __FUNCTION__ << __LINE__ << QUERY.lastError().text() << QUERY.lastQuery()
 
 static QSet<MeikadeOfflineItemGlobal*> meikadeOfflineItemGlobal_objects;
 

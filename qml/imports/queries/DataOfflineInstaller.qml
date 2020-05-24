@@ -5,5 +5,5 @@ import globals 1.0
 
 MeikadeOfflineItem {
     sourceUrl: Constants.offlinesUrl
-    databasePath: AsemanApp.homePath + "/data.sqlite"
+    databasePath: AsemanApp.homePath + "/database.sqlite"
 }
