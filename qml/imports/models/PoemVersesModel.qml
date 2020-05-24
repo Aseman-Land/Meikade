@@ -21,7 +21,7 @@ AsemanListModel {
     DataOfflineVerses {
         id: offlineVerses
         poem_id: poemsReq.poem_id
-        onPoem_idChanged: Tools.jsDelayCall(100, function() { result = getItems() })
+        onPoem_idChanged: Tools.jsDelayCall(1000, function() { result = getItems() })
 
         property variant result
     }
@@ -31,7 +31,7 @@ AsemanListModel {
     }
 
     AsemanListModelSource {
-        source: poemsReq.response? poemsReq.response : offlineVerses.result
+        source: poemsReq.response && Math.floor(poemsReq.status / 100) == 2? poemsReq.response : offlineVerses.result
         path: "result"
 
         ModelFormatHint {

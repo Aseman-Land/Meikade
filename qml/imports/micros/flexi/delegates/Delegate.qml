@@ -42,6 +42,15 @@ Item {
 
     Component.onCompleted: if (moreHint) moreRequest();
 
+//    ShadowRectangle {
+//        anchors.fill: dswitch
+//        anchors.margins: -30
+//        shadowRadius: 32
+//        shadowOpacity: 0.3
+//        radius: Constants.radius
+//        visible: dswitch.current == 0
+//    }
+
     DelegateSwitch {
         id: dswitch
         anchors.fill: parent
