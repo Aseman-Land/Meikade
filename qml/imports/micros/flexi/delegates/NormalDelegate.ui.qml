@@ -65,8 +65,8 @@ AbstractDelegate {
 
             Item {
                 Layout.alignment: Qt.AlignBottom | Qt.AlignRight
-                height: 36 * Devices.density
-                width: 36 * Devices.density
+                height: 42 * Devices.density
+                width: 42 * Devices.density
 
                 CachedImage {
                     id: image
