@@ -78,7 +78,7 @@ AsemanListModel {
 
     Timer {
         id: moreBlockTimer
-        interval: 1000
+        interval: 100
         repeat: false
     }
 
