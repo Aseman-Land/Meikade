@@ -18,13 +18,6 @@ AsemanWindow {
     LayoutMirroring.enabled: GTranslations.textDirection === Qt.RightToLeft
     LayoutMirroring.childrenInherit: true
 
-    Timer {
-        id: waitTimer
-        interval: 1000
-        repeat: false
-        running: true
-    }
-
     Viewport {
         id: viewport
         anchors.fill: parent
@@ -32,22 +25,5 @@ AsemanWindow {
             anchors.fill: parent
         }
         Component.onCompleted: ViewController.viewport = viewport
-    }
-
-    Rectangle {
-        anchors.fill: parent
-        color: Colors.primary
-        visible: waitTimer.running
-
-        BusyIndicator {
-            anchors.centerIn: parent
-            Material.accent: "#fff"
-            IOSStyle.foreground: "#fff"
-        }
-    }
-
-    Item {
-        id: upperArea
-        anchors.fill: parent
     }
 }

@@ -105,6 +105,85 @@
     </message>
 </context>
 <context>
+    <name>IntroDoneForm.ui</name>
+    <message>
+        <source>Setup Completed</source>
+        <translation>سفارشی سازی کامل شد</translation>
+    </message>
+    <message>
+        <source>You can also do below optional steps:</source>
+        <translation>چند مرحله اختیاری هست که اگر دوست داشتی میتونی انجامشون بدی:</translation>
+    </message>
+    <message>
+        <source>To keep your data like favorites safe, You can create Meikade Cloud Account and login to sync your data. To do that click below button:</source>
+        <translation>برای امن‌سازی داده‌هایی مثل علاقه‌مندی‌هات و اینکه خیالت راحت باشه که همیشه در جایی امن ذخیره میشن، میتونی اکانت ابری می‌کده بسازی و اونارو همگام‌سازی کنی. اگر مایل به این کار هستی کلید پایین رو لمس کن:</translation>
+    </message>
+    <message>
+        <source>SignIn / SignUp</source>
+        <translation>عضویت / ورود</translation>
+    </message>
+    <message>
+        <source>To help Meikade better, you can check/uncheck below switch to send anaymous data for us.</source>
+        <translation>یکی از راه‌های کمک به توسعه و بهتر شدن می‌کده به اشتراک‌گذاری اطلاعات غیر خصوصی مثل گزارش اوتوماتیک مشکلات فنی نرم‌افزار یا ارسال مشخصات سخت‌افزاری دستگاه شما جهت بهبود کارکرد نرم‌افزاره. اگر مایل به این کار هستی، کلید زیر رو فعال کن.</translation>
+    </message>
+    <message>
+        <source>Help Meikade</source>
+        <translation>کمک به می‌کده</translation>
+    </message>
+    <message>
+        <source>Finish</source>
+        <translation>پایان</translation>
+    </message>
+</context>
+<context>
+    <name>IntroForm.ui</name>
+    <message>
+        <source>Next</source>
+        <translation>بعدی</translation>
+    </message>
+    <message>
+        <source>Prev</source>
+        <translation>قبلی</translation>
+    </message>
+</context>
+<context>
+    <name>IntroSetupHome.ui</name>
+    <message>
+        <source>Setup Favorites</source>
+        <translation>علاقه‌مندی‌ها</translation>
+    </message>
+    <message>
+        <source>Please choose at lease 5 your favorites.</source>
+        <translation>لطفا حداقل ۵ تا از شعرای مورد علاقه خودتو انتخاب کن.</translation>
+    </message>
+</context>
+<context>
+    <name>IntroSetupOfflines.ui</name>
+    <message>
+        <source>Offline Poets</source>
+        <translation>شعرای آفلاین</translation>
+    </message>
+    <message>
+        <source>Meikade 4 is online by default now. It means you can discover between tousands of poems freely without downloading to your storages. But it also available to download them to your storage and read them offline. Please select your poets that your want to read online. You can also setup it later on the every poet/book page.</source>
+        <translation>می‌کده ۴ قابلیت اینو داره که بدون اینکه اشعار شاعر یا کتابی رو دانلود کنی روی گوشیت و فضای گوشیت رو مصرف کنی، کاملا آنلاین به هزاران شعر دسترسی داشته باشی و بین اونا جستجو کنی و شعر بخونی. با این حال قابلیت می‌کده آفلاین همچنان فعال هستش و میتونی با کلیک روی هرکدوم از شعرا، اشعار اونو آفلاین بخونی. این کارو بعدا هم تو صفحه هر شاعر میتونی انجام بدی.</translation>
+    </message>
+</context>
+<context>
+    <name>IntroWelcomForm.ui</name>
+    <message>
+        <source>Welcome to Meikade 4</source>
+        <translation>به می‌کده ۴ خوش آمدید</translation>
+    </message>
+    <message>
+        <source>Meikade 4 is designed to increase your poetry reading experiance and increase your sense quality.</source>
+        <translation>می‌کده ۴ با هدف افزایش کیفیت حس کاربری و تجربه شعر خوندن طراحی شده و امکاناتی داره که طبق نیاز شما سفارشی میشه.</translation>
+    </message>
+    <message>
+        <source>So It&apos;s neccessary to take some times and do next steps to personalize your Meikade. Choose language and press &quot;Next&quot; if you ready.</source>
+        <translation>به همین منظور چند مرحله هست که بهتره شما حتما انجامشون بدید تا بتونید می‌کده خودتون رو طبق نیاز خودتون سفارشی کنید. اگر آماده‌اید کلید &quot;بعدی&quot; را بزنید.</translation>
+    </message>
+</context>
+<context>
     <name>LoginForm.ui</name>
     <message>
         <source>If you created account before, Just enter your username below. Otherwise click on &quot;Create new account&quot; button.</source>

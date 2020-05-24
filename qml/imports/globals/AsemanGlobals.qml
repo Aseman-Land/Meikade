@@ -12,6 +12,8 @@ AsemanObject {
 
     property alias settings: _settings
     property alias accessToken: _auth.accessToken
+    property alias introDone: _auth.introDone
+    property alias sendData: _auth.sendData
 
     Component.onCompleted: {
         Tools.mkDir(cachePath)
@@ -32,6 +34,8 @@ AsemanObject {
         source: AsemanApp.homePath + "/auth.ini"
 
         property string accessToken
+        property bool introDone
+        property bool sendData
     }
 }
 

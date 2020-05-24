@@ -101,6 +101,85 @@
     </message>
 </context>
 <context>
+    <name>IntroDoneForm.ui</name>
+    <message>
+        <source>Setup Completed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You can also do below optional steps:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>To keep your data like favorites safe, You can create Meikade Cloud Account and login to sync your data. To do that click below button:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SignIn / SignUp</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>To help Meikade better, you can check/uncheck below switch to send anaymous data for us.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Help Meikade</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Finish</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>IntroForm.ui</name>
+    <message>
+        <source>Next</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Prev</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>IntroSetupHome.ui</name>
+    <message>
+        <source>Setup Favorites</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Please choose at lease 5 your favorites.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>IntroSetupOfflines.ui</name>
+    <message>
+        <source>Offline Poets</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Meikade 4 is online by default now. It means you can discover between tousands of poems freely without downloading to your storages. But it also available to download them to your storage and read them offline. Please select your poets that your want to read online. You can also setup it later on the every poet/book page.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>IntroWelcomForm.ui</name>
+    <message>
+        <source>Welcome to Meikade 4</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Meikade 4 is designed to increase your poetry reading experiance and increase your sense quality.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>So It&apos;s neccessary to take some times and do next steps to personalize your Meikade. Choose language and press &quot;Next&quot; if you ready.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>LoginForm.ui</name>
     <message>
         <source>If you created account before, Just enter your username below. Otherwise click on &quot;Create new account&quot; button.</source>

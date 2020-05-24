@@ -2,13 +2,40 @@ pragma Singleton
 
 import QtQuick 2.7
 import AsemanQml.Base 2.0
+import AsemanQml.Models 2.0
 
-TranslationManager {
+AsemanObject {
     id: translationManager
-    sourceDirectory: "translations/"
-    delimiters: "-"
-    fileName: "lang"
-    localeName: AsemanGlobals.language
+
+    property alias model: model
+    property alias localeName: mgr.localeName
+    property alias textDirection: mgr.textDirection
+
+    AsemanListModel {
+        id: model
+        data: {
+            var res = new Array;
+            var list = mgr.translations;
+            for (var i in list) {
+                res[res.length] = {
+                    "title": list[i],
+                    "key": i
+                }
+            }
+            return res
+        }
+    }
+
+    TranslationManager {
+        id: mgr
+        sourceDirectory: "translations/"
+        delimiters: "-"
+        fileName: "lang"
+        localeName: AsemanGlobals.language
+
+        Component.onCompleted: refreshLayouts()
+        onLocaleNameChanged: refreshLayouts()
+    }
 
     function translate(str) {
         str = Tools.stringReplace(str, "Books", qsTr("Books"), false);
@@ -18,14 +45,11 @@ TranslationManager {
     }
 
     function refreshLayouts() {
-        if(localeName == "fa")
+        if(mgr.localeName == "fa")
             CalendarConv.calendar = 1
         else
             CalendarConv.calendar = 0
     }
 
     function init() {}
-
-    Component.onCompleted: refreshLayouts()
-    onLocaleNameChanged: refreshLayouts()
 }
