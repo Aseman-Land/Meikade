@@ -27,7 +27,7 @@ Page {
         id: gridView
         anchors.fill: parent
         model: 50
-        cellWidth: width / Math.floor(width / 160)
+        cellWidth: homeForm.width / Math.floor(homeForm.width / 160)
         cellHeight: cellWidth
         bottomMargin: Devices.standardTitleBarHeight
         header: Item {

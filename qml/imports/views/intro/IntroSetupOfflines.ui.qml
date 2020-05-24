@@ -27,9 +27,10 @@ Page {
         id: gridView
         anchors.fill: parent
         model: 50
-        cellWidth: width / Math.floor(width / 160)
+        cellWidth: homeForm.width / Math.floor(homeForm.width / 160)
         cellHeight: cellWidth
         bottomMargin: Devices.standardTitleBarHeight
+
         header: Item {
             width: gridView.width
             height: headerHeight
@@ -50,9 +51,9 @@ Page {
         anchors.top: parent.top
         anchors.left: parent.left
         anchors.right: parent.right
-        height: headerHeight
+        height: Devices.statusBarHeight + Devices.standardTitleBarHeight
         gradient: Gradient {
-            GradientStop { position: 0.9; color: Colors.background }
+            GradientStop { position: 0.6; color: Colors.background }
             GradientStop { position: 1.0; color: "transparent" }
         }
 
@@ -61,14 +62,16 @@ Page {
             anchors.topMargin: Devices.statusBarHeight
 
             ColumnLayout {
-                anchors.verticalCenter: parent.verticalCenter
+                anchors.top: parent.top
                 anchors.left: parent.left
                 anchors.right: parent.right
+                anchors.topMargin: 4 * Devices.density
                 spacing: 10 * Devices.density
 
                 Label {
                     Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
                     font.pixelSize: 16 * Devices.fontDensity
+                    scale: 0.6 + ratio * 0.4
                     text: qsTr("Offline Poets") + Translations.refresher
                 }
 
@@ -79,9 +82,11 @@ Page {
                     Layout.rightMargin: 20 * Devices.density
                     horizontalAlignment: Text.AlignHCenter
                     font.pixelSize: 9 * Devices.fontDensity
+                    transformOrigin: Item.Top
+                    opacity: ratio * 0.8
+                    scale: 0.5 + ratio * 0.5
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                     text: qsTr("Meikade 4 is online by default now. It means you can discover between tousands of poems freely without downloading to your storages. But it also available to download them to your storage and read them offline. Please select your poets that your want to read online. You can also setup it later on the every poet/book page.") + Translations.refresher
-                    opacity: 0.8
                 }
             }
         }

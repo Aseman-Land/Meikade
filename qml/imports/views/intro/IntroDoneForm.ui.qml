@@ -4,6 +4,7 @@ import QtQuick.Controls 2.3
 import QtQuick.Layouts 1.3
 import AsemanQml.Controls 2.0
 import QtQuick.Controls.Material 2.0
+import QtQuick.Controls.IOSStyle 2.0
 import globals 1.0
 import micros 1.0
 
@@ -45,6 +46,7 @@ Page {
             horizontalAlignment: Text.AlignHCenter
             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
             font.pixelSize: 9 * Devices.fontDensity
+            visible: AsemanGlobals.accessToken.length == 0
             text: qsTr("To keep your data like favorites safe, You can create Meikade Cloud Account and login to sync your data. To do that click below button:") + Translations.refresher
         }
 
@@ -53,6 +55,7 @@ Page {
             Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
             highlighted: true
             flat: true
+            visible: AsemanGlobals.accessToken.length == 0
             text: qsTr("SignIn / SignUp") + Translations.refresher
         }
 
@@ -83,5 +86,7 @@ Page {
         anchors.bottomMargin: Devices.standardTitleBarHeight
         highlighted: true
         text: qsTr("Finish") + Translations.refresher
+        Material.accent: Colors.primary
+        IOSStyle.accent: Colors.primary
     }
 }
