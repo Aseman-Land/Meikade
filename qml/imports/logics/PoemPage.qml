@@ -127,7 +127,27 @@ PoemView {
             onItemClicked: {
                 switch (index) {
                 case 0:
-                    catsModel.offlineInstaller.install( !catsModel.offlineInstaller.installed );
+                    break;
+                case 1:
+                    var text = "";
+                    for (var i=0; i<poemModel.count; i++) {
+                        var e = poemModel.get(i);
+                        text += e.text + "\n";
+                        if (e.position === PoemVersesModel.PositionLeft || e.position === PoemVersesModel.PositionCenteredVerse2)
+                            text += "\n";
+                    }
+
+                    for (var j=1; j<navigModel.count; j++) {
+                        text += navigModel.get(j).title
+                        if (j < navigModel.count-1)
+                            text += ", ";
+                        else
+                            text += "\n";
+                    }
+
+                    text += poet;
+
+                    Devices.clipboard = text;
                     break;
                 }
 
