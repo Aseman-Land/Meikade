@@ -11,9 +11,16 @@ NetworkRequest {
     ignoreKeys: ["baseUrl", "refreshingState", "allowGlobalBusy", "networkManager", "allowShowErrors"]
     ignoreRegExp: /^_\w+$/
     headers: {
+        "Device-ID": Devices.deviceId,
+        "Device-Density": Devices.density,
+        "Platform-Version": Devices.platformVersion,
+        "Platform-Type": Devices.platformType,
+        "CPU-Architecture": Devices.platformCpuArchitecture,
+        "App-Name": AsemanApp.applicationName,
+        "App-Version": AsemanApp.applicationVersion,
         "Content-Type": "application/json",
         "User-token": AsemanGlobals.accessToken,
-        "Accept-Language": "fa"
+        "Accept-Language": GTranslations.localeName
     }
 
     readonly property string baseUrl: "https://api.meikade.com/api"

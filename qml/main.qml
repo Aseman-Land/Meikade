@@ -10,6 +10,7 @@ AsemanApplication {
     applicationAbout: "Meikade"
     applicationDisplayName: "Meikade"
     applicationId: "0e3103ed-dfb2-49df-95d2-3bcbec76fa34"
+    applicationVersion: appVersion
     organizationDomain: "meikade.com"
     Component.onCompleted: {
         GTranslations.init();

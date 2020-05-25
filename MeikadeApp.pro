@@ -1,9 +1,11 @@
 QT += quick qml quickcontrols2 webview sql asemancore network
 CONFIG += c++11
-VERSION = 3.9.51
+VERSION = 3.9.52
 
 include(android/android.pri)
 include(ios/ios.pri)
+
+DEFINES += MEIKADE_VERSION='\\"$${VERSION}\\"'
 
 INCLUDED_RESOURCE_FILES += \
     $$files($$PWD/qml/*.qml, true) \
