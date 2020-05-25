@@ -47,6 +47,7 @@ Item {
                                      - Devices.statusBarHeight)
 
     signal navigationClicked(string link, int index)
+    signal menuRequest(int index, variant object)
 
     Connections {
         target: dis
@@ -127,6 +128,8 @@ Item {
                     onClicked: {
                         if (dis.selectMode)
                             checkbox.checked = !checkbox.checked;
+                        else
+                            dis.menuRequest(model.index, delFrame)
                     }
                     onPressAndHold: {
                         dis.selectMode = true;
