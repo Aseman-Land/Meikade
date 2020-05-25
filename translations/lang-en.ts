@@ -350,6 +350,10 @@
         <source>Select</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Remove Bookmarks</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>PoetBioForm.ui</name>

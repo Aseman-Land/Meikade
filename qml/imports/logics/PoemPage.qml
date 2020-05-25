@@ -63,6 +63,12 @@ PoemView {
         var text = "";
         for (var i=0; i<poemModel.count; i++) {
             var e = poemModel.get(i);
+            if (form.selectMode && form.selectedList.length) {
+                if (((e.position !== PoemVersesModel.PositionLeft && e.position !== PoemVersesModel.PositionCenteredVerse2) || !form.selectedList[i-1]) &&
+                    ((e.position !== PoemVersesModel.PositionRight && e.position !== PoemVersesModel.PositionCenteredVerse1) || !form.selectedList[i]))
+                    continue;
+            }
+
             text += e.text + "\n";
             if (e.position === PoemVersesModel.PositionLeft || e.position === PoemVersesModel.PositionCenteredVerse2)
                 text += "\n";
@@ -77,6 +83,7 @@ PoemView {
         }
 
         text += poet;
+        return text;
     }
 
     AsemanListModel {

@@ -48,6 +48,11 @@ Item {
 
     signal navigationClicked(string link, int index)
 
+    Connections {
+        target: dis
+        onSelectModeChanged: if (!selectMode) selectedList = new Array
+    }
+
     Rectangle {
         anchors.fill: parent
         color: Colors.background
@@ -140,6 +145,10 @@ Item {
                 Connections {
                     target: checkbox
                     onCheckedChanged: selectedList[model.index] = checkbox.checked
+                }
+                Connections {
+                    target: dis
+                    onSelectModeChanged: checkbox.checked = false
                 }
             }
 

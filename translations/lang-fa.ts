@@ -358,6 +358,10 @@
         <source>Select</source>
         <translation>انتخاب</translation>
     </message>
+    <message>
+        <source>Remove Bookmarks</source>
+        <translation>حذف از علاقه‌مندی‌ها</translation>
+    </message>
 </context>
 <context>
     <name>PoetBioForm.ui</name>
