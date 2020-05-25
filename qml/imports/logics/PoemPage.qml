@@ -59,13 +59,33 @@ PoemView {
         userActionTimer.restart();
     }
 
+    function getText() {
+        var text = "";
+        for (var i=0; i<poemModel.count; i++) {
+            var e = poemModel.get(i);
+            text += e.text + "\n";
+            if (e.position === PoemVersesModel.PositionLeft || e.position === PoemVersesModel.PositionCenteredVerse2)
+                text += "\n";
+        }
+
+        for (var j=1; j<navigModel.count; j++) {
+            text += navigModel.get(j).title
+            if (j < navigModel.count-1)
+                text += ", ";
+            else
+                text += "\n";
+        }
+
+        text += poet;
+    }
+
     AsemanListModel {
         id: navigModel
         data: []
     }
 
     Query.UserActions {
-        id: actionQuery
+        id: viewActionQuery
         type: Query.UserActions.TypePoemViewDate
         poemId: dis.poemId
         poetId: dis.id
@@ -83,13 +103,23 @@ PoemView {
         }
     }
 
+    Query.UserActions {
+        id: faveActionQuery
+        type: Query.UserActions.TypeFavorite
+        poemId: dis.poemId
+        poetId: dis.id
+        declined: 0
+        synced: 0
+        extra: faveActionQuery.extra
+    }
+
     Timer {
         id: userActionTimer
         interval: 10000
         repeat: false
         running: true
         onTriggered: {
-            actionQuery.push()
+            viewActionQuery.push()
             RefresherSignals.recentPoemsRefreshed()
         }
     }
@@ -107,7 +137,10 @@ PoemView {
 
         navigationRepeater.model: navigModel
 
-        menuBtn.onClicked: Viewport.viewport.append(menuComponent, {}, "menu")
+        menuBtn.onClicked: {
+            faveActionQuery.fetch();
+            Viewport.viewport.append(menuComponent, {}, "menu");
+        }
         backBtn.onClicked: ViewportType.open = false
 
         gridView.model: PoemVersesModel {
@@ -127,27 +160,22 @@ PoemView {
             onItemClicked: {
                 switch (index) {
                 case 0:
+                    if (faveActionQuery.updatedAt && !faveActionQuery.declined)
+                        faveActionQuery.declined = 1;
+
+                    faveActionQuery.updatedAt = Tools.dateToSec(new Date);
+                    faveActionQuery.push();
                     break;
                 case 1:
-                    var text = "";
-                    for (var i=0; i<poemModel.count; i++) {
-                        var e = poemModel.get(i);
-                        text += e.text + "\n";
-                        if (e.position === PoemVersesModel.PositionLeft || e.position === PoemVersesModel.PositionCenteredVerse2)
-                            text += "\n";
-                    }
-
-                    for (var j=1; j<navigModel.count; j++) {
-                        text += navigModel.get(j).title
-                        if (j < navigModel.count-1)
-                            text += ", ";
-                        else
-                            text += "\n";
-                    }
-
-                    text += poet;
-
-                    Devices.clipboard = text;
+                    Devices.clipboard = dis.getText();
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    Devices.share(dis.title, dis.getText());
+                    break;
+                case 4:
+                    dis.form.selectMode = !dis.form.selectMode;
                     break;
                 }
 
@@ -157,7 +185,7 @@ PoemView {
             model: AsemanListModel {
                 data: [
                     {
-                        title: qsTr("Add to Bookmarks"),
+                        title: faveActionQuery.updatedAt && !faveActionQuery.declined? qsTr("Remove Bookmarks") : qsTr("Add to Bookmarks"),
                         icon: "mdi_bookmark"
                     },
                     {

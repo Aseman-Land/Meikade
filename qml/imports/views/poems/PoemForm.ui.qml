@@ -10,7 +10,7 @@ import micros 1.0
 import models 1.0
 
 Item {
-    id: myMeikade
+    id: dis
     width: Constants.width
     height: Constants.height
     clip: true
@@ -34,6 +34,10 @@ Item {
 
     property bool headerVisible: true
 
+    property bool selectMode
+    property real selectModeAnimRatio: selectMode? 1 : 0
+    property variant selectedList: new Array
+
     readonly property real ratioAbs: Math.min(ratio, 1)
     readonly property real ratio: Math.max(
                                       0,
@@ -52,13 +56,13 @@ Item {
     PointMapListener {
         id: menuBtnListener
         source: menuBtn
-        dest: myMeikade
+        dest: dis
     }
 
     PointMapListener {
         id: mapListener
         source: gridView.headerItem
-        dest: myMeikade
+        dest: dis
 
         Connections {
             target: mapListener
@@ -103,33 +107,68 @@ Item {
             id: del
             width: gridView.width
             height: verseLabel.height + 20 * Devices.density
-
-            LayoutMirroring.enabled: false
-            LayoutMirroring.childrenInherit: true
+            z: 100000 - index
 
             ItemDelegate {
+                id: itemDel
                 height: model.position === PoemVersesModel.PositionRight || model.position === PoemVersesModel.PositionCenteredVerse1 ||
-                        model.position === PoemVersesModel.PositionLeft || model.position === PoemVersesModel.PositionCenteredVerse2? del.height * 2 : del.height
+                        model.position === PoemVersesModel.PositionLeft || model.position === PoemVersesModel.PositionCenteredVerse2? delFrame.height * 2 : delFrame.height
                 anchors.left: parent.left
                 anchors.right: parent.right
-                y: model.position === PoemVersesModel.PositionLeft || model.position === PoemVersesModel.PositionCenteredVerse2? del.height - height : 0
+                y: model.position === PoemVersesModel.PositionLeft || model.position === PoemVersesModel.PositionCenteredVerse2? delFrame.height - height : 0
+
+                Connections {
+                    target: itemDel
+                    onClicked: {
+                        if (dis.selectMode)
+                            checkbox.checked = !checkbox.checked;
+                    }
+                    onPressAndHold: {
+                        dis.selectMode = true;
+                        checkbox.checked = true;
+                    }
+                }
             }
 
-            Label {
-                id: verseLabel
+            CheckBox {
+                id: checkbox
+                anchors.verticalCenter: parent.bottom
+                anchors.left: delFrame.right
+                checked: selectedList[model.index] && selectedList.length? selectedList[model.index] : false
+                visible: selectMode && model.position !== PoemVersesModel.PositionLeft && model.position !== PoemVersesModel.PositionCenteredVerse2
+
+                Connections {
+                    target: checkbox
+                    onCheckedChanged: selectedList[model.index] = checkbox.checked
+                }
+            }
+
+            Item {
+                id: delFrame
+                width: parent.width - checkbox.width * selectModeAnimRatio
+                anchors.top: parent.top
+                anchors.bottom: parent.bottom
                 anchors.left: parent.left
-                anchors.right: parent.right
-                anchors.verticalCenter: parent.verticalCenter
-                anchors.verticalCenterOffset: model.position === PoemVersesModel.PositionRight || model.position === PoemVersesModel.PositionCenteredVerse1? 4 * Devices.density :
-                                              (model.position === PoemVersesModel.PositionLeft || model.position === PoemVersesModel.PositionCenteredVerse2? -4 * Devices.density :
-                                              0)
-                anchors.margins: 20 * Devices.density
-                text: model.text
-                font.pixelSize: 10 * Devices.fontDensity
-                wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                horizontalAlignment: model.position === PoemVersesModel.PositionRight? Text.AlignRight : (model.position === PoemVersesModel.PositionLeft? Text.AlignLeft
-                                     : (model.position === PoemVersesModel.PositionCenteredVerse1 || model.position === PoemVersesModel.PositionCenteredVerse2? Text.AlignHCenter
-                                     : Text.AlignRight))
+
+                Label {
+                    id: verseLabel
+                    anchors.left: parent.left
+                    anchors.right: parent.right
+                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.verticalCenterOffset: model.position === PoemVersesModel.PositionRight || model.position === PoemVersesModel.PositionCenteredVerse1? 4 * Devices.density :
+                                                  (model.position === PoemVersesModel.PositionLeft || model.position === PoemVersesModel.PositionCenteredVerse2? -4 * Devices.density :
+                                                  0)
+                    anchors.margins: 20 * Devices.density
+                    text: model.text
+                    font.pixelSize: 10 * Devices.fontDensity
+                    wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                    horizontalAlignment: model.position === PoemVersesModel.PositionRight? Text.AlignRight : (model.position === PoemVersesModel.PositionLeft? Text.AlignLeft
+                                         : (model.position === PoemVersesModel.PositionCenteredVerse1 || model.position === PoemVersesModel.PositionCenteredVerse2? Text.AlignHCenter
+                                         : Text.AlignRight))
+
+                    LayoutMirroring.enabled: false
+                    LayoutMirroring.childrenInherit: true
+                }
             }
         }
     }
@@ -328,7 +367,7 @@ Item {
 
                                         Connections {
                                             target: navDel
-                                            onClicked: myMeikade.navigationClicked(model.link, model.index)
+                                            onClicked: dis.navigationClicked(model.link, model.index)
                                         }
 
                                     }

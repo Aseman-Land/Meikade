@@ -29,7 +29,7 @@ PoetBooksView {
     }
 
     Query.UserActions {
-        id: actionQuery
+        id: viewActionQuery
         type: Query.UserActions.TypeCatViewDate
         poemId: 0
         poetId: dis.id
@@ -54,7 +54,7 @@ PoetBooksView {
         repeat: false
         running: true
         onTriggered: {
-            actionQuery.push()
+            viewActionQuery.push()
             RefresherSignals.recentPoemsRefreshed()
         }
     }

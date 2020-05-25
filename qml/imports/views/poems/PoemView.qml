@@ -135,6 +135,9 @@ Rectangle {
                     }
                 }
 
+                Behavior on selectModeAnimRatio {
+                    NumberAnimation { easing.type: Easing.OutCubic; duration: 200 }
+                }
                 Behavior on scale {
                     NumberAnimation { easing.type: Easing.OutCubic; duration: 200 }
                 }

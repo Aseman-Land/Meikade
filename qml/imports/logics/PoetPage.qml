@@ -28,7 +28,7 @@ PoetView {
     }
 
     Query.UserActions {
-        id: actionQuery
+        id: viewActionQuery
         type: Query.UserActions.TypePoetViewDate
         poemId: 0
         poetId: dis.id
@@ -51,7 +51,7 @@ PoetView {
         repeat: false
         running: true
         onTriggered: {
-            actionQuery.push()
+            viewActionQuery.push()
             RefresherSignals.recentPoemsRefreshed()
         }
     }
