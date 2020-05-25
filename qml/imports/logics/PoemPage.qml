@@ -2,6 +2,7 @@ import QtQuick 2.12
 import AsemanQml.Base 2.0
 import AsemanQml.Models 2.0
 import AsemanQml.Viewport 2.0
+import AsemanQml.MaterialIcons 2.0
 import queries 1.0 as Query
 import views 1.0
 import globals 1.0
@@ -142,11 +143,25 @@ PoemView {
             Viewport.controller.trigger(link, properties);
         }
 
+        onMenuRequest: {
+            var pos = Qt.point(object.width/2, 0);
+            var parent = object;
+            while (parent && parent != dis) {
+                pos.x += parent.x;
+                pos.y += parent.y;
+                parent = parent.parent;
+            }
+
+            var map = poemModel.get(index)
+
+            Viewport.viewport.append(menuComponent, {"pointPad": pos, "index": index, "map": map, "verseId": map.vorder}, "menu");
+        }
+
         navigationRepeater.model: navigModel
 
         menuBtn.onClicked: {
             faveActionQuery.fetch();
-            Viewport.viewport.append(menuComponent, {}, "menu");
+            Viewport.viewport.append(globalMenuComponent, {}, "menu");
         }
         backBtn.onClicked: ViewportType.open = false
 
@@ -157,19 +172,21 @@ PoemView {
     }
 
     Component {
-        id: menuComponent
+        id: globalMenuComponent
         MenuView {
-            x: LayoutMirroring.enabled? 30 * Devices.density : parent.width - 30 * Devices.density
+            x: LayoutMirroring.enabled? 30 * Devices.density : parent.width - width - 30 * Devices.density
             y: form.menuBtnPosition.y + 30 * Devices.density
             width: 220 * Devices.density
-            ViewportType.transformOrigin: Qt.point((LayoutMirroring.enabled? -20 * Devices.density : width + 20 * Devices.density), -20 * Devices.density)
+            ViewportType.transformOrigin: {
+                var y = -20 * Devices.density;
+                var x = (LayoutMirroring.enabled? -20 * Devices.density : width + 20 * Devices.density);
+                return Qt.point(x, y);
+            }
 
             onItemClicked: {
                 switch (index) {
                 case 0:
-                    if (faveActionQuery.updatedAt && !faveActionQuery.declined)
-                        faveActionQuery.declined = 1;
-
+                    faveActionQuery.declined = (faveActionQuery.updatedAt && !faveActionQuery.declined? 1 : 0);
                     faveActionQuery.updatedAt = Tools.dateToSec(new Date);
                     faveActionQuery.push();
                     break;
@@ -193,7 +210,7 @@ PoemView {
                 data: [
                     {
                         title: faveActionQuery.updatedAt && !faveActionQuery.declined? qsTr("Remove Bookmarks") : qsTr("Add to Bookmarks"),
-                        icon: "mdi_bookmark"
+                        icon: faveActionQuery.updatedAt && !faveActionQuery.declined? "mdi_bookmark" : "mdi_bookmark_outline"
                     },
                     {
                         title: qsTr("Copy"),
@@ -210,6 +227,105 @@ PoemView {
                     {
                         title: qsTr("Select"),
                         icon: "mdi_select"
+                    },
+                ]
+            }
+        }
+    }
+
+    Component {
+        id: menuComponent
+        MenuView {
+            id: menuItem
+            x: pointPad.x - width/2
+            y: Math.min(pointPad.y, dis.height - height - 100 * Devices.density)
+            width: 220 * Devices.density
+            ViewportType.transformOrigin: {
+                var y = 30 * Devices.density + pointPad.y - menuItem.y;
+                var x = width/2;
+                return Qt.point(x, y);
+            }
+
+            property point pointPad
+            property variant map
+            property int index
+            property alias verseId: verseFaveActionQuery.verseId
+
+            Query.UserActions {
+                id: verseFaveActionQuery
+                type: Query.UserActions.TypeFavorite
+                poemId: dis.poemId
+                poetId: dis.id
+                declined: 0
+                synced: 0
+                extra: {
+                    var map = Tools.toVariantMap(faveActionQuery.extra)
+                    map["verseId"] = verseId;
+                    return map;
+                }
+                Component.onCompleted: fetch()
+            }
+
+            function getText() {
+                var text = "";
+                for (var i=index; i<poemModel.count; i++) {
+                    var e = poemModel.get(i);
+                    text += e.text + "\n";
+                    if (e.position === PoemVersesModel.PositionLeft || e.position === PoemVersesModel.PositionCenteredVerse2 || e.position === PoemVersesModel.PositionSingle) {
+                        text += "\n";
+                        break;
+                    }
+                }
+
+                for (var j=1; j<navigModel.count; j++) {
+                    text += navigModel.get(j).title
+                    if (j < navigModel.count-1)
+                        text += ", ";
+                    else
+                        text += "\n";
+                }
+
+                text += poet;
+                return text;
+            }
+
+            onItemClicked: {
+                switch (index) {
+                case 0:
+                    verseFaveActionQuery.declined = (verseFaveActionQuery.updatedAt && !verseFaveActionQuery.declined? 1 : 0);
+                    verseFaveActionQuery.updatedAt = Tools.dateToSec(new Date);
+                    verseFaveActionQuery.push();
+                    break;
+                case 1:
+                    Devices.clipboard = getText();
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    Devices.share(dis.title, getText());
+                    break;
+                }
+
+                ViewportType.open = false;
+            }
+
+            model: AsemanListModel {
+                data: [
+                    {
+                        title: verseFaveActionQuery.updatedAt && !verseFaveActionQuery.declined? qsTr("Remove Bookmarks") : qsTr("Add to Bookmarks"),
+                        icon: verseFaveActionQuery.updatedAt && !verseFaveActionQuery.declined? "mdi_bookmark" : "mdi_bookmark_outline"
+                    },
+                    {
+                        title: qsTr("Copy"),
+                        icon: "mdi_content_copy"
+                    },
+                    {
+                        title: qsTr("Create Sticker"),
+                        icon: "mdi_sticker"
+                    },
+                    {
+                        title: qsTr("Share"),
+                        icon: "mdi_share_variant"
                     },
                 ]
             }
