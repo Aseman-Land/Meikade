@@ -8,6 +8,7 @@ import QtQuick.Controls.IOSStyle 2.3
 import logics 1.0
 import routes 1.0
 import globals 1.0
+import micros 1.0
 
 AsemanWindow {
     id: mainWin
@@ -25,5 +26,12 @@ AsemanWindow {
             anchors.fill: parent
         }
         Component.onCompleted: ViewController.viewport = viewport
+    }
+
+    Snackbar { id: snackbar }
+
+    Connections {
+        target: GlobalSignals
+        onSnackbarRequest: snackbar.open(text)
     }
 }

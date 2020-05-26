@@ -27,6 +27,8 @@ PoemView {
     property alias poemId: poemModel.poemId
     property alias navigData: navigModel.data
 
+    onPoemIdChanged: form.selectMode = false;
+
     onChangeRequest: {
         url = link;
         dis.title = title;
@@ -128,7 +130,7 @@ PoemView {
         running: true
         onTriggered: {
             viewActionQuery.push()
-            RefresherSignals.recentPoemsRefreshed()
+            GlobalSignals.recentPoemsRefreshed()
         }
     }
 
@@ -141,6 +143,18 @@ PoemView {
             properties["navigData"] = navigModel.data.slice(0, index+1);
 
             Viewport.controller.trigger(link, properties);
+        }
+
+        onSelectedToggled: {
+            var oneExists = false;
+            for (var i in form.selectedList)
+                if (form.selectedList[i]) {
+                    oneExists = true;
+                    break;
+                }
+
+            if (!oneExists)
+                form.selectMode = false;
         }
 
         onSelectModeChanged: {
@@ -196,14 +210,19 @@ PoemView {
                     faveActionQuery.declined = (faveActionQuery.updatedAt && !faveActionQuery.declined? 1 : 0);
                     faveActionQuery.updatedAt = Tools.dateToSec(new Date);
                     faveActionQuery.push();
+                    form.selectMode = false;
+                    GlobalSignals.snackbarRequest(faveActionQuery.declined? qsTr("Poem Unfavorited") : qsTr("Poem favorited"));
                     break;
                 case 1:
                     Devices.clipboard = dis.getText();
+                    form.selectMode = false;
+                    GlobalSignals.snackbarRequest(qsTr("Poem copied"));
                     break;
                 case 2:
                     break;
                 case 3:
                     Devices.share(dis.title, dis.getText());
+                    form.selectMode = false;
                     break;
                 case 4:
                     dis.form.selectMode = !dis.form.selectMode;
@@ -302,9 +321,11 @@ PoemView {
                     verseFaveActionQuery.declined = (verseFaveActionQuery.updatedAt && !verseFaveActionQuery.declined? 1 : 0);
                     verseFaveActionQuery.updatedAt = Tools.dateToSec(new Date);
                     verseFaveActionQuery.push();
+                    GlobalSignals.snackbarRequest(verseFaveActionQuery.declined? qsTr("Verse Unfavorited") : qsTr("Verse favorited"));
                     break;
                 case 1:
                     Devices.clipboard = getText();
+                    GlobalSignals.snackbarRequest(qsTr("Verse copied"));
                     break;
                 case 2:
                     break;

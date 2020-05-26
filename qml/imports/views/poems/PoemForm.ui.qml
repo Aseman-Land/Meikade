@@ -48,6 +48,7 @@ Item {
 
     signal navigationClicked(string link, int index)
     signal menuRequest(int index, variant object)
+    signal selectedToggled(int index, bool selected)
 
     Connections {
         target: dis
@@ -147,7 +148,10 @@ Item {
 
                 Connections {
                     target: checkbox
-                    onCheckedChanged: selectedList[model.index] = checkbox.checked
+                    onCheckedChanged: {
+                        selectedList[model.index] = checkbox.checked
+                        dis.selectedToggled(model.index, checkbox.checked);
+                    }
                 }
                 Connections {
                     target: dis

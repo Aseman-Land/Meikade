@@ -16,7 +16,7 @@ AsemanListModel {
     Component.onCompleted: refresh()
 
     Connections {
-        target: RefresherSignals
+        target: GlobalSignals
         onRecentPoemsRefreshed: refresh()
     }
 

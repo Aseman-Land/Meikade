@@ -355,6 +355,30 @@
         <translation>اضافه به علاقه‌مندی‌ها</translation>
     </message>
     <message>
+        <source>Verse Unfavorited</source>
+        <translation>بیت از علاقه‌مندی‌ها حذف شد</translation>
+    </message>
+    <message>
+        <source>Verse favorited</source>
+        <translation>بیت به علاقه‌مندی‌ها اضافه شد</translation>
+    </message>
+    <message>
+        <source>Poem Unfavorited</source>
+        <translation>شعر از علاقه‌مندی‌ها حذف شد</translation>
+    </message>
+    <message>
+        <source>Poem favorited</source>
+        <translation>شعر به علاقه‌مندی‌ها اضافه شد</translation>
+    </message>
+    <message>
+        <source>Verse copied</source>
+        <translation>بیت کپی شد</translation>
+    </message>
+    <message>
+        <source>Poem copied</source>
+        <translation>شعر کپی شد</translation>
+    </message>
+    <message>
         <source>Copy</source>
         <translation>کپی</translation>
     </message>

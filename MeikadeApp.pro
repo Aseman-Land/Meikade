@@ -1,6 +1,6 @@
 QT += quick qml quickcontrols2 webview sql asemancore network
 CONFIG += c++11
-VERSION = 3.9.53
+VERSION = 3.9.54
 
 include(android/android.pri)
 include(ios/ios.pri)
@@ -51,3 +51,7 @@ RESOURCES += \
 
 QML_IMPORT_PATH += \
     $$PWD/qml/imports
+
+DISTFILES += \
+    translations/lang-en.ts \
+    translations/lang-fa.ts

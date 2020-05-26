@@ -120,7 +120,7 @@ AsemanListView {
 
                 ItemDelegate {
                     anchors.fill: parent
-                    anchors.margins: -10 * Devices.densityDpi
+                    anchors.margins: -10 * Devices.density
                     onClicked: list.linkRequest(sectionItem.link.slice(sectionItem.link.indexOf("\\") + 1), {"fulltext": sectionItem.fulltext})
                 }
 
