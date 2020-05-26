@@ -21,7 +21,7 @@ AsemanListModel {
     DataOfflineVerses {
         id: offlineVerses
         poem_id: poemsReq.poem_id
-        onPoem_idChanged: Tools.jsDelayCall(1000, function() { result = getItems() })
+        onPoem_idChanged: Tools.jsDelayCall(100, function() { result = getItems() })
 
         property variant result
     }
