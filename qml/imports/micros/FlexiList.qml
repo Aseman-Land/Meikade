@@ -98,10 +98,14 @@ AsemanListView {
                 }
             }
 
-            Button {
+            Label {
+                anchors.rightMargin: 10 * Devices.density
                 anchors.right: parent.right
                 anchors.verticalCenter: parent.verticalCenter
                 visible: sectionItem.link.length
+                horizontalAlignment: Text.AlignRight
+                font.pixelSize: 8 * Devices.fontDensity
+                color: Colors.accent
                 text: {
                     var idx = sectionItem.link.indexOf("\\");
                     var linkLabel = (idx<0? sectionItem.link : sectionItem.link.slice(0, idx));
@@ -113,11 +117,13 @@ AsemanListView {
                         return qsTr("More") + Translations.refresher
                     }
                 }
-                highlighted: true
-                flat: true
-                width: 60 * Devices.density
-                font.pixelSize: 8 * Devices.fontDensity
-                onClicked: list.linkRequest(sectionItem.link.slice(sectionItem.link.indexOf("\\") + 1), {"fulltext": sectionItem.fulltext})
+
+                ItemDelegate {
+                    anchors.fill: parent
+                    anchors.margins: -10 * Devices.densityDpi
+                    onClicked: list.linkRequest(sectionItem.link.slice(sectionItem.link.indexOf("\\") + 1), {"fulltext": sectionItem.fulltext})
+                }
+
             }
         }
     }
