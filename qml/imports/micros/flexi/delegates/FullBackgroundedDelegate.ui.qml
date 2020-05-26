@@ -18,19 +18,19 @@ AbstractDelegate {
         color: Colors.primary
     }
 
-    Rectangle {
-        id: background
-        anchors.fill: parent
-        color: "#18f"
-    }
-
-    Image {
+    CachedImage {
         id: image
         anchors.fill: parent
         fillMode: Image.PreserveAspectCrop
         asynchronous: true
         sourceSize.width: adel.width * 1.2
         sourceSize.height: adel.height * 1.2
+    }
+
+    Rectangle {
+        id: background
+        anchors.fill: parent
+        color: "#18f"
     }
 
     Label {

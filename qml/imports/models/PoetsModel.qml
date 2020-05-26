@@ -5,6 +5,8 @@ import requests 1.0
 import globals 1.0
 
 AsemanListModel {
+
+    property alias typeId: poetsReq.type_id
     property alias refreshing: poetsReq.refreshing
 
     PoetsRequest {

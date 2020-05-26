@@ -20,11 +20,15 @@
     </message>
     <message>
         <source>Hafiz&apos;s Faal</source>
-        <translation>فال حافظ</translation>
+        <translation type="vanished">فال حافظ</translation>
     </message>
     <message>
         <source>Books</source>
         <translation type="vanished">کتاب</translation>
+    </message>
+    <message>
+        <source>Hafez Divination</source>
+        <translation>فال حافظ</translation>
     </message>
 </context>
 <context>
@@ -50,11 +54,19 @@
     </message>
     <message>
         <source>Offline Poets</source>
-        <translation>شعرای آفلاین</translation>
+        <translation type="vanished">شعرای آفلاین</translation>
     </message>
     <message>
         <source>Manage</source>
         <translation>مدیریت</translation>
+    </message>
+    <message>
+        <source>Offlines</source>
+        <translation>شعرای آفلاین</translation>
+    </message>
+    <message>
+        <source>Favorites</source>
+        <translation>علاقه‌مندی‌ها</translation>
     </message>
 </context>
 <context>

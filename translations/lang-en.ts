@@ -19,7 +19,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Hafiz&apos;s Faal</source>
+        <source>Hafez Divination</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -45,11 +45,15 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Offline Poets</source>
+        <source>Manage</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Manage</source>
+        <source>Offlines</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Favorites</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -23,6 +23,10 @@ AsemanObject {
         case 1:
             update(2);
             break;
+
+        case 2:
+            update(3);
+            break;
         }
     }
 

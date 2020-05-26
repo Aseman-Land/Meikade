@@ -8,7 +8,9 @@ BaseRequest {
 
     property int offset: 0
     property int limit: 200
+    property int type_id: 0
 
+    onType_idChanged: Tools.jsDelayCall(10, refresh)
     onRefreshRequest: refresh()
 
     function refresh() {

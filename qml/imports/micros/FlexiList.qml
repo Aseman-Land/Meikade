@@ -61,14 +61,14 @@ AsemanListView {
 
         property string fulltext: section
         property string text: {
-            var idx = section.indexOf(":")
+            var idx = section.indexOf("\\")
             if (idx >= 0)
                 return section.slice(0, idx)
             else
                 return section
         }
         property string link: {
-            var idx = section.indexOf(":")
+            var idx = section.indexOf("\\")
             if (idx >= 0)
                 return section.slice(idx+1)
             else
@@ -87,10 +87,12 @@ AsemanListView {
                 switch (sectionItem.text) {
                 case "Recents":
                     return qsTr("Recents") + Translations.refresher;
-                case "Static":
+                case "Meikade Online":
                     return qsTr("Explore") + Translations.refresher;
-                case "Offline Poets":
-                    return qsTr("Offline Poets") + Translations.refresher;
+                case "Offlines":
+                    return qsTr("Offlines") + Translations.refresher;
+                case "Favorites":
+                    return qsTr("Favorites") + Translations.refresher;
                 default:
                     return sectionItem.text;
                 }
@@ -101,19 +103,21 @@ AsemanListView {
                 anchors.verticalCenter: parent.verticalCenter
                 visible: sectionItem.link.length
                 text: {
-                    switch (sectionItem.link) {
-                    case "manageLink":
+                    var idx = sectionItem.link.indexOf("\\");
+                    var linkLabel = (idx<0? sectionItem.link : sectionItem.link.slice(0, idx));
+                    switch (linkLabel) {
+                    case "Manage":
                         return qsTr("Manage") + Translations.refresher
-                    case "moreLink":
+                    case "More":
                     default:
                         return qsTr("More") + Translations.refresher
                     }
                 }
                 highlighted: true
                 flat: true
-                width: 50 * Devices.density
+                width: 60 * Devices.density
                 font.pixelSize: 8 * Devices.fontDensity
-                onClicked: list.linkRequest(sectionItem.link, {"fulltext": sectionItem.fulltext})
+                onClicked: list.linkRequest(sectionItem.link.slice(sectionItem.link.indexOf("\\") + 1), {"fulltext": sectionItem.fulltext})
             }
         }
     }

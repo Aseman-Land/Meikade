@@ -18,7 +18,7 @@ AsemanListModel {
         {
             "title": qsTr("Manage Offlines") + Translations.refresher,
             "icon": "mdi_view_dashboard",
-            "link": "float:/poets/manage"
+            "link": "float:/offline/manage"
         },
         {
             "title": qsTr("Sync") + Translations.refresher,

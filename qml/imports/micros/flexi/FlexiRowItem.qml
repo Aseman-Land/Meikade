@@ -8,7 +8,7 @@ Item {
 
     property string type
     readonly property string args: {
-        var idx = type.indexOf(":");
+        var idx = type.indexOf("\\");
         if (idx < 0)
             return "";
 
@@ -95,7 +95,7 @@ Item {
 
         current: {
             var t = type
-            var idx = type.indexOf(":");
+            var idx = type.indexOf("\\");
             if (idx >= 0)
                 t = t.slice(0, idx)
 

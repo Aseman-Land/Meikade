@@ -45,13 +45,12 @@ ViewportController {
     }
 
     ViewportControllerRoute {
-        route: /\w+\:\/poets\/manage/
+        route: /\w+\:\/offline\/manage/
         source: "ManageOfflinePoetsRoute.qml"
     }
 
     ViewportControllerRoute {
-//        route: /\w+\:\/poems\/recents/
-        route: /moreLink/
+        route: /\w+\:\/recents/
         source: "MostReadedPoemsRoute.qml"
         viewportType: "float"
     }

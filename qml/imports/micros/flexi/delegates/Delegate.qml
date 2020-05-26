@@ -20,8 +20,8 @@ Item {
             return qsTr("All Poets") + Translations.refresher;
         case "Random Poem":
             return qsTr("Random Poem") + Translations.refresher;
-        case "Hafiz's Faal":
-            return qsTr("Hafiz's Faal") + Translations.refresher;
+        case "Hafez Divination":
+            return qsTr("Hafez Divination") + Translations.refresher;
         default:
             return title;
         }

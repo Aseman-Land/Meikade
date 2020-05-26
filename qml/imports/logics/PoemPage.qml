@@ -143,6 +143,13 @@ PoemView {
             Viewport.controller.trigger(link, properties);
         }
 
+        onSelectModeChanged: {
+            if (form.selectMode)
+                BackHandler.pushHandler(form, function(){ form.selectMode = false; })
+            else
+                BackHandler.removeHandler(form)
+        }
+
         onMenuRequest: {
             var pos = Qt.point(object.width/2, 0);
             var parent = object;
