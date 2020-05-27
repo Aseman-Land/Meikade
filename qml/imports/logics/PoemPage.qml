@@ -120,7 +120,7 @@ PoemView {
         poetId: dis.id
         declined: 0
         synced: 0
-        extra: faveActionQuery.extra
+        extra: viewActionQuery.extra
     }
 
     Timer {
@@ -285,9 +285,9 @@ PoemView {
                 declined: 0
                 synced: 0
                 extra: {
-                    var map = Tools.toVariantMap(faveActionQuery.extra)
+                    var map = Tools.jsonToVariant(faveActionQuery.extra)
                     map["verseId"] = verseId;
-                    return map;
+                    return Tools.variantToJson(map);
                 }
                 Component.onCompleted: fetch()
             }

@@ -7,9 +7,12 @@ import models 1.0
 
 Viewport {
 
+    signal closeRequest()
+
     mainItem: ListsView {
         anchors.fill: parent
         listView.model: ListsModel {}
+        closeBtn.onClicked: closeRequest()
         onClicked: Viewport.viewport.append(favoritedPoets_component, {}, "page")
     }
 
@@ -17,6 +20,8 @@ Viewport {
         id: favoritedPoets_component
         FavoritedPoetsListView {
             listView.model: FavoritedPoetsListModel {}
+            backBtn.onClicked: ViewportType.open = false
+            closeBtn.onClicked: closeRequest()
         }
     }
 }

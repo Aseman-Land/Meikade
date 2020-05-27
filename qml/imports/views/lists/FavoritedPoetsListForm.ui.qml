@@ -18,6 +18,7 @@ Item {
     property alias listView: listView
     property alias headerItem: headerItem
     property alias closeBtn: closeBtn
+    property alias backBtn: backBtn
 
     signal clicked(int index)
 
@@ -91,19 +92,20 @@ Item {
                         Layout.preferredHeight: 38 * Devices.density
                         Layout.preferredWidth: 38 * Devices.density
 
-                        Rectangle {
-                            anchors.fill: parent
+                        RoundedItem {
+                            width: parent.width * 2
+                            height: parent.height * 2
                             anchors.centerIn: parent
-                            radius: Constants.radius
-                            opacity: 0.2
-                            color: Colors.foreground
-                        }
+                            radius: Constants.radius * 1.5
+                            scale: 0.5
 
-                        Label {
-                            anchors.centerIn: parent
-                            font.family: MaterialIcons.family
-                            font.pixelSize: 14 * Devices.fontDensity
-                            text: MaterialIcons[model.icon]
+                            CachedImage {
+                                anchors.fill: parent
+                                sourceSize.width: 92 * Devices.density
+                                sourceSize.height: 92 * Devices.density
+                                asynchronous: true
+                                source: model.image
+                            }
                         }
                     }
 
@@ -118,7 +120,7 @@ Item {
                             elide: Text.ElideRight
                             maximumLineCount: 1
                             font.pixelSize: 9 * Devices.fontDensity
-                            text: model.title
+                            text: model.poet
                         }
 
                         Label {
@@ -173,6 +175,11 @@ Item {
                 Material.theme: Material.Dark
                 Material.elevation: 0
             }
+        }
+
+        HeaderMenuButton {
+            id: backBtn
+            ratio: 1
         }
     }
 

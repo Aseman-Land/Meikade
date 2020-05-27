@@ -17,13 +17,13 @@ AsemanListModel {
     function refresh() {
         Tools.jsDelayCall(10, function(){
             var data = new Array;
-            var list = actions.select("", "type = :type", "GROUP BY poetId ORDER BY updatedAt", {type: UserActions.TypeFavorite});
-            console.debug(Tools.variantToJson(list))
+            var list = actions.query("SELECT *, COUNT(verseId) as verses FROM actions WHERE type = :type GROUP BY poetId ORDER BY updatedAt", {type: UserActions.TypeFavorite});
             for (var i in list) {
                 try {
                     var item = list[i];
                     var extraJson = Tools.jsonToVariant(item.extra);
                     extraJson["type"] = "normal";
+                    extraJson["subtitle"] = qsTr("%1 items").arg(item.verses);
 
                     data[data.length] = extraJson;
                 } catch (e) {}
