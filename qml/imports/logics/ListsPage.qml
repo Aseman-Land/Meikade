@@ -5,6 +5,18 @@ import globals 1.0
 import views 1.0
 import models 1.0
 
-ListsView {
-    id: dis
+Viewport {
+
+    mainItem: ListsView {
+        anchors.fill: parent
+        listView.model: ListsModel {}
+        onClicked: Viewport.viewport.append(favoritedPoets_component, {}, "page")
+    }
+
+    Component {
+        id: favoritedPoets_component
+        FavoritedPoetsListView {
+            listView.model: FavoritedPoetsListModel {}
+        }
+    }
 }

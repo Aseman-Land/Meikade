@@ -12,3 +12,5 @@ ManageOfflinePoetsModel 1.0 ManageOfflinePoetsModel.qml
 OfflineCatsModel 1.0 OfflineCatsModel.qml
 TopPoetsModel 1.0 TopPoetsModel.qml
 TopPoetsHomeModel 1.0 TopPoetsHomeModel.qml
+ListsModel 1.0 ListsModel.qml
+FavoritedPoetsListModel 1.0 FavoritedPoetsListModel.qml

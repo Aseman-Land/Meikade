@@ -149,7 +149,7 @@ Item {
         anchors.top: parent.top
         anchors.right: parent.right
         anchors.left: parent.left
-        text: qsTr("Lists") + Translations.refresher
+        text: qsTr("Favoriteds") + Translations.refresher
         color: Colors.header
         shadow: Devices.isAndroid
 
