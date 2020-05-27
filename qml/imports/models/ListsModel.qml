@@ -19,10 +19,10 @@ AsemanListModel {
 
         property variant items: new Array
 
-        function refresh() {
-            items = getItems(UserActions.TypeFavorite, 0, 200);
-        }
-
         Component.onCompleted: Tools.jsDelayCall(10, refresh)
+    }
+
+    function refresh() {
+        userActions.items = userActions.getItems(UserActions.TypeFavorite, 0, 200);
     }
 }

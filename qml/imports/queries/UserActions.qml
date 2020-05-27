@@ -29,6 +29,6 @@ UserBaseQuery {
     }
 
     function getItems(type, offset, limit) {
-        return select("", "type = :type", "ORDER BY updatedAt DESC LIMIT :limit OFFSET :offset", {type: type, offset: offset, limit: limit})
+        return select("", "type = :type AND declined = 0", "ORDER BY updatedAt DESC LIMIT :limit OFFSET :offset", {type: type, offset: offset, limit: limit})
     }
 }

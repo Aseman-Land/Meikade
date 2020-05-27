@@ -21,6 +21,7 @@ PoemView {
     property variant properties
 
     property string poetImage
+    property string verseText
 
     property alias id: dis.poetId
     property int poetId
@@ -108,6 +109,7 @@ PoemView {
             map["subtitle"] = poet;
             map["image"] = poetImage;
             map["link"] = url;
+            map["verseText"] = verseText;
 
             return Tools.variantToJson(map);
         }
@@ -173,9 +175,9 @@ PoemView {
                 parent = parent.parent;
             }
 
-            var map = poemModel.get(index)
+            var map = poemModel.get(index);
 
-            Viewport.viewport.append(menuComponent, {"pointPad": pos, "index": index, "map": map, "verseId": map.vorder}, "menu");
+            Viewport.viewport.append(menuComponent, {"pointPad": pos, "index": index, "map": map, "verseText": map.text, "verseId": map.vorder}, "menu");
         }
 
         navigationRepeater.model: navigModel
@@ -184,6 +186,10 @@ PoemView {
             faveActionQuery.declined = 0;
             faveActionQuery.updatedAt = 0;
             faveActionQuery.fetch();
+
+            var map = poemModel.get(0);
+            dis.verseText = map.text
+
             Viewport.viewport.append(globalMenuComponent, {}, "menu");
         }
         backBtn.onClicked: ViewportType.open = false
@@ -214,6 +220,7 @@ PoemView {
                     faveActionQuery.push();
                     form.selectMode = false;
                     GlobalSignals.snackbarRequest(faveActionQuery.declined? qsTr("Poem Unfavorited") : qsTr("Poem favorited"));
+                    GlobalSignals.favoritesRefreshed();
                     break;
                 case 1:
                     Devices.clipboard = dis.getText();
@@ -276,6 +283,7 @@ PoemView {
 
             property point pointPad
             property variant map
+            property string verseText
             property int index
             property alias verseId: verseFaveActionQuery.verseId
 
@@ -289,6 +297,7 @@ PoemView {
                 extra: {
                     var map = Tools.jsonToVariant(faveActionQuery.extra)
                     map["verseId"] = verseId;
+                    map["verseText"] = menuItem.verseText;
                     return Tools.variantToJson(map);
                 }
                 Component.onCompleted: fetch()
@@ -324,6 +333,7 @@ PoemView {
                     verseFaveActionQuery.updatedAt = Tools.dateToSec(new Date);
                     verseFaveActionQuery.push();
                     GlobalSignals.snackbarRequest(verseFaveActionQuery.declined? qsTr("Verse Unfavorited") : qsTr("Verse favorited"));
+                    GlobalSignals.favoritesRefreshed();
                     break;
                 case 1:
                     Devices.clipboard = getText();

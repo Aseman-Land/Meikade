@@ -8,4 +8,5 @@ ListsPage {
     height: Constants.height
 
     onCloseRequest: ViewportType.open = false;
+    onLinkRequest: Viewport.controller.trigger(link, properties)
 }
