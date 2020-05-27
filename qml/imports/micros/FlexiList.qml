@@ -57,7 +57,7 @@ AsemanListView {
     section.delegate: Item {
         id: sectionItem
         width: list.width
-        height: text.length ? 40 * Devices.density : 0
+        height: text.length ? 2 * sectionTxt.height : 0
 
         property string fulltext: section
         property string text: {

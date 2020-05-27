@@ -18,9 +18,8 @@ Item {
     property alias listView: listView
     property alias headerItem: headerItem
     property alias closeBtn: closeBtn
-    property alias tabBar: tabBar
 
-    signal clicked(string link, variant properties)
+    signal checked(string poetId, variant properties, bool active)
 
     Rectangle {
         anchors.fill: parent
@@ -43,7 +42,7 @@ Item {
 
     AsemanListView {
         id: listView
-        anchors.top: tabBar.bottom
+        anchors.top: headerItem.bottom
         anchors.right: parent.right
         anchors.bottom: parent.bottom
         anchors.left: parent.left
@@ -77,7 +76,7 @@ Item {
 
                     Connections {
                         target: itemDel
-                        onClicked: dis.clicked(model.link, listView.model.get(index))
+                        onClicked: delSwitch.checked = !delSwitch.checked
                     }
                 }
 
@@ -137,40 +136,21 @@ Item {
                         }
                     }
 
-                    Label {
-                        font.family: MaterialIcons.family
-                        font.pixelSize: 16 * Devices.fontDensity
-                        text: LayoutMirroring.enabled? MaterialIcons.mdi_chevron_left : MaterialIcons.mdi_chevron_right
-                        opacity: 0.4
+                    Switch {
+                        id: delSwitch
+                        Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+                        checked: model.checked
+
+                        Connections {
+                            target: delSwitch
+                            onCheckedChanged: {
+                                model.checked = delSwitch.checked;
+                                dis.checked(model.id, listView.model.get(index), delSwitch.checked);
+                            }
+                        }
                     }
                 }
             }
-        }
-    }
-
-    Rectangle {
-        anchors.fill: tabBar
-        color: Colors.deepBackground
-    }
-
-    TabBar {
-        id: tabBar
-        anchors.top: headerItem.bottom
-        anchors.left: parent.left
-        anchors.right: parent.right
-        Material.accent: Material.primary
-
-        TabButton {
-            text: qsTr("Poems") + Translations.refresher
-            font.pixelSize: 9 * Devices.fontDensity
-        }
-        TabButton {
-            text: qsTr("Books") + Translations.refresher
-            font.pixelSize: 9 * Devices.fontDensity
-        }
-        TabButton {
-            text: qsTr("Poets") + Translations.refresher
-            font.pixelSize: 9 * Devices.fontDensity
         }
     }
 
@@ -179,7 +159,7 @@ Item {
         anchors.top: parent.top
         anchors.right: parent.right
         anchors.left: parent.left
-        text: qsTr("Most Recents") + Translations.refresher
+        text: qsTr("Top Poets") + Translations.refresher
         color: Colors.header
         shadow: Devices.isAndroid
 

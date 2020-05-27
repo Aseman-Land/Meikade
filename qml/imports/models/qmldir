@@ -10,3 +10,5 @@ PoemVersesModel 1.0 PoemVersesModel.qml
 OfflinePoetsModel 1.0 OfflinePoetsModel.qml
 ManageOfflinePoetsModel 1.0 ManageOfflinePoetsModel.qml
 OfflineCatsModel 1.0 OfflineCatsModel.qml
+TopPoetsModel 1.0 TopPoetsModel.qml
+TopPoetsHomeModel 1.0 TopPoetsHomeModel.qml

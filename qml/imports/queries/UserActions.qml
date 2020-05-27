@@ -24,7 +24,8 @@ UserBaseQuery {
         TypeNote = 2,
         TypePoetViewDate = 3,
         TypeCatViewDate = 4,
-        TypePoemViewDate = 5
+        TypePoemViewDate = 5,
+        TypeTopPoets = 6
     }
 
     function getItems(type, offset, limit) {

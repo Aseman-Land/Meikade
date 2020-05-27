@@ -564,6 +564,21 @@
     </message>
 </context>
 <context>
+    <name>TopPoetsForm.ui</name>
+    <message>
+        <source>There is no item here</source>
+        <translation>هیچ عنوانی وجود ندارد</translation>
+    </message>
+    <message>
+        <source>Top Poets</source>
+        <translation>علاقه‌مندی‌ها</translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation>خروج</translation>
+    </message>
+</context>
+<context>
     <name>WaitDialog.ui</name>
     <message>
         <source>Please Wait...</source>

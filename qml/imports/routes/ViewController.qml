@@ -50,6 +50,12 @@ ViewportController {
     }
 
     ViewportControllerRoute {
+        route: /\w+\:\/favorites/
+//        route: /\w+\:\/poets\/top/
+        source: "TopPoetsRoute.qml"
+    }
+
+    ViewportControllerRoute {
         route: /\w+\:\/recents/
         source: "MostReadedPoemsRoute.qml"
         viewportType: "float"

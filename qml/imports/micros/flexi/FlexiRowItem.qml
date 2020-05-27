@@ -92,6 +92,15 @@ Item {
                 onMoreRequest: rowItem.moreRequest()
             }
         }
+        Component {
+            id: favoritePoetsComponent
+            FlexiTopPoetsRow {
+                width: rowItem.width
+                listView: rowItem.listView
+                onClicked: rowItem.clicked(link, properties)
+                onMoreRequest: rowItem.moreRequest()
+            }
+        }
 
         current: {
             var t = type
@@ -114,6 +123,8 @@ Item {
                 return 5;
             case "offlines":
                 return 6;
+            case "favorites":
+                return 7;
             default:
                 return -1;
             }

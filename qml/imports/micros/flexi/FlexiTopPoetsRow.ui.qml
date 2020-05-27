@@ -6,9 +6,9 @@ import globals 1.0
 import models 1.0
 import "delegates"
 
-FlexiDynamicRow {
+FlexiGridRow {
 
-    list.model: OfflinePoetsModel {
+    list.model: TopPoetsHomeModel {
         id: recentsModel
     }
 }

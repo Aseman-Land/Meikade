@@ -358,6 +358,30 @@
         <source>Remove Bookmarks</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Poem Unfavorited</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Poem favorited</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Poem copied</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Verse Unfavorited</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Verse favorited</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Verse copied</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>PoetBioForm.ui</name>
@@ -516,6 +540,21 @@
     </message>
     <message>
         <source>Cancel</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>TopPoetsForm.ui</name>
+    <message>
+        <source>There is no item here</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Top Poets</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Close</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
