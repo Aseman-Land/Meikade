@@ -31,7 +31,7 @@ Rectangle {
         interval: 5
         repeat: false
         running: true
-        onTriggered: form.gridView.positionViewAtBeginning()
+        onTriggered: form.listView.positionViewAtBeginning()
     }
 
     NumberAnimation {
@@ -135,6 +135,9 @@ Rectangle {
                     }
                 }
 
+                Behavior on highlighItemRatio {
+                    NumberAnimation { duration: 500 }
+                }
                 Behavior on selectModeAnimRatio {
                     NumberAnimation { easing.type: Easing.OutCubic; duration: 200 }
                 }

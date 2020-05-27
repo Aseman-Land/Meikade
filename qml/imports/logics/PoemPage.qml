@@ -23,12 +23,15 @@ PoemView {
     property string poetImage
     property string verseText
 
+    property int verseId
+
     property alias id: dis.poetId
     property int poetId
     property alias poemId: poemModel.poemId
     property alias navigData: navigModel.data
 
     onPoemIdChanged: form.selectMode = false;
+    onVerseIdChanged: highlightTimer.restart()
 
     onChangeRequest: {
         url = link;
@@ -90,6 +93,41 @@ PoemView {
         return text;
     }
 
+    Timer {
+        id: highlightTimer
+        interval: 500
+        repeat: false
+        onTriggered: {
+            for (var i=0; i<poemModel.count; i++)
+                if (verseId == poemModel.get(i).vorder) {
+                    dis.form.highlightItemIndex = i;
+                    dis.form.highlighItemRatio = 1;
+
+                    highlighAnimation.from = dis.form.listView.contentY;
+                    dis.form.listView.positionViewAtIndex(i, ListView.Center);
+                    highlighAnimation.to = dis.form.listView.contentY;
+                    highlighAnimation.restart();
+
+                    highlightBackTimer.restart();
+                    break;
+                }
+        }
+    }
+
+    Timer {
+        id: highlightBackTimer
+        interval: 2000
+        repeat: false
+        onTriggered: dis.form.highlighItemRatio = 0
+    }
+
+    NumberAnimation {
+        id: highlighAnimation
+        duration: 300
+        target: dis.form.listView
+        property: "contentY"
+    }
+
     AsemanListModel {
         id: navigModel
         data: []
@@ -110,6 +148,7 @@ PoemView {
             map["image"] = poetImage;
             map["link"] = url;
             map["verseText"] = verseText;
+            map["verseId"] = 0;
 
             return Tools.variantToJson(map);
         }
@@ -122,7 +161,6 @@ PoemView {
         poetId: dis.id
         declined: 0
         synced: 0
-        extra: viewActionQuery.extra
     }
 
     Timer {
@@ -194,7 +232,7 @@ PoemView {
         }
         backBtn.onClicked: ViewportType.open = false
 
-        gridView.model: PoemVersesModel {
+        listView.model: PoemVersesModel {
             id: poemModel
             cachePath: AsemanGlobals.cachePath + "/poem-" + poemId + ".cache"
         }
@@ -217,6 +255,7 @@ PoemView {
                 case 0:
                     faveActionQuery.declined = (faveActionQuery.updatedAt && !faveActionQuery.declined? 1 : 0);
                     faveActionQuery.updatedAt = Tools.dateToSec(new Date);
+                    faveActionQuery.extra = viewActionQuery.extra
                     faveActionQuery.push();
                     form.selectMode = false;
                     GlobalSignals.snackbarRequest(faveActionQuery.declined? qsTr("Poem Unfavorited") : qsTr("Poem favorited"));
@@ -295,7 +334,7 @@ PoemView {
                 declined: 0
                 synced: 0
                 extra: {
-                    var map = Tools.jsonToVariant(faveActionQuery.extra)
+                    var map = Tools.jsonToVariant(viewActionQuery.extra)
                     map["verseId"] = verseId;
                     map["verseText"] = menuItem.verseText;
                     return Tools.variantToJson(map);

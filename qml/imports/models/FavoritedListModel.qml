@@ -25,17 +25,16 @@ AsemanListModel {
                     var item = list[i];
                     var extraJson = Tools.jsonToVariant(item.extra);
                     extraJson["type"] = "normal";
-                    extraJson["subtitle"] = qsTr("%1 items").arg(item.verses);
 
                     for (var j in extraJson)
                         if (j != "extra")
                             item[j] = extraJson[j];
 
-                    if (item.verseId == 0 && item.details && item.details.first_verse)
+                    if (item.verseId == 0 && item.details && item.details.first_verse && !item.verseText)
                         item["verseText"] = item.details.first_verse;
 
                     data[data.length] = item;
-                } catch (e) {}
+                } catch (e) {console.debug(e)}
             }
 
             dis.data = data;

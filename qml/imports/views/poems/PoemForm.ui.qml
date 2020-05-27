@@ -17,7 +17,7 @@ Item {
 
     property alias backBtn: backBtn
     property alias viewsLabel: viewsLabel
-    property alias gridView: gridView
+    property alias listView: listView
     property alias coverImage: coverImage
     property alias coverScene: coverScene
     property alias profileLabel: titleLabel
@@ -37,6 +37,9 @@ Item {
     property bool selectMode
     property real selectModeAnimRatio: selectMode? 1 : 0
     property variant selectedList: new Array
+
+    property int highlightItemIndex: -1
+    property real highlighItemRatio: 0
 
     readonly property real ratioAbs: Math.min(ratio, 1)
     readonly property real ratio: Math.max(
@@ -68,7 +71,7 @@ Item {
 
     PointMapListener {
         id: mapListener
-        source: gridView.headerItem
+        source: listView.headerItem
         dest: dis
 
         Connections {
@@ -94,11 +97,11 @@ Item {
     BusyIndicator {
         id: busyIndicator
         anchors.centerIn: parent
-        running: gridView.model && gridView.model.refreshing !== undefined && gridView.model.refreshing && gridView.count == 0
+        running: listView.model && listView.model.refreshing !== undefined && listView.model.refreshing && listView.count == 0
     }
 
     AsemanListView {
-        id: gridView
+        id: listView
         anchors.fill: parent
 
         onDraggingVerticallyChanged: if (draggingVertically) mapListener.lastY = mapListener.result.y
@@ -106,15 +109,22 @@ Item {
         model: 40
 
         header: Item {
-            width: gridView.width
+            width: listView.width
             height: coverImage.height + headerFooter.height + 10 * Devices.density
         }
 
         delegate: Item {
             id: del
-            width: gridView.width
+            width: listView.width
             height: verseLabel.height + 20 * Devices.density
             z: 100000 - index
+
+            Rectangle {
+                anchors.fill: itemDel
+                visible: highlightItemIndex == model.index
+                opacity: highlighItemRatio * 0.2
+                color: "#f00"
+            }
 
             ItemDelegate {
                 id: itemDel
@@ -191,11 +201,11 @@ Item {
 
     HScrollBar {
         anchors.right: parent.right
-        anchors.bottom: gridView.bottom
-        anchors.top: gridView.top
+        anchors.bottom: listView.bottom
+        anchors.top: listView.top
         anchors.topMargin: coverImage.height + headerFooter.height
         color: Colors.primary
-        scrollArea: gridView
+        scrollArea: listView
     }
 
     Item {
