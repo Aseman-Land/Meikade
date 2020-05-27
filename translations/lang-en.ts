@@ -167,6 +167,18 @@
         <source>Meikade 4 is online by default now. It means you can discover between tousands of poems freely without downloading to your storages. But it also available to download them to your storage and read them offline. Please select your poets that your want to read online. You can also setup it later on the every poet/book page.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Uninstalling</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Downloading</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Installing</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>IntroWelcomForm.ui</name>
@@ -180,6 +192,21 @@
     </message>
     <message>
         <source>So It&apos;s neccessary to take some times and do next steps to personalize your Meikade. Choose language and press &quot;Next&quot; if you ready.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ListsForm.ui</name>
+    <message>
+        <source>There is no item here</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Lists</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Close</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

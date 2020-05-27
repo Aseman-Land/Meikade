@@ -179,6 +179,18 @@
         <source>Meikade 4 is online by default now. It means you can discover between tousands of poems freely without downloading to your storages. But it also available to download them to your storage and read them offline. Please select your poets that your want to read online. You can also setup it later on the every poet/book page.</source>
         <translation>می‌کده ۴ قابلیت اینو داره که بدون اینکه اشعار شاعر یا کتابی رو دانلود کنی روی گوشیت و فضای گوشیت رو مصرف کنی، کاملا آنلاین به هزاران شعر دسترسی داشته باشی و بین اونا جستجو کنی و شعر بخونی. با این حال قابلیت می‌کده آفلاین همچنان فعال هستش و میتونی با کلیک روی هرکدوم از شعرا، اشعار اونو آفلاین بخونی. این کارو بعدا هم تو صفحه هر شاعر میتونی انجام بدی.</translation>
     </message>
+    <message>
+        <source>Uninstalling</source>
+        <translation>غیرفعال کردن</translation>
+    </message>
+    <message>
+        <source>Downloading</source>
+        <translation>درحال دانلود</translation>
+    </message>
+    <message>
+        <source>Installing</source>
+        <translation>درحال نصب</translation>
+    </message>
 </context>
 <context>
     <name>IntroWelcomForm.ui</name>
@@ -193,6 +205,21 @@
     <message>
         <source>So It&apos;s neccessary to take some times and do next steps to personalize your Meikade. Choose language and press &quot;Next&quot; if you ready.</source>
         <translation>به همین منظور چند مرحله هست که بهتره شما حتما انجامشون بدید تا بتونید می‌کده خودتون رو طبق نیاز خودتون سفارشی کنید. اگر آماده‌اید کلید &quot;بعدی&quot; را بزنید.</translation>
+    </message>
+</context>
+<context>
+    <name>ListsForm.ui</name>
+    <message>
+        <source>There is no item here</source>
+        <translation>هیچ عنوانی وجود ندارد</translation>
+    </message>
+    <message>
+        <source>Lists</source>
+        <translation>لیست‌ها</translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation>خروج</translation>
     </message>
 </context>
 <context>

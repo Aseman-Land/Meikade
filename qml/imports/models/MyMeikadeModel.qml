@@ -8,7 +8,7 @@ AsemanListModel {
         {
             "title": qsTr("Lists") + Translations.refresher,
             "icon": "mdi_heart",
-            "link": "popup:/test"
+            "link": "float:/lists"
         },
         {
             "title": qsTr("Notes") + Translations.refresher,
