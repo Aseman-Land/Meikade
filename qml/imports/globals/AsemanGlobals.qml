@@ -7,13 +7,14 @@ import globals 1.0
 
 AsemanObject {
     readonly property string cachePath: AsemanApp.homePath + "/cache"
-    property alias languageInited: _settings.languageInited
-    property alias language: _settings.language
 
     property alias settings: _settings
+    property alias languageInited: _settings.languageInited
+    property alias language: _settings.language
+    property alias introDone: _settings.introDone
+    property alias sendData: _settings.sendData
+
     property alias accessToken: _auth.accessToken
-    property alias introDone: _auth.introDone
-    property alias sendData: _auth.sendData
 
     Component.onCompleted: {
         Tools.mkDir(cachePath)
@@ -26,6 +27,8 @@ AsemanObject {
 
         property bool languageInited: false
         property string language: "fa"
+        property bool introDone
+        property bool sendData
     }
 
     Settings {
@@ -34,8 +37,6 @@ AsemanObject {
         source: AsemanApp.homePath + "/auth.ini"
 
         property string accessToken
-        property bool introDone
-        property bool sendData
     }
 }
 
