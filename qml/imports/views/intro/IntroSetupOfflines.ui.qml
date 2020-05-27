@@ -15,7 +15,7 @@ Page {
 
     property alias listView: listView
 
-    readonly property real headerHeight: 200 * Devices.density
+    readonly property real headerHeight: 300 * Devices.density
     readonly property real ratio: 1 - Math.min( Math.max(-headerListener.result.y / listView.headerItem.height, 0), 1)
 
     PointMapListener {
