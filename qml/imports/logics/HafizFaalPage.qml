@@ -14,7 +14,7 @@ HafizFaalView {
     selector.backScene: Viewport.viewport
     selector.delegate: PoemPage {
         anchors.fill: parent
-        form.menuBtn.onClicked: BackHandler.back()
+        form.backBtn.onClicked: BackHandler.back()
         poetId: 2
         poet: qsTr("Hafiz") + Translations.refresher
         title: qsTr("%1 Ghazal").arg(currentItem) + Translations.refresher
