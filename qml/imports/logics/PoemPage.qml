@@ -181,6 +181,8 @@ PoemView {
         navigationRepeater.model: navigModel
 
         menuBtn.onClicked: {
+            faveActionQuery.declined = 0;
+            faveActionQuery.updatedAt = 0;
             faveActionQuery.fetch();
             Viewport.viewport.append(globalMenuComponent, {}, "menu");
         }
