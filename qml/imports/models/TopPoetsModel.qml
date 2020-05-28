@@ -12,7 +12,7 @@ AsemanListModel {
     function append(poetId, properties) {
         actions.poetId = poetId;
         actions.declined = false;
-        actions.extra = Tools.variantToJson(properties);
+        actions.extra = Tools.variantToJson(properties, true);
         actions.updatedAt = Tools.dateToSec(new Date);
         actions.push();
         GlobalSignals.topPoetsRefreshed();

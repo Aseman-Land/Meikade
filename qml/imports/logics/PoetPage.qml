@@ -41,7 +41,7 @@ PoetView {
             map["image"] = image;
             map["link"] = url;
 
-            return Tools.variantToJson(map);
+            return Tools.variantToJson(map, true);
         }
     }
 

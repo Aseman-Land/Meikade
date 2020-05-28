@@ -155,7 +155,7 @@ PoemView {
             map["verseText"] = verseText;
             map["verseId"] = 0;
 
-            return Tools.variantToJson(map);
+            return Tools.variantToJson(map, true);
         }
     }
 
@@ -343,7 +343,7 @@ PoemView {
                     var map = Tools.jsonToVariant(viewActionQuery.extra)
                     map["verseId"] = verseId;
                     map["verseText"] = menuItem.verseText;
-                    return Tools.variantToJson(map);
+                    return Tools.variantToJson(map, true);
                 }
                 Component.onCompleted: fetch()
             }

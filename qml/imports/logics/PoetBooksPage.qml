@@ -44,7 +44,7 @@ PoetBooksView {
             map["image"] = poetImage;
             map["link"] = url;
 
-            return Tools.variantToJson(map);
+            return Tools.variantToJson(map, true);
         }
     }
 
