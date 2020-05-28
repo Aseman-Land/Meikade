@@ -1,6 +1,6 @@
 QT += quick qml quickcontrols2 webview sql asemancore network
 CONFIG += c++11
-VERSION = 3.9.56
+VERSION = 3.9.57
 
 include(android/android.pri)
 include(ios/ios.pri)
