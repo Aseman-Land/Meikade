@@ -48,6 +48,9 @@ AsemanListModel {
     SimplePoetsRequest {
         id: poetsReq
         onResponseChanged: {
+            if (!poetsReq.response)
+                return;
+
             var res = new Array;
             for (var j in poetsReq.response.result) {
                 try {
