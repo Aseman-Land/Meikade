@@ -9,6 +9,49 @@
     </message>
 </context>
 <context>
+    <name>AsemanTools</name>
+    <message>
+        <source>0</source>
+        <translation>۰</translation>
+    </message>
+    <message>
+        <source>1</source>
+        <translation>۱</translation>
+    </message>
+    <message>
+        <source>2</source>
+        <translation>۲</translation>
+    </message>
+    <message>
+        <source>3</source>
+        <translation>۳</translation>
+    </message>
+    <message>
+        <source>4</source>
+        <translation>۴</translation>
+    </message>
+    <message>
+        <source>5</source>
+        <translation>۵</translation>
+    </message>
+    <message>
+        <source>6</source>
+        <translation>۶</translation>
+    </message>
+    <message>
+        <source>7</source>
+        <translation>۷</translation>
+    </message>
+    <message>
+        <source>8</source>
+        <translation>۸</translation>
+    </message>
+    <message>
+        <source>9</source>
+        <translation>۹</translation>
+    </message>
+</context>
+<context>
     <name>Delegate</name>
     <message>
         <source>All Poets</source>

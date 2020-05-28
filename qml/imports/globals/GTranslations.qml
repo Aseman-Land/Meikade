@@ -39,8 +39,11 @@ AsemanObject {
 
     function translate(str) {
         str = Tools.stringReplace(str, "Books", qsTr("Books"), false);
+        str = Tools.stringReplace(str, "books", qsTr("Books"), false);
         str = Tools.stringReplace(str, "Poems", qsTr("Poems"), false);
+        str = Tools.stringReplace(str, "poems", qsTr("Poems"), false);
         str = Tools.stringReplace(str, "\\s+", " ", true);
+        str = Tools.trNums(str);
         return str;
     }
 
