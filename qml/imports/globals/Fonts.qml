@@ -9,6 +9,7 @@ AsemanObject
 {
     property alias ubuntuFont: ubuntu_font.name
     property alias iranSansFont: iran_sans.name
+    readonly property url resourcePath: "fonts"
 
     property string globalFont: {
         if (Translations.localeName === "fa")

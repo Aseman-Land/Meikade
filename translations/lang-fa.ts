@@ -9,6 +9,49 @@
     </message>
 </context>
 <context>
+    <name>AsemanTools</name>
+    <message>
+        <source>0</source>
+        <translation>۰</translation>
+    </message>
+    <message>
+        <source>1</source>
+        <translation>۱</translation>
+    </message>
+    <message>
+        <source>2</source>
+        <translation>۲</translation>
+    </message>
+    <message>
+        <source>3</source>
+        <translation>۳</translation>
+    </message>
+    <message>
+        <source>4</source>
+        <translation>۴</translation>
+    </message>
+    <message>
+        <source>5</source>
+        <translation>۵</translation>
+    </message>
+    <message>
+        <source>6</source>
+        <translation>۶</translation>
+    </message>
+    <message>
+        <source>7</source>
+        <translation>۷</translation>
+    </message>
+    <message>
+        <source>8</source>
+        <translation>۸</translation>
+    </message>
+    <message>
+        <source>9</source>
+        <translation>۹</translation>
+    </message>
+</context>
+<context>
     <name>Delegate</name>
     <message>
         <source>All Poets</source>
@@ -29,6 +72,84 @@
     <message>
         <source>Hafez Divination</source>
         <translation>فال حافظ</translation>
+    </message>
+</context>
+<context>
+    <name>StickerDialog</name>
+    <message>
+        <source>Share</source>
+        <translation>به اشتراک گذاری</translation>
+    </message>
+    <message>
+        <source>Save</source>
+        <translation>ذخیره</translation>
+    </message>
+    <message>
+        <source>Font</source>
+        <translation>قلم</translation>
+    </message>
+    <message>
+        <source>Select Image</source>
+        <translation>انتخاب تصویر</translation>
+    </message>
+    <message>
+        <source>Unset</source>
+        <translation>حذف</translation>
+    </message>
+</context>
+<context>
+    <name>StickerModel</name>
+    <message>
+        <source>Size</source>
+        <translation>اندازه</translation>
+    </message>
+    <message>
+        <source>Color</source>
+        <translation>رنگ</translation>
+    </message>
+    <message>
+        <source>Image</source>
+        <translation>عکس</translation>
+    </message>
+    <message>
+        <source>Sticker</source>
+        <translation>شکل</translation>
+    </message>
+    <message>
+        <source>Font</source>
+        <translation>قلم</translation>
+    </message>
+    <message>
+        <source>Logo</source>
+        <translation>نشانه</translation>
+    </message>
+    <message>
+        <source>1:1</source>
+        <translation>1:1</translation>
+    </message>
+    <message>
+        <source>4:3</source>
+        <translation>4:3</translation>
+    </message>
+    <message>
+        <source>3:4</source>
+        <translation>3:4</translation>
+    </message>
+    <message>
+        <source>16:9</source>
+        <translation>16:9</translation>
+    </message>
+    <message>
+        <source>16:6</source>
+        <translation>16:6</translation>
+    </message>
+    <message>
+        <source>Meikade Logo</source>
+        <translation>نشانه‌ی می‌کده</translation>
+    </message>
+    <message>
+        <source>Poet Name</source>
+        <translation>نام شاعر</translation>
     </message>
 </context>
 <context>

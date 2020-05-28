@@ -15,7 +15,7 @@ Page {
 
     property alias listView: listView
 
-    readonly property real headerHeight: 300 * Devices.density
+    readonly property real headerHeight: headColumn.height + 40 * Devices.density
     readonly property real ratio: 1 - Math.min( Math.max(-headerListener.result.y / listView.headerItem.height, 0), 1)
 
     PointMapListener {
@@ -116,6 +116,7 @@ Page {
                             font.pixelSize: 8 * Devices.fontDensity
                             opacity: 0.8
                             text: model.subtitle
+                            visible: text.length
                         }
                     }
 
@@ -182,6 +183,7 @@ Page {
             anchors.topMargin: Devices.statusBarHeight
 
             ColumnLayout {
+                id: headColumn
                 anchors.top: parent.top
                 anchors.left: parent.left
                 anchors.right: parent.right

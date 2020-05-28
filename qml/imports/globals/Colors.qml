@@ -6,7 +6,7 @@ import QtQuick.Controls.IOSStyle 2.0
 import AsemanQml.Base 2.0
 
 QtObject {
-    readonly property bool darkMode: androidStyle? Material.theme == Material.Dark : IOSStyle.theme == IOSStyle.Dark
+    readonly property bool darkMode: (background.r + background.g + background.b) / 3 < 0? true : false
 
     readonly property bool androidStyle: {
         try {
