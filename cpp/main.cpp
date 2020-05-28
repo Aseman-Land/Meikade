@@ -18,6 +18,9 @@
 
 #include "meikadeofflinemanager.h"
 
+#include "old/stickermodel.h"
+#include "old/stickerwriter.h"
+
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQuickStyle>
@@ -40,6 +43,8 @@ int main(int argc, char *argv[])
 
     qmlRegisterType<MeikadeOfflineItem>("Meikade", 1, 0, "MeikadeOfflineItem");
     qmlRegisterType<MeikadeOfflineItemGlobal>("Meikade", 1, 0, "MeikadeOfflineItemGlobal");
+    qmlRegisterType<StickerModel>("Meikade", 1, 0, "StickerModel");
+    qmlRegisterType<StickerWriter>("Meikade", 1, 0, "StickerWriter");
 
     QGuiApplication app(argc, argv);
 

@@ -18,12 +18,15 @@
 
 import QtQuick 2.0
 import QtGraphicalEffects 1.0
-import QtQuick.Controls 2.1 as QtControls
+import QtQuick.Controls 2.1
+import QtQuick.Controls.Material 2.0
+import QtQuick.Controls.IOSStyle 2.0
 import AsemanQml.Base 2.0
 import AsemanQml.Controls 2.0
+import AsemanQml.Viewport 2.0
+import AsemanQml.MaterialIcons 2.0
 import Meikade 1.0
-import AsemanQml.Awesome 2.0
-import "globals"
+import globals 1.0
 
 Rectangle {
     id: sticker_dialog
@@ -35,7 +38,7 @@ Rectangle {
     property real xratio: 2
 
     FontLoader{
-        source: Meikade.resourcePath + "/fonts/BYekan.ttf"
+        source: Fonts.resourcePath + "/BYekan.ttf"
         onStatusChanged: if(status == FontLoader.Ready) txt.font.family = name
     }
 
@@ -69,47 +72,37 @@ Rectangle {
         property string lastDest
     }
 
-    Rectangle {
+    Header {
         id: header
         width: parent.width
-        height: Devices.standardTitleBarHeight
-        anchors.top: parent.top
-        color: Meikade.nightTheme? "#333333" : "#eeeeee"
+        color: "#fff"
+        light: false
+        text: qsTr("Share")
 
-        Header {
-            anchors.fill: parent
-            titleFont.pixelSize: 10*globalFontDensity*Devices.fontDensity
-            light: Meikade.nightTheme
-            backButton: false
-            text: qsTr("Share")
-            backButtonText: ""
-            statusBar: false
-            shadow: !MeikadeGlobals.iosStyle
+        HeaderMenuButton {
+            ratio: 1
+            buttonColor: "#333"
+            onClicked: BackHandler.back()
         }
 
-        Row {
-            anchors.fill: parent
-            anchors.margins: 10*Devices.density
-            layoutDirection: View.layoutDirection==Qt.LeftToRight? Qt.RightToLeft : Qt.LeftToRight
-
-            QtControls.Button {
-                anchors.verticalCenter: parent.verticalCenter
-                width: height*2
-                text: qsTr("Save")
-                highlighted: true
-                onClicked: {
-                    indicator.running = true
-                    progress_rect.visible = true
-                    AsemanServices.meikade.pushAction( ("Image saved with image %1").arg(frame_image.source==""?"off":"on"), null )
-                    AsemanApp.requestPermissions(["android.permission.WRITE_EXTERNAL_STORAGE",
-                                                  "android.permission.READ_EXTERNAL_STORAGE"],
-                                                 function(res) {
-                        if(res["android.permission.WRITE_EXTERNAL_STORAGE"] == true &&
-                           res["android.permission.READ_EXTERNAL_STORAGE"] == true) {
-                            writer.save(Devices.picturesLocation + "/Meikade", Qt.size(1080, 1080/frame.ratio))
-                        }
-                    })
-                }
+        Button {
+            anchors.right: parent.right
+            anchors.rightMargin: 10 * Devices.density
+            anchors.verticalCenter: parent.verticalCenter
+            width: height*2
+            text: qsTr("Save")
+            highlighted: true
+            onClicked: {
+                indicator.running = true
+                progress_rect.visible = true
+                AsemanApp.requestPermissions(["android.permission.WRITE_EXTERNAL_STORAGE",
+                                              "android.permission.READ_EXTERNAL_STORAGE"],
+                                             function(res) {
+                    if(res["android.permission.WRITE_EXTERNAL_STORAGE"] == true &&
+                       res["android.permission.READ_EXTERNAL_STORAGE"] == true) {
+                        writer.save(Devices.picturesLocation + "/Meikade", Qt.size(1080, 1080/frame.ratio))
+                    }
+                })
             }
         }
     }
@@ -206,7 +199,7 @@ Rectangle {
                                 anchors.horizontalCenter: parent.horizontalCenter
                                 horizontalAlignment: Text.AlignHCenter
                                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                                font.pixelSize: fontSize*globalFontDensity*Devices.fontDensity * frame_mask.width/(320*Devices.density)
+                                font.pixelSize: fontSize*Devices.fontDensity * frame_mask.width/(320*Devices.density)
                                 color: images_frame.color
                                 lineHeight: 1.3
 
@@ -245,7 +238,7 @@ Rectangle {
                             width: squere_frame.width*0.25
                             height: width/2
                             sourceSize: Qt.size(width, height)
-                            source: "icons/logo.png"
+                            source: "stickers/general/logo.png"
                         }
                     }
                 }
@@ -271,7 +264,7 @@ Rectangle {
         width: parent.width
         height: 80*Devices.density + View.navigationBarHeight
         anchors.bottom: parent.bottom
-        color: Meikade.nightTheme? "#333333" : "#eeeeee"
+        color: Colors.background
 
         AsemanListView {
             id: listv
@@ -279,17 +272,11 @@ Rectangle {
             anchors.bottomMargin: View.navigationBarHeight
             model: smodel
             orientation: Qt.Horizontal
-            layoutDirection: View.layoutDirection
             clip: true
             delegate: Rectangle {
                 height: listv.height
                 width: height
-                color: {
-                    if(Meikade.nightTheme)
-                        marea.pressed? "#222222" : "#00000000"
-                    else
-                        marea.pressed? "#dddddd" : "#00000000"
-                }
+                color: marea.pressed? Colors.deepBackground : "#00000000"
 
                 Column {
                     anchors.centerIn: parent
@@ -312,8 +299,8 @@ Rectangle {
                         LevelAdjust {
                             anchors.fill: source
                             source: img
-                            minimumOutput: Meikade.nightTheme? "#00000000" : "#00ffffff"
-                            maximumOutput: Meikade.nightTheme? "#ffffffff" : "#ff000000"
+                            minimumOutput: Colors.darkMode? "#00000000" : "#00ffffff"
+                            maximumOutput: Colors.darkMode? "#ffffffff" : "#ff000000"
                         }
 
                         Rectangle {
@@ -334,7 +321,7 @@ Rectangle {
 
                     Text {
                         anchors.horizontalCenter: parent.horizontalCenter
-                        color: Meikade.nightTheme? "#ffffff" : "#222222"
+                        color: Colors.foreground
                         text: name
                         font.family: AsemanApp.globalFont.family
                         font.pixelSize: icon_frame.visible? 10*Devices.density : 16*Devices.density
@@ -349,7 +336,7 @@ Rectangle {
                         {
                         case StickerModel.Category:
                             if(stateCommand == StickerModel.OpenImage)
-                                file_viewer_component.createObject(sticker_dialog)
+                                Viewport.viewport.append(file_viewer_component, {}, "float");
                             else
                                 smodel.state = stateCommand
                             break
@@ -415,15 +402,17 @@ Rectangle {
         BusyIndicator {
             id: indicator
             anchors.centerIn: parent
+            Material.accent: "#fff"
+            IOSStyle.foreground: "#fff"
         }
 
         Text {
             id: tik
             anchors.centerIn: parent
-            font.pixelSize: 15*globalFontDensity*Devices.fontDensity
-            font.family: Awesome.family
+            font.pixelSize: 15*Devices.fontDensity
+            font.family: MaterialIcons.family
             color: "#e6e6e6"
-            text: Awesome.fa_check
+            text: MaterialIcons.mdi_check
             visible: !indicator.running
         }
 
@@ -450,75 +439,45 @@ Rectangle {
         id: file_viewer_component
         Item {
             id: fv_item
-            anchors.fill: sticker_dialog
-
-            property bool visibled: false
-
-            onVisibledChanged: {
-                if(visibled)
-                    BackHandler.pushHandler(fv_item, fv_item.back)
-                else
-                    BackHandler.removeHandler(fv_item)
-            }
-
-            Rectangle {
-                id: shadow_area
-                anchors.fill: parent
-                color: "#000000"
-                opacity: visibled? 0.5 : 0
-
-                Behavior on opacity {
-                    NumberAnimation {easing.type: Easing.OutCubic; duration: 300}
-                }
-            }
 
             Rectangle {
                 id: fv_area
                 width: parent.width
                 height: parent.height
-                x: visibled? 0 : -sticker_dialog.width
 
-                Behavior on x {
-                    NumberAnimation {easing.type: Easing.OutCubic; duration: 300}
-                }
-
-                Rectangle {
+                Header {
+                    id: header
                     width: parent.width
-                    height: Devices.standardTitleBarHeight
+                    color: "#fff"
+                    light: false
+                    text: qsTr("Select Image")
 
-                    Header {
-                        anchors.fill: parent
-                        titleFont.pixelSize: 10*globalFontDensity*Devices.fontDensity
-                        light: Meikade.nightTheme
-                        backButton: false
-                        text: qsTr("Select Image")
-                        backButtonText: ""
-                        statusBar: false
-                        shadow: !MeikadeGlobals.iosStyle
+                    HeaderMenuButton {
+                        ratio: 1
+                        buttonColor: "#333"
+                        onClicked: BackHandler.back()
                     }
 
-                    Row {
-                        anchors.fill: parent
-                        anchors.margins: 10*Devices.density
-                        layoutDirection: View.layoutDirection==Qt.LeftToRight? Qt.RightToLeft : Qt.LeftToRight
-
-                        QtControls.Button {
-                            anchors.verticalCenter: parent.verticalCenter
-                            width: height*2
-                            highlighted: true
-                            text: qsTr("Unset")
-                            onClicked: {
-                                frame_image.source = ""
-                                close()
-                            }
+                    Button {
+                        anchors.right: parent.right
+                        anchors.rightMargin: 10 * Devices.density
+                        anchors.verticalCenter: parent.verticalCenter
+                        width: height*2
+                        highlighted: true
+                        text: qsTr("Unset")
+                        onClicked: {
+                            frame_image.source = ""
+                            close()
                         }
                     }
                 }
 
                 FileSystemView {
                     id: fsview
-                    anchors.fill: parent
-                    anchors.topMargin: Devices.standardTitleBarHeight
+                    anchors.top: header.bottom
+                    anchors.left: parent.left
+                    anchors.right: parent.right
+                    anchors.bottom: parent.bottom
                     clip: true
                     root: AsemanApp.startPath
                     filters: ["*.jpg", "*.png"]
@@ -533,12 +492,6 @@ Rectangle {
                     anchors.right: fsview.right; anchors.top: fsview.top
                     color: "#333333"
                 }
-
-                TitleBarShadow {
-                    anchors.top: fsview.top
-                    width: parent.width
-                    visible: !MeikadeGlobals.iosStyle
-                }
             }
 
             function back() {
@@ -549,12 +502,7 @@ Rectangle {
             }
 
             function close() {
-                visibled = 0
-                Tools.jsDelayCall(300, function(){fv_item.destroy()})
-            }
-
-            Component.onCompleted: {
-                visibled = true
+                ViewportType.open = false;
             }
         }
     }

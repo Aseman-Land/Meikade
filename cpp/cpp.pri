@@ -2,9 +2,13 @@ QT += quick qml quickcontrols2 webview sql asemancore network
 CONFIG += c++11
 
 SOURCES += \
-    cpp/main.cpp \
-    cpp/meikadeofflinemanager.cpp
+    $$PWD/old/stickermodel.cpp \
+    $$PWD/old/stickerwriter.cpp \
+    $$PWD/main.cpp \
+    $$PWD/meikadeofflinemanager.cpp
 
 HEADERS += \
-    cpp/meikadeofflinemanager.h
+    $$PWD/old/stickermodel.h \
+    $$PWD/old/stickerwriter.h \
+    $$PWD/meikadeofflinemanager.h
 

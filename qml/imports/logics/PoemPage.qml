@@ -66,7 +66,7 @@ PoemView {
         userActionTimer.restart();
     }
 
-    function getText() {
+    function getText(cleanText) {
         var text = "";
         for (var i=0; i<poemModel.count; i++) {
             var e = poemModel.get(i);
@@ -81,16 +81,21 @@ PoemView {
                 text += "\n";
         }
 
-        for (var j=1; j<navigModel.count; j++) {
-            text += navigModel.get(j).title
-            if (j < navigModel.count-1)
-                text += ", ";
-            else
-                text += "\n";
+        if (!cleanText) {
+            for (var j=1; j<navigModel.count; j++) {
+                text += navigModel.get(j).title
+                if (j < navigModel.count-1)
+                    text += ", ";
+                else
+                    text += "\n";
+            }
+
+            text += poet;
+        } else {
+            text = Tools.stringReplace(text, "\n+", "\n", true);
         }
 
-        text += poet;
-        return text;
+        return text.trim();
     }
 
     Timer {
@@ -262,14 +267,15 @@ PoemView {
                     GlobalSignals.favoritesRefreshed();
                     break;
                 case 1:
-                    Devices.clipboard = dis.getText();
+                    Devices.clipboard = dis.getText(false);
                     form.selectMode = false;
                     GlobalSignals.snackbarRequest(qsTr("Poem copied"));
                     break;
                 case 2:
+                    Viewport.controller.trigger("float:/sticker/export", {"poet": poet, "text": dis.getText(true)})
                     break;
                 case 3:
-                    Devices.share(dis.title, dis.getText());
+                    Devices.share(dis.title, dis.getText(false));
                     form.selectMode = false;
                     break;
                 case 4:
@@ -342,7 +348,7 @@ PoemView {
                 Component.onCompleted: fetch()
             }
 
-            function getText() {
+            function getText(cleanText) {
                 var text = "";
                 for (var i=index; i<poemModel.count; i++) {
                     var e = poemModel.get(i);
@@ -353,16 +359,21 @@ PoemView {
                     }
                 }
 
-                for (var j=1; j<navigModel.count; j++) {
-                    text += navigModel.get(j).title
-                    if (j < navigModel.count-1)
-                        text += ", ";
-                    else
-                        text += "\n";
+                if (!cleanText) {
+                    for (var j=1; j<navigModel.count; j++) {
+                        text += navigModel.get(j).title
+                        if (j < navigModel.count-1)
+                            text += ", ";
+                        else
+                            text += "\n";
+                    }
+
+                    text += poet;
+                } else {
+                    text = Tools.stringReplace(text, "\n+", "\n", true);
                 }
 
-                text += poet;
-                return text;
+                return text.trim();
             }
 
             onItemClicked: {
@@ -375,13 +386,14 @@ PoemView {
                     GlobalSignals.favoritesRefreshed();
                     break;
                 case 1:
-                    Devices.clipboard = getText();
+                    Devices.clipboard = getText(false);
                     GlobalSignals.snackbarRequest(qsTr("Verse copied"));
                     break;
                 case 2:
+                    Viewport.controller.trigger("float:/sticker/export", {"poet": poet, "text": getText(true)})
                     break;
                 case 3:
-                    Devices.share(dis.title, getText());
+                    Devices.share(dis.title, getText(false));
                     break;
                 }
 

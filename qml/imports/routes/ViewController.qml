@@ -79,6 +79,12 @@ ViewportController {
     }
 
     ViewportControllerRoute {
+        route: /\w+\:\/sticker\/export/
+        source: "StickerRoute.qml"
+        viewportType: "float"
+    }
+
+    ViewportControllerRoute {
         route: /dialog:\/general\/error.*/
         source: "ErrorDialogRoute.qml"
     }

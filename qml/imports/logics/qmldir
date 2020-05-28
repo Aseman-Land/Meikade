@@ -15,3 +15,4 @@ TopPoetsPage 1.0 TopPoetsPage.qml
 HafizFaalPage 1.0 HafizFaalPage.qml
 IntroPage 1.0 IntroPage.qml
 ListsPage 1.0 ListsPage.qml
+StickerDialog 1.0 old/StickerDialog.qml
