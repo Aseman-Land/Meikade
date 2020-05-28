@@ -18,6 +18,7 @@ NetworkRequest {
         "CPU-Architecture": Devices.platformCpuArchitecture,
         "App-Name": AsemanApp.applicationName,
         "App-Version": AsemanApp.applicationVersion,
+        "Theme-Dark": Colors.darkMode? "true" : "false",
         "Content-Type": "application/json",
         "User-token": AsemanGlobals.accessToken,
         "Accept-Language": GTranslations.localeName
