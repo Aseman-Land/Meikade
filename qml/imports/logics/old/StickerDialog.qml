@@ -89,6 +89,7 @@ Rectangle {
             anchors.right: parent.right
             anchors.rightMargin: 10 * Devices.density
             anchors.verticalCenter: parent.verticalCenter
+            anchors.verticalCenterOffset: Devices.statusBarHeight/2
             width: height*2
             text: qsTr("Save")
             highlighted: true
@@ -336,7 +337,7 @@ Rectangle {
                         {
                         case StickerModel.Category:
                             if(stateCommand == StickerModel.OpenImage)
-                                Viewport.viewport.append(file_viewer_component, {}, "float");
+                                Viewport.viewport.append(file_viewer_component, {}, "page");
                             else
                                 smodel.state = stateCommand
                             break
@@ -462,6 +463,7 @@ Rectangle {
                         anchors.right: parent.right
                         anchors.rightMargin: 10 * Devices.density
                         anchors.verticalCenter: parent.verticalCenter
+                        anchors.verticalCenterOffset: Devices.statusBarHeight/2
                         width: height*2
                         highlighted: true
                         text: qsTr("Unset")
