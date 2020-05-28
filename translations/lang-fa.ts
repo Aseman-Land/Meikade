@@ -54,6 +54,21 @@
     </message>
 </context>
 <context>
+    <name>FavoritedListForm.ui</name>
+    <message>
+        <source>There is no item here</source>
+        <translation>هیچ عنوانی وجود ندارد</translation>
+    </message>
+    <message>
+        <source>Favoriteds</source>
+        <translation>علاقه‌مندی‌ها</translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation>خروج</translation>
+    </message>
+</context>
+<context>
     <name>FavoritedPoetsListModel</name>
     <message>
         <source>%1 items</source>

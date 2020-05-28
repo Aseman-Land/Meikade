@@ -20,6 +20,8 @@ Item {
     property alias closeBtn: closeBtn
     property alias backBtn: backBtn
 
+    property alias title: headerItem.text
+
     signal clicked(int index)
 
     Rectangle {

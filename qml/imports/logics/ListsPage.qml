@@ -31,7 +31,7 @@ Viewport {
             onClicked: {
                 var map = fplModel.get(index);
                 var poetId = map.poetId;
-                Viewport.viewport.append(favorited_component, {"poetId": poetId}, "page");
+                Viewport.viewport.append(favorited_component, {"poetId": poetId, "title": map.poet}, "page");
             }
 
             Connections {

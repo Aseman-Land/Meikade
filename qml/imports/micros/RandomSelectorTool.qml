@@ -1,5 +1,6 @@
 import QtQuick 2.12
 import AsemanQml.Base 2.0
+import AsemanQml.Viewport 2.0
 import QtQuick.Controls 2.3
 import globals 1.0
 
@@ -17,7 +18,6 @@ Rectangle {
     property int startId: 0
     readonly property int currentIndex: Math.min(Math.max(count * marea.mouseX, 0) / marea.width, randomList.count-1)
     readonly property int currentItem: currentIndex>=0 && currentIndex < randomList.count? randomList.at(currentIndex) : -1
-    property Item backScene: dis
     property Component delegate
 
     onCountChanged: refresh()
@@ -154,7 +154,7 @@ Rectangle {
         onReleased: {
             if (currentIndex >= 0 && currentIndex < randomList.count) {
                 var choice = randomList.at(currentIndex);
-                var obj = paperComponent.createObject(backScene)
+                var obj = Viewport.viewport.append(paperComponent, {}, "none")
                 obj.open = true
             }
 
@@ -173,7 +173,13 @@ Rectangle {
             property real ratio: open? 1 : 0
             property alias open: opanAction.active
 
-            onRatioChanged: if (ratio == 0) destroy()
+            onRatioChanged: {
+                if (ratio != 0)
+                    return;
+
+                destroy();
+                ViewportType.open = false;
+            }
 
             Component.onDestruction: dis.refresh()
             Component.onCompleted: {

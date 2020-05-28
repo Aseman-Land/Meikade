@@ -11,7 +11,6 @@ HafizFaalView {
 
     selector.count: 495
     selector.startId: 2130
-    selector.backScene: Viewport.viewport
     selector.delegate: PoemPage {
         anchors.fill: parent
         form.backBtn.onClicked: BackHandler.back()
