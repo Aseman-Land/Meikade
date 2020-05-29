@@ -14,6 +14,9 @@ SearchView {
 
     gridView {
         onLinkRequest: Viewport.controller.trigger(link, properties)
-        model: SearchModel {}
+        model: SearchVerseModel {
+            id: searchModel
+            query: home.keywordField.text
+        }
     }
 }

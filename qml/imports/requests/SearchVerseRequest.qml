@@ -11,8 +11,6 @@ BaseRequest {
     property int limit: 100
     property int offset: 0
 
-    onRefreshRequest: refresh()
-
     function refresh() {
         if (refreshing)
             return;
