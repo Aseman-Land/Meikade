@@ -38,31 +38,14 @@ AsemanListModel {
             try {
                 for (var i in response.result) {
                     var u = response.result[i];
+                    u["link"] = "page:/poet?id=" + u.poet.id + "&poemId=" + u.poem.id
 
-                    var item = {
-                        title: u.verses[0].text,
-                        subtitle: u.poet.name + " - " + u.poem.title,
-                        color: "",
-                        image: "",
-                        type: "fullback",
-                        link: "page:/poet?id=" + u.poet.id + "&poemId=" + u.poem.id ,
-                        heightRatio: 0.7
-                    };
-
-                    res[res.length] = item;
+                    res[res.length] = u;
                 }
             } catch(e) {
             }
 
-            lmodel.data = [
-                {
-                    type: "grid",
-                    section: "",
-                    color: "transparent",
-                    background: false,
-                    modelData: res
-                }
-            ]
+            lmodel.data = res;
         }
     }
 }

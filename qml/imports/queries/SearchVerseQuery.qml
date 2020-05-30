@@ -11,6 +11,6 @@ DataBaseQuery {
                    "INNER JOIN poem ON verse.poem_id = poem.id INNER JOIN cat ON poem.cat_id = cat.id " +
                    "LEFT OUTER JOIN verse AS verse2 ON verse2.poem_id = verse.poem_id AND " +
                    "((verse2.vorder % 2 == 0 AND verse2.vorder = verse.vorder + 1) OR " +
-                   "(verse2.vorder % 2 <> 0 AND verse2.vorder = verse.vorder -1)) WHERE verse.text LIKE :keyword", {"keyword": "%" + keyword + "%"}, callback);
+                   "(verse2.vorder % 2 <> 0 AND verse2.vorder = verse.vorder -1)) WHERE verse.text LIKE :keyword LIMIT 40", {"keyword": "%" + keyword + "%"}, callback);
     }
 }
