@@ -35,7 +35,7 @@ NetworkRequest {
     signal refreshRequest()
 
     onResponseChanged: if (_debug) console.debug(Tools.variantToJson(response))
-    onHeadersChanged: if (!refreshing) refreshRequest()
+    onHeadersChanged: if (!refreshing) refreshTimer.restart()
     onRefreshingStateChanged: {
         if (!allowGlobalBusy)
             return;
@@ -73,6 +73,7 @@ NetworkRequest {
     }
 
     Timer {
+        id: refreshTimer
         repeat: false
         running: true
         interval: 100
