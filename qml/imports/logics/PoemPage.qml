@@ -103,6 +103,11 @@ PoemView {
         interval: 500
         repeat: false
         onTriggered: {
+            if (poemModel.count == 0) {
+                restart(); // More delay to load model
+                return;
+            }
+
             for (var i=0; i<poemModel.count; i++)
                 if (verseId == poemModel.get(i).vorder) {
                     dis.form.highlightItemIndex = i;
