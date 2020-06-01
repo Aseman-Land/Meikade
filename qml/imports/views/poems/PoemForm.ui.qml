@@ -126,29 +126,6 @@ Item {
                 color: "#f00"
             }
 
-            ItemDelegate {
-                id: itemDel
-                height: model.position === PoemVersesModel.PositionRight || model.position === PoemVersesModel.PositionCenteredVerse1 ||
-                        model.position === PoemVersesModel.PositionLeft || model.position === PoemVersesModel.PositionCenteredVerse2? delFrame.height * 2 : delFrame.height
-                anchors.left: parent.left
-                anchors.right: parent.right
-                y: model.position === PoemVersesModel.PositionLeft || model.position === PoemVersesModel.PositionCenteredVerse2? delFrame.height - height : 0
-
-                Connections {
-                    target: itemDel
-                    onClicked: {
-                        if (dis.selectMode)
-                            checkbox.checked = !checkbox.checked;
-                        else
-                            dis.menuRequest(model.index, delFrame)
-                    }
-                    onPressAndHold: {
-                        dis.selectMode = true;
-                        checkbox.checked = true;
-                    }
-                }
-            }
-
             CheckBox {
                 id: checkbox
                 anchors.verticalCenter: parent.bottom
@@ -166,6 +143,34 @@ Item {
                 Connections {
                     target: dis
                     onSelectModeChanged: checkbox.checked = false
+                }
+            }
+
+            Rectangle {
+                anchors.fill: itemDel
+                visible: itemDel.pressed
+                opacity: 0.1
+                color: Colors.foreground
+            }
+
+            MouseArea {
+                id: itemDel
+                height: model.position === PoemVersesModel.PositionRight || model.position === PoemVersesModel.PositionCenteredVerse1 ||
+                        model.position === PoemVersesModel.PositionLeft || model.position === PoemVersesModel.PositionCenteredVerse2? delFrame.height * 2 : delFrame.height
+                anchors.left: parent.left
+                anchors.right: parent.right
+                y: model.position === PoemVersesModel.PositionLeft || model.position === PoemVersesModel.PositionCenteredVerse2? delFrame.height - height : 0
+                pressAndHoldInterval: 300
+
+                Connections {
+                    target: itemDel
+                    onPressAndHold: {
+                        dis.menuRequest(model.index, delFrame)
+                    }
+                    onClicked: {
+                        dis.selectMode = true;
+                        checkbox.checked = !checkbox.checked;
+                    }
                 }
             }
 
