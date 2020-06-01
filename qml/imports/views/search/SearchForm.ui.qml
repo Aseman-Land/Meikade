@@ -117,6 +117,8 @@ Item {
         anchors.right: parent.right
         anchors.left: parent.left
 
+        onDragStarted: keywordField.focus = false
+
         header: Item {
             width: listView.width
             height: headerColumn.height
@@ -247,13 +249,11 @@ Item {
         shadow: Devices.isAndroid
 
         Rectangle {
-            anchors.left: parent.left
-            anchors.right: parent.right
+            anchors.fill: parent
             anchors.rightMargin: 10 * Devices.density
             anchors.leftMargin: 10 * Devices.density
-            anchors.top: searchRow.top
-            anchors.bottom: searchRow.bottom
-            anchors.topMargin: 5 * Devices.density
+            anchors.bottomMargin: 8 * Devices.density
+            anchors.topMargin: 8 * Devices.density + Devices.statusBarHeight
             radius: Constants.radius
             color: "#000"
             opacity: 0.3

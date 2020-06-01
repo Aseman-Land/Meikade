@@ -12,7 +12,7 @@ AsemanListModel {
     function append(poetId, properties) {
         actions.poetId = poetId;
         actions.declined = false;
-        actions.extra = Tools.variantToJson(properties, true);
+        actions.extra = Tools.variantToJson(properties);
         actions.updatedAt = Tools.dateToSec(new Date);
         actions.push();
         GlobalSignals.topPoetsRefreshed();
@@ -45,26 +45,30 @@ AsemanListModel {
         Component.onCompleted: Tools.jsDelayCall(10, refresh)
     }
 
-    SimplePoetsRequest {
+    PoetsRequest {
         id: poetsReq
         onResponseChanged: {
-            if (!poetsReq.response)
-                return;
-
             var res = new Array;
-            for (var j in poetsReq.response.result) {
-                try {
-                    var d = poetsReq.response.result[j];
-                    d["title"] = d.name;
-                    d["subtitle"] = "";
-                    d["catId"] = 0;
-                    d["image"] = Constants.thumbsBaseUrl + d.id + ".png";
-                    d["checked"] = actionsHash.contains(d.id);
-                    res[res.length] = d;
-                } catch (e) {
+            try {
+                for (var i in poetsReq.response.result) {
+                    var modelData = poetsReq.response.result[i].modelData;
+                    for (var j in modelData) {
+                        var d = modelData[j];
+                        var caps = Tools.stringRegExp(d.link, "^\\w+\\:\\/poet\\?id\\=(\\d+)$");
+                        if (caps.length === 0)
+                            continue;
+
+                        d["id"] = caps[0][1];
+                        d["catId"] = 0;
+                        d["checked"] = actionsHash.contains(d.id);
+                        d["image"] = Constants.thumbsBaseUrl + caps[0][1] + ".png";
+                        res[res.length] = d;
+                    }
                 }
+
+                listModel.data = res;
+            } catch (e) {
             }
-            listModel.data = res;
         }
     }
 }

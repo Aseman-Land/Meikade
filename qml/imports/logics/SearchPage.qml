@@ -41,6 +41,11 @@ SearchView {
         model: searchModel.count || searchModel.refreshing? searchModel : searchOfflineModel
     }
 
+    Connections {
+        target: Viewport.viewport
+        onCountChanged: home.keywordField.focus = false;
+    }
+
     SearchVerseModel {
         id: searchModel
         query: home.keywordField.text

@@ -1,4 +1,4 @@
-VERSION = 3.9.57
+VERSION = 3.9.58
 DEFINES += MEIKADE_VERSION='\\"$${VERSION}\\"'
 
 include(configurations/configurations.pri)

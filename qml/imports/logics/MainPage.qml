@@ -8,12 +8,15 @@ import globals 1.0
 MainView {
     id: form
 
+   onCurrentIndexChanged: search.keywordField.focus = false;
+
     HomePage {
         parent: form.homePage
         anchors.fill: parent
     }
 
     SearchPage {
+        id: search
         parent: form.searchPage
         anchors.fill: parent
     }

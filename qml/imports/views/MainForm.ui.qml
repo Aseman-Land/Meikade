@@ -18,6 +18,8 @@ Page {
     property alias footerListView: footerListView
     property alias swipeView: swipeView
 
+    property alias currentIndex: swipeView.currentIndex
+
     Rectangle {
         id: swipeView
         anchors.top: parent.top
