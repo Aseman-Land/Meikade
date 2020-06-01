@@ -215,6 +215,11 @@ PoemView {
         }
 
         onMenuRequest: {
+            if (form.selectMode) {
+                openGlobalMenu();
+                return;
+            }
+
             var pos = Qt.point(object.width/2, 0);
             var parent = object;
             while (parent && parent != dis) {
@@ -230,16 +235,7 @@ PoemView {
 
         navigationRepeater.model: navigModel
 
-        menuBtn.onClicked: {
-            faveActionQuery.declined = 0;
-            faveActionQuery.updatedAt = 0;
-            faveActionQuery.fetch();
-
-            var map = poemModel.get(0);
-            dis.verseText = map.text
-
-            Viewport.viewport.append(globalMenuComponent, {}, "menu");
-        }
+        menuBtn.onClicked: openGlobalMenu()
         backBtn.onClicked: ViewportType.open = false
 
         listView.model: PoemVersesModel {
@@ -426,5 +422,16 @@ PoemView {
                 ]
             }
         }
+    }
+
+    function openGlobalMenu() {
+        faveActionQuery.declined = 0;
+        faveActionQuery.updatedAt = 0;
+        faveActionQuery.fetch();
+
+        var map = poemModel.get(0);
+        dis.verseText = map.text
+
+        Viewport.viewport.append(globalMenuComponent, {}, "menu");
     }
 }
