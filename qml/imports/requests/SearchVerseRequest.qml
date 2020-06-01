@@ -8,7 +8,7 @@ BaseRequest {
 
     property string query
     property int poet_id
-    property int limit: 100
+    property int limit: 200
     property int offset: 0
 
     function refresh() {

@@ -28,6 +28,6 @@ DataBaseQuery {
                    "LEFT OUTER JOIN verse AS verse2 ON verse2.poem_id = verse.poem_id AND " +
                    "((verse2.vorder % 2 == 0 AND verse2.vorder = verse.vorder + 1) OR " +
                    "(verse2.vorder % 2 <> 0 AND verse2.vorder = verse.vorder - 1)) " +
-                   "WHERE (:poetId = 0 OR verse.poet = :poetId) AND verse.text LIKE :keyword LIMIT 40", {"poetId": poet_id, "keyword": "%" + query + "%"}, callback);
+                   "WHERE (:poetId = 0 OR verse.poet = :poetId) AND verse.text LIKE :keyword LIMIT 200", {"poetId": poet_id, "keyword": "%" + query + "%"}, callback);
     }
 }

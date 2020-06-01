@@ -293,7 +293,7 @@ Item {
             anchors.right: parent.right
             anchors.rightMargin: 10 * Devices.density
             anchors.verticalCenter: parent.verticalCenter
-            anchors.verticalCenterOffset: 1 * Devices.density
+            anchors.verticalCenterOffset: 1 * Devices.density + Devices.statusBarHeight / 2
             width: 40 * Devices.density
             height: width
             radius: width / 2
