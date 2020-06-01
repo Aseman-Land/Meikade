@@ -15,12 +15,32 @@ Item {
     id: searchForm
     width: Constants.width
     height: Constants.height
+    clip: true
+
     property alias keywordField: keywordField
     property alias listView: listView
     property alias headerItem: headerItem
     property alias poetCombo: poetCombo
+    property alias poetsBusyIndicator: poetsBusyIndicator
+    property alias busyIndicator: busyIndicator
+    property alias resultHeaderLabel: resultHeaderLabel
 
     signal clicked(string link, int index)
+
+    Label {
+        anchors.centerIn: parent
+        anchors.verticalCenterOffset: 50 * Devices.density
+        font.family: MaterialIcons.family
+        font.pixelSize: 70 * Devices.fontDensity
+        text: MaterialIcons.mdi_magnify
+        opacity: 0.1
+        visible: !busyIndicator.running && listView.count == 0
+    }
+
+    BusyIndicator {
+        id: busyIndicator
+        anchors.centerIn: parent
+    }
 
     ColumnLayout {
         id: headerColumn
@@ -31,21 +51,62 @@ Item {
         anchors.margins: 4 * Devices.density
         spacing: 14 * Devices.density
 
-        ComboBox {
-            id: poetCombo
+        Rectangle {
             Layout.fillWidth: true
-            Layout.topMargin: 20 * Devices.density
-            font.pixelSize: 9 * Devices.fontDensity
-            displayText: qsTr("Search domain:") + " " + currentText + Translations.refresher
+            Layout.margins: 10 * Devices.density
+            Layout.preferredHeight: 40 * Devices.density
+            radius: Constants.radius
+            color: Colors.lightBackground
+
+            ComboBox {
+                id: poetCombo
+                anchors.fill: parent
+                displayText: ""
+                flat: true
+                opacity: 0
+            }
+
+            RowLayout {
+                anchors.right: parent.right
+                anchors.left: parent.left
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.margins: 20 * Devices.density
+                spacing: 10 * Devices.density
+
+                Label {
+                    horizontalAlignment: Text.AlignLeft
+                    verticalAlignment: Text.AlignVCenter
+                    font.pixelSize: 9 * Devices.fontDensity
+                    color: Colors.accent
+                    text: qsTr("Search domain:") + Translations.refresher
+                }
+
+                Label {
+                    horizontalAlignment: Text.AlignLeft
+                    verticalAlignment: Text.AlignVCenter
+                    font.pixelSize: 9 * Devices.fontDensity
+                    text: poetCombo.currentText
+                    Layout.fillWidth: true
+                }
+
+                BusyIndicator {
+                    id: poetsBusyIndicator
+                    scale: 0.6
+                    Layout.preferredHeight: 28 * Devices.density
+                    Layout.preferredWidth: 28 * Devices.density
+                    Material.accent: Colors.foreground
+                }
+            }
         }
 
         Label {
+            id: resultHeaderLabel
             Layout.fillWidth: true
-            Layout.bottomMargin: 4 * Devices.density
+            Layout.leftMargin: 10 * Devices.density
+            Layout.rightMargin: 10 * Devices.density
+            Layout.preferredHeight: 30 * Devices.density
             font.pixelSize: 10 * Devices.fontDensity
             horizontalAlignment: Text.AlignLeft
-            visible: listView.count > 0
-            text: qsTr("Online Results") + Translations.refresher
         }
     }
 
@@ -61,14 +122,20 @@ Item {
             height: headerColumn.height
         }
 
-        delegate: ItemDelegate {
+        delegate: Rectangle {
             id: item
             width: listView.width
             height: column.height + 60 * Devices.density
+            color: Colors.lightBackground
 
-            Connections {
-                target: item
-                onClicked: searchForm.clicked(model.link, model.index)
+            ItemDelegate {
+                id: itemDel
+                anchors.fill: parent
+
+                Connections {
+                    target: itemDel
+                    onClicked: searchForm.clicked(model.link, model.index)
+                }
             }
 
             ColumnLayout {
@@ -107,7 +174,6 @@ Item {
                 color: Qt.lighter(Colors.primary)
 
                 RowLayout {
-                    anchors.left: parent.left
                     anchors.right: parent.right
                     anchors.margins: 10 * Devices.density
                     anchors.verticalCenter: parent.verticalCenter
@@ -221,6 +287,24 @@ Item {
                 font.pixelSize: 9 * Devices.fontDensity
                 background: Item {}
             }
+        }
+
+        RoundButton {
+            anchors.right: parent.right
+            anchors.rightMargin: 10 * Devices.density
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.verticalCenterOffset: 1 * Devices.density
+            width: 40 * Devices.density
+            height: width
+            radius: width / 2
+            flat: true
+            font.family: MaterialIcons.family
+            font.pixelSize: 16 * Devices.density
+            text: MaterialIcons.mdi_close
+            IOSStyle.foreground: "#fff"
+            Material.foreground: "#fff"
+            visible: keywordField.text.length
+            onClicked: keywordField.text = ""
         }
     }
 }

@@ -31,6 +31,21 @@
     </message>
 </context>
 <context>
+    <name>FavoritedListForm.ui</name>
+    <message>
+        <source>There is no item here</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Favoriteds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>FavoritedPoetsListForm.ui</name>
     <message>
         <source>There is no item here</source>
@@ -552,19 +567,22 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Frequently Poets:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Poem</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Poet</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Search</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SearchPage</name>
+    <message>
+        <source>All Poets</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Online Results</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Offline Results</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -600,6 +618,84 @@
     </message>
     <message>
         <source>Cancel</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>StickerDialog</name>
+    <message>
+        <source>Share</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Save</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Font</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select Image</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unset</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>StickerModel</name>
+    <message>
+        <source>Size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Color</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Image</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sticker</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Font</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Logo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>1:1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>4:3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>3:4</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>16:9</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>16:6</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Meikade Logo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Poet Name</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

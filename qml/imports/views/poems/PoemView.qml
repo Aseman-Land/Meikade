@@ -105,8 +105,8 @@ Rectangle {
                 anchors.left: form.right
                 scale: form.scale
                 poet: poemView.poet
-                visible: neighborsIndex+1 < neighbors.length
-                unit: neighbors[neighborsIndex+1]
+                visible: neighbors? neighborsIndex+1 < neighbors.length : false
+                unit: neighbors? neighbors[neighborsIndex+1] : null
             }
 
             PoemViewNeighbor {
@@ -114,7 +114,7 @@ Rectangle {
                 scale: form.scale
                 poet: poemView.poet
                 visible: neighborsIndex > 0
-                unit: neighbors[neighborsIndex-1]
+                unit: neighbors? neighbors[neighborsIndex-1] : null
             }
 
             PoemForm {
@@ -127,7 +127,7 @@ Rectangle {
                 PoemViewNeighbor {
                     id: formCover
                     poet: poemView.poet
-                    unit: neighbors[neighborsIndex]
+                    unit: neighbors? neighbors[neighborsIndex] : null
                     visible: false;
 
                     Behavior on opacity {

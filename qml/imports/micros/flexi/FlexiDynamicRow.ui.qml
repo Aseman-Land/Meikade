@@ -27,7 +27,7 @@ FlexiAbstractRow {
             height: list.height
             title: model.title + (isVerse? " - " + model.details.first_verse : "")
             isVerse: model.details && model.details.first_verse? true : false
-            color: model.color.length? model.color : Colors.lightBackground
+            color: model.color && model.color.length? model.color : Colors.lightBackground
             subtitle: model.subtitle
             image: model.image
             type: model.type

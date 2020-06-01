@@ -8,7 +8,7 @@ import globals 1.0
 AsemanListModel {
     id: lmodel
 
-    readonly property bool refreshing: searchReq.refreshing || timer.running
+    readonly property bool refreshing: (searchReq.refreshing || timer.running) && timeoutTimer.running
     property alias query: searchReq.query
     property alias poetId: searchReq.poet_id
 
@@ -20,15 +20,17 @@ AsemanListModel {
         interval: 300
         repeat: false
         onTriggered: {
-            searchQuery.getItems(query, function(list){
-                console.debug(Tools.variantToJson(list));
-            })
+            timeoutTimer.restart();
+
+            lmodel.clear();
             searchReq.refresh();
         }
     }
 
-    SearchVerseQuery {
-        id: searchQuery
+    Timer {
+        id: timeoutTimer
+        interval: 5000
+        repeat: false
     }
 
     SearchVerseRequest {

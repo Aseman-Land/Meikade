@@ -16,3 +16,4 @@ ListsModel 1.0 ListsModel.qml
 FavoritedPoetsListModel 1.0 FavoritedPoetsListModel.qml
 FavoritedListModel 1.0 FavoritedListModel.qml
 SearchVerseModel 1.0 SearchVerseModel.qml
+SearchVerseOfflineModel 1.0 SearchVerseOfflineModel.qml
