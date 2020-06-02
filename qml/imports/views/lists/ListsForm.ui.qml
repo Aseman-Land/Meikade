@@ -26,10 +26,10 @@ Item {
         color: Colors.deepBackground
     }
 
-    BusyIndicator {
+    ReloadItem {
         id: busyIndicator
         anchors.centerIn: parent
-        running: listView.model && listView.model.refreshing !== undefined && listView.model.refreshing && listView.count == 0
+        viewItem: listView
     }
 
     Label {

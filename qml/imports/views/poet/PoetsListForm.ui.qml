@@ -27,10 +27,10 @@ Item {
         color: Colors.deepBackground
     }
 
-    BusyIndicator {
+    ReloadItem {
         id: busyIndicator
         anchors.centerIn: parent
-        running: gridView.model && gridView.model.refreshing !== undefined && gridView.model.refreshing && gridView.count == 0
+        viewItem: gridView
     }
 
     FlexiList {

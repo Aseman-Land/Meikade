@@ -624,6 +624,17 @@
     </message>
 </context>
 <context>
+    <name>ReloadItem</name>
+    <message>
+        <source>Connection Error</source>
+        <translation>خطا در اتصال به اینترنت</translation>
+    </message>
+    <message>
+        <source>Retry</source>
+        <translation>تلاش مجدد</translation>
+    </message>
+</context>
+<context>
     <name>SearchForm.ui</name>
     <message>
         <source>Search domain:</source>

@@ -15,10 +15,10 @@ Item {
     property alias list: list
     property alias headerItem: headerItem
 
-    BusyIndicator {
+    ReloadItem {
         id: busyIndicator
         anchors.centerIn: parent
-        running: list.model && list.model.refreshing !== undefined && list.model.refreshing && list.count == 0
+        viewItem: list
     }
 
     FlexiList {

@@ -561,6 +561,17 @@
     </message>
 </context>
 <context>
+    <name>ReloadItem</name>
+    <message>
+        <source>Connection Error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Retry</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>SearchForm.ui</name>
     <message>
         <source>Search domain:</source>

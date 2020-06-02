@@ -82,6 +82,10 @@ AsemanListModel {
         repeat: false
     }
 
+    function refresh() {
+        catsReq.refresh();
+    }
+
     function putResult(result) {
         moreBlockTimer.restart()
 
