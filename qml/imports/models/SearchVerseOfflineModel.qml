@@ -15,6 +15,11 @@ AsemanListModel {
     onQueryChanged: timer.restart()
     onPoetIdChanged: timer.restart()
 
+    function more() {
+        searchQuery.offset = count
+        searchQuery.refresh()
+    }
+
     Timer {
         id: timer
         interval: 300
@@ -33,7 +38,9 @@ AsemanListModel {
         function refresh() {
             refreshing = true;
 
-            lmodel.clear();
+            if (offset == 0)
+                lmodel.clear();
+
             searchQuery.getItems(function(list){
                 refreshing = false;
 
@@ -92,7 +99,7 @@ AsemanListModel {
                     };
                 });
 
-                lmodel.data = res;
+                res.forEach(lmodel.append);
             });
         }
     }

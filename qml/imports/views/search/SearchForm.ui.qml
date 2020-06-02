@@ -26,6 +26,7 @@ Item {
     property alias resultHeaderLabel: resultHeaderLabel
 
     signal clicked(string link, int index)
+    signal moreRequest()
 
     Label {
         anchors.centerIn: parent
@@ -129,6 +130,15 @@ Item {
             width: listView.width
             height: column.height + 60 * Devices.density
             color: Colors.lightBackground
+
+            Component.onCompleted: inited = true;
+
+            property bool inited: false
+
+            Connections {
+                target: item
+                onInitedChanged: if (model.index == listView.count - 10) moreRequest();
+            }
 
             ItemDelegate {
                 id: itemDel

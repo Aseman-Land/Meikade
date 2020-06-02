@@ -35,6 +35,8 @@ SearchView {
         Viewport.controller.trigger(link, properties);
     }
 
+    onMoreRequest: listView.model.more();
+
     busyIndicator.running: searchModel.refreshing
 
     listView {
