@@ -16,7 +16,6 @@ Item {
     height: Constants.height
     property alias menuBtn: menuBtn
     property alias viewsLabel: viewsLabel
-    property alias bioText: bioText
     property alias bioTitle: bioTitle
     property alias bioBtn: bioBtn
     property alias gridView: gridView
@@ -88,13 +87,13 @@ Item {
         anchors.bottom: parent.bottom
         height: Math.max(Math.min(poetBioBack.height,
                                   mapListener.result.y + poetBioBack.height),
-                         Devices.standardTitleBarHeight)
+                         0)
 
         Rectangle {
             id: poetBioBack
             anchors.left: parent.left
             anchors.right: parent.right
-            height: 100 * Devices.density
+            height: bioColumn.height
             color: Colors.lightBackground
         }
 
@@ -104,7 +103,8 @@ Item {
             hoverEnabled: false
         }
 
-        ColumnLayout {
+        RowLayout {
+            id: bioColumn
             anchors.left: parent.left
             anchors.right: parent.right
             anchors.top: parent.top
@@ -123,11 +123,10 @@ Item {
             }
 
             Label {
-                id: bioText
-                Layout.fillWidth: true
-                font.pixelSize: 9 * Devices.fontDensity
-                wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                text: "Wissen Sie, wie Sie Pensionsrisiken minimieren sowie Pensionsverpflichtungen und #Volatilität reduzieren? Melden Sie sich jetzt an zum Webinar am 12. Mai! "
+                font.family: MaterialIcons.family
+                font.pixelSize: 16 * Devices.fontDensity
+                text: MaterialIcons.mdi_chevron_up
+                opacity: 0.4
             }
         }
 

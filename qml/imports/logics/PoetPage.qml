@@ -67,14 +67,7 @@ PoetView {
         }
     }
 
-    bioBtn.onClicked: Viewport.controller.trigger("float:/poet/bio", {"link": properties.details.wikipedia, "text": bioText.text})
-    bioText.text: {
-        try {
-            return properties.details.description;
-        } catch (e) {
-            return "";
-        }
-    }
+    bioBtn.onClicked: Viewport.controller.trigger("float:/poet/bio", {"link": loader.wikipedia, "text": loader.description})
 
     progressBar.running: loader.offlineInstaller.uninstalling || loader.offlineInstaller.installing || loader.offlineInstaller.downloading
     progressBar.progress: loader.offlineInstaller.size? (loader.offlineInstaller.downloadedBytes / loader.offlineInstaller.size) * 0.9 + 0.1 : 0.1
@@ -86,7 +79,7 @@ PoetView {
 
     gridView {
         onLinkRequest: {
-            var navigData = navigModel.data;
+            var navigData = dis.navigData;
             navigData[navigData.length] = Tools.toVariantMap(properties);
 
             var prp = Tools.toVariantMap(properties);
