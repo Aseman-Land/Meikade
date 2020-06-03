@@ -17,7 +17,7 @@ DataBaseQuery {
                            return;
                        }
 
-                       queryAsync("SELECT cat.id, cat.text AS title, cat.poet_id FROM cat WHERE poet_id = :poet_id",
+                       queryAsync("SELECT cat.id, cat.text AS title, cat.poet_id FROM cat WHERE poet_id = :poet_id AND parent_id = 0",
                                   {"poet_id": poet_id}, function(cats) {
                                       var r = res[0];
                                       r["categories"] = cats;
