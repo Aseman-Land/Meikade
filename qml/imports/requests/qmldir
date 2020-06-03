@@ -5,6 +5,7 @@ LoginRequest 1.0 LoginRequest.qml
 RegisterRequest 1.0 RegisterRequest.qml
 UserRequest 1.0 UserRequest.qml
 PoetsRequest 1.0 PoetsRequest.qml
+PoetRequest 1.0 PoetRequest.qml
 CatsRequest 1.0 CatsRequest.qml
 PoemVersesRequest 1.0 PoemVersesRequest.qml
 SimplePoetsRequest 1.0 SimplePoetsRequest.qml

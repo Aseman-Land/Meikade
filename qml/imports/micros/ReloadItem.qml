@@ -20,12 +20,12 @@ Item {
     DelayPropertySwitch {
         id: delayProperty
         switchProperty: viewItem.model && viewItem.model.refreshing !== undefined && !viewItem.model.refreshing && viewItem.count == 0? true : false
-        delay: 1000
+        delay: 500
     }
 
     ColumnLayout {
         id: layout
-        visible: delayProperty.switchProperty && delayProperty.targetProperty
+        visible: delayProperty.switchProperty && delayProperty.targetProperty? true : false
 
         Label {
             Layout.alignment: Qt.AlignHCenter

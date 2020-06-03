@@ -37,6 +37,7 @@ FlexiAbstractRow {
             Connections {
                 target: itemDel
                 onClicked: homeRow.clicked(itemDel.link, list.model.get(index))
+//                onClicked: homeRow.clicked(itemDel.link, {})
                 onMoreRequest: homeRow.moreRequest()
             }
         }

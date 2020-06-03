@@ -19,12 +19,23 @@ PoetView {
 
     property string url
     property variant properties
-    property alias id: catsModel.poetId
+    property alias id: loader.poetId
     property alias navigData: navigModel.data
+
+    property alias title: loader.name
+    property alias image: loader.image
+
+    profileLabel.text: loader.name
+    avatar.source: loader.image
 
     AsemanListModel {
         id: navigModel
         data: [properties]
+    }
+
+    PoetLoaderModel {
+        id: loader
+        booksModel.cachePath: AsemanGlobals.cachePath + "/poet-" + poetId + ".cache"
     }
 
     Query.UserActions {
@@ -36,10 +47,10 @@ PoetView {
         synced: 0
         updatedAt: Tools.dateToSec(new Date)
         extra: {
-            var map = Tools.toVariantMap(properties);
-            map["title"] = title;
-            map["image"] = image;
-            map["link"] = url;
+            var map = {
+                title: title,
+                image: image
+            }
 
             return Tools.variantToJson(map, true);
         }
@@ -56,8 +67,6 @@ PoetView {
         }
     }
 
-    Component.onCompleted: avatar.source = Constants.thumbsBaseUrl + id + ".png"
-
     bioBtn.onClicked: Viewport.controller.trigger("float:/poet/bio", {"link": properties.details.wikipedia, "text": bioText.text})
     bioText.text: {
         try {
@@ -67,10 +76,10 @@ PoetView {
         }
     }
 
-    progressBar.running: catsModel.offlineInstaller.uninstalling || catsModel.offlineInstaller.installing || catsModel.offlineInstaller.downloading
-    progressBar.progress: catsModel.offlineInstaller.size? (catsModel.offlineInstaller.downloadedBytes / catsModel.offlineInstaller.size) * 0.9 + 0.1 : 0.1
-    progressBar.nonProgress: !catsModel.offlineInstaller.uninstalling
-    progressBar.label: catsModel.offlineInstaller.installing? qsTr("Installing") : (catsModel.offlineInstaller.uninstalling? qsTr("Uninstalling") : qsTr("Downloading"))
+    progressBar.running: loader.offlineInstaller.uninstalling || loader.offlineInstaller.installing || loader.offlineInstaller.downloading
+    progressBar.progress: loader.offlineInstaller.size? (loader.offlineInstaller.downloadedBytes / loader.offlineInstaller.size) * 0.9 + 0.1 : 0.1
+    progressBar.nonProgress: !loader.offlineInstaller.uninstalling
+    progressBar.label: loader.offlineInstaller.installing? qsTr("Installing") : (loader.offlineInstaller.uninstalling? qsTr("Uninstalling") : qsTr("Downloading"))
 
     settingsBtn.onClicked: Viewport.viewport.append(menuComponent, {}, "menu")
     menuBtn.onClicked: ViewportType.open = false
@@ -87,10 +96,8 @@ PoetView {
 
             Viewport.controller.trigger(link, prp);
         }
-        model: CatsModel {
-            id: catsModel
-            cachePath: AsemanGlobals.cachePath + "/poet-" + poetId + ".cache"
-        }
+
+        model: loader.booksModel
     }
 
     Component {
@@ -104,7 +111,7 @@ PoetView {
             onItemClicked: {
                 switch (index) {
                 case 0:
-                    catsModel.offlineInstaller.install( !catsModel.offlineInstaller.installed );
+                    loader.offlineInstaller.install( !loader.offlineInstaller.installed );
                     break;
                 }
 
@@ -114,7 +121,7 @@ PoetView {
             model: AsemanListModel {
                 data: [
                     {
-                        title: catsModel.offlineInstaller.installed? qsTr("Disable Offline") : qsTr("Enable offline"),
+                        title: loader.offlineInstaller.installed? qsTr("Disable Offline") : qsTr("Enable offline"),
                         icon: "mdi_download"
                     },
                     {

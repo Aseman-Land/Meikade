@@ -12,8 +12,9 @@ AsemanObject {
     }
 
     function init() {
-        update(0)
-        general.fetch()
+        update(0);
+        general.fetch();
+        console.debug(general.value)
         switch (general.value * 1) {
         case 0:
             update(1);

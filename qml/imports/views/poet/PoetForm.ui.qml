@@ -27,8 +27,6 @@ Item {
     property alias settingsBtn: settingsBtn
     property alias progressBar: progressBar
 
-    property alias title: profileLabel.text
-    property alias image: avatar.source
     property int viewCount
 
     readonly property real ratioAbs: Math.min(ratio, 1)

@@ -14,15 +14,17 @@ AsemanObject {
 
     function init() {}
 
-    function load(poemId) {
-        var req = poemReq_component.createObject(dis);
+    function load(poemId, page) {
+        var allowGlobalBusy = (page == undefined? true : false)
+
+        var req = poemReq_component.createObject(dis, {"allowGlobalBusy": allowGlobalBusy});
         req.poem_id = poemId;
         req.responseChanged.connect(function(){
             try {
                 var r = req.response.result;
                 var catId = r.poem.category_id;
 
-                var catReq = catReq_component.createObject(dis);
+                var catReq = catReq_component.createObject(dis, {"allowGlobalBusy": allowGlobalBusy});
                 catReq.poet_id = r.poet.id;
                 catReq.parent_id = catId;
 
@@ -42,7 +44,15 @@ AsemanObject {
                         var unit = convertUnitToMap(r);
                         unit["neighbors"] = neighbors;
 
-                        ViewController.trigger(unit.link, unit);
+                        if (page == undefined)
+                            ViewController.trigger(unit.link, unit);
+                        else {
+                            for (var i in unit) {
+                                try {
+                                    page[i] = unit[i];
+                                } catch (e3) {}
+                            }
+                        }
 
                         req.destroy();
                         catReq.destroy();
@@ -97,14 +107,10 @@ AsemanObject {
 
     Component {
         id: poemReq_component
-        PoemRequest {
-            allowGlobalBusy: true
-        }
+        PoemRequest {}
     }
     Component {
         id: catReq_component
-        CatsRequest {
-            allowGlobalBusy: true
-        }
+        CatsRequest {}
     }
 }
