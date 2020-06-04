@@ -110,22 +110,22 @@ Item {
                     }
                 }
             }
-
-            Button {
-                id: logoutBtn
-                anchors.right: parent.right
-                anchors.left: parent.left
-                anchors.bottom: parent.bottom
-                anchors.bottomMargin: 10 * Devices.density
-                anchors.margins: 20 * Devices.density
-                highlighted: true
-                font.pixelSize: 9 * Devices.fontDensity
-                text: qsTr("Logout") + Translations.refresher
-                IOSStyle.accent: "#700"
-                Material.accent: "#700"
-                visible: AsemanGlobals.accessToken.length
-            }
         }
+    }
+
+    Button {
+        id: logoutBtn
+        anchors.right: flick.right
+        anchors.left: flick.left
+        anchors.bottom: flick.bottom
+        anchors.bottomMargin: 10 * Devices.density
+        anchors.margins: 20 * Devices.density
+        highlighted: true
+        font.pixelSize: 9 * Devices.fontDensity
+        text: qsTr("Logout") + Translations.refresher
+        IOSStyle.accent: "#700"
+        Material.accent: "#700"
+        visible: AsemanGlobals.accessToken.length
     }
 
     Header {
