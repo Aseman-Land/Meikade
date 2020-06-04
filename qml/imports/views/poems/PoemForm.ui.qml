@@ -129,7 +129,7 @@ Item {
 
             CheckBox {
                 id: checkbox
-                anchors.verticalCenter: parent.bottom
+                anchors.verticalCenter: model.position === PoemVersesModel.PositionRight? parent.bottom : parent.verticalCenter
                 anchors.left: delFrame.right
                 checked: selectedList[model.index] && selectedList.length? selectedList[model.index] : false
                 visible: selectMode && model.position !== PoemVersesModel.PositionLeft && model.position !== PoemVersesModel.PositionCenteredVerse2
