@@ -18,17 +18,18 @@ PoemView {
     ViewportType.gestureWidth: 150 * Devices.density
 
     property string url
-    property variant properties
 
-    property string poetImage
     property string verseText
-
     property int verseId
 
     property alias id: dis.poetId
-    property int poetId
-    property alias poemId: poemModel.poemId
-    property alias navigData: navigModel.data
+    property alias poetId: loader.poetId
+
+    property alias poemId: loader.poemId
+    property alias title: loader.title
+    property alias poet: loader.poet
+    property alias subtitle: loader.poet
+    property alias image: loader.poetImage
 
     onPoemIdChanged: form.selectMode = false;
     onVerseIdChanged: highlightTimer.restart()
@@ -36,40 +37,24 @@ PoemView {
     onChangeRequest: {
         url = link;
         dis.title = title;
-        properties.title = title;
-        properties.subtitle = subtitle;
 
         var poemIds = Tools.stringRegExp(link, "poemId\\=(\\d+)", false);
         var ids = Tools.stringRegExp(link, "id\\=(\\d+)", false);
 
         var poemId = poemIds[0][1];
 
-        poemModel.cachePath = "";
-        poemModel.clear();
-        poemModel.cachePath = AsemanGlobals.cachePath + "/poem-" + poemId + ".cache";
+        loader.poemId = poemId;
 
         dis.poemId = poemIds[0][1];
         dis.id = ids[0][1];
-
-        var navigData = Tools.toVariantList(dis.navigData)
-        navigData[navigData.length-1].title = title;
-        navigData[navigData.length-1].link = link;
-
-        dis.navigData = navigData;
-
-        properties.navigData = navigData;
-        properties.neighbors = Tools.toVariantList(neighbors);
-        properties.neighborsIndex = neighborsIndex;
-
-        properties = Tools.toVariantMap(properties)
 
         userActionTimer.restart();
     }
 
     function getText(cleanText) {
         var text = "";
-        for (var i=0; i<poemModel.count; i++) {
-            var e = poemModel.get(i);
+        for (var i=0; i<loader.versesModel.count; i++) {
+            var e = loader.versesModel.get(i);
             if (form.selectMode && form.selectedList.length) {
                 if (((e.position !== PoemVersesModel.PositionLeft && e.position !== PoemVersesModel.PositionCenteredVerse2) || !form.selectedList[i-1]) &&
                     ((e.position !== PoemVersesModel.PositionRight && e.position !== PoemVersesModel.PositionCenteredVerse1) || !form.selectedList[i]))
@@ -82,9 +67,9 @@ PoemView {
         }
 
         if (!cleanText) {
-            for (var j=1; j<navigModel.count; j++) {
-                text += navigModel.get(j).title
-                if (j < navigModel.count-1)
+            for (var j=1; j<loader.categoriesModel.count; j++) {
+                text += loader.categoriesModel.get(j).title
+                if (j < loader.categoriesModel.count-1)
                     text += ", ";
                 else
                     text += "\n";
@@ -98,18 +83,24 @@ PoemView {
         return text.trim();
     }
 
+    PoemLoaderModel {
+        id: loader
+        poemId: dis.poemId
+        versesModel.cachePath: AsemanGlobals.cachePath + "/poem-" + poemId + ".cache"
+    }
+
     Timer {
         id: highlightTimer
         interval: 500
         repeat: false
         onTriggered: {
-            if (poemModel.count == 0) {
+            if (loader.versesModel.count == 0) {
                 restart(); // More delay to load model
                 return;
             }
 
-            for (var i=0; i<poemModel.count; i++)
-                if (verseId == poemModel.get(i).vorder) {
+            for (var i=0; i<loader.versesModel.count; i++)
+                if (verseId == loader.versesModel.get(i).vorder) {
                     dis.form.highlightItemIndex = i;
                     dis.form.highlighItemRatio = 1;
 
@@ -138,11 +129,6 @@ PoemView {
         property: "contentY"
     }
 
-    AsemanListModel {
-        id: navigModel
-        data: []
-    }
-
     Query.UserActions {
         id: viewActionQuery
         type: Query.UserActions.TypePoemViewDate
@@ -152,13 +138,13 @@ PoemView {
         synced: 0
         updatedAt: Tools.dateToSec(new Date)
         extra: {
-            var map = Tools.toVariantMap(properties);
-            map["title"] = title;
-            map["subtitle"] = poet;
-            map["image"] = poetImage;
-            map["link"] = url;
-            map["verseText"] = verseText;
-            map["verseId"] = 0;
+            var map = {
+                title: dis.title,
+                subtitle: dis.poet,
+                image: dis.image,
+                link: dis.url,
+                verseText: dis.verseText
+            };
 
             return Tools.variantToJson(map, true);
         }
@@ -185,12 +171,13 @@ PoemView {
     }
 
     form {
-        onNavigationClicked: {
-            if (index + 1 == navigModel.count)
-                return;
+        viewCount: loader.views
+        poet: loader.poet
+        title: loader.title
 
-            var properties = navigModel.get(index);
-            properties["navigData"] = navigModel.data.slice(0, index+1);
+        onNavigationClicked: {
+            var properties = loader.categoriesModel.get(index);
+            properties["navigData"] = loader.categoriesModel.data.slice(0, index+1);
 
             Viewport.controller.trigger(link, properties);
         }
@@ -228,20 +215,17 @@ PoemView {
                 parent = parent.parent;
             }
 
-            var map = poemModel.get(index);
+            var map = loader.versesModel.get(index);
 
             Viewport.viewport.append(menuComponent, {"pointPad": pos, "index": index, "map": map, "verseText": map.text, "verseId": map.vorder}, "menu");
         }
 
-        navigationRepeater.model: navigModel
+        navigationRepeater.model: loader.categoriesModel
 
         menuBtn.onClicked: openGlobalMenu()
         backBtn.onClicked: ViewportType.open = false
 
-        listView.model: PoemVersesModel {
-            id: poemModel
-            cachePath: AsemanGlobals.cachePath + "/poem-" + poemId + ".cache"
-        }
+        listView.model: loader.versesModel
     }
 
     Component {
@@ -340,19 +324,13 @@ PoemView {
                 poetId: dis.id
                 declined: 0
                 synced: 0
-                extra: {
-                    var map = Tools.jsonToVariant(viewActionQuery.extra)
-                    map["verseId"] = verseId;
-                    map["verseText"] = menuItem.verseText;
-                    return Tools.variantToJson(map, true);
-                }
                 Component.onCompleted: fetch()
             }
 
             function getText(cleanText) {
                 var text = "";
-                for (var i=index; i<poemModel.count; i++) {
-                    var e = poemModel.get(i);
+                for (var i=index; i<loader.versesModel.count; i++) {
+                    var e = loader.versesModel.get(i);
                     text += e.text + "\n";
                     if (e.position === PoemVersesModel.PositionLeft || e.position === PoemVersesModel.PositionCenteredVerse2 || e.position === PoemVersesModel.PositionSingle) {
                         text += "\n";
@@ -361,9 +339,9 @@ PoemView {
                 }
 
                 if (!cleanText) {
-                    for (var j=1; j<navigModel.count; j++) {
-                        text += navigModel.get(j).title
-                        if (j < navigModel.count-1)
+                    for (var j=1; j<loader.categoriesModel.count; j++) {
+                        text += loader.categoriesModel.get(j).title
+                        if (j < loader.categoriesModel.count-1)
                             text += ", ";
                         else
                             text += "\n";
@@ -380,9 +358,21 @@ PoemView {
             onItemClicked: {
                 switch (index) {
                 case 0:
+                    var map = {
+                        title: dis.title,
+                        subtitle: dis.poet,
+                        image: dis.image,
+                        link: dis.url,
+                        verseText: dis.verseText,
+                        verseId: verseId,
+                        verseText: menuItem.verseText
+                    };
+
                     verseFaveActionQuery.declined = (verseFaveActionQuery.updatedAt && !verseFaveActionQuery.declined? 1 : 0);
                     verseFaveActionQuery.updatedAt = Tools.dateToSec(new Date);
+                    verseFaveActionQuery.extra = Tools.variantToJson(map, true);
                     verseFaveActionQuery.push();
+
                     GlobalSignals.snackbarRequest(verseFaveActionQuery.declined? qsTr("Verse Unfavorited") : qsTr("Verse favorited"));
                     GlobalSignals.favoritesRefreshed();
                     break;
@@ -429,7 +419,7 @@ PoemView {
         faveActionQuery.updatedAt = 0;
         faveActionQuery.fetch();
 
-        var map = poemModel.get(0);
+        var map = loader.versesModel.get(0);
         dis.verseText = map.text
 
         Viewport.viewport.append(globalMenuComponent, {}, "menu");

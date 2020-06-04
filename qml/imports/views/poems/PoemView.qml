@@ -18,8 +18,6 @@ Rectangle {
     property alias form: form
 
     property alias viewCount: form.viewCount
-    property alias poet: form.poet
-    property alias title: form.title
     property alias cover: form.cover
 
     property variant neighbors
@@ -104,7 +102,7 @@ Rectangle {
             PoemViewNeighbor {
                 anchors.left: form.right
                 scale: form.scale
-                poet: poemView.poet
+                poet: form.poet
                 visible: neighbors? neighborsIndex+1 < neighbors.length : false
                 unit: neighbors? neighbors[neighborsIndex+1] : null
             }
@@ -112,7 +110,7 @@ Rectangle {
             PoemViewNeighbor {
                 anchors.right: form.left
                 scale: form.scale
-                poet: poemView.poet
+                poet: form.poet
                 visible: neighborsIndex > 0
                 unit: neighbors? neighbors[neighborsIndex-1] : null
             }
@@ -126,7 +124,7 @@ Rectangle {
 
                 PoemViewNeighbor {
                     id: formCover
-                    poet: poemView.poet
+                    poet: form.poet
                     unit: neighbors? neighbors[neighborsIndex] : null
                     visible: false;
 

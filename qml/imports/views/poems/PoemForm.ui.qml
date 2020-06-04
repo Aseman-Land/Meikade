@@ -5,6 +5,7 @@ import QtQuick.Controls 2.3
 import QtQuick.Layouts 1.3
 import AsemanQml.Controls 2.0
 import QtQuick.Controls.Material 2.0
+import QtQuick.Controls.IOSStyle 2.0
 import globals 1.0
 import micros 1.0
 import models 1.0
@@ -287,7 +288,7 @@ Item {
                 font.pixelSize: 8 * Devices.fontDensity
                 color: Material.background
                 text: viewCount + " " + qsTr("Views")
-                visible: viewCount && !downloadingProgressIndicator.running
+                visible: viewCount
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                 maximumLineCount: 1
                 elide: Text.ElideRight
@@ -358,6 +359,16 @@ Item {
                         height: parent.height
                         anchors.left: parent.left
                         spacing: 4 * Devices.density
+
+                        BusyIndicator {
+                            scale: 0.6
+                            Layout.preferredHeight: 28 * Devices.density
+                            Layout.preferredWidth: 28 * Devices.density
+                            Material.accent: "#fff"
+                            IOSStyle.foreground: "#fff"
+                            running: navigationRepeater.model && navigationRepeater.model.refreshing !== undefined && navigationRepeater.model.refreshing && navigationRepeater.count == 0? true : false
+                            visible: running
+                        }
 
                         Repeater {
                             id: navigationRepeater

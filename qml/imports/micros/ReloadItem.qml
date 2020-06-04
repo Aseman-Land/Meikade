@@ -14,7 +14,7 @@ Item {
     BusyIndicator {
         id: busyIndicator
         anchors.centerIn: parent
-        running: viewItem.model && viewItem.model.refreshing !== undefined && viewItem.model.refreshing && viewItem.count == 0
+        running: viewItem.model && viewItem.model.refreshing !== undefined && viewItem.model.refreshing && viewItem.count == 0? true : false
     }
 
     DelayPropertySwitch {

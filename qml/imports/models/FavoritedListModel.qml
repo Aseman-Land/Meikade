@@ -24,6 +24,9 @@ AsemanListModel {
                 try {
                     var item = list[i];
                     var extraJson = Tools.jsonToVariant(item.extra);
+
+                    if (!extraJson.poet) extraJson["poet"] = extraJson.subtitle
+
                     extraJson["type"] = "normal";
 
                     for (var j in extraJson)
