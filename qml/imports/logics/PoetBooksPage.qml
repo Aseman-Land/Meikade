@@ -134,6 +134,10 @@ PoetBooksView {
                 case 0:
                     catsModel.offlineInstaller.install( !catsModel.offlineInstaller.installed );
                     break;
+
+                case 2:
+                    Viewport.controller.trigger("float:/search?poetId=" + dis.id)
+                    break;
                 }
 
                 ViewportType.open = false;

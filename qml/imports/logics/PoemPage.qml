@@ -175,6 +175,8 @@ PoemView {
         poet: loader.poet
         title: loader.title
 
+        searchBtn.onClicked: Viewport.controller.trigger("float:/search?poetId=" + poetId)
+
         onNavigationClicked: {
             var properties = loader.categoriesModel.get(index);
             properties["navigData"] = loader.categoriesModel.data.slice(0, index+1);

@@ -8,7 +8,16 @@ import globals 1.0
 MainView {
     id: form
 
-   onCurrentIndexChanged: search.keywordField.focus = false;
+    onCurrentIndexChanged: search.keywordField.focus = false;
+
+    readonly property bool firstPage: currentIndex == 0
+
+    onFirstPageChanged: {
+        if (firstPage)
+            BackHandler.removeHandler(form)
+        else
+            BackHandler.pushHandler(form, function(){ currentIndex = 0 })
+    }
 
     HomePage {
         parent: form.homePage

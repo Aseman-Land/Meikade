@@ -9,6 +9,8 @@ import globals 1.0
 SearchView {
     id: home
 
+    property int poetId
+
     resultHeaderLabel.text: {
         if (listView.count == 0)
             return "";
@@ -24,7 +26,15 @@ SearchView {
     poetCombo.model: PoetsCleanModel {
         id: poetsModel
         cachePath: AsemanGlobals.cachePath + "/search-poets.cache"
-        onCountChanged: if (count && get(0).id != 0) insert(0, {"title": qsTr("All Poets"), "id": 0})
+        onCountChanged: {
+            if (count && get(0).id != 0)
+                insert(0, {"title": qsTr("All Poets"), "id": 0})
+            if (poetId) {
+                for (var i=0; i<count; i++)
+                    if (get(i).id == poetId)
+                        poetCombo.currentIndex = i;
+            }
+        }
     }
 
     onClicked: {

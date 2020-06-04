@@ -11,11 +11,12 @@ import globals 1.0
 import micros 1.0
 import models 1.0
 
-Item {
+Rectangle {
     id: searchForm
     width: Constants.width
     height: Constants.height
     clip: true
+    color: Colors.background
 
     property alias keywordField: keywordField
     property alias listView: listView
@@ -24,6 +25,7 @@ Item {
     property alias poetsBusyIndicator: poetsBusyIndicator
     property alias busyIndicator: busyIndicator
     property alias resultHeaderLabel: resultHeaderLabel
+    property alias closeBtn: closeBtn
 
     signal clicked(string link, int index)
     signal moreRequest()
@@ -260,7 +262,7 @@ Item {
 
         Rectangle {
             anchors.fill: parent
-            anchors.rightMargin: 10 * Devices.density
+            anchors.rightMargin: (closeBtn.visible? closeBtn.width : 10 * Devices.density)
             anchors.leftMargin: 10 * Devices.density
             anchors.bottomMargin: 8 * Devices.density
             anchors.topMargin: 8 * Devices.density + Devices.statusBarHeight
@@ -274,9 +276,9 @@ Item {
             anchors.left: parent.left
             anchors.right: parent.right
             anchors.verticalCenter: parent.verticalCenter
-            anchors.verticalCenterOffset: Devices.statusBarHeight/2
+            anchors.verticalCenterOffset: Devices.statusBarHeight/2 - 2 * Devices.density
             spacing: 10 * Devices.density
-            anchors.rightMargin: 20 * Devices.density
+            anchors.rightMargin: (closeBtn.visible? closeBtn.width : 20 * Devices.density)
             anchors.leftMargin: 20 * Devices.density
 
             Label {
@@ -300,10 +302,26 @@ Item {
         }
 
         RoundButton {
-            anchors.right: parent.right
-            anchors.rightMargin: 10 * Devices.density
+            id: closeBtn
             anchors.verticalCenter: parent.verticalCenter
-            anchors.verticalCenterOffset: 1 * Devices.density + Devices.statusBarHeight / 2
+            anchors.verticalCenterOffset: Devices.statusBarHeight/2
+            anchors.right: parent.right
+            text: qsTr("Close") + Translations.refresher
+            highlighted: true
+            radius: 6 * Devices.density
+            font.pixelSize: 8 * Devices.fontDensity
+            IOSStyle.accent: Qt.darker(Colors.primary, 1.3)
+            Material.accent: Qt.darker(Colors.primary, 1.3)
+            visible: false
+            Material.theme: Material.Dark
+            Material.elevation: 0
+        }
+
+        RoundButton {
+            anchors.right: searchRow.right
+            anchors.rightMargin: -10 * Devices.density
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.verticalCenterOffset: -1 * Devices.density + Devices.statusBarHeight / 2
             width: 40 * Devices.density
             height: width
             radius: width / 2

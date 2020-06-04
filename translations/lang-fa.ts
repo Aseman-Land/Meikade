@@ -660,6 +660,10 @@
         <source>Online Results</source>
         <translation type="vanished">نتایج آنلاین</translation>
     </message>
+    <message>
+        <source>Close</source>
+        <translation>خروج</translation>
+    </message>
 </context>
 <context>
     <name>SearchPage</name>

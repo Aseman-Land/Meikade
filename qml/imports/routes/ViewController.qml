@@ -35,6 +35,11 @@ ViewportController {
     }
 
     ViewportControllerRoute {
+        route: /\w+\:\/search(?:\?.+)?/
+        source: "SearchRoute.qml"
+    }
+
+    ViewportControllerRoute {
         route: /\w+\:\/poet\/bio(?:\?.+)?/
         source: "PoetBioRoute.qml"
     }

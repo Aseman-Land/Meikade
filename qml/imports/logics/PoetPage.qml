@@ -49,7 +49,8 @@ PoetView {
         extra: {
             var map = {
                 title: title,
-                image: image
+                image: image,
+                link: url
             }
 
             return Tools.variantToJson(map, true);
@@ -105,6 +106,9 @@ PoetView {
                 switch (index) {
                 case 0:
                     loader.offlineInstaller.install( !loader.offlineInstaller.installed );
+                    break;
+                case 2:
+                    Viewport.controller.trigger("float:/search?poetId=" + dis.id)
                     break;
                 }
 
