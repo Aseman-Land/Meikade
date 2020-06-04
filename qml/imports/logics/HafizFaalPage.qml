@@ -16,16 +16,9 @@ HafizFaalView {
         form.backBtn.onClicked: BackHandler.back()
         poetId: 2
         poet: qsTr("Hafiz") + Translations.refresher
-        title: qsTr("%1 Ghazal").arg(currentItem) + Translations.refresher
-        poetImage: "https://meikade.com/offlines/thumbs/2.png"
+        title: qsTr("%1 Ghazal").arg(Tools.translateNumbers(currentItem)) + Translations.refresher
+        image: "https://meikade.com/offlines/thumbs/2.png"
         url: "page:/poet?id=2&poemId=" + poemId
-        properties: {
-            "color": "",
-            "poet": poet,
-            "heightRatio": 0.6,
-            "type": "fullback",
-            "moreHint": false,
-        }
 
         property int currentItem
     }

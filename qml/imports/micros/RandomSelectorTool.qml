@@ -81,7 +81,7 @@ Rectangle {
                     anchors.centerIn: parent
                     font.pixelSize: 16 * Devices.fontDensity
                     color: "#333"
-                    text: currentItem >= 0? currentItem : ""
+                    text: currentItem >= 0? Tools.translateNumbers(currentItem) : ""
                 }
             }
         }

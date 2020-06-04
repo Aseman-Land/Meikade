@@ -8,25 +8,29 @@ AsemanListModel {
     id: listModel
     property alias refreshing: poetsReq.refreshing
 
-    SimplePoetsRequest {
+    PoetsRequest {
         id: poetsReq
         onResponseChanged: {
-            if (!poetsReq.response)
-                return;
-
             var res = new Array;
-            for (var j in poetsReq.response.result) {
-                try {
-                    var d = poetsReq.response.result[j];
-                    d["title"] = d.name;
-                    d["subtitle"] = "";
-                    d["catId"] = 0;
-                    d["image"] = Constants.thumbsBaseUrl + d.id + ".png";
-                    res[res.length] = d;
-                } catch (e) {
+            try {
+                for (var i in poetsReq.response.result) {
+                    var modelData = poetsReq.response.result[i].modelData;
+                    for (var j in modelData) {
+                        var d = modelData[j];
+                        var caps = Tools.stringRegExp(d.link, "^\\w+\\:\\/poet\\?id\\=(\\d+)$");
+                        if (caps.length === 0)
+                            continue;
+
+                        d["id"] = caps[0][1];
+                        d["catId"] = 0;
+                        d["image"] = Constants.thumbsBaseUrl + caps[0][1] + ".png";
+                        res[res.length] = d;
+                    }
                 }
+
+                listModel.data = res;
+            } catch (e) {
             }
-            listModel.data = res;
         }
     }
 }

@@ -110,6 +110,7 @@ PoetBooksView {
             prp["neighbors"] = neighbors;
             prp["neighborsIndex"] = neighborsIndex;
             prp["poet"] = poet;
+            prp["subtitle"] = poet;
             prp["poetImage"] = poetImage;
 
             Viewport.controller.trigger(link, prp);

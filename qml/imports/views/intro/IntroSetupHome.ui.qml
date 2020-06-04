@@ -25,6 +25,12 @@ Page {
         dest: dis
     }
 
+    ReloadItem {
+        id: busyIndicator
+        anchors.centerIn: parent
+        viewItem: listView
+    }
+
     AsemanListView {
         id: listView
         anchors.fill: parent
