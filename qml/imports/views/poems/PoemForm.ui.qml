@@ -28,7 +28,7 @@ Item {
     property alias navigationRepeater: navigationRepeater
     property alias statusBarRect: statusBarRect
 
-    property int viewCount
+    property string viewCount
     property alias poet: titleLabel.text
     property alias title: subtitleLabel.text
     property alias cover: coverImage.source
@@ -288,7 +288,7 @@ Item {
                 font.pixelSize: 8 * Devices.fontDensity
                 color: Material.background
                 text: viewCount + " " + qsTr("Views")
-                visible: viewCount
+                visible: viewCount.length
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                 maximumLineCount: 1
                 elide: Text.ElideRight

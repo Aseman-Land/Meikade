@@ -16,6 +16,9 @@ AsemanWindow {
     height: 820
     visible: true
 
+    IOSStyle.theme: AsemanGlobals.iosTheme
+    Material.theme: AsemanGlobals.androidTheme
+
     LayoutMirroring.enabled: GTranslations.textDirection === Qt.RightToLeft
     LayoutMirroring.childrenInherit: true
 

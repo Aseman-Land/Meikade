@@ -3,6 +3,7 @@ pragma Singleton
 import QtQuick 2.7
 import AsemanQml.Base 2.0
 import QtQuick.Controls.Material 2.1
+import QtQuick.Controls.IOSStyle 2.0
 import globals 1.0
 
 AsemanObject {
@@ -13,6 +14,8 @@ AsemanObject {
     property alias language: _settings.language
     property alias introDone: _settings.introDone
     property alias sendData: _settings.sendData
+    property alias iosTheme: _settings.iosTheme
+    property alias androidTheme: _settings.androidTheme
 
     property alias accessToken: _auth.accessToken
 
@@ -29,6 +32,9 @@ AsemanObject {
         property string language: "fa"
         property bool introDone
         property bool sendData
+
+        property int iosTheme: IOSStyle.System
+        property int androidTheme: Material.Light
     }
 
     Settings {

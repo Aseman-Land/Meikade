@@ -20,6 +20,11 @@ ViewportController {
     }
 
     ViewportControllerRoute {
+        route: /\w+\:\/settings/
+        source: "SettingsRoute.qml"
+    }
+
+    ViewportControllerRoute {
         route: /\w+\:\/poet(?:\?.*catId\=.+)?/
         source: "PoetBooksRoute.qml"
     }

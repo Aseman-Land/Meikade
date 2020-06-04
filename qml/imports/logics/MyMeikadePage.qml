@@ -12,6 +12,7 @@ MyMeikadeView {
 
     gridView.model: MyMeikadeModel {}
 
+    settingsBtn.onClicked: Viewport.controller.trigger("page:/settings")
     onClicked: Viewport.controller.trigger(link, {})
 
     profileLabel.text: MyUserRequest._fullname

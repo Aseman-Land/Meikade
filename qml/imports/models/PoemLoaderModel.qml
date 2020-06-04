@@ -52,7 +52,10 @@ AsemanObject {
                 });
 
                 versesModel.clear();
-                r.verses.forEach(versesModel.append);
+                r.verses.forEach(function(v){
+                    v.text = Tools.stringReplace(v.text, "\\s+", " ", true);
+                    versesModel.append(v);
+                });
             } catch (e) {
             }
         }

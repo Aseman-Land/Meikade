@@ -171,7 +171,7 @@ PoemView {
     }
 
     form {
-        viewCount: loader.views
+        viewCount: loader.views? Tools.translateNumbers(loader.views) : ""
         poet: loader.poet
         title: loader.title
 

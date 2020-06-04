@@ -681,6 +681,37 @@
     </message>
 </context>
 <context>
+    <name>SettingsForm.ui</name>
+    <message>
+        <source>Language</source>
+        <translation>زبان</translation>
+    </message>
+    <message>
+        <source>Theme</source>
+        <translation>تم</translation>
+    </message>
+    <message>
+        <source>Dark</source>
+        <translation>تیره</translation>
+    </message>
+    <message>
+        <source>Light</source>
+        <translation>روشن</translation>
+    </message>
+    <message>
+        <source>Auto</source>
+        <translation>خودکار</translation>
+    </message>
+    <message>
+        <source>Logout</source>
+        <translation>خروج</translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation>تنظیمات</translation>
+    </message>
+</context>
+<context>
     <name>SignupForm.ui</name>
     <message>
         <source>Type your phone number for us. We will send you a code for logging into the Meikade.</source>
