@@ -21,11 +21,16 @@
 #include "old/stickermodel.h"
 #include "old/stickerwriter.h"
 
+#ifdef Q_OS_MACX
+#include "../objective-c/macmanager.h"
+#endif
+
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQuickStyle>
 #include <QQmlContext>
 #include <QtWebView>
+#include <QTimer>
 
 int main(int argc, char *argv[])
 {
@@ -61,6 +66,12 @@ int main(int argc, char *argv[])
             QCoreApplication::exit(-1);
     }, Qt::QueuedConnection);
     engine.load(url);
+
+#ifdef Q_OS_MACX
+    QTimer::singleShot(100, [](){
+        MacManager::removeTitlebarFromWindow();
+    });
+#endif
 
     return app.exec();
 }
