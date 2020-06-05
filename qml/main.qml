@@ -20,6 +20,7 @@ AsemanApplication {
         MyUserRequest.init();
 
         if (Devices.isDesktop) Devices.fontScale = 1.1;
+        if (Devices.isMacX) Devices.fontScale = 1.2;
         if (Devices.isAndroid) Devices.fontScale = 0.92;
         if (Devices.isIOS) Devices.fontScale = 1.1;
     }

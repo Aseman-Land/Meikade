@@ -18,10 +18,12 @@ AsemanObject {
         case 0:
             update(1);
             update(2);
+            update(3);
             break;
 
         case 1:
             update(2);
+            update(3);
             break;
 
         case 2:

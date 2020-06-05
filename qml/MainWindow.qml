@@ -12,8 +12,8 @@ import micros 1.0
 
 AsemanWindow {
     id: mainWin
-    width: 500
-    height: 820
+    width: 400
+    height: 700
     visible: true
 
     IOSStyle.theme: AsemanGlobals.iosTheme
