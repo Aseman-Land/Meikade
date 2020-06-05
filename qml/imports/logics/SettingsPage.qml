@@ -11,6 +11,27 @@ SettingsView {
     id: dis
     menuBtn.onClicked: ViewportType.open = false
 
+    logoutBtn.onClicked: {
+        var properties = {
+            "title": qsTr("Logout"),
+            "body": qsTr("Do you realy want to logout?"),
+            "buttons": [qsTr("Cancel"), qsTr("Logout")]
+        };
+
+        var obj = Viewport.controller.trigger("dialog:/general/error", properties);
+        obj.itemClicked.connect(function(idx) {
+            switch (idx) {
+            case 0: // Cancel
+                break;
+
+            case 1: // Logout
+                AsemanGlobals.accessToken = "";
+                break;
+            }
+            obj.ViewportType.open = false;
+        })
+    }
+
     Timer {
         id: initTimer
         running: true
