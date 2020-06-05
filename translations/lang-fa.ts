@@ -635,6 +635,21 @@
     </message>
 </context>
 <context>
+    <name>RandomPoemRequest</name>
+    <message>
+        <source>Failed</source>
+        <translation>ناموفق</translation>
+    </message>
+    <message>
+        <source>Please check internet connection.</source>
+        <translation>لطفا وضعیت اتصال به اینترنت را بررسی کنید.</translation>
+    </message>
+    <message>
+        <source>Too many tries. Please try again</source>
+        <translation>تلاش با خطا مواجه شد. لطفا دوباره تلاش کنید</translation>
+    </message>
+</context>
+<context>
     <name>ReloadItem</name>
     <message>
         <source>Connection Error</source>
@@ -720,6 +735,21 @@
     <message>
         <source>Settings</source>
         <translation>تنظیمات</translation>
+    </message>
+</context>
+<context>
+    <name>SettingsPage</name>
+    <message>
+        <source>Logout</source>
+        <translation>خروج</translation>
+    </message>
+    <message>
+        <source>Do you realy want to logout?</source>
+        <translation>آیا مطمئنید که میخواهید خارج شوید؟</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>لغو</translation>
     </message>
 </context>
 <context>

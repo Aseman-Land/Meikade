@@ -572,6 +572,21 @@
     </message>
 </context>
 <context>
+    <name>RandomPoemRequest</name>
+    <message>
+        <source>Failed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Please check internet connection.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Too many tries. Please try again</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ReloadItem</name>
     <message>
         <source>Connection Error</source>
@@ -640,6 +655,21 @@
     </message>
     <message>
         <source>Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SettingsPage</name>
+    <message>
+        <source>Logout</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Do you realy want to logout?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cancel</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

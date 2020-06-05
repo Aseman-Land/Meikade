@@ -39,7 +39,7 @@ SearchView {
 
     onClicked: {
         var item = searchModel.get(index);
-        var properties = PoemRequester.convertUnitToMap(item);
+        var properties = convertUnitToMap(item);
         properties["verseId"] = item.verses[0].vorder;
 
         Viewport.controller.trigger(link, properties);
@@ -67,5 +67,47 @@ SearchView {
         id: searchOfflineModel
         query: home.keywordField.text
         poetId: poetCombo.currentIndex > 0 && poetCombo.currentIndex < poetsModel.count? poetsModel.get(poetCombo.currentIndex).id : 0
+    }
+
+    MapObject {
+        id: map
+    }
+
+    function convertUnitToMap(r) {
+        var navigData = new Array;
+        navigData[navigData.length] = {
+            title: r.poet.name,
+            link: "page:/poet?id=" + r.poet.id
+        }
+
+        map.clear();
+        for (var i in r.categories) {
+            var cat = r.categories[i];
+            map.insert(cat.id, {
+                           title: cat.title,
+                           link: "page:/poet?id=" + r.poet.id + "&catId=" + cat.id
+                       });
+        }
+
+        for (var i in map.values) {
+            navigData[navigData.length] = map.values[i];
+        }
+
+        navigData[navigData.length] = {
+            title: r.poem.title,
+            link: "page:/poet?id=" + r.poet.id + "&poemId=" + r.poem.id
+        };
+
+        var properties = {
+            title: r.poem.title,
+            poet: r.poet.name,
+            poetImage: Constants.thumbsBaseUrl + r.poet.id + ".png",
+            navigData: navigData,
+            color: "",
+            link: "page:/poet?id=" + r.poet.id + "&poemId=" + r.poem.id,
+            type: "normal"
+        };
+
+        return properties;
     }
 }

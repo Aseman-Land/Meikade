@@ -12,7 +12,7 @@ ViewportController {
     property variant waitObj
 
     onWaitCountChanged: {
-        if (waitCount) {
+        if (waitCount > 0) {
             if (!waitObj) waitObj = trigger("dialog:/wait");
         } else {
             if (waitObj) waitObj.close()
@@ -27,6 +27,12 @@ ViewportController {
     ViewportControllerRoute {
         route: /\w+\:\/contactus/
         source: "ContactRoute.qml"
+    }
+
+    ViewportControllerRoute {
+        route: /\w+\:\/poem\/random(?:\?.+)?/
+        source: "RandomPoemRoute.qml"
+        viewportType: "none"
     }
 
     ViewportControllerRoute {

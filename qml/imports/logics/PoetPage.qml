@@ -107,8 +107,11 @@ PoetView {
                 case 0:
                     loader.offlineInstaller.install( !loader.offlineInstaller.installed );
                     break;
+                case 1:
+                    Viewport.controller.trigger("page:/poem/random?poetId=" + dis.id);
+                    break;
                 case 2:
-                    Viewport.controller.trigger("float:/search?poetId=" + dis.id)
+                    Viewport.controller.trigger("float:/search?poetId=" + dis.id);
                     break;
                 }
 

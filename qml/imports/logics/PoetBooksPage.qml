@@ -134,7 +134,9 @@ PoetBooksView {
                 case 0:
                     catsModel.offlineInstaller.install( !catsModel.offlineInstaller.installed );
                     break;
-
+                case 1:
+                    Viewport.controller.trigger("page:/poem/random?poetId=" + dis.id + "&catId=" + dis.catId);
+                    break;
                 case 2:
                     Viewport.controller.trigger("float:/search?poetId=" + dis.id)
                     break;
