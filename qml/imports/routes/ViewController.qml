@@ -36,6 +36,11 @@ ViewportController {
     }
 
     ViewportControllerRoute {
+        route: /\w+\:\/web\?link=.+/
+        source: "WebBrowserRoute.qml"
+    }
+
+    ViewportControllerRoute {
         route: /\w+\:\/poet(?:\?.*catId\=.+)?/
         source: "PoetBooksRoute.qml"
     }
