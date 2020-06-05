@@ -25,6 +25,11 @@ ViewportController {
     }
 
     ViewportControllerRoute {
+        route: /\w+\:\/contactus/
+        source: "ContactRoute.qml"
+    }
+
+    ViewportControllerRoute {
         route: /\w+\:\/poet(?:\?.*catId\=.+)?/
         source: "PoetBooksRoute.qml"
     }

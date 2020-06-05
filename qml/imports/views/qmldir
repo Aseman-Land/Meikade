@@ -18,3 +18,4 @@ ListsView 1.0 lists/ListsForm.ui.qml
 FavoritedPoetsListView 1.0 lists/FavoritedPoetsListForm.ui.qml
 FavoritedListView 1.0 lists/FavoritedListForm.ui.qml
 SettingsView 1.0 general/SettingsForm.ui.qml
+ContactView 1.0 general/ContactForm.ui.qml

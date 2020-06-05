@@ -2,6 +2,17 @@
 <!DOCTYPE TS>
 <TS version="2.1">
 <context>
+    <name>ContactForm.ui</name>
+    <message>
+        <source>Contact us</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>DataOfflinePoets</name>
     <message>
         <source>%1 books</source>

@@ -45,6 +45,17 @@
     </message>
 </context>
 <context>
+    <name>ContactForm.ui</name>
+    <message>
+        <source>Contact us</source>
+        <translation>تماس با ما</translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation>بستن</translation>
+    </message>
+</context>
+<context>
     <name>DataOfflinePoets</name>
     <message>
         <source>%1 books</source>
@@ -93,7 +104,7 @@
     </message>
     <message>
         <source>Close</source>
-        <translation>خروج</translation>
+        <translation>بستن</translation>
     </message>
 </context>
 <context>
@@ -108,7 +119,7 @@
     </message>
     <message>
         <source>Close</source>
-        <translation>خروج</translation>
+        <translation>بستن</translation>
     </message>
 </context>
 <context>
@@ -175,7 +186,7 @@
     </message>
     <message>
         <source>Close</source>
-        <translation>خروج</translation>
+        <translation>بستن</translation>
     </message>
 </context>
 <context>
@@ -299,7 +310,7 @@
     </message>
     <message>
         <source>Close</source>
-        <translation>خروج</translation>
+        <translation>بستن</translation>
     </message>
 </context>
 <context>
@@ -371,7 +382,7 @@
     </message>
     <message>
         <source>Close</source>
-        <translation>خروج</translation>
+        <translation>بستن</translation>
     </message>
     <message>
         <source>Poets</source>
@@ -410,7 +421,7 @@
     </message>
     <message>
         <source>Close</source>
-        <translation>خروج</translation>
+        <translation>بستن</translation>
     </message>
     <message>
         <source>Poems</source>
@@ -525,7 +536,7 @@
     </message>
     <message>
         <source>Close</source>
-        <translation>خروج</translation>
+        <translation>بستن</translation>
     </message>
 </context>
 <context>
@@ -662,7 +673,7 @@
     </message>
     <message>
         <source>Close</source>
-        <translation>خروج</translation>
+        <translation>بستن</translation>
     </message>
 </context>
 <context>
@@ -836,7 +847,7 @@
     </message>
     <message>
         <source>Close</source>
-        <translation>خروج</translation>
+        <translation>بستن</translation>
     </message>
 </context>
 <context>
