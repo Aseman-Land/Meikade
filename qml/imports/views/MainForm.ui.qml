@@ -30,6 +30,8 @@ Page {
 
         property int currentIndex
 
+        onCurrentIndexChanged: footerListView.currentIndex = currentIndex;
+
         Item {
             id: homePage
             visible: swipeView.currentIndex == 0
