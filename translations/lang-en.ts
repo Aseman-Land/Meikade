@@ -410,6 +410,10 @@
         <source>Manage Offlines</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>PoemForm.ui</name>
@@ -805,6 +809,17 @@
     <name>WaitDialog.ui</name>
     <message>
         <source>Please Wait...</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>WebBrowserForm.ui</name>
+    <message>
+        <source>Loading</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Close</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

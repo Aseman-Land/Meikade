@@ -29,6 +29,11 @@ AsemanListModel {
             "title": qsTr("Contact US") + Translations.refresher,
             "icon": "mdi_email",
             "link": "float:/contactus"
+        },
+        {
+            "title": qsTr("Settings") + Translations.refresher,
+            "icon": "mdi_settings",
+            "link": "page:/settings"
         }
     ]
 }

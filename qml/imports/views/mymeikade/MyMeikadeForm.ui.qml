@@ -227,6 +227,7 @@ Rectangle {
             anchors.left: parent.left
             height: Devices.standardTitleBarHeight
             width: height
+            visible: false
 
             Label {
                 anchors.centerIn: parent

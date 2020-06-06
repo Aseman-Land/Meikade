@@ -469,6 +469,10 @@
         <source>Manage Offlines</source>
         <translation>مدیریت آفلاین‌ها</translation>
     </message>
+    <message>
+        <source>Settings</source>
+        <translation>تنظیمات</translation>
+    </message>
 </context>
 <context>
     <name>PoemForm.ui</name>
@@ -885,6 +889,17 @@
     <message>
         <source>Please Wait...</source>
         <translation>لطفا صبر کنید...</translation>
+    </message>
+</context>
+<context>
+    <name>WebBrowserForm.ui</name>
+    <message>
+        <source>Loading</source>
+        <translation>در حال بارگزاری</translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation>بستن</translation>
     </message>
 </context>
 </TS>
