@@ -8,23 +8,23 @@ import "delegates"
 FlexiAbstractRow {
     id: hflexible
     width: Constants.width
-    height: row.height
+    height: gridItem.height
 
     property alias model: model
     property alias list: list
 
     PointMapListener {
         id: mapListener
-        source: row
+        source: gridItem
         dest: listView
     }
 
     Grid {
-        id: row
+        id: gridItem
         anchors.left: parent.left
         anchors.right: parent.right
         spacing: 10 * Devices.density
-        columns: Math.floor( row.width / (160 * Devices.density))
+        columns: Math.floor( gridItem.width / (160 * Devices.density))
 
         Repeater {
             id: list
@@ -32,11 +32,11 @@ FlexiAbstractRow {
                 id: model
             }
             delegate: Loader {
-                width: (hflexible.width - row.spacing * (row.columns - 1)) / row.columns
+                width: (hflexible.width - gridItem.spacing * (gridItem.columns - 1)) / gridItem.columns
                 height: 100 * Devices.density * model.heightRatio
                 active: 0 < globalY + height && globalY < listView.height
 
-                property real globalY: mapListener.result.y + (Math.floor(model.index / row.columns) * (height + row.spacing))
+                property real globalY: mapListener.result.y + (Math.floor(model.index / gridItem.columns) * (height + gridItem.spacing))
 
                 sourceComponent: Delegate {
                     id: itemDel

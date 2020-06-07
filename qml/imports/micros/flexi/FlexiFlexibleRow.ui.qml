@@ -8,13 +8,13 @@ import "delegates"
 FlexiAbstractRow {
     id: hflexible
     width: Constants.width
-    height: row.height
+    height: rowItem.height
 
     property alias model: model
-    readonly property real itemsWidth: (hflexible.width - row.spacing * (hflexible.model.count - 1)) / model.count
+    readonly property real itemsWidth: (hflexible.width - rowItem.spacing * (hflexible.model.count - 1)) / model.count
 
     Row {
-        id: row
+        id: rowItem
         anchors.left: parent.left
         anchors.right: parent.right
         spacing: 10 * Devices.density

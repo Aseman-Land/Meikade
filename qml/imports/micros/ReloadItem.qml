@@ -10,6 +10,7 @@ Item {
     z: 1000
 
     property Item viewItem
+    property alias running: busyIndicator.running
 
     BusyIndicator {
         id: busyIndicator

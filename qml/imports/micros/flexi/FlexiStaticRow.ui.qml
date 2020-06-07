@@ -8,12 +8,12 @@ import "delegates"
 FlexiAbstractRow {
     id: homeRow
     width: Constants.width
-    height: row.height
+    height: rowItem.height
 
     property alias model: model
 
     Row {
-        id: row
+        id: rowItem
         anchors.centerIn: parent
         spacing: 10 * Devices.density
         Repeater {

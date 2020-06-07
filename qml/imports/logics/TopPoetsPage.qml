@@ -22,6 +22,5 @@ TopPoetsView {
 
     listView.model: TopPoetsModel {
         id: topModel
-        cachePath: AsemanGlobals.cachePath + "/toppoets.cache"
     }
 }

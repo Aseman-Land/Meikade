@@ -47,12 +47,12 @@ Rectangle {
     Item {
         id: column
         anchors.centerIn: parent
-        width: row.width
-        height: row.height + header.height
+        width: rowItem.width
+        height: rowItem.height + header.height
 
         Item {
             id: header
-            width: row.width
+            width: rowItem.width
             height: 80 * Devices.density
 
             Rectangle {
@@ -88,7 +88,7 @@ Rectangle {
 
         Rectangle {
             id: cover
-            anchors.fill: row
+            anchors.fill: rowItem
             anchors.margins: -10 * Devices.density
             radius: 5 * Devices.density
             color: Qt.darker(bookColor)
@@ -125,7 +125,7 @@ Rectangle {
         }
 
         Row {
-            id: row
+            id: rowItem
             spacing: 1
             anchors.bottom: parent.bottom
 
@@ -242,7 +242,7 @@ Rectangle {
                     width: parent.width
                     height: parent.height
                     y: yMax * (1 - paperItem.ratio)
-                    scale: (row.height / height) * (1 - paperItem.ratio) * 0.95 + paperItem.ratio
+                    scale: (rowItem.height / height) * (1 - paperItem.ratio) * 0.95 + paperItem.ratio
                     transform: Rotation {
                         origin.x: paper.width/2
                         origin.y: paper.height/2
@@ -251,7 +251,7 @@ Rectangle {
                     }
 
                     property real yRatio: 1 - (y / yMax)
-                    property real yMax: (column.y + row.y) * (row.height / height)
+                    property real yMax: (column.y + rowItem.y) * (rowItem.height / height)
                 }
             }
         }

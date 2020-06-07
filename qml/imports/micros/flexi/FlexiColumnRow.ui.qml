@@ -8,19 +8,19 @@ import "delegates"
 FlexiAbstractRow {
     id: hflexible
     width: Constants.width
-    height: row.height
+    height: columnItem.height
 
     property alias model: model
     property alias list: list
 
     PointMapListener {
         id: mapListener
-        source: row
+        source: columnItem
         dest: listView
     }
 
     Column {
-        id: row
+        id: columnItem
         anchors.left: parent.left
         anchors.right: parent.right
         spacing: 10 * Devices.density
@@ -31,11 +31,11 @@ FlexiAbstractRow {
                 id: model
             }
             delegate: Loader {
-                width: row.width
+                width: columnItem.width
                 height: 100 * Devices.density * model.heightRatio
                 active: 0 < globalY + height && globalY < listView.height
 
-                property real globalY: mapListener.result.y + (model.index * (height + row.spacing))
+                property real globalY: mapListener.result.y + (model.index * (height + columnItem.spacing))
 
                 sourceComponent: Delegate {
                     id: itemDel
