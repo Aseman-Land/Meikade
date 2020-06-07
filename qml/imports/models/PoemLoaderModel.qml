@@ -10,17 +10,23 @@ AsemanObject {
 
     property alias poemId: poemReq.poem_id
 
+    property string link
     property string title
     property int views
     property string poet
     property int poetId
+    property int catId
     property string poetImage
     property string poetColor
 
     property alias categoriesModel: categoriesModel
     property alias versesModel: versesModel
 
-    readonly property bool refrshing: poemReq.refreshing || poemQuery.refreshing
+    readonly property bool refrshing: poemReq.refreshing || poemQuery.refreshing || randomReq.refreshing
+
+    function random() {
+        randomReq.refresh();
+    }
 
     QtObject {
         id: prv
@@ -33,6 +39,7 @@ AsemanObject {
                 dis.poet = r.poet.name;
                 dis.poetImage = r.poet.image;
                 dis.poetColor = r.poet.color;
+                dis.link = "page:/poet?id=" + r.poet.id + "&poemId=" + r.poem.id
 
                 if (dis.poetImage.length == 0)
                     dis.poetImage = Constants.thumbsBaseUrl +  r.poet.id + ".png"
@@ -75,7 +82,13 @@ AsemanObject {
         onResponseChanged: if (response && response.result) prv.analizeResult(response.result)
 
         onPoem_idChanged: Tools.jsDelayCall(10, refresh)
-        onRefreshRequest: refresh()
+    }
+
+    RandomPoemRequest {
+        id: randomReq
+        poet_id: poetId;
+        category_id: catId;
+        onResponseChanged: if (response && response.result) prv.analizeResult(response.result)
     }
 
     DataOfflinePoem {

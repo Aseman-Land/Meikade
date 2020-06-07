@@ -31,8 +31,9 @@ ViewportController {
 
     ViewportControllerRoute {
         route: /\w+\:\/poem\/random(?:\?.+)?/
-        source: "RandomPoemRoute.qml"
-        viewportType: "none"
+        source: "PoemRoute.qml"
+//        source: "RandomPoemRoute.qml"
+//        viewportType: "none"
     }
 
     ViewportControllerRoute {

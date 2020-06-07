@@ -20,21 +20,6 @@
     </message>
 </context>
 <context>
-    <name>Delegate</name>
-    <message>
-        <source>All Poets</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Random Poem</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Hafez Divination</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>ErrorDialog</name>
     <message>
         <source>Ok</source>
@@ -120,6 +105,18 @@
     </message>
     <message>
         <source>Poems</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>All Poets</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Random Poem</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hafez Divination</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -576,7 +573,7 @@
     </message>
 </context>
 <context>
-    <name>RandomPoemRequest</name>
+    <name>RandomPoemRequester</name>
     <message>
         <source>Failed</source>
         <translation type="unfinished"></translation>

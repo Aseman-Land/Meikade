@@ -66,11 +66,11 @@
     <name>Delegate</name>
     <message>
         <source>All Poets</source>
-        <translation>همه شعرا</translation>
+        <translation type="vanished">همه شعرا</translation>
     </message>
     <message>
         <source>Random Poem</source>
-        <translation>شعر تصادفی</translation>
+        <translation type="vanished">شعر تصادفی</translation>
     </message>
     <message>
         <source>Hafiz&apos;s Faal</source>
@@ -82,7 +82,7 @@
     </message>
     <message>
         <source>Hafez Divination</source>
-        <translation>فال حافظ</translation>
+        <translation type="vanished">فال حافظ</translation>
     </message>
 </context>
 <context>
@@ -176,6 +176,18 @@
     <message>
         <source>Poems</source>
         <translation>شهر</translation>
+    </message>
+    <message>
+        <source>All Poets</source>
+        <translation>همه شعرا</translation>
+    </message>
+    <message>
+        <source>Random Poem</source>
+        <translation>شعر تصادفی</translation>
+    </message>
+    <message>
+        <source>Hafez Divination</source>
+        <translation>فال حافظ</translation>
     </message>
 </context>
 <context>
@@ -640,6 +652,21 @@
 </context>
 <context>
     <name>RandomPoemRequest</name>
+    <message>
+        <source>Failed</source>
+        <translation type="vanished">ناموفق</translation>
+    </message>
+    <message>
+        <source>Please check internet connection.</source>
+        <translation type="vanished">لطفا وضعیت اتصال به اینترنت را بررسی کنید.</translation>
+    </message>
+    <message>
+        <source>Too many tries. Please try again</source>
+        <translation type="vanished">تلاش با خطا مواجه شد. لطفا دوباره تلاش کنید</translation>
+    </message>
+</context>
+<context>
+    <name>RandomPoemRequester</name>
     <message>
         <source>Failed</source>
         <translation>ناموفق</translation>

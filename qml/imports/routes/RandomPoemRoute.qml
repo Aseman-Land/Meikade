@@ -13,7 +13,7 @@ Item {
         repeat: false
         running: true
         onTriggered: {
-            RandomPoemRequest.random(poetId, catId);
+            RandomPoemRequester.random(poetId, catId);
             Tools.jsDelayCall(10, function(){ ViewportType.open = false; });
         }
     }

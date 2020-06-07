@@ -38,6 +38,18 @@ AsemanObject {
     }
 
     function translate(str) {
+        switch (str) {
+        case "All Poets":
+            str = qsTr("All Poets");
+            break;
+        case "Random Poem":
+            str = qsTr("Random Poem");
+            break;
+        case "Hafez Divination":
+            str = qsTr("Hafez Divination");
+            break;
+        }
+
         str = Tools.stringReplace(str, "Books", qsTr("Books"), false);
         str = Tools.stringReplace(str, "books", qsTr("Books"), false);
         str = Tools.stringReplace(str, "Poems", qsTr("Poems"), false);

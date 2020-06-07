@@ -24,6 +24,7 @@ PoemView {
 
     property alias id: dis.poetId
     property alias poetId: loader.poetId
+    property alias catId: loader.catId
 
     property alias poemId: loader.poemId
     property alias title: loader.title
@@ -67,7 +68,7 @@ PoemView {
         }
 
         if (!cleanText) {
-            for (var j=1; j<loader.categoriesModel.count; j++) {
+            for (var j=0; j<loader.categoriesModel.count; j++) {
                 text += loader.categoriesModel.get(j).title
                 if (j < loader.categoriesModel.count-1)
                     text += ", ";
@@ -83,10 +84,12 @@ PoemView {
         return text.trim();
     }
 
+    Component.onCompleted: if (loader.poemId == 0) loader.random(0, 0)
+
     PoemLoaderModel {
         id: loader
         poemId: dis.poemId
-        versesModel.cachePath: AsemanGlobals.cachePath + "/poem-" + poemId + ".cache"
+        versesModel.cachePath: poemId? AsemanGlobals.cachePath + "/poem-" + poemId + ".cache" : ""
     }
 
     Timer {
@@ -142,7 +145,7 @@ PoemView {
                 title: dis.title,
                 subtitle: dis.poet,
                 image: dis.image,
-                link: dis.url,
+                link: loader.link,
                 verseText: dis.verseText
             };
 
@@ -172,8 +175,8 @@ PoemView {
 
     form {
         viewCount: loader.views? Tools.translateNumbers(loader.views) : ""
-        poet: loader.poet
-        title: loader.title
+        poet: GTranslations.translate(loader.poet)
+        title: GTranslations.translate(loader.title)
 
         searchBtn.onClicked: Viewport.controller.trigger("float:/search?poetId=" + poetId)
 
@@ -364,7 +367,7 @@ PoemView {
                         title: dis.title,
                         subtitle: dis.poet,
                         image: dis.image,
-                        link: dis.url,
+                        link: loader.link,
                         verseText: dis.verseText,
                         verseId: verseId,
                         verseText: menuItem.verseText

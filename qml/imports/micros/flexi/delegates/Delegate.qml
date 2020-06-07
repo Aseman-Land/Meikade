@@ -14,18 +14,7 @@ Item {
     property bool isVerse
     property bool moreHint
 
-    readonly property string displayTitle: {
-        switch (title) {
-        case "All Poets":
-            return qsTr("All Poets") + Translations.refresher;
-        case "Random Poem":
-            return qsTr("Random Poem") + Translations.refresher;
-        case "Hafez Divination":
-            return qsTr("Hafez Divination") + Translations.refresher;
-        default:
-            return title;
-        }
-    }
+    readonly property string displayTitle: GTranslations.translate(title) + Translations.refresher
 
     readonly property int poetId: {
         var ids = Tools.stringRegExp(link, "id\\=(\\d+)", false)
