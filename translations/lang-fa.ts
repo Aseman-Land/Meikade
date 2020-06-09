@@ -492,6 +492,10 @@
         <source>Views</source>
         <translation>باردید</translation>
     </message>
+    <message>
+        <source>Phrase</source>
+        <translation>تعبیر</translation>
+    </message>
 </context>
 <context>
     <name>PoemPage</name>
@@ -766,6 +770,10 @@
     <message>
         <source>Settings</source>
         <translation>تنظیمات</translation>
+    </message>
+    <message>
+        <source>Show Phrase</source>
+        <translation>نمایش تعبیر اشعار</translation>
     </message>
 </context>
 <context>

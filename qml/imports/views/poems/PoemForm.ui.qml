@@ -32,6 +32,7 @@ Item {
     property alias poet: titleLabel.text
     property alias title: subtitleLabel.text
     property alias cover: coverImage.source
+    property string phrase
 
     property bool headerVisible: true
 
@@ -200,6 +201,45 @@ Item {
 
                     LayoutMirroring.enabled: false
                     LayoutMirroring.childrenInherit: true
+                }
+            }
+        }
+
+        footer: Item {
+            width: listView.width
+            height: phrase.length? phraseColumn.height + 40 * Devices.density : 0
+
+            ColumnLayout {
+                id: phraseColumn
+                anchors.left: parent.left
+                anchors.right: parent.right
+                anchors.bottom: parent.bottom
+                anchors.margins: 10 * Devices.density
+                spacing: 4 * Devices.density
+                visible: phrase.length
+
+                RowLayout {
+                    Layout.fillWidth: true
+                    spacing: 10 * Devices.density
+
+                    Label {
+                        font.pixelSize: 10 * Devices.fontDensity
+                        text: qsTr("Phrase") + Translations.refresher
+                    }
+
+                    Rectangle {
+                        Layout.preferredHeight: 1 * Devices.density
+                        Layout.fillWidth: true
+                        color: Colors.foreground
+                    }
+                }
+
+                Label {
+                    Layout.fillWidth: true
+                    horizontalAlignment: Text.AlignLeft
+                    wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                    font.pixelSize: 9 * Devices.fontDensity
+                    text: phrase
                 }
             }
         }

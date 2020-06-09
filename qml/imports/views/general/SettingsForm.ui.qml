@@ -19,6 +19,7 @@ Item {
     property alias logoutBtn: logoutBtn
     property alias languageCombo: languageCombo
     property alias themeCombo: themeCombo
+    property alias phraseSwitch: phraseSwitch
 
     Material.theme: Material.Dark
     IOSStyle.theme: IOSStyle.Dark
@@ -107,6 +108,20 @@ Item {
                             IOSStyle.theme: AsemanGlobals.iosTheme
                             Material.theme: AsemanGlobals.androidTheme
                         }
+                    }
+                }
+
+
+                RowLayout {
+                    Label {
+                        Layout.fillWidth: true
+                        font.pixelSize: 9 * Devices.fontDensity
+                        horizontalAlignment: Text.AlignLeft
+                        text: qsTr("Show Phrase") + Translations.refresher
+                    }
+
+                    Switch {
+                        id: phraseSwitch
                     }
                 }
             }

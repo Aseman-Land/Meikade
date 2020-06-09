@@ -14,6 +14,7 @@ AsemanObject {
     property string title
     property int views
     property string poet
+    property string phrase
     property int poetId
     property int catId
     property string poetImage
@@ -35,6 +36,7 @@ AsemanObject {
             try {
                 dis.title = r.poem.title;
                 dis.views = r.poem.views;
+                dis.phrase = r.poem.phrase;
                 dis.poetId = r.poet.id;
                 dis.poet = r.poet.name;
                 dis.poetImage = r.poet.image;

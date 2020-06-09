@@ -177,6 +177,7 @@ PoemView {
         viewCount: loader.views? Tools.translateNumbers(loader.views) : ""
         poet: GTranslations.translate(loader.poet)
         title: GTranslations.translate(loader.title)
+        phrase: AsemanGlobals.phrase? loader.phrase : ""
 
         searchBtn.onClicked: Viewport.controller.trigger("float:/search?poetId=" + poetId)
 

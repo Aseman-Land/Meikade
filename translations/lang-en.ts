@@ -418,6 +418,10 @@
         <source>Views</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Phrase</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>PoemPage</name>
@@ -656,6 +660,10 @@
     </message>
     <message>
         <source>Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show Phrase</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
