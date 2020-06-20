@@ -87,7 +87,7 @@ Page {
 
                     BusyIndicator {
                         id: userCheckIndicator
-                        scale: 0.6
+                        scale: Devices.isAndroid? 0.4 : 0.6
                         anchors.right: parent.right
                         anchors.rightMargin: 8 * Devices.density
                         anchors.verticalCenter: parent.verticalCenter
