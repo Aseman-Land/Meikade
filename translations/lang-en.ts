@@ -716,6 +716,26 @@
         <source>Fill below form with your details below to signing up.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>* Username you choosen taken.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>* Your username must be 6 character at least and containt lower case characters and numbers only.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>* Your password must be greater than 8 character and has one number or sign at least.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>* Your full name must be greater than 6 character.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>* Your email is invalid.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>StickerDialog</name>

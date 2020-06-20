@@ -803,7 +803,7 @@
     </message>
     <message>
         <source>Password</source>
-        <translation>کلمه عبور را فراموش کردم</translation>
+        <translation>کلمه عبور</translation>
     </message>
     <message>
         <source>Full Name</source>
@@ -827,7 +827,27 @@
     </message>
     <message>
         <source>Fill below form with your details below to signing up.</source>
-        <translation type="unfinished"></translation>
+        <translation>اطلاعات خود را در فرم زیر پر کنید و کلید عضویت را فشار دهید.</translation>
+    </message>
+    <message>
+        <source>* Username you choosen taken.</source>
+        <translation>* نام کاربری که انتخاب کرده‌اید قبلا انتخاب شده.</translation>
+    </message>
+    <message>
+        <source>* Your username must be 6 character at least and containt lower case characters and numbers only.</source>
+        <translation>* نام کاربری باید بیشتر از ۶ کاراکتر باشد و فقط از حروف کوچک و اعداد انگلیسی در آن استفاده شده باشد.</translation>
+    </message>
+    <message>
+        <source>* Your password must be greater than 8 character and has one number or sign at least.</source>
+        <translation>* کلمه عبور باید بیشتر از ۸ کاراکتر باشد و حداقل یک عدد یا علامت در آن وجود داشته باشد.</translation>
+    </message>
+    <message>
+        <source>* Your full name must be greater than 6 character.</source>
+        <translation>* نام و نام خانوادگی حداقل باید ۶ کاراکتر باشد.</translation>
+    </message>
+    <message>
+        <source>* Your email is invalid.</source>
+        <translation>* پشت‌الکترونیکی وارد شده اشتباه است.</translation>
     </message>
 </context>
 <context>
