@@ -121,6 +121,7 @@ Page {
                     font.underline: true
                     flat: true
                     highlighted: true
+                    IOSStyle.accent: Colors.accent
                 }
 
                 Button {
@@ -133,6 +134,7 @@ Page {
                     font.underline: true
                     flat: true
                     highlighted: true
+                    IOSStyle.accent: Colors.accent
                 }
             }
         }

@@ -22,7 +22,9 @@ Page {
     property alias fullnameTxt: fullnameTxt
     property alias emailTxt: emailTxt
     property alias sendBtn: sendBtn
+    property alias usernameError: usernameError
     property alias backgroudMouseArea: backgroudMouseArea
+    property alias userCheckIndicator: userCheckIndicator
 
     AsemanFlickable {
         id: flickable
@@ -50,7 +52,7 @@ Page {
 
                 Label {
                     id: loginLabel
-                    text: qsTr("Type your phone number for us. We will send you a code for logging into the Meikade.") + Translations.refresher
+                    text: qsTr("Fill below form with your details below to signing up.") + Translations.refresher
                     Layout.fillWidth: true
                     Layout.bottomMargin: 20 * Devices.density
                     wrapMode: Text.WordWrap
@@ -60,13 +62,17 @@ Page {
                     id: userTxt
                     Layout.fillWidth: true
                     Layout.preferredHeight: 48 * Devices.density
-                    placeholderText: qsTr("Username") + Translations.refresher
+                    placeholderText: qsTr("Username") + '*' + Translations.refresher
                     font.pixelSize: 9 * Devices.fontDensity
-                    horizontalAlignment: Text.AlignLeft
+                    horizontalAlignment: Text.AlignHCenter
                     inputMethodHints: Qt.ImhLowercaseOnly | Qt.ImhNoAutoUppercase
                     leftPadding: LayoutMirroring.enabled? 0 : 34 * Devices.density
                     rightPadding: LayoutMirroring.enabled? 34 * Devices.density : 0
+                    validator: RegExpValidator { regExp: /[a-z][a-z0-9_]+/ }
                     onAccepted: passTxt.focus = true
+                    color: focus || userCheckIndicator.running? Colors.foreground : (usernameError.visible || !isValid? "#a00" : "#0a0")
+
+                    property bool isValid: acceptableInput && length > 5
 
                     Label {
                         anchors.left: parent.left
@@ -76,7 +82,17 @@ Page {
                         font.pixelSize: 12 * Devices.fontDensity
                         font.family: MaterialIcons.family
                         text: MaterialIcons.mdi_account
-                        color: Colors.primary
+                        color: Colors.accent
+                    }
+
+                    BusyIndicator {
+                        id: userCheckIndicator
+                        scale: 0.6
+                        anchors.right: parent.right
+                        anchors.rightMargin: 8 * Devices.density
+                        anchors.verticalCenter: parent.verticalCenter
+                        anchors.verticalCenterOffset: 4 * Devices.density
+                        running: false
                     }
                 }
 
@@ -84,15 +100,19 @@ Page {
                     id: passTxt
                     Layout.fillWidth: true
                     Layout.preferredHeight: 48 * Devices.density
-                    placeholderText: qsTr("Password") + Translations.refresher
+                    placeholderText: qsTr("Password") + '*' + Translations.refresher
                     font.pixelSize: 9 * Devices.fontDensity
-                    horizontalAlignment: Text.AlignLeft
+                    horizontalAlignment: Text.AlignHCenter
                     leftPadding: LayoutMirroring.enabled? 0 : 34 * Devices.density
                     rightPadding: LayoutMirroring.enabled? 34 * Devices.density : 0
                     echoMode: TextInput.Password
                     passwordCharacter: '*'
                     passwordMaskDelay: 500
+                    validator: RegExpValidator { regExp: /\w*[0-9\+_\)\(\*\&\^\%\$\#\@\!\[\]\{\}\:\;\"\'\\\.\,\`\/\<\>\|]+\w*/ }
                     onAccepted: fullnameTxt.focus = true
+                    color: isValid || focus? Colors.foreground : "#a00"
+
+                    property bool isValid: acceptableInput && length > 7
 
                     Label {
                         anchors.left: parent.left
@@ -102,7 +122,7 @@ Page {
                         font.pixelSize: 12 * Devices.fontDensity
                         font.family: MaterialIcons.family
                         text: MaterialIcons.mdi_lock
-                        color: Colors.primary
+                        color: Colors.accent
                     }
                 }
 
@@ -110,12 +130,15 @@ Page {
                     id: fullnameTxt
                     Layout.fillWidth: true
                     Layout.preferredHeight: 48 * Devices.density
-                    placeholderText: qsTr("Full Name") + Translations.refresher
+                    placeholderText: qsTr("Full Name") + '*' + Translations.refresher
                     font.pixelSize: 9 * Devices.fontDensity
-                    horizontalAlignment: Text.AlignLeft
+                    horizontalAlignment: Text.AlignHCenter
                     leftPadding: LayoutMirroring.enabled? 0 : 34 * Devices.density
                     rightPadding: LayoutMirroring.enabled? 34 * Devices.density : 0
                     onAccepted: emailTxt.focus = true
+                    color: isValid || focus? Colors.foreground : "#a00"
+
+                    property bool isValid: length > 5
 
                     Label {
                         anchors.left: parent.left
@@ -125,7 +148,7 @@ Page {
                         font.pixelSize: 12 * Devices.fontDensity
                         font.family: MaterialIcons.family
                         text: MaterialIcons.mdi_pencil
-                        color: Colors.primary
+                        color: Colors.accent
                     }
                 }
 
@@ -135,10 +158,14 @@ Page {
                     Layout.preferredHeight: 48 * Devices.density
                     placeholderText: qsTr("Email") + Translations.refresher
                     font.pixelSize: 9 * Devices.fontDensity
-                    horizontalAlignment: Text.AlignLeft
+                    horizontalAlignment: Text.AlignHCenter
                     leftPadding: LayoutMirroring.enabled? 0 : 34 * Devices.density
                     rightPadding: LayoutMirroring.enabled? 34 * Devices.density : 0
+                    validator: RegExpValidator { regExp: /\w(\w|\.)+\@\w+(\.\w+)+/ }
                     onAccepted: sendBtn.focus = true
+                    color: isValid || focus? Colors.foreground : "#a00"
+
+                    property bool isValid: acceptableInput || length == 0
 
                     Label {
                         anchors.left: parent.left
@@ -148,7 +175,7 @@ Page {
                         font.pixelSize: 12 * Devices.fontDensity
                         font.family: MaterialIcons.family
                         text: MaterialIcons.mdi_email
-                        color: Colors.primary
+                        color: Colors.accent
                     }
                 }
 
@@ -159,7 +186,65 @@ Page {
                     Layout.fillWidth: true
                     font.pixelSize: 9 * Devices.fontDensity
                     highlighted: true
-                    enabled: userTxt.length > 5 && passTxt.length > 5 && fullnameTxt.length > 2 && emailTxt.length > 5
+                    enabled: userTxt.isValid && passTxt.isValid && fullnameTxt.isValid && emailTxt.isValid && !usernameError.visible && !userCheckIndicator.running
+
+                    ColumnLayout {
+                        spacing: 2 * Devices.density
+                        anchors.left: sendBtn.left
+                        anchors.right: sendBtn.right
+                        anchors.top: sendBtn.bottom
+
+                        Label {
+                            id: usernameError
+                            Layout.fillWidth: true
+                            wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                            horizontalAlignment: Text.AlignLeft
+                            font.pixelSize: 8 * Devices.fontDensity
+                            color: "#a00"
+                            visible: false
+                            text: qsTr("* Username you choosen taken.")
+                        }
+
+                        Label {
+                            Layout.fillWidth: true
+                            wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                            horizontalAlignment: Text.AlignLeft
+                            font.pixelSize: 8 * Devices.fontDensity
+                            color: "#a00"
+                            visible: !userTxt.isValid && !userTxt.focus && userTxt.length != 0
+                            text: qsTr("* Your username must be 6 character at least and containt lower case characters and numbers only.")
+                        }
+
+                        Label {
+                            Layout.fillWidth: true
+                            wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                            horizontalAlignment: Text.AlignLeft
+                            font.pixelSize: 8 * Devices.fontDensity
+                            color: "#a00"
+                            visible: !passTxt.isValid && !passTxt.focus && passTxt.length != 0
+                            text: qsTr("* Your password must be greater than 8 character and has one number or sign at least.")
+                        }
+
+                        Label {
+                            Layout.fillWidth: true
+                            wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                            horizontalAlignment: Text.AlignLeft
+                            font.pixelSize: 8 * Devices.fontDensity
+                            color: "#a00"
+                            visible: !fullnameTxt.isValid && !fullnameTxt.focus && fullnameTxt.length != 0
+                            text: qsTr("* Your full name must be greater than 6 character.")
+                        }
+
+                        Label {
+                            Layout.fillWidth: true
+                            wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                            horizontalAlignment: Text.AlignLeft
+                            font.pixelSize: 8 * Devices.fontDensity
+                            color: "#a00"
+                            visible: !emailTxt.isValid && !emailTxt.focus && emailTxt.length != 0
+                            text: qsTr("* Your email is invalid.")
+                        }
+                    }
                 }
             }
         }

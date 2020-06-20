@@ -66,6 +66,7 @@ Page {
             horizontalAlignment: Text.AlignHCenter
             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
             font.pixelSize: 9 * Devices.fontDensity
+            visible: false
             text: qsTr("To help Meikade better, you can check/uncheck below switch to send anaymous data for us.") + Translations.refresher
         }
 
@@ -73,6 +74,7 @@ Page {
             id: helpBtn
             Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
             font.pixelSize: 9 * Devices.fontDensity
+            visible: false
             text: qsTr("Help Meikade") + Translations.refresher
         }
     }

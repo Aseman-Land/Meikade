@@ -15,3 +15,6 @@ RESOURCES += \
     
 QML_IMPORT_PATH += \
     $$PWD/imports
+
+DISTFILES += \
+    $$PWD/imports/requests/UserCheckRequest.qml

@@ -795,7 +795,7 @@
     <name>SignupForm.ui</name>
     <message>
         <source>Type your phone number for us. We will send you a code for logging into the Meikade.</source>
-        <translation>برای عضویت در می‌کده لطفا مشخصات خود و اکانت جدید خود را وارد کنید.</translation>
+        <translation type="vanished">برای عضویت در می‌کده لطفا مشخصات خود و اکانت جدید خود را وارد کنید.</translation>
     </message>
     <message>
         <source>Username</source>
@@ -824,6 +824,10 @@
     <message>
         <source>Cancel</source>
         <translation>لغو</translation>
+    </message>
+    <message>
+        <source>Fill below form with your details below to signing up.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

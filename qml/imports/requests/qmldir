@@ -13,3 +13,4 @@ SimplePoetsRequest 1.0 SimplePoetsRequest.qml
 SearchVerseRequest 1.0 SearchVerseRequest.qml
 PoemRequest 1.0 PoemRequest.qml
 CatRequest 1.0 CatRequest.qml
+UserCheckRequest 1.0 UserCheckRequest.qml

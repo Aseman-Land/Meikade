@@ -685,10 +685,6 @@
 <context>
     <name>SignupForm.ui</name>
     <message>
-        <source>Type your phone number for us. We will send you a code for logging into the Meikade.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Username</source>
         <translation type="unfinished"></translation>
     </message>
@@ -714,6 +710,10 @@
     </message>
     <message>
         <source>Cancel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fill below form with your details below to signing up.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
