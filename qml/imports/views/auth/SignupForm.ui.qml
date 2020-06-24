@@ -135,6 +135,7 @@ Page {
                     horizontalAlignment: Text.AlignHCenter
                     leftPadding: LayoutMirroring.enabled? 0 : 34 * Devices.density
                     rightPadding: LayoutMirroring.enabled? 34 * Devices.density : 0
+                    validator: RegExpValidator { regExp: /\w+/ }
                     onAccepted: emailTxt.focus = true
                     color: isValid || focus? Colors.foreground : "#a00"
 

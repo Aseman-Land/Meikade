@@ -54,6 +54,73 @@
         <source>Close</source>
         <translation>بستن</translation>
     </message>
+    <message>
+        <source>Feels free and write what you want for us. Messages will sends ananymously if you leaves name and email forms empty.</source>
+        <translation>برای ما از هر آنچه که تمایل دارید بنویسید. سعی می‌کنیم در اسرع وقت بخوانیم و پاسخگو باشیم. همچنین بخش‌های نام و پست‌الکترونیکی اجباری نیستند و شما می‌توانید کاملا ناشناس برای ما پیغام ارسال کنید. با این حال اگر تمایل دارید پاسخ دریافت کنید حتما پست‌الکترونیکی را به درستی وارد کنید.</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>نام</translation>
+    </message>
+    <message>
+        <source>Email</source>
+        <translation>پست الکترونیک</translation>
+    </message>
+    <message>
+        <source>Message</source>
+        <translation>پیغام شما</translation>
+    </message>
+    <message>
+        <source>Attach device details</source>
+        <translation>ضمیمه کردن جزییات دستگاه</translation>
+    </message>
+    <message>
+        <source>Device details will send.</source>
+        <translation>جزییات دستگاه ارسال می‌شود</translation>
+    </message>
+    <message>
+        <source>Device details will not sent. Please send it if you are reporting a problem.</source>
+        <translation>جزییات دستگاه ارسال نمی‌شود. اگر در پیغام خود مشکلی از نرم‌افزار را گزارش میکنید بهتر است که جزییات دستگاه را ارسال کنید.</translation>
+    </message>
+    <message>
+        <source>Send</source>
+        <translation>ارسال</translation>
+    </message>
+</context>
+<context>
+    <name>ContactPage</name>
+    <message>
+        <source>Platform Name</source>
+        <translation>نام پلتفرم</translation>
+    </message>
+    <message>
+        <source>Kernel</source>
+        <translation>هسته</translation>
+    </message>
+    <message>
+        <source>Kernel Version</source>
+        <translation>نسخه هسته</translation>
+    </message>
+    <message>
+        <source>CPU Architecture</source>
+        <translation>معماری پردازنده</translation>
+    </message>
+    <message>
+        <source>Device Name</source>
+        <translation>نام دستگاه</translation>
+    </message>
+    <message>
+        <source>Device ID</source>
+        <translation>شناسه دستگاه</translation>
+    </message>
+    <message>
+        <source>LCD Density</source>
+        <translation>تراکم پیکسلی تصویر</translation>
+    </message>
+    <message>
+        <source>LCD Size</source>
+        <translation>اندازه تصویر</translation>
+    </message>
 </context>
 <context>
     <name>DataOfflinePoets</name>
@@ -454,6 +521,10 @@
         <source>My Meikade</source>
         <translation>می‌کده من</translation>
     </message>
+    <message>
+        <source>Available Soon</source>
+        <translation>به زودی</translation>
+    </message>
 </context>
 <context>
     <name>MyMeikadeModel</name>
@@ -789,6 +860,10 @@
     <message>
         <source>Cancel</source>
         <translation>لغو</translation>
+    </message>
+    <message>
+        <source>Logout Successfully</source>
+        <translation>با موفقیت خارج شدید</translation>
     </message>
 </context>
 <context>

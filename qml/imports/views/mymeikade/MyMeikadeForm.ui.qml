@@ -69,10 +69,11 @@ Rectangle {
 
                 ColumnLayout {
                     anchors.centerIn: parent
-                    spacing: 8 * Devices.density
+                    spacing: 0
 
                     Label {
                         Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+                        Layout.bottomMargin: 8 * Devices.density
                         font.pixelSize: 18 * Devices.fontDensity
                         font.family: MaterialIcons.family
                         text: MaterialIcons[model.icon]
@@ -82,6 +83,14 @@ Rectangle {
                         Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
                         font.pixelSize: 9 * Devices.fontDensity
                         text: model.title
+                    }
+
+                    Label {
+                        Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+                        font.pixelSize: 7 * Devices.fontDensity
+                        visible: model.underco
+                        color: "#a00"
+                        text: qsTr("Available Soon") + Translations.refresher
                     }
                 }
 

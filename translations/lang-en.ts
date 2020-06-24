@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1">
+<TS version="2.1" language="en_US">
 <context>
     <name>ContactForm.ui</name>
     <message>
@@ -9,6 +9,73 @@
     </message>
     <message>
         <source>Close</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Feels free and write what you want for us. Messages will sends ananymously if you leaves name and email forms empty.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Email</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Message</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Attach device details</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Device details will send.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Device details will not sent. Please send it if you are reporting a problem.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Send</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ContactPage</name>
+    <message>
+        <source>Platform Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Kernel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Kernel Version</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>CPU Architecture</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Device Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Device ID</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>LCD Density</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>LCD Size</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -384,6 +451,10 @@
         <source>My Meikade</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Available Soon</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MyMeikadeModel</name>
@@ -679,6 +750,10 @@
     </message>
     <message>
         <source>Cancel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Logout Successfully</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

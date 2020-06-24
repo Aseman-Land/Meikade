@@ -17,8 +17,12 @@ AsemanObject {
             var res = new Array;
             var list = mgr.translations;
             for (var i in list) {
+                var title = list[i];
+                if (title === "American English")
+                    title = "English"
+
                 res[res.length] = {
-                    "title": list[i],
+                    "title": title,
                     "key": i
                 }
             }
