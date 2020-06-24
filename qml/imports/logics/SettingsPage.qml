@@ -6,6 +6,7 @@ import QtQuick.Controls.IOSStyle 2.0
 import globals 1.0
 import views 1.0
 import routes 1.0
+import requests 1.0
 import models 1.0
 
 SettingsView {
@@ -26,17 +27,21 @@ SettingsView {
                 break;
 
             case 1: // Logout
-                ViewController.waitCount++;
-                Tools.jsDelayCall(1000, function(){
-                    ViewController.waitCount--;
-                    AsemanGlobals.accessToken = "";
-                    ViewportType.open = false;
-                    GlobalSignals.snackbarRequest(qsTr("Logout Successfully"))
-                })
+                logoutReq.networkManager.get(logoutReq)
                 break;
             }
             obj.ViewportType.open = false;
         })
+    }
+
+    LogoutRequest {
+        id: logoutReq
+        allowGlobalBusy: true
+        onSuccessfull: {
+            AsemanGlobals.accessToken = "";
+            dis.ViewportType.open = false;
+            GlobalSignals.snackbarRequest(qsTr("Logout Successfully"))
+        }
     }
 
     Timer {

@@ -45,6 +45,13 @@
     </message>
 </context>
 <context>
+    <name>AuthPage</name>
+    <message>
+        <source>Logged in Successfully</source>
+        <translation>شما با موفقیت وارد شدید</translation>
+    </message>
+</context>
+<context>
     <name>ContactForm.ui</name>
     <message>
         <source>Contact us</source>
@@ -76,7 +83,7 @@
     </message>
     <message>
         <source>Device details will send.</source>
-        <translation>جزییات دستگاه ارسال می‌شود</translation>
+        <translation>جزییات دستگاه ارسال می‌شود.</translation>
     </message>
     <message>
         <source>Device details will not sent. Please send it if you are reporting a problem.</source>
@@ -99,7 +106,7 @@
     </message>
     <message>
         <source>Kernel Version</source>
-        <translation>نسخه هسته</translation>
+        <translation type="vanished">نسخه هسته</translation>
     </message>
     <message>
         <source>CPU Architecture</source>
@@ -111,7 +118,7 @@
     </message>
     <message>
         <source>Device ID</source>
-        <translation>شناسه دستگاه</translation>
+        <translation type="vanished">شناسه دستگاه</translation>
     </message>
     <message>
         <source>LCD Density</source>
@@ -530,7 +537,7 @@
     <name>MyMeikadeModel</name>
     <message>
         <source>Lists</source>
-        <translation>لیست‌ها</translation>
+        <translation type="vanished">لیست‌ها</translation>
     </message>
     <message>
         <source>Notes</source>
@@ -555,6 +562,10 @@
     <message>
         <source>Settings</source>
         <translation>تنظیمات</translation>
+    </message>
+    <message>
+        <source>Favorites</source>
+        <translation>علاقه‌مندی‌ها</translation>
     </message>
 </context>
 <context>

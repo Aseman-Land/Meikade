@@ -7,6 +7,8 @@ import models 1.0
 
 Viewport {
 
+    property bool favoritesOnly
+
     signal closeRequest()
     signal linkRequest(string link, variant properties)
 
@@ -19,6 +21,16 @@ Viewport {
         Connections {
             target: GlobalSignals
             onFavoritesRefreshed: lModel.refresh()
+        }
+
+        Component.onCompleted: {
+            if (favoritesOnly) {
+                var obj = favoritedPoets_component.createObject(this);
+                obj.anchors.fill = this;
+                obj.backBtn.visible = false;
+
+                listView.visible = false;
+            }
         }
     }
 

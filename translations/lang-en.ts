@@ -2,6 +2,13 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="en_US">
 <context>
+    <name>AuthPage</name>
+    <message>
+        <source>Logged in Successfully</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ContactForm.ui</name>
     <message>
         <source>Contact us</source>
@@ -55,19 +62,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Kernel Version</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>CPU Architecture</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Device Name</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Device ID</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -459,10 +458,6 @@
 <context>
     <name>MyMeikadeModel</name>
     <message>
-        <source>Lists</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Notes</source>
         <translation type="unfinished"></translation>
     </message>
@@ -480,6 +475,10 @@
     </message>
     <message>
         <source>Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Favorites</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
