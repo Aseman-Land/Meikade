@@ -38,7 +38,7 @@ SearchView {
     }
 
     onClicked: {
-        var item = searchModel.get(index);
+        var item = listView.model.get(index);
         var properties = convertUnitToMap(item);
         properties["verseId"] = item.verses[0].vorder;
 
