@@ -97,10 +97,10 @@ PoetView {
     Component {
         id: menuComponent
         MenuView {
-            x: LayoutMirroring.enabled? 30 * Devices.density : parent.width - 30 * Devices.density
+            x: LayoutMirroring.enabled? 30 * Devices.density : parent.width - 30 * Devices.density - width
             y: 40 * Devices.density + Devices.statusBarHeight
             width: 220 * Devices.density
-            ViewportType.transformOrigin: Qt.point(-20 * Devices.density, (LayoutMirroring.enabled? -20 * Devices.density : width + 20 * Devices.density))
+            ViewportType.transformOrigin: Qt.point((LayoutMirroring.enabled? -20 * Devices.density : width + 20 * Devices.density), -20 * Devices.density)
 
             onItemClicked: {
                 switch (index) {
