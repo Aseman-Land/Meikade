@@ -236,7 +236,6 @@ Item {
 
                 Label {
                     Layout.fillWidth: true
-                    horizontalAlignment: Text.AlignLeft
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                     font.pixelSize: 9 * Devices.fontDensity
                     text: phrase
