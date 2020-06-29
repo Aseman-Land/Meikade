@@ -70,6 +70,7 @@ Item {
                     Layout.preferredHeight: 48 * Devices.density
                     font.pixelSize: 9 * Devices.fontDensity
                     horizontalAlignment: Text.AlignLeft
+                    selectByMouse: true
                     validator: RegExpValidator { regExp: /\w+/ }
                     Layout.bottomMargin: 10 * Devices.density
                 }
@@ -86,6 +87,7 @@ Item {
                     Layout.preferredHeight: 48 * Devices.density
                     font.pixelSize: 9 * Devices.fontDensity
                     horizontalAlignment: Text.AlignLeft
+                    selectByMouse: true
                     validator: RegExpValidator { regExp: /\w(\w|\.)+\@\w+(\.\w+)+/ }
                     Layout.bottomMargin: 10 * Devices.density
                 }
@@ -103,6 +105,7 @@ Item {
                     horizontalAlignment: Text.AlignLeft
                     font.pixelSize: 9 * Devices.fontDensity
                     Layout.bottomMargin: 10 * Devices.density
+                    selectByMouse: true
                 }
 
                 RowLayout {

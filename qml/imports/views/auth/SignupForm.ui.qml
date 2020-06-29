@@ -66,6 +66,7 @@ Page {
                     font.pixelSize: 9 * Devices.fontDensity
                     horizontalAlignment: Text.AlignHCenter
                     inputMethodHints: Qt.ImhLowercaseOnly | Qt.ImhNoAutoUppercase
+                    selectByMouse: true
                     leftPadding: LayoutMirroring.enabled? 0 : 34 * Devices.density
                     rightPadding: LayoutMirroring.enabled? 34 * Devices.density : 0
                     validator: RegExpValidator { regExp: /[a-z][a-z0-9_]+/ }
@@ -105,6 +106,7 @@ Page {
                     horizontalAlignment: Text.AlignHCenter
                     leftPadding: LayoutMirroring.enabled? 0 : 34 * Devices.density
                     rightPadding: LayoutMirroring.enabled? 34 * Devices.density : 0
+                    selectByMouse: true
                     echoMode: TextInput.Password
                     passwordCharacter: '*'
                     passwordMaskDelay: 500
@@ -133,6 +135,7 @@ Page {
                     placeholderText: qsTr("Full Name") + '*' + Translations.refresher
                     font.pixelSize: 9 * Devices.fontDensity
                     horizontalAlignment: Text.AlignHCenter
+                    selectByMouse: true
                     leftPadding: LayoutMirroring.enabled? 0 : 34 * Devices.density
                     rightPadding: LayoutMirroring.enabled? 34 * Devices.density : 0
                     validator: RegExpValidator { regExp: /\w+/ }
@@ -160,6 +163,7 @@ Page {
                     placeholderText: qsTr("Email") + Translations.refresher
                     font.pixelSize: 9 * Devices.fontDensity
                     horizontalAlignment: Text.AlignHCenter
+                    selectByMouse: true
                     leftPadding: LayoutMirroring.enabled? 0 : 34 * Devices.density
                     rightPadding: LayoutMirroring.enabled? 34 * Devices.density : 0
                     validator: RegExpValidator { regExp: /\w(\w|\.)+\@\w+(\.\w+)+/ }

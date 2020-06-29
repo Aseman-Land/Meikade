@@ -62,6 +62,7 @@ Page {
                     placeholderText: qsTr("Username") + Translations.refresher
                     font.pixelSize: 10 * Devices.fontDensity
                     horizontalAlignment: Text.AlignHCenter
+                    selectByMouse: true
                     inputMethodHints: Qt.ImhLowercaseOnly | Qt.ImhNoAutoUppercase
                     onAccepted: passTxt.focus = true
 
@@ -88,6 +89,7 @@ Page {
                     visible: userTxt.length > 5
                     passwordCharacter: '*'
                     passwordMaskDelay: 500
+                    selectByMouse: true
                     onAccepted: sendBtn.focus = true
 
                     Label {

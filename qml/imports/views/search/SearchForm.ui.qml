@@ -294,6 +294,7 @@ Rectangle {
                 Layout.fillWidth: true
                 horizontalAlignment: Text.AlignLeft
                 placeholderText: qsTr("Search") + Translations.refresher
+                selectByMouse: true
                 Material.theme: Material.Dark
                 IOSStyle.theme: IOSStyle.Dark
                 font.pixelSize: 9 * Devices.fontDensity
