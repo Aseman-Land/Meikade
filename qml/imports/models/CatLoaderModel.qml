@@ -112,7 +112,7 @@ AsemanObject {
             refreshing = true;
             getItems(function(r){
                 refreshing = false;
-                if (!poetReq.response)
+                if (Math.floor(poetReq.status/200) != 2)
                     prv.analizeResult(r);
             })
         }

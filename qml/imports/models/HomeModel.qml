@@ -15,4 +15,6 @@ AsemanListModel {
         source: homeReq.response
         path: "result"
     }
+
+    function refresh() { homeReq.refresh() }
 }

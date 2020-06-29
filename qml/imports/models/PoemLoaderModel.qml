@@ -29,6 +29,10 @@ AsemanObject {
         randomReq.refresh();
     }
 
+    function clear() {
+        versesModel.clear();
+    }
+
     QtObject {
         id: prv
 
@@ -77,6 +81,10 @@ AsemanObject {
     AsemanListModel {
         id: versesModel
         property bool refreshing: dis.refrshing
+
+        function refresh() {
+            poemReq.refresh()
+        }
     }
 
     PoemRequest {
@@ -105,8 +113,9 @@ AsemanObject {
             refreshing = true;
             getItems(function(r){
                 refreshing = false;
-                if (!poemReq.response)
+                if (Math.floor(poemReq.status/200) != 2) {
                     prv.analizeResult(r);
+                }
             })
         }
     }

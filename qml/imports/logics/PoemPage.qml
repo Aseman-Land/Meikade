@@ -44,6 +44,7 @@ PoemView {
 
         var poemId = poemIds[0][1];
 
+        loader.clear()
         loader.poemId = poemId;
 
         dis.poemId = poemIds[0][1];
