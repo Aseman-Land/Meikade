@@ -205,6 +205,10 @@
         <source>LCD Size</source>
         <translation>اندازه تصویر</translation>
     </message>
+    <message>
+        <source>Thank you. Your message sent successfully :)</source>
+        <translation>با سپاس از شما، پیغام شما ارسال شد :)</translation>
+    </message>
 </context>
 <context>
     <name>DataOfflinePoets</name>

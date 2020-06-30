@@ -15,3 +15,4 @@ PoemRequest 1.0 PoemRequest.qml
 CatRequest 1.0 CatRequest.qml
 UserCheckRequest 1.0 UserCheckRequest.qml
 LogoutRequest 1.0 LogoutRequest.qml
+ContactUsRequest 1.0 ContactUsRequest.qml

@@ -6,6 +6,7 @@ import QtQuick.Controls.IOSStyle 2.0
 import globals 1.0
 import views 1.0
 import models 1.0
+import requests 1.0
 
 ContactView {
     id: dis
@@ -22,5 +23,19 @@ ContactView {
         res += "<b>" +qsTr("LCD Density") + ":</b> " + Math.floor(Devices.deviceDensity*100)/100 + "<br />";
         res += "<b>" +qsTr("LCD Size") + ":</b> " + Math.floor(Devices.lcdPhysicalSize*100)/100;
         return res;
+    }
+
+    sendBtn.onClicked: contactReq.networkManager.post(contactReq, false)
+
+    ContactUsRequest {
+        id: contactReq
+        allowGlobalBusy: true
+        name: dis.nameField.text
+        email: dis.emailField.text
+        description: dis.messageField.text + (dis.attachSwitch.checked? "\n\n" + Tools.htmlToPlaintText(dis.detailsText.text) : "")
+        onSuccessfull: {
+            dis.ViewportType.open = false;
+            GlobalSignals.snackbarRequest( qsTr("Thank you. Your message sent successfully :)") )
+        }
     }
 }

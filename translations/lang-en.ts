@@ -147,6 +147,10 @@
         <source>LCD Size</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Thank you. Your message sent successfully :)</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>DataOfflinePoets</name>
