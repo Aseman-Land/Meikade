@@ -65,15 +65,14 @@ Page {
 
             Label {
                 id: webTitle
+                Layout.fillWidth: true
                 verticalAlignment: Text.AlignVCenter
                 font.pixelSize: 12 * Devices.fontDensity
                 horizontalAlignment: Text.AlignLeft
+                wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                maximumLineCount: 1
+                elide: Text.ElideRight
                 text: qsTr("Loading") + Translations.refresher
-            }
-
-            Item {
-                Layout.fillWidth: true
-                Layout.preferredHeight: 2
             }
 
             RoundButton {

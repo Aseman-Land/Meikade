@@ -2,6 +2,83 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="fa_IR">
 <context>
+    <name>AboutForm.ui</name>
+    <message>
+        <source>Meikade is a free and opensource poetry app, designed and created by Aseman. It means user freedom and privacy is important for Meikade. So you can access Meikade&apos;s source code on Github, Read it and change it under the term of the GPLv3 license.</source>
+        <translation type="vanished">می‌کده یک برنامه ازاد است که توسط آسمان طراحی و پیاده‌سازی شده است. این به این معنی است که می‌کده حامی آزادی‌های کاربر است. بنابریان شما می‌توانید آن را تحت قوانین نسخه سوم مجوز GPL که توسط FSF ارائه شده است دوباره منتشر کنید، آن را به دوستان خود بدهید و یا در آن تغییرات ایجاد کنید.</translation>
+    </message>
+    <message>
+        <source>Website</source>
+        <translation>وب‌سایت</translation>
+    </message>
+    <message>
+        <source>Instagram</source>
+        <translation>اینستاگرام</translation>
+    </message>
+    <message>
+        <source>Telegram</source>
+        <translation>تلگرام</translation>
+    </message>
+    <message>
+        <source>Github</source>
+        <translation>گیت‌هاب</translation>
+    </message>
+    <message>
+        <source>About</source>
+        <translation>درباره می‌کده</translation>
+    </message>
+    <message>
+        <source>&lt;b&gt;&lt;u&gt;Meikade is a free and opensource poetry app&lt;/u&gt;&lt;/b&gt;, designed and created by Aseman. It means user freedom and privacy is important for Meikade. So you can access Meikade&apos;s source code on Github, Read it and change it under the term of the GPLv3 license.</source>
+        <translation>&lt;b&gt;&lt;u&gt;می‌کده یک برنامه ازاد است&lt;/u&gt;&lt;/b&gt; که توسط آسمان طراحی و پیاده‌سازی شده است. این به این معنی است که می‌کده حامی آزادی‌های کاربر است. بنابریان شما می‌توانید آن را تحت قوانین نسخه سوم مجوز GPL که توسط FSF ارائه شده است دوباره منتشر کنید، آن را به دوستان خود بدهید و یا در آن تغییرات ایجاد کنید.</translation>
+    </message>
+    <message>
+        <source>Development Team:</source>
+        <translation>تیم توسعه می‌کده:</translation>
+    </message>
+    <message>
+        <source>- Bardia Daneshvar
+- AmirHossein Mousavi
+- Ali Rasooli
+- Hanieh Sahranavard</source>
+        <translation>- بردیا دانشور
+- امیرحسین موسوی
+- علی رسولی
+- هانیه صحرانورد</translation>
+    </message>
+    <message>
+        <source>Thanks to:</source>
+        <translation>با قدردانی از:</translation>
+    </message>
+    <message>
+        <source>Hamidreza Mohammad (Ganjoor team), Arman Farajollahi-far, Purya Daneshvar (UI/UX), Armin Shalchian (Apple Watch), Amin Hatami (Logo Designer), Mohsen Ebrahimnejad (Telegram channel assistant), Hasan Noroozi, Houtan Baraary, Mansoore Zamani, Pourya Khalaj Tehrani</source>
+        <translation>حمیدرضا محمدی (تیم گنجور)، آرمان فرج‌اللهی‌فر (مشاور ادبی)، پوریا دانشور (مشاور طراحی تجربه کاربری و رابط کاربری)، امین حاتمی (طراح لوگو)، محسن ابراهیم‌نژاد (همکار کانال تلگرام می‌کده)، حسن نوروزی، هوتن براری، منصوره زمانی، پوریا خلج طهرانی</translation>
+    </message>
+    <message>
+        <source>&lt;b&gt;&lt;u&gt;Aseman&lt;/u&gt;&lt;/b&gt;, Aseman is a non-profit and community based company that created in 2013 by members of the Idehgostar company. Aseman created to leads open-source and free software.&lt;br /&gt;Aseman promotes openness, innovation and participation on the digital and computers world.</source>
+        <translation>&lt;b&gt;&lt;u&gt;آسمان&lt;/u&gt;&lt;/b&gt; مجموعه‌ای غیرانتفاعی از مهندس‌ها و متخصص‌هاست که با هدف تولید و رهبری پروژه‌های آزاد و اپن‌سورس تاسیس شد.&lt;br /&gt;تا به اینجا اعتبار و کیفیت بالای پروژه‌های آسمان سبب همکاری با شرکت کانونیکال انگلستان در توسعه سیستم‌عامل اوبونتو-تاچ و همچنین کسب گواهی‌نامه امنیت از وب‌سایت سافت‌پدیا برای نرم‌افزارهایش شده است.&lt;bt /&gt;برای آشتایی بیشتر با آسمان و فعالیت‌های آن، وارد سایت آسمان شوید.</translation>
+    </message>
+    <message>
+        <source>Twitter</source>
+        <translation>توییتر</translation>
+    </message>
+    <message>
+        <source>Open-source projects used in meikade:</source>
+        <translation>پروژه‌های اپن‌سورس استفاده شده در می‌کده:</translation>
+    </message>
+    <message>
+        <source>Some tools, creating for Aseman Qt projects and used on many of Aseman&apos;s projects.</source>
+        <translation>مجموعه‌ای از ابزارهایی است که توسط آسمان در طی سال‌ها توسعه نرم‌افزارهای مختلف در قالب یک ماژول بصورت اپن‌سورس و آزاد در دسترس عموم قرار داده شده است.</translation>
+    </message>
+    <message>
+        <source>Persian poetry web site called ganjoor which includes a .NET based Windows client and a SQLite copy of site database.</source>
+        <translation>وب‌سایت شعر و ادبیات فارسی با نام گنجور که علاوه بر وب‌سایت یک نرم‌افزار ویندوزی هم دارد و می‌کده از دیتابیس این مجموعه استفاده می‌کند.</translation>
+    </message>
+    <message>
+        <source>Qt is a cross-platform application and UI framework for developers using C++ or QML, a CSS &amp; JavaScript like language.</source>
+        <translation>یک فریم‌ورک کراس‌پلتفرم و آزاد تحت زبان سی‌پلاس‌پلاس برای توسعه نرم‌افزارهای دسکتاپ و موبایلی است.</translation>
+    </message>
+</context>
+<context>
     <name>AsemanTools</name>
     <message>
         <source>0</source>
@@ -566,6 +643,10 @@
     <message>
         <source>Favorites</source>
         <translation>علاقه‌مندی‌ها</translation>
+    </message>
+    <message>
+        <source>about</source>
+        <translation>درباره می‌کده</translation>
     </message>
 </context>
 <context>

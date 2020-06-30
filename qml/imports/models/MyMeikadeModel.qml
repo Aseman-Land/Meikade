@@ -46,6 +46,12 @@ AsemanListModel {
             "icon": "mdi_settings",
             "link": "page:/settings",
             "underco": false
+        },
+        {
+            "title": qsTr("about") + Translations.refresher,
+            "icon": "mdi_information",
+            "link": "page:/abouts",
+            "underco": false
         }
     ]
 }

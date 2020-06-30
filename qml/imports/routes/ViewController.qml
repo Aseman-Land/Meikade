@@ -94,6 +94,11 @@ ViewportController {
     }
 
     ViewportControllerRoute {
+        route: /\w+\:\/abouts/
+        source: "AboutRoute.qml"
+    }
+
+    ViewportControllerRoute {
         route: /\w+\:\/poem\/hafiz_faal/
         source: "HafizFaalRoute.qml"
         viewportType: "float"

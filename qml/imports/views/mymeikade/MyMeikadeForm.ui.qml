@@ -48,6 +48,8 @@ Rectangle {
         LayoutMirroring.enabled: false
         LayoutMirroring.childrenInherit: true
 
+        bottomMargin: 100 * Devices.density
+
         header: Item {
             width: gridView.width
             height: coverImage.height + 10 * Devices.density

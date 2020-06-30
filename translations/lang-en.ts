@@ -2,6 +2,76 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="en_US">
 <context>
+    <name>AboutForm.ui</name>
+    <message>
+        <source>Website</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Instagram</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Telegram</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Github</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>About</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;b&gt;&lt;u&gt;Meikade is a free and opensource poetry app&lt;/u&gt;&lt;/b&gt;, designed and created by Aseman. It means user freedom and privacy is important for Meikade. So you can access Meikade&apos;s source code on Github, Read it and change it under the term of the GPLv3 license.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Development Team:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>- Bardia Daneshvar
+- AmirHossein Mousavi
+- Ali Rasooli
+- Hanieh Sahranavard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Thanks to:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hamidreza Mohammad (Ganjoor team), Arman Farajollahi-far, Purya Daneshvar (UI/UX), Armin Shalchian (Apple Watch), Amin Hatami (Logo Designer), Mohsen Ebrahimnejad (Telegram channel assistant), Hasan Noroozi, Houtan Baraary, Mansoore Zamani, Pourya Khalaj Tehrani</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;b&gt;&lt;u&gt;Aseman&lt;/u&gt;&lt;/b&gt;, Aseman is a non-profit and community based company that created in 2013 by members of the Idehgostar company. Aseman created to leads open-source and free software.&lt;br /&gt;Aseman promotes openness, innovation and participation on the digital and computers world.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Twitter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open-source projects used in meikade:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Some tools, creating for Aseman Qt projects and used on many of Aseman&apos;s projects.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Persian poetry web site called ganjoor which includes a .NET based Windows client and a SQLite copy of site database.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Qt is a cross-platform application and UI framework for developers using C++ or QML, a CSS &amp; JavaScript like language.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>AuthPage</name>
     <message>
         <source>Logged in Successfully</source>
@@ -479,6 +549,10 @@
     </message>
     <message>
         <source>Favorites</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>about</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
