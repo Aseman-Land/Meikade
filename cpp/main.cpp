@@ -37,7 +37,7 @@ int main(int argc, char *argv[])
     qsrand(QTime::currentTime().msec());
 
     bool androidStyle;
-#ifndef Q_OS_ANDROID
+#ifdef Q_OS_ANDROID
     androidStyle = true;
     QQuickStyle::setStyle("Material");
 #else
