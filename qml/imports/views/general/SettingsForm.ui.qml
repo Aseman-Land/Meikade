@@ -93,8 +93,8 @@ Item {
                         id: themeCombo
                         Layout.preferredWidth: 100 * Devices.density
                         font.pixelSize: 9 * Devices.fontDensity
-                        model: Devices.isAndroid? [qsTr("Light") + Translations.refresher, qsTr("Dark")] :
-                                                  [qsTr("Auto") + Translations.refresher, qsTr("Light"), qsTr("Dark")]
+                        model: isAndroidStyle? [qsTr("Light") + Translations.refresher, qsTr("Dark")] :
+                                               [qsTr("Auto") + Translations.refresher, qsTr("Light"), qsTr("Dark")]
                         delegate: ItemDelegate {
                             width: themeCombo.width
 

@@ -23,6 +23,7 @@ AsemanListModel {
 
                         d["id"] = caps[0][1];
                         d["catId"] = 0;
+                        d["subtitle"] = GTranslations.translate(d.subtitle);
                         d["image"] = Constants.thumbsBaseUrl + caps[0][1] + ".png";
                         res[res.length] = d;
                     }

@@ -215,7 +215,7 @@ Item {
                 id: profileLabel
                 font.pixelSize: 14 * Devices.fontDensity
                 scale: (10 + 4 * ratio) / 14
-                color: Material.background
+                color: "#fff"
                 text: "Bardia Daneshvar"
                 anchors.centerIn: parent
                 anchors.verticalCenterOffset: 30 * Devices.density * ratioAbs
@@ -236,7 +236,7 @@ Item {
                 anchors.top: profileLabel.bottom
                 anchors.topMargin: 2 * Devices.density
                 font.pixelSize: 9 * Devices.fontDensity
-                color: Material.background
+                color: "#fff"
                 text: viewCount + " " + qsTr("Views")
                 visible: !progressBar.running && viewCount
                 opacity: ratio

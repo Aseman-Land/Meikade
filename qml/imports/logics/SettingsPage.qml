@@ -59,7 +59,7 @@ SettingsView {
         if (initTimer.running)
             return;
 
-        if (Devices.isAndroid) {
+        if (isAndroidStyle) {
             switch (themeCombo.currentIndex) {
             case 0:
                 AsemanGlobals.androidTheme = Material.Light;
@@ -91,7 +91,7 @@ SettingsView {
             }
         }
 
-        if (Devices.isAndroid) {
+        if (isAndroidStyle) {
             switch (AsemanGlobals.androidTheme) {
             case Material.Light:
                 themeCombo.currentIndex = 0;

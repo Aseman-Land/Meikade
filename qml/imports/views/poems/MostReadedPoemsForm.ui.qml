@@ -133,7 +133,7 @@ Item {
                             maximumLineCount: 1
                             font.pixelSize: 8 * Devices.fontDensity
                             opacity: 0.8
-                            text: model.subtitle
+                            text: model.subtitle? model.subtitle : ""
                             visible: text.length
                         }
                     }
@@ -159,7 +159,6 @@ Item {
         anchors.top: headerItem.bottom
         anchors.left: parent.left
         anchors.right: parent.right
-        Material.accent: Material.primary
 
         TabButton {
             text: qsTr("Poems") + Translations.refresher

@@ -180,7 +180,6 @@ Item {
         anchors.top: headerItem.bottom
         anchors.left: parent.left
         anchors.right: parent.right
-        Material.accent: Material.primary
 
         TabButton {
             text: qsTr("Poets") + Translations.refresher

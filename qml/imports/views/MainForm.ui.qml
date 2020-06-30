@@ -86,10 +86,10 @@ Page {
                 height: footerListView.height
                 width: footerListView.width / footerListView.count
                 iconText.text: MaterialIcons[ListView.isCurrentItem ? model.icon : model.icon_o]
-                iconText.color: ListView.isCurrentItem ? Colors.primary : Colors.foreground
+                iconText.color: ListView.isCurrentItem ? (Colors.darkMode? Colors.accent : Colors.primary) : Colors.foreground
                 iconText.font.pixelSize: model.iconSizeRatio * 18 * Devices.fontDensity
                 title.text: model.name
-                title.color: ListView.isCurrentItem ? Colors.primary : Colors.foreground
+                title.color: ListView.isCurrentItem ? (Colors.darkMode? Colors.accent : Colors.primary) : Colors.foreground
                 onClicked: footerListView.currentIndex = model.index
             }
 

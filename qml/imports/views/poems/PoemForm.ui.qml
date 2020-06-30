@@ -294,7 +294,7 @@ Item {
                 anchors.right: parent.right
                 horizontalAlignment: Text.AlignHCenter
                 font.pixelSize: 10 * Devices.fontDensity
-                color: Material.background
+                color: "#fff"
                 text: "Bardia Daneshvar"
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                 maximumLineCount: 1
@@ -311,7 +311,7 @@ Item {
                 horizontalAlignment: Text.AlignHCenter
                 font.pixelSize: 14 * Devices.fontDensity
                 scale: Math.min(1, (10 + 4 * ratio) / 14)
-                color: Material.background
+                color: "#fff"
                 text: "High Mountains of QML"
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                 maximumLineCount: 1
@@ -325,7 +325,7 @@ Item {
                 anchors.right: parent.right
                 horizontalAlignment: Text.AlignHCenter
                 font.pixelSize: 8 * Devices.fontDensity
-                color: Material.background
+                color: "#fff"
                 text: viewCount + " " + qsTr("Views")
                 visible: viewCount.length
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
