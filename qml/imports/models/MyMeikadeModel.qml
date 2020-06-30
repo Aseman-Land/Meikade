@@ -32,7 +32,7 @@ AsemanListModel {
         {
             "title": qsTr("Sync") + Translations.refresher,
             "icon": "mdi_cloud_sync",
-            "link": "popup:/test",
+            "link": "float:/syncs",
             "underco": false
         },
         {

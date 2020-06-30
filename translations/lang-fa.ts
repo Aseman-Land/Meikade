@@ -622,7 +622,7 @@
     </message>
     <message>
         <source>Notes</source>
-        <translation>نوشته‌ها</translation>
+        <translation>یادداشت‌ها</translation>
     </message>
     <message>
         <source>Manage Poets</source>
@@ -1097,6 +1097,41 @@
     <message>
         <source>Poet Name</source>
         <translation>نام شاعر</translation>
+    </message>
+</context>
+<context>
+    <name>SyncForm.ui</name>
+    <message>
+        <source>Last sync date and time</source>
+        <translation>زمان آخرین همگام‌سازی</translation>
+    </message>
+    <message>
+        <source>Items you want to sync with Meikade&apos;s cloud services:</source>
+        <translation>مواردی که قصد همگام‌سازی آن‌ها را دارید، فعال کنید:</translation>
+    </message>
+    <message>
+        <source>Favorites</source>
+        <translation>علاقه‌مندی‌ها</translation>
+    </message>
+    <message>
+        <source>Notes</source>
+        <translation>یادداشت‌ها</translation>
+    </message>
+    <message>
+        <source>Last viewed poems</source>
+        <translation>آخرین شعرهای بررسی شده</translation>
+    </message>
+    <message>
+        <source>Removed Poets</source>
+        <translation>شاعران حذف شده</translation>
+    </message>
+    <message>
+        <source>Sync</source>
+        <translation>همگام‌سازی</translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation>بستن</translation>
     </message>
 </context>
 <context>

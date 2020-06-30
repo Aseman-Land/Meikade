@@ -19,4 +19,5 @@ SettingsPage 1.0 SettingsPage.qml
 ContactPage 1.0 ContactPage.qml
 WebBrowserPage 1.0 WebBrowserPage.qml
 AboutPage 1.0 AboutPage.qml
+SyncPage 1.0 SyncPage.qml
 StickerDialog 1.0 old/StickerDialog.qml

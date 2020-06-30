@@ -11,13 +11,10 @@ NetworkRequest {
     ignoreKeys: ["baseUrl", "refreshingState", "allowGlobalBusy", "networkManager", "allowShowErrors"]
     ignoreRegExp: /^_\w+$/
     headers: {
-        "Device-ID": Devices.deviceId,
-        "Device-Density": Devices.density,
-        "Platform-Version": Devices.platformVersion,
-        "Platform-Type": Devices.platformType,
-        "CPU-Architecture": Devices.platformCpuArchitecture,
+        "Unique-ID": AsemanGlobals.uniqueId,
         "App-Name": AsemanApp.applicationName,
         "App-Version": AsemanApp.applicationVersion,
+        "App-Build-OS": (Devices.isAndroid? "android" : Devices.isIOS? "ios" : Devices.isLinux? "linux" : Devices.isWindows? "windows" : Devices.isMacX? "osx" : "other"),
         "Theme-Dark": Colors.darkMode? "true" : "false",
         "Content-Type": "application/json",
         "User-token": AsemanGlobals.accessToken,

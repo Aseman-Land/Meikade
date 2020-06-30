@@ -968,6 +968,41 @@
     </message>
 </context>
 <context>
+    <name>SyncForm.ui</name>
+    <message>
+        <source>Last sync date and time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Items you want to sync with Meikade&apos;s cloud services:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Favorites</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Notes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Last viewed poems</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Removed Poets</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sync</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>TopPoetsForm.ui</name>
     <message>
         <source>There is no item here</source>

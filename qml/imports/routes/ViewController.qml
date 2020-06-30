@@ -30,6 +30,11 @@ ViewportController {
     }
 
     ViewportControllerRoute {
+        route: /\w+\:\/syncs/
+        source: "SyncRoute.qml"
+    }
+
+    ViewportControllerRoute {
         route: /\w+\:\/poem\/random(?:\?.+)?/
         source: "PoemRoute.qml"
 //        source: "RandomPoemRoute.qml"

@@ -19,6 +19,7 @@ AsemanObject {
     property alias androidTheme: _settings.androidTheme
 
     property alias accessToken: _auth.accessToken
+    property alias uniqueId: _auth.uniqueId
 
     Component.onCompleted: {
         Tools.mkDir(cachePath)
@@ -45,6 +46,11 @@ AsemanObject {
         source: AsemanApp.homePath + "/auth.ini"
 
         property string accessToken
+        property string uniqueId
+
+        Component.onCompleted: {
+            if (uniqueId.length == 0) uniqueId = Tools.createUuid()
+        }
     }
 }
 

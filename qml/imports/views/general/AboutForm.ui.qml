@@ -307,6 +307,7 @@ Page {
         anchors.right: parent.right
         anchors.top: parent.top
         color: "#222222"
+        shadow: Devices.isAndroid
         text: qsTr("About") + Translations.refresher
 
         HeaderMenuButton {
