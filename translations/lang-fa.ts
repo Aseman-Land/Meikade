@@ -1218,6 +1218,13 @@
     </message>
 </context>
 <context>
+    <name>SyncPage</name>
+    <message>
+        <source>Syncing...</source>
+        <translation>در حال همگام‌سازی…</translation>
+    </message>
+</context>
+<context>
     <name>TopPoetsForm.ui</name>
     <message>
         <source>There is no item here</source>

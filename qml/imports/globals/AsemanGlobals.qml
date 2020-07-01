@@ -20,10 +20,33 @@ AsemanObject {
 
     property alias accessToken: _auth.accessToken
     property alias uniqueId: _auth.uniqueId
-    property alias lastSync: _auth.lastSync
+
+    property alias lastSync: _sync.lastSync
+    property alias syncFavorites: _sync.syncFavorites
+    property alias syncViews: _sync.syncViews
+    property alias syncTopPoets: _sync.syncTopPoets
 
     Component.onCompleted: {
         Tools.mkDir(cachePath)
+    }
+
+    onAccessTokenChanged: {
+        if (initTimer.running)
+            return;
+
+        if (accessToken.length) {
+            lastSync = "";
+            syncFavorites = false;
+            syncViews = false;
+            syncTopPoets = false;
+        }
+    }
+
+    Timer {
+        id: initTimer
+        interval: 100
+        repeat: false
+        running: true
     }
 
     Settings {
@@ -48,11 +71,21 @@ AsemanObject {
 
         property string accessToken
         property string uniqueId
-        property string lastSync
 
         Component.onCompleted: {
             if (uniqueId.length == 0) uniqueId = Tools.createUuid()
         }
+    }
+
+    Settings {
+        id: _sync
+        category: "General"
+        source: AsemanApp.homePath + "/sync.ini"
+
+        property string lastSync
+        property bool syncFavorites: false
+        property bool syncViews: false
+        property bool syncTopPoets: false
     }
 }
 

@@ -18,7 +18,12 @@ AsemanObject {
         id: storeReq
         onSuccessfull: {
             AsemanGlobals.lastSync = Tools.dateToString(new Date, "yyyy-MM-dd hh:mm:ss");
-            actions.query("UPDATE actions SET synced = 1");
+
+            actions.begin();
+            if (AsemanGlobals.syncTopPoets) actions.query("UPDATE actions SET synced = 1 WHERE type = " + UserActions.TypeTopPoets);
+            if (AsemanGlobals.syncViews) actions.query("UPDATE actions SET synced = 1 WHERE type = " + UserActions.TypePoemViewDate);
+            if (AsemanGlobals.syncFavorites) actions.query("UPDATE actions SET synced = 1 WHERE type = " + UserActions.TypeFavorite);
+            actions.commit();
         }
     }
 
@@ -72,6 +77,31 @@ AsemanObject {
                 actions.poemId = a.poem_id;
                 actions.verseId = a.verse_id;
                 actions.type = a.type;
+
+                switch (actions.type) {
+                case UserActions.TypeFavorite:
+                    if (!AsemanGlobals.syncFavorites)
+                        return;
+                    break;
+
+                case UserActions.TypePoetViewDate:
+                case UserActions.TypeCatViewDate:
+                case UserActions.TypePoemViewDate:
+                    if (!AsemanGlobals.syncViews)
+                        return;
+                    break;
+
+                case UserActions.TypeTopPoets:
+                    if (!AsemanGlobals.syncTopPoets)
+                        return;
+                    break;
+
+                case UserActions.TypeUnknown:
+                case UserActions.TypeNote:
+                default:
+                    return;
+                }
+
                 actions.updatedAt = 0;
                 actions.synced = 1;
                 actions.fetch();
@@ -125,13 +155,41 @@ AsemanObject {
             return;
         }
 
+        var acts = new Array
         for (var i in items) {
             var it = items[i];
+
+            switch (it.type) {
+            case UserActions.TypeFavorite:
+                if (!AsemanGlobals.syncFavorites)
+                    continue;
+                break;
+
+            case UserActions.TypePoetViewDate:
+            case UserActions.TypeCatViewDate:
+            case UserActions.TypePoemViewDate:
+                if (!AsemanGlobals.syncViews)
+                    continue;
+                break;
+
+            case UserActions.TypeTopPoets:
+                if (!AsemanGlobals.syncTopPoets)
+                    continue;
+                break;
+
+            case UserActions.TypeUnknown:
+            case UserActions.TypeNote:
+            default:
+                continue;
+            }
+
             it.updated_at = normalizeDate( Tools.dateFromSec(it.updated_at) );
             it.inserted_at = normalizeDate(new Date);
+
+            acts[acts.length] = Tools.toVariantMap(it);
         }
 
-        storeReq.actions = items;
+        storeReq.actions = acts;
         storeReq.networkManager.post(storeReq);
     }
 

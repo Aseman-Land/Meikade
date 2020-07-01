@@ -172,7 +172,6 @@ Page {
                     RowLayout {
                         id: topPoetsRow
                         spacing: 0
-                        visible: false
 
                         Label {
                             Layout.fillWidth: true
@@ -195,7 +194,7 @@ Page {
         anchors.right: flick.right
         anchors.top: flick.top
         anchors.bottom: flick.bottom
-        color: "#fff"
+        color: Colors.primary
     }
 
     Header {

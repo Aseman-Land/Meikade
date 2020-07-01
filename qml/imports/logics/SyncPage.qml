@@ -10,13 +10,30 @@ import requests 1.0
 
 SyncView {
     id: dis
-    closeBtn.onClicked: ViewportType.open = false
 
     property variant lastSync: Tools.datefromString(AsemanGlobals.lastSync, "yyyy-MM-dd hh:mm:ss")
 
-    syncDateLabel.text: Tools.trNums( CalendarConv.convertDateTimeToLittleString(lastSync) )
-    syncTimeLabel.text: Tools.trNums( Tools.dateToString(lastSync, "hh:mm:ss" ) )
+    closeBtn.onClicked: ViewportType.open = false
+
+    syncDateLabel.text: AsemanGlobals.lastSync.length? Tools.trNums( CalendarConv.convertDateTimeToLittleString(lastSync) ) : qsTr("Syncing...")
+    syncTimeLabel.text: AsemanGlobals.lastSync.length? Tools.trNums( Tools.dateToString(lastSync, "hh:mm:ss" ) ) : ""
 
     syncBtn.onClicked: StoreActionsBulk.syncActionsInterval()
     syncIndicator.running: StoreActionsBulk.syncing
+
+    syncListsSwitch.checked: AsemanGlobals.syncFavorites
+    syncListsSwitch.onCheckedChanged: if (!initTimer.running) { AsemanGlobals.syncFavorites = syncListsSwitch.checked; StoreActionsBulk.syncActionsInterval(); AsemanGlobals.lastSync = "" }
+
+    syncPoemsSwitch.checked: AsemanGlobals.syncViews
+    syncPoemsSwitch.onCheckedChanged: if (!initTimer.running) { AsemanGlobals.syncViews = syncPoemsSwitch.checked; StoreActionsBulk.syncActionsInterval(); AsemanGlobals.lastSync = "" }
+
+    syncTopPoetsSwitch.checked: AsemanGlobals.syncTopPoets
+    syncTopPoetsSwitch.onCheckedChanged: if (!initTimer.running) { AsemanGlobals.syncTopPoets = syncTopPoetsSwitch.checked; StoreActionsBulk.syncActionsInterval(); AsemanGlobals.lastSync = "" }
+
+    Timer {
+        id: initTimer
+        interval: 1000
+        repeat: false
+        running: true
+    }
 }
