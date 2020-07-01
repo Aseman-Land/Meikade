@@ -1001,6 +1001,10 @@
         <source>Top Poets</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Resync All</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>SyncPage</name>

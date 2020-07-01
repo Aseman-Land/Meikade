@@ -33,7 +33,8 @@ AuthView {
         onSuccessfull: {
             auth.ViewportType.open = false;
             AsemanGlobals.accessToken = response.result.token;
-            GlobalSignals.snackbarRequest(qsTr("Logged in Successfully"))
+            GlobalSignals.snackbarRequest(qsTr("Logged in Successfully"));
+            GlobalSignals.reinitSync(Viewport.controller);
         }
     }
 

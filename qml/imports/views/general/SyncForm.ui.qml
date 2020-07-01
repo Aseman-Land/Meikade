@@ -22,6 +22,7 @@ Page {
     property alias syncIndicator: syncIndicator
     property alias syncBtn: syncBtn
     property alias closeBtn: closeBtn
+    property alias resyncBtn: resyncBtn
 
     AsemanFlickable {
         id: flick
@@ -183,6 +184,15 @@ Page {
                         Switch {
                             id: syncTopPoetsSwitch
                         }
+                    }
+
+                    Button {
+                        id: resyncBtn
+                        Layout.fillWidth: true
+                        Layout.topMargin: 20 * Devices.density
+//                        highlighted: true
+                        font.pixelSize: 9 * Devices.fontDensity
+                        text: qsTr("Resync All") + Translations.refresher
                     }
                 }
             }

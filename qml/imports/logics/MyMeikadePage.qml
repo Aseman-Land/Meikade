@@ -14,7 +14,12 @@ MyMeikadeView {
     gridView.model: MyMeikadeModel {}
 
     settingsBtn.onClicked: Viewport.controller.trigger("page:/settings")
-    onClicked: Viewport.controller.trigger(link, {})
+    onClicked: {
+        if (link == "float:/syncs" && AsemanGlobals.accessToken.length == 0)
+            link = "float:/auth/float";
+
+        Viewport.controller.trigger(link, {})
+    }
 
     profileLabel.text: MyUserRequest._fullname
     authBtn.onClicked: Viewport.controller.trigger("float:/auth/float", {})

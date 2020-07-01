@@ -8,10 +8,17 @@ import queries 1.0
 AsemanObject {
 
     readonly property bool syncing: storeReq.refreshing || actionsReq.refreshing || insertTimer.running || storeInterval.running
+    property bool syncAgain
 
     Connections {
         target: GlobalSignals
         onSyncRequest: syncActionsInterval()
+        onReinitSync: {
+            syncActionsInterval();
+            Tools.jsDelayCall(400, function(){
+                controller.trigger("float:/syncs")
+            })
+        }
     }
 
     StoreActionsBulkRequest {
@@ -24,6 +31,9 @@ AsemanObject {
             if (AsemanGlobals.syncViews) actions.query("UPDATE actions SET synced = 1 WHERE type = " + UserActions.TypePoemViewDate);
             if (AsemanGlobals.syncFavorites) actions.query("UPDATE actions SET synced = 1 WHERE type = " + UserActions.TypeFavorite);
             actions.commit();
+
+            if (syncAgain) syncActionsInterval();
+            syncAgain = false;
         }
     }
 
@@ -136,12 +146,27 @@ AsemanObject {
     }
 
     function syncActionsInterval() {
+        if (!AsemanGlobals.syncFavorites && !AsemanGlobals.syncTopPoets && !AsemanGlobals.syncViews)
+            return;
+
         storeInterval.restart();
     }
 
+    function forceResync() {
+        AsemanGlobals.lastSync = "";
+        actions.begin();
+        actions.query("UPDATE actions SET synced = 0");
+        actions.commit();
+        syncActionsInterval();
+    }
+
     function syncActions() {
-        if (actionsReq.refreshing || storeReq.refreshing)
+        if (AsemanGlobals.accessToken.length == 0)
             return;
+        if (actionsReq.refreshing || storeReq.refreshing) {
+            syncAgain = true;
+            return;
+        }
 
         actionsReq.networkManager.get(actionsReq);
     }
@@ -152,6 +177,8 @@ AsemanObject {
                                   "FROM actions WHERE synced = 0", {});
         if (items.length == 0) {
             AsemanGlobals.lastSync = Tools.dateToString(new Date, "yyyy-MM-dd hh:mm:ss");
+            if (syncAgain) syncActionsInterval();
+            syncAgain = false;
             return;
         }
 

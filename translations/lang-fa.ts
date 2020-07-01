@@ -1216,6 +1216,10 @@
         <source>Top Poets</source>
         <translation>شعرای صفحه خانگی</translation>
     </message>
+    <message>
+        <source>Resync All</source>
+        <translation>همگام‌سازی از اول</translation>
+    </message>
 </context>
 <context>
     <name>SyncPage</name>

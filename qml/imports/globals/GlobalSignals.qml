@@ -9,4 +9,5 @@ QtObject {
 
     signal snackbarRequest(string text)
     signal syncRequest()
+    signal reinitSync(variant controller)
 }
