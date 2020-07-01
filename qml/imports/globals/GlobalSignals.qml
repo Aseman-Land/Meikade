@@ -8,4 +8,5 @@ QtObject {
     signal favoritesRefreshed()
 
     signal snackbarRequest(string text)
+    signal syncRequest()
 }

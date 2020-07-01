@@ -11,4 +11,12 @@ import requests 1.0
 SyncView {
     id: dis
     closeBtn.onClicked: ViewportType.open = false
+
+    property variant lastSync: Tools.datefromString(AsemanGlobals.lastSync, "yyyy-MM-dd hh:mm:ss")
+
+    syncDateLabel.text: Tools.trNums( CalendarConv.convertDateTimeToLittleString(lastSync) )
+    syncTimeLabel.text: Tools.trNums( Tools.dateToString(lastSync, "hh:mm:ss" ) )
+
+    syncBtn.onClicked: StoreActionsBulk.syncActionsInterval()
+    syncIndicator.running: StoreActionsBulk.syncing
 }

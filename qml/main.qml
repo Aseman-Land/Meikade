@@ -18,6 +18,7 @@ AsemanApplication {
         UserDbUpdater.init();
         DataDbUpdater.init();
         MyUserRequest.init();
+        StoreActionsBulk.init();
 
         if (Devices.isDesktop) Devices.fontScale = 1.1;
         if (Devices.isMacX) Devices.fontScale = 1.2;

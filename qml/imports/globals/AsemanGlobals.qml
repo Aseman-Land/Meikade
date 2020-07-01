@@ -20,6 +20,7 @@ AsemanObject {
 
     property alias accessToken: _auth.accessToken
     property alias uniqueId: _auth.uniqueId
+    property alias lastSync: _auth.lastSync
 
     Component.onCompleted: {
         Tools.mkDir(cachePath)
@@ -47,6 +48,7 @@ AsemanObject {
 
         property string accessToken
         property string uniqueId
+        property string lastSync
 
         Component.onCompleted: {
             if (uniqueId.length == 0) uniqueId = Tools.createUuid()

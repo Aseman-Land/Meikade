@@ -54,7 +54,7 @@ PoetBooksView {
         repeat: false
         running: true
         onTriggered: {
-            viewActionQuery.push()
+            viewActionQuery.pushAction()
             GlobalSignals.recentPoemsRefreshed()
         }
     }

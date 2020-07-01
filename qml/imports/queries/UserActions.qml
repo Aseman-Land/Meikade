@@ -1,6 +1,7 @@
 import QtQuick 2.12
 import AsemanQml.Base 2.0
 import AsemanQml.Sql 2.0
+import globals 1.0
 
 UserBaseQuery {
     id: obj
@@ -30,5 +31,12 @@ UserBaseQuery {
 
     function getItems(type, offset, limit) {
         return select("", "type = :type AND declined = 0", "ORDER BY updatedAt DESC LIMIT :limit OFFSET :offset", {type: type, offset: offset, limit: limit})
+    }
+
+    function pushAction() {
+        updatedAt = Tools.dateToSec(new Date);
+        synced = 0;
+        push();
+        GlobalSignals.syncRequest();
     }
 }

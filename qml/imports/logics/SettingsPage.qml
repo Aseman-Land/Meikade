@@ -39,6 +39,8 @@ SettingsView {
         allowGlobalBusy: true
         onSuccessfull: {
             AsemanGlobals.accessToken = "";
+            AsemanGlobals.lastSync = "";
+
             dis.ViewportType.open = false;
             GlobalSignals.snackbarRequest(qsTr("Logout Successfully"))
         }

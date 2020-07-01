@@ -169,7 +169,7 @@ PoemView {
         repeat: false
         running: true
         onTriggered: {
-            viewActionQuery.push()
+            viewActionQuery.pushAction()
             GlobalSignals.recentPoemsRefreshed()
         }
     }
@@ -253,7 +253,7 @@ PoemView {
                     faveActionQuery.declined = (faveActionQuery.updatedAt && !faveActionQuery.declined? 1 : 0);
                     faveActionQuery.updatedAt = Tools.dateToSec(new Date);
                     faveActionQuery.extra = viewActionQuery.extra
-                    faveActionQuery.push();
+                    faveActionQuery.pushAction();
                     form.selectMode = false;
                     GlobalSignals.snackbarRequest(faveActionQuery.declined? qsTr("Poem Unfavorited") : qsTr("Poem favorited"));
                     GlobalSignals.favoritesRefreshed();
@@ -378,7 +378,7 @@ PoemView {
                     verseFaveActionQuery.declined = (verseFaveActionQuery.updatedAt && !verseFaveActionQuery.declined? 1 : 0);
                     verseFaveActionQuery.updatedAt = Tools.dateToSec(new Date);
                     verseFaveActionQuery.extra = Tools.variantToJson(map, true);
-                    verseFaveActionQuery.push();
+                    verseFaveActionQuery.pushAction();
 
                     GlobalSignals.snackbarRequest(verseFaveActionQuery.declined? qsTr("Verse Unfavorited") : qsTr("Verse favorited"));
                     GlobalSignals.favoritesRefreshed();

@@ -14,14 +14,14 @@ AsemanListModel {
         actions.declined = false;
         actions.extra = Tools.variantToJson(properties);
         actions.updatedAt = Tools.dateToSec(new Date);
-        actions.push();
+        actions.pushAction();
         GlobalSignals.topPoetsRefreshed();
     }
     function remove(poetId) {
         actions.poetId = poetId;
         actions.declined = true;
         actions.updatedAt = Tools.dateToSec(new Date);
-        actions.push();
+        actions.pushAction();
         GlobalSignals.topPoetsRefreshed();
     }
 

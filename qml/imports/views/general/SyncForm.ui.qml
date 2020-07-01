@@ -18,7 +18,9 @@ Page {
     property alias syncListsSwitch: syncListsSwitch
     property alias syncNotesSwitch: syncNotesSwitch
     property alias syncPoemsSwitch: syncPoemsSwitch
-    property alias syncListSwitch: syncListSwitch
+    property alias syncTopPoetsSwitch: syncTopPoetsSwitch
+    property alias syncIndicator: syncIndicator
+    property alias syncBtn: syncBtn
     property alias closeBtn: closeBtn
 
     AsemanFlickable {
@@ -53,6 +55,28 @@ Page {
                         anchors.leftMargin: 20 * Devices.density
                         anchors.rightMargin: 20 * Devices.density
                         radius: Constants.radius
+
+                        Item {
+                            anchors.right: parent.right
+                            anchors.verticalCenter: parent.verticalCenter
+                            anchors.rightMargin: 40 * Devices.density
+
+                            Button {
+                                id: syncBtn
+                                anchors.centerIn: parent
+                                width: 50 * Devices.density
+                                height: width
+                                font.family: MaterialIcons.family
+                                font.pixelSize: 14 * Devices.fontDensity
+                                text: MaterialIcons.mdi_reload
+                                visible: !syncIndicator.running
+                            }
+
+                            BusyIndicator {
+                                id: syncIndicator
+                                anchors.centerIn: parent
+                            }
+                        }
 
                         ColumnLayout {
                             anchors.centerIn: parent
@@ -115,6 +139,7 @@ Page {
                     RowLayout {
                         id: notesRow
                         spacing: 0
+                        visible: false
 
                         Label {
                             Layout.fillWidth: true
@@ -145,18 +170,19 @@ Page {
                     }
 
                     RowLayout {
-                        id: removedsRow
+                        id: topPoetsRow
                         spacing: 0
+                        visible: false
 
                         Label {
                             Layout.fillWidth: true
                             horizontalAlignment: Text.AlignLeft
-                            text: qsTr("Removed Poets") + Translations.refresher
+                            text: qsTr("Top Poets") + Translations.refresher
                             font.pixelSize: 9 * Devices.fontDensity
                         }
 
                         Switch {
-                            id: syncListSwitch
+                            id: syncTopPoetsSwitch
                         }
                     }
                 }

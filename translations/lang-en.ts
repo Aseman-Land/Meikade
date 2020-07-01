@@ -990,15 +990,15 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Removed Poets</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Sync</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Close</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Top Poets</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

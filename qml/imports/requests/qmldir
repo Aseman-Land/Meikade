@@ -1,5 +1,6 @@
 singleton MyUserRequest 1.0 MyUserRequest.qml
 singleton RandomPoemRequester 1.0 RandomPoemRequester.qml
+singleton StoreActionsBulk 1.0 StoreActionsBulk.qml
 RandomPoemRequest 1.0 RandomPoemRequest.qml
 HomeRequest 1.0 HomeRequest.qml
 LoginRequest 1.0 LoginRequest.qml
@@ -16,3 +17,5 @@ CatRequest 1.0 CatRequest.qml
 UserCheckRequest 1.0 UserCheckRequest.qml
 LogoutRequest 1.0 LogoutRequest.qml
 ContactUsRequest 1.0 ContactUsRequest.qml
+StoreActionsBulkRequest 1.0 StoreActionsBulkRequest.qml
+GetActionsRequest 1.0 GetActionsRequest.qml
