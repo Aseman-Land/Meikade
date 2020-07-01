@@ -190,7 +190,7 @@ Page {
                         id: resyncBtn
                         Layout.fillWidth: true
                         Layout.topMargin: 20 * Devices.density
-//                        highlighted: true
+                        highlighted: true
                         font.pixelSize: 9 * Devices.fontDensity
                         text: qsTr("Resync All") + Translations.refresher
                     }
