@@ -30,7 +30,7 @@ WebBrowserView {
         parent: webPage.scene
         url: webPage.link
         anchors.fill: parent
-        visible: !visibleTimer.running && webPage.link.length
+        visible: !visibleTimer.running && webPage.link.length && !loading
     }
 }
 

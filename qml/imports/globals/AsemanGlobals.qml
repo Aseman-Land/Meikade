@@ -60,8 +60,8 @@ AsemanObject {
         property bool introDone
         property bool sendData
 
-        property int iosTheme: IOSStyle.System
-        property int androidTheme: Material.Light
+        property int iosTheme: 2
+        property int androidTheme: 0
     }
 
     Settings {
