@@ -56,6 +56,7 @@ Page {
                         anchors.leftMargin: 20 * Devices.density
                         anchors.rightMargin: 20 * Devices.density
                         radius: Constants.radius
+                        color: Colors.background
 
                         Item {
                             anchors.right: parent.right

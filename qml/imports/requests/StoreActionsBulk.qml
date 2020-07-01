@@ -125,6 +125,7 @@ AsemanObject {
                 actions.extra = a.extra;
                 actions.updatedAt = updated_at;
                 actions.synced = 1;
+
                 actions.push();
             } catch (e) {
             }

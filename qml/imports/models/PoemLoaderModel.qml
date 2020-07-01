@@ -49,8 +49,8 @@ AsemanObject {
 
                 if (dis.poetImage.length == 0)
                     dis.poetImage = Constants.thumbsBaseUrl +  r.poet.id + ".png"
-
-                var cats = new Array;
+                if (!dis.poemId)
+                    dis.poemId = r.poem.id;
 
                 categoriesModel.clear();
                 categoriesModel.append({
