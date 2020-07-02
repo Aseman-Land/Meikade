@@ -85,7 +85,7 @@ PoemView {
         return text.trim();
     }
 
-    Component.onCompleted: if (loader.poemId == 0) loader.random(0, 0)
+    Component.onCompleted: if (loader.poemId == 0) loader.random()
 
     PoemLoaderModel {
         id: loader
@@ -169,6 +169,11 @@ PoemView {
         repeat: false
         running: true
         onTriggered: {
+            if (loader.refrshing) {
+                restart();
+                return;
+            }
+
             viewActionQuery.pushAction()
             GlobalSignals.recentPoemsRefreshed()
         }
@@ -209,6 +214,8 @@ PoemView {
         }
 
         onMenuRequest: {
+            if (loader.refrshing)
+                return;
             if (form.selectMode) {
                 openGlobalMenu();
                 return;
@@ -422,6 +429,9 @@ PoemView {
     }
 
     function openGlobalMenu() {
+        if (loader.refrshing)
+            return;
+
         faveActionQuery.declined = 0;
         faveActionQuery.updatedAt = 0;
         faveActionQuery.fetch();

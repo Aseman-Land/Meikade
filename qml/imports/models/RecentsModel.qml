@@ -35,10 +35,11 @@ AsemanListModel {
                     extraJson["type"] = "normal";
 
                     data[data.length] = extraJson;
-                } catch (e) {}
+                } catch (e) {
+                }
             }
 
-            dis.data = data;
+            dis.data = Tools.toVariantList(data);
         })
     }
 }

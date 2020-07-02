@@ -8,7 +8,21 @@ DataBaseQuery {
 
     property int poem_id
 
+    function random(poetId, catId, callback) {
+        console.debug(Tools.variantToJson(poetId, catId))
+        queryAsync("SELECT poem.id AS poem_id FROM poem " +
+                   (catId || poetId? "INNER JOIN cat ON poem.cat_id = cat.id " + (catId? " AND cat.id = :catId " : "") : "") +
+                   (poetId? "INNER JOIN poet ON cat.poet_id = poet.id AND poet.id = :poetId " : "") +
+                   "ORDER BY RANDOM() LIMIT 1", {"poetId": poetId, "catId": catId}, function(res){
+            _getItems(res[0].poem_id, callback);
+        });
+    }
+
     function getItems(callback) {
+        _getItems(poem_id, callback);
+    }
+
+    function _getItems(poem_id, callback) {
         queryAsync("SELECT poem.id AS poem_id, poem.title AS poem_title, poem.phrase AS poem_phrase, cat.text AS cat_title, cat.id AS cat_id, cat.parent_id AS cat_parent, " +
                    "poet.name AS poet_name, poet.description AS poet_description, poet.wikipedia AS poet_wikipedia, poet.image AS poet_image, " +
                    "poet.color AS poet_color, poet.id AS poet_id, poem.cat_id AS poem_category_id, cat.poet_id AS poem_poet_id, " +
