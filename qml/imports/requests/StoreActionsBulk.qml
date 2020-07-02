@@ -147,6 +147,8 @@ AsemanObject {
     }
 
     function syncActionsInterval() {
+        if (AsemanGlobals.accessToken.length == 0)
+            return;
         if (!AsemanGlobals.syncFavorites && !AsemanGlobals.syncTopPoets && !AsemanGlobals.syncViews)
             return;
 

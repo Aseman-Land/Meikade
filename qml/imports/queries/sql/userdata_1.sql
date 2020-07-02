@@ -34,7 +34,4 @@ ON actions (
   value COLLATE BINARY ASC
 );
 
-INSERT INTO actions (poetId, catId, poemId, verseId, type, declined, value, updatedAt, synced) SELECT 0, 0, poem_id, vorder, 1, 0, 1, date, 0 FROM favorites;
-INSERT INTO actions (poetId, catId, poemId, verseId, type, declined, value, updatedAt, synced) SELECT 0, 0, poem_id, vorder, 2, 0, text, date, 0 FROM notes;
-
 COMMIT;

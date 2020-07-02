@@ -26,6 +26,8 @@ AsemanApplication {
         if (Devices.isIOS) Devices.fontScale = 1.1;
     }
 
+    onApplicationStateChanged: if (applicationState == 4) StoreActionsBulk.syncActionsInterval()
+
     MainWindow {
         visible: true
         font.family: Fonts.globalFont

@@ -4,5 +4,5 @@ android {
 
     DISTFILES += \
         $$PWD/AndroidManifest.xml \
-        $$PWD/project.properties
+        $$PWD/gradle.properties
 }
