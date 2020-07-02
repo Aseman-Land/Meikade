@@ -221,7 +221,7 @@
     <name>Delegate</name>
     <message>
         <source>All Poets</source>
-        <translation type="vanished">همه شعرا</translation>
+        <translation type="vanished">همه شاعرها</translation>
     </message>
     <message>
         <source>Random Poem</source>
@@ -300,7 +300,7 @@
     </message>
     <message>
         <source>Offline Poets</source>
-        <translation type="vanished">شعرای آفلاین</translation>
+        <translation type="vanished">شاعرهای آفلاین</translation>
     </message>
     <message>
         <source>Manage</source>
@@ -308,7 +308,7 @@
     </message>
     <message>
         <source>Offlines</source>
-        <translation>شعرای آفلاین</translation>
+        <translation>شاعرهای آفلاین</translation>
     </message>
     <message>
         <source>Favorites</source>
@@ -334,7 +334,7 @@
     </message>
     <message>
         <source>All Poets</source>
-        <translation>همه شعرا</translation>
+        <translation>همه شاعرها</translation>
     </message>
     <message>
         <source>Random Poem</source>
@@ -424,18 +424,18 @@
     </message>
     <message>
         <source>Please choose at lease 5 your favorites.</source>
-        <translation>لطفا حداقل ۵ تا از شعرای مورد علاقه خودتو انتخاب کن.</translation>
+        <translation>لطفا حداقل ۵ تا از شاعرهای مورد علاقه خودتو انتخاب کن.</translation>
     </message>
 </context>
 <context>
     <name>IntroSetupOfflines.ui</name>
     <message>
         <source>Offline Poets</source>
-        <translation>شعرای آفلاین</translation>
+        <translation>شاعرهای آفلاین</translation>
     </message>
     <message>
         <source>Meikade 4 is online by default now. It means you can discover between tousands of poems freely without downloading to your storages. But it also available to download them to your storage and read them offline. Please select your poets that your want to read online. You can also setup it later on the every poet/book page.</source>
-        <translation>می‌کده ۴ قابلیت اینو داره که بدون اینکه اشعار شاعر یا کتابی رو دانلود کنی روی گوشیت و فضای گوشیت رو مصرف کنی، کاملا آنلاین به هزاران شعر دسترسی داشته باشی و بین اونا جستجو کنی و شعر بخونی. با این حال قابلیت می‌کده آفلاین همچنان فعال هستش و میتونی با کلیک روی هرکدوم از شعرا، اشعار اونو آفلاین بخونی. این کارو بعدا هم تو صفحه هر شاعر میتونی انجام بدی.</translation>
+        <translation>می‌کده ۴ قابلیت اینو داره که بدون اینکه شعرهای شاعر یا کتابی رو دانلود کنی روی گوشیت و فضای گوشیت رو مصرف کنی، کاملا آنلاین به هزاران شعر دسترسی داشته باشی و بین اونا جستجو کنی و شعر بخونی. با این حال قابلیت می‌کده آفلاین همچنان فعال هستش و میتونی با کلیک روی هرکدوم از شاعرها، شعرهای اونو آفلاین بخونی. این کارو بعدا هم تو صفحه هر شاعر میتونی انجام بدی.</translation>
     </message>
     <message>
         <source>Uninstalling</source>
@@ -632,7 +632,7 @@
     </message>
     <message>
         <source>Poets</source>
-        <translation>شعرا</translation>
+        <translation>شاعرها</translation>
     </message>
     <message>
         <source>Books</source>
@@ -655,7 +655,7 @@
     <name>MostReadedPoemsForm.ui</name>
     <message>
         <source>Poets</source>
-        <translation>شعرا</translation>
+        <translation>شاعرها</translation>
     </message>
     <message>
         <source>Books</source>
@@ -671,7 +671,7 @@
     </message>
     <message>
         <source>Poems</source>
-        <translation>اشعار</translation>
+        <translation>شعرها</translation>
     </message>
     <message>
         <source>There is no item here</source>
@@ -705,7 +705,7 @@
     </message>
     <message>
         <source>Manage Poets</source>
-        <translation type="vanished">مدیریت شعرا</translation>
+        <translation type="vanished">مدیریت شاعرها</translation>
     </message>
     <message>
         <source>Sync</source>
@@ -897,7 +897,7 @@
     <name>PoetsListForm.ui</name>
     <message>
         <source>All Poets</source>
-        <translation>همه شعرا</translation>
+        <translation>همه شاعرها</translation>
     </message>
 </context>
 <context>
@@ -949,11 +949,11 @@
     </message>
     <message>
         <source>Frequently Poets:</source>
-        <translation type="vanished">شعرای پر بازدید:</translation>
+        <translation type="vanished">شاعرهای پر بازدید:</translation>
     </message>
     <message>
         <source>Poem</source>
-        <translation type="vanished">اشعار</translation>
+        <translation type="vanished">شعرها</translation>
     </message>
     <message>
         <source>Poet</source>
@@ -976,7 +976,7 @@
     <name>SearchPage</name>
     <message>
         <source>All Poets</source>
-        <translation>همه شعرا</translation>
+        <translation>همه شاعرها</translation>
     </message>
     <message>
         <source>Online Results</source>
@@ -1019,7 +1019,7 @@
     </message>
     <message>
         <source>Show Phrase</source>
-        <translation>نمایش تعبیر اشعار</translation>
+        <translation>نمایش تعبیر شعرها</translation>
     </message>
 </context>
 <context>
@@ -1214,7 +1214,7 @@
     </message>
     <message>
         <source>Top Poets</source>
-        <translation>شعرای صفحه خانگی</translation>
+        <translation>شاعرهای صفحه خانگی</translation>
     </message>
     <message>
         <source>Resync All</source>
