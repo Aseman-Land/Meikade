@@ -23,7 +23,7 @@ AsemanObject {
     property alias categoriesModel: categoriesModel
     property alias versesModel: versesModel
 
-    readonly property bool refrshing: poemReq.refreshing || poemQuery.refreshing || randomReq.refreshing || (offlineRandomTimer.running && Math.floor(randomReq.status/200) != 2)
+    readonly property bool refrshing: poemReq.refreshing || poemQuery.refreshing || randomReq.refreshing || (offlineRandomTimer.running && (Math.floor(randomReq.status/200) != 2))
 
     function random() {
         randomReq.refresh();
@@ -42,9 +42,7 @@ AsemanObject {
             if (Math.floor(randomReq.status/200) == 2)
                 return;
 
-            poemQuery.refreshing = true;
             poemQuery.random(poetId, catId, function(r){
-                poemQuery.refreshing = false;
                 if (Math.floor(randomReq.status/200) != 2) {
                     prv.analizeResult(r);
                 }

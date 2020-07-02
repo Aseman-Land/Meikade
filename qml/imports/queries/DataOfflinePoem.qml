@@ -9,7 +9,6 @@ DataBaseQuery {
     property int poem_id
 
     function random(poetId, catId, callback) {
-        console.debug(Tools.variantToJson(poetId, catId))
         queryAsync("SELECT poem.id AS poem_id FROM poem " +
                    (catId || poetId? "INNER JOIN cat ON poem.cat_id = cat.id " + (catId? " AND cat.id = :catId " : "") : "") +
                    (poetId? "INNER JOIN poet ON cat.poet_id = poet.id AND poet.id = :poetId " : "") +
