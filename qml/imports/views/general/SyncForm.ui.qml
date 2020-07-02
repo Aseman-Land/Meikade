@@ -66,6 +66,8 @@ Page {
                             Button {
                                 id: syncBtn
                                 anchors.centerIn: parent
+                                highlighted: true
+                                flat: true
                                 width: 50 * Devices.density
                                 height: width
                                 font.family: MaterialIcons.family
