@@ -23,31 +23,14 @@ AsemanObject {
     property alias categoriesModel: categoriesModel
     property alias versesModel: versesModel
 
-    readonly property bool refrshing: poemReq.refreshing || poemQuery.refreshing || randomReq.refreshing || (offlineRandomTimer.running && (Math.floor(randomReq.status/200) != 2))
+    readonly property bool refrshing: poemReq.refreshing || poemQuery.refreshing || randomReq.refreshing
 
     function random() {
         randomReq.refresh();
-        offlineRandomTimer.restart();
     }
 
     function clear() {
         versesModel.clear();
-    }
-
-    Timer {
-        id: offlineRandomTimer
-        interval: 3000
-        repeat: false
-        onTriggered: {
-            if (Math.floor(randomReq.status/200) == 2)
-                return;
-
-            poemQuery.random(poetId, catId, function(r){
-                if (Math.floor(randomReq.status/200) != 2) {
-                    prv.analizeResult(r);
-                }
-            });
-        }
     }
 
     QtObject {
@@ -115,6 +98,15 @@ AsemanObject {
         id: randomReq
         poet_id: poetId;
         category_id: catId;
+        onErrorChanged: {
+            if (error.length) {
+                poemQuery.random(poetId, catId, function(r){
+                    if (Math.floor(randomReq.status/200) != 2) {
+                        prv.analizeResult(r);
+                    }
+                });
+            }
+        }
         onResponseChanged: if (response && response.result) prv.analizeResult(response.result)
     }
 
