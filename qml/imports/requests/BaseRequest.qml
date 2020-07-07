@@ -31,6 +31,7 @@ NetworkRequest {
 
     signal refreshRequest()
 
+    onStatusChanged: if (status == 401 && AsemanGlobals.accessToken.length) { AsemanGlobals.accessToken = ""; ViewController.trigger("float:/auth/float"); }
     onResponseChanged: if (_debug) console.debug(Tools.variantToJson(response))
     onHeadersChanged: if (!refreshing) refreshTimer.restart()
     onRefreshingStateChanged: {
