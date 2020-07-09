@@ -1,8 +1,5 @@
-android {
-    QT += androidextras
-    ANDROID_PACKAGE_SOURCE_DIR = $$PWD
-
-    DISTFILES += \
-        $$PWD/AndroidManifest.xml \
-        $$PWD/gradle.properties
+greaterThan(QT_MINOR_VERSION, 14) {
+    include(15/android.pri)
+} else {
+    include(13/android.pri)
 }
