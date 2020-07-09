@@ -9,6 +9,6 @@ import models 1.0
 
 AboutView {
     id: dis
-
+    qtVersion: qVersion
     headerBtn.onClicked: ViewportType.open = false
 }

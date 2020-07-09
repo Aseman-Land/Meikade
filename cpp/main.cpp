@@ -61,6 +61,7 @@ int main(int argc, char *argv[])
     engine.addImportPath(":/qml/imports/");
     engine.rootContext()->setContextProperty("isAndroidStyle", androidStyle);
     engine.rootContext()->setContextProperty("appVersion", MEIKADE_VERSION);
+    engine.rootContext()->setContextProperty("qVersion", qVersion());
     const QUrl url(QStringLiteral("qrc:/qml/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
                      &app, [url](QObject *obj, const QUrl &objUrl) {
