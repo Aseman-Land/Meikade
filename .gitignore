@@ -35,3 +35,4 @@ UpdateTranslations.sh
 *.qmlproject.qtds
 *.qmlproject
 *.DS_Store
+*.qm
