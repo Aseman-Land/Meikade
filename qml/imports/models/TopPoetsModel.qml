@@ -62,6 +62,7 @@ AsemanListModel {
                         d["catId"] = 0;
                         d["checked"] = actionsHash.contains(d.id);
                         d["image"] = Constants.thumbsBaseUrl + caps[0][1] + ".png";
+                        d["subtitle"] = GTranslations.translate(d.subtitle);
                         res[res.length] = d;
                     }
                 }

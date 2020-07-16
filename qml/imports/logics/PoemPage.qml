@@ -289,23 +289,28 @@ PoemView {
                 data: [
                     {
                         title: faveActionQuery.updatedAt && !faveActionQuery.declined? qsTr("Remove Bookmarks") : qsTr("Add to Bookmarks"),
-                        icon: faveActionQuery.updatedAt && !faveActionQuery.declined? "mdi_bookmark" : "mdi_bookmark_outline"
+                        icon: faveActionQuery.updatedAt && !faveActionQuery.declined? "mdi_bookmark" : "mdi_bookmark_outline",
+                        enabled: true
                     },
                     {
                         title: qsTr("Copy"),
-                        icon: "mdi_content_copy"
+                        icon: "mdi_content_copy",
+                        enabled: true
                     },
                     {
                         title: qsTr("Create Sticker"),
-                        icon: "mdi_sticker"
+                        icon: "mdi_sticker",
+                        enabled: !Devices.isIOS
                     },
                     {
                         title: qsTr("Share"),
-                        icon: "mdi_share_variant"
+                        icon: "mdi_share_variant",
+                        enabled: true
                     },
                     {
                         title: qsTr("Select"),
-                        icon: "mdi_select"
+                        icon: "mdi_select",
+                        enabled: true
                     },
                 ]
             }
@@ -409,19 +414,23 @@ PoemView {
                 data: [
                     {
                         title: verseFaveActionQuery.updatedAt && !verseFaveActionQuery.declined? qsTr("Remove Bookmarks") : qsTr("Add to Bookmarks"),
-                        icon: verseFaveActionQuery.updatedAt && !verseFaveActionQuery.declined? "mdi_bookmark" : "mdi_bookmark_outline"
+                        icon: verseFaveActionQuery.updatedAt && !verseFaveActionQuery.declined? "mdi_bookmark" : "mdi_bookmark_outline",
+                        enabled: true
                     },
                     {
                         title: qsTr("Copy"),
-                        icon: "mdi_content_copy"
+                        icon: "mdi_content_copy",
+                        enabled: true
                     },
                     {
                         title: qsTr("Create Sticker"),
-                        icon: "mdi_sticker"
+                        icon: "mdi_sticker",
+                        enabled: !Devices.isIOS
                     },
                     {
                         title: qsTr("Share"),
-                        icon: "mdi_share_variant"
+                        icon: "mdi_share_variant",
+                        enabled: true
                     },
                 ]
             }

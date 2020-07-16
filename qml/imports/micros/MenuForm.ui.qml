@@ -31,6 +31,8 @@ Rectangle {
             ItemDelegate {
                 Layout.preferredHeight: 50 * Devices.density
                 Layout.fillWidth: true
+                enabled: model.enabled
+                opacity: enabled? 1 : 0.5
                 onClicked: menuRoot.itemClicked(model.index)
 
                 RowLayout {

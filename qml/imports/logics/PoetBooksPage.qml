@@ -149,15 +149,18 @@ PoetBooksView {
                 data: [
                     {
                         title: catsModel.offlineInstaller.installed? qsTr("Disable Offline") : qsTr("Enable offline"),
-                        icon: "mdi_download"
+                        icon: "mdi_download",
+                        enabled: true
                     },
                     {
                         title: qsTr("Random poem"),
-                        icon: "mdi_shuffle"
+                        icon: "mdi_shuffle",
+                        enabled: true
                     },
                     {
                         title: qsTr("Search on this poet"),
-                        icon: "mdi_magnify"
+                        icon: "mdi_magnify",
+                        enabled: true
                     }
                 ]
             }
