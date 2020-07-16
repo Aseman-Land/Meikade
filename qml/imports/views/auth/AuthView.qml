@@ -13,9 +13,11 @@ Page {
 
     property alias loginForm: loginForm
     property Viewport viewport: _viewport
+    property alias localViewport: _viewport
 
     signal loginRequest(string username, string password)
     signal signupRequest(string username, string password, string fullname, string email)
+    signal forgetRequest(string username)
 
     function signup() {
         _viewport.append(signupComponent, {}, "page")
@@ -31,6 +33,7 @@ Page {
             sendBtn.onClicked: loginPage.loginRequest(userTxt.text, passTxt.text)
             passTxt.onAccepted: loginPage.loginRequest(userTxt.text, passTxt.text)
             signupBtn.onClicked: _viewport.append(signupComponent, {}, "page")
+            forgetBtn.onClicked: _viewport.append(forgetComponent, {}, "page")
             cancelBtn.onClicked: viewport.closeLast()
         }
     }
@@ -65,6 +68,17 @@ Page {
                 id: userCheckReq
                 _username: signupForm.userTxt.text
             }
+        }
+    }
+
+    Component {
+        id: forgetComponent
+        ForgetPasswordForm {
+            id: forgetForm
+            anchors.fill: parent
+            backgroudMouseArea.onClicked: Devices.hideKeyboard()
+            cancelBtn.onClicked: viewport.closeLast()
+            sendBtn.onClicked: loginPage.forgetRequest(userTxt.text)
         }
     }
 }

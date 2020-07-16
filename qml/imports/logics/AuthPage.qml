@@ -27,6 +27,11 @@ AuthView {
         registerReq.networkManager.post(registerReq);
     }
 
+    onForgetRequest: {
+        forgetReq.username = username;
+        forgetReq.networkManager.post(forgetReq);
+    }
+
     LoginRequest {
         id: loginReq
         allowGlobalBusy: true
@@ -45,6 +50,15 @@ AuthView {
             loginReq.username = username;
             loginReq.password = password;
             loginReq.networkManager.post(loginReq);
+        }
+    }
+
+    ForgetPasswordRequest {
+        id: forgetReq
+        allowGlobalBusy: true
+        onSuccessfull: {
+            localViewport.closeLast()
+            GlobalSignals.snackbarRequest( qsTr("Check your email, assigned to your account.") )
         }
     }
 }

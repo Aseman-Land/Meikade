@@ -1,4 +1,128 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="fa_IR" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="fa_IR">
+<context>
+    <name>JalaliCalendarObject</name>
+    <message>
+        <source>Farvardin</source>
+        <translation>فروردین</translation>
+    </message>
+    <message>
+        <source>Ordibehesht</source>
+        <translation>اردیبهشت</translation>
+    </message>
+    <message>
+        <source>Khordad</source>
+        <translation>خرداد</translation>
+    </message>
+    <message>
+        <source>Tir</source>
+        <translation>تیر</translation>
+    </message>
+    <message>
+        <source>Mordad</source>
+        <translation>مرداد</translation>
+    </message>
+    <message>
+        <source>Shahrivar</source>
+        <translation>شهریور</translation>
+    </message>
+    <message>
+        <source>Mehr</source>
+        <translation>مهر</translation>
+    </message>
+    <message>
+        <source>Abaan</source>
+        <translation>آبان</translation>
+    </message>
+    <message>
+        <source>Aazar</source>
+        <translation>آذر</translation>
+    </message>
+    <message>
+        <source>Dey</source>
+        <translation>دی</translation>
+    </message>
+    <message>
+        <source>Bahman</source>
+        <translation>بهمن</translation>
+    </message>
+    <message>
+        <source>Esfand</source>
+        <translation>اسفند</translation>
+    </message>
+    <message>
+        <source>Shanbe</source>
+        <translation>شنبه</translation>
+    </message>
+    <message>
+        <source>1Shanbe</source>
+        <translation>یکشنبه</translation>
+    </message>
+    <message>
+        <source>2Shanbe</source>
+        <translation>دوشنبه</translation>
+    </message>
+    <message>
+        <source>3Shanbe</source>
+        <translation>سه‌شنبه</translation>
+    </message>
+    <message>
+        <source>4Shanbe</source>
+        <translation>چهارشنبه</translation>
+    </message>
+    <message>
+        <source>5Shanbe</source>
+        <translation>پنجشنبه</translation>
+    </message>
+    <message>
+        <source>Jome</source>
+        <translation>جمعه</translation>
+    </message>
+</context>
+<context>
+    <name>AsemanTools</name>
+    <message>
+        <source>0</source>
+        <translation>۰</translation>
+    </message>
+    <message>
+        <source>1</source>
+        <translation>۱</translation>
+    </message>
+    <message>
+        <source>2</source>
+        <translation>۲</translation>
+    </message>
+    <message>
+        <source>3</source>
+        <translation>۳</translation>
+    </message>
+    <message>
+        <source>4</source>
+        <translation>۴</translation>
+    </message>
+    <message>
+        <source>5</source>
+        <translation>۵</translation>
+    </message>
+    <message>
+        <source>6</source>
+        <translation>۶</translation>
+    </message>
+    <message>
+        <source>7</source>
+        <translation>۷</translation>
+    </message>
+    <message>
+        <source>8</source>
+        <translation>۸</translation>
+    </message>
+    <message>
+        <source>9</source>
+        <translation>۹</translation>
+    </message>
+</context>
 <context>
     <name>AboutForm.ui</name>
     <message>
@@ -77,6 +201,10 @@
     <message>
         <source>Logged in Successfully</source>
         <translation>شما با موفقیت وارد شدید</translation>
+    </message>
+    <message>
+        <source>Check your email, assigned to your account.</source>
+        <translation>لطفا ایمیلی که به اکانت شما متصل است را چک کنید.</translation>
     </message>
 </context>
 <context>
@@ -236,6 +364,29 @@
     <message>
         <source>Label</source>
         <translation>برچسب</translation>
+    </message>
+</context>
+<context>
+    <name>ForgetPasswordForm.ui</name>
+    <message>
+        <source>To restore your password please enter your username below and tap on the restore. We&apos;ll send an email to you to change your password.</source>
+        <translation>برای بازیابی رمز عبور خود، لطفا نام کاربری خود را وارد کنید و کلید بازیابی را لمس کنید. یک ایمیل به شما ارسال می‌شود که از طریق آن میتوانید رمز عبور خود را تغییر دهید.</translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation>نام کاربری</translation>
+    </message>
+    <message>
+        <source>Restore</source>
+        <translation>بازیابی</translation>
+    </message>
+    <message>
+        <source>Forget Password</source>
+        <translation>فراموشی رمز عبور</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>لغو</translation>
     </message>
 </context>
 <context>

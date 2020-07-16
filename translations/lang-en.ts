@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="en_US" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="en_US">
 <context>
     <name>AboutForm.ui</name>
     <message>
@@ -77,6 +79,10 @@
     <message>
         <source>Logged in Successfully</source>
         <translation>Logged in Successfully</translation>
+    </message>
+    <message>
+        <source>Check your email, assigned to your account.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -236,6 +242,29 @@
     <message>
         <source>Label</source>
         <translation>Label</translation>
+    </message>
+</context>
+<context>
+    <name>ForgetPasswordForm.ui</name>
+    <message>
+        <source>To restore your password please enter your username below and tap on the restore. We&apos;ll send an email to you to change your password.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation type="unfinished">Username</translation>
+    </message>
+    <message>
+        <source>Restore</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Forget Password</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation type="unfinished">Cancel</translation>
     </message>
 </context>
 <context>

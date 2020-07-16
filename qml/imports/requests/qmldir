@@ -19,3 +19,4 @@ LogoutRequest 1.0 LogoutRequest.qml
 ContactUsRequest 1.0 ContactUsRequest.qml
 StoreActionsBulkRequest 1.0 StoreActionsBulkRequest.qml
 GetActionsRequest 1.0 GetActionsRequest.qml
+ForgetPasswordRequest 1.0 ForgetPasswordRequest.qml
