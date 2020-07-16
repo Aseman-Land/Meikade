@@ -32,3 +32,6 @@ Makefile*
 *.qmlproject.user.*
 UpdateTranslations.sh
 *.sh
+*.qmlproject.qtds
+*.qmlproject
+*.DS_Store
