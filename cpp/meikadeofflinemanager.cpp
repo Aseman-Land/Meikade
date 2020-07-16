@@ -362,7 +362,9 @@ void MeikadeOfflineItemInstaller::stop()
 
     mReply->deleteLater();
     mReply = Q_NULLPTR;
+    mDoing = false;
     Q_EMIT downloadingChanged();
+    Q_EMIT doingChanged();
 }
 
 bool MeikadeOfflineItemInstaller::installing() const

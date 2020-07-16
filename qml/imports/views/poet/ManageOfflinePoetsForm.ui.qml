@@ -149,7 +149,7 @@ Item {
                         Connections {
                             target: swt
                             onCheckedChanged: {
-                                if (swt.checked == offlineInstaller.installed)
+                                if (swt.checked == (offlineInstaller.installed || offlineInstaller.downloading))
                                     return;
 
                                 if (offlineInstaller.downloading)
