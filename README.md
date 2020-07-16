@@ -1,13 +1,13 @@
 Meikade
 =======
 
-Meikade is a persian poem application.
+Meikade is a poetry application for mobile and desktop devices and supports iOS, Android, Linux, Windows and macOS. It's open-source and released under the GPLv3 license.
 
 ## How to Build
 
 ### Dependencies
 
-First thing you must install before the build an application, is dependecies. So for Meikade it's like another applications. Meikade depended on the Qt >= 5.9, QtAseman and AsemanFalcon.
+Before start building process you must install Meikade's dependencies like any other application.
 
 #### Prepare
 
@@ -32,7 +32,7 @@ sudo apt-get install qtbase5-dev qt5-default "qml-module-qt*"
 
 #### QtAseman
 
-QtAseman is many tools that Aseman team uses on their project. So It's contains many stable and great tools that developed and used on the hug number of projects. Meikade is depended on the QtAseman and you could build it using below commands:
+Meikade is depended on the QtAseman. So you could build it using below commands:
 
 ```bash
 git clone https://github.com/Aseman-Land/QtAseman.git
@@ -51,22 +51,9 @@ sudo apt-get update
 sudo apt-get install qt5aseman qt5aseman-dev
 ```
 
-#### Falcon
-
-Falcon helps meikade to connect to the server and repository. So you can build it using below commands:
-
-```bash
-git clone https://github.com/Aseman-Land/Falcon.git
-cd Falcon
-mkdir build && cd build
-qmake -r ..
-make
-make install
-```
-
 ### Build Meikade
 
-Now after build all dependecies, It's easy to build meikade. Just clone it and build it:
+It's easy to build meikade. Just clone it and build it:
 
 ```bash
 git clone https://github.com/Aseman-Land/Meikade.git
