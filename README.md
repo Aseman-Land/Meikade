@@ -43,7 +43,7 @@ make
 make install
 ```
 
-And if you want to use our launchpad repository you can install QtAseman using below commands:
+And if you want to use our launchpad repository you can install [QtAseman](https://github.com/Aseman-Land/QtAseman) using below commands:
 
 ```bash
 sudo apt-add-repository ppa:aseman/qt-modules
