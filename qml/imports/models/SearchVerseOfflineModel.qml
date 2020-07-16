@@ -12,7 +12,10 @@ AsemanListModel {
     property alias query: searchQuery.query
     property alias poetId: searchQuery.poet_id
 
-    onQueryChanged: timer.restart()
+    onQueryChanged: {
+        searchQuery.offset = 0;
+        timer.restart()
+    }
     onPoetIdChanged: timer.restart()
 
     function more() {
