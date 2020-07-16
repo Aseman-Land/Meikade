@@ -58,7 +58,8 @@ PoemView {
         for (var i=0; i<loader.versesModel.count; i++) {
             var e = loader.versesModel.get(i);
             if (form.selectMode && form.selectedList.length) {
-                if (((e.position !== PoemVersesModel.PositionLeft && e.position !== PoemVersesModel.PositionCenteredVerse2) || !form.selectedList[i-1]) &&
+                if ((e.position !== PoemVersesModel.PositionSingle || !form.selectedList[i]) &&
+                    ((e.position !== PoemVersesModel.PositionLeft && e.position !== PoemVersesModel.PositionCenteredVerse2) || !form.selectedList[i-1]) &&
                     ((e.position !== PoemVersesModel.PositionRight && e.position !== PoemVersesModel.PositionCenteredVerse1) || !form.selectedList[i]))
                     continue;
             }
