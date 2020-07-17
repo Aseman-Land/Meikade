@@ -35,6 +35,7 @@
 int main(int argc, char *argv[])
 {
     qsrand(QTime::currentTime().msec());
+    qputenv("QT_ANDROID_ENABLE_WORKAROUND_TO_DISABLE_PREDICTIVE_TEXT", "1");
 
     bool androidStyle;
 #ifdef Q_OS_ANDROID

@@ -63,7 +63,7 @@ Page {
                     font.pixelSize: 10 * Devices.fontDensity
                     horizontalAlignment: Text.AlignHCenter
                     selectByMouse: true
-                    inputMethodHints: Qt.ImhLowercaseOnly | Qt.ImhNoAutoUppercase
+                    inputMethodHints: Qt.ImhLowercaseOnly | Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText
                     validator: RegExpValidator { regExp: /[a-z][a-z0-9_]+/ }
                     onAccepted: passTxt.focus = true
 
