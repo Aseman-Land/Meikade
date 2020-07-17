@@ -64,6 +64,7 @@ Page {
                     horizontalAlignment: Text.AlignHCenter
                     selectByMouse: true
                     inputMethodHints: Qt.ImhLowercaseOnly | Qt.ImhNoAutoUppercase
+                    validator: RegExpValidator { regExp: /[a-z][a-z0-9_]+/ }
                     onAccepted: passTxt.focus = true
 
                     Label {
