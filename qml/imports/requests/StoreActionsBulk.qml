@@ -224,14 +224,10 @@ AsemanObject {
     }
 
     function normalizeDate(date) {
-        var res = Tools.dateToString(date, "yyyy-MM-ddThh:mm:sst");
-        if (res.length)
-            res = res.slice(0, res.length-2) + ":" + res.slice(res.length-2);
-        return res;
+        return date.toISOString();
     }
 
     function unNormalizeDate(dateStr) {
-        var res = dateStr.slice(0, dateStr.length-3) + dateStr.slice(dateStr.length-2);
-        return Tools.datefromString(res, "yyyy-MM-ddThh:mm:sst");
+        return Date.parse(dateStr);
     }
 }
