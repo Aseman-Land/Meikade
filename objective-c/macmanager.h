@@ -7,7 +7,7 @@
 
 class MacManager
 {
-    public:
-        static void removeTitlebarFromWindow(long winId = -1);
+public:
+    static void removeTitlebarFromWindow(long winId = -1);
 };
 #endif // MACMANAGER_H

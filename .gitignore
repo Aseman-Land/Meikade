@@ -30,3 +30,9 @@ Makefile*
 #QtCtreator Qml
 *.qmlproject.user
 *.qmlproject.user.*
+UpdateTranslations.sh
+*.sh
+*.qmlproject.qtds
+*.qmlproject
+*.DS_Store
+*.qm
