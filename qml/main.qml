@@ -7,6 +7,7 @@ import requests 1.0
 
 AsemanApplication {
     id: app
+    applicationName: "Meikade"
     applicationAbout: "Meikade"
     applicationDisplayName: "Meikade"
     applicationId: "0e3103ed-dfb2-49df-95d2-3bcbec76fa34"
