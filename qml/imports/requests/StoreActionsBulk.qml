@@ -228,6 +228,6 @@ AsemanObject {
     }
 
     function unNormalizeDate(dateStr) {
-        return Date.parse(dateStr);
+        return Tools.dateFromSec( Math.floor(Date.parse(dateStr) / 1000) );
     }
 }
