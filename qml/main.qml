@@ -12,6 +12,14 @@ AsemanApplication {
     applicationId: "0e3103ed-dfb2-49df-95d2-3bcbec76fa34"
     applicationVersion: appVersion
     organizationDomain: "meikade.com"
+    statusBarStyle: {
+        if (AsemanGlobals.introDone)
+            return AsemanApplication.StatusBarStyleLight;
+        if (Colors.darkMode)
+            return AsemanApplication.StatusBarStyleLight;
+        else
+            return AsemanApplication.StatusBarStyleDark;
+    }
     Component.onCompleted: {
         GTranslations.init();
         Fonts.init();
