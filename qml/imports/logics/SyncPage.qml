@@ -15,7 +15,6 @@ SyncView {
 
     closeBtn.onClicked: ViewportType.open = false
 
-    resyncBtn.visible: AsemanGlobals.introDone
     resyncBtn.onClicked: StoreActionsBulk.forceResync()
 
     syncDateLabel.text: AsemanGlobals.lastSync.length? Tools.trNums( CalendarConv.convertDateTimeToLittleString(lastSync) ) : (syncIndicator.running? qsTr("Syncing...") : "---")
