@@ -1,5 +1,6 @@
 import QtQuick 2.12
 import AsemanQml.Base 2.0
+import AsemanQml.Models 2.0
 import QtQuick.Controls 2.3
 import AsemanQml.Controls 2.0
 import AsemanQml.MaterialIcons 2.0
@@ -93,28 +94,27 @@ Page {
                 onClicked: footerListView.currentIndex = model.index
             }
 
-            model: ListModel {
-
-                ListElement {
-                    name: qsTr("Home")
-                    icon: "mdi_home"
-                    icon_o: "mdi_home_outline"
-                    iconSizeRatio: 1.1
-                }
-
-                ListElement {
-                    name: qsTr("Search")
-                    icon: "mdi_magnify"
-                    icon_o: "mdi_magnify"
-                    iconSizeRatio: 1.1
-                }
-
-                ListElement {
-                    name: qsTr("My Meikade")
-                    icon: "mdi_library"
-                    icon_o: "mdi_library"
-                    iconSizeRatio: 0.9
-                }
+            model: AsemanListModel {
+                data: [
+                     {
+                        name: qsTr("Home") + Translations.refresher,
+                        icon: "mdi_home",
+                        icon_o: "mdi_home_outline",
+                        iconSizeRatio: 1.1
+                    },
+                    {
+                        name: qsTr("Search") + Translations.refresher,
+                        icon: "mdi_magnify",
+                        icon_o: "mdi_magnify",
+                        iconSizeRatio: 1.1
+                    },
+                    {
+                        name: qsTr("My Meikade") + Translations.refresher,
+                        icon: "mdi_library",
+                        icon_o: "mdi_library",
+                        iconSizeRatio: 0.9
+                    }
+                ]
             }
         }
     }
