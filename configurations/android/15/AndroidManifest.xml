@@ -80,6 +80,7 @@
                 -->
             <meta-data android:name="android.app.extract_android_style" android:value="default"/>
             <!-- extract android style -->
+            <meta-data android:name="android.max_aspect" android:value="3" />
     </activity>
 
     <!-- For adding service(s) please check: https://wiki.qt.io/AndroidServices -->
