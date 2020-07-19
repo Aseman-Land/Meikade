@@ -130,6 +130,10 @@
         <translation>وب‌سایت</translation>
     </message>
     <message>
+        <source>Version:</source>
+        <translation>نسخه:</translation>
+    </message>
+    <message>
         <source>Instagram</source>
         <translation>اینستاگرام</translation>
     </message>
