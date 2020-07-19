@@ -65,7 +65,7 @@ Page {
                     placeholderText: qsTr("Username") + '*' + Translations.refresher
                     font.pixelSize: 9 * Devices.fontDensity
                     horizontalAlignment: Text.AlignHCenter
-                    inputMethodHints: Qt.ImhLowercaseOnly | Qt.ImhNoAutoUppercase
+                    inputMethodHints: Qt.ImhLowercaseOnly | Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText
                     selectByMouse: true
                     leftPadding: LayoutMirroring.enabled? 0 : 34 * Devices.density
                     rightPadding: LayoutMirroring.enabled? 34 * Devices.density : 0
