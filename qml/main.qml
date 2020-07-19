@@ -16,6 +16,10 @@ AsemanApplication {
     statusBarStyle: {
         if (AsemanGlobals.introDone)
             return AsemanApplication.StatusBarStyleLight;
+
+        if (mWin.viewport.currentType == "float" && !Devices.isAndroid)
+            return AsemanApplication.StatusBarStyleLight;
+        else
         if (Colors.darkMode)
             return AsemanApplication.StatusBarStyleLight;
         else
@@ -38,6 +42,7 @@ AsemanApplication {
     onApplicationStateChanged: if (applicationState == 4) StoreActionsBulk.syncActionsInterval()
 
     MainWindow {
+        id: mWin
         visible: true
         font.family: Fonts.globalFont
     }
