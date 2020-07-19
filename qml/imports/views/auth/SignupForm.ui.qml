@@ -138,7 +138,7 @@ Page {
                     selectByMouse: true
                     leftPadding: LayoutMirroring.enabled? 0 : 34 * Devices.density
                     rightPadding: LayoutMirroring.enabled? 34 * Devices.density : 0
-                    validator: RegExpValidator { regExp: /\w+/ }
+                    validator: RegExpValidator { regExp: /(\w\s)+/ }
                     onAccepted: emailTxt.focus = true
                     color: isValid || focus? Colors.foreground : "#a00"
 

@@ -68,6 +68,14 @@ Page {
                     text: qsTr("<b><u>Meikade is a free and opensource poetry app</u></b>, designed and created by Aseman. It means user freedom and privacy is important for Meikade. So you can access Meikade's source code on Github, Read it and change it under the term of the GPLv3 license.") + Translations.refresher
                 }
 
+                Label {
+                    Layout.fillWidth: true
+                    font.pixelSize: 9 * Devices.fontDensity
+                    wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                    horizontalAlignment: Text.AlignLeft
+                    text: qsTr("Version:") + " " + AsemanApp.applicationVersion
+                }
+
                 RowLayout {
                     Layout.alignment: Qt.AlignHCenter
                     spacing: 0
