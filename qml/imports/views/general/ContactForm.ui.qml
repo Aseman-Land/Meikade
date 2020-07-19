@@ -10,7 +10,7 @@ import globals 1.0
 import micros 1.0
 import models 1.0
 
-Item {
+Page {
     id: dis
     width: Constants.width
     height: Constants.height
