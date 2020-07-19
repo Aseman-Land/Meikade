@@ -16,6 +16,8 @@ AsemanWindow {
     height: 700
     visible: true
 
+    property alias viewport: viewport
+
     IOSStyle.theme: AsemanGlobals.iosTheme
     Material.theme: AsemanGlobals.androidTheme
 
