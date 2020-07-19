@@ -33,6 +33,7 @@ Page {
         flickableDirection: Flickable.VerticalFlick
         contentWidth: scene.width
         contentHeight: scene.height
+        bottomMargin: Devices.navigationBarHeight
 
         Item {
             id: scene

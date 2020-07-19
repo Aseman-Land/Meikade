@@ -47,7 +47,7 @@ Item {
         anchors.left: parent.left
 
         topMargin: 4 * Devices.density
-        bottomMargin: 4 * Devices.density
+        bottomMargin: 4 * Devices.density + Devices.navigationBarHeight
     }
 
     Header {

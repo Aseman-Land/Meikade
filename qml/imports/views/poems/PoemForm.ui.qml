@@ -207,14 +207,14 @@ Item {
 
         footer: Item {
             width: listView.width
-            height: phrase.length? phraseColumn.height + 40 * Devices.density : 0
+            height: phrase.length? phraseColumn.height + 40 * Devices.density + Devices.navigationBarHeight : 0
 
             ColumnLayout {
                 id: phraseColumn
                 anchors.left: parent.left
                 anchors.right: parent.right
                 anchors.bottom: parent.bottom
-                anchors.margins: 10 * Devices.density
+                anchors.margins: 10 * Devices.density + Devices.navigationBarHeight
                 spacing: 4 * Devices.density
                 visible: phrase.length
 
