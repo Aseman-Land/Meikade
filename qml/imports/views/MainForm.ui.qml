@@ -51,7 +51,7 @@ Page {
 
     Rectangle {
         id: footerItem
-        height: 58 * Devices.density
+        height: 58 * Devices.density + Devices.navigationBarHeight
         color: Colors.background
         anchors.right: parent.right
         anchors.left: parent.left
@@ -67,14 +67,10 @@ Page {
             anchors.left: parent.left
         }
 
-        RowLayout {
-            id: footerLayout
-            anchors.fill: parent
-        }
-
         ListView {
             id: footerListView
             anchors.fill: parent
+            anchors.bottomMargin: Devices.navigationBarHeight
             anchors.leftMargin: parent.width / 10
             anchors.rightMargin: parent.width / 10
             orientation: ListView.Horizontal

@@ -93,7 +93,7 @@ Item {
             id: poetBioBack
             anchors.left: parent.left
             anchors.right: parent.right
-            height: bioColumn.height
+            height: bioColumn.height + Devices.navigationBarHeight
             color: Colors.lightBackground
         }
 
@@ -171,7 +171,7 @@ Item {
                 height: Devices.standardTitleBarHeight
                 width: height
                 x: ratioAbs * (coverImage.width/2 - width/2) + (1 - ratioAbs) * (LayoutMirroring.enabled? parent.width - width - Devices.standardTitleBarHeight + 10 * Devices.density : Devices.standardTitleBarHeight - 10 * Devices.density)
-                y: ratioAbs * (coverImage.height/2 - height + 5 * Devices.density)
+                y: ratioAbs * (parent.height/2 - height + 10 * Devices.density)
                 scale: (34 + 16 * ratioAbs) / 50
 
                 RoundedItem {
