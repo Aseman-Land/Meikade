@@ -1,27 +1,5 @@
-
-TRANSLATIONS += \
-    $$files($$PWD/*.ts)
-
-qtPrepareTool(LRELEASE, lrelease)
-for(tsfile, TRANSLATIONS) {
-    qmfile = $$_PRO_FILE_PWD_/qml/imports/globals/translations/$$basename(tsfile)
-    qmfile ~= s,.ts$,.qm,
-    qmdir = $$dirname(qmfile)
-    !exists($$qmdir) {
-        mkpath($$qmdir)|error("Aborting.")
-    }
-    command = $$LRELEASE -removeidentical $$tsfile -qm $$qmfile
-    system($$command)|error("Failed to run: $$command")
-    TRANSLATIONS_FILES += $$qmfile
+greaterThan(QT_MINOR_VERSION, 14) {
+    include(15/translations.pri)
+} else {
+    include(13/translations.pri)
 }
-
-translations.files = $$TRANSLATIONS_FILES
-translations.prefix = /
-
-RESOURCES += \
-    translations
-
-DISTFILES += \
-    lang-en.ts \
-    lang-fa.ts
-    
