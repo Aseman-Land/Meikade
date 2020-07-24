@@ -1,4 +1,4 @@
-QT += quick qml quickcontrols2 webview sql asemancore network
+QT += quick qml quickcontrols2 webview sql asemancore network widgets
 CONFIG += c++11
 
 SOURCES += \

@@ -1,4 +1,6 @@
 AuthView 1.0 auth/AuthView.qml
+ChangePasswordView 1.0 auth/ChangePasswordView.qml
+ChangeNameView 1.0 auth/ChangeNameForm.ui.qml
 HomeView 1.0 home/HomeView.qml
 MainView 1.0 MainForm.ui.qml
 MyMeikadeView 1.0 mymeikade/MyMeikadeView.qml

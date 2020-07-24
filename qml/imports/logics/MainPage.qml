@@ -4,6 +4,7 @@ import AsemanQml.Base 2.0
 import AsemanQml.Viewport 2.0
 import views 1.0
 import globals 1.0
+import routes 1.0
 
 MainView {
     id: form
@@ -17,6 +18,13 @@ MainView {
             BackHandler.removeHandler(form)
         else
             BackHandler.pushHandler(form, function(){ currentIndex = 0 })
+    }
+
+    Component.onCompleted: {
+        if (AsemanGlobals.username.length == 0 && AsemanGlobals.accessToken.length != 0) {
+            AsemanGlobals.accessToken = "";
+            ViewController.trigger("float:/auth/float");
+        }
     }
 
     HomePage {

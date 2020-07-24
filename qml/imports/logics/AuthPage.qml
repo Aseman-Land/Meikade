@@ -28,8 +28,8 @@ AuthView {
     }
 
     onForgetRequest: {
-        forgetReq.username = username;
-        forgetReq.networkManager.post(forgetReq);
+        forgetReq._username = username;
+        forgetReq.networkManager.get(forgetReq);
     }
 
     LoginRequest {
@@ -38,6 +38,7 @@ AuthView {
         onSuccessfull: {
             auth.ViewportType.open = false;
             AsemanGlobals.accessToken = response.result.token;
+            AsemanGlobals.username = loginReq.username;
             GlobalSignals.snackbarRequest(qsTr("Logged in Successfully"));
             GlobalSignals.reinitSync(Viewport.controller);
         }
@@ -57,7 +58,8 @@ AuthView {
         id: forgetReq
         allowGlobalBusy: true
         onSuccessfull: {
-            localViewport.closeLast()
+            auth.ViewportType.open = false;
+            Viewport.controller.trigger("float:/auth/changePassword", {"forgetMode": true})
             GlobalSignals.snackbarRequest( qsTr("Check your email, assigned to your account.") )
         }
     }
