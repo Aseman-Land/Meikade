@@ -4,7 +4,7 @@ import globals 1.0
 
 BaseRequest {
     id: homeRequest
-    url: baseUrl + "/auth/forget/" + _username
+    url: baseUrl + "/user/change-password"
 
-    property string _username
+    property string password
 }

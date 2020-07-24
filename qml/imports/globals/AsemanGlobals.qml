@@ -19,6 +19,7 @@ AsemanObject {
     property alias androidTheme: _settings.androidTheme
 
     property alias accessToken: _auth.accessToken
+    property alias username: _auth.username
     property alias uniqueId: _auth.uniqueId
 
     property alias lastSync: _sync.lastSync
@@ -27,7 +28,7 @@ AsemanObject {
     property alias syncTopPoets: _sync.syncTopPoets
 
     Component.onCompleted: {
-        Tools.mkDir(cachePath)
+        Tools.mkDir(cachePath);
     }
 
     onAccessTokenChanged: {
@@ -69,6 +70,7 @@ AsemanObject {
         category: "General"
         source: AsemanApp.homePath + "/auth.ini"
 
+        property string username
         property string accessToken
         property string uniqueId
 

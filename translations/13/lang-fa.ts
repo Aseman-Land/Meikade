@@ -2,128 +2,6 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="fa_IR">
 <context>
-    <name>JalaliCalendarObject</name>
-    <message>
-        <source>Farvardin</source>
-        <translation>فروردین</translation>
-    </message>
-    <message>
-        <source>Ordibehesht</source>
-        <translation>اردیبهشت</translation>
-    </message>
-    <message>
-        <source>Khordad</source>
-        <translation>خرداد</translation>
-    </message>
-    <message>
-        <source>Tir</source>
-        <translation>تیر</translation>
-    </message>
-    <message>
-        <source>Mordad</source>
-        <translation>مرداد</translation>
-    </message>
-    <message>
-        <source>Shahrivar</source>
-        <translation>شهریور</translation>
-    </message>
-    <message>
-        <source>Mehr</source>
-        <translation>مهر</translation>
-    </message>
-    <message>
-        <source>Abaan</source>
-        <translation>آبان</translation>
-    </message>
-    <message>
-        <source>Aazar</source>
-        <translation>آذر</translation>
-    </message>
-    <message>
-        <source>Dey</source>
-        <translation>دی</translation>
-    </message>
-    <message>
-        <source>Bahman</source>
-        <translation>بهمن</translation>
-    </message>
-    <message>
-        <source>Esfand</source>
-        <translation>اسفند</translation>
-    </message>
-    <message>
-        <source>Shanbe</source>
-        <translation>شنبه</translation>
-    </message>
-    <message>
-        <source>1Shanbe</source>
-        <translation>یکشنبه</translation>
-    </message>
-    <message>
-        <source>2Shanbe</source>
-        <translation>دوشنبه</translation>
-    </message>
-    <message>
-        <source>3Shanbe</source>
-        <translation>سه‌شنبه</translation>
-    </message>
-    <message>
-        <source>4Shanbe</source>
-        <translation>چهارشنبه</translation>
-    </message>
-    <message>
-        <source>5Shanbe</source>
-        <translation>پنجشنبه</translation>
-    </message>
-    <message>
-        <source>Jome</source>
-        <translation>جمعه</translation>
-    </message>
-</context>
-<context>
-    <name>AsemanTools</name>
-    <message>
-        <source>0</source>
-        <translation>۰</translation>
-    </message>
-    <message>
-        <source>1</source>
-        <translation>۱</translation>
-    </message>
-    <message>
-        <source>2</source>
-        <translation>۲</translation>
-    </message>
-    <message>
-        <source>3</source>
-        <translation>۳</translation>
-    </message>
-    <message>
-        <source>4</source>
-        <translation>۴</translation>
-    </message>
-    <message>
-        <source>5</source>
-        <translation>۵</translation>
-    </message>
-    <message>
-        <source>6</source>
-        <translation>۶</translation>
-    </message>
-    <message>
-        <source>7</source>
-        <translation>۷</translation>
-    </message>
-    <message>
-        <source>8</source>
-        <translation>۸</translation>
-    </message>
-    <message>
-        <source>9</source>
-        <translation>۹</translation>
-    </message>
-</context>
-<context>
     <name>AboutForm.ui</name>
     <message>
         <source>Website</source>
@@ -201,6 +79,49 @@
     </message>
 </context>
 <context>
+    <name>AsemanTools</name>
+    <message>
+        <source>0</source>
+        <translation>۰</translation>
+    </message>
+    <message>
+        <source>1</source>
+        <translation>۱</translation>
+    </message>
+    <message>
+        <source>2</source>
+        <translation>۲</translation>
+    </message>
+    <message>
+        <source>3</source>
+        <translation>۳</translation>
+    </message>
+    <message>
+        <source>4</source>
+        <translation>۴</translation>
+    </message>
+    <message>
+        <source>5</source>
+        <translation>۵</translation>
+    </message>
+    <message>
+        <source>6</source>
+        <translation>۶</translation>
+    </message>
+    <message>
+        <source>7</source>
+        <translation>۷</translation>
+    </message>
+    <message>
+        <source>8</source>
+        <translation>۸</translation>
+    </message>
+    <message>
+        <source>9</source>
+        <translation>۹</translation>
+    </message>
+</context>
+<context>
     <name>AuthPage</name>
     <message>
         <source>Logged in Successfully</source>
@@ -209,6 +130,112 @@
     <message>
         <source>Check your email, assigned to your account.</source>
         <translation>لطفا ایمیلی که به اکانت شما متصل است را چک کنید.</translation>
+    </message>
+</context>
+<context>
+    <name>ChangeNameForm.ui</name>
+    <message>
+        <source>Change Name</source>
+        <translation>تغییر نام</translation>
+    </message>
+    <message>
+        <source>Please enter new name:</source>
+        <translation>لطفا نام جدید را وارد کنید:</translation>
+    </message>
+    <message>
+        <source>Full Name</source>
+        <translation>نام و نام خانوادگی</translation>
+    </message>
+    <message>
+        <source>Confirm</source>
+        <translation>تایید</translation>
+    </message>
+</context>
+<context>
+    <name>ChangeNamePage</name>
+    <message>
+        <source>Name updated successfully</source>
+        <translation>نام شما با موفقیت تغییر کرد</translation>
+    </message>
+</context>
+<context>
+    <name>ChangePasswordForm.ui</name>
+    <message>
+        <source>Enter your new password and tap on the Change button.</source>
+        <translation>لطفا رمز عبور جدید را وارد کنید و بر کلید تایید را لمس کنید.</translation>
+    </message>
+    <message>
+        <source>Password</source>
+        <translation>رمز عبور</translation>
+    </message>
+    <message>
+        <source>Change</source>
+        <translation>تایید</translation>
+    </message>
+    <message>
+        <source>Change Password</source>
+        <translation>تغییر رمز عبور</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>لغو</translation>
+    </message>
+</context>
+<context>
+    <name>ChangePasswordPage</name>
+    <message>
+        <source>Password changed successfully</source>
+        <translation>رمز عبور با موفقیت تغییر کرد</translation>
+    </message>
+    <message>
+        <source>Check your email, assigned to your account.</source>
+        <translation>لطفا ایمیلی که به اکانت شما متصل است را چک کنید.</translation>
+    </message>
+</context>
+<context>
+    <name>ChangePasswordUsingCodeForm.ui</name>
+    <message>
+        <source>Enter token, sent to your email and tap on the Submit button.</source>
+        <translation>لطفا کدی که به ایمیل شما ارسال شده است را وارد کنید و کلید تایید را لمس کنید.</translation>
+    </message>
+    <message>
+        <source>Token</source>
+        <translation>کد</translation>
+    </message>
+    <message>
+        <source>Submit</source>
+        <translation>تایید</translation>
+    </message>
+    <message>
+        <source>Forget Password</source>
+        <translation>فراموشی رمز عبور</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>لغو</translation>
+    </message>
+</context>
+<context>
+    <name>ChangePasswordUsingPasswordForm.ui</name>
+    <message>
+        <source>Enter your current password and tap on the Submit button.</source>
+        <translation>لطفا رمز عبور فعلی خود را وارد کنید و کلید تایید را لمس کنید.</translation>
+    </message>
+    <message>
+        <source>Password</source>
+        <translation>رمز عبور</translation>
+    </message>
+    <message>
+        <source>Submit</source>
+        <translation>تایید</translation>
+    </message>
+    <message>
+        <source>Change Password</source>
+        <translation>تغییر رمز عبور</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>لغو</translation>
     </message>
 </context>
 <context>
@@ -290,6 +317,17 @@
     <message>
         <source>%1 books</source>
         <translation>%1 کتاب</translation>
+    </message>
+</context>
+<context>
+    <name>DrawerFrame</name>
+    <message>
+        <source>Frame</source>
+        <translation>فریم</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>لغو</translation>
     </message>
 </context>
 <context>
@@ -537,6 +575,85 @@
     </message>
 </context>
 <context>
+    <name>JalaliCalendarObject</name>
+    <message>
+        <source>Farvardin</source>
+        <translation>فروردین</translation>
+    </message>
+    <message>
+        <source>Ordibehesht</source>
+        <translation>اردیبهشت</translation>
+    </message>
+    <message>
+        <source>Khordad</source>
+        <translation>خرداد</translation>
+    </message>
+    <message>
+        <source>Tir</source>
+        <translation>تیر</translation>
+    </message>
+    <message>
+        <source>Mordad</source>
+        <translation>مرداد</translation>
+    </message>
+    <message>
+        <source>Shahrivar</source>
+        <translation>شهریور</translation>
+    </message>
+    <message>
+        <source>Mehr</source>
+        <translation>مهر</translation>
+    </message>
+    <message>
+        <source>Abaan</source>
+        <translation>آبان</translation>
+    </message>
+    <message>
+        <source>Aazar</source>
+        <translation>آذر</translation>
+    </message>
+    <message>
+        <source>Dey</source>
+        <translation>دی</translation>
+    </message>
+    <message>
+        <source>Bahman</source>
+        <translation>بهمن</translation>
+    </message>
+    <message>
+        <source>Esfand</source>
+        <translation>اسفند</translation>
+    </message>
+    <message>
+        <source>Shanbe</source>
+        <translation>شنبه</translation>
+    </message>
+    <message>
+        <source>1Shanbe</source>
+        <translation>یکشنبه</translation>
+    </message>
+    <message>
+        <source>2Shanbe</source>
+        <translation>دوشنبه</translation>
+    </message>
+    <message>
+        <source>3Shanbe</source>
+        <translation>سه‌شنبه</translation>
+    </message>
+    <message>
+        <source>4Shanbe</source>
+        <translation>چهارشنبه</translation>
+    </message>
+    <message>
+        <source>5Shanbe</source>
+        <translation>پنجشنبه</translation>
+    </message>
+    <message>
+        <source>Jome</source>
+        <translation>جمعه</translation>
+    </message>
+</context>
+<context>
     <name>ListsForm.ui</name>
     <message>
         <source>There is no item here</source>
@@ -714,6 +831,21 @@
     <message>
         <source>about</source>
         <translation>درباره می‌کده</translation>
+    </message>
+</context>
+<context>
+    <name>MyMeikadePage</name>
+    <message>
+        <source>Change Name</source>
+        <translation>تغییر نام</translation>
+    </message>
+    <message>
+        <source>Change Avatar</source>
+        <translation>تغییر تصویر کاربری</translation>
+    </message>
+    <message>
+        <source>Change Password</source>
+        <translation>تغییر رمز عبور</translation>
     </message>
 </context>
 <context>

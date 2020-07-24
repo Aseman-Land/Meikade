@@ -25,7 +25,7 @@
 #include "../objective-c/macmanager.h"
 #endif
 
-#include <QGuiApplication>
+#include <QApplication>
 #include <QQmlApplicationEngine>
 #include <QQuickStyle>
 #include <QQmlContext>
@@ -54,7 +54,7 @@ int main(int argc, char *argv[])
     qmlRegisterType<StickerModel>("Meikade", 1, 0, "StickerModel");
     qmlRegisterType<StickerWriter>("Meikade", 1, 0, "StickerWriter");
 
-    QGuiApplication app(argc, argv);
+    QApplication app(argc, argv);
 
     QtWebView::initialize();
 
