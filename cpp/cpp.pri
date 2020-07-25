@@ -1,6 +1,8 @@
 QT += quick qml quickcontrols2 webview sql asemancore network widgets
 CONFIG += c++11
 
+DEFINES += MEIKADE_VERSION='\\"$${VERSION}\\"'
+
 SOURCES += \
     $$PWD/old/stickermodel.cpp \
     $$PWD/old/stickerwriter.cpp \

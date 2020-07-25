@@ -1,6 +1,8 @@
 VERSION = 4.0.0
-DEFINES += MEIKADE_VERSION='\\"$${VERSION}\\"'
 TARGET = Meikade
+
+QMAKE_TARGET_BUNDLE_PREFIX = io.aseman
+QMAKE_BUNDLE = Meikade
 
 include(configurations/configurations.pri)
 include(translations/translations.pri)
