@@ -116,6 +116,17 @@ ViewportController {
     }
 
     ViewportControllerRoute {
+        route: /\w+\:\/auth\/changePassword(?:\?.+)?/
+        source: "ChangePasswordRoute.qml"
+        viewportType: "float"
+    }
+
+    ViewportControllerRoute {
+        route: /\w+\:\/auth\/changeName(?:\?.+)?/
+        source: "ChangeNameRoute.qml"
+    }
+
+    ViewportControllerRoute {
         route: /\w+\:\/sticker\/export/
         source: "StickerRoute.qml"
         viewportType: "float"

@@ -8,19 +8,22 @@ import routes 1.0
 NetworkRequest {
     id: req
     contentType: NetworkRequest.TypeJson
-    ignoreKeys: ["baseUrl", "refreshingState", "allowGlobalBusy", "networkManager", "allowShowErrors"]
+    ignoreKeys: ["baseUrl", "refreshingState", "allowGlobalBusy", "networkManager", "allowShowErrors", "rawHeaders", "accessToken"]
     ignoreRegExp: /^_\w+$/
-    headers: {
+    headers: rawHeaders
+
+    readonly property variant rawHeaders: {
         "Unique-ID": AsemanGlobals.uniqueId,
         "App-Name": AsemanApp.applicationName,
         "App-Version": AsemanApp.applicationVersion,
         "App-Build-OS": (Devices.isAndroid? "android" : Devices.isIOS? "ios" : Devices.isLinux? "linux" : Devices.isWindows? "windows" : Devices.isMacX? "osx" : "other"),
         "Theme-Dark": Colors.darkMode? "true" : "false",
         "Content-Type": "application/json",
-        "User-token": AsemanGlobals.accessToken,
+        "User-token": accessToken,
         "Accept-Language": GTranslations.localeName
     }
 
+    property string accessToken: AsemanGlobals.accessToken
     readonly property string baseUrl: "https://api.meikade.com/api"
     readonly property bool refreshingState: req.refreshing
     property bool allowGlobalBusy: false
@@ -31,7 +34,7 @@ NetworkRequest {
 
     signal refreshRequest()
 
-    onStatusChanged: if (status == 401 && AsemanGlobals.accessToken.length) { AsemanGlobals.accessToken = ""; ViewController.trigger("float:/auth/float"); }
+    onStatusChanged: if (status == 401 && AsemanGlobals.accessToken.length && accessToken == AsemanGlobals.accessToken) { AsemanGlobals.accessToken = ""; ViewController.trigger("float:/auth/float"); }
     onResponseChanged: if (_debug) console.debug(Tools.variantToJson(response))
     onHeadersChanged: if (!refreshing) refreshTimer.restart()
     onRefreshingStateChanged: {

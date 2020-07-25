@@ -73,6 +73,10 @@
         <source>Qt is a cross-platform application and UI framework for developers using C++ or QML, a CSS &amp; JavaScript like language.</source>
         <translation>Qt is a cross-platform application and UI framework for developers using C++ or QML programming, similar to CSS &amp; JavaScript languages.</translation>
     </message>
+    <message>
+        <source>Version:</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>AuthPage</name>
@@ -83,6 +87,112 @@
     <message>
         <source>Check your email, assigned to your account.</source>
         <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ChangeNameForm.ui</name>
+    <message>
+        <source>Change Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Please enter new name:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Full Name</source>
+        <translation type="unfinished">Full Name</translation>
+    </message>
+    <message>
+        <source>Confirm</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ChangeNamePage</name>
+    <message>
+        <source>Name updated successfully</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ChangePasswordForm.ui</name>
+    <message>
+        <source>Enter your new password and tap on the Change button.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Password</source>
+        <translation type="unfinished">Password</translation>
+    </message>
+    <message>
+        <source>Change</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Change Password</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation type="unfinished">Cancel</translation>
+    </message>
+</context>
+<context>
+    <name>ChangePasswordPage</name>
+    <message>
+        <source>Password changed successfully</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Check your email, assigned to your account.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ChangePasswordUsingCodeForm.ui</name>
+    <message>
+        <source>Enter token, sent to your email and tap on the Submit button.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Token</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Submit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Forget Password</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation type="unfinished">Cancel</translation>
+    </message>
+</context>
+<context>
+    <name>ChangePasswordUsingPasswordForm.ui</name>
+    <message>
+        <source>Enter your current password and tap on the Submit button.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Password</source>
+        <translation type="unfinished">Password</translation>
+    </message>
+    <message>
+        <source>Submit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Change Password</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation type="unfinished">Cancel</translation>
     </message>
 </context>
 <context>
@@ -164,6 +274,17 @@
     <message>
         <source>%1 books</source>
         <translation>%1 of books</translation>
+    </message>
+</context>
+<context>
+    <name>DrawerFrame</name>
+    <message>
+        <source>Frame</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation type="unfinished">Cancel</translation>
     </message>
 </context>
 <context>
@@ -588,6 +709,21 @@
     <message>
         <source>about</source>
         <translation>About</translation>
+    </message>
+</context>
+<context>
+    <name>MyMeikadePage</name>
+    <message>
+        <source>Change Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Change Avatar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Change Password</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

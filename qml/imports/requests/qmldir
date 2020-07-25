@@ -20,3 +20,8 @@ ContactUsRequest 1.0 ContactUsRequest.qml
 StoreActionsBulkRequest 1.0 StoreActionsBulkRequest.qml
 GetActionsRequest 1.0 GetActionsRequest.qml
 ForgetPasswordRequest 1.0 ForgetPasswordRequest.qml
+LoginToForgetPasswordRequest 1.0 LoginToForgetPasswordRequest.qml
+UserChangePasswordRequest 1.0 UserChangePasswordRequest.qml
+UserSetDetailsRequest 1.0 UserSetDetailsRequest.qml
+UserUploadProfileRequest 1.0 UserUploadProfileRequest.qml
+UserSetProfileRequest 1.0 UserSetProfileRequest.qml

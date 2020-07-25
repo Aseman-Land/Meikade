@@ -1,4 +1,5 @@
 AuthPage 1.0 AuthPage.qml
+ChangePasswordPage 1.0 ChangePasswordPage.qml
 HomePage 1.0 HomePage.qml
 MainPage 1.0 MainPage.qml
 MyMeikadePage 1.0 MyMeikadePage.qml
@@ -20,4 +21,5 @@ ContactPage 1.0 ContactPage.qml
 WebBrowserPage 1.0 WebBrowserPage.qml
 AboutPage 1.0 AboutPage.qml
 SyncPage 1.0 SyncPage.qml
+ChangeNamePage 1.0 ChangeNamePage.qml
 StickerDialog 1.0 old/StickerDialog.qml
