@@ -59,7 +59,7 @@ AuthView {
         allowGlobalBusy: true
         onSuccessfull: {
             auth.ViewportType.open = false;
-            Viewport.controller.trigger("float:/auth/changePassword", {"forgetMode": true})
+            Viewport.controller.trigger("float:/auth/changePassword", {"forgetMode": true, "accessToken": response.result.token})
             GlobalSignals.snackbarRequest( qsTr("Check your email, assigned to your account.") )
         }
     }

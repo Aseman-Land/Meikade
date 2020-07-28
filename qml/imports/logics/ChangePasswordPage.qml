@@ -13,6 +13,8 @@ ChangePasswordView {
     Material.accent: Colors.primary
     IOSStyle.accent: Colors.primary
 
+    property string accessToken
+
     onChangePasswordRequest: {
         changePassReq.password = Constants.hashPassword(password);
         changePassReq.networkManager.patch(changePassReq)
@@ -32,7 +34,7 @@ ChangePasswordView {
     LoginToForgetPasswordRequest {
         id: loginForgetReq
         allowGlobalBusy: true
-        accessToken: ""
+        accessToken: auth.accessToken
         onSuccessfull: {
             changePassReq.accessToken = response.result.token;
             auth.changePassword();
@@ -56,15 +58,6 @@ ChangePasswordView {
         onSuccessfull: {
             GlobalSignals.snackbarRequest( qsTr("Password changed successfully") );
             auth.ViewportType.open = false;
-        }
-    }
-
-    ForgetPasswordRequest {
-        id: forgetReq
-        allowGlobalBusy: true
-        onSuccessfull: {
-            localViewport.closeLast()
-            GlobalSignals.snackbarRequest( qsTr("Check your email, assigned to your account.") )
         }
     }
 }

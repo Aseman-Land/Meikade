@@ -60,9 +60,8 @@ Page {
                     placeholderText: qsTr("Token") + Translations.refresher
                     font.pixelSize: 10 * Devices.fontDensity
                     horizontalAlignment: Text.AlignHCenter
-                    echoMode: TextInput.Password
-                    passwordCharacter: '*'
-                    passwordMaskDelay: 500
+                    inputMethodHints: Qt.ImhDigitsOnly
+                    validator: RegExpValidator { regExp: /\d+/ }
                     selectByMouse: true
                     onAccepted: sendBtn.focus = true
 
