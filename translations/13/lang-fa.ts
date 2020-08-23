@@ -189,7 +189,7 @@
     </message>
     <message>
         <source>Check your email, assigned to your account.</source>
-        <translation>لطفا ایمیلی که به اکانت شما متصل است را چک کنید.</translation>
+        <translation type="vanished">لطفا ایمیلی که به اکانت شما متصل است را چک کنید.</translation>
     </message>
 </context>
 <context>
@@ -1036,6 +1036,25 @@
     <message>
         <source>Retry</source>
         <translation>تلاش مجدد</translation>
+    </message>
+</context>
+<context>
+    <name>SearchFilterForm.ui</name>
+    <message>
+        <source>Search Filter</source>
+        <translation>جستجوی پیشرفته</translation>
+    </message>
+    <message>
+        <source>Search only in offline poets</source>
+        <translation>فقط شاعران آفلاین</translation>
+    </message>
+    <message>
+        <source>Selected categories to search:</source>
+        <translation>ردیف‌های انتخاب شده برای جستجو:</translation>
+    </message>
+    <message>
+        <source>Accept</source>
+        <translation>ثبت</translation>
     </message>
 </context>
 <context>

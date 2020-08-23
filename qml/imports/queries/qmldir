@@ -10,5 +10,6 @@ UserActions 1.0 UserActions.qml
 UserNotes_old 1.0 UserNotes_old.qml
 UserFavorites_old 1.0 UserFavorites_old.qml
 SearchVerseQuery 1.0 SearchVerseQuery.qml
+SearchPoetQuery 1.0 SearchPoetQuery.qml
 DataOfflinePoet 1.0 DataOfflinePoet.qml
 DataOfflinePoem 1.0 DataOfflinePoem.qml

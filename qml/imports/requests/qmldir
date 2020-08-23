@@ -25,3 +25,4 @@ UserChangePasswordRequest 1.0 UserChangePasswordRequest.qml
 UserSetDetailsRequest 1.0 UserSetDetailsRequest.qml
 UserUploadProfileRequest 1.0 UserUploadProfileRequest.qml
 UserSetProfileRequest 1.0 UserSetProfileRequest.qml
+SearchPoetsRequest 1.0 SearchPoetsRequest.qml

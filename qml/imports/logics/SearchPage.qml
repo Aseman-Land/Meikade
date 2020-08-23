@@ -12,7 +12,7 @@ SearchView {
     property int poetId
 
     resultHeaderLabel.text: {
-        if (listView.count == 0)
+        if (listView.count == 0 && !poetsList.visible)
             return "";
         if (listView.model === searchModel)
             return qsTr("Online Results") + Translations.refresher;
@@ -21,6 +21,7 @@ SearchView {
     }
 
     poetsBusyIndicator.running: poetsModel.refreshing
+    poetCombo.visible: false
     poetCombo.textRole: "title"
     poetCombo.currentIndex: 0
     poetCombo.model: PoetsCleanModel {
@@ -36,6 +37,26 @@ SearchView {
             }
         }
     }
+
+    poetsList {
+        model: SearchPoetsModel {
+            id: poetsSearchModel
+            query: home.keywordField.text
+        }
+        visible: {
+            for (var i=0; i<poetsSearchModel.count; i++)
+                if (poetsSearchModel.get(i).modelData.length > 0)
+                    return true;
+            return false;
+        }
+
+        onLinkRequest: {
+            var prp = Tools.toVariantMap(properties);
+            Viewport.controller.trigger(link, prp);
+        }
+    }
+
+    poetsFilterArea.onClicked: Viewport.viewport.append(filter_component, {}, "bottomdrawer")
 
     onClicked: {
         var item = listView.model.get(index);
@@ -109,5 +130,14 @@ SearchView {
         };
 
         return properties;
+    }
+
+    Component {
+        id: filter_component
+        SearchFilterPage {
+            width: parent.width
+            height: View.root.height * 0.9
+            poetsList.model: poetCombo.model
+        }
     }
 }

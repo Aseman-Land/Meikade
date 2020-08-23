@@ -16,12 +16,15 @@ Rectangle {
     width: Constants.width
     height: Constants.height
     clip: true
-    color: Colors.background
+    color: Colors.deepBackground
 
     property alias keywordField: keywordField
     property alias listView: listView
     property alias headerItem: headerItem
     property alias poetCombo: poetCombo
+    property alias poetsList: poetsList
+    property alias poetsFilterArea: poetsFilterArea
+    property alias domainText: domainText
     property alias poetsBusyIndicator: poetsBusyIndicator
     property alias busyIndicator: busyIndicator
     property alias resultHeaderLabel: resultHeaderLabel
@@ -52,7 +55,7 @@ Rectangle {
         anchors.right: parent.right
         anchors.verticalCenter: parent.verticalCenter
         anchors.margins: 4 * Devices.density
-        spacing: 14 * Devices.density
+        spacing: 4
 
         Rectangle {
             Layout.fillWidth: true
@@ -60,6 +63,11 @@ Rectangle {
             Layout.preferredHeight: 40 * Devices.density
             radius: Constants.radius
             color: Colors.lightBackground
+
+            MouseArea {
+                id: poetsFilterArea
+                anchors.fill: parent
+            }
 
             ComboBox {
                 id: poetCombo
@@ -85,6 +93,7 @@ Rectangle {
                 }
 
                 Label {
+                    id: domainText
                     horizontalAlignment: Text.AlignLeft
                     verticalAlignment: Text.AlignVCenter
                     font.pixelSize: 9 * Devices.fontDensity
@@ -107,9 +116,17 @@ Rectangle {
             Layout.fillWidth: true
             Layout.leftMargin: 10 * Devices.density
             Layout.rightMargin: 10 * Devices.density
-            Layout.preferredHeight: 30 * Devices.density
+            Layout.preferredHeight: 20 * Devices.density
             font.pixelSize: 10 * Devices.fontDensity
             horizontalAlignment: Text.AlignLeft
+        }
+
+        FlexiList {
+            id: poetsList
+            Layout.fillWidth: true
+            Layout.bottomMargin: 30 * Devices.density
+            Layout.preferredHeight: 100 * Devices.density
+            interactive: false
         }
     }
 
@@ -157,8 +174,7 @@ Rectangle {
                 anchors.left: parent.left
                 anchors.right: parent.right
                 anchors.margins: 20 * Devices.density
-                anchors.verticalCenter: parent.verticalCenter
-                anchors.verticalCenterOffset: - itemFooter.height / 2
+                y: 20 * Devices.density
                 spacing: 6 * Devices.density
 
                 Repeater {

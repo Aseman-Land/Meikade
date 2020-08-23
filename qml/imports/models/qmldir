@@ -20,3 +20,5 @@ SearchVerseOfflineModel 1.0 SearchVerseOfflineModel.qml
 PoetLoaderModel 1.0 PoetLoaderModel.qml
 CatLoaderModel 1.0 CatLoaderModel.qml
 PoemLoaderModel 1.0 PoemLoaderModel.qml
+SearchPoetsModel 1.0 SearchPoetsModel.qml
+SearchPoetsOfflineModel 1.0 SearchPoetsOfflineModel.qml

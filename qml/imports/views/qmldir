@@ -5,6 +5,7 @@ HomeView 1.0 home/HomeView.qml
 MainView 1.0 MainForm.ui.qml
 MyMeikadeView 1.0 mymeikade/MyMeikadeView.qml
 SearchView 1.0 search/SearchForm.ui.qml
+SearchFilterView 1.0 search/SearchFilterForm.ui.qml
 PoetView 1.0 poet/PoetForm.ui.qml
 PoetBioView 1.0 poet/PoetBioForm.ui.qml
 PoetsListView 1.0 poet/PoetsListForm.ui.qml

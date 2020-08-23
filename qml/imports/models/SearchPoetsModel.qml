@@ -10,10 +10,10 @@ AsemanListModel {
 
     readonly property bool refreshing: (searchReq.refreshing || timer.running) && timeoutTimer.running
     property alias query: searchReq.query
-    property alias poetId: searchReq.poet_id
+    property alias typeId: searchReq.type_id
 
     onQueryChanged: timer.restart()
-    onPoetIdChanged: timer.restart()
+    onTypeIdChanged: timer.restart()
 
     function more() {
         searchReq.offset = count;
@@ -38,17 +38,25 @@ AsemanListModel {
         repeat: false
     }
 
-    SearchVerseRequest {
+    SearchPoetsRequest {
         id: searchReq
         onResponseChanged: {
             var res = new Array;
             try {
-                for (var i in response.result) {
-                    var u = response.result[i];
-                    u["link"] = "page:/poet?id=" + u.poet.id + "&poemId=" + u.poem.id
+                var result = response.result;
+                result.forEach(function(r){
+                    r["type"] = "dynamic";
 
-                    res[res.length] = u;
-                }
+                    var modelData = new Array;
+                    r.modelData.forEach(function(u){
+                        u["type"] = "normal";
+                        u["heightRatio"] = 1;
+
+                        modelData[modelData.length] = u;
+                    });
+
+                    res[res.length] = Tools.toVariantMap(r);
+                })
             } catch(e) {
             }
 

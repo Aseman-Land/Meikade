@@ -33,7 +33,7 @@ AsemanListModel {
     MapObject { id: verseMap }
     MapObject { id: catMap }
 
-    SearchVerseQuery {
+    SearchPoetQuery {
         id: searchQuery
 
         property bool refreshing

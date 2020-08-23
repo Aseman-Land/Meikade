@@ -144,10 +144,6 @@
         <source>Password changed successfully</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Check your email, assigned to your account.</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>ChangePasswordUsingCodeForm.ui</name>
@@ -914,6 +910,25 @@
     <message>
         <source>Retry</source>
         <translation>Retry</translation>
+    </message>
+</context>
+<context>
+    <name>SearchFilterForm.ui</name>
+    <message>
+        <source>Search Filter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Search only in offline poets</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Selected categories to search:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Accept</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
