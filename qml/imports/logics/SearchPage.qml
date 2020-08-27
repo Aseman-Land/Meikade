@@ -82,7 +82,12 @@ SearchView {
     SearchVerseModel {
         id: searchModel
         query: home.keywordField.text
-        poetId: poetCombo.currentIndex > 0 && poetCombo.currentIndex < poetsModel.count? poetsModel.get(poetCombo.currentIndex).id : 0
+        poets: {
+            var res = new Array;
+            if (poetCombo.currentIndex > 0 && poetCombo.currentIndex < poetsModel.count)
+                res[res.length] = poetsModel.get(poetCombo.currentIndex).id;
+            return res;
+        }
     }
     SearchVerseOfflineModel {
         id: searchOfflineModel

@@ -4,12 +4,12 @@ import globals 1.0
 
 BaseRequest {
     id: searchRequest
-    url: baseUrl + "/main/search/verses"
+    url: baseUrl + "/main/search/verses?query=" + _query + "&limit=" + _limit + "&offset" + _offset
 
-    property string query
-    property int poet_id
-    property int limit: 50
-    property int offset: 0
+    property variant poets
+    property string _query
+    property int _limit: 50
+    property int _offset: 0
 
     function refresh() {
         if (query.length == 0)
@@ -17,7 +17,7 @@ BaseRequest {
         if (refreshing)
             return;
 
-        networkManager.get(searchRequest)
+        networkManager.post(searchRequest)
     }
 }
 

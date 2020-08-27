@@ -9,14 +9,14 @@ AsemanListModel {
     id: lmodel
 
     readonly property bool refreshing: (searchReq.refreshing || timer.running) && timeoutTimer.running
-    property alias query: searchReq.query
-    property alias poetId: searchReq.poet_id
+    property alias query: searchReq._query
+    property alias poets: searchReq.poets
 
     onQueryChanged: timer.restart()
-    onPoetIdChanged: timer.restart()
+    onPoetsChanged: timer.restart()
 
     function more() {
-        searchReq.offset = count;
+        searchReq._offset = count;
         searchReq.refresh();
     }
 
