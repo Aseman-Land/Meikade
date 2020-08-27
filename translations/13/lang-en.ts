@@ -919,15 +919,15 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Search only in offline poets</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Selected categories to search:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Accept</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Online Search</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

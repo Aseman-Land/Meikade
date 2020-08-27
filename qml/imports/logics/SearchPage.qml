@@ -1,6 +1,7 @@
 import QtQuick 2.0
 import AsemanQml.Base 2.0
 import AsemanQml.Viewport 2.0
+import AsemanQml.Models 2.0
 import models 1.0
 import views 1.0
 import requests 1.0
@@ -20,22 +21,14 @@ SearchView {
             return qsTr("Offline Results") + Translations.refresher;
     }
 
-    poetsBusyIndicator.running: poetsModel.refreshing
-    poetCombo.visible: false
-    poetCombo.textRole: "title"
-    poetCombo.currentIndex: 0
-    poetCombo.model: PoetsCleanModel {
-        id: poetsModel
-        cachePath: AsemanGlobals.cachePath + "/search-poets.cache"
-        onCountChanged: {
-            if (count && get(0).id != 0)
-                insert(0, {"title": qsTr("All Poets"), "id": 0})
-            if (poetId) {
-                for (var i=0; i<count; i++)
-                    if (get(i).id == poetId)
-                        poetCombo.currentIndex = i;
-            }
+    domainText.text: {
+        var res = searchFilterModel.count? "" : qsTr("All Poets");
+        for (var i=0; i<searchFilterModel.count; i++) {
+            if (i !== 0)
+                res += ", ";
+            res += searchFilterModel.get(i).title;
         }
+        return res;
     }
 
     poetsList {
@@ -71,7 +64,7 @@ SearchView {
     busyIndicator.running: searchModel.refreshing
 
     listView {
-        model: searchModel.count || searchModel.refreshing? searchModel : searchOfflineModel
+        model: (searchModel.count || searchModel.refreshing) && AsemanGlobals.onlineSearch? searchModel : searchOfflineModel
     }
 
     Connections {
@@ -79,20 +72,29 @@ SearchView {
         onCountChanged: home.keywordField.focus = false;
     }
 
+    AsemanListModel {
+        id: searchFilterModel
+        cachePath: AsemanGlobals.cachePath + "/searchfilters.cache"
+    }
+
     SearchVerseModel {
         id: searchModel
         query: home.keywordField.text
         poets: {
             var res = new Array;
-            if (poetCombo.currentIndex > 0 && poetCombo.currentIndex < poetsModel.count)
-                res[res.length] = poetsModel.get(poetCombo.currentIndex).id;
+            for (var i=0; i<searchFilterModel.count; i++)
+                res[res.length] = searchFilterModel.get(i).id;
             return res;
         }
     }
     SearchVerseOfflineModel {
         id: searchOfflineModel
         query: home.keywordField.text
-        poetId: poetCombo.currentIndex > 0 && poetCombo.currentIndex < poetsModel.count? poetsModel.get(poetCombo.currentIndex).id : 0
+        poetId: {
+            if (searchFilterModel.count > 0)
+                return searchFilterModel.get(0).id;
+            return 0;
+        }
     }
 
     MapObject {
@@ -137,12 +139,33 @@ SearchView {
         return properties;
     }
 
+    PoetsCleanModel {
+        id: poetsModel
+        cachePath: AsemanGlobals.cachePath + "/searchpoets.cache"
+    }
+
     Component {
         id: filter_component
         SearchFilterPage {
             width: parent.width
             height: View.root.height * 0.9
-            poetsList.model: poetCombo.model
+            poetsList.model: onlineSearchSwitch.checked? poetsModel : offlinePoetsModel
+            acceptBtn.onClicked: {
+                searchFilterModel.clear();
+                for (var i=0; i<selectedListModel.count; i++)
+                    searchFilterModel.append( selectedListModel.get(i) );
+
+                AsemanGlobals.onlineSearch = onlineSearchSwitch.checked;
+                ViewportType.open = false;
+            }
+            Component.onCompleted: {
+                for (var i=0; i<searchFilterModel.count; i++)
+                    selectedListModel.append( searchFilterModel.get(i) );
+            }
+
+            OfflinePoetsModel {
+                id: offlinePoetsModel
+            }
         }
     }
 }

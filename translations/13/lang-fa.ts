@@ -1046,7 +1046,7 @@
     </message>
     <message>
         <source>Search only in offline poets</source>
-        <translation>فقط شاعران آفلاین</translation>
+        <translation type="vanished">فقط شاعران آفلاین</translation>
     </message>
     <message>
         <source>Selected categories to search:</source>
@@ -1055,6 +1055,10 @@
     <message>
         <source>Accept</source>
         <translation>ثبت</translation>
+    </message>
+    <message>
+        <source>Online Search</source>
+        <translation>جستجوی آنلاین</translation>
     </message>
 </context>
 <context>

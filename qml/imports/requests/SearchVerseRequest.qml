@@ -12,7 +12,7 @@ BaseRequest {
     property int _offset: 0
 
     function refresh() {
-        if (query.length == 0)
+        if (_query.length == 0)
             return;
         if (refreshing)
             return;

@@ -21,11 +21,9 @@ Rectangle {
     property alias keywordField: keywordField
     property alias listView: listView
     property alias headerItem: headerItem
-    property alias poetCombo: poetCombo
     property alias poetsList: poetsList
     property alias poetsFilterArea: poetsFilterArea
     property alias domainText: domainText
-    property alias poetsBusyIndicator: poetsBusyIndicator
     property alias busyIndicator: busyIndicator
     property alias resultHeaderLabel: resultHeaderLabel
     property alias closeBtn: closeBtn
@@ -55,26 +53,18 @@ Rectangle {
         anchors.right: parent.right
         anchors.verticalCenter: parent.verticalCenter
         anchors.margins: 4 * Devices.density
-        spacing: 4
+        spacing: 4 * Devices.density
 
         Rectangle {
             Layout.fillWidth: true
             Layout.margins: 10 * Devices.density
-            Layout.preferredHeight: 40 * Devices.density
+            Layout.preferredHeight: Math.max(domainText.height + 20 * Devices.density, 40 * Devices.density)
             radius: Constants.radius
             color: Colors.lightBackground
 
             MouseArea {
                 id: poetsFilterArea
                 anchors.fill: parent
-            }
-
-            ComboBox {
-                id: poetCombo
-                anchors.fill: parent
-                displayText: ""
-                flat: true
-                opacity: 0
             }
 
             RowLayout {
@@ -96,17 +86,9 @@ Rectangle {
                     id: domainText
                     horizontalAlignment: Text.AlignLeft
                     verticalAlignment: Text.AlignVCenter
+                    wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                     font.pixelSize: 9 * Devices.fontDensity
-                    text: poetCombo.currentText
                     Layout.fillWidth: true
-                }
-
-                BusyIndicator {
-                    id: poetsBusyIndicator
-                    scale: 0.6
-                    Layout.preferredHeight: 28 * Devices.density
-                    Layout.preferredWidth: 28 * Devices.density
-                    Material.accent: Colors.foreground
                 }
             }
         }
@@ -117,6 +99,7 @@ Rectangle {
             Layout.leftMargin: 10 * Devices.density
             Layout.rightMargin: 10 * Devices.density
             Layout.preferredHeight: 20 * Devices.density
+            Layout.bottomMargin: poetsList.visible? 0 : 20 * Devices.density
             font.pixelSize: 10 * Devices.fontDensity
             horizontalAlignment: Text.AlignLeft
         }

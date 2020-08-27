@@ -15,12 +15,14 @@ DrawerFrame {
     id: dis
     width: Constants.width
     height: Constants.height
+    headerLabel.text: qsTr("Search Filter") + Translations.refresher
+    flickable.interactive: false
+
     property alias poetsList: poetsList
     property alias selectedList: selectedList
-    property alias offlineSearchSwitch: offlineSearchSwitch
-    headerLabel.text: qsTr("Search Filter") + Translations.refresher
-
-    flickable.interactive: false
+    property alias selectedListModel: selectedListModel
+    property alias onlineSearchSwitch: onlineSearchSwitch
+    property alias acceptBtn: acceptBtn
 
     readonly property real itemsHeight: 50 * Devices.density
 
@@ -37,12 +39,12 @@ DrawerFrame {
                 font.pixelSize: 9 * Devices.fontDensity
                 font.bold: true
                 horizontalAlignment: Text.AlignLeft
-                text: qsTr("Search only in offline poets") + Translations.refresher
+                text: qsTr("Online Search") + Translations.refresher
             }
 
             Switch {
-                id: offlineSearchSwitch
-                checked: false
+                id: onlineSearchSwitch
+                checked: true
             }
         }
 
@@ -52,6 +54,8 @@ DrawerFrame {
             Layout.fillHeight: true
             clip: true
             model: 40
+            enabled: onlineSearchSwitch.checked || selectedListModel.count == 0
+            opacity: enabled? 1 : 0.5
             delegate: SearchFilterItem {
                 id: poetItem
                 width: poetsList.width
@@ -62,6 +66,10 @@ DrawerFrame {
                 Connections {
                     target: poetItem
                     onClicked: {
+                        for (var i=0; i<selectedList.model.count; i++)
+                            if (selectedList.model.get(i).id == model.id)
+                                return;
+
                         selectedList.model.append(poetsList.model.get(
                                                       model.index))
                         Tools.jsDelayCall(100, selectedList.positionViewAtEnd)
@@ -104,7 +112,7 @@ DrawerFrame {
             Layout.preferredHeight: Math.min(count * itemsHeight,
                                              dis.height / 3)
             clip: true
-            model: AsemanListModel {}
+            model: AsemanListModel { id: selectedListModel }
             delegate: SearchFilterItem {
                 id: selectedItem
                 width: poetsList.width
@@ -128,6 +136,7 @@ DrawerFrame {
         }
 
         Button {
+            id: acceptBtn
             Layout.fillWidth: true
             text: qsTr("Accept") + Translations.refresher
             font.pixelSize: 9 * Devices.fontDensity

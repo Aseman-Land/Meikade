@@ -13,6 +13,7 @@ AsemanObject {
     property alias languageInited: _settings.languageInited
     property alias language: _settings.language
     property alias phrase: _settings.phrase
+    property alias onlineSearch: _settings.onlineSearch
     property alias introDone: _settings.introDone
     property alias sendData: _settings.sendData
     property alias iosTheme: _settings.iosTheme
@@ -58,6 +59,7 @@ AsemanObject {
         property bool languageInited: false
         property string language: "fa"
         property bool phrase: true
+        property bool onlineSearch: true
         property bool introDone
         property bool sendData
 
