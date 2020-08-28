@@ -29,7 +29,8 @@ AsemanListModel {
                     }
                 }
 
-                listModel.data = res;
+                listModel.clear();
+                res.forEach(listModel.append)
             } catch (e) {
             }
         }

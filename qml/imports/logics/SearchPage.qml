@@ -61,7 +61,7 @@ SearchView {
 
     onMoreRequest: listView.model.more();
 
-    busyIndicator.running: searchModel.refreshing
+    busyIndicator.running: (searchModel.refreshing && AsemanGlobals.onlineSearch) || ((searchModel.count == 0 || !AsemanGlobals.onlineSearch) && searchOfflineModel.refreshing)
 
     listView {
         model: (searchModel.count || searchModel.refreshing) && AsemanGlobals.onlineSearch? searchModel : searchOfflineModel
@@ -90,10 +90,11 @@ SearchView {
     SearchVerseOfflineModel {
         id: searchOfflineModel
         query: home.keywordField.text
-        poetId: {
-            if (searchFilterModel.count > 0)
-                return searchFilterModel.get(0).id;
-            return 0;
+        poets: {
+            var res = new Array;
+            for (var i=0; i<searchFilterModel.count; i++)
+                res[res.length] = searchFilterModel.get(i).id;
+            return res;
         }
     }
 
@@ -139,11 +140,6 @@ SearchView {
         return properties;
     }
 
-    PoetsCleanModel {
-        id: poetsModel
-        cachePath: AsemanGlobals.cachePath + "/searchpoets.cache"
-    }
-
     Component {
         id: filter_component
         SearchFilterPage {
@@ -158,6 +154,7 @@ SearchView {
                 AsemanGlobals.onlineSearch = onlineSearchSwitch.checked;
                 ViewportType.open = false;
             }
+            cancelBtn.onClicked: ViewportType.open = false;
             Component.onCompleted: {
                 for (var i=0; i<searchFilterModel.count; i++)
                     selectedListModel.append( searchFilterModel.get(i) );
@@ -165,6 +162,12 @@ SearchView {
 
             OfflinePoetsModel {
                 id: offlinePoetsModel
+                cleanData: true
+            }
+
+            PoetsCleanModel {
+                id: poetsModel
+                cachePath: AsemanGlobals.cachePath + "/searchpoets.cache"
             }
         }
     }

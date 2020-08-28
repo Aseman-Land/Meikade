@@ -4,15 +4,47 @@ import AsemanQml.Models 2.0
 import Meikade 1.0
 import requests 1.0
 import queries 1.0
+import globals 1.0
 
 AsemanListModel {
-    data: poetsReq.getItems()
+    property bool cleanData: false
+
+    Component.onCompleted: refresh()
 
     MeikadeOfflineItemGlobal {
-        onOfflineInstalled: data = poetsReq.getItems()
+        onOfflineInstalled: refresh()
     }
 
     DataOfflinePoets {
         id: poetsReq
+    }
+
+    function refresh() {
+        data = getList()
+    }
+
+    function getList() {
+        var list = poetsReq.getItems();
+        if (!cleanData)
+            return list;
+
+        var res = new Array;
+        try {
+            for (var j in list) {
+                var d = list[j];
+                var caps = Tools.stringRegExp(d.link, "^\\w+\\:\\/poet\\?id\\=(\\d+)$");
+                if (caps.length === 0)
+                    continue;
+
+                d["id"] = caps[0][1];
+                d["catId"] = 0;
+                d["subtitle"] = GTranslations.translate(d.subtitle);
+                d["image"] = Constants.thumbsBaseUrl + caps[0][1] + ".png";
+                res[res.length] = d;
+            }
+
+        } catch (e) {
+        }
+        return res;
     }
 }

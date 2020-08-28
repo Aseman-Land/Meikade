@@ -7,7 +7,5 @@ BaseRequest {
     url: baseUrl + "/auth/check-username/" + _username
     allowShowErrors: false
 
-    onResponseChanged: console.debug(Tools.variantToJson(response), status)
-
     property string _username
 }

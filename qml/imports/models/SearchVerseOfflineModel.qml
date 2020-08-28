@@ -10,13 +10,13 @@ AsemanListModel {
 
     readonly property bool refreshing: searchQuery.refreshing || timer.running
     property alias query: searchQuery.query
-    property alias poetId: searchQuery.poet_id
+    property alias poets: searchQuery.poets
 
     onQueryChanged: {
         searchQuery.offset = 0;
         timer.restart()
     }
-    onPoetIdChanged: timer.restart()
+    onPoetsChanged: timer.restart()
 
     function more() {
         searchQuery.offset = count
@@ -44,7 +44,7 @@ AsemanListModel {
             if (offset == 0)
                 lmodel.clear();
 
-            searchQuery.getItems(function(list){
+            searchQuery.getItems(function(list, err){
                 refreshing = false;
 
                 var res = new Array;

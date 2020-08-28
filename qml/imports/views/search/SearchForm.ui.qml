@@ -44,6 +44,7 @@ Rectangle {
     BusyIndicator {
         id: busyIndicator
         anchors.centerIn: parent
+        visible: listView.count == 0
     }
 
     ColumnLayout {
@@ -125,6 +126,16 @@ Rectangle {
         header: Item {
             width: listView.width
             height: headerColumn.height
+        }
+
+        footer: Item {
+            width: listView.width
+            height: 100 * Devices.density
+
+            BusyIndicator {
+                anchors.centerIn: parent
+                running: !busyIndicator.visible && busyIndicator.running
+            }
         }
 
         delegate: Rectangle {

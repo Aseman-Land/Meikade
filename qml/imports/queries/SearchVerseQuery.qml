@@ -7,7 +7,7 @@ DataBaseQuery {
     id: obj
 
     property string query
-    property int poet_id
+    property variant poets: new Array
 
     property int offset: 0
     property int limit: 50
@@ -17,6 +17,15 @@ DataBaseQuery {
             callback(new Array);
             return;
         }
+
+        var poetsQuery = "";
+        poets.forEach(function(r){
+            if (poetsQuery.length)
+                poetsQuery += " OR "
+            poetsQuery += ("verse.poet = " + r)
+        })
+        if (poetsQuery.length)
+            poetsQuery = " (" + poetsQuery + ") AND "
 
         queryAsync("SELECT poem.id AS poem__id, poem.cat_id AS poem__category_id, poem.title AS poem__title, " +
                    "0 AS poem__views, poet.id AS poet__id, poet.name AS poet__username, " +
@@ -31,7 +40,7 @@ DataBaseQuery {
                    "LEFT OUTER JOIN verse AS verse2 ON verse2.poem_id = verse.poem_id AND " +
                    "((verse2.vorder % 2 == 0 AND verse2.vorder = verse.vorder + 1) OR " +
                    "(verse2.vorder % 2 <> 0 AND verse2.vorder = verse.vorder - 1)) " +
-                   "WHERE (:poetId = 0 OR verse.poet = :poetId) AND verse.text LIKE :keyword LIMIT :limit OFFSET :offset",
-                   {"poetId": poet_id, "keyword": "%" + query + "%", "limit": limit, "offset": offset}, callback);
+                   "WHERE " + poetsQuery + " verse.text LIKE :keyword LIMIT :limit OFFSET :offset",
+                   {"keyword": "%" + query + "%", "limit": limit, "offset": offset}, callback);
     }
 }

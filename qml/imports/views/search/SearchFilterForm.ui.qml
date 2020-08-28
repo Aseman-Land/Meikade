@@ -54,8 +54,6 @@ DrawerFrame {
             Layout.fillHeight: true
             clip: true
             model: 40
-            enabled: onlineSearchSwitch.checked || selectedListModel.count == 0
-            opacity: enabled? 1 : 0.5
             delegate: SearchFilterItem {
                 id: poetItem
                 width: poetsList.width
