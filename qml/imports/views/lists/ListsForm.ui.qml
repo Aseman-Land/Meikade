@@ -19,11 +19,15 @@ Item {
     property alias headerItem: headerItem
     property alias closeBtn: closeBtn
 
+    property bool selectMode: false
+
     signal clicked(int index)
+    signal addListRequest()
 
     Rectangle {
         anchors.fill: parent
-        color: Colors.deepBackground
+        color: selectMode? Colors.background : Colors.deepBackground
+        opacity: selectMode? 0.5 : 1
     }
 
     ReloadItem {
@@ -46,9 +50,29 @@ Item {
         anchors.right: parent.right
         anchors.bottom: parent.bottom
         anchors.left: parent.left
+        clip: true
 
         topMargin: 4 * Devices.density
         bottomMargin: 4 * Devices.density
+
+        header: Item {
+            width: listView.width
+            height: 80 * Devices.density
+
+            RoundButton {
+                id: addBtn
+                width: parent.width * 0.5
+                anchors.centerIn: parent
+                font.pixelSize: 9 * Devices.fontDensity
+                text: qsTr("Add List") + Translations.refresher
+                highlighted: true
+
+                Connections {
+                    target: addBtn
+                    onClicked: dis.addListRequest()
+                }
+            }
+        }
 
         delegate: Item {
             id: itemObj
@@ -136,7 +160,7 @@ Item {
                     Label {
                         font.family: MaterialIcons.family
                         font.pixelSize: 16 * Devices.fontDensity
-                        text: LayoutMirroring.enabled? MaterialIcons.mdi_chevron_left : MaterialIcons.mdi_chevron_right
+                        text: selectMode? MaterialIcons.mdi_plus : LayoutMirroring.enabled? MaterialIcons.mdi_chevron_left : MaterialIcons.mdi_chevron_right
                         opacity: 0.4
                     }
                 }
@@ -150,8 +174,9 @@ Item {
         anchors.right: parent.right
         anchors.left: parent.left
         text: qsTr("Lists") + Translations.refresher
-        color: Colors.header
-        shadow: Devices.isAndroid
+        color: selectMode? "transparent" : Colors.header
+        shadow: selectMode? false : Devices.isAndroid
+        light: !selectMode
 
         RowLayout {
             anchors.left: parent.left

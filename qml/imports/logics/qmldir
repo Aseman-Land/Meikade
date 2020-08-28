@@ -24,3 +24,4 @@ AboutPage 1.0 AboutPage.qml
 SyncPage 1.0 SyncPage.qml
 ChangeNamePage 1.0 ChangeNamePage.qml
 StickerDialog 1.0 old/StickerDialog.qml
+AddListPage 1.0 AddListPage.qml

@@ -79,6 +79,25 @@
     </message>
 </context>
 <context>
+    <name>AddListForm.ui</name>
+    <message>
+        <source>Add List</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Please enter list name:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>List Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>AuthPage</name>
     <message>
         <source>Logged in Successfully</source>
@@ -541,6 +560,10 @@
         <source>Close</source>
         <translation>Close</translation>
     </message>
+    <message>
+        <source>Add List</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ListsModel</name>
@@ -700,11 +723,15 @@
     </message>
     <message>
         <source>Favorites</source>
-        <translation>Favorites</translation>
+        <translation type="vanished">Favorites</translation>
     </message>
     <message>
         <source>about</source>
         <translation>About</translation>
+    </message>
+    <message>
+        <source>Lists</source>
+        <translation type="unfinished">Lists</translation>
     </message>
 </context>
 <context>

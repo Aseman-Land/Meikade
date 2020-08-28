@@ -79,6 +79,25 @@
     </message>
 </context>
 <context>
+    <name>AddListForm</name>
+    <message>
+        <source>Add List</source>
+        <translation>لیست جدید</translation>
+    </message>
+    <message>
+        <source>Please enter list name:</source>
+        <translation>لطفا نام لیست جدید را وارد کنید:</translation>
+    </message>
+    <message>
+        <source>List Name</source>
+        <translation>نام لیست</translation>
+    </message>
+    <message>
+        <source>Add</source>
+        <translation>اضافه کردن</translation>
+    </message>
+</context>
+<context>
     <name>AsemanTools</name>
     <message>
         <source>0</source>
@@ -667,6 +686,10 @@
         <source>Close</source>
         <translation>بستن</translation>
     </message>
+    <message>
+        <source>Add List</source>
+        <translation>لیست جدید</translation>
+    </message>
 </context>
 <context>
     <name>ListsModel</name>
@@ -826,11 +849,15 @@
     </message>
     <message>
         <source>Favorites</source>
-        <translation>علاقه‌مندی‌ها</translation>
+        <translation type="vanished">علاقه‌مندی‌ها</translation>
     </message>
     <message>
         <source>about</source>
         <translation>درباره می‌کده</translation>
+    </message>
+    <message>
+        <source>Lists</source>
+        <translation>لیست‌ها</translation>
     </message>
 </context>
 <context>

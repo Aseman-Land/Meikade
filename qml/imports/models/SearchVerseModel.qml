@@ -18,6 +18,7 @@ AsemanListModel {
     function more() {
         searchReq._offset = count;
         searchReq.refresh();
+        timeoutTimer.restart();
     }
 
     Timer {

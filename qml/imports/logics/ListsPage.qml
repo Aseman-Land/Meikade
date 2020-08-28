@@ -6,17 +6,22 @@ import views 1.0
 import models 1.0
 
 Viewport {
+    id: dis
 
     property bool favoritesOnly
+    property bool selectMode: lists.selectMode
 
     signal closeRequest()
     signal linkRequest(string link, variant properties)
+    signal addListRequest()
 
     mainItem: ListsView {
+        id: lists
         anchors.fill: parent
         listView.model: ListsModel { id: lModel}
         closeBtn.onClicked: closeRequest()
         onClicked: Viewport.viewport.append(favoritedPoets_component, {}, "page")
+        onAddListRequest: dis.addListRequest()
 
         Connections {
             target: GlobalSignals

@@ -18,6 +18,7 @@ TopPoetsView 1.0 poet/TopPoetsForm.ui.qml
 HafizFaalView 1.0 randoms/HafizFaalForm.ui.qml
 IntroView 1.0 intro/IntroForm.ui.qml
 ListsView 1.0 lists/ListsForm.ui.qml
+AddListView 1.0 lists/AddListForm.ui.qml
 FavoritedPoetsListView 1.0 lists/FavoritedPoetsListForm.ui.qml
 FavoritedListView 1.0 lists/FavoritedListForm.ui.qml
 SettingsView 1.0 general/SettingsForm.ui.qml

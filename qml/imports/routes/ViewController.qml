@@ -82,6 +82,11 @@ ViewportController {
     }
 
     ViewportControllerRoute {
+        route: /\w+\:\/lists\/add(?:\?.+)?/
+        source: "AddListRoute.qml"
+    }
+
+    ViewportControllerRoute {
         route: /\w+\:\/offline\/manage/
         source: "ManageOfflinePoetsRoute.qml"
     }

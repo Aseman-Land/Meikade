@@ -5,18 +5,18 @@ import AsemanQml.Models 2.0
 
 AsemanListModel {
     data: [
-//        {
-//            "title": qsTr("Lists") + Translations.refresher,
-//            "icon": "mdi_heart",
-//            "link": "float:/lists",
-//            "underco": false
-//        },
         {
-            "title": qsTr("Favorites") + Translations.refresher,
+            "title": qsTr("Lists") + Translations.refresher,
             "icon": "mdi_heart",
-            "link": "float:/lists?favoritesOnly=true",
+            "link": "float:/lists",
             "underco": false
         },
+//        {
+//            "title": qsTr("Favorites") + Translations.refresher,
+//            "icon": "mdi_heart",
+//            "link": "float:/lists?favoritesOnly=true",
+//            "underco": false
+//        },
         {
             "title": qsTr("Notes") + Translations.refresher,
             "icon": "mdi_note",
