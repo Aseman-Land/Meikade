@@ -28,7 +28,7 @@ UserBaseQuery {
         TypePoemViewDate = 5,
         TypeTopPoets = 6,
         TypeListCreate = 7,
-        TypeAddToList = 8
+        TypeItemListsStart = 1000000000
     }
 
     function getItems(type, offset, limit) {

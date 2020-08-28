@@ -8,6 +8,8 @@ import queries 1.0
 AsemanListModel {
     id: dis
 
+    property int listId: UserActions.TypeFavorite
+
     Component.onCompleted: refresh()
 
     UserActions {
@@ -17,10 +19,13 @@ AsemanListModel {
     function refresh() {
         Tools.jsDelayCall(10, function(){
             var data = new Array;
-            var list = actions.query("SELECT *, COUNT(verseId) as verses FROM actions WHERE type = :type AND declined = 0 GROUP BY poetId ORDER BY updatedAt", {type: UserActions.TypeFavorite});
+            var list = actions.query("SELECT *, COUNT(verseId) as verses FROM actions WHERE type = :type AND declined = 0 GROUP BY poetId ORDER BY updatedAt", {type: listId});
             for (var i in list) {
                 try {
                     var item = list[i];
+                    if (!item.poetId && !item.catId && !item.poemId && !item.verseId)
+                        continue;
+
                     var extraJson = Tools.jsonToVariant(item.extra);
 
                     if (!extraJson.poet) extraJson["poet"] = extraJson.subtitle

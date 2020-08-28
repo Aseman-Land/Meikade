@@ -154,6 +154,7 @@ Item {
                             font.pixelSize: 8 * Devices.fontDensity
                             opacity: 0.8
                             text: model.subtitle
+                            visible: text.length > 0
                         }
                     }
 

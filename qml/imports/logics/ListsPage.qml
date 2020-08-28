@@ -20,7 +20,10 @@ Viewport {
         anchors.fill: parent
         listView.model: ListsModel { id: lModel}
         closeBtn.onClicked: closeRequest()
-        onClicked: Viewport.viewport.append(favoritedPoets_component, {}, "page")
+        onClicked: {
+            var item = lModel.get(index);
+            Viewport.viewport.append(favoritedPoets_component, {"listId": item.listId, "title": item.title}, "page")
+        }
         onAddListRequest: dis.addListRequest()
 
         Connections {
@@ -42,6 +45,7 @@ Viewport {
     Component {
         id: favoritedPoets_component
         FavoritedPoetsListView {
+            headerItem.text: title
             listView.model: FavoritedPoetsListModel { id: fplModel }
             backBtn.onClicked: ViewportType.open = false
             closeBtn.onClicked: closeRequest()
@@ -50,6 +54,9 @@ Viewport {
                 var poetId = map.poetId;
                 Viewport.viewport.append(favorited_component, {"poetId": poetId, "title": map.poet}, "page");
             }
+
+            property string title: qsTr("Favoriteds") + Translations.refresher
+            property alias listId: fplModel.listId
 
             Connections {
                 target: GlobalSignals
