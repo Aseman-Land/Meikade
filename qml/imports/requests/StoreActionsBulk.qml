@@ -28,7 +28,9 @@ AsemanObject {
 
             actions.begin();
             if (AsemanGlobals.syncTopPoets) actions.query("UPDATE actions SET synced = 1 WHERE type = " + UserActions.TypeTopPoets);
-            if (AsemanGlobals.syncViews) actions.query("UPDATE actions SET synced = 1 WHERE type = " + UserActions.TypePoemViewDate);
+            if (AsemanGlobals.syncViews) actions.query("UPDATE actions SET synced = 1 WHERE type = " + UserActions.TypePoemViewDate +
+                                                       " OR (type >= " + UserActions.TypeItemViewDiaryStart +
+                                                       " AND type < " + UserActions.TypeItemViewDiaryEnd + " )");
             if (AsemanGlobals.syncFavorites) actions.query("UPDATE actions SET synced = 1 WHERE type = " + UserActions.TypeFavorite +
                                                            " OR (type >= " + UserActions.TypeItemListsStart +
                                                            " AND type < " + UserActions.TypeItemListsEnd + " )");
@@ -112,6 +114,9 @@ AsemanObject {
                 case UserActions.TypeNote:
                 default:
                     if (actions.type >= UserActions.TypeItemListsStart && actions.type < UserActions.TypeItemListsEnd && AsemanGlobals.syncFavorites)
+                        break;
+                    else
+                    if (actions.type >= UserActions.TypeItemViewDiaryStart && actions.type < UserActions.TypeItemViewDiaryEnd && AsemanGlobals.syncViews)
                         break;
                     else
                         return;
@@ -216,6 +221,9 @@ AsemanObject {
             case UserActions.TypeNote:
             default:
                 if (it.type >= UserActions.TypeItemListsStart && it.type < UserActions.TypeItemListsEnd && AsemanGlobals.syncFavorites)
+                    break;
+                else
+                if (it.type >= UserActions.TypeItemViewDiaryStart && it.type < UserActions.TypeItemViewDiaryEnd && AsemanGlobals.syncViews)
                     break;
                 continue;
             }
