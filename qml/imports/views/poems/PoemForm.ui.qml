@@ -193,7 +193,7 @@ Item {
                                                   0)
                     anchors.margins: 20 * Devices.density
                     text: model.text
-                    font.pixelSize: 10 * Devices.fontDensity
+                    font.pixelSize: 10 * Devices.fontDensity + (AsemanGlobals.fontSize - 3) * Devices.fontDensity
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                     horizontalAlignment: model.position === PoemVersesModel.PositionRight? Text.AlignRight : (model.position === PoemVersesModel.PositionLeft? Text.AlignLeft
                                          : (model.position === PoemVersesModel.PositionCenteredVerse1 || model.position === PoemVersesModel.PositionCenteredVerse2? Text.AlignHCenter

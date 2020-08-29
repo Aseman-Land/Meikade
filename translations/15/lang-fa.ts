@@ -1215,6 +1215,22 @@ It containts %2 items currently.</source>
         <source>Show Phrase</source>
         <translation>نمایش تعبیر شعرها</translation>
     </message>
+    <message>
+        <source>Poems font size</source>
+        <translation>اندازه متن شعر‌ها</translation>
+    </message>
+    <message>
+        <source>Small</source>
+        <translation>ریز</translation>
+    </message>
+    <message>
+        <source>Medium</source>
+        <translation>متوسط</translation>
+    </message>
+    <message>
+        <source>Large</source>
+        <translation>درشت</translation>
+    </message>
 </context>
 <context>
     <name>SettingsPage</name>

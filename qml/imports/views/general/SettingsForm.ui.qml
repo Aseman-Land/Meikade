@@ -20,6 +20,7 @@ Item {
     property alias languageCombo: languageCombo
     property alias themeCombo: themeCombo
     property alias phraseSwitch: phraseSwitch
+    property alias fontSizeSlider: fontSizeSlider
 
     Material.theme: Material.Dark
     IOSStyle.theme: IOSStyle.Dark
@@ -50,6 +51,7 @@ Item {
                 anchors.top: parent.top
                 anchors.topMargin: 10 * Devices.density
                 anchors.margins: 20 * Devices.density
+                spacing: 4 * Devices.density
 
                 RowLayout {
                     Label {
@@ -123,6 +125,51 @@ Item {
                     Switch {
                         id: phraseSwitch
                     }
+                }
+
+
+                RowLayout {
+                    Layout.topMargin: 20 * Devices.density
+                    Label {
+                        Layout.fillWidth: true
+                        font.pixelSize: 9 * Devices.fontDensity
+                        horizontalAlignment: Text.AlignLeft
+                        text: qsTr("Poems font size") + Translations.refresher
+                    }
+                }
+
+                RowLayout {
+                    spacing: 0
+
+                    Label {
+                        Layout.preferredWidth: dis.width / 4
+                        font.pixelSize: 8 * Devices.fontDensity
+                        horizontalAlignment: Text.AlignLeft
+                        text: qsTr("Small") + Translations.refresher
+                    }
+                    Label {
+                        Layout.fillWidth: true
+                        font.pixelSize: 10 * Devices.fontDensity
+                        horizontalAlignment: Text.AlignHCenter
+                        text: qsTr("Medium") + Translations.refresher
+                    }
+                    Label {
+                        Layout.preferredWidth: dis.width / 4
+                        font.pixelSize: 12 * Devices.fontDensity
+                        horizontalAlignment: Text.AlignRight
+                        text: qsTr("Large") + Translations.refresher
+                    }
+                }
+
+                Slider {
+                    id: fontSizeSlider
+                    Layout.fillWidth: true
+                    Layout.topMargin: -6 * Devices.density
+                    snapMode: Slider.SnapOnRelease
+                    orientation: Qt.Horizontal
+                    from: 1
+                    to: 5
+                    stepSize: 1
                 }
             }
         }

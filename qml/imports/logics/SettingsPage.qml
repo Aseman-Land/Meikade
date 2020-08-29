@@ -85,6 +85,9 @@ SettingsView {
         }
     }
 
+    fontSizeSlider.onValueChanged: if (!initTimer.running) AsemanGlobals.fontSize = fontSizeSlider.value
+    fontSizeSlider.value: AsemanGlobals.fontSize
+
     Component.onCompleted: {
         for (var i=0; i<languageCombo.model.count; i++) {
             if (languageCombo.model.get(i).key == AsemanGlobals.language) {
