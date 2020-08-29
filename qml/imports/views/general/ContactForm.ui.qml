@@ -106,6 +106,7 @@ Page {
                     horizontalAlignment: Text.AlignLeft
                     font.pixelSize: 9 * Devices.fontDensity
                     Layout.bottomMargin: 10 * Devices.density
+                    wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                     selectByMouse: true
                 }
 
