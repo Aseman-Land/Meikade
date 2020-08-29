@@ -164,6 +164,30 @@ PoemView {
         synced: 0
     }
 
+    Query.UserActions {
+        id: diaryQuery
+        poemId: dis.poemId
+        poetId: dis.id
+        declined: 0
+        synced: 0
+
+        Component.onDestruction: { // Push Read duration as action
+            if (clockTimer.count <= 10)
+                return;
+
+            var startHour = Math.floor(Tools.dateToSec(new Date(2020, 1, 1)) / 3600);
+            var currentHour = Math.floor(Tools.dateToSec(new Date) / 3600);
+
+            diaryQuery.type = Query.UserActions.TypeItemViewDiaryStart + (currentHour - startHour);
+            if (diaryQuery.type < Query.UserActions.TypeItemViewDiaryStart || diaryQuery.type >= Query.UserActions.TypeItemViewDiaryEnd)
+                return;
+
+            diaryQuery.fetch();
+            diaryQuery.value = (diaryQuery.value * 1) + clockTimer.count;
+            diaryQuery.pushAction();
+        }
+    }
+
     Timer {
         id: userActionTimer
         interval: 10000
@@ -177,7 +201,22 @@ PoemView {
 
             viewActionQuery.pushAction()
             GlobalSignals.recentPoemsRefreshed()
+            clockTimer.restart()
         }
+    }
+
+    Timer {
+        id: clockTimer
+        interval: 1000
+        repeat: true
+        running: false
+        onTriggered: {
+            if (Viewport.viewport.currentItem != dis)
+                return;
+
+            count++;
+        }
+        property int count: 10
     }
 
     form {

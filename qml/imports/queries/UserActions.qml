@@ -28,12 +28,31 @@ UserBaseQuery {
         TypePoemViewDate = 5,
         TypeTopPoets = 6,
         TypeListCreate = 7,
+        TypeItemViewDiaryStart = 997000000,
+        TypeItemViewDiaryEnd = 999999999,
         TypeItemListsStart = 1000000000,
         TypeItemListsEnd = 2000000000
     }
 
     function getItems(type, offset, limit) {
         return select("", "type = :type AND declined = 0", "ORDER BY updatedAt DESC LIMIT :limit OFFSET :offset", {type: type, offset: offset, limit: limit})
+    }
+
+    function getFavedPoets() {
+        return select("", "type = :type AND declined = 0", "", {type: UserActions.TypeFavorite})
+    }
+
+    function getDiaries(fromDate) {
+        var startHour = Math.floor(Tools.dateToSec(new Date(2020, 1, 1)) / 3600);
+        var currentHour = Math.floor(Tools.dateToSec(fromDate) / 3600);
+
+        var type = UserActions.TypeItemViewDiaryStart + (currentHour - startHour);
+        if (type < UserActions.TypeItemViewDiaryStart || type >= UserActions.TypeItemViewDiaryEnd)
+            return new Array;
+
+        var list = select("", "(type < :endType AND type >= :fromType) AND declined = 0",
+                          {fromType: type, endType: UserActions.TypeItemViewDiaryEnd});
+        return list;
     }
 
     function getLists() {

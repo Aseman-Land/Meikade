@@ -883,6 +883,18 @@ It containts %2 items currently.</source>
         <source>Available Soon</source>
         <translation>به زودی</translation>
     </message>
+    <message>
+        <source>Daily Reads</source>
+        <translation>مطالعه روزانه</translation>
+    </message>
+    <message>
+        <source>Hours per Week</source>
+        <translation>ساعت در هفته</translation>
+    </message>
+    <message>
+        <source>Favoriteds Poets</source>
+        <translation>شاعر مورد علاقه</translation>
+    </message>
 </context>
 <context>
     <name>MyMeikadeModel</name>

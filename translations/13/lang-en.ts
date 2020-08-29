@@ -756,6 +756,18 @@ It containts %2 items currently.</source>
         <source>Available Soon</source>
         <translation>Available Soon</translation>
     </message>
+    <message>
+        <source>Daily Reads</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hours per Week</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Favoriteds Poets</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MyMeikadeModel</name>
@@ -1085,10 +1097,6 @@ It containts %2 items currently.</source>
         <translation>Show Phrase</translation>
     </message>
     <message>
-        <source>Font Size</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Small</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1098,6 +1106,10 @@ It containts %2 items currently.</source>
     </message>
     <message>
         <source>Large</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Poems font size</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

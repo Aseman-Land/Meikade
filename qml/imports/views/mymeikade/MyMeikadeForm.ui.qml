@@ -20,6 +20,9 @@ Rectangle {
     property alias profileLabel: profileLabel
     property alias settingsBtn: settingsBtn
     property alias profileColumn: profileColumn
+    property alias dailyDiary: dailyDiary
+    property alias weeklyDiary: weeklyDiary
+    property alias favesDiary: favesDiary
     property alias authBtn: authBtn
 
     property bool signedIn
@@ -173,6 +176,7 @@ Rectangle {
                     radius: height / 2
                     Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
                     color: "#fff"
+                    visible: false
 
                     RoundedItem {
                         anchors.fill: parent
@@ -194,11 +198,6 @@ Rectangle {
                             sourceSize.height: height * 1.2
                             fillMode: Image.PreserveAspectCrop
                         }
-
-                        ItemDelegate {
-                            id: avatarBtn
-                            anchors.fill: parent
-                        }
                     }
                 }
 
@@ -216,7 +215,38 @@ Rectangle {
                         color: "#222"
                         z: -1
                         opacity: 0.6
+
+                        ItemDelegate {
+                            id: avatarBtn
+                            anchors.fill: parent
+                        }
                     }
+                }
+            }
+
+            Row {
+                anchors.left: parent.left
+                anchors.right: parent.right
+                anchors.bottom: parent.bottom
+                spacing: 0
+                opacity: ratioAbs * 2 - 1
+                visible: opacity > 0
+
+                DiaryItem {
+                    id: dailyDiary
+                    width: parent.width/3
+                    unitLabel.text: qsTr("Daily Reads") + Translations.refresher
+
+                }
+                DiaryItem {
+                    id: weeklyDiary
+                    width: parent.width/3
+                    unitLabel.text: qsTr("Hours per Week") + Translations.refresher
+                }
+                DiaryItem {
+                    id: favesDiary
+                    width: parent.width/3
+                    unitLabel.text: qsTr("Favoriteds Poets") + Translations.refresher
                 }
             }
         }

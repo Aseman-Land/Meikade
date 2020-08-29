@@ -8,6 +8,7 @@ import models 1.0
 import views 1.0
 import micros 1.0
 import requests 1.0
+import queries 1.0
 import globals 1.0
 
 MyMeikadeView {
@@ -40,6 +41,30 @@ MyMeikadeView {
         }
 
         Viewport.viewport.append(menuComponent, {"pointPad": pos}, "menu");
+    }
+
+    function refreshDiaries() {
+        var monthList = diaryQuery.getDiaries(Tools.dateFromSec(Tools.dateToSec(new Date) - (30 * 24 * 3600)));
+
+        var sum = 0;
+        monthList.forEach(function(m){
+            sum += (m.value * 1)
+        })
+
+        dailyDiary.numberLabel.text = Tools.trNums(Math.floor(monthList.length / 3) / 10);
+        weeklyDiary.numberLabel.text = Tools.trNums(Math.floor(sum / 7 / 36) / 100);
+        favesDiary.numberLabel.text = Tools.trNums(diaryQuery.getFavedPoets().length);
+    }
+
+    onVisibleChanged: {
+        if (visible)
+            refreshDiaries();
+    }
+
+    UserActions {
+        id: diaryQuery
+        declined: 0
+        synced: 0
     }
 
     UserUploadProfileRequest {

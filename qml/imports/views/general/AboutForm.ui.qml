@@ -266,7 +266,7 @@ Page {
                                 id: osAppColumn
                                 anchors.left: parent.left
                                 anchors.right: parent.right
-                                anchors.verticalCenter: parent.verticalCenter
+                                y: 10 * Devices.density
                                 anchors.margins: 10 * Devices.density
                                 spacing: 4 * Devices.density
 
