@@ -122,7 +122,7 @@ Rectangle {
             y: Math.min(0, Math.max(mapListener.result.y / 2, (Devices.standardTitleBarHeight + Devices.statusBarHeight - height)/2))
             anchors.left: parent.left
             anchors.right: parent.right
-            height: width * 9 / 16
+            height: Math.min(width * 9 / 16, myMeikade.height/3)
             sourceSize.width: width * 1.2
             sourceSize.height: height * 1.2
             fillMode: Image.PreserveAspectCrop

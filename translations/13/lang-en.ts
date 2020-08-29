@@ -96,6 +96,10 @@
         <source>Add</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Rename List</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>AuthPage</name>
@@ -289,6 +293,37 @@
     <message>
         <source>%1 books</source>
         <translation>%1 of books</translation>
+    </message>
+</context>
+<context>
+    <name>DeleteListForm.ui</name>
+    <message>
+        <source>Delete List</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Are you sure about delete this list?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation type="unfinished">Cancel</translation>
+    </message>
+    <message>
+        <source>Confirm</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>DeleteListPage</name>
+    <message>
+        <source>Are you sure about delete &quot;%1&quot;?
+It containts %2 items currently.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&quot;%1&quot; deleted</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -589,6 +624,14 @@
     <message>
         <source>Favoriteds</source>
         <translation type="unfinished">Favorites</translation>
+    </message>
+    <message>
+        <source>Change Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

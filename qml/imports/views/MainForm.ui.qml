@@ -70,10 +70,11 @@ Page {
 
         ListView {
             id: footerListView
-            anchors.fill: parent
+            anchors.top: parent.top
+            anchors.bottom: parent.bottom
             anchors.bottomMargin: Devices.navigationBarHeight
-            anchors.leftMargin: parent.width / 10
-            anchors.rightMargin: parent.width / 10
+            anchors.horizontalCenter: parent.horizontalCenter
+            width: Math.min(parent.width * 0.8, 400 * Devices.density)
             orientation: ListView.Horizontal
             maximumFlickVelocity: View.flickVelocity
             boundsBehavior: Flickable.StopAtBounds

@@ -87,6 +87,11 @@ ViewportController {
     }
 
     ViewportControllerRoute {
+        route: /\w+\:\/lists\/delete(?:\?.+)?/
+        source: "DeleteListRoute.qml"
+    }
+
+    ViewportControllerRoute {
         route: /\w+\:\/offline\/manage/
         source: "ManageOfflinePoetsRoute.qml"
     }

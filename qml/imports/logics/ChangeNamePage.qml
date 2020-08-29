@@ -12,7 +12,12 @@ ChangeNameView {
     height: 300 * Devices.density
 
     cancelBtn.onClicked: home.ViewportType.open = false;
-    confirmBtn.onClicked: updateReq.networkManager.post(updateReq)
+    confirmBtn.onClicked: confirm()
+    nameField.onAccepted: confirm()
+
+    function confirm() {
+        updateReq.networkManager.post(updateReq)
+    }
 
     UserSetDetailsRequest {
         id: updateReq

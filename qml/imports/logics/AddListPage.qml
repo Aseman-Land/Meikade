@@ -11,12 +11,23 @@ AddListView {
     id: home
     width: parent.width
     height: 300 * Devices.density
+    nameField.text: currentName
+    renameMode: actionId != 0
+
+    property int actionId
+    property string currentName
 
     cancelBtn.onClicked: home.ViewportType.open = false;
-    confirmBtn.onClicked: {
-        var actionId = UserActions.TypeItemListsStart + Tools.dateToSec(new Date) - Tools.dateToSec(new Date(2020, 1, 1))
-        if (actionId < UserActions.TypeItemListsStart || actionId >= UserActions.TypeItemListsEnd)
-            actionId = UserActions.TypeItemListsStart + (actionId % (UserActions.TypeItemListsEnd - UserActions.TypeItemListsStart))
+    confirmBtn.onClicked: confirm()
+    nameField.onAccepted: confirm()
+
+    function confirm() {
+        var actionId = home.actionId;
+        if (actionId == 0) {
+            actionId = UserActions.TypeItemListsStart + Tools.dateToSec(new Date) - Tools.dateToSec(new Date(2020, 1, 1))
+            if (actionId < UserActions.TypeItemListsStart || actionId >= UserActions.TypeItemListsEnd)
+                actionId = UserActions.TypeItemListsStart + (actionId % (UserActions.TypeItemListsEnd - UserActions.TypeItemListsStart))
+        }
 
         var extra = {
             "public": false

@@ -12,14 +12,15 @@ import micros 1.0
 DrawerFrame {
     width: Constants.width
     height: Constants.height
+    cancelBtn.visible: false
 
     property alias confirmBtn: confirmBtn
-    property alias nameField: nameField
-    property bool renameMode
+    property alias rejectBtn: rejectBtn
+    property alias bodyLabel: bodyLabel
 
     scene.height: Math.max(flickable.height, sceneColumn.height)
 
-    headerLabel.text: renameMode? qsTr("Rename List") : qsTr("Add List") + Translations.refresher
+    headerLabel.text: qsTr("Delete List") + Translations.refresher
 
     ColumnLayout {
         id: sceneColumn
@@ -27,7 +28,7 @@ DrawerFrame {
         anchors.right: parent.right
         anchors.verticalCenter: parent.verticalCenter
         anchors.margins: 15 * Devices.density
-        spacing: 4 * Devices.density
+        spacing: 0
 
         RowLayout {
             Layout.fillWidth: true
@@ -36,41 +37,23 @@ DrawerFrame {
             spacing: 20 * Devices.density
 
             Label {
-                id: contactName
+                id: bodyLabel
                 Layout.fillWidth: true
                 horizontalAlignment: Text.AlignLeft
                 font.pixelSize: 9 * Devices.fontDensity
-                text: qsTr("Please enter list name:") + Translations.refresher
+                text: qsTr("Are you sure about delete this list?") + Translations.refresher
             }
         }
 
-        TextField {
-            id: nameField
+        Button {
+            id: rejectBtn
             Layout.fillWidth: true
+            Layout.topMargin: 10 * Devices.density
             Layout.leftMargin: 20 * Devices.density
             Layout.rightMargin: 20 * Devices.density
-            Layout.preferredHeight: 48 * Devices.density
-            placeholderText: qsTr("List Name") + Translations.refresher
             font.pixelSize: 9 * Devices.fontDensity
-            horizontalAlignment: Text.AlignHCenter
-            selectByMouse: true
-            leftPadding: 34 * Devices.density
-            rightPadding: 34 * Devices.density
-            validator: RegExpValidator { regExp: /[\w\s]+/ }
-            color: isValid || focus? Colors.foreground : "#a00"
-
-            property bool isValid: length > 0
-
-            Label {
-                anchors.left: parent.left
-                anchors.verticalCenter: parent.verticalCenter
-                anchors.verticalCenterOffset: 4 * Devices.density
-                anchors.margins: 8 * Devices.density
-                font.pixelSize: 12 * Devices.fontDensity
-                font.family: MaterialIcons.family
-                text: MaterialIcons.mdi_pencil
-                color: Colors.accent
-            }
+            text: qsTr("Cancel") + Translations.refresher
+            Material.elevation: 0
         }
 
         Button {
@@ -79,11 +62,10 @@ DrawerFrame {
             Layout.leftMargin: 20 * Devices.density
             Layout.rightMargin: 20 * Devices.density
             font.pixelSize: 9 * Devices.fontDensity
-            enabled: nameField.isValid
-            text: qsTr("Add") + Translations.refresher
+            text: qsTr("Confirm") + Translations.refresher
             highlighted: true
-            Material.accent: Colors.primary
-            IOSStyle.accent: Colors.primary
+            Material.accent: Material.Red
+            IOSStyle.accent: IOSStyle.Red
             Material.elevation: 0
         }
     }

@@ -1,13 +1,17 @@
 import QtQuick 2.12
 import AsemanQml.Base 2.0
 import AsemanQml.Viewport 2.0
+import AsemanQml.Models 2.0
 import globals 1.0
 import views 1.0
 import models 1.0
 import queries 1.0
+import micros 1.0
 
 Viewport {
     id: dis
+
+    property alias mainViewport: lists.mainViewport
 
     property bool favoritesOnly
     property alias selectMode: lists.selectMode
@@ -21,10 +25,11 @@ Viewport {
     signal closeRequest()
     signal linkRequest(string link, variant properties)
     signal addListRequest()
+    signal renameListRequest(int actionId, string currentName)
+    signal deleteListRequest(int actionId, string name)
 
     UserActions {
         id: listsQuery
-        onLastErrorChanged: console.debug(lastError)
     }
 
     mainItem: ListsView {
@@ -54,6 +59,14 @@ Viewport {
             GlobalSignals.snackbarRequest(qsTr("Lists updated"));
             GlobalSignals.listsRefreshed();
             closeRequest()
+        }
+
+        onPressAndHold: {
+            var item = lModel.get(index);
+            if (item.listId < UserActions.TypeItemListsStart)
+                return;
+
+            mainViewport.append(menuComponent, {"pointPad": pos, "item": item}, "menu");
         }
 
         onClicked: {
@@ -118,6 +131,53 @@ Viewport {
             Connections {
                 target: GlobalSignals
                 onListsRefreshed: flModel.refresh()
+            }
+        }
+    }
+
+    Component {
+        id: menuComponent
+        MenuView {
+            id: menuItem
+            x: pointPad.x - width/2
+            y: Math.min(pointPad.y, dis.height - height - 100 * Devices.density)
+            width: 220 * Devices.density
+            ViewportType.transformOrigin: {
+                var y = 0;
+                var x = width/2;
+                return Qt.point(x, y);
+            }
+
+            property point pointPad
+            property int index
+            property variant item
+
+            onItemClicked: {
+                switch (index) {
+                case 0:
+                    renameListRequest(item.listId, item.title);
+                    break;
+                case 1:
+                    deleteListRequest(item.listId, item.title);
+                    break;
+                }
+
+                ViewportType.open = false;
+            }
+
+            model: AsemanListModel {
+                data: [
+                    {
+                        title: qsTr("Change Name"),
+                        icon: "mdi_rename_box",
+                        enabled: true
+                    },
+                    {
+                        title: qsTr("Delete"),
+                        icon: "mdi_delete",
+                        enabled: true
+                    }
+                ]
             }
         }
     }

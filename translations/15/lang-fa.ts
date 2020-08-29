@@ -85,8 +85,12 @@
         <translation>لیست جدید</translation>
     </message>
     <message>
+        <source>Rename List</source>
+        <translation>تغییر نام لیست</translation>
+    </message>
+    <message>
         <source>Please enter list name:</source>
-        <translation>لطفا نام لیست جدید را وارد کنید:</translation>
+        <translation>لطفا نام لیست را وارد کنید:</translation>
     </message>
     <message>
         <source>List Name</source>
@@ -336,6 +340,38 @@
     <message>
         <source>%1 books</source>
         <translation>%1 کتاب</translation>
+    </message>
+</context>
+<context>
+    <name>DeleteListForm</name>
+    <message>
+        <source>Delete List</source>
+        <translation>حذف لیست</translation>
+    </message>
+    <message>
+        <source>Are you sure about delete this list?</source>
+        <translation>آیا از حذف کردن این لیست مطمئنید؟</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>لغو</translation>
+    </message>
+    <message>
+        <source>Confirm</source>
+        <translation>حذف کردن</translation>
+    </message>
+</context>
+<context>
+    <name>DeleteListPage</name>
+    <message>
+        <source>Are you sure about delete &quot;%1&quot;?
+It containts %2 items currently.</source>
+        <translation>آیا از حذف کردن &quot;%1&quot; مطمئنید؟
+درحال حاضر این لیست %2 عنوان دارد.</translation>
+    </message>
+    <message>
+        <source>&quot;%1&quot; deleted</source>
+        <translation>&quot;%1&quot; پاک شد</translation>
     </message>
 </context>
 <context>
@@ -715,6 +751,14 @@
     <message>
         <source>Favoriteds</source>
         <translation>علاقه‌مندی‌ها</translation>
+    </message>
+    <message>
+        <source>Change Name</source>
+        <translation>تغییر نام</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>حذف لیست</translation>
     </message>
 </context>
 <context>

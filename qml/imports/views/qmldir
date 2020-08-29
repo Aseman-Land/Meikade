@@ -21,6 +21,7 @@ ListsView 1.0 lists/ListsForm.ui.qml
 AddListView 1.0 lists/AddListForm.ui.qml
 FavoritedPoetsListView 1.0 lists/FavoritedPoetsListForm.ui.qml
 FavoritedListView 1.0 lists/FavoritedListForm.ui.qml
+DeleteListView 1.0 lists/DeleteListForm.ui.qml
 SettingsView 1.0 general/SettingsForm.ui.qml
 ContactView 1.0 general/ContactForm.ui.qml
 WebBrowserView 1.0 general/WebBrowserForm.ui.qml

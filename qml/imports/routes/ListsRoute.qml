@@ -6,8 +6,11 @@ import AsemanQml.Viewport 2.0
 ListsPage {
     width: parent.width
     height: Viewport.viewport.height * 0.7
+    mainViewport: Viewport.viewport
 
     onCloseRequest: ViewportType.open = false;
     onLinkRequest: Viewport.controller.trigger(link, properties)
     onAddListRequest: Viewport.controller.trigger("bottomdrawer:/lists/add")
+    onRenameListRequest: Viewport.controller.trigger("bottomdrawer:/lists/add", {"actionId": actionId, "currentName": currentName})
+    onDeleteListRequest: Viewport.controller.trigger("bottomdrawer:/lists/delete", {"actionId": actionId, "currentName": name})
 }

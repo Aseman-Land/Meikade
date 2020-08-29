@@ -2,6 +2,7 @@ import QtQuick 2.12
 import AsemanQml.Base 2.0
 import AsemanQml.MaterialIcons 2.0
 import AsemanQml.Controls 2.0
+import AsemanQml.Viewport 2.0
 import QtQuick.Controls 2.3
 import QtQuick.Layouts 1.3
 import QtQuick.Controls.Material 2.0
@@ -21,8 +22,10 @@ Item {
     property alias confirmBtn: confirmBtn
 
     property variant selectMode
+    property Viewport mainViewport: Viewport.viewport
 
     signal clicked(int index)
+    signal pressAndHold(int index, variant pos)
     signal addListRequest()
 
     Rectangle {
@@ -97,8 +100,17 @@ Item {
                     id: itemDel
                     anchors.fill: parent
 
+                    PointMapListener {
+                        id: listener
+                        source: itemDel
+                        dest: mainViewport
+                        x: itemDel.width/2
+                        y: itemDel.height/2
+                    }
+
                     Connections {
                         target: itemDel
+                        onPressAndHold: dis.pressAndHold(model.index, listener.result)
                         onClicked: {
                             if (selectMode)
                                 checkBox.toggle()
