@@ -690,6 +690,10 @@
         <source>Add List</source>
         <translation>لیست جدید</translation>
     </message>
+    <message>
+        <source>Done</source>
+        <translation>تایید</translation>
+    </message>
 </context>
 <context>
     <name>ListsModel</name>
@@ -699,7 +703,18 @@
     </message>
     <message>
         <source>%1 items</source>
-        <translation>%1 عنوان</translation>
+        <translation type="vanished">%1 عنوان</translation>
+    </message>
+</context>
+<context>
+    <name>ListsPage</name>
+    <message>
+        <source>Lists updated</source>
+        <translation>لیست به روز شد</translation>
+    </message>
+    <message>
+        <source>Favoriteds</source>
+        <translation>علاقه‌مندی‌ها</translation>
     </message>
 </context>
 <context>
@@ -890,7 +905,7 @@
     <name>PoemPage</name>
     <message>
         <source>Add to Bookmarks</source>
-        <translation>افزودن به علاقه‌مندی‌ها</translation>
+        <translation type="vanished">افزودن به علاقه‌مندی‌ها</translation>
     </message>
     <message>
         <source>Copy</source>
@@ -910,15 +925,15 @@
     </message>
     <message>
         <source>Remove Bookmarks</source>
-        <translation>حذف از علاقه‌مندی‌ها</translation>
+        <translation type="vanished">حذف از علاقه‌مندی‌ها</translation>
     </message>
     <message>
         <source>Poem Unfavorited</source>
-        <translation>شعر از علاقه‌مندی‌ها حذف شد</translation>
+        <translation type="vanished">شعر از علاقه‌مندی‌ها حذف شد</translation>
     </message>
     <message>
         <source>Poem favorited</source>
-        <translation>شعر به علاقه‌مندی‌ها اضافه شد</translation>
+        <translation type="vanished">شعر به علاقه‌مندی‌ها اضافه شد</translation>
     </message>
     <message>
         <source>Poem copied</source>
@@ -926,15 +941,19 @@
     </message>
     <message>
         <source>Verse Unfavorited</source>
-        <translation>بیت از علاقه‌مندی‌ها حذف شد</translation>
+        <translation type="vanished">بیت از علاقه‌مندی‌ها حذف شد</translation>
     </message>
     <message>
         <source>Verse favorited</source>
-        <translation>بیت به علاقه‌مندی‌ها اضافه شد</translation>
+        <translation type="vanished">بیت به علاقه‌مندی‌ها اضافه شد</translation>
     </message>
     <message>
         <source>Verse copied</source>
         <translation>بیت کپی شد</translation>
+    </message>
+    <message>
+        <source>Choose Lists</source>
+        <translation>انتخاب لیست‌ها</translation>
     </message>
 </context>
 <context>
@@ -1317,7 +1336,7 @@
     </message>
     <message>
         <source>Favorites</source>
-        <translation>علاقه‌مندی‌ها</translation>
+        <translation type="vanished">علاقه‌مندی‌ها</translation>
     </message>
     <message>
         <source>Notes</source>
@@ -1342,6 +1361,10 @@
     <message>
         <source>Resync All</source>
         <translation>همگام‌سازی از اول</translation>
+    </message>
+    <message>
+        <source>Lists</source>
+        <translation>لیست‌ها</translation>
     </message>
 </context>
 <context>

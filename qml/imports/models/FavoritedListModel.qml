@@ -9,6 +9,7 @@ AsemanListModel {
     id: dis
 
     property int poetId
+    property int listId: UserActions.TypeFavorite
 
     Component.onCompleted: refresh()
 
@@ -19,7 +20,7 @@ AsemanListModel {
     function refresh() {
         Tools.jsDelayCall(10, function(){
             var data = new Array;
-            var list = actions.select("", "type = :type AND poetId = :poetId AND declined = 0", "ORDER BY updatedAt", {type: UserActions.TypeFavorite, poetId: poetId});
+            var list = actions.select("", "type = :type AND poetId = :poetId AND declined = 0", "ORDER BY updatedAt", {type: listId, poetId: poetId});
             for (var i in list) {
                 try {
                     var item = list[i];

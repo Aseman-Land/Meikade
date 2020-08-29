@@ -4,22 +4,58 @@ import AsemanQml.Viewport 2.0
 import globals 1.0
 import views 1.0
 import models 1.0
+import queries 1.0
 
 Viewport {
     id: dis
 
     property bool favoritesOnly
-    property bool selectMode: lists.selectMode
+    property alias selectMode: lists.selectMode
+
+    property alias poetId: listsQuery.poetId
+    property alias catId: listsQuery.catId
+    property alias poemId: listsQuery.poemId
+    property alias verseId: listsQuery.verseId
+    property string extra
 
     signal closeRequest()
     signal linkRequest(string link, variant properties)
     signal addListRequest()
 
+    UserActions {
+        id: listsQuery
+        onLastErrorChanged: console.debug(lastError)
+    }
+
     mainItem: ListsView {
         id: lists
         anchors.fill: parent
-        listView.model: ListsModel { id: lModel}
+        listView.model: ListsModel {
+            id: lModel
+            selecteds: selectMode
+        }
         closeBtn.onClicked: closeRequest()
+        confirmBtn.onClicked: {
+            for (var i=0; i<lModel.count; i++) {
+                var item = lModel.get(i);
+                var listId = item.listId;
+
+                var currentState = (selectMode && selectMode.indexOf(listId) >= 0? true : false)
+                var newState = item.checked;
+                if (newState == currentState)
+                    continue;
+
+                listsQuery.declined = (newState? 0 : 1)
+                listsQuery.type = listId;
+                listsQuery.extra = extra;
+                listsQuery.pushAction()
+            }
+
+            GlobalSignals.snackbarRequest(qsTr("Lists updated"));
+            GlobalSignals.listsRefreshed();
+            closeRequest()
+        }
+
         onClicked: {
             var item = lModel.get(index);
             Viewport.viewport.append(favoritedPoets_component, {"listId": item.listId, "title": item.title}, "page")
@@ -28,7 +64,7 @@ Viewport {
 
         Connections {
             target: GlobalSignals
-            onFavoritesRefreshed: lModel.refresh()
+            onListsRefreshed: lModel.refresh()
         }
 
         Component.onCompleted: {
@@ -52,7 +88,7 @@ Viewport {
             onClicked: {
                 var map = fplModel.get(index);
                 var poetId = map.poetId;
-                Viewport.viewport.append(favorited_component, {"poetId": poetId, "title": map.poet}, "page");
+                Viewport.viewport.append(favorited_component, {"poetId": poetId, "title": map.poet, "listId": listId}, "page");
             }
 
             property string title: qsTr("Favoriteds") + Translations.refresher
@@ -60,7 +96,7 @@ Viewport {
 
             Connections {
                 target: GlobalSignals
-                onFavoritesRefreshed: fplModel.refresh()
+                onListsRefreshed: fplModel.refresh()
             }
         }
     }
@@ -69,6 +105,7 @@ Viewport {
         id: favorited_component
         FavoritedListView {
             property alias poetId: flModel.poetId
+            property alias listId: flModel.listId
 
             listView.model: FavoritedListModel { id: flModel }
             backBtn.onClicked: ViewportType.open = false
@@ -80,7 +117,7 @@ Viewport {
 
             Connections {
                 target: GlobalSignals
-                onFavoritesRefreshed: flModel.refresh()
+                onListsRefreshed: flModel.refresh()
             }
         }
     }

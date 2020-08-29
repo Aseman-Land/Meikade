@@ -131,7 +131,7 @@ Page {
                         Label {
                             Layout.fillWidth: true
                             horizontalAlignment: Text.AlignLeft
-                            text: qsTr("Favorites") + Translations.refresher
+                            text: qsTr("Lists") + Translations.refresher
                             font.pixelSize: 9 * Devices.fontDensity
                         }
 

@@ -8,6 +8,8 @@ import globals 1.0
 AsemanListModel {
     id: model
 
+    property variant selecteds: new Array
+
     UserActions {
         id: userActions
 
@@ -21,10 +23,6 @@ AsemanListModel {
         onListsRefreshed: refresh()
     }
 
-    property int poetId
-    property int catId
-    property int poemId
-    property int verseId
     function refresh() {
         var lists = userActions.select("", "type > :type AND declined = 0 AND poetId = 0 AND catId = 0 AND poemId = 0 AND verseId = 0",
                                        "ORDER BY value", {type: UserActions.TypeItemListsStart})
@@ -35,17 +33,22 @@ AsemanListModel {
             "subtitle": "",
             "icon": "mdi_heart",
             "link": "float:/favorites",
-            "listId": UserActions.TypeFavorite
+            "listId": UserActions.TypeFavorite,
+            "checked": selecteds? selecteds.indexOf(UserActions.TypeFavorite) >= 0 : false
         })
 
         lists.forEach(function(l){
+            if (l.type >= UserActions.TypeItemListsEnd)
+                return;
+
             var extra = Tools.jsonToVariant(l.extra)
             model.append({
                 "title": l.value,
                 "subtitle": "",
                 "icon": "mdi_library",
                 "link": "float:/favorites?listId=" + l.type,
-                "listId": l.type
+                "listId": l.type,
+                "checked": selecteds? selecteds.indexOf(l.type) >= 0 : false
             })
         })
     }

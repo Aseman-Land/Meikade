@@ -29,7 +29,9 @@ AsemanObject {
             actions.begin();
             if (AsemanGlobals.syncTopPoets) actions.query("UPDATE actions SET synced = 1 WHERE type = " + UserActions.TypeTopPoets);
             if (AsemanGlobals.syncViews) actions.query("UPDATE actions SET synced = 1 WHERE type = " + UserActions.TypePoemViewDate);
-            if (AsemanGlobals.syncFavorites) actions.query("UPDATE actions SET synced = 1 WHERE type = " + UserActions.TypeFavorite);
+            if (AsemanGlobals.syncFavorites) actions.query("UPDATE actions SET synced = 1 WHERE type = " + UserActions.TypeFavorite +
+                                                           " OR (type >= " + UserActions.TypeItemListsStart +
+                                                           " AND type < " + UserActions.TypeItemListsEnd + " )");
             actions.commit();
 
             if (syncAgain) syncActionsInterval();
@@ -109,7 +111,10 @@ AsemanObject {
                 case UserActions.TypeUnknown:
                 case UserActions.TypeNote:
                 default:
-                    return;
+                    if (actions.type >= UserActions.TypeItemListsStart && actions.type < UserActions.TypeItemListsEnd && AsemanGlobals.syncFavorites)
+                        break;
+                    else
+                        return;
                 }
 
                 actions.updatedAt = 0;
@@ -210,6 +215,8 @@ AsemanObject {
             case UserActions.TypeUnknown:
             case UserActions.TypeNote:
             default:
+                if (it.type >= UserActions.TypeItemListsStart && it.type < UserActions.TypeItemListsEnd && AsemanGlobals.syncFavorites)
+                    break;
                 continue;
             }
 

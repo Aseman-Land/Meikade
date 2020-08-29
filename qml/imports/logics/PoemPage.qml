@@ -258,13 +258,10 @@ PoemView {
             onItemClicked: {
                 switch (index) {
                 case 0:
-                    faveActionQuery.declined = (faveActionQuery.updatedAt && !faveActionQuery.declined? 1 : 0);
-                    faveActionQuery.updatedAt = Tools.dateToSec(new Date);
-                    faveActionQuery.extra = viewActionQuery.extra
-                    faveActionQuery.pushAction();
                     form.selectMode = false;
-                    GlobalSignals.snackbarRequest(faveActionQuery.declined? qsTr("Poem Unfavorited") : qsTr("Poem favorited"));
-                    GlobalSignals.favoritesRefreshed();
+                    Viewport.controller.trigger("bottomdrawer:/lists", {"selectMode": faveActionQuery.getLists(), "poetId": faveActionQuery.poetId,
+                                                "catId": faveActionQuery.catId, "poemId": faveActionQuery.poemId, "verseId": faveActionQuery.verseId,
+                                                "extra": viewActionQuery.extra});
                     break;
                 case 1:
                     Devices.clipboard = dis.getText(false);
@@ -289,8 +286,8 @@ PoemView {
             model: AsemanListModel {
                 data: [
                     {
-                        title: faveActionQuery.updatedAt && !faveActionQuery.declined? qsTr("Remove Bookmarks") : qsTr("Add to Bookmarks"),
-                        icon: faveActionQuery.updatedAt && !faveActionQuery.declined? "mdi_bookmark" : "mdi_bookmark_outline",
+                        title: qsTr("Choose Lists"),
+                        icon: "mdi_library",
                         enabled: true
                     },
                     {
@@ -388,13 +385,10 @@ PoemView {
                         verseText: menuItem.verseText
                     };
 
-                    verseFaveActionQuery.declined = (verseFaveActionQuery.updatedAt && !verseFaveActionQuery.declined? 1 : 0);
-                    verseFaveActionQuery.updatedAt = Tools.dateToSec(new Date);
-                    verseFaveActionQuery.extra = Tools.variantToJson(map, true);
-                    verseFaveActionQuery.pushAction();
-
-                    GlobalSignals.snackbarRequest(verseFaveActionQuery.declined? qsTr("Verse Unfavorited") : qsTr("Verse favorited"));
-                    GlobalSignals.favoritesRefreshed();
+                    var extra = Tools.variantToJson(map, true);
+                    Viewport.controller.trigger("bottomdrawer:/lists", {"selectMode": verseFaveActionQuery.getLists(), "poetId": verseFaveActionQuery.poetId,
+                                                "catId": verseFaveActionQuery.catId, "poemId": verseFaveActionQuery.poemId,
+                                                "verseId": verseFaveActionQuery.verseId, "extra": extra});
                     break;
                 case 1:
                     Devices.clipboard = getText(false);
@@ -414,8 +408,8 @@ PoemView {
             model: AsemanListModel {
                 data: [
                     {
-                        title: verseFaveActionQuery.updatedAt && !verseFaveActionQuery.declined? qsTr("Remove Bookmarks") : qsTr("Add to Bookmarks"),
-                        icon: verseFaveActionQuery.updatedAt && !verseFaveActionQuery.declined? "mdi_bookmark" : "mdi_bookmark_outline",
+                        title: qsTr("Choose Lists"),
+                        icon: "mdi_library",
                         enabled: true
                     },
                     {

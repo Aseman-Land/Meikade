@@ -564,6 +564,10 @@
         <source>Add List</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Done</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ListsModel</name>
@@ -573,7 +577,18 @@
     </message>
     <message>
         <source>%1 items</source>
-        <translation>%1 of items</translation>
+        <translation type="vanished">%1 of items</translation>
+    </message>
+</context>
+<context>
+    <name>ListsPage</name>
+    <message>
+        <source>Lists updated</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Favoriteds</source>
+        <translation type="unfinished">Favorites</translation>
     </message>
 </context>
 <context>
@@ -764,7 +779,7 @@
     <name>PoemPage</name>
     <message>
         <source>Add to Bookmarks</source>
-        <translation>Add to Bookmarks</translation>
+        <translation type="vanished">Add to Bookmarks</translation>
     </message>
     <message>
         <source>Copy</source>
@@ -784,15 +799,15 @@
     </message>
     <message>
         <source>Remove Bookmarks</source>
-        <translation>Remove Bookmarks</translation>
+        <translation type="vanished">Remove Bookmarks</translation>
     </message>
     <message>
         <source>Poem Unfavorited</source>
-        <translation>Poem Unfavorited</translation>
+        <translation type="vanished">Poem Unfavorited</translation>
     </message>
     <message>
         <source>Poem favorited</source>
-        <translation>Poem favorited</translation>
+        <translation type="vanished">Poem favorited</translation>
     </message>
     <message>
         <source>Poem copied</source>
@@ -800,15 +815,19 @@
     </message>
     <message>
         <source>Verse Unfavorited</source>
-        <translation>Verse Unfavorited</translation>
+        <translation type="vanished">Verse Unfavorited</translation>
     </message>
     <message>
         <source>Verse favorited</source>
-        <translation>Verse favorited</translation>
+        <translation type="vanished">Verse favorited</translation>
     </message>
     <message>
         <source>Verse copied</source>
         <translation>Verse copied</translation>
+    </message>
+    <message>
+        <source>Choose Lists</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1187,7 +1206,7 @@
     </message>
     <message>
         <source>Favorites</source>
-        <translation>Favorites</translation>
+        <translation type="vanished">Favorites</translation>
     </message>
     <message>
         <source>Notes</source>
@@ -1212,6 +1231,10 @@
     <message>
         <source>Resync All</source>
         <translation>Sync All Again</translation>
+    </message>
+    <message>
+        <source>Lists</source>
+        <translation type="unfinished">Lists</translation>
     </message>
 </context>
 <context>

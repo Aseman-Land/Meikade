@@ -15,6 +15,9 @@ AddListView {
     cancelBtn.onClicked: home.ViewportType.open = false;
     confirmBtn.onClicked: {
         var actionId = UserActions.TypeItemListsStart + Tools.dateToSec(new Date) - Tools.dateToSec(new Date(2020, 1, 1))
+        if (actionId < UserActions.TypeItemListsStart || actionId >= UserActions.TypeItemListsEnd)
+            actionId = UserActions.TypeItemListsStart + (actionId % (UserActions.TypeItemListsEnd - UserActions.TypeItemListsStart))
+
         var extra = {
             "public": false
         };

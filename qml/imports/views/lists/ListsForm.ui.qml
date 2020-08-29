@@ -18,8 +18,9 @@ Item {
     property alias listView: listView
     property alias headerItem: headerItem
     property alias closeBtn: closeBtn
+    property alias confirmBtn: confirmBtn
 
-    property bool selectMode: false
+    property variant selectMode
 
     signal clicked(int index)
     signal addListRequest()
@@ -53,7 +54,7 @@ Item {
         clip: true
 
         topMargin: 4 * Devices.density
-        bottomMargin: 4 * Devices.density
+        bottomMargin: 4 * Devices.density + (selectMode? confirmBtn.height : 0)
 
         header: Item {
             width: listView.width
@@ -98,7 +99,12 @@ Item {
 
                     Connections {
                         target: itemDel
-                        onClicked: dis.clicked(model.index)
+                        onClicked: {
+                            if (selectMode)
+                                checkBox.toggle()
+                            else
+                                dis.clicked(model.index)
+                        }
                     }
                 }
 
@@ -161,12 +167,37 @@ Item {
                     Label {
                         font.family: MaterialIcons.family
                         font.pixelSize: 16 * Devices.fontDensity
-                        text: selectMode? MaterialIcons.mdi_plus : LayoutMirroring.enabled? MaterialIcons.mdi_chevron_left : MaterialIcons.mdi_chevron_right
+                        text: LayoutMirroring.enabled? MaterialIcons.mdi_chevron_left : MaterialIcons.mdi_chevron_right
+                        color: Colors.foreground
+                        visible: !selectMode
                         opacity: 0.4
+                    }
+
+                    CheckBox {
+                        id: checkBox
+                        visible: selectMode? true : false
+                        checked: model.checked
+                        onCheckedChanged: model.checked = checked
                     }
                 }
             }
         }
+    }
+
+    Button {
+        id: confirmBtn
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+        anchors.leftMargin: 20 * Devices.density
+        anchors.rightMargin: 20 * Devices.density
+        font.pixelSize: 9 * Devices.fontDensity
+        text: qsTr("Done") + Translations.refresher
+        highlighted: true
+        Material.accent: Colors.primary
+        IOSStyle.accent: Colors.primary
+        visible: selectMode? true : false
+        Material.elevation: 0
     }
 
     Header {
