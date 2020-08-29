@@ -262,6 +262,17 @@
     </message>
 </context>
 <context>
+    <name>ChangelogsForm</name>
+    <message>
+        <source>ChangeLogs</source>
+        <translation>تغییرات</translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation>بستن</translation>
+    </message>
+</context>
+<context>
     <name>ContactForm</name>
     <message>
         <source>Contact us</source>

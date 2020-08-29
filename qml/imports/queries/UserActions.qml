@@ -39,7 +39,7 @@ UserBaseQuery {
     }
 
     function getFavedPoets() {
-        return select("", "type = :type AND declined = 0", "", {type: UserActions.TypeFavorite})
+        return select("", "type = :type AND declined = 0", "GROUP BY poetId", {type: UserActions.TypeFavorite})
     }
 
     function getDiaries(fromDate) {

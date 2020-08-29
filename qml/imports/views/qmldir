@@ -27,3 +27,5 @@ ContactView 1.0 general/ContactForm.ui.qml
 WebBrowserView 1.0 general/WebBrowserForm.ui.qml
 AboutView 1.0 general/AboutForm.ui.qml
 SyncView 1.0 general/SyncForm.ui.qml
+ChangelogsView 1.0 general/ChangelogsForm.ui.qml
+

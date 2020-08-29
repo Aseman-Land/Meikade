@@ -26,3 +26,4 @@ ChangeNamePage 1.0 ChangeNamePage.qml
 StickerDialog 1.0 old/StickerDialog.qml
 AddListPage 1.0 AddListPage.qml
 DeleteListPage 1.0 DeleteListPage.qml
+ChangelogsPage 1.0 ChangelogsPage.qml

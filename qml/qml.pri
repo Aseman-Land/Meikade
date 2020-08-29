@@ -4,6 +4,7 @@ INCLUDED_RESOURCE_FILES += \
     $$files($$PWD/*.jpg, true) \
     $$files($$PWD/*.ttf, true) \
     $$files($$PWD/*.sql, true) \
+    $$files($$PWD/*.txt, true) \
     $$files($$PWD/qmldir, true)
 
 meikadeQml.files = $$INCLUDED_RESOURCE_FILES

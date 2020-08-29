@@ -25,6 +25,8 @@ MainView {
             AsemanGlobals.accessToken = "";
             ViewController.trigger("float:/auth/float");
         }
+
+        loadChangelogs();
     }
 
     HomePage {
@@ -41,6 +43,21 @@ MainView {
     MyMeikadePage {
         parent: form.myMeikadePage
         anchors.fill: parent
+    }
+
+    Connections {
+        target: AsemanGlobals
+        onIntroDoneChanged: loadChangelogs()
+    }
+
+    function loadChangelogs() {
+         if (!AsemanGlobals.introDone)
+             return;
+         if (AsemanGlobals.lastChangelogs >= 410)
+             return;
+
+         Tools.jsDelayCall(1000, function(){ Viewport.controller.trigger("float:/changelogs") });
+         AsemanGlobals.lastChangelogs = 410;
     }
 
     Loader {

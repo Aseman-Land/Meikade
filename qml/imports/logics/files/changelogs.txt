@@ -1,0 +1,6 @@
+Meikade 4.1 changelogs:
+- Lists
+- Sync Lists
+- Search between poets
+- Search in offline only
+- Font size settings

@@ -30,6 +30,11 @@ ViewportController {
     }
 
     ViewportControllerRoute {
+        route: /\w+\:\/changelogs/
+        source: "ChangelogsRoute.qml"
+    }
+
+    ViewportControllerRoute {
         route: /\w+\:\/syncs/
         source: "SyncRoute.qml"
     }

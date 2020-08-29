@@ -14,6 +14,7 @@ AsemanObject {
     property alias language: _settings.language
     property alias phrase: _settings.phrase
     property alias fontSize: _settings.fontSize
+    property alias lastChangelogs: _settings.lastChangelogs
     property alias onlineSearch: _settings.onlineSearch
     property alias introDone: _settings.introDone
     property alias sendData: _settings.sendData
@@ -64,6 +65,7 @@ AsemanObject {
         property bool introDone
         property bool sendData
         property int fontSize: 3
+        property int lastChangelogs: 0
 
         property int iosTheme: 2
         property int androidTheme: 0
