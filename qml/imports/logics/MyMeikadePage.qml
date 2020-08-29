@@ -105,9 +105,6 @@ MyMeikadeView {
                     Viewport.controller.trigger("bottomdrawer:/auth/changeName");
                     break;
                 case 1:
-                    Devices.getOpenPictures();
-                    break;
-                case 2:
                     Viewport.controller.trigger("float:/auth/changePassword", {"forgetMode": false});
                     break;
                 }
@@ -121,11 +118,6 @@ MyMeikadeView {
                         title: qsTr("Change Name"),
                         icon: "mdi_account",
                         enabled: true
-                    },
-                    {
-                        title: qsTr("Change Avatar"),
-                        icon: "mdi_face_profile",
-                        enabled: false
                     },
                     {
                         title: qsTr("Change Password"),
