@@ -12,6 +12,7 @@ import models 1.0
 SettingsView {
     id: dis
     menuBtn.onClicked: ViewportType.open = false
+    ViewportType.gestureWidth: 30 * Devices.density
 
     logoutBtn.onClicked: {
         var properties = {
@@ -49,7 +50,7 @@ SettingsView {
     Timer {
         id: initTimer
         running: true
-        interval: 1000
+        interval: 100
         repeat: false
     }
 

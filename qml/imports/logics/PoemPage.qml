@@ -22,7 +22,7 @@ PoemView {
     property string verseText
     property int verseId
 
-    property alias id: dis.poetId
+    property alias id: loader.poetId
     property alias poetId: loader.poetId
     property alias catId: loader.catId
 
@@ -159,7 +159,7 @@ PoemView {
         id: faveActionQuery
         type: Query.UserActions.TypeFavorite
         poemId: dis.poemId
-        poetId: dis.id
+        poetId: dis.poetId
         declined: 0
         synced: 0
     }
@@ -377,10 +377,9 @@ PoemView {
                 id: verseFaveActionQuery
                 type: Query.UserActions.TypeFavorite
                 poemId: dis.poemId
-                poetId: dis.id
+                poetId: dis.poetId
                 declined: 0
                 synced: 0
-                Component.onCompleted: fetch()
             }
 
             function getText(cleanText) {
@@ -474,10 +473,6 @@ PoemView {
     function openGlobalMenu() {
         if (loader.refrshing)
             return;
-
-        faveActionQuery.declined = 0;
-        faveActionQuery.updatedAt = 0;
-        faveActionQuery.fetch();
 
         var map = loader.versesModel.get(0);
         dis.verseText = map.text
