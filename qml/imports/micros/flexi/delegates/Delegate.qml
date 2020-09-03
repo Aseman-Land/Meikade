@@ -40,47 +40,52 @@ Item {
 //        visible: dswitch.current == 0
 //    }
 
-    DelegateSwitch {
-        id: dswitch
+    Loader {
+        asynchronous: Devices.isAndroid
         anchors.fill: parent
+        sourceComponent: DelegateSwitch {
+            id: dswitch
+            anchors.fill: parent
 
-        Component {
-            NormalDelegate {
-                anchors.fill: parent
-                title.text: GTranslations.translate(delg.displayTitle)
-                title.color: foregroundColor
-                subtitle.text: GTranslations.translate(delg.subtitle)
-                subtitle.color: foregroundColor
-                image.source: delg.image.length? delg.image : Constants.thumbsBaseUrl + poetId + ".png"
-                background.color: delg.color
-                button.onClicked: delg.clicked()
+            Component {
+                NormalDelegate {
+                    anchors.fill: parent
+                    title.text: GTranslations.translate(delg.displayTitle)
+                    title.color: foregroundColor
+                    subtitle.text: GTranslations.translate(delg.subtitle)
+                    subtitle.color: foregroundColor
+                    image.source: delg.image.length? delg.image : Constants.thumbsBaseUrl + poetId + ".png"
+                    background.color: delg.color
+                    button.onClicked: delg.clicked()
+                }
             }
-        }
-        Component {
-            FullBackgroundedDelegate {
-                anchors.fill: parent
-                title.text: GTranslations.translate(delg.displayTitle)
-                title.color: foregroundColor
-                image.source: delg.image
-                background.color: delg.color
-                button.onClicked: delg.clicked()
-                Component.onCompleted: {
-                    if (!isVerse) {
-                        title.horizontalAlignment = Text.AlignHCenter;
+            Component {
+                FullBackgroundedDelegate {
+                    anchors.fill: parent
+                    title.text: GTranslations.translate(delg.displayTitle)
+                    title.color: foregroundColor
+                    image.source: delg.image
+                    background.color: delg.color
+                    button.onClicked: delg.clicked()
+                    Component.onCompleted: {
+                        if (!isVerse) {
+                            title.horizontalAlignment = Text.AlignHCenter;
+                        }
                     }
                 }
             }
-        }
 
-        current: {
-            switch (type) {
-            case "normal":
-                return 0;
-            case "fullback":
-                return 1;
-            default:
-                return -1;
+            current: {
+                switch (type) {
+                case "normal":
+                    return 0;
+                case "fullback":
+                    return 1;
+                default:
+                    return -1;
+                }
             }
         }
     }
+
 }
