@@ -280,6 +280,8 @@ PoemView {
         backBtn.onClicked: ViewportType.open = false
 
         listView.model: loader.versesModel
+
+        onMoreRequest: loader.more()
     }
 
     Component {

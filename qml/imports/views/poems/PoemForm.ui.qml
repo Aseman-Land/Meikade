@@ -54,6 +54,7 @@ Item {
     signal navigationClicked(string link, int index)
     signal menuRequest(int index, variant object)
     signal selectedToggled(int index, bool selected)
+    signal moreRequest()
 
     Connections {
         target: dis
@@ -120,6 +121,15 @@ Item {
             width: listView.width
             height: verseLabel.height + 20 * Devices.density
             z: 100000 - index
+
+            Component.onCompleted: loaded = true
+
+            property bool loaded: false
+
+            Connections {
+                target: del
+                onLoadedChanged: if (index == listView.model.count-5) dis.moreRequest()
+            }
 
             Rectangle {
                 anchors.fill: itemDel

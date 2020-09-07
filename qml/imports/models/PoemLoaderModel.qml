@@ -33,6 +33,10 @@ AsemanObject {
         versesModel.clear();
     }
 
+    function more() {
+        console.debug("More")
+    }
+
     QtObject {
         id: prv
 
