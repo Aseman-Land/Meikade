@@ -16,6 +16,7 @@ Item {
     property alias headerLabel: headerLabel
     property alias scene: scene
     property alias flickable: flickable
+    property alias headerItem: headerItem
 
 
     Rectangle {
@@ -26,7 +27,7 @@ Item {
 
     AsemanFlickable {
         id: flickable
-        anchors.top: headerItem.bottom
+        anchors.top: headerItem.visible? headerItem.bottom : parent.top
         anchors.right: parent.right
         anchors.bottom: parent.bottom
         anchors.left: parent.left

@@ -8,10 +8,6 @@
         <translation>وب‌سایت</translation>
     </message>
     <message>
-        <source>Version:</source>
-        <translation>نسخه:</translation>
-    </message>
-    <message>
         <source>Instagram</source>
         <translation>اینستاگرام</translation>
     </message>
@@ -77,28 +73,9 @@
         <source>Qt is a cross-platform application and UI framework for developers using C++ or QML, a CSS &amp; JavaScript like language.</source>
         <translation>یک فریم‌ورک کراس‌پلتفرم و آزاد تحت زبان سی‌پلاس‌پلاس برای توسعه نرم‌افزارهای دسکتاپ و موبایلی است.</translation>
     </message>
-</context>
-<context>
-    <name>AddListForm</name>
     <message>
-        <source>Add List</source>
-        <translation>لیست جدید</translation>
-    </message>
-    <message>
-        <source>Rename List</source>
-        <translation>تغییر نام لیست</translation>
-    </message>
-    <message>
-        <source>Please enter list name:</source>
-        <translation>لطفا نام لیست را وارد کنید:</translation>
-    </message>
-    <message>
-        <source>List Name</source>
-        <translation>نام لیست</translation>
-    </message>
-    <message>
-        <source>Add</source>
-        <translation>اضافه کردن</translation>
+        <source>Version:</source>
+        <translation>نسخه:</translation>
     </message>
 </context>
 <context>
@@ -145,6 +122,112 @@
     </message>
 </context>
 <context>
+    <name>JalaliCalendarObject</name>
+    <message>
+        <source>Farvardin</source>
+        <translation>فروردین</translation>
+    </message>
+    <message>
+        <source>Ordibehesht</source>
+        <translation>اردیبهشت</translation>
+    </message>
+    <message>
+        <source>Khordad</source>
+        <translation>خرداد</translation>
+    </message>
+    <message>
+        <source>Tir</source>
+        <translation>تیر</translation>
+    </message>
+    <message>
+        <source>Mordad</source>
+        <translation>مرداد</translation>
+    </message>
+    <message>
+        <source>Shahrivar</source>
+        <translation>شهریور</translation>
+    </message>
+    <message>
+        <source>Mehr</source>
+        <translation>مهر</translation>
+    </message>
+    <message>
+        <source>Abaan</source>
+        <translation>آبان</translation>
+    </message>
+    <message>
+        <source>Aazar</source>
+        <translation>آذر</translation>
+    </message>
+    <message>
+        <source>Dey</source>
+        <translation>دی</translation>
+    </message>
+    <message>
+        <source>Bahman</source>
+        <translation>بهمن</translation>
+    </message>
+    <message>
+        <source>Esfand</source>
+        <translation>اسفند</translation>
+    </message>
+    <message>
+        <source>Shanbe</source>
+        <translation>شنبه</translation>
+    </message>
+    <message>
+        <source>1Shanbe</source>
+        <translation>یکشنبه</translation>
+    </message>
+    <message>
+        <source>2Shanbe</source>
+        <translation>دوشنبه</translation>
+    </message>
+    <message>
+        <source>3Shanbe</source>
+        <translation>سه‌شنبه</translation>
+    </message>
+    <message>
+        <source>4Shanbe</source>
+        <translation>چهارشنبه</translation>
+    </message>
+    <message>
+        <source>5Shanbe</source>
+        <translation>پنجشنبه</translation>
+    </message>
+    <message>
+        <source>Jome</source>
+        <translation>جمعه</translation>
+    </message>
+</context>
+<context>
+    <name>AddListForm</name>
+    <message>
+        <source>Add List</source>
+        <translation>لیست جدید</translation>
+    </message>
+    <message>
+        <source>Please enter list name:</source>
+        <translation>نام لیست خود را وارد کنید:</translation>
+    </message>
+    <message>
+        <source>List Name</source>
+        <translation>نام لیست</translation>
+    </message>
+    <message>
+        <source>Add</source>
+        <translation>ساخت لیست</translation>
+    </message>
+    <message>
+        <source>Rename List</source>
+        <translation>تغییر نام لیست</translation>
+    </message>
+    <message>
+        <source>Rename</source>
+        <translation>تغییر نام</translation>
+    </message>
+</context>
+<context>
     <name>AuthPage</name>
     <message>
         <source>Logged in Successfully</source>
@@ -185,7 +268,7 @@
     <name>ChangePasswordForm</name>
     <message>
         <source>Enter your new password and tap on the Change button.</source>
-        <translation>لطفا رمز عبور جدید را وارد کنید و بر کلید تایید را لمس کنید.</translation>
+        <translation>لطفا رمز عبور جدید را وارد کنید و دکمه تایید را بزنید.</translation>
     </message>
     <message>
         <source>Password</source>
@@ -210,16 +293,12 @@
         <source>Password changed successfully</source>
         <translation>رمز عبور با موفقیت تغییر کرد</translation>
     </message>
-    <message>
-        <source>Check your email, assigned to your account.</source>
-        <translation type="vanished">لطفا ایمیلی که به اکانت شما متصل است را چک کنید.</translation>
-    </message>
 </context>
 <context>
     <name>ChangePasswordUsingCodeForm</name>
     <message>
         <source>Enter token, sent to your email and tap on the Submit button.</source>
-        <translation>لطفا کدی که به ایمیل شما ارسال شده است را وارد کنید و کلید تایید را لمس کنید.</translation>
+        <translation>لطفا کدی که به ایمیل شما ارسال شده است را وارد کنید و دکمه تایید را بزنید.</translation>
     </message>
     <message>
         <source>Token</source>
@@ -242,7 +321,7 @@
     <name>ChangePasswordUsingPasswordForm</name>
     <message>
         <source>Enter your current password and tap on the Submit button.</source>
-        <translation>لطفا رمز عبور فعلی خود را وارد کنید و کلید تایید را لمس کنید.</translation>
+        <translation>لطفا رمز عبور فعلی خود را وارد کنید و دکمه تایید را بزنید.</translation>
     </message>
     <message>
         <source>Password</source>
@@ -265,7 +344,7 @@
     <name>ChangelogsForm</name>
     <message>
         <source>ChangeLogs</source>
-        <translation>تغییرات</translation>
+        <translation>تغییرات نسخه جدید</translation>
     </message>
     <message>
         <source>Close</source>
@@ -478,7 +557,7 @@ It containts %2 items currently.</source>
     <name>ForgetPasswordForm</name>
     <message>
         <source>To restore your password please enter your username below and tap on the restore. We&apos;ll send an email to you to change your password.</source>
-        <translation>برای بازیابی رمز عبور خود، لطفا نام کاربری خود را وارد کنید و کلید بازیابی را لمس کنید. یک ایمیل به شما ارسال می‌شود که از طریق آن میتوانید رمز عبور خود را تغییر دهید.</translation>
+        <translation>برای بازیابی رمز عبور خود، لطفا نام کاربری خود را وارد کنید و دکمه بازیابی را بزنید. یک ایمیل به شما ارسال می‌شود که از طریق آن می‌توانید رمز عبور خود را تغییر دهید.</translation>
     </message>
     <message>
         <source>Username</source>
@@ -638,85 +717,6 @@ It containts %2 items currently.</source>
     <message>
         <source>So It&apos;s neccessary to take some times and do next steps to personalize your Meikade. Choose language and press &quot;Next&quot; if you ready.</source>
         <translation>به همین منظور برای سفارشی‌سازی می‌کده بر طبق نیازهای شما، بهتر است مراحلی که در ادامه می‌آید را انجام دهید. کلید &quot;بعدی&quot; را بزنید.</translation>
-    </message>
-</context>
-<context>
-    <name>JalaliCalendarObject</name>
-    <message>
-        <source>Farvardin</source>
-        <translation>فروردین</translation>
-    </message>
-    <message>
-        <source>Ordibehesht</source>
-        <translation>اردیبهشت</translation>
-    </message>
-    <message>
-        <source>Khordad</source>
-        <translation>خرداد</translation>
-    </message>
-    <message>
-        <source>Tir</source>
-        <translation>تیر</translation>
-    </message>
-    <message>
-        <source>Mordad</source>
-        <translation>مرداد</translation>
-    </message>
-    <message>
-        <source>Shahrivar</source>
-        <translation>شهریور</translation>
-    </message>
-    <message>
-        <source>Mehr</source>
-        <translation>مهر</translation>
-    </message>
-    <message>
-        <source>Abaan</source>
-        <translation>آبان</translation>
-    </message>
-    <message>
-        <source>Aazar</source>
-        <translation>آذر</translation>
-    </message>
-    <message>
-        <source>Dey</source>
-        <translation>دی</translation>
-    </message>
-    <message>
-        <source>Bahman</source>
-        <translation>بهمن</translation>
-    </message>
-    <message>
-        <source>Esfand</source>
-        <translation>اسفند</translation>
-    </message>
-    <message>
-        <source>Shanbe</source>
-        <translation>شنبه</translation>
-    </message>
-    <message>
-        <source>1Shanbe</source>
-        <translation>یکشنبه</translation>
-    </message>
-    <message>
-        <source>2Shanbe</source>
-        <translation>دوشنبه</translation>
-    </message>
-    <message>
-        <source>3Shanbe</source>
-        <translation>سه‌شنبه</translation>
-    </message>
-    <message>
-        <source>4Shanbe</source>
-        <translation>چهارشنبه</translation>
-    </message>
-    <message>
-        <source>5Shanbe</source>
-        <translation>پنجشنبه</translation>
-    </message>
-    <message>
-        <source>Jome</source>
-        <translation>جمعه</translation>
     </message>
 </context>
 <context>
@@ -950,7 +950,7 @@ It containts %2 items currently.</source>
     </message>
     <message>
         <source>Change Avatar</source>
-        <translation>تغییر تصویر کاربری</translation>
+        <translation type="vanished">تغییر تصویر کاربری</translation>
     </message>
     <message>
         <source>Change Password</source>
@@ -1020,7 +1020,7 @@ It containts %2 items currently.</source>
     </message>
     <message>
         <source>Choose Lists</source>
-        <translation>انتخاب لیست‌ها</translation>
+        <translation>افزودن به لیست</translation>
     </message>
 </context>
 <context>
@@ -1158,10 +1158,6 @@ It containts %2 items currently.</source>
         <translation>جستجوی پیشرفته</translation>
     </message>
     <message>
-        <source>Search only in offline poets</source>
-        <translation type="vanished">فقط شاعران آفلاین</translation>
-    </message>
-    <message>
         <source>Selected categories to search:</source>
         <translation>ردیف‌های انتخاب شده برای جستجو:</translation>
     </message>
@@ -1239,10 +1235,6 @@ It containts %2 items currently.</source>
         <translation>نمایش تعبیر شعرها</translation>
     </message>
     <message>
-        <source>Poems font size</source>
-        <translation>اندازه متن شعر‌ها</translation>
-    </message>
-    <message>
         <source>Small</source>
         <translation>ریز</translation>
     </message>
@@ -1253,6 +1245,10 @@ It containts %2 items currently.</source>
     <message>
         <source>Large</source>
         <translation>درشت</translation>
+    </message>
+    <message>
+        <source>Poems font size</source>
+        <translation>اندازه متن شعر‌ها</translation>
     </message>
 </context>
 <context>
@@ -1345,11 +1341,15 @@ It containts %2 items currently.</source>
     </message>
     <message>
         <source>Select Image</source>
-        <translation>انتخاب تصویر</translation>
+        <translation type="vanished">انتخاب تصویر</translation>
     </message>
     <message>
         <source>Unset</source>
-        <translation>حذف</translation>
+        <translation type="vanished">حذف</translation>
+    </message>
+    <message>
+        <source>Sticker saved on %1</source>
+        <translation>استیکر در آدرس %1 ذخیره شد</translation>
     </message>
 </context>
 <context>

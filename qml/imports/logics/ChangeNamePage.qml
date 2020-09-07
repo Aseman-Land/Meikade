@@ -8,8 +8,8 @@ import globals 1.0
 
 ChangeNameView {
     id: home
-    width: parent.width
-    height: 300 * Devices.density
+    width: Math.min(Viewport.viewport.width * 0.9, 500*Devices.density)
+    height: 230 * Devices.density
 
     cancelBtn.onClicked: home.ViewportType.open = false;
     confirmBtn.onClicked: confirm()

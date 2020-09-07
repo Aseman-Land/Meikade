@@ -80,7 +80,7 @@ DrawerFrame {
             Layout.rightMargin: 20 * Devices.density
             font.pixelSize: 9 * Devices.fontDensity
             enabled: nameField.isValid
-            text: qsTr("Add") + Translations.refresher
+            text: renameMode? qsTr("Rename") : qsTr("Add") + Translations.refresher
             highlighted: true
             Material.accent: Colors.primary
             IOSStyle.accent: Colors.primary

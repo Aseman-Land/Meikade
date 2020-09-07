@@ -67,22 +67,6 @@ MyMeikadeView {
         synced: 0
     }
 
-    UserUploadProfileRequest {
-        id: uploadReq
-        allowGlobalBusy: true
-        onSuccessfull: {
-            console.debug(Tools.variantToJson(response))
-        }
-    }
-
-    Connections {
-        target: Devices
-        onSelectImageResult: {
-            uploadReq.file = Devices.localFilesPrePath + path
-            uploadReq.networkManager.post(uploadReq)
-        }
-    }
-
     Component {
         id: menuComponent
         MenuView {
@@ -102,7 +86,7 @@ MyMeikadeView {
             onItemClicked: {
                 switch (index) {
                 case 0:
-                    Viewport.controller.trigger("bottomdrawer:/auth/changeName");
+                    Viewport.controller.trigger("dialog:/auth/changeName");
                     break;
                 case 1:
                     Viewport.controller.trigger("float:/auth/changePassword", {"forgetMode": false});

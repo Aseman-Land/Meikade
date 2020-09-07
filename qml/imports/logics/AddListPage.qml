@@ -9,8 +9,8 @@ import globals 1.0
 
 AddListView {
     id: home
-    width: parent.width
-    height: 300 * Devices.density
+    width: Math.min(Viewport.viewport.width * 0.9, 500*Devices.density)
+    height: 230 * Devices.density
     nameField.text: currentName
     renameMode: actionId != 0
 

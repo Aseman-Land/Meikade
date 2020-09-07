@@ -41,6 +41,12 @@ Rectangle {
         source: Fonts.resourcePath + "/BYekan.ttf"
         onStatusChanged: if(status == FontLoader.Ready) txt.font.family = name
     }
+    Connections {
+        target: Devices
+        onSelectImageResult: {
+            frame_image.source = Devices.localFilesPrePath + path
+        }
+    }
 
     MouseArea {
         anchors.fill: parent
@@ -65,6 +71,7 @@ Rectangle {
         id: writer
         item: frame
         onSaved: {
+            console.debug(dest)
             indicator_disabler.restart()
             lastDest = dest
         }
@@ -297,9 +304,20 @@ Rectangle {
                             visible: false
                         }
 
+                        Label {
+                            id: deleteIcon
+                            anchors.centerIn: parent
+                            font.family: MaterialIcons.family
+                            font.pixelSize: 18 * Devices.fontDensity
+                            text: MaterialIcons.mdi_close
+                            visible: model.state == StickerModel.Category && stateCommand == StickerModel.OpenImage && (frame_image.source + "").length
+                            color: "#a00"
+                        }
+
                         LevelAdjust {
                             anchors.fill: source
                             source: img
+                            visible: !deleteIcon.visible
                             minimumOutput: Colors.darkMode? "#00000000" : "#00ffffff"
                             maximumOutput: Colors.darkMode? "#ffffffff" : "#ff000000"
                         }
@@ -336,10 +354,14 @@ Rectangle {
                         switch(model.state)
                         {
                         case StickerModel.Category:
-                            if(stateCommand == StickerModel.OpenImage)
-                                Viewport.viewport.append(file_viewer_component, {}, "page");
-                            else
+                            if(stateCommand == StickerModel.OpenImage) {
+                                if ((frame_image.source + "").length)
+                                    frame_image.source = ""
+                                else
+                                    Devices.getOpenPictures();
+                            } else {
                                 smodel.state = stateCommand
+                            }
                             break
 
                         case StickerModel.Size:
@@ -423,9 +445,11 @@ Rectangle {
             onTriggered: {
                 indicator.running = false
                 indicator_hide_timer.restart()
+
+                GlobalSignals.snackbarRequest( qsTr("Sticker saved on %1").arg(writer.lastDest) )
                 var shared = Devices.shareFile(writer.lastDest)
                 if(!shared)
-                    Devices.openFile("file://" + writer.lastDest)
+                    Devices.openFile(writer.lastDest)
             }
         }
 
@@ -433,79 +457,6 @@ Rectangle {
             id: indicator_hide_timer
             interval: 1000
             onTriggered: progress_rect.visible = false
-        }
-    }
-
-    Component {
-        id: file_viewer_component
-        Item {
-            id: fv_item
-
-            Rectangle {
-                id: fv_area
-                width: parent.width
-                height: parent.height
-
-                Header {
-                    id: header
-                    width: parent.width
-                    color: "#fff"
-                    light: false
-                    text: qsTr("Select Image")
-
-                    HeaderMenuButton {
-                        ratio: 1
-                        buttonColor: "#333"
-                        onClicked: BackHandler.back()
-                    }
-
-                    Button {
-                        anchors.right: parent.right
-                        anchors.rightMargin: 10 * Devices.density
-                        anchors.verticalCenter: parent.verticalCenter
-                        anchors.verticalCenterOffset: Devices.statusBarHeight/2
-                        width: height*2
-                        highlighted: true
-                        text: qsTr("Unset")
-                        onClicked: {
-                            frame_image.source = ""
-                            close()
-                        }
-                    }
-                }
-
-                FileSystemView {
-                    id: fsview
-                    anchors.top: header.bottom
-                    anchors.left: parent.left
-                    anchors.right: parent.right
-                    anchors.bottom: parent.bottom
-                    clip: true
-                    root: AsemanApp.startPath
-                    filters: ["*.jpg", "*.png"]
-                    onClickedOnFile: {
-                        frame_image.source = fileUrl
-                        close()
-                    }
-                }
-
-                HScrollBar {
-                    scrollArea: fsview; height: fsview.height
-                    anchors.right: fsview.right; anchors.top: fsview.top
-                    color: "#333333"
-                }
-            }
-
-            function back() {
-                if(fsview.back())
-                    return false
-
-                close()
-            }
-
-            function close() {
-                ViewportType.open = false;
-            }
         }
     }
 }

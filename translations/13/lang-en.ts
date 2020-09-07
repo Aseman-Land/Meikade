@@ -51,7 +51,7 @@
     </message>
     <message>
         <source>&lt;b&gt;&lt;u&gt;Aseman&lt;/u&gt;&lt;/b&gt;, Aseman is a non-profit and community based company that created in 2013 by members of the Idehgostar company. Aseman created to leads open-source and free software.&lt;br /&gt;Aseman promotes openness, innovation and participation on the digital and computers world.</source>
-        <translation>&lt;b&gt;&lt;u&gt;Aseman&lt;/u&gt;&lt;/b&gt;, Aseman is a non-profit and community based company founded in 2013 by members of Idehgostar company. Aseman was founded to develop open source and free software technologies.&lt;br /&gt;Aseman promotes openness, innovation and participation in digital and IT world.</translation>
+        <translation>&lt;b&gt;&lt;u&gt;Aseman&lt;/u&gt;&lt;/b&gt;, Aseman is a non-profit and community based company founded in 2013 by members of Idehgostar company. Aseman was founded to develop open source and free software technologies.&lt;br /&gt;Aseman promotes accessibility, innovation and contribution to digital and IT world.</translation>
     </message>
     <message>
         <source>Twitter</source>
@@ -63,7 +63,7 @@
     </message>
     <message>
         <source>Some tools, creating for Aseman Qt projects and used on many of Aseman&apos;s projects.</source>
-        <translation>Some tools used for creating Aseman Qt projects which has been used on many of other projects.</translation>
+        <translation>Some tools used for creating Aseman Qt projects which has been used on many other successful projects.</translation>
     </message>
     <message>
         <source>Persian poetry web site called ganjoor which includes a .NET based Windows client and a SQLite copy of site database.</source>
@@ -71,33 +71,37 @@
     </message>
     <message>
         <source>Qt is a cross-platform application and UI framework for developers using C++ or QML, a CSS &amp; JavaScript like language.</source>
-        <translation>Qt is a cross-platform application and UI framework for developers using C++ or QML programming, similar to CSS &amp; JavaScript languages.</translation>
+        <translation>Qt is a cross-platform application and UI framework for developers using C++ or QML programming languages, similar to CSS &amp; JavaScript.</translation>
     </message>
     <message>
         <source>Version:</source>
-        <translation type="unfinished"></translation>
+        <translation>Version:</translation>
     </message>
 </context>
 <context>
     <name>AddListForm.ui</name>
     <message>
         <source>Add List</source>
-        <translation type="unfinished"></translation>
+        <translation>Add List</translation>
     </message>
     <message>
         <source>Please enter list name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Please enter list name:</translation>
     </message>
     <message>
         <source>List Name</source>
-        <translation type="unfinished"></translation>
+        <translation>List Name</translation>
     </message>
     <message>
         <source>Add</source>
-        <translation type="unfinished"></translation>
+        <translation>Add</translation>
     </message>
     <message>
         <source>Rename List</source>
+        <translation>Rename List</translation>
+    </message>
+    <message>
+        <source>Rename</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -109,109 +113,120 @@
     </message>
     <message>
         <source>Check your email, assigned to your account.</source>
-        <translation type="unfinished"></translation>
+        <translation>Check your email, the one assigned to your account.</translation>
     </message>
 </context>
 <context>
     <name>ChangeNameForm.ui</name>
     <message>
         <source>Change Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Change Name</translation>
     </message>
     <message>
         <source>Please enter new name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Please enter new name:</translation>
     </message>
     <message>
         <source>Full Name</source>
-        <translation type="unfinished">Full Name</translation>
+        <translation>Full Name</translation>
     </message>
     <message>
         <source>Confirm</source>
-        <translation type="unfinished"></translation>
+        <translation>Confirm</translation>
     </message>
 </context>
 <context>
     <name>ChangeNamePage</name>
     <message>
         <source>Name updated successfully</source>
-        <translation type="unfinished"></translation>
+        <translation>Name updated successfully</translation>
     </message>
 </context>
 <context>
     <name>ChangePasswordForm.ui</name>
     <message>
         <source>Enter your new password and tap on the Change button.</source>
-        <translation type="unfinished"></translation>
+        <translation>Enter your new password and tap on the Change button.</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation type="unfinished">Password</translation>
+        <translation>Password</translation>
     </message>
     <message>
         <source>Change</source>
-        <translation type="unfinished"></translation>
+        <translation>Change</translation>
     </message>
     <message>
         <source>Change Password</source>
-        <translation type="unfinished"></translation>
+        <translation>Change Password</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished">Cancel</translation>
+        <translation>Cancel</translation>
     </message>
 </context>
 <context>
     <name>ChangePasswordPage</name>
     <message>
         <source>Password changed successfully</source>
-        <translation type="unfinished"></translation>
+        <translation>Password changed successfully</translation>
     </message>
 </context>
 <context>
     <name>ChangePasswordUsingCodeForm.ui</name>
     <message>
         <source>Enter token, sent to your email and tap on the Submit button.</source>
-        <translation type="unfinished"></translation>
+        <translation>Enter token sent to your email and tap on the Submit button.</translation>
     </message>
     <message>
         <source>Token</source>
-        <translation type="unfinished"></translation>
+        <translation>Token</translation>
     </message>
     <message>
         <source>Submit</source>
-        <translation type="unfinished"></translation>
+        <translation>Submit</translation>
     </message>
     <message>
         <source>Forget Password</source>
-        <translation type="unfinished"></translation>
+        <translation>Forget Password</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished">Cancel</translation>
+        <translation>Cancel</translation>
     </message>
 </context>
 <context>
     <name>ChangePasswordUsingPasswordForm.ui</name>
     <message>
         <source>Enter your current password and tap on the Submit button.</source>
-        <translation type="unfinished"></translation>
+        <translation>Enter your current password and tap on the Submit button.</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation type="unfinished">Password</translation>
+        <translation>Password</translation>
     </message>
     <message>
         <source>Submit</source>
-        <translation type="unfinished"></translation>
+        <translation>Submit</translation>
     </message>
     <message>
         <source>Change Password</source>
-        <translation type="unfinished"></translation>
+        <translation>Change Password</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished">Cancel</translation>
+        <translation>Cancel</translation>
+    </message>
+</context>
+<context>
+    <name>ChangelogsForm.ui</name>
+    <message>
+        <source>ChangeLogs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">Close</translation>
     </message>
 </context>
 <context>
@@ -299,19 +314,19 @@
     <name>DeleteListForm.ui</name>
     <message>
         <source>Delete List</source>
-        <translation type="unfinished"></translation>
+        <translation>Delete List</translation>
     </message>
     <message>
         <source>Are you sure about delete this list?</source>
-        <translation type="unfinished"></translation>
+        <translation>Are you sure you want to delete this list?</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished">Cancel</translation>
+        <translation>Cancel</translation>
     </message>
     <message>
         <source>Confirm</source>
-        <translation type="unfinished"></translation>
+        <translation>Confirm</translation>
     </message>
 </context>
 <context>
@@ -319,22 +334,23 @@
     <message>
         <source>Are you sure about delete &quot;%1&quot;?
 It containts %2 items currently.</source>
-        <translation type="unfinished"></translation>
+        <translation>Are you sure about deleting &quot;%1&quot;?
+It contains %2 of current items.</translation>
     </message>
     <message>
         <source>&quot;%1&quot; deleted</source>
-        <translation type="unfinished"></translation>
+        <translation>&quot;%1&quot; deleted</translation>
     </message>
 </context>
 <context>
     <name>DrawerFrame</name>
     <message>
         <source>Frame</source>
-        <translation type="unfinished"></translation>
+        <translation>Frame</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished">Cancel</translation>
+        <translation>Cancel</translation>
     </message>
 </context>
 <context>
@@ -419,23 +435,23 @@ It containts %2 items currently.</source>
     <name>ForgetPasswordForm.ui</name>
     <message>
         <source>To restore your password please enter your username below and tap on the restore. We&apos;ll send an email to you to change your password.</source>
-        <translation type="unfinished"></translation>
+        <translation>To restore your password please enter your username below and tap on the restore. We&apos;ll send an email to you to change your password.</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation type="unfinished">Username</translation>
+        <translation>Username</translation>
     </message>
     <message>
         <source>Restore</source>
-        <translation type="unfinished"></translation>
+        <translation>Restore</translation>
     </message>
     <message>
         <source>Forget Password</source>
-        <translation type="unfinished"></translation>
+        <translation>Forget Password</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished">Cancel</translation>
+        <translation>Cancel</translation>
     </message>
 </context>
 <context>
@@ -498,11 +514,11 @@ It containts %2 items currently.</source>
     </message>
     <message>
         <source>You can also do below optional steps:</source>
-        <translation>You can also do following optional steps:</translation>
+        <translation>You can also do the following optional steps:</translation>
     </message>
     <message>
         <source>To keep your data like favorites safe, You can create Meikade Cloud Account and login to sync your data. To do that click below button:</source>
-        <translation>To save your personalized data like favorites, you can create a Meikade account and login to sync your data. To create an account click below button:</translation>
+        <translation>To save your personalized data like your favorites, you can create a Meikade account and log in to sync your data. To create an account click on the below button:</translation>
     </message>
     <message>
         <source>SignIn / SignUp</source>
@@ -540,7 +556,7 @@ It containts %2 items currently.</source>
     </message>
     <message>
         <source>Please choose at lease 5 your favorites.</source>
-        <translation>Please at lease choose 5 of your favorites.</translation>
+        <translation>Please choose 5 of your favorites at least.</translation>
     </message>
 </context>
 <context>
@@ -551,7 +567,7 @@ It containts %2 items currently.</source>
     </message>
     <message>
         <source>Meikade 4 is online by default now. It means you can discover between tousands of poems freely without downloading to your storages. But it also available to download them to your storage and read them offline. Please select your poets that your want to read online. You can also setup it later on the every poet/book page.</source>
-        <translation>Meikade 4 is online by default. Which means you can discover thousands of poems everyday without downloading them to your device storage. But you can also access your poetry in an offline mode via downloading your preferred poems. Please select your preferred poets that you want to read offline. You can edit this list later in each poet or book page.</translation>
+        <translation>Meikade 4 is online by default, which means you can discover thousands of poems everyday without downloading them to your device storage. But you can also access your poetry in an offline mode via downloading your preferred poems. Please select your preferred poets that you wish to read offline. You can edit this list later in each poet or book page.</translation>
     </message>
     <message>
         <source>Uninstalling</source>
@@ -578,7 +594,7 @@ It containts %2 items currently.</source>
     </message>
     <message>
         <source>So It&apos;s neccessary to take some times and do next steps to personalize your Meikade. Choose language and press &quot;Next&quot; if you ready.</source>
-        <translation>So It&apos;s necessary to take some time and complete next steps to personalize your Meikade. Choose your default language and press &quot;Next&quot; if you are ready.</translation>
+        <translation>So It is necessary to take some time and complete next steps to personalize your Meikade. Choose your default language and press &quot;Next&quot; if you are ready.</translation>
     </message>
 </context>
 <context>
@@ -597,11 +613,11 @@ It containts %2 items currently.</source>
     </message>
     <message>
         <source>Add List</source>
-        <translation type="unfinished"></translation>
+        <translation>Add List</translation>
     </message>
     <message>
         <source>Done</source>
-        <translation type="unfinished"></translation>
+        <translation>Done</translation>
     </message>
 </context>
 <context>
@@ -619,19 +635,19 @@ It containts %2 items currently.</source>
     <name>ListsPage</name>
     <message>
         <source>Lists updated</source>
-        <translation type="unfinished"></translation>
+        <translation>Lists updated</translation>
     </message>
     <message>
         <source>Favoriteds</source>
-        <translation type="unfinished">Favorites</translation>
+        <translation>Favorites</translation>
     </message>
     <message>
         <source>Change Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Change Name</translation>
     </message>
     <message>
         <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>Delete</translation>
     </message>
 </context>
 <context>
@@ -758,15 +774,15 @@ It containts %2 items currently.</source>
     </message>
     <message>
         <source>Daily Reads</source>
-        <translation type="unfinished"></translation>
+        <translation>Daily Reads</translation>
     </message>
     <message>
         <source>Hours per Week</source>
-        <translation type="unfinished"></translation>
+        <translation>Hours per Week</translation>
     </message>
     <message>
         <source>Favoriteds Poets</source>
-        <translation type="unfinished"></translation>
+        <translation>Favorited Poets</translation>
     </message>
 </context>
 <context>
@@ -801,22 +817,22 @@ It containts %2 items currently.</source>
     </message>
     <message>
         <source>Lists</source>
-        <translation type="unfinished">Lists</translation>
+        <translation>Lists</translation>
     </message>
 </context>
 <context>
     <name>MyMeikadePage</name>
     <message>
         <source>Change Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Change Name</translation>
     </message>
     <message>
         <source>Change Avatar</source>
-        <translation type="unfinished"></translation>
+        <translation type="vanished">Change Avatar</translation>
     </message>
     <message>
         <source>Change Password</source>
-        <translation type="unfinished"></translation>
+        <translation>Change Password</translation>
     </message>
 </context>
 <context>
@@ -882,7 +898,7 @@ It containts %2 items currently.</source>
     </message>
     <message>
         <source>Choose Lists</source>
-        <translation type="unfinished"></translation>
+        <translation>Choose Lists</translation>
     </message>
 </context>
 <context>
@@ -999,7 +1015,7 @@ It containts %2 items currently.</source>
     </message>
     <message>
         <source>Too many tries. Please try again</source>
-        <translation>Too many tries. Please try again!</translation>
+        <translation>Too many tries. Please try again later!</translation>
     </message>
 </context>
 <context>
@@ -1017,19 +1033,19 @@ It containts %2 items currently.</source>
     <name>SearchFilterForm.ui</name>
     <message>
         <source>Search Filter</source>
-        <translation type="unfinished"></translation>
+        <translation>Search Filter</translation>
     </message>
     <message>
         <source>Selected categories to search:</source>
-        <translation type="unfinished"></translation>
+        <translation>Selected categories to search:</translation>
     </message>
     <message>
         <source>Accept</source>
-        <translation type="unfinished"></translation>
+        <translation>Accept</translation>
     </message>
     <message>
         <source>Online Search</source>
-        <translation type="unfinished"></translation>
+        <translation>Online Search</translation>
     </message>
 </context>
 <context>
@@ -1098,19 +1114,19 @@ It containts %2 items currently.</source>
     </message>
     <message>
         <source>Small</source>
-        <translation type="unfinished"></translation>
+        <translation>Small</translation>
     </message>
     <message>
         <source>Medium</source>
-        <translation type="unfinished"></translation>
+        <translation>Medium</translation>
     </message>
     <message>
         <source>Large</source>
-        <translation type="unfinished"></translation>
+        <translation>Large</translation>
     </message>
     <message>
         <source>Poems font size</source>
-        <translation type="unfinished"></translation>
+        <translation>Poem font size</translation>
     </message>
 </context>
 <context>
@@ -1121,7 +1137,7 @@ It containts %2 items currently.</source>
     </message>
     <message>
         <source>Do you realy want to logout?</source>
-        <translation>Are you sure you want to logout?</translation>
+        <translation>Are you sure you want to log out?</translation>
     </message>
     <message>
         <source>Cancel</source>
@@ -1168,7 +1184,7 @@ It containts %2 items currently.</source>
     </message>
     <message>
         <source>* Username you choosen taken.</source>
-        <translation>* This username is already chosen. </translation>
+        <translation>* This username is already taken. </translation>
     </message>
     <message>
         <source>* Your username must be 6 character at least and containt lower case characters and numbers only.</source>
@@ -1203,11 +1219,15 @@ It containts %2 items currently.</source>
     </message>
     <message>
         <source>Select Image</source>
-        <translation>Select Image</translation>
+        <translation type="vanished">Select Image</translation>
     </message>
     <message>
         <source>Unset</source>
-        <translation>Unset</translation>
+        <translation type="vanished">Unset</translation>
+    </message>
+    <message>
+        <source>Sticker saved on %1</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1305,7 +1325,7 @@ It containts %2 items currently.</source>
     </message>
     <message>
         <source>Lists</source>
-        <translation type="unfinished">Lists</translation>
+        <translation>Lists</translation>
     </message>
 </context>
 <context>
