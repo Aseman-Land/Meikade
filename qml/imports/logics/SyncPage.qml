@@ -27,6 +27,9 @@ SyncView {
     syncListsSwitch.checked: AsemanGlobals.syncFavorites
     syncListsSwitch.onCheckedChanged: if (!initTimer.running) { AsemanGlobals.syncFavorites = syncListsSwitch.checked; StoreActionsBulk.syncActionsInterval(); AsemanGlobals.lastSync = "" }
 
+    syncNotesSwitch.checked: AsemanGlobals.syncNotes
+    syncNotesSwitch.onCheckedChanged: if (!initTimer.running) { AsemanGlobals.syncNotes = syncNotesSwitch.checked; StoreActionsBulk.syncActionsInterval(); AsemanGlobals.lastSync = "" }
+
     syncPoemsSwitch.checked: AsemanGlobals.syncViews
     syncPoemsSwitch.onCheckedChanged: if (!initTimer.running) { AsemanGlobals.syncViews = syncPoemsSwitch.checked; StoreActionsBulk.syncActionsInterval(); AsemanGlobals.lastSync = "" }
 

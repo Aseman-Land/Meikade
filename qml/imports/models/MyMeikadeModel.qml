@@ -20,8 +20,8 @@ AsemanListModel {
         {
             "title": qsTr("Notes") + Translations.refresher,
             "icon": "mdi_note",
-            "link": "popup:/test",
-            "underco": true
+            "link": "float:/notes",
+            "underco": false
         },
         {
             "title": qsTr("Manage Offlines") + Translations.refresher,

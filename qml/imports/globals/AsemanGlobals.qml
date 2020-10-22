@@ -27,6 +27,7 @@ AsemanObject {
 
     property alias lastSync: _sync.lastSync
     property alias syncFavorites: _sync.syncFavorites
+    property alias syncNotes: _sync.syncNotes
     property alias syncViews: _sync.syncViews
     property alias syncTopPoets: _sync.syncTopPoets
 
@@ -92,6 +93,7 @@ AsemanObject {
 
         property string lastSync
         property bool syncFavorites: false
+        property bool syncNotes: false
         property bool syncViews: false
         property bool syncTopPoets: false
     }

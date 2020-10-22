@@ -97,6 +97,16 @@ ViewportController {
     }
 
     ViewportControllerRoute {
+        route: /\w+\:\/notes(?:\?.+)?/
+        source: "NotesRoute.qml"
+    }
+
+    ViewportControllerRoute {
+        route: /\w+\:\/notes\/add(?:\?.+)?/
+        source: "AddNoteRoute.qml"
+    }
+
+    ViewportControllerRoute {
         route: /\w+\:\/offline\/manage/
         source: "ManageOfflinePoetsRoute.qml"
     }

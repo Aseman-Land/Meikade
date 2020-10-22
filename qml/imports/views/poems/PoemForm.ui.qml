@@ -158,6 +158,45 @@ Item {
                 }
             }
 
+            Item {
+                width: 20 * Devices.density
+                y: 10 * Devices.density
+                visible: model.position !== PoemVersesModel.PositionLeft && model.position !== PoemVersesModel.PositionCenteredVerse2
+                anchors.left: parent.left
+
+                Column {
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    spacing: 4 * Devices.density
+
+                    Label {
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        font.pixelSize: 9 * Devices.fontDensity
+                        font.family: MaterialIcons.family
+                        text: MaterialIcons.mdi_heart_outline
+                        color: "#a00"
+                        visible: model.favorited
+                    }
+
+                    Label {
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        font.pixelSize: 11 * Devices.fontDensity
+                        font.family: MaterialIcons.family
+                        text: MaterialIcons.mdi_paperclip
+                        color: Colors.noteButton
+                        visible: model.hasNote
+                    }
+
+                    Label {
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        font.pixelSize: 11 * Devices.fontDensity
+                        font.family: MaterialIcons.family
+                        text: MaterialIcons.mdi_library
+                        color: "#fa0"
+                        visible: model.hasList
+                    }
+                }
+            }
+
             Rectangle {
                 anchors.fill: itemDel
                 visible: itemDel.pressed

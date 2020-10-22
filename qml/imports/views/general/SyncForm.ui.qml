@@ -143,7 +143,6 @@ Page {
                     RowLayout {
                         id: notesRow
                         spacing: 0
-                        visible: false
 
                         Label {
                             Layout.fillWidth: true

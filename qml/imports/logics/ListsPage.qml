@@ -27,6 +27,7 @@ Viewport {
     signal addListRequest()
     signal renameListRequest(int actionId, string currentName)
     signal deleteListRequest(int actionId, string name)
+    signal saved(variant lists)
 
     UserActions {
         id: listsQuery
@@ -41,12 +42,16 @@ Viewport {
         }
         closeBtn.onClicked: closeRequest()
         confirmBtn.onClicked: {
+            var lists = new Array;
             for (var i=0; i<lModel.count; i++) {
                 var item = lModel.get(i);
                 var listId = item.listId;
 
                 var currentState = (selectMode && selectMode.indexOf(listId) >= 0? true : false)
                 var newState = item.checked;
+                if (newState)
+                    lists[lists.length] = listId;
+
                 if (newState == currentState)
                     continue;
 
@@ -59,6 +64,7 @@ Viewport {
             GlobalSignals.snackbarRequest(qsTr("Lists updated"));
             GlobalSignals.listsRefreshed();
             closeRequest()
+            dis.saved(lists)
         }
 
         onPressAndHold: {

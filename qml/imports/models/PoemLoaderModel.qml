@@ -49,7 +49,7 @@ AsemanObject {
                 dis.poet = r.poet.name;
                 dis.poetImage = r.poet.image;
                 dis.poetColor = r.poet.color;
-                dis.link = "page:/poet?id=" + r.poet.id + "&poemId=" + r.poem.id
+                dis.link = "page:/poet?id=" + r.poet.id + "&poemId=" + r.poem.id;
 
                 if (dis.poetImage.length == 0)
                     dis.poetImage = Constants.thumbsBaseUrl +  r.poet.id + ".png"
@@ -68,9 +68,21 @@ AsemanObject {
                     categoriesModel.insert(1, c);
                 });
 
+                var attrs = userActions.getPoemAttributes();
+
                 versesModel.clear();
                 r.verses.forEach(function(v){
                     v.text = Tools.stringReplace(v.text, "\\s+", " ", true);
+
+                    try { v.favorited = attrs[v.vorder][UserActions.TypeFavorite]; } catch (ve) { v.favorited = false; }
+                    if (!v.favorited) v.favorited = false;
+
+                    try { v.hasNote = attrs[v.vorder][UserActions.TypeNote]; } catch (ne) { v.hasNote = false; }
+                    if (!v.hasNote) v.hasNote = false;
+
+                    try { v.hasList = attrs[v.vorder][UserActions.TypeItemListsStart]; } catch (le) { v.hasList = false; }
+                    if (!v.hasList) v.hasList = false;
+
                     versesModel.append(v);
                 });
             } catch (e) {
@@ -96,6 +108,12 @@ AsemanObject {
         onResponseChanged: if (response && response.result) prv.analizeResult(response.result)
 
         onPoem_idChanged: Tools.jsDelayCall(10, refresh)
+    }
+
+    UserActions {
+        id: userActions
+        poetId: dis.poetId
+        poemId: dis.poemId
     }
 
     RandomPoemRequest {
