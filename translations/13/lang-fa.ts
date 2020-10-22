@@ -79,6 +79,56 @@
     </message>
 </context>
 <context>
+    <name>AddListForm.ui</name>
+    <message>
+        <source>Add List</source>
+        <translation>لیست جدید</translation>
+    </message>
+    <message>
+        <source>Please enter list name:</source>
+        <translation>نام لیست خود را وارد کنید:</translation>
+    </message>
+    <message>
+        <source>List Name</source>
+        <translation>نام لیست</translation>
+    </message>
+    <message>
+        <source>Add</source>
+        <translation>ساخت لیست</translation>
+    </message>
+    <message>
+        <source>Rename List</source>
+        <translation>تغییر نام لیست</translation>
+    </message>
+    <message>
+        <source>Rename</source>
+        <translation>تغییر نام</translation>
+    </message>
+</context>
+<context>
+    <name>AddNoteForm.ui</name>
+    <message>
+        <source>Literary array</source>
+        <translation>آرایه ادبی</translation>
+    </message>
+    <message>
+        <source>Type your note</source>
+        <translation>یادداشت خود را بنویسید</translation>
+    </message>
+    <message>
+        <source>Save</source>
+        <translation>ذخیره یادداشت</translation>
+    </message>
+    <message>
+        <source>Edit Note</source>
+        <translation>ویرایش یادداشت</translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation>بستن</translation>
+    </message>
+</context>
+<context>
     <name>AsemanTools</name>
     <message>
         <source>0</source>
@@ -119,112 +169,6 @@
     <message>
         <source>9</source>
         <translation>۹</translation>
-    </message>
-</context>
-<context>
-    <name>JalaliCalendarObject</name>
-    <message>
-        <source>Farvardin</source>
-        <translation>فروردین</translation>
-    </message>
-    <message>
-        <source>Ordibehesht</source>
-        <translation>اردیبهشت</translation>
-    </message>
-    <message>
-        <source>Khordad</source>
-        <translation>خرداد</translation>
-    </message>
-    <message>
-        <source>Tir</source>
-        <translation>تیر</translation>
-    </message>
-    <message>
-        <source>Mordad</source>
-        <translation>مرداد</translation>
-    </message>
-    <message>
-        <source>Shahrivar</source>
-        <translation>شهریور</translation>
-    </message>
-    <message>
-        <source>Mehr</source>
-        <translation>مهر</translation>
-    </message>
-    <message>
-        <source>Abaan</source>
-        <translation>آبان</translation>
-    </message>
-    <message>
-        <source>Aazar</source>
-        <translation>آذر</translation>
-    </message>
-    <message>
-        <source>Dey</source>
-        <translation>دی</translation>
-    </message>
-    <message>
-        <source>Bahman</source>
-        <translation>بهمن</translation>
-    </message>
-    <message>
-        <source>Esfand</source>
-        <translation>اسفند</translation>
-    </message>
-    <message>
-        <source>Shanbe</source>
-        <translation>شنبه</translation>
-    </message>
-    <message>
-        <source>1Shanbe</source>
-        <translation>یکشنبه</translation>
-    </message>
-    <message>
-        <source>2Shanbe</source>
-        <translation>دوشنبه</translation>
-    </message>
-    <message>
-        <source>3Shanbe</source>
-        <translation>سه‌شنبه</translation>
-    </message>
-    <message>
-        <source>4Shanbe</source>
-        <translation>چهارشنبه</translation>
-    </message>
-    <message>
-        <source>5Shanbe</source>
-        <translation>پنجشنبه</translation>
-    </message>
-    <message>
-        <source>Jome</source>
-        <translation>جمعه</translation>
-    </message>
-</context>
-<context>
-    <name>AddListForm.ui</name>
-    <message>
-        <source>Add List</source>
-        <translation>لیست جدید</translation>
-    </message>
-    <message>
-        <source>Please enter list name:</source>
-        <translation>نام لیست خود را وارد کنید:</translation>
-    </message>
-    <message>
-        <source>List Name</source>
-        <translation>نام لیست</translation>
-    </message>
-    <message>
-        <source>Add</source>
-        <translation>ساخت لیست</translation>
-    </message>
-    <message>
-        <source>Rename List</source>
-        <translation>تغییر نام لیست</translation>
-    </message>
-    <message>
-        <source>Rename</source>
-        <translation>تغییر نام</translation>
     </message>
 </context>
 <context>
@@ -462,6 +406,25 @@ It containts %2 items currently.</source>
     <message>
         <source>&quot;%1&quot; deleted</source>
         <translation>&quot;%1&quot; پاک شد</translation>
+    </message>
+</context>
+<context>
+    <name>DeleteNoteForm.ui</name>
+    <message>
+        <source>Delete List</source>
+        <translation type="unfinished">حذف لیست</translation>
+    </message>
+    <message>
+        <source>Are you sure about delete this list?</source>
+        <translation type="unfinished">آیا از حذف کردن این لیست مطمئنید؟</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>لغو</translation>
+    </message>
+    <message>
+        <source>Confirm</source>
+        <translation>تایید</translation>
     </message>
 </context>
 <context>
@@ -720,6 +683,85 @@ It containts %2 items currently.</source>
     </message>
 </context>
 <context>
+    <name>JalaliCalendarObject</name>
+    <message>
+        <source>Farvardin</source>
+        <translation>فروردین</translation>
+    </message>
+    <message>
+        <source>Ordibehesht</source>
+        <translation>اردیبهشت</translation>
+    </message>
+    <message>
+        <source>Khordad</source>
+        <translation>خرداد</translation>
+    </message>
+    <message>
+        <source>Tir</source>
+        <translation>تیر</translation>
+    </message>
+    <message>
+        <source>Mordad</source>
+        <translation>مرداد</translation>
+    </message>
+    <message>
+        <source>Shahrivar</source>
+        <translation>شهریور</translation>
+    </message>
+    <message>
+        <source>Mehr</source>
+        <translation>مهر</translation>
+    </message>
+    <message>
+        <source>Abaan</source>
+        <translation>آبان</translation>
+    </message>
+    <message>
+        <source>Aazar</source>
+        <translation>آذر</translation>
+    </message>
+    <message>
+        <source>Dey</source>
+        <translation>دی</translation>
+    </message>
+    <message>
+        <source>Bahman</source>
+        <translation>بهمن</translation>
+    </message>
+    <message>
+        <source>Esfand</source>
+        <translation>اسفند</translation>
+    </message>
+    <message>
+        <source>Shanbe</source>
+        <translation>شنبه</translation>
+    </message>
+    <message>
+        <source>1Shanbe</source>
+        <translation>یکشنبه</translation>
+    </message>
+    <message>
+        <source>2Shanbe</source>
+        <translation>دوشنبه</translation>
+    </message>
+    <message>
+        <source>3Shanbe</source>
+        <translation>سه‌شنبه</translation>
+    </message>
+    <message>
+        <source>4Shanbe</source>
+        <translation>چهارشنبه</translation>
+    </message>
+    <message>
+        <source>5Shanbe</source>
+        <translation>پنجشنبه</translation>
+    </message>
+    <message>
+        <source>Jome</source>
+        <translation>جمعه</translation>
+    </message>
+</context>
+<context>
     <name>ListsForm.ui</name>
     <message>
         <source>There is no item here</source>
@@ -958,6 +1000,47 @@ It containts %2 items currently.</source>
     </message>
 </context>
 <context>
+    <name>NotesListForm.ui</name>
+    <message>
+        <source>There is no item here</source>
+        <translation>هیچ عنوانی وجود ندارد</translation>
+    </message>
+    <message>
+        <source>Notes</source>
+        <translation>یادداشت‌ها</translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation>بستن</translation>
+    </message>
+</context>
+<context>
+    <name>NotesPage</name>
+    <message>
+        <source>Change Name</source>
+        <translation>تغییر نام</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>حذف لیست</translation>
+    </message>
+</context>
+<context>
+    <name>NotesPoetsListForm.ui</name>
+    <message>
+        <source>There is no item here</source>
+        <translation>هیچ عنوانی وجود ندارد</translation>
+    </message>
+    <message>
+        <source>Favoriteds</source>
+        <translation type="unfinished">علاقه‌مندی‌ها</translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">بستن</translation>
+    </message>
+</context>
+<context>
     <name>PoemForm.ui</name>
     <message>
         <source>Views</source>
@@ -1021,6 +1104,10 @@ It containts %2 items currently.</source>
     <message>
         <source>Choose Lists</source>
         <translation>افزودن به لیست</translation>
+    </message>
+    <message>
+        <source>Note</source>
+        <translation>یادداشت</translation>
     </message>
 </context>
 <context>

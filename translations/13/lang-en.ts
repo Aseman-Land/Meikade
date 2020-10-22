@@ -106,6 +106,29 @@
     </message>
 </context>
 <context>
+    <name>AddNoteForm.ui</name>
+    <message>
+        <source>Literary array</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Type your note</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Save</source>
+        <translation type="unfinished">Save</translation>
+    </message>
+    <message>
+        <source>Edit Note</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">Close</translation>
+    </message>
+</context>
+<context>
     <name>AuthPage</name>
     <message>
         <source>Logged in Successfully</source>
@@ -340,6 +363,25 @@ It contains %2 of current items.</translation>
     <message>
         <source>&quot;%1&quot; deleted</source>
         <translation>&quot;%1&quot; deleted</translation>
+    </message>
+</context>
+<context>
+    <name>DeleteNoteForm.ui</name>
+    <message>
+        <source>Delete List</source>
+        <translation type="unfinished">Delete List</translation>
+    </message>
+    <message>
+        <source>Are you sure about delete this list?</source>
+        <translation type="unfinished">Are you sure you want to delete this list?</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation type="unfinished">Cancel</translation>
+    </message>
+    <message>
+        <source>Confirm</source>
+        <translation type="unfinished">Confirm</translation>
     </message>
 </context>
 <context>
@@ -836,6 +878,47 @@ It contains %2 of current items.</translation>
     </message>
 </context>
 <context>
+    <name>NotesListForm.ui</name>
+    <message>
+        <source>There is no item here</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Notes</source>
+        <translation type="unfinished">Notes</translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">Close</translation>
+    </message>
+</context>
+<context>
+    <name>NotesPage</name>
+    <message>
+        <source>Change Name</source>
+        <translation type="unfinished">Change Name</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation type="unfinished">Delete</translation>
+    </message>
+</context>
+<context>
+    <name>NotesPoetsListForm.ui</name>
+    <message>
+        <source>There is no item here</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Favoriteds</source>
+        <translation type="unfinished">Favorites</translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">Close</translation>
+    </message>
+</context>
+<context>
     <name>PoemForm.ui</name>
     <message>
         <source>Views</source>
@@ -899,6 +982,10 @@ It contains %2 of current items.</translation>
     <message>
         <source>Choose Lists</source>
         <translation>Choose Lists</translation>
+    </message>
+    <message>
+        <source>Note</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
