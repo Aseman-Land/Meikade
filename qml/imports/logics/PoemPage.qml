@@ -416,6 +416,18 @@ PoemView {
                 var idx = menuItem.index;
                 var poemLoader = loader;
 
+                var map = {
+                    title: dis.title,
+                    subtitle: dis.poet,
+                    image: dis.image,
+                    link: loader.link,
+                    verseText: dis.verseText,
+                    verseId: verseId,
+                    verseText: menuItem.verseText
+                };
+
+                var extra = Tools.variantToJson(map, true);
+
                 switch (index) {
                 case 0:
                     var poemText = getText(false);
@@ -423,7 +435,7 @@ PoemView {
 
                     Viewport.controller.trigger("float:/notes/add", {"poetId": verseFaveActionQuery.poetId,
                                                 "catId": verseFaveActionQuery.catId, "poemId": verseFaveActionQuery.poemId,
-                                                "verseId": verseFaveActionQuery.verseId, "poemText": poemText}).saved.connect(function(text){
+                                                "verseId": verseFaveActionQuery.verseId, "poemText": poemText, "extra": extra}).saved.connect(function(text){
                         var item = poemLoader.versesModel.get(idx);
                         poemLoader.versesModel.remove(idx);
 
@@ -433,17 +445,6 @@ PoemView {
                     break;
 
                 case 1:
-                    var map = {
-                        title: dis.title,
-                        subtitle: dis.poet,
-                        image: dis.image,
-                        link: loader.link,
-                        verseText: dis.verseText,
-                        verseId: verseId,
-                        verseText: menuItem.verseText
-                    };
-
-                    var extra = Tools.variantToJson(map, true);
                     Viewport.controller.trigger("bottomdrawer:/lists", {"selectMode": verseFaveActionQuery.getLists(), "poetId": verseFaveActionQuery.poetId,
                                                 "catId": verseFaveActionQuery.catId, "poemId": verseFaveActionQuery.poemId,
                                                 "verseId": verseFaveActionQuery.verseId, "extra": extra}).saved.connect(function(lists){

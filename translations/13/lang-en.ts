@@ -911,11 +911,22 @@ It contains %2 of current items.</translation>
     </message>
     <message>
         <source>Favoriteds</source>
-        <translation type="unfinished">Favorites</translation>
+        <translation type="obsolete">Favorites</translation>
     </message>
     <message>
         <source>Close</source>
         <translation type="unfinished">Close</translation>
+    </message>
+    <message>
+        <source>Notes</source>
+        <translation type="unfinished">Notes</translation>
+    </message>
+</context>
+<context>
+    <name>NotesPoetsListModel</name>
+    <message>
+        <source>%1 items</source>
+        <translation type="unfinished">%1 of items</translation>
     </message>
 </context>
 <context>

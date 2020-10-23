@@ -29,15 +29,15 @@ Viewport {
         id: listsQuery
     }
 
-    mainItem: NotesListView {
+    mainItem: NotesPoetsListView {
         id: lists
         anchors.fill: parent
-//        listView.model: FavoritedPoetsListModel { id: fplModel }
+        listView.model: NotesPoetsListModel { id: fplModel }
         closeBtn.onClicked: closeRequest()
         onClicked: {
             var map = fplModel.get(index);
             var poetId = map.poetId;
-            Viewport.viewport.append(favorited_component, {"poetId": poetId, "title": map.poet, "listId": listId}, "page");
+            Viewport.viewport.append(note_component, {"poetId": poetId, "title": map.poet}, "page");
         }
 
         Connections {
@@ -47,12 +47,11 @@ Viewport {
     }
 
     Component {
-        id: favorited_component
-        FavoritedListView {
+        id: note_component
+        NotesListView {
             property alias poetId: flModel.poetId
-            property alias listId: flModel.listId
 
-            listView.model: FavoritedListModel { id: flModel }
+            listView.model: NotesListModel { id: flModel }
             backBtn.onClicked: ViewportType.open = false
             closeBtn.onClicked: closeRequest()
             onClicked: {

@@ -18,7 +18,6 @@ Item {
     property alias listView: listView
     property alias headerItem: headerItem
     property alias closeBtn: closeBtn
-    property alias backBtn: backBtn
 
     signal clicked(int index)
 
@@ -151,7 +150,7 @@ Item {
         anchors.top: parent.top
         anchors.right: parent.right
         anchors.left: parent.left
-        text: qsTr("Favoriteds") + Translations.refresher
+        text: qsTr("Notes") + Translations.refresher
         color: Colors.header
         shadow: Devices.isAndroid
 
@@ -175,11 +174,6 @@ Item {
                 Material.theme: Material.Dark
                 Material.elevation: 0
             }
-        }
-
-        HeaderMenuButton {
-            id: backBtn
-            ratio: 1
         }
     }
 

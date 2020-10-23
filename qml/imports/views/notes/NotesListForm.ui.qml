@@ -18,6 +18,7 @@ Item {
     property alias listView: listView
     property alias headerItem: headerItem
     property alias closeBtn: closeBtn
+    property alias backBtn: backBtn
 
     property alias title: headerItem.text
 
@@ -175,6 +176,11 @@ Item {
                 Material.theme: Material.Dark
                 Material.elevation: 0
             }
+        }
+
+        HeaderMenuButton {
+            id: backBtn
+            ratio: 1
         }
     }
 

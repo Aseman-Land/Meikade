@@ -14,6 +14,7 @@ AddNoteView {
     property alias poemId: createAction.poemId
     property alias catId: createAction.catId
     property alias verseId: createAction.verseId
+    property string extra
 
     signal saved(string text)
 
@@ -33,9 +34,8 @@ AddNoteView {
     }
 
     function confirm() {
-        var extra = {
-            "public": false
-        };
+        var extra = Tools.jsonToVariant(home.extra);
+        extra["public"] = false;
 
         var text = noteField.text.trim();
 

@@ -1033,11 +1033,22 @@ It containts %2 items currently.</source>
     </message>
     <message>
         <source>Favoriteds</source>
-        <translation type="unfinished">علاقه‌مندی‌ها</translation>
+        <translation type="obsolete">علاقه‌مندی‌ها</translation>
     </message>
     <message>
         <source>Close</source>
-        <translation type="unfinished">بستن</translation>
+        <translation>بستن</translation>
+    </message>
+    <message>
+        <source>Notes</source>
+        <translation>یادداشت‌ها</translation>
+    </message>
+</context>
+<context>
+    <name>NotesPoetsListModel</name>
+    <message>
+        <source>%1 items</source>
+        <translation>%1 عنوان</translation>
     </message>
 </context>
 <context>
