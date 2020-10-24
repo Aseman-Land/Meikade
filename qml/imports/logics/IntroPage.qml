@@ -27,6 +27,13 @@ IntroView {
     }
 
     setupOfflinesForm {
+
+        premiumMsg: {
+            if (Premium.premium || Premium.offlineLimits < 0)
+                return "";
+            return qsTr("You install %1 offline poet from %2 poets, Allowed to install using non-premium account.").arg(setupOfflinesForm.offlinePoetsCount).arg(Premium.offlineLimits);
+        }
+
         listView.model: PoetsCleanModel {
             id: poetsModel
         }

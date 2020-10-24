@@ -65,6 +65,7 @@ Q_SIGNALS:
 public Q_SLOTS:
     void install(bool active = true);
     void stop();
+    int checkCount() const;
 
 private:
     void connectToInstaller(const QString &hintHash = QString());

@@ -109,7 +109,7 @@
     <name>AddNoteForm</name>
     <message>
         <source>Literary array</source>
-        <translation>آرایه ادبی</translation>
+        <translation type="vanished">آرایه ادبی</translation>
     </message>
     <message>
         <source>Type your note</source>
@@ -126,6 +126,21 @@
     <message>
         <source>Close</source>
         <translation>بستن</translation>
+    </message>
+    <message>
+        <source>To buy premium account click on below button</source>
+        <translation>برای خرید اکانت حرفه‌ای کلید زیر را لمس کنید</translation>
+    </message>
+    <message>
+        <source>Premium Account</source>
+        <translation>اکانت حرفه‌ای</translation>
+    </message>
+</context>
+<context>
+    <name>AddNotePage</name>
+    <message>
+        <source>You create %1 note from %2 notes, Allowed to create using non-premium account.</source>
+        <translation>شما %1 یادداشت از %2 یادداشت که با اکانت غیرحرفه‌ای میتوانید بسازید ساخته‌اید.</translation>
     </message>
 </context>
 <context>
@@ -370,6 +385,25 @@
     </message>
 </context>
 <context>
+    <name>DataOfflineInstaller</name>
+    <message>
+        <source>Premium Needed</source>
+        <translation>اکانت حرفه‌ای</translation>
+    </message>
+    <message>
+        <source>Your limit %1 offline poets ended. Do you want to buy premium account?</source>
+        <translation>محدودیت %1 شاعر آفلاین شما به پایان رسیده است. آیا تمایل دارید اکانت حرفه‌ای را بخرید؟</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>لغو</translation>
+    </message>
+    <message>
+        <source>BUY Premium</source>
+        <translation>اکانت حرفه‌ای</translation>
+    </message>
+</context>
+<context>
     <name>DataOfflinePoets</name>
     <message>
         <source>%1 books</source>
@@ -412,11 +446,11 @@ It containts %2 items currently.</source>
     <name>DeleteNoteForm</name>
     <message>
         <source>Delete List</source>
-        <translation type="unfinished">حذف لیست</translation>
+        <translation>حذف لیست</translation>
     </message>
     <message>
         <source>Are you sure about delete this list?</source>
-        <translation type="unfinished">آیا از حذف کردن این لیست مطمئنید؟</translation>
+        <translation>آیا از حذف کردن این نوشته مطمئنید؟</translation>
     </message>
     <message>
         <source>Cancel</source>
@@ -634,6 +668,13 @@ It containts %2 items currently.</source>
     </message>
 </context>
 <context>
+    <name>IntroPage</name>
+    <message>
+        <source>You install %1 offline poet from %2 poets, Allowed to install using non-premium account.</source>
+        <translation>شما %1 شاعر از %2 شاعر که با اکانت غیرحرفه‌ای میتوانید آفلاین نصب کنید را استفاده کردید.</translation>
+    </message>
+</context>
+<context>
     <name>IntroSetupHome</name>
     <message>
         <source>Setup Favorites</source>
@@ -665,6 +706,14 @@ It containts %2 items currently.</source>
     <message>
         <source>Installing</source>
         <translation>در حال نصب</translation>
+    </message>
+    <message>
+        <source>To buy premium account click on below button</source>
+        <translation>برای خرید اکانت حرفه‌ای کلید زیر را لمس کنید</translation>
+    </message>
+    <message>
+        <source>Premium Account</source>
+        <translation>اکانت حرفه‌ای</translation>
     </message>
 </context>
 <context>
@@ -783,6 +832,14 @@ It containts %2 items currently.</source>
         <source>Done</source>
         <translation>تایید</translation>
     </message>
+    <message>
+        <source>To buy premium account click on below button</source>
+        <translation>برای خرید اکانت حرفه‌ای کلید زیر را لمس کنید</translation>
+    </message>
+    <message>
+        <source>Premium Account</source>
+        <translation>اکانت حرفه‌ای</translation>
+    </message>
 </context>
 <context>
     <name>ListsModel</name>
@@ -812,6 +869,10 @@ It containts %2 items currently.</source>
     <message>
         <source>Delete</source>
         <translation>حذف لیست</translation>
+    </message>
+    <message>
+        <source>You create %1 lists from %2 lists, Allowed to create using non-premium account.</source>
+        <translation>شما %1 لیست از %2 لیست که با اکانت غیرحرفه‌ای میتوانید بسازید ساخته‌اید.</translation>
     </message>
 </context>
 <context>
@@ -893,6 +954,21 @@ It containts %2 items currently.</source>
     <message>
         <source>Installing</source>
         <translation>در حال نصب</translation>
+    </message>
+    <message>
+        <source>To buy premium account click on below button</source>
+        <translation>برای خرید اکانت حرفه‌ای کلید زیر را لمس کنید</translation>
+    </message>
+    <message>
+        <source>Premium Account</source>
+        <translation>اکانت حرفه‌ای</translation>
+    </message>
+</context>
+<context>
+    <name>ManageOfflinePoetsPage</name>
+    <message>
+        <source>You install %1 offline poet from %2 poets, Allowed to install using non-premium account.</source>
+        <translation>شما %1 شاعر از %2 شاعر که با اکانت غیرحرفه‌ای میتوانید آفلاین نصب کنید را استفاده کردید.</translation>
     </message>
 </context>
 <context>

@@ -23,6 +23,12 @@ AddNoteView {
 
     noteField.onCursorRectangleChanged: ensureVisible(noteField.cursorRectangle)
 
+    premiumMsg: {
+        if (Premium.premium || Premium.notesLimits < 0)
+            return "";
+        return qsTr("You create %1 note from %2 notes, Allowed to create using non-premium account.").arg(currentNotesCount).arg(Premium.notesLimits);
+    }
+
     function ensureVisible(r)
     {
         var zeroY = noteField.mapToItem(scene, 0, 0).y;
@@ -59,6 +65,10 @@ AddNoteView {
         Component.onCompleted: {
             fetch()
             home.noteField.text = value;
+
+            queryAsync("SELECT COUNT(*) as cnt FROM actions WHERE type = :type AND declined = 0", {"type": UserActions.TypeNote}, function(res){
+                currentNotesCount = res[0].cnt;
+            })
         }
     }
 }

@@ -24,6 +24,8 @@ Item {
     property variant selectMode
     property Viewport mainViewport: Viewport.viewport
 
+    property string premiumMsg
+
     signal clicked(int index)
     signal pressAndHold(int index, variant pos)
     signal addListRequest()
@@ -61,19 +63,66 @@ Item {
 
         header: Item {
             width: listView.width
-            height: 80 * Devices.density
+            height: headerRow.height + 30 * Devices.density
 
-            RoundButton {
-                id: addBtn
-                width: parent.width * 0.5
-                anchors.centerIn: parent
-                font.pixelSize: 9 * Devices.fontDensity
-                text: qsTr("Add List") + Translations.refresher
-                highlighted: true
+            ColumnLayout {
+                id: headerRow
+                y: 15 * Devices.density
+                anchors.left: parent.left
+                anchors.right: parent.right
+                spacing: 10 * Devices.density
 
-                Connections {
-                    target: addBtn
-                    onClicked: dis.addListRequest()
+                RoundButton {
+                    id: addBtn
+                    Layout.preferredWidth: headerRow.width * 0.5
+                    Layout.alignment: Qt.AlignHCenter
+                    font.pixelSize: 9 * Devices.fontDensity
+                    text: qsTr("Add List") + Translations.refresher
+                    highlighted: true
+                    visible: Premium.listsLimits > listView.count || premiumMsg.length == 0
+
+                    Connections {
+                        target: addBtn
+                        onClicked: dis.addListRequest()
+                    }
+                }
+
+                Label {
+                    Layout.fillWidth: true
+                    Layout.leftMargin: 20 * Devices.density
+                    Layout.rightMargin: 20 * Devices.density
+                    horizontalAlignment: Text.AlignHCenter
+                    font.pixelSize: 8 * Devices.fontDensity
+                    opacity: 0.8
+                    text: premiumMsg
+                    visible: premiumMsg.length
+                    wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                    color: Premium.listsLimits > listView.count? Colors.foreground : "#a00"
+                }
+
+                Label {
+                    Layout.fillWidth: true
+                    Layout.leftMargin: 20 * Devices.density
+                    Layout.rightMargin: 20 * Devices.density
+                    horizontalAlignment: Text.AlignHCenter
+                    font.pixelSize: 8 * Devices.fontDensity
+                    text: qsTr("To buy premium account click on below button") + Translations.refresher
+                    visible: !addBtn.visible && premiumMsg.length
+                    wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                    color: Colors.accent
+                }
+
+                RoundButton {
+                    id: premiumBtn
+                    Layout.preferredWidth: listView.width * 0.5
+                    Layout.alignment: Qt.AlignHCenter
+                    text: qsTr("Premium Account") + Translations.refresher
+                    font.pixelSize: 9 * Devices.fontDensity
+                    highlighted: true
+                    visible: !addBtn.visible && premiumMsg.length
+                    Material.accent: Colors.accent
+                    IOSStyle.accent: Colors.accent
+                    Material.elevation: 0
                 }
             }
         }

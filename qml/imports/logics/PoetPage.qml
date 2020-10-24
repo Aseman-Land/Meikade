@@ -105,7 +105,7 @@ PoetView {
             onItemClicked: {
                 switch (index) {
                 case 0:
-                    loader.offlineInstaller.install( !loader.offlineInstaller.installed );
+                    loader.offlineInstaller.checkAndInstall( !loader.offlineInstaller.installed );
                     break;
                 case 1:
                     Viewport.controller.trigger("page:/poem/random?poetId=" + dis.id);

@@ -1,4 +1,4 @@
-VERSION = 4.1.0
+VERSION = 4.1.95
 TARGET = Meikade
 
 QMAKE_TARGET_BUNDLE_PREFIX = io.aseman

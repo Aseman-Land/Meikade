@@ -20,7 +20,10 @@ Page {
     property alias noteField: noteField
     property alias flick: flick
     property alias scene: scene
-    property alias literaryBtn: literaryBtn
+    property alias premiumBtn: premiumBtn
+
+    property string premiumMsg
+    property int currentNotesCount
 
     readonly property real keyboardHeight: height/3
 
@@ -73,16 +76,41 @@ Page {
                     color: "#33888888"
                 }
 
+                Label {
+                    Layout.fillWidth: true
+                    Layout.leftMargin: 20 * Devices.density
+                    Layout.rightMargin: 20 * Devices.density
+                    horizontalAlignment: Text.AlignHCenter
+                    font.pixelSize: 8 * Devices.fontDensity
+                    opacity: 0.8
+                    text: premiumMsg
+                    visible: premiumMsg.length
+                    wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                    color: Premium.notesLimits > currentNotesCount? Colors.foreground : "#a00"
+                }
+
+                Label {
+                    Layout.fillWidth: true
+                    Layout.leftMargin: 20 * Devices.density
+                    Layout.rightMargin: 20 * Devices.density
+                    horizontalAlignment: Text.AlignHCenter
+                    font.pixelSize: 8 * Devices.fontDensity
+                    text: qsTr("To buy premium account click on below button") + Translations.refresher
+                    visible: !noteField.visible && premiumMsg.length
+                    wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                    color: Colors.accent
+                }
+
                 RoundButton {
-                    id: literaryBtn
+                    id: premiumBtn
                     Layout.preferredWidth: form.width * 0.5
                     Layout.alignment: Qt.AlignHCenter
-                    text: qsTr("Literary array") + Translations.refresher
+                    text: qsTr("Premium Account") + Translations.refresher
                     font.pixelSize: 9 * Devices.fontDensity
                     highlighted: true
-                    visible: false
-                    Material.accent: Colors.primary
-                    IOSStyle.accent: Colors.primary
+                    visible: !noteField.visible && premiumMsg.length
+                    Material.accent: Colors.accent
+                    IOSStyle.accent: Colors.accent
                     Material.elevation: 0
                 }
 
@@ -94,6 +122,8 @@ Page {
                     placeholderText: qsTr("Type your note") + Translations.refresher
                     font.pixelSize: 9 * Devices.fontDensity
                     selectByMouse: true
+                    visible: Premium.notesLimits > currentNotesCount || text.length > 0 || premiumMsg.length == 0
+                    onTextChanged: visible = true
                     background: Item {}
                 }
             }

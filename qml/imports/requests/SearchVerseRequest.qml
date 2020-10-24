@@ -4,7 +4,7 @@ import globals 1.0
 
 BaseRequest {
     id: searchRequest
-    url: baseUrl + "/main/search/verses?query=" + _query + "&limit=" + _limit + "&offset" + _offset
+    url: baseUrl + "/main/search/verses?query=" + _query + "&limit=" + _limit + "&offset=" + _offset
 
     property variant poets
     property string _query

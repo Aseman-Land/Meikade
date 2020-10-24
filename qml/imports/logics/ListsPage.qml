@@ -36,6 +36,13 @@ Viewport {
     mainItem: ListsView {
         id: lists
         anchors.fill: parent
+
+        premiumMsg: {
+            if (Premium.premium || Premium.listsLimits < 0)
+                return "";
+            return qsTr("You create %1 lists from %2 lists, Allowed to create using non-premium account.").arg(lModel.count).arg(Premium.listsLimits);
+        }
+
         listView.model: ListsModel {
             id: lModel
             selecteds: selectMode
@@ -79,7 +86,7 @@ Viewport {
             var item = lModel.get(index);
             Viewport.viewport.append(favoritedPoets_component, {"listId": item.listId, "title": item.title}, "page")
         }
-        onAddListRequest: dis.addListRequest()
+        onAddListRequest: dis.addListRequest();
 
         Connections {
             target: GlobalSignals

@@ -6,6 +6,8 @@ import AsemanQml.Base 2.0
 AsemanObject {
     id: bstrap
 
+    readonly property bool initialized: false
+
     function refresh() {
     }
 

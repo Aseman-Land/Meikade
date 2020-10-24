@@ -162,6 +162,20 @@ bool MeikadeOfflineItem::installed() const
     return q.next();
 }
 
+int MeikadeOfflineItem::checkCount() const
+{
+    QSqlDatabase db = QSqlDatabase::database(p->connectionName);
+
+    QSqlQuery q(db);
+    q.prepare("SELECT COUNT(*) FROM (SELECT poet_id FROM offline WHERE state = 1 GROUP BY poet_id)");
+    q.exec();
+
+    if (!q.next())
+        return 0;
+
+    return q.record().value(0).toInt();
+}
+
 void MeikadeOfflineItem::install(bool active)
 {
     if (downloading() || installing())
