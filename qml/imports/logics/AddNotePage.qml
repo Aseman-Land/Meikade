@@ -29,6 +29,8 @@ AddNoteView {
         return qsTr("You create %1 note from %2 notes, Allowed to create using non-premium account.").arg(currentNotesCount).arg(Premium.notesLimits);
     }
 
+    onPremiumBuyRequest: Viewport.controller.trigger("bottomdrawer:/account/premium/buy")
+
     function ensureVisible(r)
     {
         var zeroY = noteField.mapToItem(scene, 0, 0).y;

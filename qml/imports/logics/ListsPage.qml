@@ -12,6 +12,7 @@ Viewport {
     id: dis
 
     property alias mainViewport: lists.mainViewport
+    property ViewportController mainController
 
     property bool favoritesOnly
     property alias selectMode: lists.selectMode
@@ -47,6 +48,9 @@ Viewport {
             id: lModel
             selecteds: selectMode
         }
+
+        onPremiumBuyRequest: mainController.trigger("bottomdrawer:/account/premium/buy")
+
         closeBtn.onClicked: closeRequest()
         confirmBtn.onClicked: {
             var lists = new Array;

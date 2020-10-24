@@ -27,6 +27,8 @@ Page {
 
     readonly property real keyboardHeight: height/3
 
+    signal premiumBuyRequest()
+
     AsemanFlickable {
         id: flick
         anchors.top: headerItem.bottom
@@ -112,6 +114,11 @@ Page {
                     Material.accent: Colors.accent
                     IOSStyle.accent: Colors.accent
                     Material.elevation: 0
+
+                    Connections {
+                        target: premiumBtn
+                        onClicked: form.premiumBuyRequest()
+                    }
                 }
 
                 TextArea {

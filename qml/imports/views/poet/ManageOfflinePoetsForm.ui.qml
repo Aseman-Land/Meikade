@@ -26,6 +26,8 @@ Item {
 
     signal clicked(string link, variant properties)
 
+    signal premiumBuyRequest()
+
     Rectangle {
         anchors.fill: parent
         color: Colors.deepBackground
@@ -94,6 +96,11 @@ Item {
                     Material.accent: Colors.accent
                     IOSStyle.accent: Colors.accent
                     Material.elevation: 0
+
+                    Connections {
+                        target: premiumBtn
+                        onClicked: dis.premiumBuyRequest()
+                    }
                 }
             }
         }

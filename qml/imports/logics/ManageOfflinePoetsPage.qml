@@ -16,6 +16,8 @@ ManageOfflinePoetsView {
         return qsTr("You install %1 offline poet from %2 poets, Allowed to install using non-premium account.").arg(offlinePoetsCount).arg(Premium.offlineLimits);
     }
 
+    onPremiumBuyRequest: Viewport.controller.trigger("bottomdrawer:/account/premium/buy")
+
     listView.model: {
         switch (tabBar.currentIndex) {
         case 1:

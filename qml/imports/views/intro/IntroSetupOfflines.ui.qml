@@ -22,6 +22,8 @@ Page {
     readonly property real headerHeight: headColumn.height + 40 * Devices.density
     readonly property real ratio: 1 - Math.min( Math.max(-headerListener.result.y / listView.headerItem.height, 0), 1)
 
+    signal premiumBuyRequest()
+
     PointMapListener {
         id: headerListener
         source: listView.headerItem
@@ -88,6 +90,11 @@ Page {
                     Material.accent: Colors.accent
                     IOSStyle.accent: Colors.accent
                     Material.elevation: 0
+
+                    Connections {
+                        target: premiumBtn
+                        onClicked: homeForm.premiumBuyRequest()
+                    }
                 }
             }
         }

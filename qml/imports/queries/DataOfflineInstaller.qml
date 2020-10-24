@@ -11,7 +11,7 @@ MeikadeOfflineItem {
 
     function checkAndInstall(active) {
         var cnt = checkCount();
-        if (!active || cnt < Premium.listsLimits) {
+        if (!active || cnt < Premium.offlineLimits || Premium.offlineLimits < 0) {
             install(active);
             return true;
         } else {
@@ -25,7 +25,8 @@ MeikadeOfflineItem {
             };
             var err = ViewController.trigger("dialog:/general/error", errorInputs);
             err.itemClicked.connect(function(index){
-                console.debug(index);
+                if (index == 1)
+                    Viewport.controller.trigger("bottomdrawer:/account/premium/buy")
                 err.ViewportType.open = false;
             });
             return false;

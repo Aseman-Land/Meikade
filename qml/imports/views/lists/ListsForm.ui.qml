@@ -29,6 +29,7 @@ Item {
     signal clicked(int index)
     signal pressAndHold(int index, variant pos)
     signal addListRequest()
+    signal premiumBuyRequest()
 
     Rectangle {
         anchors.fill: parent
@@ -123,6 +124,11 @@ Item {
                     Material.accent: Colors.accent
                     IOSStyle.accent: Colors.accent
                     Material.elevation: 0
+
+                    Connections {
+                        target: premiumBtn
+                        onClicked: dis.premiumBuyRequest()
+                    }
                 }
             }
         }

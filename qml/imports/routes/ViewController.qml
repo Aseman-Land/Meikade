@@ -20,6 +20,11 @@ ViewportController {
     }
 
     ViewportControllerRoute {
+        route: /\w+\:\/account\/premium\/buy/
+        source: "PremiumConfirmRoute.qml"
+    }
+
+    ViewportControllerRoute {
         route: /\w+\:\/settings/
         source: "SettingsRoute.qml"
     }
