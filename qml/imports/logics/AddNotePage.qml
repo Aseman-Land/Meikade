@@ -26,7 +26,7 @@ AddNoteView {
     premiumMsg: {
         if (Premium.premium || Premium.notesLimits < 0)
             return "";
-        return qsTr("You create %1 note from %2 notes, Allowed to create using non-premium account.").arg(currentNotesCount).arg(Premium.notesLimits);
+        return GTranslations.translate( qsTr("You create %1 note from %2 notes, Allowed to create using non-premium account.").arg(currentNotesCount).arg(Premium.notesLimits) )
     }
 
     onPremiumBuyRequest: Viewport.controller.trigger("bottomdrawer:/account/premium/buy")

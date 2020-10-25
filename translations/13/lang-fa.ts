@@ -1300,6 +1300,52 @@ It containts %2 items currently.</source>
     </message>
 </context>
 <context>
+    <name>PremiumConfirmForm.ui</name>
+    <message>
+        <source>Unlimited Notes</source>
+        <translation>یادداشت‌های نامحدود</translation>
+    </message>
+    <message>
+        <source>Unlimited Lists</source>
+        <translation>لیست‌های نامحدود</translation>
+    </message>
+    <message>
+        <source>Unlimited Offline Poems</source>
+        <translation>شاعرهای آفلاین نامحدود</translation>
+    </message>
+    <message>
+        <source>Monthly</source>
+        <translation>پرداخت ماهیانه</translation>
+    </message>
+    <message>
+        <source>Yearly</source>
+        <translation>پرداخت سالیانه</translation>
+    </message>
+    <message>
+        <source>Confirm</source>
+        <translation>تایید</translation>
+    </message>
+    <message>
+        <source>Premium Account</source>
+        <translation>اکانت حرفه‌ای</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>لغو</translation>
+    </message>
+</context>
+<context>
+    <name>PremiumConfirmPage</name>
+    <message>
+        <source>%1 Tomans per Month</source>
+        <translation>%1 تومان ماهیانه</translation>
+    </message>
+    <message>
+        <source>%1 Tomans per Year</source>
+        <translation>%1 تومان سالیانه</translation>
+    </message>
+</context>
+<context>
     <name>RandomPoemRequester</name>
     <message>
         <source>Failed</source>

@@ -32,7 +32,7 @@ IntroView {
         premiumMsg: {
             if (Premium.premium || Premium.offlineLimits < 0)
                 return "";
-            return qsTr("You install %1 offline poet from %2 poets, Allowed to install using non-premium account.").arg(setupOfflinesForm.offlinePoetsCount).arg(Premium.offlineLimits);
+            return GTranslations.translate( qsTr("You install %1 offline poet from %2 poets, Allowed to install using non-premium account.").arg(setupOfflinesForm.offlinePoetsCount).arg(Premium.offlineLimits) )
         }
 
         onPremiumBuyRequest: Viewport.controller.trigger("bottomdrawer:/account/premium/buy")

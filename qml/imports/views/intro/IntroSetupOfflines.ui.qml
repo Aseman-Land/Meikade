@@ -76,7 +76,6 @@ Page {
                     text: qsTr("To buy premium account click on below button") + Translations.refresher
                     visible: Premium.offlineLimits <= offlinePoetsCount
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                    color: Colors.accent
                 }
 
                 RoundButton {
@@ -87,8 +86,8 @@ Page {
                     font.pixelSize: 9 * Devices.fontDensity
                     highlighted: true
                     visible: Premium.offlineLimits <= offlinePoetsCount
-                    Material.accent: Colors.accent
-                    IOSStyle.accent: Colors.accent
+                    Material.accent: Premium.packageColor
+                    IOSStyle.accent: Premium.packageColor
                     Material.elevation: 0
 
                     Connections {

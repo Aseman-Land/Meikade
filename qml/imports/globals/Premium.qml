@@ -12,6 +12,8 @@ AsemanObject {
     readonly property int premiumDays: 0
     readonly property int premium: premiumDays > 0
 
+    readonly property color packageColor: "#fa4"
+
     function refresh() {
     }
 

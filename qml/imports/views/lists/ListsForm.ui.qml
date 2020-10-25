@@ -110,7 +110,6 @@ Item {
                     text: qsTr("To buy premium account click on below button") + Translations.refresher
                     visible: !addBtn.visible && premiumMsg.length
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                    color: Colors.accent
                 }
 
                 RoundButton {
@@ -121,8 +120,8 @@ Item {
                     font.pixelSize: 9 * Devices.fontDensity
                     highlighted: true
                     visible: !addBtn.visible && premiumMsg.length
-                    Material.accent: Colors.accent
-                    IOSStyle.accent: Colors.accent
+                    Material.accent: Premium.packageColor
+                    IOSStyle.accent: Premium.packageColor
                     Material.elevation: 0
 
                     Connections {

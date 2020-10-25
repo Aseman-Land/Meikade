@@ -1174,6 +1174,52 @@ It contains %2 of current items.</translation>
     </message>
 </context>
 <context>
+    <name>PremiumConfirmForm.ui</name>
+    <message>
+        <source>Unlimited Notes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unlimited Lists</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unlimited Offline Poems</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Monthly</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Yearly</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Confirm</source>
+        <translation type="unfinished">Confirm</translation>
+    </message>
+    <message>
+        <source>Premium Account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation type="unfinished">Cancel</translation>
+    </message>
+</context>
+<context>
+    <name>PremiumConfirmPage</name>
+    <message>
+        <source>%1 Tomans per Month</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 Tomans per Year</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>RandomPoemRequester</name>
     <message>
         <source>Failed</source>

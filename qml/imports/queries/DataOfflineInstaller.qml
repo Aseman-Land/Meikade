@@ -17,7 +17,7 @@ MeikadeOfflineItem {
         } else {
             var errorInputs = {
                 "title": qsTr("Premium Needed"),
-                "body": qsTr("Your limit %1 offline poets ended. Do you want to buy premium account?").arg(Premium.offlineLimits),
+                "body": GTranslations.translate( qsTr("Your limit %1 offline poets ended. Do you want to buy premium account?").arg(Premium.offlineLimits) ),
                 "buttons": [
                     qsTr("Cancel"),
                     qsTr("BUY Premium")
@@ -26,7 +26,7 @@ MeikadeOfflineItem {
             var err = ViewController.trigger("dialog:/general/error", errorInputs);
             err.itemClicked.connect(function(index){
                 if (index == 1)
-                    Viewport.controller.trigger("bottomdrawer:/account/premium/buy")
+                    ViewController.trigger("bottomdrawer:/account/premium/buy")
                 err.ViewportType.open = false;
             });
             return false;

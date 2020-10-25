@@ -2,7 +2,7 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="fa_IR">
 <context>
-    <name>AboutForm</name>
+    <name>AboutForm/name>
     <message>
         <source>Website</source>
         <translation>وب‌سایت</translation>
@@ -79,7 +79,7 @@
     </message>
 </context>
 <context>
-    <name>AddListForm</name>
+    <name>AddListForm/name>
     <message>
         <source>Add List</source>
         <translation>لیست جدید</translation>
@@ -106,7 +106,7 @@
     </message>
 </context>
 <context>
-    <name>AddNoteForm</name>
+    <name>AddNoteForm/name>
     <message>
         <source>Literary array</source>
         <translation type="vanished">آرایه ادبی</translation>
@@ -198,7 +198,7 @@
     </message>
 </context>
 <context>
-    <name>ChangeNameForm</name>
+    <name>ChangeNameForm/name>
     <message>
         <source>Change Name</source>
         <translation>تغییر نام</translation>
@@ -224,7 +224,7 @@
     </message>
 </context>
 <context>
-    <name>ChangePasswordForm</name>
+    <name>ChangePasswordForm/name>
     <message>
         <source>Enter your new password and tap on the Change button.</source>
         <translation>لطفا رمز عبور جدید را وارد کنید و دکمه تایید را بزنید.</translation>
@@ -254,7 +254,7 @@
     </message>
 </context>
 <context>
-    <name>ChangePasswordUsingCodeForm</name>
+    <name>ChangePasswordUsingCodeForm/name>
     <message>
         <source>Enter token, sent to your email and tap on the Submit button.</source>
         <translation>لطفا کدی که به ایمیل شما ارسال شده است را وارد کنید و دکمه تایید را بزنید.</translation>
@@ -277,7 +277,7 @@
     </message>
 </context>
 <context>
-    <name>ChangePasswordUsingPasswordForm</name>
+    <name>ChangePasswordUsingPasswordForm/name>
     <message>
         <source>Enter your current password and tap on the Submit button.</source>
         <translation>لطفا رمز عبور فعلی خود را وارد کنید و دکمه تایید را بزنید.</translation>
@@ -300,7 +300,7 @@
     </message>
 </context>
 <context>
-    <name>ChangelogsForm</name>
+    <name>ChangelogsForm/name>
     <message>
         <source>ChangeLogs</source>
         <translation>تغییرات نسخه جدید</translation>
@@ -311,7 +311,7 @@
     </message>
 </context>
 <context>
-    <name>ContactForm</name>
+    <name>ContactForm/name>
     <message>
         <source>Contact us</source>
         <translation>تماس با ما</translation>
@@ -411,7 +411,7 @@
     </message>
 </context>
 <context>
-    <name>DeleteListForm</name>
+    <name>DeleteListForm/name>
     <message>
         <source>Delete List</source>
         <translation>حذف لیست</translation>
@@ -443,7 +443,7 @@ It containts %2 items currently.</source>
     </message>
 </context>
 <context>
-    <name>DeleteNoteForm</name>
+    <name>DeleteNoteForm/name>
     <message>
         <source>Delete List</source>
         <translation>حذف لیست</translation>
@@ -480,7 +480,7 @@ It containts %2 items currently.</source>
     </message>
 </context>
 <context>
-    <name>FavoritedListForm</name>
+    <name>FavoritedListForm/name>
     <message>
         <source>There is no item here</source>
         <translation>هیچ عنوانی وجود ندارد</translation>
@@ -495,7 +495,7 @@ It containts %2 items currently.</source>
     </message>
 </context>
 <context>
-    <name>FavoritedPoetsListForm</name>
+    <name>FavoritedPoetsListForm/name>
     <message>
         <source>There is no item here</source>
         <translation>هیچ عنوانی وجود ندارد</translation>
@@ -544,14 +544,14 @@ It containts %2 items currently.</source>
     </message>
 </context>
 <context>
-    <name>FooterItem</name>
+    <name>FooterItem/name>
     <message>
         <source>Label</source>
         <translation>برچسب</translation>
     </message>
 </context>
 <context>
-    <name>ForgetPasswordForm</name>
+    <name>ForgetPasswordForm/name>
     <message>
         <source>To restore your password please enter your username below and tap on the restore. We&apos;ll send an email to you to change your password.</source>
         <translation>برای بازیابی رمز عبور خود، لطفا نام کاربری خود را وارد کنید و دکمه بازیابی را بزنید. یک ایمیل به شما ارسال می‌شود که از طریق آن می‌توانید رمز عبور خود را تغییر دهید.</translation>
@@ -597,7 +597,7 @@ It containts %2 items currently.</source>
     </message>
 </context>
 <context>
-    <name>HafizFaalForm</name>
+    <name>HafizFaalForm/name>
     <message>
         <source>Hafiz Faal</source>
         <translation>فال حافظ</translation>
@@ -619,14 +619,14 @@ It containts %2 items currently.</source>
     </message>
 </context>
 <context>
-    <name>HomeForm</name>
+    <name>HomeForm/name>
     <message>
         <source>Meikade</source>
         <translation>می‌کده</translation>
     </message>
 </context>
 <context>
-    <name>IntroDoneForm</name>
+    <name>IntroDoneForm/name>
     <message>
         <source>Setup Completed</source>
         <translation>شخصی‌سازی کامل شد</translation>
@@ -657,7 +657,7 @@ It containts %2 items currently.</source>
     </message>
 </context>
 <context>
-    <name>IntroForm</name>
+    <name>IntroForm/name>
     <message>
         <source>Next</source>
         <translation>بعدی</translation>
@@ -675,7 +675,7 @@ It containts %2 items currently.</source>
     </message>
 </context>
 <context>
-    <name>IntroSetupHome</name>
+    <name>IntroSetupHome/name>
     <message>
         <source>Setup Favorites</source>
         <translation>علاقه‌مندی‌ها</translation>
@@ -686,7 +686,7 @@ It containts %2 items currently.</source>
     </message>
 </context>
 <context>
-    <name>IntroSetupOfflines</name>
+    <name>IntroSetupOfflines/name>
     <message>
         <source>Offline Poets</source>
         <translation>شاعرهای آفلاین</translation>
@@ -717,7 +717,7 @@ It containts %2 items currently.</source>
     </message>
 </context>
 <context>
-    <name>IntroWelcomForm</name>
+    <name>IntroWelcomForm/name>
     <message>
         <source>Welcome to Meikade 4</source>
         <translation>به می‌کده ۴ خوش آمدید</translation>
@@ -811,7 +811,7 @@ It containts %2 items currently.</source>
     </message>
 </context>
 <context>
-    <name>ListsForm</name>
+    <name>ListsForm/name>
     <message>
         <source>There is no item here</source>
         <translation>هیچ عنوانی وجود ندارد</translation>
@@ -876,7 +876,7 @@ It containts %2 items currently.</source>
     </message>
 </context>
 <context>
-    <name>LoginForm</name>
+    <name>LoginForm/name>
     <message>
         <source>If you created account before, Just enter your username below. Otherwise click on &quot;Create new account&quot; button.</source>
         <translation>اگر قبلا در می‌کده عضو شده‌اید، نام کاربری و رمز عبور خود را وارد کنید. در غیر این صورت برای عضویت روی &quot;ساختن اکانت جدید&quot; کلیک کنید.</translation>
@@ -911,7 +911,7 @@ It containts %2 items currently.</source>
     </message>
 </context>
 <context>
-    <name>MainForm</name>
+    <name>MainForm/name>
     <message>
         <source>Home</source>
         <translation>خانه</translation>
@@ -926,7 +926,7 @@ It containts %2 items currently.</source>
     </message>
 </context>
 <context>
-    <name>ManageOfflinePoetsForm</name>
+    <name>ManageOfflinePoetsForm/name>
     <message>
         <source>Manage Offlines</source>
         <translation>مدیریت آفلاین‌ها</translation>
@@ -972,7 +972,7 @@ It containts %2 items currently.</source>
     </message>
 </context>
 <context>
-    <name>MostReadedPoemsForm</name>
+    <name>MostReadedPoemsForm/name>
     <message>
         <source>Poets</source>
         <translation>شاعرها</translation>
@@ -999,7 +999,7 @@ It containts %2 items currently.</source>
     </message>
 </context>
 <context>
-    <name>MyMeikadeForm</name>
+    <name>MyMeikadeForm/name>
     <message>
         <source>Login / Register</source>
         <translation>ورود / عضویت</translation>
@@ -1076,7 +1076,7 @@ It containts %2 items currently.</source>
     </message>
 </context>
 <context>
-    <name>NotesListForm</name>
+    <name>NotesListForm/name>
     <message>
         <source>There is no item here</source>
         <translation>هیچ عنوانی وجود ندارد</translation>
@@ -1102,7 +1102,7 @@ It containts %2 items currently.</source>
     </message>
 </context>
 <context>
-    <name>NotesPoetsListForm</name>
+    <name>NotesPoetsListForm/name>
     <message>
         <source>There is no item here</source>
         <translation>هیچ عنوانی وجود ندارد</translation>
@@ -1128,7 +1128,7 @@ It containts %2 items currently.</source>
     </message>
 </context>
 <context>
-    <name>PoemForm</name>
+    <name>PoemForm/name>
     <message>
         <source>Views</source>
         <translation>بازدید</translation>
@@ -1198,7 +1198,7 @@ It containts %2 items currently.</source>
     </message>
 </context>
 <context>
-    <name>PoetBioForm</name>
+    <name>PoetBioForm/name>
     <message>
         <source>Biography</source>
         <translation>درباره شاعر</translation>
@@ -1251,7 +1251,7 @@ It containts %2 items currently.</source>
     </message>
 </context>
 <context>
-    <name>PoetForm</name>
+    <name>PoetForm/name>
     <message>
         <source>Biography</source>
         <translation>درباره شاعر</translation>
@@ -1293,10 +1293,56 @@ It containts %2 items currently.</source>
     </message>
 </context>
 <context>
-    <name>PoetsListForm</name>
+    <name>PoetsListForm/name>
     <message>
         <source>All Poets</source>
         <translation>همه شاعرها</translation>
+    </message>
+</context>
+<context>
+    <name>PremiumConfirmForm/name>
+    <message>
+        <source>Unlimited Notes</source>
+        <translation>یادداشت‌های نامحدود</translation>
+    </message>
+    <message>
+        <source>Unlimited Lists</source>
+        <translation>لیست‌های نامحدود</translation>
+    </message>
+    <message>
+        <source>Unlimited Offline Poems</source>
+        <translation>شاعرهای آفلاین نامحدود</translation>
+    </message>
+    <message>
+        <source>Monthly</source>
+        <translation>پرداخت ماهیانه</translation>
+    </message>
+    <message>
+        <source>Yearly</source>
+        <translation>پرداخت سالیانه</translation>
+    </message>
+    <message>
+        <source>Confirm</source>
+        <translation>تایید</translation>
+    </message>
+    <message>
+        <source>Premium Account</source>
+        <translation>اکانت حرفه‌ای</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>لغو</translation>
+    </message>
+</context>
+<context>
+    <name>PremiumConfirmPage</name>
+    <message>
+        <source>%1 Tomans per Month</source>
+        <translation>%1 تومان ماهیانه</translation>
+    </message>
+    <message>
+        <source>%1 Tomans per Year</source>
+        <translation>%1 تومان سالیانه</translation>
     </message>
 </context>
 <context>
@@ -1326,7 +1372,7 @@ It containts %2 items currently.</source>
     </message>
 </context>
 <context>
-    <name>SearchFilterForm</name>
+    <name>SearchFilterForm/name>
     <message>
         <source>Search Filter</source>
         <translation>جستجوی پیشرفته</translation>
@@ -1345,7 +1391,7 @@ It containts %2 items currently.</source>
     </message>
 </context>
 <context>
-    <name>SearchForm</name>
+    <name>SearchForm/name>
     <message>
         <source>Search domain:</source>
         <translation>محدوده جستجو:</translation>
@@ -1375,7 +1421,7 @@ It containts %2 items currently.</source>
     </message>
 </context>
 <context>
-    <name>SettingsForm</name>
+    <name>SettingsForm/name>
     <message>
         <source>Language</source>
         <translation>زبان</translation>
@@ -1445,7 +1491,7 @@ It containts %2 items currently.</source>
     </message>
 </context>
 <context>
-    <name>SignupForm</name>
+    <name>SignupForm/name>
     <message>
         <source>Username</source>
         <translation>نام کاربری</translation>
@@ -1582,7 +1628,7 @@ It containts %2 items currently.</source>
     </message>
 </context>
 <context>
-    <name>SyncForm</name>
+    <name>SyncForm/name>
     <message>
         <source>Last sync date and time</source>
         <translation>زمان آخرین همگام‌سازی</translation>
@@ -1632,7 +1678,7 @@ It containts %2 items currently.</source>
     </message>
 </context>
 <context>
-    <name>TopPoetsForm</name>
+    <name>TopPoetsForm/name>
     <message>
         <source>There is no item here</source>
         <translation>هیچ عنوانی وجود ندارد</translation>
@@ -1647,14 +1693,14 @@ It containts %2 items currently.</source>
     </message>
 </context>
 <context>
-    <name>WaitDialog</name>
+    <name>WaitDialog/name>
     <message>
         <source>Please Wait...</source>
         <translation>لطفا صبر کنید...</translation>
     </message>
 </context>
 <context>
-    <name>WebBrowserForm</name>
+    <name>WebBrowserForm/name>
     <message>
         <source>Loading</source>
         <translation>در حال بارگزاری</translation>
