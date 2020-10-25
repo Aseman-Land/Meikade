@@ -1344,6 +1344,10 @@ It contains %2 of current items.</translation>
         <source>Poems font size</source>
         <translation>Poem font size</translation>
     </message>
+    <message>
+        <source>Account State</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>SettingsPage</name>
@@ -1362,6 +1366,18 @@ It contains %2 of current items.</translation>
     <message>
         <source>Logout Successfully</source>
         <translation>Logout Successfully</translation>
+    </message>
+    <message>
+        <source>Premium</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Normal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 days</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

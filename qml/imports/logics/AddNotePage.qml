@@ -24,7 +24,7 @@ AddNoteView {
     noteField.onCursorRectangleChanged: ensureVisible(noteField.cursorRectangle)
 
     premiumMsg: {
-        if (Premium.premium || Premium.notesLimits < 0)
+        if (Premium.premium || Premium.notesLimits < 0 || !Bootstrap.initialized)
             return "";
         return GTranslations.translate( qsTr("You create %1 note from %2 notes, Allowed to create using non-premium account.").arg(currentNotesCount).arg(Premium.notesLimits) )
     }

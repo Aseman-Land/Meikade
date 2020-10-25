@@ -39,7 +39,7 @@ Viewport {
         anchors.fill: parent
 
         premiumMsg: {
-            if (Premium.premium || Premium.listsLimits < 0)
+            if (Premium.premium || Premium.listsLimits < 0 || !Bootstrap.initialized)
                 return "";
             return GTranslations.translate( qsTr("You create %1 lists from %2 lists, Allowed to create using non-premium account.").arg(lModel.count).arg(Premium.listsLimits) )
         }

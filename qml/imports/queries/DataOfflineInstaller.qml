@@ -11,7 +11,7 @@ MeikadeOfflineItem {
 
     function checkAndInstall(active) {
         var cnt = checkCount();
-        if (!active || cnt < Premium.offlineLimits || Premium.offlineLimits < 0) {
+        if (!active || cnt < Premium.offlineLimits || Premium.offlineLimits < 0 || !Bootstrap.initialized) {
             install(active);
             return true;
         } else {

@@ -30,7 +30,7 @@ IntroView {
     setupOfflinesForm {
 
         premiumMsg: {
-            if (Premium.premium || Premium.offlineLimits < 0)
+            if (Premium.premium || Premium.offlineLimits < 0 || !Bootstrap.initialized)
                 return "";
             return GTranslations.translate( qsTr("You install %1 offline poet from %2 poets, Allowed to install using non-premium account.").arg(setupOfflinesForm.offlinePoetsCount).arg(Premium.offlineLimits) )
         }

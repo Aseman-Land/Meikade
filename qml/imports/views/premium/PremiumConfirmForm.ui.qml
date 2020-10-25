@@ -13,15 +13,20 @@ Item {
     width: Constants.width
     height: Constants.height
 
+    IOSStyle.theme: forceDark? IOSStyle.Dark : AsemanGlobals.iosTheme
+    Material.theme: forceDark? Material.Dark : AsemanGlobals.androidTheme
+
     property alias titleLabel: titleLabel
     property alias subtitleLabel: subtitleLabel
     property alias confirmBtn: confirmBtn
     property alias intervalPayCombo: intervalPayCombo
     property alias cancelBtn: cancelBtn
 
+    property bool forceDark
+
     Rectangle {
         anchors.fill: parent
-        color: Colors.background
+        color: forceDark? "#222" : Colors.background
         opacity: 0.5
     }
 

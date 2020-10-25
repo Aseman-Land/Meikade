@@ -1470,6 +1470,10 @@ It containts %2 items currently.</source>
         <source>Poems font size</source>
         <translation>اندازه متن شعر‌ها</translation>
     </message>
+    <message>
+        <source>Account State</source>
+        <translation>وضعیت اکانت شما</translation>
+    </message>
 </context>
 <context>
     <name>SettingsPage</name>
@@ -1488,6 +1492,18 @@ It containts %2 items currently.</source>
     <message>
         <source>Logout Successfully</source>
         <translation>با موفقیت خارج شدید</translation>
+    </message>
+    <message>
+        <source>Premium</source>
+        <translation>اکانت حرفه‌ای</translation>
+    </message>
+    <message>
+        <source>Normal</source>
+        <translation>اکانت معمولی</translation>
+    </message>
+    <message>
+        <source>%1 days</source>
+        <translation>%1 روز</translation>
     </message>
 </context>
 <context>

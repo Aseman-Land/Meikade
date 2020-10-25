@@ -21,6 +21,9 @@ Item {
     property alias themeCombo: themeCombo
     property alias phraseSwitch: phraseSwitch
     property alias fontSizeSlider: fontSizeSlider
+    property alias accountStateLabel: accountStateLabel
+    property alias accountDaysLabel: accountDaysLabel
+    property alias accountPremiumBuy: accountPremiumBuy
 
     Material.theme: Material.Dark
     IOSStyle.theme: IOSStyle.Dark
@@ -52,6 +55,51 @@ Item {
                 anchors.topMargin: 10 * Devices.density
                 anchors.margins: 20 * Devices.density
                 spacing: 4 * Devices.density
+
+                RowLayout {
+                    visible: Bootstrap.initialized && AsemanGlobals.accessToken.length
+                    Layout.topMargin: 10 * Devices.density
+                    Layout.bottomMargin: 30 * Devices.density
+
+                    Label {
+                        Layout.fillWidth: true
+                        font.pixelSize: 9 * Devices.fontDensity
+                        horizontalAlignment: Text.AlignLeft
+                        text: qsTr("Account State") + Translations.refresher
+                    }
+
+                    Label {
+                        id: accountStateLabel
+                        font.pixelSize: 9 * Devices.fontDensity
+                        font.bold: true
+                        horizontalAlignment: Text.AlignLeft
+                        color: Premium.premium? Premium.packageColor : Colors.accent
+
+                        Label {
+                            id: accountDaysLabel
+                            anchors.top: parent.bottom
+                            anchors.horizontalCenter: parent.horizontalCenter
+                            font.pixelSize: 7 * Devices.fontDensity
+                            horizontalAlignment: Text.AlignLeft
+                            color: Premium.packageColor
+                            visible: Premium.premium
+                        }
+
+                        Button {
+                            id: accountPremiumBuy
+                            anchors.top: parent.bottom
+                            anchors.horizontalCenter: parent.horizontalCenter
+                            width: 80 * Devices.density
+                            height: 36 * Devices.density
+                            font.pixelSize: 8 * Devices.fontDensity
+                            text: qsTr("Upgrade") + Translations.refresher
+                            highlighted: true
+                            Material.accent: Premium.packageColor
+                            IOSStyle.accent: Premium.packageColor
+                            visible: !Premium.premium
+                        }
+                    }
+                }
 
                 RowLayout {
                     Label {
@@ -171,6 +219,7 @@ Item {
                     to: 5
                     stepSize: 1
                 }
+
             }
         }
     }
