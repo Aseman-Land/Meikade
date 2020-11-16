@@ -2,6 +2,7 @@ import QtQuick 2.12
 import AsemanQml.Base 2.0
 import AsemanQml.Viewport 2.0
 import AsemanQml.Models 2.0
+import requests 1.0
 import globals 1.0
 import views 1.0
 import models 1.0
@@ -39,9 +40,9 @@ Viewport {
         anchors.fill: parent
 
         premiumMsg: {
-            if (Premium.premium || Premium.listsLimits < 0 || !Bootstrap.initialized)
+            if (Subscription.premium || Subscription.listsLimits < 0 || !Bootstrap.initialized)
                 return "";
-            return GTranslations.translate( qsTr("You create %1 lists from %2 lists, Allowed to create using non-premium account.").arg(lModel.count).arg(Premium.listsLimits) )
+            return GTranslations.translate( qsTr("You create %1 lists from %2 lists, Allowed to create using non-premium account.").arg(lModel.count).arg(Subscription.listsLimits) )
         }
 
         listView.model: ListsModel {

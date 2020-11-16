@@ -89,8 +89,8 @@ SettingsView {
     fontSizeSlider.onValueChanged: if (!initTimer.running) AsemanGlobals.fontSize = fontSizeSlider.value
     fontSizeSlider.value: AsemanGlobals.fontSize
 
-    accountStateLabel.text: (Premium.premium? qsTr("Premium") : qsTr("Normal")) + Translations.refresher
-    accountDaysLabel.text: GTranslations.translate( qsTr("%1 days").arg(Premium.premiumDays) ) + Translations.refresher
+    accountStateLabel.text: Subscription.title + Translations.refresher
+    accountDaysLabel.text: GTranslations.translate( qsTr("%1 days").arg(Subscription.premiumDays) ) + Translations.refresher
     accountPremiumBuy.onClicked: Viewport.controller.trigger("bottomdrawer:/account/premium/buy", {"forceDark": true})
 
     Component.onCompleted: {

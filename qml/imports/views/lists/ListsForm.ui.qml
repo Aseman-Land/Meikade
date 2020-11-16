@@ -10,6 +10,7 @@ import QtQuick.Controls.IOSStyle 2.0
 import globals 1.0
 import micros 1.0
 import models 1.0
+import requests 1.0
 
 Item {
     id: dis
@@ -80,7 +81,7 @@ Item {
                     font.pixelSize: 9 * Devices.fontDensity
                     text: qsTr("Add List") + Translations.refresher
                     highlighted: true
-                    visible: Premium.listsLimits > listView.count || premiumMsg.length == 0
+                    visible: Subscription.listsLimits > listView.count || premiumMsg.length == 0
 
                     Connections {
                         target: addBtn
@@ -98,7 +99,7 @@ Item {
                     text: premiumMsg
                     visible: premiumMsg.length
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                    color: Premium.listsLimits > listView.count? Colors.foreground : "#a00"
+                    color: Subscription.listsLimits > listView.count? Colors.foreground : "#a00"
                 }
 
                 Label {
@@ -120,8 +121,8 @@ Item {
                     font.pixelSize: 9 * Devices.fontDensity
                     highlighted: true
                     visible: !addBtn.visible && premiumMsg.length
-                    Material.accent: Premium.packageColor
-                    IOSStyle.accent: Premium.packageColor
+                    Material.accent: Subscription.premiumColor
+                    IOSStyle.accent: Subscription.premiumColor
                     Material.elevation: 0
 
                     Connections {

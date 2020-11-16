@@ -8,6 +8,7 @@ import QtQuick.Controls.Material 2.0
 import QtQuick.Controls.IOSStyle 2.0
 import globals 1.0
 import micros 1.0
+import requests 1.0
 
 Page {
     id: form
@@ -88,7 +89,7 @@ Page {
                     text: premiumMsg
                     visible: premiumMsg.length
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                    color: Premium.notesLimits > currentNotesCount? Colors.foreground : "#a00"
+                    color: Subscription.notesLimits > currentNotesCount? Colors.foreground : "#a00"
                 }
 
                 Label {
@@ -110,8 +111,8 @@ Page {
                     font.pixelSize: 9 * Devices.fontDensity
                     highlighted: true
                     visible: !noteField.visible && premiumMsg.length
-                    Material.accent: Premium.packageColor
-                    IOSStyle.accent: Premium.packageColor
+                    Material.accent: Subscription.premiumColor
+                    IOSStyle.accent: Subscription.premiumColor
                     Material.elevation: 0
 
                     Connections {
@@ -128,7 +129,7 @@ Page {
                     placeholderText: qsTr("Type your note") + Translations.refresher
                     font.pixelSize: 9 * Devices.fontDensity
                     selectByMouse: true
-                    visible: Premium.notesLimits > currentNotesCount || text.length > 0 || premiumMsg.length == 0
+                    visible: Subscription.notesLimits > currentNotesCount || text.length > 0 || premiumMsg.length == 0
                     onTextChanged: visible = true
                     background: Item {}
                 }

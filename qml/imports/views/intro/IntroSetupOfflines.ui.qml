@@ -8,6 +8,7 @@ import QtQuick.Controls.IOSStyle 2.0
 import globals 1.0
 import micros 1.0
 import queries 1.0
+import requests 1.0
 
 Page {
     id: homeForm
@@ -64,7 +65,7 @@ Page {
                     opacity: 0.8
                     text: premiumMsg
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                    color: Premium.offlineLimits > offlinePoetsCount? Colors.foreground : "#a00"
+                    color: Subscription.offlineLimits > offlinePoetsCount? Colors.foreground : "#a00"
                 }
 
                 Label {
@@ -74,7 +75,7 @@ Page {
                     horizontalAlignment: Text.AlignHCenter
                     font.pixelSize: 8 * Devices.fontDensity
                     text: qsTr("To buy premium account click on below button") + Translations.refresher
-                    visible: Premium.offlineLimits <= offlinePoetsCount
+                    visible: Subscription.offlineLimits <= offlinePoetsCount
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                 }
 
@@ -85,9 +86,9 @@ Page {
                     text: qsTr("Premium Account") + Translations.refresher
                     font.pixelSize: 9 * Devices.fontDensity
                     highlighted: true
-                    visible: Premium.offlineLimits <= offlinePoetsCount
-                    Material.accent: Premium.packageColor
-                    IOSStyle.accent: Premium.packageColor
+                    visible: Subscription.offlineLimits <= offlinePoetsCount
+                    Material.accent: Subscription.premiumColor
+                    IOSStyle.accent: Subscription.premiumColor
                     Material.elevation: 0
 
                     Connections {

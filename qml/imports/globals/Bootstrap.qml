@@ -30,7 +30,7 @@ AsemanObject {
         try {
             initialized = map.initialized;
         } catch (e) {
-            initialized = false;
+            initialized = true;
         }
     }
 

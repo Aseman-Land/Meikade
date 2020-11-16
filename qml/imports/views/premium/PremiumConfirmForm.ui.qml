@@ -6,6 +6,7 @@ import AsemanQml.Controls 2.0
 import QtQuick.Layouts 1.3
 import QtQuick.Controls.Material 2.0
 import QtQuick.Controls.IOSStyle 2.0
+import requests 1.0
 import globals 1.0
 import micros 1.0
 
@@ -67,7 +68,7 @@ Item {
                         font.pixelSize: 40 * Devices.fontDensity
                         font.family: MaterialIcons.family
                         text: MaterialIcons.mdi_podium_gold
-                        color: Premium.packageColor
+                        color: Subscription.premiumColor
                     }
 
                     ColumnLayout {
@@ -89,7 +90,7 @@ Item {
                             horizontalAlignment: Text.AlignLeft
                             font.pixelSize: 11 * Devices.fontDensity
                             text: "400,000 IRR per Year"
-                            color: Premium.packageColor
+                            color: Subscription.premiumColor
                         }
                     }
                 }
@@ -118,7 +119,7 @@ Item {
                             font.pixelSize: 14 * Devices.fontDensity
                             font.family: MaterialIcons.family
                             text: MaterialIcons.mdi_check
-                            color: Premium.packageColor
+                            color: Subscription.premiumColor
                         }
 
                         Label {
@@ -154,8 +155,8 @@ Item {
         enabled: nameField.isValid
         text: qsTr("Confirm") + Translations.refresher
         highlighted: true
-        Material.accent: Premium.packageColor
-        IOSStyle.accent: Premium.packageColor
+        Material.accent: Subscription.premiumColor
+        IOSStyle.accent: Subscription.premiumColor
         Material.elevation: 0
     }
 
@@ -165,7 +166,7 @@ Item {
         anchors.right: parent.right
         anchors.left: parent.left
         height: Devices.standardTitleBarHeight
-        color: Premium.packageColor
+        color: Subscription.premiumColor
 
         Separator {}
 

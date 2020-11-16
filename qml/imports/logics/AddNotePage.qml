@@ -24,9 +24,9 @@ AddNoteView {
     noteField.onCursorRectangleChanged: ensureVisible(noteField.cursorRectangle)
 
     premiumMsg: {
-        if (Premium.premium || Premium.notesLimits < 0 || !Bootstrap.initialized)
+        if (Subscription.premium || Subscription.notesLimits < 0 || !Bootstrap.initialized)
             return "";
-        return GTranslations.translate( qsTr("You create %1 note from %2 notes, Allowed to create using non-premium account.").arg(currentNotesCount).arg(Premium.notesLimits) )
+        return GTranslations.translate( qsTr("You create %1 note from %2 notes, Allowed to create using non-premium account.").arg(currentNotesCount).arg(Subscription.notesLimits) )
     }
 
     onPremiumBuyRequest: Viewport.controller.trigger("bottomdrawer:/account/premium/buy")

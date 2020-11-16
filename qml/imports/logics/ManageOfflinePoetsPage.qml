@@ -1,5 +1,6 @@
 import QtQuick 2.12
 import AsemanQml.Viewport 2.0
+import requests 1.0
 import views 1.0
 import globals 1.0
 import models 1.0
@@ -11,9 +12,9 @@ ManageOfflinePoetsView {
     closeBtn.onClicked: ViewportType.open = false
 
     premiumMsg: {
-        if (Premium.premium || Premium.offlineLimits < 0 || !Bootstrap.initialized)
+        if (Subscription.premium || Subscription.offlineLimits < 0 || !Bootstrap.initialized)
             return "";
-        return GTranslations.translate( qsTr("You install %1 offline poet from %2 poets, Allowed to install using non-premium account.").arg(offlinePoetsCount).arg(Premium.offlineLimits) );
+        return GTranslations.translate( qsTr("You install %1 offline poet from %2 poets, Allowed to install using non-premium account.").arg(offlinePoetsCount).arg(Subscription.offlineLimits) );
     }
 
     onPremiumBuyRequest: Viewport.controller.trigger("bottomdrawer:/account/premium/buy")

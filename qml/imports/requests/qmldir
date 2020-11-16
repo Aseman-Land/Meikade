@@ -1,6 +1,7 @@
 singleton MyUserRequest 1.0 MyUserRequest.qml
 singleton RandomPoemRequester 1.0 RandomPoemRequester.qml
 singleton StoreActionsBulk 1.0 StoreActionsBulk.qml
+singleton Subscription 1.0 Subscription.qml
 RandomPoemRequest 1.0 RandomPoemRequest.qml
 HomeRequest 1.0 HomeRequest.qml
 LoginRequest 1.0 LoginRequest.qml

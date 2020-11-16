@@ -10,11 +10,12 @@
 
     <supports-screens android:largeScreens="true" android:normalScreens="true" android:anyDensity="true" android:smallScreens="true"/>
 
-    <application android:hardwareAccelerated="true" android:name="io.aseman.android.AsemanApplication" android:label="Meikade" android:extractNativeLibs="true">
+    <application android:hardwareAccelerated="true" android:name="io.aseman.android.AsemanApplication" android:label="Meikade" android:icon="@drawable/icon" android:extractNativeLibs="true">
         <activity android:configChanges="orientation|uiMode|screenLayout|screenSize|smallestScreenSize|layoutDirection|locale|fontScale|keyboard|keyboardHidden|navigation|mcc|mnc|density"
                   android:name="io.aseman.android.AsemanActivity"
                   android:label="Meikade"
                   android:screenOrientation="unspecified"
+                  android:theme="@style/splashScreenTheme"
                   android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

@@ -27,8 +27,11 @@ AsemanWindow {
     Viewport {
         id: viewport
         anchors.fill: parent
-        mainItem: MainPage {
+        mainItem: MeikadeLoader {
             anchors.fill: parent
+            sourceComponent: MainPage {
+                anchors.fill: parent
+            }
         }
         Component.onCompleted: ViewController.viewport = viewport
     }

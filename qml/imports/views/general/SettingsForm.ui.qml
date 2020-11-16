@@ -6,6 +6,7 @@ import QtQuick.Controls 2.3
 import QtQuick.Layouts 1.3
 import QtQuick.Controls.Material 2.0
 import QtQuick.Controls.IOSStyle 2.0
+import requests 1.0
 import globals 1.0
 import micros 1.0
 import models 1.0
@@ -70,10 +71,11 @@ Item {
 
                     Label {
                         id: accountStateLabel
+                        Layout.minimumWidth: 60 * Devices.density
                         font.pixelSize: 9 * Devices.fontDensity
                         font.bold: true
-                        horizontalAlignment: Text.AlignLeft
-                        color: Premium.premium? Premium.packageColor : Colors.accent
+                        horizontalAlignment: Text.AlignHCenter
+                        color: Subscription.premium? Subscription.premiumColor : Colors.accent
 
                         Label {
                             id: accountDaysLabel
@@ -81,8 +83,8 @@ Item {
                             anchors.horizontalCenter: parent.horizontalCenter
                             font.pixelSize: 7 * Devices.fontDensity
                             horizontalAlignment: Text.AlignLeft
-                            color: Premium.packageColor
-                            visible: Premium.premium
+                            color: Subscription.premiumColor
+                            visible: Subscription.premium
                         }
 
                         Button {
@@ -94,9 +96,9 @@ Item {
                             font.pixelSize: 8 * Devices.fontDensity
                             text: qsTr("Upgrade") + Translations.refresher
                             highlighted: true
-                            Material.accent: Premium.packageColor
-                            IOSStyle.accent: Premium.packageColor
-                            visible: !Premium.premium
+                            Material.accent: Subscription.premiumColor
+                            IOSStyle.accent: Subscription.premiumColor
+                            visible: !Subscription.premium
                         }
                     }
                 }

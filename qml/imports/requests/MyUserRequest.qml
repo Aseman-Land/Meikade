@@ -31,6 +31,13 @@ UserRequest {
             return "";
         }
     }
+    readonly property variant _subscription: {
+        try {
+            return _cache.subscriptions[0];
+        } catch (e) {
+            return new Array;
+        }
+    }
 
     Component.onCompleted: readCache();
     onRefreshRequest: refresh()
