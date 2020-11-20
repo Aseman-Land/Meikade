@@ -55,6 +55,7 @@ Item {
     signal menuRequest(int index, variant object)
     signal selectedToggled(int index, bool selected)
     signal moreRequest()
+    signal lessRequest()
 
     Connections {
         target: dis
@@ -128,7 +129,13 @@ Item {
 
             Connections {
                 target: del
-                onLoadedChanged: if (index == listView.model.count-5) dis.moreRequest()
+                onLoadedChanged: {
+                    if (index == 5)
+                        dis.lessRequest()
+                    else
+                    if (index == listView.model.count-5)
+                        dis.moreRequest()
+                }
             }
 
             Rectangle {
@@ -262,8 +269,8 @@ Item {
                 id: phraseColumn
                 anchors.left: parent.left
                 anchors.right: parent.right
-                anchors.bottom: parent.bottom
-                anchors.margins: 10 * Devices.density + Devices.navigationBarHeight
+                y: 30 * Devices.density
+                anchors.margins: 10 * Devices.density
                 spacing: 4 * Devices.density
                 visible: phrase.length
 

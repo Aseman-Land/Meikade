@@ -282,6 +282,7 @@ PoemView {
         listView.model: loader.versesModel
 
         onMoreRequest: loader.more()
+        onLessRequest: loader.less()
     }
 
     Component {

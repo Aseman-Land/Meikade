@@ -36,6 +36,7 @@ int main(int argc, char *argv[])
 {
     qsrand(QTime::currentTime().msec());
     qputenv("QT_ANDROID_ENABLE_WORKAROUND_TO_DISABLE_PREDICTIVE_TEXT", "1");
+    qputenv("QT_LOGGING_RULES", "qt.qml.connections=false");
 
     bool androidStyle;
 #ifdef Q_OS_ANDROID
@@ -54,9 +55,8 @@ int main(int argc, char *argv[])
     qmlRegisterType<StickerModel>("Meikade", 1, 0, "StickerModel");
     qmlRegisterType<StickerWriter>("Meikade", 1, 0, "StickerWriter");
 
-    QApplication app(argc, argv);
-
     QtWebView::initialize();
+    QApplication app(argc, argv);
 
     QQmlApplicationEngine engine;
     engine.addImportPath(":/qml/imports/");

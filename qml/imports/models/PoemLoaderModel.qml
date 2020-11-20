@@ -20,6 +20,9 @@ AsemanObject {
     property string poetImage
     property string poetColor
 
+    property bool lazzyLoad: false
+    readonly property int loadSteps: lazzyLoad? 200 : 100000
+
     property alias categoriesModel: categoriesModel
     property alias versesModel: versesModel
 
@@ -30,17 +33,39 @@ AsemanObject {
     }
 
     function clear() {
+        prv.lastLoadedOffset = 0;
+        prv.lastLoadedBegin = 0;
+        prv.lastLoadedEnd = 0;
+        poemReq.verse_limit = loadSteps;
+        poemReq.verse_offset = 0;
+        poemQuery.limit = loadSteps;
+        poemQuery.offset = 0;
         versesModel.clear();
     }
 
     function more() {
-        console.debug("More")
+        if (!lazzyLoad)
+            return;
+
+        poemQuery.more();
+        poemReq.more();
+    }
+
+    function less() {
+        if (!lazzyLoad)
+            return;
+
+        console.debug("less")
     }
 
     QtObject {
         id: prv
 
-        function analizeResult(r) {
+        property int lastLoadedOffset
+        property int lastLoadedBegin
+        property int lastLoadedEnd
+
+        function analizeResult(r, offset, limit) {
             try {
                 dis.title = r.poem.title;
                 dis.views = r.poem.views;
@@ -70,8 +95,21 @@ AsemanObject {
 
                 var attrs = userActions.getPoemAttributes();
 
-                versesModel.clear();
-                r.verses.forEach(function(v){
+                if (lastLoadedOffset === offset && lazzyLoad) {
+                    for (var i=lastLoadedBegin; i<lastLoadedEnd+1 && lastLoadedBegin<versesModel.count; i++)
+                        versesModel.remove(lastLoadedBegin);
+                }
+
+                var addBegin = (offset < lastLoadedOffset? true : false);
+
+                lastLoadedBegin = (addBegin? 0 : versesModel.count);
+
+                if (r.verses.length > 100)
+                    versesModel.cachePath = "";
+
+                var lastCount = versesModel.count;
+                for (var vi=0; vi<r.verses.length; vi++) {
+                    var v = r.verses[vi];
                     v.text = Tools.stringReplace(v.text, "\\s+", " ", true);
 
                     try { v.favorited = attrs[v.vorder][UserActions.TypeFavorite]; } catch (ve) { v.favorited = false; }
@@ -83,8 +121,18 @@ AsemanObject {
                     try { v.hasList = attrs[v.vorder][UserActions.TypeItemListsStart]; } catch (le) { v.hasList = false; }
                     if (!v.hasList) v.hasList = false;
 
-                    versesModel.append(v);
-                });
+                    if (lazzyLoad) {
+                        versesModel.insert(addBegin? 0 : versesModel.count, v);
+                    } else {
+                        if (vi < lastCount)
+                            versesModel.remove(vi);
+                        versesModel.insert(vi, v);
+                    }
+                };
+
+                lastLoadedEnd = (addBegin? r.verses.length - 1 : versesModel.count - 1);
+                lastLoadedOffset = offset;
+
             } catch (e) {
             }
         }
@@ -105,9 +153,18 @@ AsemanObject {
 
     PoemRequest {
         id: poemReq
-        onResponseChanged: if (response && response.result) prv.analizeResult(response.result)
+        onResponseChanged: if (response && response.result) prv.analizeResult(response.result, verse_offset, verse_limit)
 
-        onPoem_idChanged: Tools.jsDelayCall(10, refresh)
+        onPoem_idChanged: {
+            verse_limit = loadSteps;
+            verse_offset = 0;
+            Tools.jsDelayCall(10, refresh);
+        }
+
+        function more() {
+            verse_offset += verse_limit;
+            Tools.jsDelayCall(10, refresh);
+        }
     }
 
     UserActions {
@@ -136,18 +193,29 @@ AsemanObject {
         id: poemQuery
         poem_id: poemReq.poem_id
 
-        onPoem_idChanged: Tools.jsDelayCall(10, refresh)
+        onPoem_idChanged: {
+            limit = loadSteps;
+            offset = 0;
+            Tools.jsDelayCall(10, refresh);
+        }
 
+        property int limit
+        property int offset
         property bool refreshing: false
+
+        function more() {
+            offset += limit;
+            refresh();
+        }
 
         function refresh() {
             refreshing = true;
-            getItems(function(r){
+            getItems(function(r, offset, limit){
                 refreshing = false;
                 if (Math.floor(poemReq.status/200) != 2) {
-                    prv.analizeResult(r);
+                    prv.analizeResult(r, offset, limit);
                 }
-            })
+            }, offset, limit);
         }
     }
 }
