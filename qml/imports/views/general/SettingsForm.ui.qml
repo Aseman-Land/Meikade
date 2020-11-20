@@ -75,7 +75,7 @@ Item {
                         font.pixelSize: 9 * Devices.fontDensity
                         font.bold: true
                         horizontalAlignment: Text.AlignHCenter
-                        color: Subscription.premium? Subscription.premiumColor : Colors.accent
+                        color: Subscription.packageColor
 
                         Label {
                             id: accountDaysLabel
@@ -83,7 +83,7 @@ Item {
                             anchors.horizontalCenter: parent.horizontalCenter
                             font.pixelSize: 7 * Devices.fontDensity
                             horizontalAlignment: Text.AlignLeft
-                            color: Subscription.premiumColor
+                            color: Subscription.packageColor
                             visible: Subscription.premium
                         }
 

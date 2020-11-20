@@ -1176,18 +1176,6 @@ It contains %2 of current items.</translation>
 <context>
     <name>PremiumConfirmForm.ui</name>
     <message>
-        <source>Unlimited Notes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Unlimited Lists</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Unlimited Offline Poems</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Monthly</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1236,6 +1224,30 @@ It contains %2 of current items.</translation>
     </message>
     <message>
         <source>%1 Tomans per %2 months</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unlimited Notes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 Notes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unlimited Lists</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 Lists</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unlimited Offline Poems</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 Offline Poems</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

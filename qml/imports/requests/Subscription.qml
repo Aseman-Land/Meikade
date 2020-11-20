@@ -13,6 +13,7 @@ AsemanObject {
     readonly property int premium: currentPackage.expire_in_days > 0
 
     readonly property string title: currentPackage.title
+    readonly property color packageColor: currentPackage.extra.color
 
     readonly property variant currentPackage: {
         var sbc = MyUserRequest._subscription;

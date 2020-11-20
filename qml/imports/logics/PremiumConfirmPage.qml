@@ -19,14 +19,76 @@ PremiumConfirmView {
     cancelBtn.onClicked: home.ViewportType.open = false;
     confirmBtn.onClicked: confirm()
 
-    titleLabel.text: ""
-    subtitleLabel.text: ""
-
-    intervalPayCombo.textRole: "title"
+    intervalPayCombo.textRole: "text"
     intervalPayCombo.model: AsemanListModel { id: paysModel }
 
     couponBtn.onClicked: couponReq.networkManager.get(couponReq)
     couponBusy.running: couponReq.refreshing
+
+    packageColor: {
+        if (intervalPayCombo.count == 0)
+            return Subscription.premiumColor;
+
+        try {
+            return paysModel.get(intervalPayCombo.currentIndex).extra.color
+        } catch (e) {
+            return Subscription.premiumColor;
+        }
+    }
+    titleLabel.text: {
+        if (intervalPayCombo.count == 0)
+            return "";
+
+        try {
+            return paysModel.get(intervalPayCombo.currentIndex).title;
+        } catch (e) {
+            return "";
+        }
+    }
+
+    subtitleLabel.text: {
+        if (intervalPayCombo.count == 0)
+            return "";
+
+        try {
+            return paysModel.get(intervalPayCombo.currentIndex).priceFormated;
+        } catch (e) {
+            return "";
+        }
+    }
+
+    items.model: AsemanListModel {
+        data: {
+            var extra = new Array;
+            if (intervalPayCombo.count == 0)
+                return extra;
+
+            var lists_limits = 0;
+            var notes_limits = 0;
+            var offline_limits = 0;
+
+            try {
+                extra = paysModel.get(intervalPayCombo.currentIndex).extra;
+                lists_limits = extra.lists_limits;
+                notes_limits = extra.notes_limits;
+                offline_limits = extra.offline_limits;
+            } catch (e) {
+                return extra;
+            }
+
+            return [
+                {
+                    title: GTranslations.translate( notes_limits === -1? qsTr("Unlimited Notes") : qsTr("%1 Notes").arg(notes_limits))
+                },
+                {
+                    title: GTranslations.translate( lists_limits === -1? qsTr("Unlimited Lists") : qsTr("%1 Lists").arg(lists_limits))
+                },
+                {
+                    title: GTranslations.translate( offline_limits === -1? qsTr("Unlimited Offline Poems") : qsTr("%1 Offline Poems").arg(offline_limits))
+                }
+            ]
+        }
+    }
 
     TextFormater {
         id: formater
@@ -42,7 +104,7 @@ PremiumConfirmView {
                 paymentReq.coupon_uid = response.result.uid;
                 couponBtn.enabled = false;
                 couponField.readOnly = true;
-                couponField.color = Subscription.premiumColor;
+                couponField.color = Qt.binding(function(){ return packageColor; });
                 couponField.text = GTranslations.translate( qsTr("%1% OFF Coupon").arg(response.result.discount) );
             } catch (e) {
                 paymentReq.coupon_uid = "";
@@ -80,6 +142,10 @@ PremiumConfirmView {
         onResponseChanged: reload()
 
         function reload() {
+            var lastIndex = intervalPayCombo.currentIndex;
+            if (lastIndex < 0)
+                lastIndex = 0;
+
             paysModel.clear();
 
             var couponPercent = 0;
@@ -96,25 +162,16 @@ PremiumConfirmView {
 
                     formater.input = v.price * (100 - couponPercent) / 100;
 
-                    var mnth = Math.round(v.expire_in_days / 30);
-                    if (mnth === 1)
-                        titleLabel.text = GTranslations.translate( qsTr("%1 Tomans per Month").arg(formater.output) );
-                    else
-                    if (mnth === 12)
-                        subtitleLabel.text = GTranslations.translate( qsTr("%1 Tomans per Year").arg(formater.output) )
-                    else
-                    if (mnth > 1 && subtitleLabel.text.length == 0)
-                        subtitleLabel.text = GTranslations.translate( qsTr("%1 Tomans per %2 months").arg(formater.output).arg(mnth) )
-
                     var obj = Tools.toVariantMap(v);
-                    obj.title = GTranslations.translate( obj.title + " - " + formater.output + qsTr("Toman") )
+                    obj.text = GTranslations.translate( obj.title + " - " + formater.output + qsTr("Toman") )
+                    obj.priceFormated = GTranslations.translate(formater.output + qsTr("Toman"));
 
                     paysModel.append(obj);
                 });
             } catch (e) {
             }
 
-            intervalPayCombo.currentIndex = 0;
+            intervalPayCombo.currentIndex = lastIndex;
         }
     }
 

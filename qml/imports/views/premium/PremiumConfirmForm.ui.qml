@@ -27,6 +27,9 @@ Item {
     property alias couponBtn: couponBtn
     property alias couponField: couponField
     property alias couponBusy: couponBusy
+    property alias items: items
+
+    property color packageColor: "#fff"
 
     property bool forceDark
 
@@ -40,8 +43,8 @@ Item {
         id: busyIndicator
         anchors.centerIn: parent
         running: false
-        Material.accent: Subscription.premiumColor
-        IOSStyle.foreground: Subscription.premiumColor
+        Material.accent: packageColor
+        IOSStyle.foreground: packageColor
     }
 
     AsemanFlickable {
@@ -82,7 +85,7 @@ Item {
                         font.pixelSize: 40 * Devices.fontDensity
                         font.family: MaterialIcons.family
                         text: MaterialIcons.mdi_podium_gold
-                        color: Subscription.premiumColor
+                        color: packageColor
                     }
 
                     ColumnLayout {
@@ -104,25 +107,13 @@ Item {
                             horizontalAlignment: Text.AlignLeft
                             font.pixelSize: 11 * Devices.fontDensity
                             text: "400,000 IRR per Year"
-                            color: Subscription.premiumColor
+                            color: packageColor
                         }
                     }
                 }
 
                 Repeater {
-                    model: AsemanListModel {
-                        data: [
-                            {
-                                title: qsTr("Unlimited Notes")
-                            },
-                            {
-                                title: qsTr("Unlimited Lists")
-                            },
-                            {
-                                title: qsTr("Unlimited Offline Poems")
-                            }
-                        ]
-                    }
+                    id: items
 
                     RowLayout {
                         Layout.fillWidth: true
@@ -135,7 +126,7 @@ Item {
                             font.pixelSize: 14 * Devices.fontDensity
                             font.family: MaterialIcons.family
                             text: MaterialIcons.mdi_check
-                            color: Subscription.premiumColor
+                            color: packageColor
                         }
 
                         Label {
@@ -159,8 +150,8 @@ Item {
         anchors.rightMargin: 20 * Devices.density
         visible: flickable.visible
 
-        Material.accent: Subscription.premiumColor
-        IOSStyle.accent: Subscription.premiumColor
+        Material.accent: packageColor
+        IOSStyle.accent: packageColor
 
         Item {
             Layout.fillWidth: true
@@ -181,8 +172,8 @@ Item {
                 anchors.centerIn: parent
                 scale: 0.6
                 running: true
-                Material.accent: Subscription.premiumColor
-                IOSStyle.foreground: Subscription.premiumColor
+                Material.accent: packageColor
+                IOSStyle.foreground: packageColor
             }
         }
 
@@ -215,7 +206,7 @@ Item {
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
                 font.pixelSize: 9 * Devices.fontDensity
-                text: model.title
+                text: model.text
             }
             IOSStyle.theme: AsemanGlobals.iosTheme
             Material.theme: AsemanGlobals.androidTheme
@@ -232,8 +223,8 @@ Item {
         visible: flickable.visible
         text: qsTr("Confirm") + Translations.refresher
         highlighted: true
-        Material.accent: Subscription.premiumColor
-        IOSStyle.accent: Subscription.premiumColor
+        Material.accent: packageColor
+        IOSStyle.accent: packageColor
         Material.elevation: 0
     }
 
@@ -243,7 +234,7 @@ Item {
         anchors.right: parent.right
         anchors.left: parent.left
         height: Devices.standardTitleBarHeight
-        color: Subscription.premiumColor
+        color: packageColor
 
         Separator {}
 

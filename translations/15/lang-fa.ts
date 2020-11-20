@@ -1316,15 +1316,15 @@ storage and read them offline. Please select your poets that your want to read o
     <name>PremiumConfirmForm</name>
     <message>
         <source>Unlimited Notes</source>
-        <translation>یادداشت‌های نامحدود</translation>
+        <translation type="vanished">یادداشت‌های نامحدود</translation>
     </message>
     <message>
         <source>Unlimited Lists</source>
-        <translation>لیست‌های نامحدود</translation>
+        <translation type="vanished">لیست‌های نامحدود</translation>
     </message>
     <message>
         <source>Unlimited Offline Poems</source>
-        <translation>شاعرهای آفلاین نامحدود</translation>
+        <translation type="vanished">شاعرهای آفلاین نامحدود</translation>
     </message>
     <message>
         <source>Monthly</source>
@@ -1376,6 +1376,30 @@ storage and read them offline. Please select your poets that your want to read o
     <message>
         <source>%1 Tomans per %2 months</source>
         <translation>%1 تومن - اکانت %2 ماهه</translation>
+    </message>
+    <message>
+        <source>Unlimited Notes</source>
+        <translation>یادداشت‌های نامحدود</translation>
+    </message>
+    <message>
+        <source>%1 Notes</source>
+        <translation>%1 یادداشت</translation>
+    </message>
+    <message>
+        <source>Unlimited Lists</source>
+        <translation>لیست‌های نامحدود</translation>
+    </message>
+    <message>
+        <source>%1 Lists</source>
+        <translation>%1 لیست</translation>
+    </message>
+    <message>
+        <source>Unlimited Offline Poems</source>
+        <translation>شاعرهای آفلاین نامحدود</translation>
+    </message>
+    <message>
+        <source>%1 Offline Poems</source>
+        <translation>%1 شاعر آفلاین</translation>
     </message>
 </context>
 <context>
