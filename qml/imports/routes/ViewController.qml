@@ -77,6 +77,11 @@ ViewportController {
     }
 
     ViewportControllerRoute {
+        route: /\w+\:\/search\/smart\-about(?:\?.+)?/
+        source: "SearchSmartAboutRoute.qml"
+    }
+
+    ViewportControllerRoute {
         route: /\w+\:\/poet\/bio(?:\?.+)?/
         source: "PoetBioRoute.qml"
     }

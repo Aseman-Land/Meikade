@@ -1207,23 +1207,11 @@ It contains %2 of current items.</translation>
 <context>
     <name>PremiumConfirmPage</name>
     <message>
-        <source>%1 Tomans per Month</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>%1 Tomans per Year</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>%1% OFF Coupon</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Toman</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>%1 Tomans per %2 months</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1295,6 +1283,14 @@ It contains %2 of current items.</translation>
         <source>Online Search</source>
         <translation>Online Search</translation>
     </message>
+    <message>
+        <source>Accurate word search</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>(Read More)</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>SearchForm.ui</name>
@@ -1324,6 +1320,26 @@ It contains %2 of current items.</translation>
     <message>
         <source>Offline Results</source>
         <translation>Offline Results</translation>
+    </message>
+</context>
+<context>
+    <name>SearchSmartAbout.ui</name>
+    <message>
+        <source>Smart Search</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Some about text</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SearchSmartAboutPage</name>
+    <message>
+        <source>Meikade online search is a smart search that uses AI alghorithms to give you better results.
+It removes all extra spaces you may entered or search between other positive spelling or meanings.
+It&apos;s experimental currently and Meikade technical team working on it. But if it fail to find true result, You can disable it Using accurate search checkbox.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

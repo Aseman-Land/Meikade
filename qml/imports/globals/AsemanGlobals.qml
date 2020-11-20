@@ -16,6 +16,7 @@ AsemanObject {
     property alias fontSize: _settings.fontSize
     property alias lastChangelogs: _settings.lastChangelogs
     property alias onlineSearch: _settings.onlineSearch
+    property alias smartSearch: _settings.smartSearch
     property alias introDone: _settings.introDone
     property alias sendData: _settings.sendData
     property alias iosTheme: _settings.iosTheme
@@ -63,6 +64,7 @@ AsemanObject {
         property string language: "fa"
         property bool phrase: true
         property bool onlineSearch: true
+        property bool smartSearch: true
         property bool introDone
         property bool sendData
         property int fontSize: 3

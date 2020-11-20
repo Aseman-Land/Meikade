@@ -5,6 +5,7 @@ MainPage 1.0 MainPage.qml
 MyMeikadePage 1.0 MyMeikadePage.qml
 SearchPage 1.0 SearchPage.qml
 SearchFilterPage 1.0 SearchFilterPage.qml
+SearchSmartAboutPage 1.0 SearchSmartAboutPage.qml
 PoetPage 1.0 PoetPage.qml
 PoetBioPage 1.0 PoetBioPage.qml
 ErrorDialog 1.0 ErrorDialog.qml

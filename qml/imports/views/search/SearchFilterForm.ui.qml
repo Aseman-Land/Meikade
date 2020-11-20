@@ -22,6 +22,8 @@ DrawerFrame {
     property alias selectedList: selectedList
     property alias selectedListModel: selectedListModel
     property alias onlineSearchSwitch: onlineSearchSwitch
+    property alias accurateSearchSwitch: accurateSearchSwitch
+    property alias accurateSearchHelpBtn: accurateSearchHelpBtn
     property alias acceptBtn: acceptBtn
 
     readonly property real itemsHeight: 50 * Devices.density
@@ -45,6 +47,40 @@ DrawerFrame {
             Switch {
                 id: onlineSearchSwitch
                 checked: true
+            }
+        }
+
+        RowLayout {
+            Layout.leftMargin: 8 * Devices.density
+            Layout.rightMargin: 8 * Devices.density
+            Layout.topMargin: -10 * Devices.density
+
+            Label {
+                font.pixelSize: 9 * Devices.fontDensity
+                font.bold: true
+                horizontalAlignment: Text.AlignLeft
+                text: qsTr("Accurate word search") + Translations.refresher
+            }
+
+            Button {
+                id: accurateSearchHelpBtn
+                Layout.preferredHeight: 40 * Devices.density
+                Layout.preferredWidth: 120 * Devices.density
+                flat: true
+                font.pixelSize: 9 * Devices.fontDensity
+                highlighted: true
+                text: qsTr("(Read More)") + Translations.refresher
+            }
+
+            Item {
+                Layout.preferredHeight: 1
+                Layout.fillWidth: true
+            }
+
+            Switch {
+                id: accurateSearchSwitch
+                checked: true
+                enabled: onlineSearchSwitch.checked
             }
         }
 

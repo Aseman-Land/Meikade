@@ -1346,11 +1346,11 @@ It containts %2 items currently.</source>
     <name>PremiumConfirmPage</name>
     <message>
         <source>%1 Tomans per Month</source>
-        <translation>%1 تومان ماهیانه</translation>
+        <translation type="vanished">%1 تومان ماهیانه</translation>
     </message>
     <message>
         <source>%1 Tomans per Year</source>
-        <translation>%1 تومان سالیانه</translation>
+        <translation type="vanished">%1 تومان سالیانه</translation>
     </message>
     <message>
         <source>%1% OFF Coupon</source>
@@ -1362,7 +1362,7 @@ It containts %2 items currently.</source>
     </message>
     <message>
         <source>%1 Tomans per %2 months</source>
-        <translation>%1 تومن - اکانت %2 ماهه</translation>
+        <translation type="vanished">%1 تومن - اکانت %2 ماهه</translation>
     </message>
     <message>
         <source>Unlimited Notes</source>
@@ -1433,6 +1433,18 @@ It containts %2 items currently.</source>
         <source>Online Search</source>
         <translation>جستجوی آنلاین</translation>
     </message>
+    <message>
+        <source>Smart Search</source>
+        <translation type="vanished">جستجوی هوشمند</translation>
+    </message>
+    <message>
+        <source>Accurate word search</source>
+        <translation>جستجوی دقیق واژه‌ها</translation>
+    </message>
+    <message>
+        <source>(Read More)</source>
+        <translation>(بیشتر بخوانید)</translation>
+    </message>
 </context>
 <context>
     <name>SearchForm.ui</name>
@@ -1462,6 +1474,28 @@ It containts %2 items currently.</source>
     <message>
         <source>Offline Results</source>
         <translation>نتایج آفلاین</translation>
+    </message>
+</context>
+<context>
+    <name>SearchSmartAbout.ui</name>
+    <message>
+        <source>Smart Search</source>
+        <translation>جستجوی هوشمند</translation>
+    </message>
+    <message>
+        <source>Some about text</source>
+        <translation>توضیحات</translation>
+    </message>
+</context>
+<context>
+    <name>SearchSmartAboutPage</name>
+    <message>
+        <source>Meikade online search is a smart search that uses AI alghorithms to give you better results.
+It removes all extra spaces you may entered or search between other positive spelling or meanings.
+It&apos;s experimental currently and Meikade technical team working on it. But if it fail to find true result, You can disable it Using accurate search checkbox.</source>
+        <translation>درحال حاضر می‌کده در جستجوی آنلاین خود از الگوریتم‌های جستجوی هوشمند استفاده میکند تا به شما نتایج بهتری نشان دهد.
+این الگوریتم کلیدواژه‌ی شما را در معنای کلمات هر مصراع جستجو میکند. همچنین فاصله‌های اضافی یا کمی که ممکن است موقع وارد کردن کلید‌واژه وارد کنید را اصلاح میکند و همچنین املاهای مختلف را موقع جستجو امتحان می‌کند تا نتایج کامل‌تر باشند.
+تیم فنی می‌کده سخت درحال توسعه و بهبود این الگوریتم‌ها هستند. با این حال بخاطر اینکه الگوریتم‌های جستجوی هوشمند مراحل توسعه سنگینی دارند و راه زیادی داریم تا این الگوریتم‌ها دقیقا نتایج مورد نظر شما را جستجو کند، ما کلید &quot;جستجوی دقیق واژه‌ها&quot; را در برنامه قرار دادیم که اگر جستجوی هوشمند می‌کده نتایج مورد نظر شما را پیدا نکرد، بتوانید به روش معمول جستجوی خود را انجام دهید.</translation>
     </message>
 </context>
 <context>
