@@ -39,7 +39,14 @@ AsemanApplication {
         if (Devices.isIOS) Devices.fontScale = 1.1;
     }
 
-    onApplicationStateChanged: if (applicationState == 4) StoreActionsBulk.syncActionsInterval()
+    onApplicationStateChanged: {
+        switch (applicationState) {
+        case 4:
+            StoreActionsBulk.syncActionsInterval();
+            MyUserRequest.refresh();
+            break;
+        }
+    }
 
     MainWindow {
         id: mWin

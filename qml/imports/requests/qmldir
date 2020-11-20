@@ -27,3 +27,6 @@ UserSetDetailsRequest 1.0 UserSetDetailsRequest.qml
 UserUploadProfileRequest 1.0 UserUploadProfileRequest.qml
 UserSetProfileRequest 1.0 UserSetProfileRequest.qml
 SearchPoetsRequest 1.0 SearchPoetsRequest.qml
+PackagesRequest 1.0 PackagesRequest.qml
+CouponRequest 1.0 CouponRequest.qml
+InitPaymentRequest 1.0 InitPaymentRequest.qml

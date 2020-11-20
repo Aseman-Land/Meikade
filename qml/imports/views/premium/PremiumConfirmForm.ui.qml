@@ -3,6 +3,7 @@ import AsemanQml.Base 2.0
 import AsemanQml.MaterialIcons 2.0
 import QtQuick.Controls 2.3
 import AsemanQml.Controls 2.0
+import AsemanQml.Models 2.0
 import QtQuick.Layouts 1.3
 import QtQuick.Controls.Material 2.0
 import QtQuick.Controls.IOSStyle 2.0
@@ -21,7 +22,11 @@ Item {
     property alias subtitleLabel: subtitleLabel
     property alias confirmBtn: confirmBtn
     property alias intervalPayCombo: intervalPayCombo
+    property alias busyIndicator: busyIndicator
     property alias cancelBtn: cancelBtn
+    property alias couponBtn: couponBtn
+    property alias couponField: couponField
+    property alias couponBusy: couponBusy
 
     property bool forceDark
 
@@ -31,16 +36,25 @@ Item {
         opacity: 0.5
     }
 
+    BusyIndicator {
+        id: busyIndicator
+        anchors.centerIn: parent
+        running: false
+        Material.accent: Subscription.premiumColor
+        IOSStyle.foreground: Subscription.premiumColor
+    }
+
     AsemanFlickable {
         id: flickable
         anchors.top: headerItem.bottom
         anchors.right: parent.right
-        anchors.bottom: intervalPayCombo.top
+        anchors.bottom: couponLayout.top
         anchors.left: parent.left
         flickableDirection: Flickable.VerticalFlick
         contentWidth: scene.width
         contentHeight: scene.height
         clip: true
+        visible: !busyIndicator.running
 
         EscapeItem {
             id: scene
@@ -96,16 +110,18 @@ Item {
                 }
 
                 Repeater {
-                    model: ListModel {
-                        ListElement {
-                            title: qsTr("Unlimited Notes")
-                        }
-                        ListElement {
-                            title: qsTr("Unlimited Lists")
-                        }
-                        ListElement {
-                            title: qsTr("Unlimited Offline Poems")
-                        }
+                    model: AsemanListModel {
+                        data: [
+                            {
+                                title: qsTr("Unlimited Notes")
+                            },
+                            {
+                                title: qsTr("Unlimited Lists")
+                            },
+                            {
+                                title: qsTr("Unlimited Offline Poems")
+                            }
+                        ]
                     }
 
                     RowLayout {
@@ -134,6 +150,53 @@ Item {
         }
     }
 
+    RowLayout {
+        id: couponLayout
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: intervalPayCombo.top
+        anchors.leftMargin: 20 * Devices.density
+        anchors.rightMargin: 20 * Devices.density
+        visible: flickable.visible
+
+        Material.accent: Subscription.premiumColor
+        IOSStyle.accent: Subscription.premiumColor
+
+        Item {
+            Layout.fillWidth: true
+            Layout.preferredHeight: 48 * Devices.density
+
+            TextField {
+                id: couponField
+                anchors.fill: parent
+                horizontalAlignment: Text.AlignLeft
+                placeholder: qsTr("Coupon") + Translations.refresher
+                font.pixelSize: 10 * Devices.fontDensity
+                selectByMouse: true
+                enabled: !couponBusy.running
+            }
+
+            BusyIndicator {
+                id: couponBusy
+                anchors.centerIn: parent
+                scale: 0.6
+                running: true
+                Material.accent: Subscription.premiumColor
+                IOSStyle.foreground: Subscription.premiumColor
+            }
+        }
+
+        Button {
+            id: couponBtn
+            font.pixelSize: 9 * Devices.fontDensity
+            text: qsTr("Submit") + Translations.refresher
+            highlighted: true
+            flat: true
+            enabled: couponField.length > 3 && !couponBusy.running
+            Material.elevation: 0
+        }
+    }
+
     ComboBox {
         id: intervalPayCombo
         anchors.left: parent.left
@@ -142,7 +205,21 @@ Item {
         anchors.leftMargin: 20 * Devices.density
         anchors.rightMargin: 20 * Devices.density
         font.pixelSize: 9 * Devices.fontDensity
+        visible: flickable.visible
         model: [qsTr("Monthly"), qsTr("Yearly") + Translations.refresher]
+        delegate: ItemDelegate {
+            width: intervalPayCombo.width
+
+            Label {
+                anchors.fill: parent
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
+                font.pixelSize: 9 * Devices.fontDensity
+                text: model.title
+            }
+            IOSStyle.theme: AsemanGlobals.iosTheme
+            Material.theme: AsemanGlobals.androidTheme
+        }
     }
 
     Button {
@@ -152,7 +229,7 @@ Item {
         anchors.bottom: parent.bottom
         anchors.margins: 20 * Devices.density
         font.pixelSize: 9 * Devices.fontDensity
-        enabled: nameField.isValid
+        visible: flickable.visible
         text: qsTr("Confirm") + Translations.refresher
         highlighted: true
         Material.accent: Subscription.premiumColor

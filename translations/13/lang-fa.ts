@@ -1333,6 +1333,14 @@ It containts %2 items currently.</source>
         <source>Cancel</source>
         <translation>لغو</translation>
     </message>
+    <message>
+        <source>Coupon</source>
+        <translation>کد تخفیف</translation>
+    </message>
+    <message>
+        <source>Submit</source>
+        <translation>ثبت</translation>
+    </message>
 </context>
 <context>
     <name>PremiumConfirmPage</name>
@@ -1343,6 +1351,18 @@ It containts %2 items currently.</source>
     <message>
         <source>%1 Tomans per Year</source>
         <translation>%1 تومان سالیانه</translation>
+    </message>
+    <message>
+        <source>%1% OFF Coupon</source>
+        <translation>%1% تخفیف</translation>
+    </message>
+    <message>
+        <source>Toman</source>
+        <translation>تومان</translation>
+    </message>
+    <message>
+        <source>%1 Tomans per %2 months</source>
+        <translation>%1 تومن - اکانت %2 ماهه</translation>
     </message>
 </context>
 <context>
@@ -1474,6 +1494,10 @@ It containts %2 items currently.</source>
         <source>Account State</source>
         <translation>وضعیت اکانت شما</translation>
     </message>
+    <message>
+        <source>Upgrade</source>
+        <translation>ارتقای اکانت</translation>
+    </message>
 </context>
 <context>
     <name>SettingsPage</name>
@@ -1495,11 +1519,11 @@ It containts %2 items currently.</source>
     </message>
     <message>
         <source>Premium</source>
-        <translation>اکانت حرفه‌ای</translation>
+        <translation type="vanished">اکانت حرفه‌ای</translation>
     </message>
     <message>
         <source>Normal</source>
-        <translation>اکانت معمولی</translation>
+        <translation type="vanished">اکانت معمولی</translation>
     </message>
     <message>
         <source>%1 days</source>
@@ -1641,6 +1665,13 @@ It containts %2 items currently.</source>
     <message>
         <source>Poet Name</source>
         <translation>نام شاعر</translation>
+    </message>
+</context>
+<context>
+    <name>Subscription</name>
+    <message>
+        <source>Free Account</source>
+        <translation>اکانت رایگان</translation>
     </message>
 </context>
 <context>

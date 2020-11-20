@@ -1207,6 +1207,14 @@ It contains %2 of current items.</translation>
         <source>Cancel</source>
         <translation type="unfinished">Cancel</translation>
     </message>
+    <message>
+        <source>Coupon</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Submit</source>
+        <translation type="unfinished">Submit</translation>
+    </message>
 </context>
 <context>
     <name>PremiumConfirmPage</name>
@@ -1216,6 +1224,18 @@ It contains %2 of current items.</translation>
     </message>
     <message>
         <source>%1 Tomans per Year</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1% OFF Coupon</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Toman</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 Tomans per %2 months</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1348,6 +1368,10 @@ It contains %2 of current items.</translation>
         <source>Account State</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Upgrade</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>SettingsPage</name>
@@ -1366,14 +1390,6 @@ It contains %2 of current items.</translation>
     <message>
         <source>Logout Successfully</source>
         <translation>Logout Successfully</translation>
-    </message>
-    <message>
-        <source>Premium</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Normal</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>%1 days</source>
@@ -1515,6 +1531,13 @@ It contains %2 of current items.</translation>
     <message>
         <source>Poet Name</source>
         <translation>Poet Name</translation>
+    </message>
+</context>
+<context>
+    <name>Subscription</name>
+    <message>
+        <source>Free Account</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

@@ -24,8 +24,10 @@
         <translation>درباره می‌کده</translation>
     </message>
     <message>
-        <source>&lt;b&gt;&lt;u&gt;Meikade is a free and opensource poetry app&lt;/u&gt;&lt;/b&gt;, designed and created by Aseman. It means user freedom and privacy is important for Meikade. So you can access Meikade&apos;s source code on Github, Read it and change it under the term of the GPLv3 license.</source>
-        <translation>&lt;b&gt;&lt;u&gt;می‌کده یک برنامه آزاد است&lt;/u&gt;&lt;/b&gt; که توسط آسمان طراحی و پیاده‌سازی شده است. این به این معنی است که می‌کده حامی آزادی‌های کاربر است. بنابریان شما می‌توانید آن را تحت قوانین نسخه سوم مجوز GPL که توسط FSF ارائه شده است دوباره منتشر کنید، آن را به دوستان خود بدهید و یا در آن تغییرات ایجاد کنید.</translation>
+        <source>&lt;b&gt;&lt;u&gt;Meikade is a free and opensource poetry app&lt;/u&gt;&lt;/b&gt;, designed and created by Aseman. It means user freedom and privacy is important for Meikade. So you 
+can access Meikade&apos;s source code on Github, Read it and change it under the term of the GPLv3 license.</source>
+        <translation>&lt;b&gt;&lt;u&gt;می‌کده یک برنامه آزاد است&lt;/u&gt;&lt;/b&gt; که توسط آسمان طراحی و پیاده‌سازی شده است. این به این معنی است که می‌کده حامی آزادی‌های کاربر است. بنابریان شما 
+می‌توانید آن را تحت قوانین نسخه سوم مجوز GPL که توسط FSF ارائه شده است دوباره منتشر کنید، آن را به دوستان خود بدهید و یا در آن تغییرات ایجاد کنید.</translation>
     </message>
     <message>
         <source>Development Team:</source>
@@ -46,12 +48,17 @@
         <translation>با قدردانی از:</translation>
     </message>
     <message>
-        <source>Hamidreza Mohammad (Ganjoor team), Arman Farajollahi-far, Purya Daneshvar (UI/UX), Armin Shalchian (Apple Watch), Amin Hatami (Logo Designer), Mohsen Ebrahimnejad (Telegram channel assistant), Hasan Noroozi, Houtan Baraary, Mansoore Zamani, Pourya Khalaj Tehrani</source>
-        <translation>حمیدرضا محمدی (تیم گنجور)، آرمان فرج‌اللهی‌فر (مشاور ادبی)، پوریا دانشور (مشاور طراحی تجربه کاربری و رابط کاربری)، امین حاتمی (طراح لوگو)، محسن ابراهیم‌نژاد (همکار کانال تلگرام می‌کده)، حسن نوروزی، هوتن براری، منصوره زمانی، پوریا خلج طهرانی</translation>
+        <source>Hamidreza Mohammad (Ganjoor team), Arman Farajollahi-far, Purya Daneshvar (UI/UX), Armin Shalchian (Apple Watch), Amin Hatami (Logo Designer), Mohsen Ebrahimnejad (Telegram channel 
+assistant), Hasan Noroozi, Houtan Baraary, Mansoore Zamani, Pourya Khalaj Tehrani</source>
+        <translation>حمیدرضا محمدی (تیم گنجور)، آرمان فرج‌اللهی‌فر (مشاور ادبی)، پوریا دانشور (مشاور طراحی تجربه کاربری و رابط کاربری)، امین حاتمی (طراح لوگو)، محسن ابراهیم‌نژاد (همکار کانال تلگرام 
+می‌کده)، حسن نوروزی، هوتن براری، منصوره زمانی، پوریا خلج طهرانی</translation>
     </message>
     <message>
-        <source>&lt;b&gt;&lt;u&gt;Aseman&lt;/u&gt;&lt;/b&gt;, Aseman is a non-profit and community based company that created in 2013 by members of the Idehgostar company. Aseman created to leads open-source and free software.&lt;br /&gt;Aseman promotes openness, innovation and participation on the digital and computers world.</source>
-        <translation>&lt;b&gt;&lt;u&gt;آسمان&lt;/u&gt;&lt;/b&gt; مجموعه‌ای غیرانتفاعی از مهندسان و متخصصین است که با هدف تولید و رهبری پروژه‌های آزاد و اپن‌سورس تاسیس شد.&lt;br /&gt;تا به اینجا اعتبار و کیفیت بالای پروژه‌های آسمان سبب همکاری با شرکت کانونیکال انگلستان در توسعه سیستم‌عامل اوبونتو-تاچ و همچنین کسب گواهی‌نامه امنیت از وب‌سایت سافت‌پدیا شده است.&lt;bt /&gt;برای آشنایی بیشتر با آسمان و فعالیت‌های آن، وارد سایت آسمان شوید.</translation>
+        <source>&lt;b&gt;&lt;u&gt;Aseman&lt;/u&gt;&lt;/b&gt;, Aseman is a non-profit and community based company that created in 2013 by members of the Idehgostar company. Aseman created to leads 
+open-source and free software.&lt;br /&gt;Aseman promotes openness, innovation and participation on the digital and computers world.</source>
+        <translation>&lt;b&gt;&lt;u&gt;آسمان&lt;/u&gt;&lt;/b&gt; مجموعه‌ای غیرانتفاعی از مهندسان و متخصصین است که با هدف تولید و رهبری پروژه‌های آزاد و اپن‌سورس تاسیس شد.&lt;br /&gt;تا به اینجا 
+اعتبار و کیفیت بالای پروژه‌های آسمان سبب همکاری با شرکت کانونیکال انگلستان در توسعه سیستم‌عامل اوبونتو-تاچ و همچنین کسب گواهی‌نامه امنیت از وب‌سایت سافت‌پدیا شده است.&lt;bt /&gt;برای آشنایی بیشتر با 
+آسمان و فعالیت‌های آن، وارد سایت آسمان شوید.</translation>
     </message>
     <message>
         <source>Twitter</source>
@@ -322,7 +329,9 @@
     </message>
     <message>
         <source>Feels free and write what you want for us. Messages will sends ananymously if you leaves name and email forms empty.</source>
-        <translation>لطفا از این درگاه با ما در ارتباط باشید. اگر درخواستی دارید، اگر سوالی دارید، برای ما بنویسید. سعی می‌کنیم در اسرع وقت پاسخگو باشیم. وارد کردن نام و ایمیل اجباری نیست و شما می‌توانید به صورت کاملا ناشناس با ما در ارتباط باشید. با این حال برای پاسخ‌گویی، ما نیاز به آدرس صحیح ایمیل شما داریم. همچنین برای رفع مشکلات به صورت موثر، بهتر است که گزینه ضمیمه کردن مشخصات دستگاه را نیز فعال کنید.</translation>
+        <translation>لطفا از این درگاه با ما در ارتباط باشید. اگر درخواستی دارید، اگر سوالی دارید، برای ما بنویسید. سعی می‌کنیم در اسرع وقت پاسخگو باشیم. وارد کردن نام و ایمیل اجباری نیست و شما 
+می‌توانید به صورت کاملا ناشناس با ما در ارتباط باشید. با این حال برای پاسخ‌گویی، ما نیاز به آدرس صحیح ایمیل شما داریم. همچنین برای رفع مشکلات به صورت موثر، بهتر است که گزینه ضمیمه کردن مشخصات دستگاه 
+را نیز فعال کنید.</translation>
     </message>
     <message>
         <source>Name</source>
@@ -637,7 +646,8 @@ It containts %2 items currently.</source>
     </message>
     <message>
         <source>To keep your data like favorites safe, You can create Meikade Cloud Account and login to sync your data. To do that click below button:</source>
-        <translation>برای حفظ و نگهداری داده‌های می‌کده خود، مثل فهرست علاقه‌مندی‌ها و آخرین مطالعه‌ها، می‌توانید اکانت ابری می‌کده را بسازید و داده‌های خود را ذخیره‌سازی کنید تا در هر لحظه امکان بازیابی آنها را داشته باشید. برای شروع روی دکمه زیر کلیک کنید:</translation>
+        <translation>برای حفظ و نگهداری داده‌های می‌کده خود، مثل فهرست علاقه‌مندی‌ها و آخرین مطالعه‌ها، می‌توانید اکانت ابری می‌کده را بسازید و داده‌های خود را ذخیره‌سازی کنید تا در هر لحظه امکان 
+بازیابی آنها را داشته باشید. برای شروع روی دکمه زیر کلیک کنید:</translation>
     </message>
     <message>
         <source>SignIn / SignUp</source>
@@ -645,7 +655,8 @@ It containts %2 items currently.</source>
     </message>
     <message>
         <source>To help Meikade better, you can check/uncheck below switch to send anaymous data for us.</source>
-        <translation>یکی از راه‌های کمک به توسعه و بهبود می‌کده، به اشتراک‌گذاری اطلاعاتی نظیر مشخصات سخت‌افزاری دستگاه شما و گزارش خودکار مشکلات فنی نرم‌افزار است. اگر تمایل به هم‌یاری دارید، کلید زیر را فعال کنید.</translation>
+        <translation>یکی از راه‌های کمک به توسعه و بهبود می‌کده، به اشتراک‌گذاری اطلاعاتی نظیر مشخصات سخت‌افزاری دستگاه شما و گزارش خودکار مشکلات فنی نرم‌افزار است. اگر تمایل به هم‌یاری دارید، کلید 
+زیر را فعال کنید.</translation>
     </message>
     <message>
         <source>Help Meikade</source>
@@ -692,8 +703,10 @@ It containts %2 items currently.</source>
         <translation>شاعرهای آفلاین</translation>
     </message>
     <message>
-        <source>Meikade 4 is online by default now. It means you can discover between tousands of poems freely without downloading to your storages. But it also available to download them to your storage and read them offline. Please select your poets that your want to read online. You can also setup it later on the every poet/book page.</source>
-        <translation>در می‌کده ۴ قابلیت خوانش آنلاین تمامی اشعار و جستجوی آنلاین در میان همه آثار فراهم شده است. این به این معنی است که نیاز به دانلود آثار شاعران وجود ندارد. با این حال در صورت تمایل می‌توانید آثار شاعران مورد نظر خود را برای استفاده آفلاین و بدون نیاز به اینترنت، دانلود کنید. بدیهی‌ست که این کار را بعدا در صفحه هر شاعر و از منوی موجود در آن می‌توانید انجام دهید.</translation>
+        <source>Meikade 4 is online by default now. It means you can discover between tousands of poems freely without downloading to your storages. But it also available to download them to your 
+storage and read them offline. Please select your poets that your want to read online. You can also setup it later on the every poet/book page.</source>
+        <translation>در می‌کده ۴ قابلیت خوانش آنلاین تمامی اشعار و جستجوی آنلاین در میان همه آثار فراهم شده است. این به این معنی است که نیاز به دانلود آثار شاعران وجود ندارد. با این حال در صورت تمایل 
+می‌توانید آثار شاعران مورد نظر خود را برای استفاده آفلاین و بدون نیاز به اینترنت، دانلود کنید. بدیهی‌ست که این کار را بعدا در صفحه هر شاعر و از منوی موجود در آن می‌توانید انجام دهید.</translation>
     </message>
     <message>
         <source>Uninstalling</source>
@@ -1333,6 +1346,14 @@ It containts %2 items currently.</source>
         <source>Cancel</source>
         <translation>لغو</translation>
     </message>
+    <message>
+        <source>Coupon</source>
+        <translation>کد تخفیف</translation>
+    </message>
+    <message>
+        <source>Submit</source>
+        <translation>ثبت</translation>
+    </message>
 </context>
 <context>
     <name>PremiumConfirmPage</name>
@@ -1343,6 +1364,18 @@ It containts %2 items currently.</source>
     <message>
         <source>%1 Tomans per Year</source>
         <translation>%1 تومان سالیانه</translation>
+    </message>
+    <message>
+        <source>%1% OFF Coupon</source>
+        <translation>%1% تخفیف</translation>
+    </message>
+    <message>
+        <source>Toman</source>
+        <translation>تومان</translation>
+    </message>
+    <message>
+        <source>%1 Tomans per %2 months</source>
+        <translation>%1 تومن - اکانت %2 ماهه</translation>
     </message>
 </context>
 <context>
@@ -1474,6 +1507,10 @@ It containts %2 items currently.</source>
         <source>Account State</source>
         <translation>وضعیت اکانت شما</translation>
     </message>
+    <message>
+        <source>Upgrade</source>
+        <translation>ارتقای اکانت</translation>
+    </message>
 </context>
 <context>
     <name>SettingsPage</name>
@@ -1495,11 +1532,11 @@ It containts %2 items currently.</source>
     </message>
     <message>
         <source>Premium</source>
-        <translation>اکانت حرفه‌ای</translation>
+        <translation type="vanished">اکانت حرفه‌ای</translation>
     </message>
     <message>
         <source>Normal</source>
-        <translation>اکانت معمولی</translation>
+        <translation type="vanished">اکانت معمولی</translation>
     </message>
     <message>
         <source>%1 days</source>
@@ -1641,6 +1678,13 @@ It containts %2 items currently.</source>
     <message>
         <source>Poet Name</source>
         <translation>نام شاعر</translation>
+    </message>
+</context>
+<context>
+    <name>Subscription</name>
+    <message>
+        <source>Free Account</source>
+        <translation>اکانت رایگان</translation>
     </message>
 </context>
 <context>

@@ -10,7 +10,7 @@ AsemanObject {
     readonly property int offlineLimits: currentPackage.extra.offline_limits
 
     readonly property int premiumDays: currentPackage.expire_in_days
-    readonly property int premium: currentPackage.price > 0
+    readonly property int premium: currentPackage.expire_in_days > 0
 
     readonly property string title: currentPackage.title
 

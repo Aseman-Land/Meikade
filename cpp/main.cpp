@@ -42,8 +42,8 @@ int main(int argc, char *argv[])
     androidStyle = true;
     QQuickStyle::setStyle("Material");
 #else
-    androidStyle = true;
-    QQuickStyle::setStyle("Material");
+    androidStyle = false;
+    QQuickStyle::setStyle("IOSStyle");
 #endif
 
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
