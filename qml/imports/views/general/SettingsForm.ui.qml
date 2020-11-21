@@ -18,6 +18,7 @@ Item {
     property alias menuBtn: menuBtn
     property alias headerItem: headerItem
     property alias logoutBtn: logoutBtn
+    property alias loginBtn: loginBtn
     property alias languageCombo: languageCombo
     property alias themeCombo: themeCombo
     property alias phraseSwitch: phraseSwitch
@@ -224,6 +225,19 @@ Item {
 
             }
         }
+    }
+
+    Button {
+        id: loginBtn
+        anchors.right: flick.right
+        anchors.left: flick.left
+        anchors.bottom: flick.bottom
+        anchors.bottomMargin: 10 * Devices.density + Devices.navigationBarHeight
+        anchors.margins: 20 * Devices.density
+        highlighted: true
+        font.pixelSize: 9 * Devices.fontDensity
+        text: qsTr("Login") + Translations.refresher
+        visible: AsemanGlobals.accessToken.length == 0
     }
 
     Button {

@@ -28,6 +28,8 @@ Item {
     property alias couponField: couponField
     property alias couponBusy: couponBusy
     property alias items: items
+    property alias loginColumn: loginColumn
+    property alias loginBtn: loginBtn
 
     property color packageColor: "#fff"
 
@@ -36,15 +38,43 @@ Item {
     Rectangle {
         anchors.fill: parent
         color: forceDark? "#222" : Colors.background
-        opacity: 0.5
+        opacity: forceDark && Devices.isAndroid? 1 : 0.5
     }
 
     BusyIndicator {
         id: busyIndicator
         anchors.centerIn: parent
         running: false
+        visible: !loginColumn.visible
         Material.accent: packageColor
         IOSStyle.foreground: packageColor
+    }
+
+    ColumnLayout {
+        id: loginColumn
+        anchors.centerIn: parent
+        anchors.right: parent.right
+        anchors.left: parent.left
+        anchors.margins: 20 * Devices.density
+        visible: false
+
+        Label {
+            Layout.fillWidth: true
+            wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+            font.pixelSize: 9 * Devices.fontDensity
+            text: qsTr("You must login with you account before active premium account.") + Translations.refresher
+        }
+
+        Button {
+            id: loginBtn
+            Layout.alignment: Qt.AlignHCenter
+            font.pixelSize: 9 * Devices.fontDensity
+            text: qsTr("Login") + Translations.refresher
+            highlighted: true
+
+            Material.accent: packageColor
+            IOSStyle.accent: packageColor
+        }
     }
 
     AsemanFlickable {
@@ -57,7 +87,7 @@ Item {
         contentWidth: scene.width
         contentHeight: scene.height
         clip: true
-        visible: !busyIndicator.running
+        visible: !busyIndicator.running && !loginColumn.visible
 
         EscapeItem {
             id: scene

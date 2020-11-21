@@ -32,6 +32,8 @@ UserRequest {
         }
     }
     readonly property variant _subscription: {
+        if (AsemanGlobals.accessToken.length == 0)
+            return new Array;
         try {
             return _cache.subscriptions[0];
         } catch (e) {

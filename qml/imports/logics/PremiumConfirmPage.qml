@@ -16,6 +16,9 @@ PremiumConfirmView {
 
     busyIndicator.running: pkgReq.refreshing
 
+    loginColumn.visible: AsemanGlobals.accessToken.length == 0
+    loginBtn.onClicked: Viewport.controller.trigger("float:/auth/float", {})
+
     cancelBtn.onClicked: home.ViewportType.open = false;
     confirmBtn.onClicked: confirm()
 
@@ -25,7 +28,14 @@ PremiumConfirmView {
     couponBtn.onClicked: couponReq.networkManager.get(couponReq)
     couponBusy.running: couponReq.refreshing
 
+    Connections {
+        target: Subscription
+        onPremiumChanged: if (Subscription.premium) home.ViewportType.open = false;
+    }
+
     packageColor: {
+        if (AsemanGlobals.accessToken.length == 0)
+            return Subscription.premiumColor;
         if (intervalPayCombo.count == 0)
             return Subscription.premiumColor;
 

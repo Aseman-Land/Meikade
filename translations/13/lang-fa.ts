@@ -1341,6 +1341,14 @@ It containts %2 items currently.</source>
         <source>Submit</source>
         <translation>ثبت</translation>
     </message>
+    <message>
+        <source>You must login with you account before active premium account.</source>
+        <translation>قبل از ارتقای اکانت خود به اکانت حرفه‌ای باید با اکانت خود وارد شوید.</translation>
+    </message>
+    <message>
+        <source>Login</source>
+        <translation>ورود</translation>
+    </message>
 </context>
 <context>
     <name>PremiumConfirmPage</name>
@@ -1555,6 +1563,10 @@ It&apos;s experimental currently and Meikade technical team working on it. But i
     <message>
         <source>Upgrade</source>
         <translation>ارتقای اکانت</translation>
+    </message>
+    <message>
+        <source>Login</source>
+        <translation>ورود</translation>
     </message>
 </context>
 <context>

@@ -1203,6 +1203,14 @@ It contains %2 of current items.</translation>
         <source>Submit</source>
         <translation type="unfinished">Submit</translation>
     </message>
+    <message>
+        <source>You must login with you account before active premium account.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Login</source>
+        <translation type="unfinished">Login</translation>
+    </message>
 </context>
 <context>
     <name>PremiumConfirmPage</name>
@@ -1399,6 +1407,10 @@ It&apos;s experimental currently and Meikade technical team working on it. But i
     <message>
         <source>Upgrade</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Login</source>
+        <translation type="unfinished">Login</translation>
     </message>
 </context>
 <context>

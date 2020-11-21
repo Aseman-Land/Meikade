@@ -23,8 +23,8 @@ AbstractDelegate {
         anchors.fill: parent
         fillMode: Image.PreserveAspectCrop
         asynchronous: true
-        sourceSize.width: adel.width * 1.2
-        sourceSize.height: adel.height * 1.2
+        sourceSize.width: 120 * Devices.density
+        sourceSize.height: 120 * Devices.density
     }
 
     Rectangle {

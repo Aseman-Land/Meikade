@@ -14,6 +14,7 @@ SettingsView {
     menuBtn.onClicked: ViewportType.open = false
     ViewportType.gestureWidth: 30 * Devices.density
 
+    loginBtn.onClicked: Viewport.controller.trigger("float:/auth/float", {})
     logoutBtn.onClicked: {
         var properties = {
             "title": qsTr("Logout"),
