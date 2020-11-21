@@ -24,6 +24,8 @@ QtObject {
     readonly property color background: androidStyle? Material.background : IOSStyle.background
     readonly property color foreground: androidStyle? Material.foreground : IOSStyle.foreground
 
+    readonly property color noteButton: "#4caf50"
+
     readonly property color headerText: "#ffffff"
     readonly property color header: primary
 

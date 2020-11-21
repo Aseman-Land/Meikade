@@ -4,12 +4,11 @@ import AsemanQml.Base 2.0
 import AsemanQml.Viewport 2.0
 import views 1.0
 import globals 1.0
+import micros 1.0
 import routes 1.0
 
 MainView {
     id: form
-
-    onCurrentIndexChanged: search.keywordField.focus = false;
 
     readonly property bool firstPage: currentIndex == 0
 
@@ -29,20 +28,41 @@ MainView {
         loadChangelogs();
     }
 
-    HomePage {
+    MeikadeLoader {
         parent: form.homePage
         anchors.fill: parent
+        active: true
+        sourceComponent: HomePage {
+            anchors.fill: parent
+        }
     }
 
-    SearchPage {
-        id: search
+    MeikadeLoader {
+        active: false
         parent: form.searchPage
         anchors.fill: parent
+        visible: form.currentIndex == 1
+        onVisibleChanged: if (visible) active = true
+        sourceComponent: SearchPage {
+            id: search
+            anchors.fill: parent
+
+            Connections {
+                target: form
+                onCurrentIndexChanged: search.keywordField.focus = false;
+            }
+        }
     }
 
-    MyMeikadePage {
+    MeikadeLoader {
+        active: false
         parent: form.myMeikadePage
         anchors.fill: parent
+        visible: form.currentIndex == 2
+        onVisibleChanged: if (visible) active = true
+        sourceComponent: MyMeikadePage {
+            anchors.fill: parent
+        }
     }
 
     Connections {

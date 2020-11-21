@@ -42,6 +42,25 @@ UserBaseQuery {
         return select("", "type = :type AND declined = 0", "GROUP BY poetId", {type: UserActions.TypeFavorite})
     }
 
+    function getPoemAttributes() {
+        var list =  select("", "poetId = :poetId AND poemId = :poemId AND (type = :fav OR type = :note OR (type > :listStart AND type < :listEnd)) AND declined = 0", "",
+                           {poetId: poetId, poemId: poemId, fav: UserActions.TypeFavorite, note: UserActions.TypeNote,
+                            listStart: UserActions.TypeItemListsStart, listEnd: UserActions.TypeItemListsEnd});
+
+        var res = Tools.toVariantMap("");
+        list.forEach(function(l){
+            var row = res[l.verseId];
+            row = Tools.toVariantMap(row);
+            if (l.type > UserActions.TypeItemListsStart && l.type < UserActions.TypeItemListsEnd)
+                row[UserActions.TypeItemListsStart] = true;
+            else
+                row[l.type] = true;
+
+            res[l.verseId] = row;
+        })
+        return res;
+    }
+
     function getDiaries(fromDate) {
         var startHour = Math.floor(Tools.dateToSec(new Date(2020, 1, 1)) / 3600);
         var currentHour = Math.floor(Tools.dateToSec(fromDate) / 3600);

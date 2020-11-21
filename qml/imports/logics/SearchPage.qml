@@ -80,6 +80,7 @@ SearchView {
     SearchVerseModel {
         id: searchModel
         query: home.keywordField.text
+        smart: AsemanGlobals.smartSearch
         poets: {
             var res = new Array;
             for (var i=0; i<searchFilterModel.count; i++)
@@ -152,6 +153,8 @@ SearchView {
                     searchFilterModel.append( selectedListModel.get(i) );
 
                 AsemanGlobals.onlineSearch = onlineSearchSwitch.checked;
+                if (AsemanGlobals.onlineSearch)
+                    AsemanGlobals.smartSearch = !accurateSearchSwitch.checked;
                 ViewportType.open = false;
             }
             cancelBtn.onClicked: ViewportType.open = false;

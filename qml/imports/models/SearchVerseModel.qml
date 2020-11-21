@@ -11,6 +11,7 @@ AsemanListModel {
     readonly property bool refreshing: (searchReq.refreshing || timer.running) && timeoutTimer.running
     property alias query: searchReq._query
     property alias poets: searchReq.poets
+    property bool smart: true
 
     onQueryChanged: timer.restart()
     onPoetsChanged: timer.restart()
@@ -41,7 +42,11 @@ AsemanListModel {
 
     SearchVerseRequest {
         id: searchReq
+        _smart: lmodel.smart? "true" : "false"
         onResponseChanged: {
+            if (_offset == 0)
+                lmodel.clear();
+
             var res = new Array;
             try {
                 for (var i in response.result) {

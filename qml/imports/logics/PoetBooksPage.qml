@@ -132,7 +132,7 @@ PoetBooksView {
             onItemClicked: {
                 switch (index) {
                 case 0:
-                    catsModel.offlineInstaller.install( !catsModel.offlineInstaller.installed );
+                    catsModel.offlineInstaller.checkAndInstall( !catsModel.offlineInstaller.installed );
                     break;
                 case 1:
                     Viewport.controller.trigger("page:/poem/random?poetId=" + dis.id + "&catId=" + dis.catId);

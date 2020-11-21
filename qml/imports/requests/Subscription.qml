@@ -1,0 +1,66 @@
+pragma Singleton
+
+import QtQuick 2.0
+import AsemanQml.Base 2.0
+
+AsemanObject {
+
+    readonly property int notesLimits: currentPackage.package.extra.notes_limits
+    readonly property int listsLimits: currentPackage.package.extra.lists_limits
+    readonly property int offlineLimits: currentPackage.package.extra.offline_limits
+
+    readonly property int premium: premiumDays > 0
+    readonly property int premiumDays: {
+        try {
+            var expire = Math.floor(Date.parse(currentPackage.expires_at) / 1000);
+            var current = Tools.dateToSec(new Date);
+            return Math.round( (expire - current) / (24 * 3600) );
+        } catch (e) {
+            return -1;
+        }
+    }
+
+
+    readonly property string title: currentPackage.package.title
+    readonly property color packageColor: currentPackage.package.extra.color
+
+    readonly property variant currentPackage: {
+        var sbc = MyUserRequest._subscription;
+        try {
+            if (sbc.package.id === 0)
+                return null;
+
+            return sbc;
+        } catch (e) {
+            return {
+                package_id: 2,
+                package: {
+                    id: 2,
+                    title: qsTr("Free Account") + Translations.refresher,
+                    description: null,
+                    price: 0,
+                    expire_in_days: -1,
+                    extra: {
+                        color: "#008fdc",
+                        lists_limits: 3,
+                        notes_limits: 5,
+                        offline_limits: -1
+                    }
+                },
+                starts_at: "1990-11-21T16:40:59+03:30",
+                expires_at: "1990-12-21T16:40:59+03:30",
+                total_days: 30,
+                remained_days: 29
+            };
+        }
+    }
+
+    readonly property color premiumColor: "#fa4"
+
+    function refresh() {
+    }
+
+    function init() {
+        refresh()
+    }
+}

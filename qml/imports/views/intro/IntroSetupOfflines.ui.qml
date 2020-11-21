@@ -4,9 +4,11 @@ import QtQuick.Controls 2.3
 import QtQuick.Layouts 1.3
 import AsemanQml.Controls 2.0
 import QtQuick.Controls.Material 2.0
+import QtQuick.Controls.IOSStyle 2.0
 import globals 1.0
 import micros 1.0
 import queries 1.0
+import requests 1.0
 
 Page {
     id: homeForm
@@ -15,8 +17,13 @@ Page {
 
     property alias listView: listView
 
+    property string premiumMsg
+    property int offlinePoetsCount
+
     readonly property real headerHeight: headColumn.height + 40 * Devices.density
     readonly property real ratio: 1 - Math.min( Math.max(-headerListener.result.y / listView.headerItem.height, 0), 1)
+
+    signal premiumBuyRequest()
 
     PointMapListener {
         id: headerListener
@@ -38,7 +45,58 @@ Page {
 
         header: Item {
             width: listView.width
-            height: headerHeight
+            height: headerHeight + (headerRow.visible? headerRow.height + 30 * Devices.density : 0)
+
+            ColumnLayout {
+                id: headerRow
+                anchors.bottomMargin: 15 * Devices.density
+                anchors.bottom: parent.bottom
+                anchors.left: parent.left
+                anchors.right: parent.right
+                spacing: 10 * Devices.density
+                visible: premiumMsg.length
+
+                Label {
+                    Layout.fillWidth: true
+                    Layout.leftMargin: 20 * Devices.density
+                    Layout.rightMargin: 20 * Devices.density
+                    horizontalAlignment: Text.AlignHCenter
+                    font.pixelSize: 8 * Devices.fontDensity
+                    opacity: 0.8
+                    text: premiumMsg
+                    wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                    color: Subscription.offlineLimits > offlinePoetsCount? Colors.foreground : "#a00"
+                }
+
+                Label {
+                    Layout.fillWidth: true
+                    Layout.leftMargin: 20 * Devices.density
+                    Layout.rightMargin: 20 * Devices.density
+                    horizontalAlignment: Text.AlignHCenter
+                    font.pixelSize: 8 * Devices.fontDensity
+                    text: qsTr("To buy premium account click on below button") + Translations.refresher
+                    visible: Subscription.offlineLimits <= offlinePoetsCount
+                    wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                }
+
+                RoundButton {
+                    id: premiumBtn
+                    Layout.preferredWidth: listView.width * 0.5
+                    Layout.alignment: Qt.AlignHCenter
+                    text: qsTr("Premium Account") + Translations.refresher
+                    font.pixelSize: 9 * Devices.fontDensity
+                    highlighted: true
+                    visible: Subscription.offlineLimits <= offlinePoetsCount
+                    Material.accent: Subscription.premiumColor
+                    IOSStyle.accent: Subscription.premiumColor
+                    Material.elevation: 0
+
+                    Connections {
+                        target: premiumBtn
+                        onClicked: homeForm.premiumBuyRequest()
+                    }
+                }
+            }
         }
 
         delegate: Item {
@@ -143,17 +201,31 @@ Page {
                         enabled: !offlineInstaller.installing || offlineInstaller.uninstalling
                         checked: (offlineInstaller.installed || offlineInstaller.installing || offlineInstaller.downloading) && !offlineInstaller.uninstalling
 
+                        property bool initialized: false
+                        Component.onCompleted: initialized = true
+
                         Connections {
                             target: swt
                             onCheckedChanged: {
-                                if (swt.checked == offlineInstaller.installed)
+                                if (swt.checked == (offlineInstaller.installed || offlineInstaller.downloading))
                                     return;
 
                                 if (offlineInstaller.downloading)
                                     offlineInstaller.stop();
-                                else
-                                    offlineInstaller.install(swt.checked)
+                                else {
+                                    offlinePoetsCount = offlineInstaller.checkCount();
+                                    var res = offlineInstaller.checkAndInstall(swt.checked);
+                                    if (swt.checked) {
+                                        if (res)
+                                            offlinePoetsCount++;
+                                        else
+                                            swt.checked = false;
+                                    } else {
+                                        offlinePoetsCount--;
+                                    }
+                                }
                             }
+                            onInitializedChanged: if (model.index == 0) offlinePoetsCount = offlineInstaller.checkCount();
                         }
 
                         DataOfflineInstaller {

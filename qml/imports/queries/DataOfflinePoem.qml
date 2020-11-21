@@ -17,11 +17,16 @@ DataBaseQuery {
         });
     }
 
-    function getItems(callback) {
-        _getItems(poem_id, callback);
+    function getItems(callback, offset, limit) {
+        _getItems(poem_id, callback, offset, limit);
     }
 
-    function _getItems(poem_id, callback) {
+    function _getItems(poem_id, callback, offset, limit) {
+        if (offset === undefined)
+            offset = 0;
+        if (limit === undefined)
+            limit = 100;
+
         queryAsync("SELECT poem.id AS poem_id, poem.title AS poem_title, poem.phrase AS poem_phrase, cat.text AS cat_title, cat.id AS cat_id, cat.parent_id AS cat_parent, " +
                    "poet.name AS poet_name, poet.description AS poet_description, poet.wikipedia AS poet_wikipedia, poet.image AS poet_image, " +
                    "poet.color AS poet_color, poet.id AS poet_id, poem.cat_id AS poem_category_id, cat.poet_id AS poem_poet_id, " +
@@ -33,7 +38,7 @@ DataBaseQuery {
                    "WHERE poem.id = :poem_id",
                    {"poem_id": poem_id}, function(res) {
                        if (res.length == 0) {
-                           callback(res);
+                           callback(res, offset, limit);
                            return;
                        }
 
@@ -72,10 +77,10 @@ DataBaseQuery {
                            }
                        }
 
-                       queryAsync("SELECT vorder, position, text FROM verse WHERE poem_id = :poem_id",
-                                  {"poem_id": poem_id}, function(verses) {
+                       queryAsync("SELECT vorder, position, text FROM verse WHERE poem_id = :poem_id LIMIT :limit OFFSET :offset",
+                                  {"poem_id": poem_id, "limit": limit, "offset": offset}, function(verses) {
                                       unit["verses"] = verses;
-                                      callback(unit);
+                                      callback(unit, offset, limit);
                                   })
                    });
     }

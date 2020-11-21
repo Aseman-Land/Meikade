@@ -282,6 +282,7 @@ PoemView {
         listView.model: loader.versesModel
 
         onMoreRequest: loader.more()
+        onLessRequest: loader.less()
     }
 
     Component {
@@ -401,7 +402,7 @@ PoemView {
                         if (j < loader.categoriesModel.count-1)
                             text += ", ";
                         else
-                            text += "\n";
+                            text += " - ";
                     }
 
                     text += poet;
@@ -413,31 +414,64 @@ PoemView {
             }
 
             onItemClicked: {
+                var idx = menuItem.index;
+                var poemLoader = loader;
+
+                var map = {
+                    title: dis.title,
+                    subtitle: dis.poet,
+                    image: dis.image,
+                    link: loader.link,
+                    verseText: dis.verseText,
+                    verseId: verseId,
+                    verseText: menuItem.verseText
+                };
+
+                var extra = Tools.variantToJson(map, true);
+
                 switch (index) {
                 case 0:
-                    var map = {
-                        title: dis.title,
-                        subtitle: dis.poet,
-                        image: dis.image,
-                        link: loader.link,
-                        verseText: dis.verseText,
-                        verseId: verseId,
-                        verseText: menuItem.verseText
-                    };
+                    var poemText = getText(false);
+                    poemText = Tools.stringReplace(poemText, "\n+", "\n", true);
 
-                    var extra = Tools.variantToJson(map, true);
+                    Viewport.controller.trigger("float:/notes/add", {"poetId": verseFaveActionQuery.poetId,
+                                                "catId": verseFaveActionQuery.catId, "poemId": verseFaveActionQuery.poemId,
+                                                "verseId": verseFaveActionQuery.verseId, "poemText": poemText, "extra": extra}).saved.connect(function(text){
+                        var item = poemLoader.versesModel.get(idx);
+                        poemLoader.versesModel.remove(idx);
+
+                        item.hasNote = (text.length? true : false);
+                        poemLoader.versesModel.insert(idx, item);
+                    });
+                    break;
+
+                case 1:
                     Viewport.controller.trigger("bottomdrawer:/lists", {"selectMode": verseFaveActionQuery.getLists(), "poetId": verseFaveActionQuery.poetId,
                                                 "catId": verseFaveActionQuery.catId, "poemId": verseFaveActionQuery.poemId,
-                                                "verseId": verseFaveActionQuery.verseId, "extra": extra});
+                                                "verseId": verseFaveActionQuery.verseId, "extra": extra}).saved.connect(function(lists){
+                        var item = poemLoader.versesModel.get(idx);
+                        poemLoader.versesModel.remove(idx);
+
+                        item.hasList = false;
+                        item.favorited = false;
+
+                        lists.forEach(function(id){
+                            if (id == Query.UserActions.TypeFavorite)
+                                item.favorited = true;
+                            else
+                                item.hasList = true;
+                        })
+                        poemLoader.versesModel.insert(idx, item);
+                    });
                     break;
-                case 1:
+                case 2:
                     Devices.clipboard = getText(false);
                     GlobalSignals.snackbarRequest(qsTr("Verse copied"));
                     break;
-                case 2:
+                case 3:
                     Viewport.controller.trigger("float:/sticker/export", {"poet": poet, "text": getText(true)})
                     break;
-                case 3:
+                case 4:
                     Devices.share(dis.title, getText(false));
                     break;
                 }
@@ -447,6 +481,11 @@ PoemView {
 
             model: AsemanListModel {
                 data: [
+                    {
+                        title: qsTr("Note"),
+                        icon: "mdi_note",
+                        enabled: true
+                    },
                     {
                         title: qsTr("Choose Lists"),
                         icon: "mdi_library",

@@ -6,6 +6,7 @@ import QtQuick.Controls 2.3
 import QtQuick.Layouts 1.3
 import QtQuick.Controls.Material 2.0
 import QtQuick.Controls.IOSStyle 2.0
+import requests 1.0
 import globals 1.0
 import micros 1.0
 import models 1.0
@@ -17,10 +18,14 @@ Item {
     property alias menuBtn: menuBtn
     property alias headerItem: headerItem
     property alias logoutBtn: logoutBtn
+    property alias loginBtn: loginBtn
     property alias languageCombo: languageCombo
     property alias themeCombo: themeCombo
     property alias phraseSwitch: phraseSwitch
     property alias fontSizeSlider: fontSizeSlider
+    property alias accountStateLabel: accountStateLabel
+    property alias accountDaysLabel: accountDaysLabel
+    property alias accountPremiumBuy: accountPremiumBuy
 
     Material.theme: Material.Dark
     IOSStyle.theme: IOSStyle.Dark
@@ -52,6 +57,52 @@ Item {
                 anchors.topMargin: 10 * Devices.density
                 anchors.margins: 20 * Devices.density
                 spacing: 4 * Devices.density
+
+                RowLayout {
+                    visible: Bootstrap.initialized && AsemanGlobals.accessToken.length
+                    Layout.topMargin: 10 * Devices.density
+                    Layout.bottomMargin: 30 * Devices.density
+
+                    Label {
+                        Layout.fillWidth: true
+                        font.pixelSize: 9 * Devices.fontDensity
+                        horizontalAlignment: Text.AlignLeft
+                        text: qsTr("Account State") + Translations.refresher
+                    }
+
+                    Label {
+                        id: accountStateLabel
+                        Layout.minimumWidth: 60 * Devices.density
+                        font.pixelSize: 9 * Devices.fontDensity
+                        font.bold: true
+                        horizontalAlignment: Text.AlignHCenter
+                        color: Subscription.packageColor
+
+                        Label {
+                            id: accountDaysLabel
+                            anchors.top: parent.bottom
+                            anchors.horizontalCenter: parent.horizontalCenter
+                            font.pixelSize: 7 * Devices.fontDensity
+                            horizontalAlignment: Text.AlignLeft
+                            color: Subscription.packageColor
+                            visible: Subscription.premium
+                        }
+
+                        Button {
+                            id: accountPremiumBuy
+                            anchors.top: parent.bottom
+                            anchors.horizontalCenter: parent.horizontalCenter
+                            width: 80 * Devices.density
+                            height: 36 * Devices.density
+                            font.pixelSize: 8 * Devices.fontDensity
+                            text: qsTr("Upgrade") + Translations.refresher
+                            highlighted: true
+                            Material.accent: Subscription.premiumColor
+                            IOSStyle.accent: Subscription.premiumColor
+                            visible: !Subscription.premium
+                        }
+                    }
+                }
 
                 RowLayout {
                     Label {
@@ -171,8 +222,22 @@ Item {
                     to: 5
                     stepSize: 1
                 }
+
             }
         }
+    }
+
+    Button {
+        id: loginBtn
+        anchors.right: flick.right
+        anchors.left: flick.left
+        anchors.bottom: flick.bottom
+        anchors.bottomMargin: 10 * Devices.density + Devices.navigationBarHeight
+        anchors.margins: 20 * Devices.density
+        highlighted: true
+        font.pixelSize: 9 * Devices.fontDensity
+        text: qsTr("Login") + Translations.refresher
+        visible: AsemanGlobals.accessToken.length == 0
     }
 
     Button {

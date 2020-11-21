@@ -16,6 +16,7 @@ AsemanObject {
     property alias fontSize: _settings.fontSize
     property alias lastChangelogs: _settings.lastChangelogs
     property alias onlineSearch: _settings.onlineSearch
+    property alias smartSearch: _settings.smartSearch
     property alias introDone: _settings.introDone
     property alias sendData: _settings.sendData
     property alias iosTheme: _settings.iosTheme
@@ -27,6 +28,7 @@ AsemanObject {
 
     property alias lastSync: _sync.lastSync
     property alias syncFavorites: _sync.syncFavorites
+    property alias syncNotes: _sync.syncNotes
     property alias syncViews: _sync.syncViews
     property alias syncTopPoets: _sync.syncTopPoets
 
@@ -62,6 +64,7 @@ AsemanObject {
         property string language: "fa"
         property bool phrase: true
         property bool onlineSearch: true
+        property bool smartSearch: true
         property bool introDone
         property bool sendData
         property int fontSize: 3
@@ -92,6 +95,7 @@ AsemanObject {
 
         property string lastSync
         property bool syncFavorites: false
+        property bool syncNotes: false
         property bool syncViews: false
         property bool syncTopPoets: false
     }

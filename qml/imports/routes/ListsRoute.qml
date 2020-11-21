@@ -7,6 +7,7 @@ ListsPage {
     width: parent.width
     height: Viewport.viewport.height * 0.7
     mainViewport: Viewport.viewport
+    mainController: Viewport.controller
 
     onCloseRequest: ViewportType.open = false;
     onLinkRequest: Viewport.controller.trigger(link, properties)

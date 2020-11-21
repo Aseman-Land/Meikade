@@ -14,7 +14,10 @@ import globals 1.0
 MyMeikadeView {
     id: dis
 
-    Component.onCompleted: Tools.jsDelayCall(100, gridView.positionViewAtBeginning)
+    Component.onCompleted: {
+        Tools.jsDelayCall(100, gridView.positionViewAtBeginning);
+        refreshDiaries();
+    }
 
     signedIn: AsemanGlobals.accessToken.length
 
@@ -25,7 +28,7 @@ MyMeikadeView {
         if (link == "float:/syncs" && AsemanGlobals.accessToken.length == 0)
             link = "float:/auth/float";
 
-        Viewport.controller.trigger(link, {})
+        Viewport.controller.trigger(link, {});
     }
 
     profileLabel.text: MyUserRequest._fullname

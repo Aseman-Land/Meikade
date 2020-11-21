@@ -106,6 +106,40 @@
     </message>
 </context>
 <context>
+    <name>AddNoteForm.ui</name>
+    <message>
+        <source>Type your note</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Save</source>
+        <translation type="unfinished">Save</translation>
+    </message>
+    <message>
+        <source>Edit Note</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">Close</translation>
+    </message>
+    <message>
+        <source>To buy premium account click on below button</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Premium Account</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>AddNotePage</name>
+    <message>
+        <source>You create %1 note from %2 notes, Allowed to create using non-premium account.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>AuthPage</name>
     <message>
         <source>Logged in Successfully</source>
@@ -304,6 +338,25 @@
     </message>
 </context>
 <context>
+    <name>DataOfflineInstaller</name>
+    <message>
+        <source>Premium Needed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Your limit %1 offline poets ended. Do you want to buy premium account?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation type="unfinished">Cancel</translation>
+    </message>
+    <message>
+        <source>BUY Premium</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>DataOfflinePoets</name>
     <message>
         <source>%1 books</source>
@@ -340,6 +393,25 @@ It contains %2 of current items.</translation>
     <message>
         <source>&quot;%1&quot; deleted</source>
         <translation>&quot;%1&quot; deleted</translation>
+    </message>
+</context>
+<context>
+    <name>DeleteNoteForm.ui</name>
+    <message>
+        <source>Delete List</source>
+        <translation type="unfinished">Delete List</translation>
+    </message>
+    <message>
+        <source>Are you sure about delete this list?</source>
+        <translation type="unfinished">Are you sure you want to delete this list?</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation type="unfinished">Cancel</translation>
+    </message>
+    <message>
+        <source>Confirm</source>
+        <translation type="unfinished">Confirm</translation>
     </message>
 </context>
 <context>
@@ -549,6 +621,13 @@ It contains %2 of current items.</translation>
     </message>
 </context>
 <context>
+    <name>IntroPage</name>
+    <message>
+        <source>You install %1 offline poet from %2 poets, Allowed to install using non-premium account.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>IntroSetupHome.ui</name>
     <message>
         <source>Setup Favorites</source>
@@ -580,6 +659,14 @@ It contains %2 of current items.</translation>
     <message>
         <source>Installing</source>
         <translation>Installing</translation>
+    </message>
+    <message>
+        <source>To buy premium account click on below button</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Premium Account</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -619,6 +706,14 @@ It contains %2 of current items.</translation>
         <source>Done</source>
         <translation>Done</translation>
     </message>
+    <message>
+        <source>To buy premium account click on below button</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Premium Account</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ListsModel</name>
@@ -648,6 +743,10 @@ It contains %2 of current items.</translation>
     <message>
         <source>Delete</source>
         <translation>Delete</translation>
+    </message>
+    <message>
+        <source>You create %1 lists from %2 lists, Allowed to create using non-premium account.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -729,6 +828,21 @@ It contains %2 of current items.</translation>
     <message>
         <source>Installing</source>
         <translation>Installing</translation>
+    </message>
+    <message>
+        <source>To buy premium account click on below button</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Premium Account</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ManageOfflinePoetsPage</name>
+    <message>
+        <source>You install %1 offline poet from %2 poets, Allowed to install using non-premium account.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -836,6 +950,58 @@ It contains %2 of current items.</translation>
     </message>
 </context>
 <context>
+    <name>NotesListForm.ui</name>
+    <message>
+        <source>There is no item here</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Notes</source>
+        <translation type="unfinished">Notes</translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">Close</translation>
+    </message>
+</context>
+<context>
+    <name>NotesPage</name>
+    <message>
+        <source>Change Name</source>
+        <translation type="unfinished">Change Name</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation type="unfinished">Delete</translation>
+    </message>
+</context>
+<context>
+    <name>NotesPoetsListForm.ui</name>
+    <message>
+        <source>There is no item here</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Favoriteds</source>
+        <translation type="obsolete">Favorites</translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">Close</translation>
+    </message>
+    <message>
+        <source>Notes</source>
+        <translation type="unfinished">Notes</translation>
+    </message>
+</context>
+<context>
+    <name>NotesPoetsListModel</name>
+    <message>
+        <source>%1 items</source>
+        <translation type="unfinished">%1 of items</translation>
+    </message>
+</context>
+<context>
     <name>PoemForm.ui</name>
     <message>
         <source>Views</source>
@@ -899,6 +1065,10 @@ It contains %2 of current items.</translation>
     <message>
         <source>Choose Lists</source>
         <translation>Choose Lists</translation>
+    </message>
+    <message>
+        <source>Note</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1004,6 +1174,80 @@ It contains %2 of current items.</translation>
     </message>
 </context>
 <context>
+    <name>PremiumConfirmForm.ui</name>
+    <message>
+        <source>Monthly</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Yearly</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Confirm</source>
+        <translation type="unfinished">Confirm</translation>
+    </message>
+    <message>
+        <source>Premium Account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation type="unfinished">Cancel</translation>
+    </message>
+    <message>
+        <source>Coupon</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Submit</source>
+        <translation type="unfinished">Submit</translation>
+    </message>
+    <message>
+        <source>You must login with you account before active premium account.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Login</source>
+        <translation type="unfinished">Login</translation>
+    </message>
+</context>
+<context>
+    <name>PremiumConfirmPage</name>
+    <message>
+        <source>%1% OFF Coupon</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Toman</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unlimited Notes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 Notes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unlimited Lists</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 Lists</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unlimited Offline Poems</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 Offline Poems</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>RandomPoemRequester</name>
     <message>
         <source>Failed</source>
@@ -1047,6 +1291,14 @@ It contains %2 of current items.</translation>
         <source>Online Search</source>
         <translation>Online Search</translation>
     </message>
+    <message>
+        <source>Accurate word search</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>(Read More)</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>SearchForm.ui</name>
@@ -1076,6 +1328,26 @@ It contains %2 of current items.</translation>
     <message>
         <source>Offline Results</source>
         <translation>Offline Results</translation>
+    </message>
+</context>
+<context>
+    <name>SearchSmartAbout.ui</name>
+    <message>
+        <source>Smart Search</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Some about text</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SearchSmartAboutPage</name>
+    <message>
+        <source>Meikade online search is a smart search that uses AI alghorithms to give you better results.
+It removes all extra spaces you may entered or search between other positive spelling or meanings.
+It&apos;s experimental currently and Meikade technical team working on it. But if it fail to find true result, You can disable it Using accurate search checkbox.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1128,6 +1400,18 @@ It contains %2 of current items.</translation>
         <source>Poems font size</source>
         <translation>Poem font size</translation>
     </message>
+    <message>
+        <source>Account State</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Upgrade</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Login</source>
+        <translation type="unfinished">Login</translation>
+    </message>
 </context>
 <context>
     <name>SettingsPage</name>
@@ -1146,6 +1430,10 @@ It contains %2 of current items.</translation>
     <message>
         <source>Logout Successfully</source>
         <translation>Logout Successfully</translation>
+    </message>
+    <message>
+        <source>%1 days</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1283,6 +1571,13 @@ It contains %2 of current items.</translation>
     <message>
         <source>Poet Name</source>
         <translation>Poet Name</translation>
+    </message>
+</context>
+<context>
+    <name>Subscription</name>
+    <message>
+        <source>Free Account</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

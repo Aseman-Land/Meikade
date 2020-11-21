@@ -2,6 +2,7 @@ import QtQuick 2.12
 import AsemanQml.Base 2.0
 import AsemanQml.Viewport 2.0
 import AsemanQml.Models 2.0
+import requests 1.0
 import globals 1.0
 import views 1.0
 import models 1.0
@@ -12,6 +13,7 @@ Viewport {
     id: dis
 
     property alias mainViewport: lists.mainViewport
+    property ViewportController mainController
 
     property bool favoritesOnly
     property alias selectMode: lists.selectMode
@@ -27,6 +29,7 @@ Viewport {
     signal addListRequest()
     signal renameListRequest(int actionId, string currentName)
     signal deleteListRequest(int actionId, string name)
+    signal saved(variant lists)
 
     UserActions {
         id: listsQuery
@@ -35,18 +38,32 @@ Viewport {
     mainItem: ListsView {
         id: lists
         anchors.fill: parent
+
+        premiumMsg: {
+            if (Subscription.premium || Subscription.listsLimits < 0 || !Bootstrap.initialized)
+                return "";
+            return GTranslations.translate( qsTr("You create %1 lists from %2 lists, Allowed to create using non-premium account.").arg(lModel.count).arg(Subscription.listsLimits) )
+        }
+
         listView.model: ListsModel {
             id: lModel
             selecteds: selectMode
         }
+
+        onPremiumBuyRequest: mainController.trigger("bottomdrawer:/account/premium/buy")
+
         closeBtn.onClicked: closeRequest()
         confirmBtn.onClicked: {
+            var lists = new Array;
             for (var i=0; i<lModel.count; i++) {
                 var item = lModel.get(i);
                 var listId = item.listId;
 
                 var currentState = (selectMode && selectMode.indexOf(listId) >= 0? true : false)
                 var newState = item.checked;
+                if (newState)
+                    lists[lists.length] = listId;
+
                 if (newState == currentState)
                     continue;
 
@@ -59,6 +76,7 @@ Viewport {
             GlobalSignals.snackbarRequest(qsTr("Lists updated"));
             GlobalSignals.listsRefreshed();
             closeRequest()
+            dis.saved(lists)
         }
 
         onPressAndHold: {
@@ -73,7 +91,7 @@ Viewport {
             var item = lModel.get(index);
             Viewport.viewport.append(favoritedPoets_component, {"listId": item.listId, "title": item.title}, "page")
         }
-        onAddListRequest: dis.addListRequest()
+        onAddListRequest: dis.addListRequest();
 
         Connections {
             target: GlobalSignals
