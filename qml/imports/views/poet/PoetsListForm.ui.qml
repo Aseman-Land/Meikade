@@ -70,7 +70,6 @@ Item {
 
         Repeater {
             id: tabBarRepeater
-            model: PoetCategoriesModel {}
             TabButton {
                 font.pixelSize: 9 * Devices.fontDensity
                 text: model.title
