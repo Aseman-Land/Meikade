@@ -21,21 +21,29 @@ PoetsListView {
 
     gridView {
         onLinkRequest: Viewport.controller.trigger(link, properties)
-        model: tabBar.currentIndex == 1? poetsModel_newAge : poetsModel_classic
+        model: {
+            try {
+                return modelsRepeater.itemAt(tabBar.currentIndex).modelItem;
+            } catch (e) {
+                return new Array;
+            }
+        }
     }
 
     tabBarRepeater.model: PoetCategoriesModel {
-        cachePath: AsemanGlobals.cachePath + "/poetcats.cache"
+        id: poetCatsModel
     }
 
-    PoetsModel {
-        id: poetsModel_classic
-        cachePath: AsemanGlobals.cachePath + "/poetslist-1.cache"
-        typeId: 1
-    }
-    PoetsModel {
-        id: poetsModel_newAge
-        cachePath: AsemanGlobals.cachePath + "/poetslist-2.cache"
-        typeId: 2
+    Repeater {
+        id: modelsRepeater
+        model: poetCatsModel
+        Item {
+            property alias modelItem: poetsModel
+            PoetsModel {
+                id: poetsModel
+                cachePath: AsemanGlobals.cachePath + "/poetslist-" + model.id + ".cache"
+                typeId: model.id
+            }
+        }
     }
 }

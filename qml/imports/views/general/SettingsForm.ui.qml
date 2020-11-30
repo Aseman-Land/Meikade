@@ -22,6 +22,7 @@ Item {
     property alias languageCombo: languageCombo
     property alias themeCombo: themeCombo
     property alias phraseSwitch: phraseSwitch
+    property alias phraseNumberSwitch: phraseNumberSwitch
     property alias fontSizeSlider: fontSizeSlider
     property alias accountStateLabel: accountStateLabel
     property alias accountDaysLabel: accountDaysLabel
@@ -175,6 +176,20 @@ Item {
 
                     Switch {
                         id: phraseSwitch
+                    }
+                }
+
+
+                RowLayout {
+                    Label {
+                        Layout.fillWidth: true
+                        font.pixelSize: 9 * Devices.fontDensity
+                        horizontalAlignment: Text.AlignLeft
+                        text: qsTr("Show Phrase Number") + Translations.refresher
+                    }
+
+                    Switch {
+                        id: phraseNumberSwitch
                     }
                 }
 

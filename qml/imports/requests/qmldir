@@ -32,3 +32,4 @@ PackagesRequest 1.0 PackagesRequest.qml
 CouponRequest 1.0 CouponRequest.qml
 InitPaymentRequest 1.0 InitPaymentRequest.qml
 BootstrapRequest 1.0 BootstrapRequest.qml
+PoetsTypeRequest 1.0 PoetsTypeRequest.qml

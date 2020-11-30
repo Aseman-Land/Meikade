@@ -1256,11 +1256,11 @@ storage and read them offline. Please select your poets that your want to read o
     <name>PoetCategoriesModel</name>
     <message>
         <source>Classic</source>
-        <translation>سنتی</translation>
+        <translation type="vanished">سنتی</translation>
     </message>
     <message>
         <source>New Age</source>
-        <translation>معاصر</translation>
+        <translation type="vanished">معاصر</translation>
     </message>
 </context>
 <context>
@@ -1582,6 +1582,10 @@ It&apos;s experimental currently and Meikade technical team working on it. But i
     <message>
         <source>Login</source>
         <translation>ورود</translation>
+    </message>
+    <message>
+        <source>Show Phrase Number</source>
+        <translation>نمایش شماره فال</translation>
     </message>
 </context>
 <context>

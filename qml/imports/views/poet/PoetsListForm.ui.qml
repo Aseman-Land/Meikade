@@ -72,7 +72,7 @@ Item {
             id: tabBarRepeater
             TabButton {
                 font.pixelSize: 9 * Devices.fontDensity
-                text: model.title
+                text: GTranslations.localeName == "fa"? model.name : model.name_en
             }
         }
     }

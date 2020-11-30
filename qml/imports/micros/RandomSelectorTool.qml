@@ -61,7 +61,7 @@ Rectangle {
                 height: indexLabel.height + 20 * Devices.density
                 radius: 10 * Devices.density
                 x: Math.min(Math.max(marea.mouseX, 0), header.width) - width/2
-                visible: marea.pressed
+                visible: marea.pressed && AsemanGlobals.phraseNumber
 
                 Behavior on width {
                     NumberAnimation { easing.type: Easing.OutCubic; duration: 300 }

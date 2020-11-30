@@ -1117,11 +1117,11 @@ It contains %2 of current items.</translation>
     <name>PoetCategoriesModel</name>
     <message>
         <source>Classic</source>
-        <translation>Classic</translation>
+        <translation type="vanished">Classic</translation>
     </message>
     <message>
         <source>New Age</source>
-        <translation>New Age</translation>
+        <translation type="vanished">New Age</translation>
     </message>
 </context>
 <context>
@@ -1411,6 +1411,10 @@ It&apos;s experimental currently and Meikade technical team working on it. But i
     <message>
         <source>Login</source>
         <translation type="unfinished">Login</translation>
+    </message>
+    <message>
+        <source>Show Phrase Number</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

@@ -1,17 +1,20 @@
 import QtQuick 2.0
 import AsemanQml.Base 2.0
-import AsemanQml.MaterialIcons 2.0
 import AsemanQml.Models 2.0
+import requests 1.0
+import globals 1.0
 
 AsemanListModel {
-    data: [
-        {
-            "title": qsTr("Classic") + Translations.refresher,
-            "id": 1
-        },
-        {
-            "title": qsTr("New Age") + Translations.refresher,
-            "id": 2
-        }
-    ]
+    cachePath: AsemanGlobals.cachePath + "/types.cache"
+
+    property alias refreshing: typesReq.refreshing
+
+    PoetsTypeRequest {
+        id: typesReq
+    }
+
+    AsemanListModelSource {
+        source: typesReq.response
+        path: "result"
+    }
 }
