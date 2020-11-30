@@ -15,6 +15,7 @@ NetworkRequest {
     readonly property variant rawHeaders: {
         "Unique-ID": AsemanGlobals.uniqueId,
         "App-Name": AsemanApp.applicationName,
+        "App-ID": AsemanApp.applicationId,
         "App-Version": AsemanApp.applicationVersion,
         "App-Build-OS": (Devices.isAndroid? "android" : Devices.isIOS? "ios" : Devices.isLinux? "linux" : Devices.isWindows? "windows" : Devices.isMacX? "osx" : "other"),
         "Theme-Dark": Colors.darkMode? "true" : "false",

@@ -4,11 +4,9 @@ import globals 1.0
 
 BaseRequest {
     id: req
-    url: baseUrl + "/main/poem"
+    url: baseUrl + "/bootstrap"
 
-    property int poem_id
-    property int verse_limit: 10000
-    property int verse_offset: 0
+    onRefreshRequest: refresh()
 
     function refresh() {
         if (refreshing)

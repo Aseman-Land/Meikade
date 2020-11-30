@@ -1,6 +1,5 @@
 singleton Constants 1.0 Constants.qml
 singleton AsemanGlobals 1.0 AsemanGlobals.qml
-singleton Bootstrap 1.0 Bootstrap.qml
 singleton Fonts 1.0 Fonts.qml
 singleton Colors 1.0 Colors.qml
 singleton Sync 1.0 Sync.qml

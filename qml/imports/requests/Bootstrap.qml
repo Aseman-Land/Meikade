@@ -2,6 +2,7 @@ pragma Singleton
 
 import QtQuick 2.0
 import AsemanQml.Base 2.0
+import globals 1.0
 
 AsemanObject {
     id: bstrap
@@ -30,8 +31,13 @@ AsemanObject {
         try {
             initialized = map.initialized;
         } catch (e) {
-            initialized = true;
+            initialized = false;
         }
+    }
+
+    BootstrapRequest {
+        id: req
+        onSuccessfull: bstrap.initialized = response.result.initialized
     }
 
     function refresh() {

@@ -18,4 +18,5 @@ QML_IMPORT_PATH += \
     $$PWD/imports
 
 DISTFILES += \
+    $$PWD/imports/requests/BootstrapRequest.qml \
     $$PWD/imports/requests/UserCheckRequest.qml
