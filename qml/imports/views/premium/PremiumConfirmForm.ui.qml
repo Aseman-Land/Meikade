@@ -134,6 +134,7 @@ Item {
                         Label {
                             id: subtitleLabel
                             Layout.fillWidth: true
+                            wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                             horizontalAlignment: Text.AlignLeft
                             font.pixelSize: 11 * Devices.fontDensity
                             text: "400,000 IRR per Year"

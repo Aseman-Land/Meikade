@@ -135,6 +135,10 @@
         <source>Premium Account</source>
         <translation>اکانت حرفه‌ای</translation>
     </message>
+    <message>
+        <source>Don't show this message again</source>
+        <translation>عدم نمایش مجدد این پیغام</translation>
+    </message>
 </context>
 <context>
     <name>AddNotePage</name>
@@ -715,6 +719,10 @@ It containts %2 items currently.</source>
         <source>Premium Account</source>
         <translation>اکانت حرفه‌ای</translation>
     </message>
+    <message>
+        <source>Don't show this message again</source>
+        <translation>عدم نمایش مجدد این پیغام</translation>
+    </message>
 </context>
 <context>
     <name>IntroWelcomForm.ui</name>
@@ -840,6 +848,10 @@ It containts %2 items currently.</source>
         <source>Premium Account</source>
         <translation>اکانت حرفه‌ای</translation>
     </message>
+    <message>
+        <source>Don't show this message again</source>
+        <translation>عدم نمایش مجدد این پیغام</translation>
+    </message>
 </context>
 <context>
     <name>ListsModel</name>
@@ -962,6 +974,10 @@ It containts %2 items currently.</source>
     <message>
         <source>Premium Account</source>
         <translation>اکانت حرفه‌ای</translation>
+    </message>
+    <message>
+        <source>Don't show this message again</source>
+        <translation>عدم نمایش مجدد این پیغام</translation>
     </message>
 </context>
 <context>
@@ -1328,6 +1344,10 @@ It containts %2 items currently.</source>
     <message>
         <source>Premium Account</source>
         <translation>اکانت حرفه‌ای</translation>
+    </message>
+    <message>
+        <source>Don't show this message again</source>
+        <translation>عدم نمایش مجدد این پیغام</translation>
     </message>
     <message>
         <source>Cancel</source>
