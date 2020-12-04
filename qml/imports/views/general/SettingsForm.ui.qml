@@ -93,7 +93,7 @@ Item {
                             id: accountPremiumBuy
                             anchors.top: parent.bottom
                             anchors.horizontalCenter: parent.horizontalCenter
-                            width: 80 * Devices.density
+                            width: 120 * Devices.density
                             height: 36 * Devices.density
                             font.pixelSize: 8 * Devices.fontDensity
                             text: qsTr("Upgrade") + Translations.refresher

@@ -10,6 +10,9 @@ AsemanObject {
     readonly property string cachePath: AsemanApp.homePath + "/cache"
 
     property alias settings: _settings
+    property alias disablePremiumListsWarn: _settings.disablePremiumListsWarn
+    property alias disablePremiumNotesWarn: _settings.disablePremiumNotesWarn
+    property alias disablePremiumOfflinesWarn: _settings.disablePremiumOfflinesWarn
     property alias languageInited: _settings.languageInited
     property alias language: _settings.language
     property alias phrase: _settings.phrase
@@ -60,6 +63,10 @@ AsemanObject {
         id: _settings
         category: "General"
         source: AsemanApp.homePath + "/ui-settings.ini"
+
+        property bool disablePremiumListsWarn: false
+        property bool disablePremiumNotesWarn: false
+        property bool disablePremiumOfflinesWarn: false
 
         property bool languageInited: false
         property string language: "fa"

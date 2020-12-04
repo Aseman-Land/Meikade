@@ -135,6 +135,10 @@
         <source>Premium Account</source>
         <translation>اکانت حرفه‌ای</translation>
     </message>
+    <message>
+        <source>Don't show this message again</source>
+        <translation>عدم نمایش مجدد این پیغام</translation>
+    </message>
 </context>
 <context>
     <name>AddNotePage</name>
@@ -721,6 +725,10 @@ storage and read them offline. Please select your poets that your want to read o
         <source>Premium Account</source>
         <translation>اکانت حرفه‌ای</translation>
     </message>
+    <message>
+        <source>Don't show this message again</source>
+        <translation>عدم نمایش مجدد این پیغام</translation>
+    </message>
 </context>
 <context>
     <name>IntroWelcomForm</name>
@@ -846,6 +854,10 @@ storage and read them offline. Please select your poets that your want to read o
         <source>Premium Account</source>
         <translation>اکانت حرفه‌ای</translation>
     </message>
+    <message>
+        <source>Don't show this message again</source>
+        <translation>عدم نمایش مجدد این پیغام</translation>
+    </message>
 </context>
 <context>
     <name>ListsModel</name>
@@ -968,6 +980,10 @@ storage and read them offline. Please select your poets that your want to read o
     <message>
         <source>Premium Account</source>
         <translation>اکانت حرفه‌ای</translation>
+    </message>
+    <message>
+        <source>Don't show this message again</source>
+        <translation>عدم نمایش مجدد این پیغام</translation>
     </message>
 </context>
 <context>
@@ -1334,6 +1350,10 @@ storage and read them offline. Please select your poets that your want to read o
     <message>
         <source>Premium Account</source>
         <translation>اکانت حرفه‌ای</translation>
+    </message>
+    <message>
+        <source>Don't show this message again</source>
+        <translation>عدم نمایش مجدد این پیغام</translation>
     </message>
     <message>
         <source>Cancel</source>

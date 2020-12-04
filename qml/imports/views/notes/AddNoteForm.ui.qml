@@ -99,25 +99,45 @@ Page {
                     horizontalAlignment: Text.AlignHCenter
                     font.pixelSize: 8 * Devices.fontDensity
                     text: qsTr("To buy premium account click on below button") + Translations.refresher
-                    visible: !noteField.visible && premiumMsg.length
+                    visible: !noteField.visible && premiumMsg.length && !AsemanGlobals.disablePremiumNotesWarn
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                 }
 
-                RoundButton {
-                    id: premiumBtn
-                    Layout.preferredWidth: form.width * 0.5
+                ColumnLayout {
                     Layout.alignment: Qt.AlignHCenter
-                    text: qsTr("Premium Account") + Translations.refresher
-                    font.pixelSize: 9 * Devices.fontDensity
-                    highlighted: true
-                    visible: !noteField.visible && premiumMsg.length
-                    Material.accent: Subscription.premiumColor
-                    IOSStyle.accent: Subscription.premiumColor
-                    Material.elevation: 0
+                    visible: !noteField.visible && premiumMsg.length && !AsemanGlobals.disablePremiumNotesWarn
+                    spacing: 0
 
-                    Connections {
-                        target: premiumBtn
-                        onClicked: form.premiumBuyRequest()
+                    RoundButton {
+                        id: premiumBtn
+                        Layout.alignment: Qt.AlignHCenter
+                        Layout.preferredWidth: form.width * 0.5
+                        text: qsTr("Premium Account") + Translations.refresher
+                        font.pixelSize: 9 * Devices.fontDensity
+                        highlighted: true
+                        Material.accent: Subscription.premiumColor
+                        IOSStyle.accent: Subscription.premiumColor
+                        Material.elevation: 0
+
+                        Connections {
+                            target: premiumBtn
+                            onClicked: form.premiumBuyRequest()
+                        }
+                    }
+
+                    RoundButton {
+                        id: premiumDisMisBtn
+                        Layout.alignment: Qt.AlignHCenter
+                        text: qsTr("Don't show this message again") + Translations.refresher
+                        font.underline: true
+                        font.pixelSize: 8 * Devices.fontDensity
+                        flat: true
+                        highlighted: true
+
+                        Connections {
+                            target: premiumDisMisBtn
+                            onClicked: AsemanGlobals.disablePremiumNotesWarn = true
+                        }
                     }
                 }
 
