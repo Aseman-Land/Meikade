@@ -58,6 +58,9 @@ SettingsView {
     phraseSwitch.onCheckedChanged: if (!initTimer.running) AsemanGlobals.phrase = phraseSwitch.checked
     phraseSwitch.checked: AsemanGlobals.phrase
 
+    phraseNumberSwitch.onCheckedChanged: if (!initTimer.running) AsemanGlobals.phraseNumber = phraseNumberSwitch.checked
+    phraseNumberSwitch.checked: AsemanGlobals.phraseNumber
+
     languageCombo.onCurrentIndexChanged: if (!initTimer.running) AsemanGlobals.language = languageCombo.model.get(languageCombo.currentIndex).key
     themeCombo.onCurrentIndexChanged: {
         if (initTimer.running)

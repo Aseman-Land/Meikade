@@ -13,6 +13,7 @@ AsemanObject {
     property alias languageInited: _settings.languageInited
     property alias language: _settings.language
     property alias phrase: _settings.phrase
+    property alias phraseNumber: _settings.phraseNumber
     property alias fontSize: _settings.fontSize
     property alias lastChangelogs: _settings.lastChangelogs
     property alias onlineSearch: _settings.onlineSearch
@@ -63,6 +64,7 @@ AsemanObject {
         property bool languageInited: false
         property string language: "fa"
         property bool phrase: true
+        property bool phraseNumber: true
         property bool onlineSearch: true
         property bool smartSearch: true
         property bool introDone

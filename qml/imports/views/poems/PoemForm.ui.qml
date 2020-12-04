@@ -126,6 +126,8 @@ Item {
             Component.onCompleted: loaded = true
 
             property bool loaded: false
+            property int position: model.position < 0? -1 * (1 + model.position) : model.position
+            property int positionSign: model.position < 0? -1 : 1
 
             Connections {
                 target: del
@@ -147,10 +149,10 @@ Item {
 
             CheckBox {
                 id: checkbox
-                anchors.verticalCenter: model.position === PoemVersesModel.PositionRight? parent.bottom : parent.verticalCenter
+                anchors.verticalCenter: del.position === PoemVersesModel.PositionRight? parent.bottom : parent.verticalCenter
                 anchors.left: delFrame.right
                 checked: selectedList[model.index] && selectedList.length? selectedList[model.index] : false
-                visible: selectMode && model.position !== PoemVersesModel.PositionLeft && model.position !== PoemVersesModel.PositionCenteredVerse2
+                visible: selectMode && del.position !== PoemVersesModel.PositionLeft && del.position !== PoemVersesModel.PositionCenteredVerse2
 
                 Connections {
                     target: checkbox
@@ -168,7 +170,7 @@ Item {
             Item {
                 width: 20 * Devices.density
                 y: 10 * Devices.density
-                visible: model.position !== PoemVersesModel.PositionLeft && model.position !== PoemVersesModel.PositionCenteredVerse2
+                visible: del.position !== PoemVersesModel.PositionLeft && del.position !== PoemVersesModel.PositionCenteredVerse2
                 anchors.left: parent.left
 
                 Column {
@@ -213,11 +215,11 @@ Item {
 
             MouseArea {
                 id: itemDel
-                height: model.position === PoemVersesModel.PositionRight || model.position === PoemVersesModel.PositionCenteredVerse1 ||
-                        model.position === PoemVersesModel.PositionLeft || model.position === PoemVersesModel.PositionCenteredVerse2? delFrame.height * 2 : delFrame.height
+                height: del.position === PoemVersesModel.PositionRight || del.position === PoemVersesModel.PositionCenteredVerse1 ||
+                        del.position === PoemVersesModel.PositionLeft || del.position === PoemVersesModel.PositionCenteredVerse2? delFrame.height * 2 : delFrame.height
                 anchors.left: parent.left
                 anchors.right: parent.right
-                y: model.position === PoemVersesModel.PositionLeft || model.position === PoemVersesModel.PositionCenteredVerse2? delFrame.height - height : 0
+                y: del.position === PoemVersesModel.PositionLeft || del.position === PoemVersesModel.PositionCenteredVerse2? delFrame.height - height : 0
                 pressAndHoldInterval: 300
 
                 Connections {
@@ -244,18 +246,18 @@ Item {
                     anchors.left: parent.left
                     anchors.right: parent.right
                     anchors.verticalCenter: parent.verticalCenter
-                    anchors.verticalCenterOffset: model.position === PoemVersesModel.PositionRight || model.position === PoemVersesModel.PositionCenteredVerse1? 4 * Devices.density :
-                                                  (model.position === PoemVersesModel.PositionLeft || model.position === PoemVersesModel.PositionCenteredVerse2? -4 * Devices.density :
+                    anchors.verticalCenterOffset: del.position === PoemVersesModel.PositionRight || del.position === PoemVersesModel.PositionCenteredVerse1? 4 * Devices.density :
+                                                  (del.position === PoemVersesModel.PositionLeft || del.position === PoemVersesModel.PositionCenteredVerse2? -4 * Devices.density :
                                                   0)
                     anchors.margins: 20 * Devices.density
                     text: model.text
                     font.pixelSize: 10 * Devices.fontDensity + (AsemanGlobals.fontSize - 3) * Devices.fontDensity
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                    horizontalAlignment: model.position === PoemVersesModel.PositionRight? Text.AlignRight : (model.position === PoemVersesModel.PositionLeft? Text.AlignLeft
-                                         : (model.position === PoemVersesModel.PositionCenteredVerse1 || model.position === PoemVersesModel.PositionCenteredVerse2? Text.AlignHCenter
+                    horizontalAlignment: del.position === PoemVersesModel.PositionRight? Text.AlignRight : (del.position === PoemVersesModel.PositionLeft? Text.AlignLeft
+                                         : (del.position === PoemVersesModel.PositionCenteredVerse1 || del.position === PoemVersesModel.PositionCenteredVerse2? Text.AlignHCenter
                                          : Text.AlignRight))
 
-                    LayoutMirroring.enabled: false
+                    LayoutMirroring.enabled: del.positionSign < 0
                     LayoutMirroring.childrenInherit: true
                 }
             }
