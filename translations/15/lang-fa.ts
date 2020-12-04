@@ -24,10 +24,8 @@
         <translation>درباره می‌کده</translation>
     </message>
     <message>
-        <source>&lt;b&gt;&lt;u&gt;Meikade is a free and opensource poetry app&lt;/u&gt;&lt;/b&gt;, designed and created by Aseman. It means user freedom and privacy is important for Meikade. So you 
-can access Meikade&apos;s source code on Github, Read it and change it under the term of the GPLv3 license.</source>
-        <translation>&lt;b&gt;&lt;u&gt;می‌کده یک برنامه آزاد است&lt;/u&gt;&lt;/b&gt; که توسط آسمان طراحی و پیاده‌سازی شده است. این به این معنی است که می‌کده حامی آزادی‌های کاربر است. بنابریان شما 
-می‌توانید آن را تحت قوانین نسخه سوم مجوز GPL که توسط FSF ارائه شده است دوباره منتشر کنید، آن را به دوستان خود بدهید و یا در آن تغییرات ایجاد کنید.</translation>
+        <source>&lt;b&gt;&lt;u&gt;Meikade is a free and opensource poetry app&lt;/u&gt;&lt;/b&gt;, designed and created by Aseman. It means user freedom and privacy is important for Meikade. So you can access Meikade&apos;s source code on Github, Read it and change it under the term of the GPLv3 license.</source>
+        <translation>&lt;b&gt;&lt;u&gt;می‌کده یک برنامه آزاد است&lt;/u&gt;&lt;/b&gt; که توسط آسمان طراحی و پیاده‌سازی شده است. این به این معنی است که می‌کده حامی آزادی‌های کاربر است. بنابریان شما می‌توانید آن را تحت قوانین نسخه سوم مجوز GPL که توسط FSF ارائه شده است دوباره منتشر کنید، آن را به دوستان خود بدهید و یا در آن تغییرات ایجاد کنید.</translation>
     </message>
     <message>
         <source>Development Team:</source>
@@ -48,17 +46,12 @@ can access Meikade&apos;s source code on Github, Read it and change it under the
         <translation>با قدردانی از:</translation>
     </message>
     <message>
-        <source>Hamidreza Mohammad (Ganjoor team), Arman Farajollahi-far, Purya Daneshvar (UI/UX), Armin Shalchian (Apple Watch), Amin Hatami (Logo Designer), Mohsen Ebrahimnejad (Telegram channel 
-assistant), Hasan Noroozi, Houtan Baraary, Mansoore Zamani, Pourya Khalaj Tehrani</source>
-        <translation>حمیدرضا محمدی (تیم گنجور)، آرمان فرج‌اللهی‌فر (مشاور ادبی)، پوریا دانشور (مشاور طراحی تجربه کاربری و رابط کاربری)، امین حاتمی (طراح لوگو)، محسن ابراهیم‌نژاد (همکار کانال تلگرام 
-می‌کده)، حسن نوروزی، هوتن براری، منصوره زمانی، پوریا خلج طهرانی</translation>
+        <source>Hamidreza Mohammad (Ganjoor team), Arman Farajollahi-far, Purya Daneshvar (UI/UX), Armin Shalchian (Apple Watch), Amin Hatami (Logo Designer), Mohsen Ebrahimnejad (Telegram channel assistant), Hasan Noroozi, Houtan Baraary, Mansoore Zamani, Pourya Khalaj Tehrani</source>
+        <translation>حمیدرضا محمدی (تیم گنجور)، آرمان فرج‌اللهی‌فر (مشاور ادبی)، پوریا دانشور (مشاور طراحی تجربه کاربری و رابط کاربری)، امین حاتمی (طراح لوگو)، محسن ابراهیم‌نژاد (همکار کانال تلگرام می‌کده)، حسن نوروزی، هوتن براری، منصوره زمانی، پوریا خلج طهرانی</translation>
     </message>
     <message>
-        <source>&lt;b&gt;&lt;u&gt;Aseman&lt;/u&gt;&lt;/b&gt;, Aseman is a non-profit and community based company that created in 2013 by members of the Idehgostar company. Aseman created to leads 
-open-source and free software.&lt;br /&gt;Aseman promotes openness, innovation and participation on the digital and computers world.</source>
-        <translation>&lt;b&gt;&lt;u&gt;آسمان&lt;/u&gt;&lt;/b&gt; مجموعه‌ای غیرانتفاعی از مهندسان و متخصصین است که با هدف تولید و رهبری پروژه‌های آزاد و اپن‌سورس تاسیس شد.&lt;br /&gt;تا به اینجا 
-اعتبار و کیفیت بالای پروژه‌های آسمان سبب همکاری با شرکت کانونیکال انگلستان در توسعه سیستم‌عامل اوبونتو-تاچ و همچنین کسب گواهی‌نامه امنیت از وب‌سایت سافت‌پدیا شده است.&lt;bt /&gt;برای آشنایی بیشتر با 
-آسمان و فعالیت‌های آن، وارد سایت آسمان شوید.</translation>
+        <source>&lt;b&gt;&lt;u&gt;Aseman&lt;/u&gt;&lt;/b&gt;, Aseman is a non-profit and community based company that created in 2013 by members of the Idehgostar company. Aseman created to leads open-source and free software.&lt;br /&gt;Aseman promotes openness, innovation and participation on the digital and computers world.</source>
+        <translation>&lt;b&gt;&lt;u&gt;آسمان&lt;/u&gt;&lt;/b&gt; مجموعه‌ای غیرانتفاعی از مهندسان و متخصصین است که با هدف تولید و رهبری پروژه‌های آزاد و اپن‌سورس تاسیس شد.&lt;br /&gt;تا به اینجا اعتبار و کیفیت بالای پروژه‌های آسمان سبب همکاری با شرکت کانونیکال انگلستان در توسعه سیستم‌عامل اوبونتو-تاچ و همچنین کسب گواهی‌نامه امنیت از وب‌سایت سافت‌پدیا شده است.&lt;bt /&gt;برای آشنایی بیشتر با آسمان و فعالیت‌های آن، وارد سایت آسمان شوید.</translation>
     </message>
     <message>
         <source>Twitter</source>
@@ -1515,10 +1508,8 @@ storage and read them offline. Please select your poets that your want to read o
 It removes all extra spaces you may entered or search between other positive spelling or meanings.
 It&apos;s experimental currently and Meikade technical team working on it. But if it fail to find true result, You can disable it Using accurate search checkbox.</source>
         <translation>درحال حاضر می‌کده در جستجوی آنلاین خود از الگوریتم‌های جستجوی هوشمند استفاده میکند تا به شما نتایج بهتری نشان دهد.
-این الگوریتم کلیدواژه‌ی شما را در معنای کلمات هر مصراع جستجو میکند. همچنین فاصله‌های اضافی یا کمی که ممکن است موقع وارد کردن کلید‌واژه وارد کنید را اصلاح میکند و همچنین املاهای مختلف را موقع جستجو 
-امتحان می‌کند تا نتایج کامل‌تر باشند.
-تیم فنی می‌کده سخت درحال توسعه و بهبود این الگوریتم‌ها هستند. با این حال بخاطر اینکه الگوریتم‌های جستجوی هوشمند مراحل توسعه سنگینی دارند و راه زیادی داریم تا این الگوریتم‌ها دقیقا نتایج مورد نظر شما 
-را جستجو کند، ما کلید &quot;جستجوی دقیق واژه‌ها&quot; را در برنامه قرار دادیم که اگر جستجوی هوشمند می‌کده نتایج مورد نظر شما را پیدا نکرد، بتوانید به روش معمول جستجوی خود را انجام دهید.</translation>
+این الگوریتم کلیدواژه‌ی شما را در معنای کلمات هر مصراع جستجو میکند. همچنین فاصله‌های اضافی یا کمی که ممکن است موقع وارد کردن کلید‌واژه وارد کنید را اصلاح میکند و همچنین املاهای مختلف را موقع جستجو امتحان می‌کند تا نتایج کامل‌تر باشند.
+تیم فنی می‌کده سخت درحال توسعه و بهبود این الگوریتم‌ها هستند. با این حال بخاطر اینکه الگوریتم‌های جستجوی هوشمند مراحل توسعه سنگینی دارند و راه زیادی داریم تا این الگوریتم‌ها دقیقا نتایج مورد نظر شما را جستجو کند، ما کلید &quot;جستجوی دقیق واژه‌ها&quot; را در برنامه قرار دادیم که اگر جستجوی هوشمند می‌کده نتایج مورد نظر شما را پیدا نکرد، بتوانید به روش معمول جستجوی خود را انجام دهید.</translation>
     </message>
 </context>
 <context>
