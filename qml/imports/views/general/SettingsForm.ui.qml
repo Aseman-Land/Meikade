@@ -73,7 +73,7 @@ Item {
 
                     Label {
                         id: accountStateLabel
-                        Layout.minimumWidth: 60 * Devices.density
+                        Layout.minimumWidth: 80 * Devices.density
                         font.pixelSize: 9 * Devices.fontDensity
                         font.bold: true
                         horizontalAlignment: Text.AlignHCenter
@@ -93,7 +93,7 @@ Item {
                             id: accountPremiumBuy
                             anchors.top: parent.bottom
                             anchors.horizontalCenter: parent.horizontalCenter
-                            width: 120 * Devices.density
+                            width: 100 * Devices.density
                             height: 36 * Devices.density
                             font.pixelSize: 8 * Devices.fontDensity
                             text: qsTr("Upgrade") + Translations.refresher
