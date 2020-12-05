@@ -37,7 +37,7 @@ AsemanObject {
 
     BootstrapRequest {
         id: req
-        onSuccessfull: bstrap.initialized = false// response.result.initialized
+        onSuccessfull: bstrap.initialized = response.result.initialized
     }
 
     function refresh() {
