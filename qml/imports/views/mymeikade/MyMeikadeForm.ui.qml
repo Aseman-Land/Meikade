@@ -6,6 +6,7 @@ import QtQuick.Controls 2.3
 import QtQuick.Layouts 1.3
 import AsemanQml.Controls 2.0
 import QtQuick.Controls.Material 2.0
+import requests 1.0
 
 Rectangle {
     id: myMeikade
@@ -143,13 +144,14 @@ Rectangle {
                 scale: Math.min(0.6 + ratioAbs*0.4, 1)
                 opacity: ratioAbs * 2 - 1
                 visible: opacity > 0 && !signedIn
+                enabled: Bootstrap.initialized
 
                 Label {
                     id: loginLabel
                     anchors.centerIn: parent
                     font.pixelSize: 10 * Devices.fontDensity
                     color: "#fff"
-                    text: qsTr("Login / Register") + Translations.refresher
+                    text: Bootstrap.initialized? qsTr("Login / Register") + Translations.refresher : qsTr("Meikade")
 
                     Rectangle {
                         anchors.fill: parent

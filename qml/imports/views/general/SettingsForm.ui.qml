@@ -252,7 +252,7 @@ Item {
         highlighted: true
         font.pixelSize: 9 * Devices.fontDensity
         text: qsTr("Login") + Translations.refresher
-        visible: AsemanGlobals.accessToken.length == 0
+        visible: AsemanGlobals.accessToken.length == 0 && Bootstrap.initialized
     }
 
     Button {

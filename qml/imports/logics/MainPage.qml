@@ -6,6 +6,7 @@ import views 1.0
 import globals 1.0
 import micros 1.0
 import routes 1.0
+import requests 1.0
 
 MainView {
     id: form
@@ -71,13 +72,15 @@ MainView {
     }
 
     function loadChangelogs() {
-         if (!AsemanGlobals.introDone)
-             return;
-         if (AsemanGlobals.lastChangelogs >= 410)
-             return;
+        if (!Bootstrap.initialized)
+            return;
+        if (!AsemanGlobals.introDone)
+            return;
+        if (AsemanGlobals.lastChangelogs >= 420)
+            return;
 
-         Tools.jsDelayCall(1000, function(){ Viewport.controller.trigger("float:/changelogs") });
-         AsemanGlobals.lastChangelogs = 410;
+        Tools.jsDelayCall(1000, function(){ Viewport.controller.trigger("float:/changelogs") });
+        AsemanGlobals.lastChangelogs = 420;
     }
 
     Loader {

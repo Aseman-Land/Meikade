@@ -700,10 +700,8 @@ It containts %2 items currently.</source>
         <translation>شاعرهای آفلاین</translation>
     </message>
     <message>
-        <source>Meikade 4 is online by default now. It means you can discover between tousands of poems freely without downloading to your storages. But it also available to download them to your 
-storage and read them offline. Please select your poets that your want to read online. You can also setup it later on the every poet/book page.</source>
-        <translation>در می‌کده ۴ قابلیت خوانش آنلاین تمامی اشعار و جستجوی آنلاین در میان همه آثار فراهم شده است. این به این معنی است که نیاز به دانلود آثار شاعران وجود ندارد. با این حال در صورت تمایل 
-می‌توانید آثار شاعران مورد نظر خود را برای استفاده آفلاین و بدون نیاز به اینترنت، دانلود کنید. بدیهی‌ست که این کار را بعدا در صفحه هر شاعر و از منوی موجود در آن می‌توانید انجام دهید.</translation>
+        <source>Meikade 4 is online by default now. It means you can discover between tousands of poems freely without downloading to your storages. But it also available to download them to your storage and read them offline. Please select your poets that your want to read online. You can also setup it later on the every poet/book page.</source>
+        <translation>در می‌کده ۴ قابلیت خوانش آنلاین تمامی اشعار و جستجوی آنلاین در میان همه آثار فراهم شده است. این به این معنی است که نیاز به دانلود آثار شاعران وجود ندارد. با این حال در صورت تمایل می‌توانید آثار شاعران مورد نظر خود را برای استفاده آفلاین و بدون نیاز به اینترنت، دانلود کنید. بدیهی‌ست که این کار را بعدا در صفحه هر شاعر و از منوی موجود در آن می‌توانید انجام دهید.</translation>
     </message>
     <message>
         <source>Uninstalling</source>

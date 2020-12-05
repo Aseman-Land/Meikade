@@ -27,18 +27,6 @@ AsemanListModel {
                 "underco": false
             },
             {
-                "title": qsTr("Sync") + Translations.refresher,
-                "icon": "mdi_cloud_sync",
-                "link": "float:/syncs",
-                "underco": false
-            },
-            {
-                "title": qsTr("Contact US") + Translations.refresher,
-                "icon": "mdi_email",
-                "link": "float:/contactus",
-                "underco": false
-            },
-            {
                 "title": qsTr("Settings") + Translations.refresher,
                 "icon": "mdi_settings",
                 "link": "page:/settings",
@@ -47,6 +35,18 @@ AsemanListModel {
         ]
 
         if (Bootstrap.initialized) {
+            res[res.length] = {
+                "title": qsTr("Sync") + Translations.refresher,
+                "icon": "mdi_cloud_sync",
+                "link": "float:/syncs",
+                "underco": false
+            };
+            res[res.length] = {
+                "title": qsTr("Contact US") + Translations.refresher,
+                "icon": "mdi_email",
+                "link": "float:/contactus",
+                "underco": false
+            };
             res[res.length] = {
                 "title": qsTr("about") + Translations.refresher,
                 "icon": "mdi_information",

@@ -1,7 +1,7 @@
-VERSION = 4.1.99
+VERSION = 4.2.0
 TARGET = Meikade
 
-QMAKE_TARGET_BUNDLE_PREFIX = io.aseman
+QMAKE_TARGET_BUNDLE_PREFIX = com.meikade
 QMAKE_BUNDLE = Meikade
 
 include(configurations/configurations.pri)
