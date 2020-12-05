@@ -1,3 +1,10 @@
+Meikade 4.2 changelogs:
+- iOS Support
+- Premium Accounts
+- More Advances Search
+- Notes
+- Sync Notes
+
 Meikade 4.1 changelogs:
 - Lists
 - Sync Lists
