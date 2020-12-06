@@ -39,6 +39,8 @@ Viewport {
         id: lists
         anchors.fill: parent
 
+        headerItem.anchors.topMargin: selectMode? -Devices.statusBarHeight : 0
+
         premiumMsg: {
             if (Subscription.premium || Subscription.listsLimits < 0 || !Bootstrap.initialized)
                 return "";

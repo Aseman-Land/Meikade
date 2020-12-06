@@ -171,6 +171,7 @@ Page {
         anchors.left: parent.left
         anchors.bottom: parent.bottom
         anchors.margins: 10 * Devices.density
+        anchors.bottomMargin: Devices.navigationBarHeight + 10 * Devices.density
         font.pixelSize: 9 * Devices.fontDensity
         text: qsTr("Save") + Translations.refresher
         highlighted: true
