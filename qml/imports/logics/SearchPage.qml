@@ -12,6 +12,8 @@ SearchView {
 
     property int poetId
 
+    onPoetIdChanged: loadPoetId()
+
     resultHeaderLabel.text: {
         if (listView.count == 0 && !poetsList.visible)
             return "";
@@ -103,6 +105,19 @@ SearchView {
         id: map
     }
 
+    function loadPoetId() {
+        if (poetId == 0)
+            return;
+
+        searchFilterModel.cachePath = "";
+        searchFilterModel.clear();
+        for (var i=0; i<poetsModel.count; i++)
+            if (poetsModel.get(i).id == poetId) {
+                searchFilterModel.append( poetsModel.get(i) );
+                break;
+            }
+    }
+
     function convertUnitToMap(r) {
         var navigData = new Array;
         navigData[navigData.length] = {
@@ -141,6 +156,12 @@ SearchView {
         return properties;
     }
 
+    PoetsCleanModel {
+        id: poetsModel
+        cachePath: AsemanGlobals.cachePath + "/searchpoets.cache"
+        onCountChanged: loadPoetId()
+    }
+
     Component {
         id: filter_component
         SearchFilterPage {
@@ -166,11 +187,6 @@ SearchView {
             OfflinePoetsModel {
                 id: offlinePoetsModel
                 cleanData: true
-            }
-
-            PoetsCleanModel {
-                id: poetsModel
-                cachePath: AsemanGlobals.cachePath + "/searchpoets.cache"
             }
         }
     }
