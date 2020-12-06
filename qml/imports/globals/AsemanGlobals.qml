@@ -69,7 +69,7 @@ AsemanObject {
         property bool disablePremiumOfflinesWarn: false
 
         property bool languageInited: false
-        property string language: "fa"
+        property string language: Devices.isIOS? "en" : "fa"
         property bool phrase: true
         property bool phraseNumber: true
         property bool onlineSearch: true
