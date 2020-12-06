@@ -37,6 +37,7 @@ Page {
             horizontalAlignment: Text.AlignHCenter
             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
             font.pixelSize: 9 * Devices.fontDensity
+            visible: Bootstrap.initialized
             text: qsTr("You can also do below optional steps:") + Translations.refresher
         }
 

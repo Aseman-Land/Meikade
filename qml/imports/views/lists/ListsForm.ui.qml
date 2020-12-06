@@ -278,6 +278,7 @@ Item {
         anchors.bottom: parent.bottom
         anchors.leftMargin: 20 * Devices.density
         anchors.rightMargin: 20 * Devices.density
+        anchors.bottomMargin: Devices.navigationBarHeight
         font.pixelSize: 9 * Devices.fontDensity
         text: qsTr("Done") + Translations.refresher
         highlighted: true
@@ -295,7 +296,7 @@ Item {
         text: qsTr("Lists") + Translations.refresher
         color: selectMode? "transparent" : Colors.header
         shadow: selectMode? false : Devices.isAndroid
-        light: !selectMode
+        light: !selectMode || Colors.darkMode
 
         RowLayout {
             anchors.left: parent.left
