@@ -2,7 +2,7 @@ VERSION = 4.2.0
 TARGET = Meikade
 
 QMAKE_TARGET_BUNDLE_PREFIX = com.meikade
-QMAKE_BUNDLE = Meikade
+QMAKE_BUNDLE = app
 
 include(configurations/configurations.pri)
 include(translations/translations.pri)
