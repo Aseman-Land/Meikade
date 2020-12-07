@@ -42,7 +42,7 @@ Page {
     PageIndicator {
         anchors.bottom: parent.bottom
         anchors.horizontalCenter: parent.horizontalCenter
-        anchors.bottomMargin: 15 * Devices.density
+        anchors.bottomMargin: 15 * Devices.density + Devices.navigationBarHeight
         count: list.count
         currentIndex: list.currentIndex
     }
@@ -51,6 +51,7 @@ Page {
         id: nextBtn
         width: 100 * Devices.density
         anchors.bottom: parent.bottom
+        anchors.bottomMargin: Devices.navigationBarHeight
         anchors.right: parent.right
         flat: true
         highlighted: true
@@ -63,6 +64,7 @@ Page {
         id: prevBtn
         width: 100 * Devices.density
         anchors.bottom: parent.bottom
+        anchors.bottomMargin: Devices.navigationBarHeight
         anchors.left: parent.left
         flat: true
         highlighted: true

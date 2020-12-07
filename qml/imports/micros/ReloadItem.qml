@@ -11,11 +11,12 @@ Item {
 
     property Item viewItem
     property alias running: busyIndicator.running
+    property bool customRefreshing: false
 
     BusyIndicator {
         id: busyIndicator
         anchors.centerIn: parent
-        running: viewItem.model && viewItem.model.refreshing !== undefined && viewItem.model.refreshing && viewItem.count == 0? true : false
+        running: customRefreshing || (viewItem.model && viewItem.model.refreshing !== undefined && viewItem.model.refreshing && viewItem.count == 0? true : false)
     }
 
     DelayPropertySwitch {
