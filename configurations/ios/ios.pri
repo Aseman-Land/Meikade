@@ -6,4 +6,6 @@ ios {
 
     ios_icon.files = $$files($$PWD/icons/*.png)
     QMAKE_BUNDLE_DATA += ios_icon
+
+    QMAKE_ASSET_CATALOGS += $$PWD/icons.xcassets
 }
