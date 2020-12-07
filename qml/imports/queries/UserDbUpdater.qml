@@ -73,10 +73,10 @@ AsemanObject {
                               "VALUES (:poet_id, 0, :poem_id, :vorder, 1, 0, 0, :extra, :date, 0)",
                               {"poet_id": r.poet_id, "poem_id": fav.poem_id, "vorder": fav.vorder, "date": date, "extra": extra})
             } catch (e) {}
-
-            general.commit();
-            console.debug("Done :)");
         })
+
+        general.commit();
+        console.debug("Done :)");
     }
 
     Component {
