@@ -29,8 +29,10 @@
 #include <QQmlApplicationEngine>
 #include <QQuickStyle>
 #include <QQmlContext>
-#include <QtWebView>
 #include <QTimer>
+#ifdef QT_WEBVIEW_LIB
+#include <QtWebView>
+#endif
 
 int main(int argc, char *argv[])
 {
@@ -55,7 +57,9 @@ int main(int argc, char *argv[])
     qmlRegisterType<StickerModel>("Meikade", 1, 0, "StickerModel");
     qmlRegisterType<StickerWriter>("Meikade", 1, 0, "StickerWriter");
 
+#ifdef QT_WEBVIEW_LIB
     QtWebView::initialize();
+#endif
     QApplication app(argc, argv);
 
     QQmlApplicationEngine engine;

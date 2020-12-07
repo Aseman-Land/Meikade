@@ -19,6 +19,7 @@ Item {
     property alias gridView: gridView
     property alias headerItem: headerItem
     property alias headerBtn: headerBtn
+    property alias busyIndicator: busyIndicator
 
     signal clicked(string link)
 

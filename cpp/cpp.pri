@@ -1,5 +1,7 @@
-QT += quick qml quickcontrols2 webview sql asemancore network widgets
+QT += quick qml quickcontrols2 sql asemancore network widgets
 CONFIG += c++11
+
+qtHaveModule(webview): QT += webview
 
 DEFINES += MEIKADE_VERSION='\\"$${VERSION}\\"'
 

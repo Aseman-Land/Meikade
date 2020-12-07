@@ -10,6 +10,8 @@
 	<string>Created by Qt/QMake</string>
 	<key>CFBundleIconFile</key>
 	<string>${ASSETCATALOG_COMPILER_APPICON_NAME}</string>
+	<key>CFBundleIconName</key>
+	<string>AppIcon</string>
 	<key>CFBundleIcons</key>
 	<dict>
 		<key>CFBundlePrimaryIcon</key>

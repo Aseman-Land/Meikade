@@ -1,9 +1,5 @@
 VERSION = 4.2.0
-ios {
-    TARGET = Meikade App
-} else {
-    TARGET = Meikade
-}
+TARGET = Meikade
 
 QMAKE_TARGET_BUNDLE_PREFIX = com.meikade
 QMAKE_BUNDLE = Meikade

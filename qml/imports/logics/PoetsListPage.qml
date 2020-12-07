@@ -17,11 +17,15 @@ PoetsListView {
         repeat: false
     }
 
+    busyIndicator.customRefreshing: poetCatsModel.refreshing
     headerBtn.onClicked: ViewportType.open = false
 
     gridView {
         onLinkRequest: Viewport.controller.trigger(link, properties)
         model: {
+            if (modelsRepeater.count == 0)
+                return new Array;
+
             try {
                 return modelsRepeater.itemAt(tabBar.currentIndex).modelItem;
             } catch (e) {
