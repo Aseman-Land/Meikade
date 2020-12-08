@@ -17,7 +17,7 @@ NetworkRequest {
         "App-Name": AsemanApp.applicationName,
         "App-ID": AsemanApp.applicationId,
         "App-Version": AsemanApp.applicationVersion,
-        "App-Build-OS": "ios", // (Devices.isAndroid? "android" : Devices.isIOS? "ios" : Devices.isLinux? "linux" : Devices.isWindows? "windows" : Devices.isMacX? "osx" : "other"),
+        "App-Build-OS": (Devices.isAndroid? "android" : Devices.isIOS? "ios" : Devices.isLinux? "linux" : Devices.isWindows? "windows" : Devices.isMacX? "osx" : "other"),
         "Theme-Dark": Colors.darkMode? "true" : "false",
         "Content-Type": "application/json",
         "User-token": accessToken,
