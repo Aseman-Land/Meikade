@@ -37,6 +37,7 @@ AsemanObject {
 
     BootstrapRequest {
         id: req
+        _debug: true
         onSuccessfull: bstrap.initialized = response.result.initialized
     }
 
