@@ -47,7 +47,7 @@
     </message>
     <message>
         <source>Hamidreza Mohammad (Ganjoor team), Arman Farajollahi-far, Purya Daneshvar (UI/UX), Armin Shalchian (Apple Watch), Amin Hatami (Logo Designer), Mohsen Ebrahimnejad (Telegram channel assistant), Hasan Noroozi, Houtan Baraary, Mansoore Zamani, Pourya Khalaj Tehrani</source>
-        <translation>حمیدرضا محمدی (تیم گنجور)، آرمان فرج‌اللهی‌فر (مشاور ادبی)، پوریا دانشور (مشاور طراحی تجربه کاربری و رابط کاربری)، امین حاتمی (طراح لوگو)، محسن ابراهیم‌نژاد (همکار کانال تلگرام می‌کده)، حسن نوروزی، هوتن براری، منصوره زمانی، پوریا خلج طهرانی</translation>
+        <translation>حمیدرضا محمدی (تیم گنجور)، آرمان فرج‌اللهی‌فر (مشاور ادبی)، پوریا دانشور (مشاور طراحی تجربه کاربری و رابط کاربری)، میلاد بهروز، امین حاتمی (طراح لوگو)، محسن ابراهیم‌نژاد (همکار کانال تلگرام می‌کده)، حسن نوروزی، هوتن براری، منصوره زمانی، پوریا خلج طهرانی</translation>
     </message>
     <message>
         <source>&lt;b&gt;&lt;u&gt;Aseman&lt;/u&gt;&lt;/b&gt;, Aseman is a non-profit and community based company that created in 2013 by members of the Idehgostar company. Aseman created to leads open-source and free software.&lt;br /&gt;Aseman promotes openness, innovation and participation on the digital and computers world.</source>
