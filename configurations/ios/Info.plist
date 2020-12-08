@@ -13,26 +13,9 @@
 	<key>CFBundleIconName</key>
 	<string>AppIcon</string>
 	<key>CFBundleIcons</key>
-	<dict>
-		<key>CFBundlePrimaryIcon</key>
-		<dict>
-			<key>CFBundleIconFiles</key>
-			<array>
-				<string>AppIcon24x24@2x.png</string>
-				<string>Icon-Small-40.png</string>
-				<string>AppIcon27.5x27.5@2x.png</string>
-				<string>Icon-Small-40@2x.png</string>
-				<string>AppIcon40x40@2x.png</string>
-				<string>Icon-Small-50.png</string>
-				<string>AppIcon44x44@2x.png</string>
-				<string>Icon-Small-50@2x.png</string>
-				<string>AppIcon86x86@2x.png</string>
-				<string>Icon-Small.png</string>
-				<string>AppIcon98x98@2x.png</string>
-				<string>Icon-Small@2x.png</string>
-			</array>
-		</dict>
-	</dict>
+	<dict/>
+	<key>CFBundleIcons~ipad</key>
+	<dict/>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleName</key>
@@ -101,6 +84,9 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 </dict>
 </plist>
