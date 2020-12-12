@@ -24,6 +24,12 @@ Item {
         anchors.bottom: parent.bottom
         color: Colors.deepBackground
 
+        Rectangle {
+            width: headerItem.width
+            height: headerItem.height
+            color: headerItem.color
+        }
+
         ReloadItem {
             id: busyIndicator
             anchors.centerIn: parent
@@ -33,6 +39,7 @@ Item {
         FlexiList {
             id: list
             topMargin: headerItem.height + spacing
+            bottomMargin: 70 * Devices.density + Devices.navigationBarHeight
             anchors.fill: parent
             model: ListModel {
                 ListElement {
@@ -51,6 +58,7 @@ Item {
         anchors.right: parent.right
         anchors.bottom: listScene.bottom
         anchors.top: headerItem.bottom
+        anchors.bottomMargin: 58 * Devices.density + Devices.navigationBarHeight
         color: Colors.primary
         scrollArea: list
     }
@@ -78,6 +86,6 @@ Item {
         anchors.top: parent.top
         titleFontSize: 10 * Devices.fontDensity
         shadow: Devices.isAndroid
-        opacity: Devices.isIOS? 0.9 : 1
+        opacity: Devices.isIOS? 0.8 : 1
     }
 }
