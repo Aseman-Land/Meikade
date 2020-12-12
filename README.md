@@ -2,25 +2,25 @@ Meikade
 =======
 
 Meikade is a collection of Persian poetry.
-Its a cross-platform application which is avaiable on iOS, Android, Windows, macOS and Linux.
+It's a cross-platform application which is avaiable on iOS, Android, Windows, macOS and Linux.
 It's free and open-source, released under the GPLv3 license.
-Meikade is built using C++ & Qt
+Meikade is built using C++ & Qt.
 
 ## ⚒️ How to Build
 
-### 📦️ Dependencies
+### Prerequisites
+
+#### Build Environment & Dependencies
 
 Before you start the build process, you have to install/resolve Meikade's dependencies like any other application.
 
-#### Preparation
+In order to start the build process, you have to set up the environment for the respective platforms.
 
-In order to start building, you have to set up the environment for the respective platforms.
+- 📱️ **Android**: install Android NDK and Android SDK.
+- 🍎️ **iOS & macOS**: install XCode and XCode command-line tools.
+- 🐧️ **Linux (esp. Ubuntu & other Debian-based distros)**: install gcc, g++ and make command.
 
-- 📱️ Android: install android-ndk and android-sdk.
-- 🍎️ iOS & macOS: install XCode and XCode commandline tools.
-- 🐧️ Linux (esp. Ubuntu & other Debian-based distros): install gcc, g++ and make command.
-
-And for all above platforms you need to install git on them. So for example if you want to build it for Ubuntu, You need to setup your environment using the below command:
+And for all the above platforms you need to install git on them. So for example if you want to build it for Ubuntu, You need to setup your environment using the below command:
 
 ```bash
 sudo apt-get install git g++ gcc
