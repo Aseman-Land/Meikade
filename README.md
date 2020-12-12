@@ -1,4 +1,4 @@
-![Meikadeh-icon](https://raw.githubusercontent.com/Aseman-Land/Meikade/master/configurations/ios/icons/Icon-Small%402x.png)
+![Meikade-icon](https://raw.githubusercontent.com/Aseman-Land/Meikade/master/configurations/ios/icons/Icon-Small%402x.png)
 
 Meikade
 =======
@@ -6,7 +6,21 @@ Meikade
 Meikade is a collection of Persian poetry.
 It is avaiable on iOS, Android, Windows, macOS and Linux.
 
-## ⚒️ How to Build
+---
+
+## 📥️ Download Meikade
+
+| Platform      | Download | Availability|
+| ------------- |:------------------------------------------------------------------------------------:|:---:|
+| iOS           | [AppStore](https://apps.apple.com/us/app/meikade-app/id1543587891#?platform=iphone)  | ✔️ |
+| Android       | [PlayStore]() | ⏳️ |
+| Windows       | [exe File]()  | ⏳️ |
+| macOS         | [AppStore]()  | ⏳️ |
+| Linux         | [Deb Package]()  | ⏳️ |
+
+---
+
+## ⚒️ Build Meikade
 
 ### Prepare the Prerequisites
 Before you start the build process, you have to install/resolve Meikade's dependencies like any other application.
