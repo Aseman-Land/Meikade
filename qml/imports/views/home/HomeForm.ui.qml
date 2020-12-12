@@ -4,6 +4,7 @@ import QtQuick.Controls 2.3
 import QtQuick.Layouts 1.3
 import AsemanQml.Controls 2.0
 import QtQuick.Controls.Material 2.0
+import QtGraphicalEffects 1.0
 import globals 1.0
 import micros 1.0
 
@@ -15,36 +16,57 @@ Item {
     property alias list: list
     property alias headerItem: headerItem
 
-    ReloadItem {
-        id: busyIndicator
-        anchors.centerIn: parent
-        viewItem: list
-    }
-
-    FlexiList {
-        id: list
+    Rectangle {
+        id: listScene
         anchors.left: parent.left
         anchors.right: parent.right
-        anchors.top: headerItem.bottom
+        anchors.top: parent.top
         anchors.bottom: parent.bottom
-        model: ListModel {
-            ListElement {
-                type: "recents"
-                section: "Recents"
-            }
-            ListElement {
-                type: "static"
-                section: ""
+        color: Colors.deepBackground
+
+        ReloadItem {
+            id: busyIndicator
+            anchors.centerIn: parent
+            viewItem: list
+        }
+
+        FlexiList {
+            id: list
+            topMargin: headerItem.height + spacing
+            anchors.fill: parent
+            model: ListModel {
+                ListElement {
+                    type: "recents"
+                    section: "Recents"
+                }
+                ListElement {
+                    type: "static"
+                    section: ""
+                }
             }
         }
     }
 
     HScrollBar {
         anchors.right: parent.right
-        anchors.bottom: list.bottom
-        anchors.top: list.top
+        anchors.bottom: listScene.bottom
+        anchors.top: headerItem.bottom
         color: Colors.primary
         scrollArea: list
+    }
+
+    Item {
+        anchors.fill: headerItem
+        clip: true
+
+        FastBlur {
+            width: listScene.width
+            height: listScene.height
+            source: listScene
+            radius: Devices.isIOS? 64 : 0
+            cached: true
+            visible: Devices.isIOS
+        }
     }
 
     Header {
@@ -56,5 +78,6 @@ Item {
         anchors.top: parent.top
         titleFontSize: 10 * Devices.fontDensity
         shadow: Devices.isAndroid
+        opacity: Devices.isIOS? 0.9 : 1
     }
 }
