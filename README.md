@@ -13,9 +13,9 @@ It is avaiable on iOS, Android, Windows, macOS and Linux.
 | Platform      | Download | Availability|
 | ------------- |:------------------------------------------------------------------------------------:|:---:|
 | iOS           | [AppStore](https://apps.apple.com/us/app/meikade-app/id1543587891#?platform=iphone)  | ✔️ |
-| Android       | [PlayStore](https://play.google.com/store/apps/details?id=org.nilegroup.Meikade)     | ⏳️ |
+| Android       | [PlayStore](https://play.google.com/store/apps/details?id=org.nilegroup.Meikade)     | ✔️ |
 | Windows       | [exe File]()  | ⏳️ |
-| macOS         | [AppStore]()  | ⏳️ |
+| macOS         | [DMG file]()  | ⏳️ |
 | Linux         | [Deb Package]()  | ⏳️ |
 
 ---
