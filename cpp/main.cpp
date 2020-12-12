@@ -49,6 +49,11 @@ int main(int argc, char *argv[])
     QQuickStyle::setStyle("IOSStyle");
 #endif
 
+    bool activeSubscription = true;
+#ifdef DISABLE_SUBSCRIPTION
+    activeSubscription = false;
+#endif
+
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     QCoreApplication::setAttribute(Qt::AA_ShareOpenGLContexts);
 
@@ -67,6 +72,7 @@ int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty("isAndroidStyle", androidStyle);
     engine.rootContext()->setContextProperty("appVersion", MEIKADE_VERSION);
     engine.rootContext()->setContextProperty("qVersion", qVersion());
+    engine.rootContext()->setContextProperty("activeSubscription", activeSubscription);
     const QUrl url(QStringLiteral("qrc:/qml/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
                      &app, [url](QObject *obj, const QUrl &objUrl) {
