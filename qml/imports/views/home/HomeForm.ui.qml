@@ -75,6 +75,15 @@ Item {
             cached: true
             visible: Devices.isIOS
         }
+
+        Rectangle {
+            anchors.fill: parent
+            visible: Devices.isIOS
+            gradient: Gradient {
+                GradientStop { position: 0.0; color: headerItem.color }
+                GradientStop { position: 1.0; color: "transparent" }
+            }
+        }
     }
 
     Header {
