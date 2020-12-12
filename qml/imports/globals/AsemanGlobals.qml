@@ -69,7 +69,7 @@ AsemanObject {
         property bool disablePremiumOfflinesWarn: false
 
         property bool languageInited: false
-        property string language: Devices.isIOS? "en" : "fa"
+        property string language: "fa"
         property bool phrase: true
         property bool phraseNumber: true
         property bool onlineSearch: true
@@ -93,7 +93,11 @@ AsemanObject {
         property string uniqueId
 
         Component.onCompleted: {
-            if (uniqueId.length == 0) uniqueId = Tools.createUuid()
+            if (uniqueId.length != 0)
+                return;
+
+            uniqueId = Tools.createUuid();
+            _settings.language = Devices.isIOS? "en" : "fa";
         }
     }
 
