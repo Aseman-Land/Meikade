@@ -5,6 +5,8 @@ qtHaveModule(webview): QT += webview
 
 DEFINES += MEIKADE_VERSION='\\"$${VERSION}\\"'
 
+disable-subscription: DEFINES += DISABLE_SUBSCRIPTION
+
 SOURCES += \
     $$PWD/old/stickermodel.cpp \
     $$PWD/old/stickerwriter.cpp \

@@ -5,12 +5,15 @@ import AsemanQml.Base 2.0
 
 AsemanObject {
 
-    readonly property int notesLimits: currentPackage.package.extra.notes_limits
-    readonly property int listsLimits: currentPackage.package.extra.lists_limits
-    readonly property int offlineLimits: currentPackage.package.extra.offline_limits
+    readonly property int notesLimits: activeSubscription? currentPackage.package.extra.notes_limits : -1
+    readonly property int listsLimits: activeSubscription? currentPackage.package.extra.lists_limits : -1
+    readonly property int offlineLimits: activeSubscription? currentPackage.package.extra.offline_limits : -1
 
-    readonly property int premium: premiumDays > 0
+    readonly property int premium:  premiumDays > 0
     readonly property int premiumDays: {
+        if (!activeSubscription)
+            return 1000;
+
         try {
             var expire = Math.floor(Date.parse(currentPackage.expires_at) / 1000);
             var current = Tools.dateToSec(new Date);
