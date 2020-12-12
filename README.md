@@ -1,4 +1,4 @@
-[![Meikadeh-icon](https://raw.githubusercontent.com/Aseman-Land/Meikade/master/configurations/ios/icons/Icon-Small%402x.png)]
+![Meikadeh-icon](https://raw.githubusercontent.com/Aseman-Land/Meikade/master/configurations/ios/icons/Icon-Small%402x.png)
 
 Meikade
 =======
