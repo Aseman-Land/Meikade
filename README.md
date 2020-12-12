@@ -5,6 +5,11 @@ Meikade
 
 [![GitHub license](https://img.shields.io/github/license/Aseman-Land/Meikade?style=for-the-badge)](https://github.com/Aseman-Land/Meikade/blob/master/LICENSE)
 
+[![AppStore Download](https://img.shields.io/github/license/Aseman-Land/Meikade?style=for-the-badge)](https://apps.apple.com/us/app/meikade-app/id1543587891#?platform=iphone)
+
+[![GitHub issues](https://img.shields.io/github/issues/Aseman-Land/Meikade?color=black&label=AppStore&logo=apple&logoColor=white&style=for-the-badge)](https://github.com/Aseman-Land/Meikade/issues)
+
+?logo=apple
 
 Meikade is a collection of Persian poetry.
 It's a cross-platform application which is avaiable on iOS, Android, Windows, macOS and Linux.
