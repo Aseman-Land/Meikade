@@ -1,9 +1,13 @@
+[![Meikadeh-icon](https://raw.githubusercontent.com/Aseman-Land/Meikade/master/configurations/ios/icons/Icon-Small%402x.png)]
+
 Meikade
 =======
 
+[![GitHub license](https://img.shields.io/github/license/Aseman-Land/Meikade?style=for-the-badge)](https://github.com/Aseman-Land/Meikade/blob/master/LICENSE)
+
+
 Meikade is a collection of Persian poetry.
 It's a cross-platform application which is avaiable on iOS, Android, Windows, macOS and Linux.
-It's free and open-source, released under the GPLv3 license.
 Meikade is built using C++ & Qt.
 
 ## ⚒️ How to Build
