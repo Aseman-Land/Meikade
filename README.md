@@ -4,8 +4,7 @@ Meikade
 =======
 
 Meikade is a collection of Persian poetry.
-It's a cross-platform application which is avaiable on iOS, Android, Windows, macOS and Linux.
-Meikade is built using C++ & Qt.
+It is avaiable on iOS, Android, Windows, macOS and Linux.
 
 ## ⚒️ How to Build
 
@@ -20,23 +19,23 @@ In order to start the build process, you have to set up the environment for the 
 - 🍎️ **iOS & macOS**: install XCode and XCode command-line tools.
 - 🐧️ **Linux (esp. Ubuntu & other Debian-based distros)**: install gcc, g++ and make command.
 
-### Install the Dependencies
+#### Install the Dependencies
 
-#### Git
-For all the above mentioned platforms, you need to install "git" on them. So for example if you want to build it for Ubuntu, You need to setup your environment using the below command:
+##### Git
+For all the above mentioned platforms, you need to install "git". So for example if you want to build it for Ubuntu, You need to setup your environment using the below command:
 
 ```bash
 sudo apt-get install git g++ gcc
 ```
 
-#### Qt
+##### Qt
 You can download and install Qt from their website [qt.io](). Also If you want to build Meikade on Ubuntu (or any other Debian-based distro), you could install Qt from the official repositories using the commands below:
 
 ```bash
 sudo apt-get install qtbase5-dev qt5-default "qml-module-qt*"
 ```
 
-#### QtAseman
+##### QtAseman
 
 Meikade is dependant on the QtAseman. So you can build it using the commands below:
 
@@ -69,6 +68,9 @@ qmake -r ..
 make
 ```
 
-and after building it, execute it from the build directory. :)
+and after building it, execute it from the build directory. That's it you did it! :)
+
+---
+Meikade is built using C++ & Qt.
 
 [![GitHub license](https://img.shields.io/github/license/Aseman-Land/Meikade?style=for-the-badge)](https://github.com/Aseman-Land/Meikade/blob/master/LICENSE)
