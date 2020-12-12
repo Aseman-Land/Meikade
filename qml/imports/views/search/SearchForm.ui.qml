@@ -120,6 +120,7 @@ Rectangle {
         anchors.top: headerItem.bottom
         anchors.right: parent.right
         anchors.left: parent.left
+        bottomMargin: 58 * Devices.density + Devices.navigationBarHeight
 
         onDragStarted: keywordField.focus = false
 
@@ -258,6 +259,7 @@ Rectangle {
         anchors.right: parent.right
         anchors.bottom: listView.bottom
         anchors.top: listView.top
+        anchors.bottomMargin: listView.bottomMargin
         color: Colors.primary
         scrollArea: listView
     }

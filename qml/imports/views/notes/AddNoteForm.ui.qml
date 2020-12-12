@@ -41,7 +41,7 @@ Page {
         flickableDirection: Flickable.VerticalFlick
         clip: true
 
-        Item {
+        EscapeItem {
             id: scene
             width: flick.width
             height: Math.max(flick.height, sceneColumn.height + 20 * Devices.density)

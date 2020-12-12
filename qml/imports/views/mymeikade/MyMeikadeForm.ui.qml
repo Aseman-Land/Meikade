@@ -52,7 +52,7 @@ Rectangle {
         LayoutMirroring.enabled: false
         LayoutMirroring.childrenInherit: true
 
-        bottomMargin: 100 * Devices.density
+        bottomMargin: 200 * Devices.density
 
         header: Item {
             width: gridView.width
@@ -287,6 +287,7 @@ Rectangle {
         anchors.right: parent.right
         anchors.bottom: gridView.bottom
         anchors.top: gridView.top
+        anchors.bottomMargin: 58 * Devices.density + Devices.navigationBarHeight
         color: Colors.primary
         scrollArea: gridView
     }

@@ -6,6 +6,7 @@ import AsemanQml.Controls 2.0
 import AsemanQml.MaterialIcons 2.0
 import QtQuick.Layouts 1.3
 import QtQuick.Controls.Material 2.0
+import QtGraphicalEffects 1.0
 import micros 1.0
 import globals 1.0
 
@@ -24,7 +25,7 @@ Page {
     Rectangle {
         id: swipeView
         anchors.top: parent.top
-        anchors.bottom: footerItem.top
+        anchors.bottom: parent.bottom
         anchors.right: parent.right
         anchors.left: parent.left
         color: Colors.deepBackground
@@ -50,13 +51,33 @@ Page {
         }
     }
 
-    Rectangle {
+    Item {
+        anchors.fill: footerItem
+        clip: true
+
+        FastBlur {
+            width: swipeView.width
+            height: swipeView.height
+            anchors.bottom: parent.bottom
+            source: swipeView
+            radius: Devices.isIOS? 64 : 0
+            cached: true
+            visible: Devices.isIOS
+        }
+    }
+
+    Item {
         id: footerItem
         height: 58 * Devices.density + Devices.navigationBarHeight
-        color: Colors.background
         anchors.right: parent.right
         anchors.left: parent.left
         anchors.bottom: parent.bottom
+
+        Rectangle {
+            anchors.fill: parent
+            opacity: Devices.isIOS? 0.7 : 1
+            color: Colors.background
+        }
 
         Rectangle {
             id: footerBorder
