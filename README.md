@@ -3,19 +3,16 @@
 Meikade
 =======
 
-[![GitHub license](https://img.shields.io/github/license/Aseman-Land/Meikade?style=for-the-badge)](https://github.com/Aseman-Land/Meikade/blob/master/LICENSE)
-
 Meikade is a collection of Persian poetry.
 It's a cross-platform application which is avaiable on iOS, Android, Windows, macOS and Linux.
 Meikade is built using C++ & Qt.
 
 ## ⚒️ How to Build
 
-### Prerequisites
-
-#### Build Environment & Dependencies
-
+### Prepare the Prerequisites
 Before you start the build process, you have to install/resolve Meikade's dependencies like any other application.
+
+#### Set up your Build Environment
 
 In order to start the build process, you have to set up the environment for the respective platforms.
 
@@ -23,7 +20,10 @@ In order to start the build process, you have to set up the environment for the 
 - 🍎️ **iOS & macOS**: install XCode and XCode command-line tools.
 - 🐧️ **Linux (esp. Ubuntu & other Debian-based distros)**: install gcc, g++ and make command.
 
-And for all the above platforms you need to install git on them. So for example if you want to build it for Ubuntu, You need to setup your environment using the below command:
+### Install the Dependencies
+
+#### Git
+For all the above mentioned platforms, you need to install "git" on them. So for example if you want to build it for Ubuntu, You need to setup your environment using the below command:
 
 ```bash
 sudo apt-get install git g++ gcc
@@ -59,7 +59,7 @@ sudo apt-get install qt5aseman qt5aseman-dev
 
 ### Build Meikade
 
-It's pretty easy to build meikade. Just clone and build it:
+Now that you have installed/resolved all needed dependencies It should be pretty easy to build Meikade. Just clone this repository and build it with the following command:
 
 ```bash
 git clone https://github.com/Aseman-Land/Meikade.git
@@ -69,4 +69,6 @@ qmake -r ..
 make
 ```
 
-and after building it, execute it from the build directory :)
+and after building it, execute it from the build directory. :)
+
+[![GitHub license](https://img.shields.io/github/license/Aseman-Land/Meikade?style=for-the-badge)](https://github.com/Aseman-Land/Meikade/blob/master/LICENSE)
