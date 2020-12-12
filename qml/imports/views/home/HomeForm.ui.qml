@@ -71,14 +71,14 @@ Item {
             width: listScene.width
             height: listScene.height
             source: listScene
-            radius: Devices.isIOS? 64 : 0
+            radius: Devices.isIOS || Devices.isLinux? 64 : 0
             cached: true
-            visible: Devices.isIOS
+            visible: Devices.isIOS || Devices.isLinux
         }
 
         Rectangle {
             anchors.fill: parent
-            visible: Devices.isIOS
+            visible: Devices.isIOS || Devices.isLinux
             gradient: Gradient {
                 GradientStop { position: 0.0; color: headerItem.color }
                 GradientStop { position: 1.0; color: "transparent" }
@@ -95,6 +95,6 @@ Item {
         anchors.top: parent.top
         titleFontSize: 10 * Devices.fontDensity
         shadow: Devices.isAndroid
-        opacity: Devices.isIOS? 0.8 : 1
+        opacity: Devices.isIOS || Devices.isLinux? 0.8 : 1
     }
 }
