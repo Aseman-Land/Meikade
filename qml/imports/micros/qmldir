@@ -11,3 +11,4 @@ Snackbar 1.0 Snackbar.qml
 ReloadItem 1.0 ReloadItem.qml
 DrawerFrame 1.0 DrawerFrame.qml
 MeikadeLoader 1.0 MeikadeLoader.qml
+SamsungInputBugFixer 1.0 SamsungInputBugFixer.qml

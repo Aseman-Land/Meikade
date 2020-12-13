@@ -302,7 +302,7 @@ Rectangle {
 
             TextField {
                 id: keywordField
-                bottomPadding: 8 * Devices.density
+                bottomPadding: Devices.isAndroid? 1 * Devices.density : 8 * Devices.density
                 Layout.fillWidth: true
                 horizontalAlignment: Text.AlignLeft
                 placeholderText: qsTr("Search") + Translations.refresher
@@ -311,6 +311,8 @@ Rectangle {
                 IOSStyle.theme: IOSStyle.Dark
                 font.pixelSize: 9 * Devices.fontDensity
                 background: Item {}
+
+                SamsungInputBugFixer {}
             }
         }
 
