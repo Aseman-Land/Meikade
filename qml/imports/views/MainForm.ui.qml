@@ -60,9 +60,9 @@ Page {
             height: swipeView.height
             anchors.bottom: parent.bottom
             source: swipeView
-            radius: Devices.isIOS || Devices.isLinux? 64 : 0
+            radius: Devices.isIOS || Devices.isDesktop? 64 : 0
             cached: true
-            visible: Devices.isIOS || Devices.isLinux
+            visible: Devices.isIOS || Devices.isDesktop
         }
     }
 
@@ -75,7 +75,7 @@ Page {
 
         Rectangle {
             anchors.fill: parent
-            opacity: Devices.isIOS || Devices.isLinux? 0.7 : 1
+            opacity: Devices.isIOS || Devices.isDesktop? 0.7 : 1
             color: Colors.background
         }
 
