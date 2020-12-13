@@ -81,9 +81,9 @@ mkdir build && cd build
 qmake -r ..
 make
 ```
-and after building it, execute it from the build directory. That's it you did it! :)
+and after building it, execute it from the build directory. That's it. You did it! :)
 
-*Note* that to disable subscription feature on your build, just pass `CONFIG+=disable-subscription` config to qmake command.
+> **NOTE**: to disable subscription feature on your build, just pass `CONFIG+=disable-subscription` config to qmake command.
 
 ---
 Meikade is built using C++ & Qt.
