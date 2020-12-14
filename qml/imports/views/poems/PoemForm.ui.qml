@@ -224,9 +224,21 @@ Item {
 
                 Connections {
                     target: itemDel
+
+                    property int pinX
+                    property int pinY
+
+                    onPressed: {
+                        pinX = mouse.x;
+                        pinY = mouse.y;
+                    }
+
                     onPressAndHold: {
+                        if (Math.abs(pinX - mouse.x) > 30 * Devices.density)
+                            return;
                         dis.menuRequest(model.index, delFrame)
                     }
+
                     onClicked: {
                         dis.selectMode = true;
                         checkbox.checked = !checkbox.checked;
