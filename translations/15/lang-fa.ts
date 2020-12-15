@@ -25,7 +25,8 @@
     </message>
     <message>
         <source>&lt;b&gt;&lt;u&gt;Meikade is a free and opensource poetry app&lt;/u&gt;&lt;/b&gt;, designed and created by Aseman. It means user freedom and privacy is important for Meikade. So you can access Meikade&apos;s source code on Github, Read it and change it under the term of the GPLv3 license.</source>
-        <translation>&lt;b&gt;&lt;u&gt;می‌کده یک برنامه آزاد است&lt;/u&gt;&lt;/b&gt; که توسط آسمان طراحی و پیاده‌سازی شده است. این به این معنی است که می‌کده حامی آزادی‌های کاربر است. بنابریان شما می‌توانید آن را تحت قوانین نسخه سوم مجوز GPL که توسط FSF ارائه شده است دوباره منتشر کنید، آن را به دوستان خود بدهید و یا در آن تغییرات ایجاد کنید.</translation>
+        <translation>&lt;b&gt;&lt;u&gt;می‌کده اپلیکیشن شعر&lt;/u&gt;&lt;/b&gt; اپن‌سورس، طراحی و پیاده‌سازی‌شده توسط تیم آسمان است. آزادی و امنیت کاربران برای می‌کده بسیار مهم است. توسعه‌دهندگان 
+می‌توانند سورس کد می‌کده را از گیت‌هاب دریافت نموده و با مجوز GPLv3 در آن تغییرات ایجاد کنند.</translation>
     </message>
     <message>
         <source>Development Team:</source>
@@ -79,72 +80,82 @@
     </message>
 </context>
 <context>
-    <name>AddListForm</name>
+    <name>JalaliCalendarObject</name>
     <message>
-        <source>Add List</source>
-        <translation>لیست جدید</translation>
+        <source>Farvardin</source>
+        <translation>فروردین</translation>
     </message>
     <message>
-        <source>Please enter list name:</source>
-        <translation>نام لیست خود را وارد کنید:</translation>
+        <source>Ordibehesht</source>
+        <translation>اردیبهشت</translation>
     </message>
     <message>
-        <source>List Name</source>
-        <translation>نام لیست</translation>
+        <source>Khordad</source>
+        <translation>خرداد</translation>
     </message>
     <message>
-        <source>Add</source>
-        <translation>ساخت لیست</translation>
+        <source>Tir</source>
+        <translation>تیر</translation>
     </message>
     <message>
-        <source>Rename List</source>
-        <translation>تغییر نام لیست</translation>
+        <source>Mordad</source>
+        <translation>مرداد</translation>
     </message>
     <message>
-        <source>Rename</source>
-        <translation>تغییر نام</translation>
-    </message>
-</context>
-<context>
-    <name>AddNoteForm</name>
-    <message>
-        <source>Literary array</source>
-        <translation type="vanished">آرایه ادبی</translation>
+        <source>Shahrivar</source>
+        <translation>شهریور</translation>
     </message>
     <message>
-        <source>Type your note</source>
-        <translation>یادداشت خود را بنویسید</translation>
+        <source>Mehr</source>
+        <translation>مهر</translation>
     </message>
     <message>
-        <source>Save</source>
-        <translation>ذخیره یادداشت</translation>
+        <source>Abaan</source>
+        <translation>آبان</translation>
     </message>
     <message>
-        <source>Edit Note</source>
-        <translation>ویرایش یادداشت</translation>
+        <source>Aazar</source>
+        <translation>آذر</translation>
     </message>
     <message>
-        <source>Close</source>
-        <translation>بستن</translation>
+        <source>Dey</source>
+        <translation>دی</translation>
     </message>
     <message>
-        <source>To buy premium account click on below button</source>
-        <translation>برای خرید اکانت حرفه‌ای کلید زیر را لمس کنید</translation>
+        <source>Bahman</source>
+        <translation>بهمن</translation>
     </message>
     <message>
-        <source>Premium Account</source>
-        <translation>اکانت حرفه‌ای</translation>
+        <source>Esfand</source>
+        <translation>اسفند</translation>
     </message>
     <message>
-        <source>Don't show this message again</source>
-        <translation>عدم نمایش مجدد این پیغام</translation>
+        <source>Shanbe</source>
+        <translation>شنبه</translation>
     </message>
-</context>
-<context>
-    <name>AddNotePage</name>
     <message>
-        <source>You create %1 note from %2 notes, Allowed to create using non-premium account.</source>
-        <translation>شما %1 یادداشت از %2 یادداشت که با اکانت غیرحرفه‌ای میتوانید بسازید ساخته‌اید.</translation>
+        <source>1Shanbe</source>
+        <translation>یکشنبه</translation>
+    </message>
+    <message>
+        <source>2Shanbe</source>
+        <translation>دوشنبه</translation>
+    </message>
+    <message>
+        <source>3Shanbe</source>
+        <translation>سه‌شنبه</translation>
+    </message>
+    <message>
+        <source>4Shanbe</source>
+        <translation>چهارشنبه</translation>
+    </message>
+    <message>
+        <source>5Shanbe</source>
+        <translation>پنجشنبه</translation>
+    </message>
+    <message>
+        <source>Jome</source>
+        <translation>جمعه</translation>
     </message>
 </context>
 <context>
@@ -191,10 +202,71 @@
     </message>
 </context>
 <context>
+    <name>AddListForm</name>
+    <message>
+        <source>Add List</source>
+        <translation>لیست جدید</translation>
+    </message>
+    <message>
+        <source>Please enter list name:</source>
+        <translation>نام لیست خود را وارد کنید:</translation>
+    </message>
+    <message>
+        <source>List Name</source>
+        <translation>نام لیست</translation>
+    </message>
+    <message>
+        <source>Add</source>
+        <translation>ساخت لیست</translation>
+    </message>
+    <message>
+        <source>Rename List</source>
+        <translation>تغییر نام لیست</translation>
+    </message>
+    <message>
+        <source>Rename</source>
+        <translation>تغییر نام</translation>
+    </message>
+</context>
+<context>
+    <name>AddNoteForm</name>
+    <message>
+        <source>Type your note</source>
+        <translation>یادداشت خود را بنویسید</translation>
+    </message>
+    <message>
+        <source>Save</source>
+        <translation>ذخیره یادداشت</translation>
+    </message>
+    <message>
+        <source>Edit Note</source>
+        <translation>ویرایش یادداشت</translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation>بستن</translation>
+    </message>
+    <message>
+        <source>To buy premium account click on below button</source>
+        <translation>برای خرید اکانت حرفه‌ای روی دکمه زیر کلیک کنید</translation>
+    </message>
+    <message>
+        <source>Premium Account</source>
+        <translation>اکانت حرفه‌ای</translation>
+    </message>
+</context>
+<context>
+    <name>AddNotePage</name>
+    <message>
+        <source>You create %1 note from %2 notes, Allowed to create using non-premium account.</source>
+        <translation>شما %1 یادداشت از %2 یادداشت که با اکانت غیرحرفه‌ای می‌توانید بسازید را ساخته‌اید.</translation>
+    </message>
+</context>
+<context>
     <name>AuthPage</name>
     <message>
         <source>Logged in Successfully</source>
-        <translation>شما با موفقیت وارد شدید</translation>
+        <translation>با موفقیت وارد شدید</translation>
     </message>
     <message>
         <source>Check your email, assigned to your account.</source>
@@ -560,7 +632,7 @@ It containts %2 items currently.</source>
     <name>ForgetPasswordForm</name>
     <message>
         <source>To restore your password please enter your username below and tap on the restore. We&apos;ll send an email to you to change your password.</source>
-        <translation>برای بازیابی رمز عبور خود، لطفا نام کاربری خود را وارد کنید و دکمه بازیابی را بزنید. یک ایمیل به شما ارسال می‌شود که از طریق آن می‌توانید رمز عبور خود را تغییر دهید.</translation>
+        <translation>برای بازیابی رمز عبور، لطفا نام کاربری خود را وارد کنید و دکمه بازیابی را بزنید. یک ایمیل به شما ارسال می‌شود که از طریق آن می‌توانید رمز عبور خود را تغییر دهید.</translation>
     </message>
     <message>
         <source>Username</source>
@@ -679,7 +751,7 @@ It containts %2 items currently.</source>
     <name>IntroPage</name>
     <message>
         <source>You install %1 offline poet from %2 poets, Allowed to install using non-premium account.</source>
-        <translation>شما %1 شاعر از %2 شاعر که با اکانت غیرحرفه‌ای میتوانید آفلاین نصب کنید را استفاده کردید.</translation>
+        <translation>شما آثار %1 شاعر از حداکثر %2 شاعر که می‌توانید با اکانت غیرحرفه‌ای آفلاین کنید را نصب کرده‌اید.</translation>
     </message>
 </context>
 <context>
@@ -700,8 +772,11 @@ It containts %2 items currently.</source>
         <translation>شاعرهای آفلاین</translation>
     </message>
     <message>
-        <source>Meikade 4 is online by default now. It means you can discover between tousands of poems freely without downloading to your storages. But it also available to download them to your storage and read them offline. Please select your poets that your want to read online. You can also setup it later on the every poet/book page.</source>
-        <translation>در می‌کده ۴ قابلیت خوانش آنلاین تمامی اشعار و جستجوی آنلاین در میان همه آثار فراهم شده است. این به این معنی است که نیاز به دانلود آثار شاعران وجود ندارد. با این حال در صورت تمایل می‌توانید آثار شاعران مورد نظر خود را برای استفاده آفلاین و بدون نیاز به اینترنت، دانلود کنید. بدیهی‌ست که این کار را بعدا در صفحه هر شاعر و از منوی موجود در آن می‌توانید انجام دهید.</translation>
+        <source>Meikade 4 is online by default now. It means you can discover between tousands of poems freely without downloading to your storages. But it also available to download them to your 
+storage and read them offline. Please select your poets that your want to read online. You can also setup it later on the every poet/book page.</source>
+        <translation>می‌کده ۴ در حالت پیش‌فرض، به صورت آنلاین کار می‌کند. به این معنی که برای دسترسی به آثار موجود، نیاز به نصب آثار بر روی حافظه دستگاه خود ندارید. اما در صورت تمایل می‌توانید آثار 
+شاعرهای دلخواه خود
+را برای استفاده آفلاین نصب کنید. از فهرست زیر شاعران مورد نظر خود را برای نصب انتخاب کنید. این لیست برای ویرایش‌های بعدی در پروفایل شما نیز قرار دارد.</translation>
     </message>
     <message>
         <source>Uninstalling</source>
@@ -717,15 +792,11 @@ It containts %2 items currently.</source>
     </message>
     <message>
         <source>To buy premium account click on below button</source>
-        <translation>برای خرید اکانت حرفه‌ای کلید زیر را لمس کنید</translation>
+        <translation>برای خرید اکانت حرفه‌ای روی دکمه زیر کلیک کنید</translation>
     </message>
     <message>
         <source>Premium Account</source>
         <translation>اکانت حرفه‌ای</translation>
-    </message>
-    <message>
-        <source>Don't show this message again</source>
-        <translation>عدم نمایش مجدد این پیغام</translation>
     </message>
 </context>
 <context>
@@ -741,85 +812,6 @@ It containts %2 items currently.</source>
     <message>
         <source>So It&apos;s neccessary to take some times and do next steps to personalize your Meikade. Choose language and press &quot;Next&quot; if you ready.</source>
         <translation>به همین منظور برای سفارشی‌سازی می‌کده بر طبق نیازهای شما، بهتر است مراحلی که در ادامه می‌آید را انجام دهید. کلید &quot;بعدی&quot; را بزنید.</translation>
-    </message>
-</context>
-<context>
-    <name>JalaliCalendarObject</name>
-    <message>
-        <source>Farvardin</source>
-        <translation>فروردین</translation>
-    </message>
-    <message>
-        <source>Ordibehesht</source>
-        <translation>اردیبهشت</translation>
-    </message>
-    <message>
-        <source>Khordad</source>
-        <translation>خرداد</translation>
-    </message>
-    <message>
-        <source>Tir</source>
-        <translation>تیر</translation>
-    </message>
-    <message>
-        <source>Mordad</source>
-        <translation>مرداد</translation>
-    </message>
-    <message>
-        <source>Shahrivar</source>
-        <translation>شهریور</translation>
-    </message>
-    <message>
-        <source>Mehr</source>
-        <translation>مهر</translation>
-    </message>
-    <message>
-        <source>Abaan</source>
-        <translation>آبان</translation>
-    </message>
-    <message>
-        <source>Aazar</source>
-        <translation>آذر</translation>
-    </message>
-    <message>
-        <source>Dey</source>
-        <translation>دی</translation>
-    </message>
-    <message>
-        <source>Bahman</source>
-        <translation>بهمن</translation>
-    </message>
-    <message>
-        <source>Esfand</source>
-        <translation>اسفند</translation>
-    </message>
-    <message>
-        <source>Shanbe</source>
-        <translation>شنبه</translation>
-    </message>
-    <message>
-        <source>1Shanbe</source>
-        <translation>یکشنبه</translation>
-    </message>
-    <message>
-        <source>2Shanbe</source>
-        <translation>دوشنبه</translation>
-    </message>
-    <message>
-        <source>3Shanbe</source>
-        <translation>سه‌شنبه</translation>
-    </message>
-    <message>
-        <source>4Shanbe</source>
-        <translation>چهارشنبه</translation>
-    </message>
-    <message>
-        <source>5Shanbe</source>
-        <translation>پنجشنبه</translation>
-    </message>
-    <message>
-        <source>Jome</source>
-        <translation>جمعه</translation>
     </message>
 </context>
 <context>
@@ -846,15 +838,11 @@ It containts %2 items currently.</source>
     </message>
     <message>
         <source>To buy premium account click on below button</source>
-        <translation>برای خرید اکانت حرفه‌ای کلید زیر را لمس کنید</translation>
+        <translation>برای خرید اکانت حرفه‌ای روی دکمه زیر کلیک کنید</translation>
     </message>
     <message>
         <source>Premium Account</source>
         <translation>اکانت حرفه‌ای</translation>
-    </message>
-    <message>
-        <source>Don't show this message again</source>
-        <translation>عدم نمایش مجدد این پیغام</translation>
     </message>
 </context>
 <context>
@@ -888,7 +876,7 @@ It containts %2 items currently.</source>
     </message>
     <message>
         <source>You create %1 lists from %2 lists, Allowed to create using non-premium account.</source>
-        <translation>شما %1 لیست از %2 لیست که با اکانت غیرحرفه‌ای میتوانید بسازید ساخته‌اید.</translation>
+        <translation>شما %1 لیست از %2 لیست که با اکانت غیرحرفه‌ای میتوانید بسازید را ساخته‌اید.</translation>
     </message>
 </context>
 <context>
@@ -973,22 +961,18 @@ It containts %2 items currently.</source>
     </message>
     <message>
         <source>To buy premium account click on below button</source>
-        <translation>برای خرید اکانت حرفه‌ای کلید زیر را لمس کنید</translation>
+        <translation>برای خرید اکانت حرفه‌ای روی دکمه زیر کلیک کنید</translation>
     </message>
     <message>
         <source>Premium Account</source>
         <translation>اکانت حرفه‌ای</translation>
-    </message>
-    <message>
-        <source>Don't show this message again</source>
-        <translation>عدم نمایش مجدد این پیغام</translation>
     </message>
 </context>
 <context>
     <name>ManageOfflinePoetsPage</name>
     <message>
         <source>You install %1 offline poet from %2 poets, Allowed to install using non-premium account.</source>
-        <translation>شما %1 شاعر از %2 شاعر که با اکانت غیرحرفه‌ای میتوانید آفلاین نصب کنید را استفاده کردید.</translation>
+        <translation>شما آثار %1 شاعر از حداکثر %2 شاعر که می‌توانید با اکانت غیرحرفه‌ای آفلاین کنید را نصب کرده‌اید.</translation>
     </message>
 </context>
 <context>
@@ -1088,7 +1072,7 @@ It containts %2 items currently.</source>
     </message>
     <message>
         <source>Change Avatar</source>
-        <translation type="vanished">تغییر تصویر کاربری</translation>
+        <translation type="vanished">تغییر عکس</translation>
     </message>
     <message>
         <source>Change Password</source>
@@ -1129,7 +1113,7 @@ It containts %2 items currently.</source>
     </message>
     <message>
         <source>Favoriteds</source>
-        <translation type="obsolete">علاقه‌مندی‌ها</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Close</source>
@@ -1293,7 +1277,7 @@ It containts %2 items currently.</source>
     </message>
     <message>
         <source>Search on this poet</source>
-        <translation>جستجو در شاعر</translation>
+        <translation>جستجو در آثار شاعر</translation>
     </message>
     <message>
         <source>Installing</source>
@@ -1322,18 +1306,6 @@ It containts %2 items currently.</source>
 <context>
     <name>PremiumConfirmForm</name>
     <message>
-        <source>Unlimited Notes</source>
-        <translation type="vanished">یادداشت‌های نامحدود</translation>
-    </message>
-    <message>
-        <source>Unlimited Lists</source>
-        <translation type="vanished">لیست‌های نامحدود</translation>
-    </message>
-    <message>
-        <source>Unlimited Offline Poems</source>
-        <translation type="vanished">شاعرهای آفلاین نامحدود</translation>
-    </message>
-    <message>
         <source>Monthly</source>
         <translation>پرداخت ماهیانه</translation>
     </message>
@@ -1350,10 +1322,6 @@ It containts %2 items currently.</source>
         <translation>اکانت حرفه‌ای</translation>
     </message>
     <message>
-        <source>Don't show this message again</source>
-        <translation>عدم نمایش مجدد این پیغام</translation>
-    </message>
-    <message>
         <source>Cancel</source>
         <translation>لغو</translation>
     </message>
@@ -1367,7 +1335,7 @@ It containts %2 items currently.</source>
     </message>
     <message>
         <source>You must login with you account before active premium account.</source>
-        <translation>قبل از ارتقای اکانت خود به اکانت حرفه‌ای باید با اکانت خود وارد شوید.</translation>
+        <translation>قبل از ارتقا به می‌کده حرفه‌ای باید وارد حساب کاربری خود شوید.</translation>
     </message>
     <message>
         <source>Login</source>
@@ -1377,24 +1345,12 @@ It containts %2 items currently.</source>
 <context>
     <name>PremiumConfirmPage</name>
     <message>
-        <source>%1 Tomans per Month</source>
-        <translation type="vanished">%1 تومان ماهیانه</translation>
-    </message>
-    <message>
-        <source>%1 Tomans per Year</source>
-        <translation type="vanished">%1 تومان سالیانه</translation>
-    </message>
-    <message>
         <source>%1% OFF Coupon</source>
         <translation>%1% تخفیف</translation>
     </message>
     <message>
         <source>Toman</source>
         <translation>تومان</translation>
-    </message>
-    <message>
-        <source>%1 Tomans per %2 months</source>
-        <translation type="vanished">%1 تومن - اکانت %2 ماهه</translation>
     </message>
     <message>
         <source>Unlimited Notes</source>
@@ -1466,10 +1422,6 @@ It containts %2 items currently.</source>
         <translation>جستجوی آنلاین</translation>
     </message>
     <message>
-        <source>Smart Search</source>
-        <translation type="vanished">جستجوی هوشمند</translation>
-    </message>
-    <message>
         <source>Accurate word search</source>
         <translation>جستجوی دقیق واژه‌ها</translation>
     </message>
@@ -1486,7 +1438,7 @@ It containts %2 items currently.</source>
     </message>
     <message>
         <source>Search</source>
-        <translation>جستجو</translation>
+        <translation>جستجو در شعر و نام شاعر</translation>
     </message>
     <message>
         <source>Close</source>
@@ -1525,9 +1477,10 @@ It containts %2 items currently.</source>
         <source>Meikade online search is a smart search that uses AI alghorithms to give you better results.
 It removes all extra spaces you may entered or search between other positive spelling or meanings.
 It&apos;s experimental currently and Meikade technical team working on it. But if it fail to find true result, You can disable it Using accurate search checkbox.</source>
-        <translation>درحال حاضر می‌کده در جستجوی آنلاین خود از الگوریتم‌های جستجوی هوشمند استفاده میکند تا به شما نتایج بهتری نشان دهد.
-این الگوریتم کلیدواژه‌ی شما را در معنای کلمات هر مصراع جستجو میکند. همچنین فاصله‌های اضافی یا کمی که ممکن است موقع وارد کردن کلید‌واژه وارد کنید را اصلاح میکند و همچنین املاهای مختلف را موقع جستجو امتحان می‌کند تا نتایج کامل‌تر باشند.
-تیم فنی می‌کده سخت درحال توسعه و بهبود این الگوریتم‌ها هستند. با این حال بخاطر اینکه الگوریتم‌های جستجوی هوشمند مراحل توسعه سنگینی دارند و راه زیادی داریم تا این الگوریتم‌ها دقیقا نتایج مورد نظر شما را جستجو کند، ما کلید &quot;جستجوی دقیق واژه‌ها&quot; را در برنامه قرار دادیم که اگر جستجوی هوشمند می‌کده نتایج مورد نظر شما را پیدا نکرد، بتوانید به روش معمول جستجوی خود را انجام دهید.</translation>
+        <translation>می‌کده در جستجوی آنلاین خود برای رسیدن به نتایج بهتر، از الگوریتم‌های جستجوی هوشمند (جستجو با کمک معنای مصراع‌ها، مدیریت کلمات چند املایی و فاصله‌های زیاد و نیم‌فاصله‌ها) استفاده 
+می‌کند.
+اگر گاهی در یافتن نتایج دلخواه خود به کمک جستجوی هوشمند با مشکل مواجه هستید، با فعال کردن گزینه &quot;جستجوی دقیق واژه‌ها&quot; به روش معمول به جستجو بپردازید.
+لطفا توجه داشته باشید که ما همواره در حال بهبود جستجوی هوشمند هستیم.</translation>
     </message>
 </context>
 <context>
@@ -1614,14 +1567,6 @@ It&apos;s experimental currently and Meikade technical team working on it. But i
     <message>
         <source>Logout Successfully</source>
         <translation>با موفقیت خارج شدید</translation>
-    </message>
-    <message>
-        <source>Premium</source>
-        <translation type="vanished">اکانت حرفه‌ای</translation>
-    </message>
-    <message>
-        <source>Normal</source>
-        <translation type="vanished">اکانت معمولی</translation>
     </message>
     <message>
         <source>%1 days</source>
