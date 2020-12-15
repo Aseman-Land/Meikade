@@ -136,7 +136,7 @@
         <translation>اکانت حرفه‌ای</translation>
     </message>
     <message>
-        <source>Don't show this message again</source>
+        <source>Don&apos;t show this message again</source>
         <translation>عدم نمایش مجدد این پیغام</translation>
     </message>
 </context>
@@ -146,48 +146,52 @@
         <source>You create %1 note from %2 notes, Allowed to create using non-premium account.</source>
         <translation>شما %1 یادداشت از %2 یادداشت که با اکانت غیرحرفه‌ای میتوانید بسازید ساخته‌اید.</translation>
     </message>
+    <message>
+        <source>You create %1 note from %2 notes.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>AsemanTools</name>
     <message>
         <source>0</source>
-        <translation>۰</translation>
+        <translation type="vanished">۰</translation>
     </message>
     <message>
         <source>1</source>
-        <translation>۱</translation>
+        <translation type="vanished">۱</translation>
     </message>
     <message>
         <source>2</source>
-        <translation>۲</translation>
+        <translation type="vanished">۲</translation>
     </message>
     <message>
         <source>3</source>
-        <translation>۳</translation>
+        <translation type="vanished">۳</translation>
     </message>
     <message>
         <source>4</source>
-        <translation>۴</translation>
+        <translation type="vanished">۴</translation>
     </message>
     <message>
         <source>5</source>
-        <translation>۵</translation>
+        <translation type="vanished">۵</translation>
     </message>
     <message>
         <source>6</source>
-        <translation>۶</translation>
+        <translation type="vanished">۶</translation>
     </message>
     <message>
         <source>7</source>
-        <translation>۷</translation>
+        <translation type="vanished">۷</translation>
     </message>
     <message>
         <source>8</source>
-        <translation>۸</translation>
+        <translation type="vanished">۸</translation>
     </message>
     <message>
         <source>9</source>
-        <translation>۹</translation>
+        <translation type="vanished">۹</translation>
     </message>
 </context>
 <context>
@@ -677,6 +681,10 @@ It containts %2 items currently.</source>
         <source>You install %1 offline poet from %2 poets, Allowed to install using non-premium account.</source>
         <translation>شما %1 شاعر از %2 شاعر که با اکانت غیرحرفه‌ای میتوانید آفلاین نصب کنید را استفاده کردید.</translation>
     </message>
+    <message>
+        <source>You install %1 offline poet from %2 poets.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>IntroSetupHome.ui</name>
@@ -720,8 +728,8 @@ It containts %2 items currently.</source>
         <translation>اکانت حرفه‌ای</translation>
     </message>
     <message>
-        <source>Don't show this message again</source>
-        <translation>عدم نمایش مجدد این پیغام</translation>
+        <source>Don&apos;t show this message again</source>
+        <translation type="vanished">عدم نمایش مجدد این پیغام</translation>
     </message>
 </context>
 <context>
@@ -743,79 +751,79 @@ It containts %2 items currently.</source>
     <name>JalaliCalendarObject</name>
     <message>
         <source>Farvardin</source>
-        <translation>فروردین</translation>
+        <translation type="vanished">فروردین</translation>
     </message>
     <message>
         <source>Ordibehesht</source>
-        <translation>اردیبهشت</translation>
+        <translation type="vanished">اردیبهشت</translation>
     </message>
     <message>
         <source>Khordad</source>
-        <translation>خرداد</translation>
+        <translation type="vanished">خرداد</translation>
     </message>
     <message>
         <source>Tir</source>
-        <translation>تیر</translation>
+        <translation type="vanished">تیر</translation>
     </message>
     <message>
         <source>Mordad</source>
-        <translation>مرداد</translation>
+        <translation type="vanished">مرداد</translation>
     </message>
     <message>
         <source>Shahrivar</source>
-        <translation>شهریور</translation>
+        <translation type="vanished">شهریور</translation>
     </message>
     <message>
         <source>Mehr</source>
-        <translation>مهر</translation>
+        <translation type="vanished">مهر</translation>
     </message>
     <message>
         <source>Abaan</source>
-        <translation>آبان</translation>
+        <translation type="vanished">آبان</translation>
     </message>
     <message>
         <source>Aazar</source>
-        <translation>آذر</translation>
+        <translation type="vanished">آذر</translation>
     </message>
     <message>
         <source>Dey</source>
-        <translation>دی</translation>
+        <translation type="vanished">دی</translation>
     </message>
     <message>
         <source>Bahman</source>
-        <translation>بهمن</translation>
+        <translation type="vanished">بهمن</translation>
     </message>
     <message>
         <source>Esfand</source>
-        <translation>اسفند</translation>
+        <translation type="vanished">اسفند</translation>
     </message>
     <message>
         <source>Shanbe</source>
-        <translation>شنبه</translation>
+        <translation type="vanished">شنبه</translation>
     </message>
     <message>
         <source>1Shanbe</source>
-        <translation>یکشنبه</translation>
+        <translation type="vanished">یکشنبه</translation>
     </message>
     <message>
         <source>2Shanbe</source>
-        <translation>دوشنبه</translation>
+        <translation type="vanished">دوشنبه</translation>
     </message>
     <message>
         <source>3Shanbe</source>
-        <translation>سه‌شنبه</translation>
+        <translation type="vanished">سه‌شنبه</translation>
     </message>
     <message>
         <source>4Shanbe</source>
-        <translation>چهارشنبه</translation>
+        <translation type="vanished">چهارشنبه</translation>
     </message>
     <message>
         <source>5Shanbe</source>
-        <translation>پنجشنبه</translation>
+        <translation type="vanished">پنجشنبه</translation>
     </message>
     <message>
         <source>Jome</source>
-        <translation>جمعه</translation>
+        <translation type="vanished">جمعه</translation>
     </message>
 </context>
 <context>
@@ -849,7 +857,7 @@ It containts %2 items currently.</source>
         <translation>اکانت حرفه‌ای</translation>
     </message>
     <message>
-        <source>Don't show this message again</source>
+        <source>Don&apos;t show this message again</source>
         <translation>عدم نمایش مجدد این پیغام</translation>
     </message>
 </context>
@@ -885,6 +893,10 @@ It containts %2 items currently.</source>
     <message>
         <source>You create %1 lists from %2 lists, Allowed to create using non-premium account.</source>
         <translation>شما %1 لیست از %2 لیست که با اکانت غیرحرفه‌ای میتوانید بسازید ساخته‌اید.</translation>
+    </message>
+    <message>
+        <source>You create %1 lists from %2 lists.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -976,7 +988,7 @@ It containts %2 items currently.</source>
         <translation>اکانت حرفه‌ای</translation>
     </message>
     <message>
-        <source>Don't show this message again</source>
+        <source>Don&apos;t show this message again</source>
         <translation>عدم نمایش مجدد این پیغام</translation>
     </message>
 </context>
@@ -985,6 +997,10 @@ It containts %2 items currently.</source>
     <message>
         <source>You install %1 offline poet from %2 poets, Allowed to install using non-premium account.</source>
         <translation>شما %1 شاعر از %2 شاعر که با اکانت غیرحرفه‌ای میتوانید آفلاین نصب کنید را استفاده کردید.</translation>
+    </message>
+    <message>
+        <source>You install %1 offline poet from %2 poets.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1039,6 +1055,10 @@ It containts %2 items currently.</source>
     <message>
         <source>Favoriteds Poets</source>
         <translation>شاعر مورد علاقه</translation>
+    </message>
+    <message>
+        <source>Meikade</source>
+        <translation type="unfinished">می‌کده</translation>
     </message>
 </context>
 <context>
@@ -1346,8 +1366,8 @@ It containts %2 items currently.</source>
         <translation>اکانت حرفه‌ای</translation>
     </message>
     <message>
-        <source>Don't show this message again</source>
-        <translation>عدم نمایش مجدد این پیغام</translation>
+        <source>Don&apos;t show this message again</source>
+        <translation type="vanished">عدم نمایش مجدد این پیغام</translation>
     </message>
     <message>
         <source>Cancel</source>

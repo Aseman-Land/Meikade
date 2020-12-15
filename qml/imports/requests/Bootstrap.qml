@@ -10,7 +10,7 @@ AsemanObject {
     readonly property string configPath: AsemanApp.homePath + "/bootstrap.data"
 
     property bool initialized: false
-    property bool subscription: false
+    property bool subscription: true
     property bool payment: false
 
     onInitializedChanged: write("initialized", initialized);
@@ -19,7 +19,7 @@ AsemanObject {
 
     Component.onCompleted: {
         read("initialized");
-        read("subscription");
+//        read("subscription");
         read("payment");
     }
 
