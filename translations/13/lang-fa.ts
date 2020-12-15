@@ -148,50 +148,50 @@
     </message>
     <message>
         <source>You create %1 note from %2 notes.</source>
-        <translation type="unfinished"></translation>
+        <translation>شما %1 یادداشت از %2 یادداشت که میتوانید بسازید ساخته‌اید.</translation>
     </message>
 </context>
 <context>
     <name>AsemanTools</name>
     <message>
         <source>0</source>
-        <translation type="vanished">۰</translation>
+        <translation>۰</translation>
     </message>
     <message>
         <source>1</source>
-        <translation type="vanished">۱</translation>
+        <translation>۱</translation>
     </message>
     <message>
         <source>2</source>
-        <translation type="vanished">۲</translation>
+        <translation>۲</translation>
     </message>
     <message>
         <source>3</source>
-        <translation type="vanished">۳</translation>
+        <translation>۳</translation>
     </message>
     <message>
         <source>4</source>
-        <translation type="vanished">۴</translation>
+        <translation>۴</translation>
     </message>
     <message>
         <source>5</source>
-        <translation type="vanished">۵</translation>
+        <translation>۵</translation>
     </message>
     <message>
         <source>6</source>
-        <translation type="vanished">۶</translation>
+        <translation>۶</translation>
     </message>
     <message>
         <source>7</source>
-        <translation type="vanished">۷</translation>
+        <translation>۷</translation>
     </message>
     <message>
         <source>8</source>
-        <translation type="vanished">۸</translation>
+        <translation>۸</translation>
     </message>
     <message>
         <source>9</source>
-        <translation type="vanished">۹</translation>
+        <translation>۹</translation>
     </message>
 </context>
 <context>
@@ -683,7 +683,7 @@ It containts %2 items currently.</source>
     </message>
     <message>
         <source>You install %1 offline poet from %2 poets.</source>
-        <translation type="unfinished"></translation>
+        <translation>شما %1 شاعر از %2 شاعر که می‌توانید نصب کنید را استفاده کردید.</translation>
     </message>
 </context>
 <context>
@@ -705,7 +705,7 @@ It containts %2 items currently.</source>
     </message>
     <message>
         <source>Meikade 4 is online by default now. It means you can discover between tousands of poems freely without downloading to your storages. But it also available to download them to your storage and read them offline. Please select your poets that your want to read online. You can also setup it later on the every poet/book page.</source>
-        <translation>در می‌کده ۴ قابلیت خوانش آنلاین تمامی اشعار و جستجوی آنلاین در میان همه آثار فراهم شده است. این به این معنی است که نیاز به دانلود آثار شاعران وجود ندارد. با این حال در صورت تمایل می‌توانید آثار شاعران مورد نظر خود را برای استفاده آفلاین و بدون نیاز به اینترنت، دانلود کنید. بدیهی‌ست که این کار را بعدا در صفحه هر شاعر و از منوی موجود در آن می‌توانید انجام دهید.</translation>
+        <translation type="vanished">در می‌کده ۴ قابلیت خوانش آنلاین تمامی اشعار و جستجوی آنلاین در میان همه آثار فراهم شده است. این به این معنی است که نیاز به دانلود آثار شاعران وجود ندارد. با این حال در صورت تمایل می‌توانید آثار شاعران مورد نظر خود را برای استفاده آفلاین و بدون نیاز به اینترنت، دانلود کنید. بدیهی‌ست که این کار را بعدا در صفحه هر شاعر و از منوی موجود در آن می‌توانید انجام دهید.</translation>
     </message>
     <message>
         <source>Uninstalling</source>
@@ -731,6 +731,10 @@ It containts %2 items currently.</source>
         <source>Don&apos;t show this message again</source>
         <translation type="vanished">عدم نمایش مجدد این پیغام</translation>
     </message>
+    <message>
+        <source>If you prefer to view some poems offline, Please mark them in the below list to download them.</source>
+        <translation>اگر ترجیح میدهید اشعار شاعری را بصورت آفلاین مطالعه کنید، لطفا از طریق لیست زیر آن‌ها را مشخص کنید.</translation>
+    </message>
 </context>
 <context>
     <name>IntroWelcomForm.ui</name>
@@ -751,79 +755,79 @@ It containts %2 items currently.</source>
     <name>JalaliCalendarObject</name>
     <message>
         <source>Farvardin</source>
-        <translation type="vanished">فروردین</translation>
+        <translation>فروردین</translation>
     </message>
     <message>
         <source>Ordibehesht</source>
-        <translation type="vanished">اردیبهشت</translation>
+        <translation>اردیبهشت</translation>
     </message>
     <message>
         <source>Khordad</source>
-        <translation type="vanished">خرداد</translation>
+        <translation>خرداد</translation>
     </message>
     <message>
         <source>Tir</source>
-        <translation type="vanished">تیر</translation>
+        <translation>تیر</translation>
     </message>
     <message>
         <source>Mordad</source>
-        <translation type="vanished">مرداد</translation>
+        <translation>مرداد</translation>
     </message>
     <message>
         <source>Shahrivar</source>
-        <translation type="vanished">شهریور</translation>
+        <translation>شهریور</translation>
     </message>
     <message>
         <source>Mehr</source>
-        <translation type="vanished">مهر</translation>
+        <translation>مهر</translation>
     </message>
     <message>
         <source>Abaan</source>
-        <translation type="vanished">آبان</translation>
+        <translation>آبان</translation>
     </message>
     <message>
         <source>Aazar</source>
-        <translation type="vanished">آذر</translation>
+        <translation>آذر</translation>
     </message>
     <message>
         <source>Dey</source>
-        <translation type="vanished">دی</translation>
+        <translation>دی</translation>
     </message>
     <message>
         <source>Bahman</source>
-        <translation type="vanished">بهمن</translation>
+        <translation>بهمن</translation>
     </message>
     <message>
         <source>Esfand</source>
-        <translation type="vanished">اسفند</translation>
+        <translation>اسفند</translation>
     </message>
     <message>
         <source>Shanbe</source>
-        <translation type="vanished">شنبه</translation>
+        <translation>شنبه</translation>
     </message>
     <message>
         <source>1Shanbe</source>
-        <translation type="vanished">یکشنبه</translation>
+        <translation>یکشنبه</translation>
     </message>
     <message>
         <source>2Shanbe</source>
-        <translation type="vanished">دوشنبه</translation>
+        <translation>دوشنبه</translation>
     </message>
     <message>
         <source>3Shanbe</source>
-        <translation type="vanished">سه‌شنبه</translation>
+        <translation>سه‌شنبه</translation>
     </message>
     <message>
         <source>4Shanbe</source>
-        <translation type="vanished">چهارشنبه</translation>
+        <translation>چهارشنبه</translation>
     </message>
     <message>
         <source>5Shanbe</source>
-        <translation type="vanished">پنجشنبه</translation>
+        <translation>پنجشنبه</translation>
     </message>
     <message>
         <source>Jome</source>
-        <translation type="vanished">جمعه</translation>
+        <translation>جمعه</translation>
     </message>
 </context>
 <context>
@@ -896,7 +900,7 @@ It containts %2 items currently.</source>
     </message>
     <message>
         <source>You create %1 lists from %2 lists.</source>
-        <translation type="unfinished"></translation>
+        <translation>شما %1 لیست از %2 لیست که میتوانید بسازید ساخته‌اید.</translation>
     </message>
 </context>
 <context>
@@ -1000,7 +1004,7 @@ It containts %2 items currently.</source>
     </message>
     <message>
         <source>You install %1 offline poet from %2 poets.</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -1058,7 +1062,7 @@ It containts %2 items currently.</source>
     </message>
     <message>
         <source>Meikade</source>
-        <translation type="unfinished">می‌کده</translation>
+        <translation>می‌کده</translation>
     </message>
 </context>
 <context>

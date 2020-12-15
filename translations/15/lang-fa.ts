@@ -259,7 +259,11 @@
     <name>AddNotePage</name>
     <message>
         <source>You create %1 note from %2 notes, Allowed to create using non-premium account.</source>
-        <translation>شما %1 یادداشت از %2 یادداشت که با اکانت غیرحرفه‌ای می‌توانید بسازید را ساخته‌اید.</translation>
+        <translation>شما %1 یادداشت از %2 یادداشت که با اکانت غیرحرفه‌ای می‌توانید بنویسید را نوشته‌اید.</translation>
+    </message>
+    <message>
+        <source>You create %1 note from %2 notes.</source>
+        <translation>شما %1 یادداشت از %2 یادداشت که میتوانید بنویسید را نوشته‌اید.</translation>
     </message>
 </context>
 <context>
@@ -753,6 +757,10 @@ It containts %2 items currently.</source>
         <source>You install %1 offline poet from %2 poets, Allowed to install using non-premium account.</source>
         <translation>شما آثار %1 شاعر از حداکثر %2 شاعر که می‌توانید با اکانت غیرحرفه‌ای آفلاین کنید را نصب کرده‌اید.</translation>
     </message>
+    <message>
+        <source>You install %1 offline poet from %2 poets.</source>
+        <translation>شما %1 شاعر از %2 شاعر که می‌توانید نصب کنید را استفاده کردید.</translation>
+    </message>
 </context>
 <context>
     <name>IntroSetupHome</name>
@@ -875,6 +883,10 @@ It containts %2 items currently.</source>
         <source>You create %1 lists from %2 lists, Allowed to create using non-premium account.</source>
         <translation>شما %1 لیست از %2 لیست که با اکانت غیرحرفه‌ای میتوانید بسازید را ساخته‌اید.</translation>
     </message>
+    <message>
+        <source>You create %1 lists from %2 lists.</source>
+        <translation>شما %1 لیست از %2 لیست که میتوانید بسازید ساخته‌اید.</translation>
+    </message>
 </context>
 <context>
     <name>LoginForm</name>
@@ -970,6 +982,10 @@ It containts %2 items currently.</source>
     <message>
         <source>You install %1 offline poet from %2 poets, Allowed to install using non-premium account.</source>
         <translation>شما آثار %1 شاعر از حداکثر %2 شاعر که می‌توانید با اکانت غیرحرفه‌ای آفلاین کنید را نصب کرده‌اید.</translation>
+    </message>
+    <message>
+        <source>You install %1 offline poet from %2 poets.</source>
+        <translation>شما %1 شاعر از %2 شاعر که می‌توانید نصب کنید را استفاده کردید.</translation>
     </message>
 </context>
 <context>
