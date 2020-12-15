@@ -137,11 +137,19 @@ open source and free software technologies.&lt;br /&gt;Aseman promotes accessibi
         <source>Premium Account</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Don&apos;t show this message again</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>AddNotePage</name>
     <message>
         <source>You create %1 note from %2 notes, Allowed to create using non-premium account.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You create %1 note from %2 notes.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -632,6 +640,10 @@ It contains %2 of current items.</translation>
         <source>You install %1 offline poet from %2 poets, Allowed to install using non-premium account.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>You install %1 offline poet from %2 poets.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>IntroSetupHome</name>
@@ -653,8 +665,9 @@ It contains %2 of current items.</translation>
     <message>
         <source>Meikade 4 is online by default now. It means you can discover between tousands of poems freely without downloading to your storages. But it also available to download them to your 
 storage and read them offline. Please select your poets that your want to read online. You can also setup it later on the every poet/book page.</source>
-        <translation>Meikade 4 is online by default, which means you can discover thousands of poems everyday without downloading them to your device storage. But you can also access your poetry in an 
-offline mode via downloading your preferred poems. Please select your preferred poets that you wish to read offline. You can edit this list later in each poet or book page.</translation>
+        <translation type="vanished">Meikade 4 is online by default, which means you can discover thousands of poems everyday without downloading them to your device storage. But you can also access 
+your poetry in an offline mode via downloading your preferred poems. Please select your preferred poets that you wish to read offline. You can edit this list later in each poet or book 
+page.</translation>
     </message>
     <message>
         <source>Uninstalling</source>
@@ -674,6 +687,10 @@ offline mode via downloading your preferred poems. Please select your preferred 
     </message>
     <message>
         <source>Premium Account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>If you prefer to view some poems offline, Please mark them in the below list to download them.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -722,6 +739,10 @@ offline mode via downloading your preferred poems. Please select your preferred 
         <source>Premium Account</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Don&apos;t show this message again</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ListsModel</name>
@@ -754,6 +775,10 @@ offline mode via downloading your preferred poems. Please select your preferred 
     </message>
     <message>
         <source>You create %1 lists from %2 lists, Allowed to create using non-premium account.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You create %1 lists from %2 lists.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -845,11 +870,19 @@ offline mode via downloading your preferred poems. Please select your preferred 
         <source>Premium Account</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Don&apos;t show this message again</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ManageOfflinePoetsPage</name>
     <message>
         <source>You install %1 offline poet from %2 poets, Allowed to install using non-premium account.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You install %1 offline poet from %2 poets.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -905,6 +938,10 @@ offline mode via downloading your preferred poems. Please select your preferred 
     <message>
         <source>Favoriteds Poets</source>
         <translation>Favorited Poets</translation>
+    </message>
+    <message>
+        <source>Meikade</source>
+        <translation type="unfinished">Meikade</translation>
     </message>
 </context>
 <context>

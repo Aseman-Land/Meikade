@@ -254,6 +254,10 @@
         <source>Premium Account</source>
         <translation>اکانت حرفه‌ای</translation>
     </message>
+    <message>
+        <source>Don&apos;t show this message again</source>
+        <translation>عدم نمایش مجدد این پیغام</translation>
+    </message>
 </context>
 <context>
     <name>AddNotePage</name>
@@ -849,6 +853,10 @@ It containts %2 items currently.</source>
         <source>Premium Account</source>
         <translation>اکانت حرفه‌ای</translation>
     </message>
+    <message>
+        <source>Don&apos;t show this message again</source>
+        <translation>عدم نمایش مجدد این پیغام</translation>
+    </message>
 </context>
 <context>
     <name>ListsModel</name>
@@ -976,6 +984,10 @@ It containts %2 items currently.</source>
         <source>Premium Account</source>
         <translation>اکانت حرفه‌ای</translation>
     </message>
+    <message>
+        <source>Don&apos;t show this message again</source>
+        <translation>عدم نمایش مجدد این پیغام</translation>
+    </message>
 </context>
 <context>
     <name>ManageOfflinePoetsPage</name>
@@ -1040,6 +1052,10 @@ It containts %2 items currently.</source>
     <message>
         <source>Favoriteds Poets</source>
         <translation>شاعر مورد علاقه</translation>
+    </message>
+    <message>
+        <source>Meikade</source>
+        <translation>می‌کده</translation>
     </message>
 </context>
 <context>
@@ -1126,7 +1142,7 @@ It containts %2 items currently.</source>
     </message>
     <message>
         <source>Favoriteds</source>
-        <translation type="unfinished"/>
+        <translation>علاقه‌مندی‌ها</translation>
     </message>
     <message>
         <source>Close</source>
