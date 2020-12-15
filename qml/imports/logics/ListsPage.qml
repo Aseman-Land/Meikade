@@ -44,7 +44,11 @@ Viewport {
         premiumMsg: {
             if (Subscription.premium || Subscription.listsLimits < 0 || !Bootstrap.initialized)
                 return "";
-            return GTranslations.translate( qsTr("You create %1 lists from %2 lists, Allowed to create using non-premium account.").arg(lModel.count).arg(Subscription.listsLimits) )
+
+            if (Bootstrap.payment)
+                return GTranslations.translate( qsTr("You create %1 lists from %2 lists, Allowed to create using non-premium account.").arg(lModel.count).arg(Subscription.listsLimits) )
+            else
+                return GTranslations.translate( qsTr("You create %1 lists from %2 lists.").arg(lModel.count).arg(Subscription.listsLimits) )
         }
 
         listView.model: ListsModel {

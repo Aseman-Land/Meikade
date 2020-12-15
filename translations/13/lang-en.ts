@@ -131,11 +131,19 @@
         <source>Premium Account</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Don&apos;t show this message again</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>AddNotePage</name>
     <message>
         <source>You create %1 note from %2 notes, Allowed to create using non-premium account.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You create %1 note from %2 notes.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -626,6 +634,10 @@ It contains %2 of current items.</translation>
         <source>You install %1 offline poet from %2 poets, Allowed to install using non-premium account.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>You install %1 offline poet from %2 poets.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>IntroSetupHome.ui</name>
@@ -714,6 +726,10 @@ It contains %2 of current items.</translation>
         <source>Premium Account</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Don&apos;t show this message again</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ListsModel</name>
@@ -746,6 +762,10 @@ It contains %2 of current items.</translation>
     </message>
     <message>
         <source>You create %1 lists from %2 lists, Allowed to create using non-premium account.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You create %1 lists from %2 lists.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -837,11 +857,19 @@ It contains %2 of current items.</translation>
         <source>Premium Account</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Don&apos;t show this message again</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ManageOfflinePoetsPage</name>
     <message>
         <source>You install %1 offline poet from %2 poets, Allowed to install using non-premium account.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You install %1 offline poet from %2 poets.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -897,6 +925,10 @@ It contains %2 of current items.</translation>
     <message>
         <source>Favoriteds Poets</source>
         <translation>Favorited Poets</translation>
+    </message>
+    <message>
+        <source>Meikade</source>
+        <translation type="unfinished">Meikade</translation>
     </message>
 </context>
 <context>
