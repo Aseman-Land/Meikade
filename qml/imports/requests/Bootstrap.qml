@@ -8,10 +8,43 @@ AsemanObject {
     id: bstrap
 
     readonly property string configPath: AsemanApp.homePath + "/bootstrap.data"
-    property bool initialized: false
 
-    onInitializedChanged: {
-        if (!initialized)
+    property bool initialized: false
+    property bool subscription: false
+    property bool payment: false
+
+    onInitializedChanged: write("initialized", initialized);
+    onSubscriptionChanged: write("subscription", subscription);
+    onPaymentChanged: write("payment", payment);
+
+    Component.onCompleted: {
+        read("initialized");
+        read("subscription");
+        read("payment");
+    }
+
+    BootstrapRequest {
+        id: req
+        onSuccessfull: {
+            try { bstrap.initialized = response.result.initialized } catch (e) {}
+            try { bstrap.subscription = response.result.subscription } catch (e) {}
+            try { bstrap.payment = response.result.payment } catch (e) {}
+        }
+    }
+
+    function read(key) {
+        var json = Tools.readText(configPath);
+        var map = Tools.jsonToVariant(json);
+
+        try {
+            bstrap[key] = map[key];
+        } catch (e) {
+            bstrap[key] = false;
+        }
+    }
+
+    function write(key, value) {
+        if (!value)
             return;
 
         var json = Tools.readText(configPath);
@@ -19,25 +52,9 @@ AsemanObject {
         if (json.length)
             map = Tools.jsonToVariant(json);
 
-        map.initialized = true;
+        map[key] = true;
 
         Tools.writeText(configPath, Tools.variantToJson(map));
-    }
-
-    Component.onCompleted: {
-        var json = Tools.readText(configPath);
-        var map = Tools.jsonToVariant(json);
-
-        try {
-            initialized = map.initialized;
-        } catch (e) {
-            initialized = false;
-        }
-    }
-
-    BootstrapRequest {
-        id: req
-        onSuccessfull: bstrap.initialized = response.result.initialized
     }
 
     function refresh() {

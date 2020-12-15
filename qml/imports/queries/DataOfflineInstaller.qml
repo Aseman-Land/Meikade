@@ -16,20 +16,22 @@ MeikadeOfflineItem {
             install(active);
             return true;
         } else {
-            var errorInputs = {
-                "title": qsTr("Premium Needed"),
-                "body": GTranslations.translate( qsTr("Your limit %1 offline poets ended. Do you want to buy premium account?").arg(Subscription.offlineLimits) ),
-                "buttons": [
-                    qsTr("Cancel"),
-                    qsTr("BUY Premium")
-                ]
-            };
-            var err = ViewController.trigger("dialog:/general/error", errorInputs);
-            err.itemClicked.connect(function(index){
-                if (index == 1)
-                    ViewController.trigger("bottomdrawer:/account/premium/buy")
-                err.ViewportType.open = false;
-            });
+            if (Bootstrap.payment) {
+                var errorInputs = {
+                    "title": qsTr("Premium Needed"),
+                    "body": GTranslations.translate( qsTr("Your limit %1 offline poets ended. Do you want to buy premium account?").arg(Subscription.offlineLimits) ),
+                    "buttons": [
+                        qsTr("Cancel"),
+                        qsTr("BUY Premium")
+                    ]
+                };
+                var err = ViewController.trigger("dialog:/general/error", errorInputs);
+                err.itemClicked.connect(function(index){
+                    if (index == 1)
+                        ViewController.trigger("bottomdrawer:/account/premium/buy")
+                    err.ViewportType.open = false;
+                });
+            }
             return false;
         }
     }

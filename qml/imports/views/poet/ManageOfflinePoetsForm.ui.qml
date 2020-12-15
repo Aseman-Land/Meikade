@@ -81,13 +81,13 @@ Item {
                     horizontalAlignment: Text.AlignHCenter
                     font.pixelSize: 8 * Devices.fontDensity
                     text: qsTr("To buy premium account click on below button") + Translations.refresher
-                    visible: Subscription.offlineLimits <= offlinePoetsCount && !AsemanGlobals.disablePremiumOfflinesWarn
+                    visible: Subscription.offlineLimits <= offlinePoetsCount && !AsemanGlobals.disablePremiumOfflinesWarn && Bootstrap.payment
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                 }
 
                 ColumnLayout {
                     Layout.alignment: Qt.AlignHCenter
-                    visible: Subscription.offlineLimits <= offlinePoetsCount && !AsemanGlobals.disablePremiumOfflinesWarn
+                    visible: Subscription.offlineLimits <= offlinePoetsCount && !AsemanGlobals.disablePremiumOfflinesWarn && Bootstrap.payment
                     spacing: 0
 
                     RoundButton {

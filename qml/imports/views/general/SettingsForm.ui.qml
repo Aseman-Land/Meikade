@@ -60,7 +60,7 @@ Item {
                 spacing: 4 * Devices.density
 
                 RowLayout {
-                    visible: Bootstrap.initialized && AsemanGlobals.accessToken.length && activeSubscription
+                    visible: Bootstrap.initialized && AsemanGlobals.accessToken.length && activeSubscription && Bootstrap.subscription && Bootstrap.payment
                     Layout.topMargin: 10 * Devices.density
                     Layout.bottomMargin: 30 * Devices.density
 
