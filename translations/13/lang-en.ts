@@ -658,7 +658,7 @@ It contains %2 of current items.</translation>
     </message>
     <message>
         <source>Meikade 4 is online by default now. It means you can discover between tousands of poems freely without downloading to your storages. But it also available to download them to your storage and read them offline. Please select your poets that your want to read online. You can also setup it later on the every poet/book page.</source>
-        <translation>Meikade 4 is online by default, which means you can discover thousands of poems everyday without downloading them to your device storage. But you can also access your poetry in an offline mode via downloading your preferred poems. Please select your preferred poets that you wish to read offline. You can edit this list later in each poet or book page.</translation>
+        <translation type="vanished">Meikade 4 is online by default, which means you can discover thousands of poems everyday without downloading them to your device storage. But you can also access your poetry in an offline mode via downloading your preferred poems. Please select your preferred poets that you wish to read offline. You can edit this list later in each poet or book page.</translation>
     </message>
     <message>
         <source>Uninstalling</source>
@@ -678,6 +678,10 @@ It contains %2 of current items.</translation>
     </message>
     <message>
         <source>Premium Account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>If you prefer to view some poems offline, Please mark them in the below list to download them.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
