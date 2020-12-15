@@ -15,7 +15,7 @@ PoemView {
     height: Constants.height
     clip: true
 
-    ViewportType.gestureWidth: 150 * Devices.density
+    ViewportType.gestureWidth: menuObject? 0 : 150 * Devices.density
 
     property string url
 
@@ -271,7 +271,7 @@ PoemView {
 
             var map = loader.versesModel.get(index);
 
-            Viewport.viewport.append(menuComponent, {"pointPad": pos, "index": index, "map": map, "verseText": map.text, "verseId": map.vorder}, "menu");
+            menuObject = Viewport.viewport.append(menuComponent, {"pointPad": pos, "index": index, "map": map, "verseText": map.text, "verseId": map.vorder}, "menu");
         }
 
         navigationRepeater.model: loader.categoriesModel
@@ -518,6 +518,6 @@ PoemView {
         var map = loader.versesModel.get(0);
         dis.verseText = map.text
 
-        Viewport.viewport.append(globalMenuComponent, {}, "menu");
+        menuObject = Viewport.viewport.append(globalMenuComponent, {}, "menu");
     }
 }
