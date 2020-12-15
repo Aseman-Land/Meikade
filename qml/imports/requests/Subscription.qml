@@ -5,13 +5,13 @@ import AsemanQml.Base 2.0
 
 AsemanObject {
 
-    readonly property int notesLimits: activeSubscription? currentPackage.package.extra.notes_limits : -1
-    readonly property int listsLimits: activeSubscription? currentPackage.package.extra.lists_limits : -1
-    readonly property int offlineLimits: activeSubscription? currentPackage.package.extra.offline_limits : -1
+    readonly property int notesLimits: activeSubscription && Bootstrap.subscription? currentPackage.package.extra.notes_limits : -1
+    readonly property int listsLimits: activeSubscription && Bootstrap.subscription? currentPackage.package.extra.lists_limits : -1
+    readonly property int offlineLimits: activeSubscription && Bootstrap.subscription? currentPackage.package.extra.offline_limits : -1
 
     readonly property int premium:  premiumDays > 0
     readonly property int premiumDays: {
-        if (!activeSubscription)
+        if (!activeSubscription || !Bootstrap.subscription)
             return 1000;
 
         try {

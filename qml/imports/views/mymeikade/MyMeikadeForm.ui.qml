@@ -287,6 +287,7 @@ Rectangle {
         anchors.right: parent.right
         anchors.bottom: gridView.bottom
         anchors.top: gridView.top
+        anchors.topMargin: coverImage.height
         anchors.bottomMargin: 58 * Devices.density + Devices.navigationBarHeight
         color: Colors.primary
         scrollArea: gridView
