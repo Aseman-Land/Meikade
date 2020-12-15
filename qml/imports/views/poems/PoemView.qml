@@ -23,6 +23,8 @@ Rectangle {
     property variant neighbors
     property int neighborsIndex
 
+    property Item menuObject
+
     signal changeRequest(string link, string title, string subtitle)
 
     Timer {
@@ -63,7 +65,7 @@ Rectangle {
         width: Devices.isAndroid? poemView.width : poemView.width / 2
         height: poemView.height
         drag {
-            target: neighbors? form : null
+            target: neighbors && !menuObject? form : null
             axis: Drag.XAxis
             minimumX: -poemView.width
             maximumX: poemView.width
