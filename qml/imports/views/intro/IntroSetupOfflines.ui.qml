@@ -286,7 +286,7 @@ Page {
                     opacity: ratio * 0.8
                     scale: 0.5 + ratio * 0.5
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                    text: qsTr("Meikade 4 is online by default now. It means you can discover between tousands of poems freely without downloading to your storages. But it also available to download them to your storage and read them offline. Please select your poets that your want to read online. You can also setup it later on the every poet/book page.") + Translations.refresher
+                    text: qsTr("If you prefer to view some poems offline, Please mark them in the below list to download them.") + Translations.refresher
                 }
             }
         }
