@@ -79,8 +79,7 @@ int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty("qVersion", qVersion());
     engine.rootContext()->setContextProperty("activeSubscription", activeSubscription);
     const QUrl url(QStringLiteral("qrc:/qml/main.qml"));
-    QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
-                     &app, [url](QObject *obj, const QUrl &objUrl) {
+    QObject::connect(&engine, &QQmlApplicationEngine::objectCreated, &app, [url](QObject *obj, const QUrl &objUrl) {
         if (!obj && url == objUrl)
             QCoreApplication::exit(-1);
     }, Qt::QueuedConnection);
