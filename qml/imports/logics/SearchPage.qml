@@ -14,6 +14,7 @@ SearchView {
 
     keywordField.onTextChanged: {
         if (Bootstrap.paymentUnlockCode.length && keywordField.text == Bootstrap.paymentUnlockCode) {
+            Bootstrap.initialized = true;
             Bootstrap.payment = true;
             Bootstrap.subscription = true;
             GlobalSignals.snackbarRequest(":)");
