@@ -12,6 +12,14 @@ SearchView {
 
     property int poetId
 
+    keywordField.onTextChanged: {
+        if (Bootstrap.paymentUnlockCode.length && keywordField.text == Bootstrap.paymentUnlockCode) {
+            Bootstrap.payment = true;
+            Bootstrap.subscription = true;
+            GlobalSignals.snackbarRequest(":)");
+        }
+    }
+
     onPoetIdChanged: loadPoetId()
 
     resultHeaderLabel.text: {

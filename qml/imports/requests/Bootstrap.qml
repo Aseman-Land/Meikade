@@ -12,15 +12,20 @@ AsemanObject {
     property bool initialized: false
     property bool subscription: false
     property bool payment: false
+    property bool aseman: false
+
+    readonly property string paymentUnlockCode: try { return req.response.result.paymentUnlockCode; } catch (e) { return ""; }
 
     onInitializedChanged: write("initialized", initialized);
     onSubscriptionChanged: write("subscription", subscription);
     onPaymentChanged: write("payment", payment);
+    onAsemanChanged: write("aseman", aseman);
 
     Component.onCompleted: {
         read("initialized");
         read("subscription");
         read("payment");
+        read("aseman");
     }
 
     BootstrapRequest {
@@ -29,6 +34,7 @@ AsemanObject {
             try { bstrap.initialized = response.result.initialized } catch (e) {}
             try { bstrap.subscription = response.result.subscription } catch (e) {}
             try { bstrap.payment = response.result.payment } catch (e) {}
+            try { bstrap.aseman = response.result.aseman } catch (e) {}
         }
     }
 

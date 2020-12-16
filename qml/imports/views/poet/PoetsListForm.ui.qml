@@ -69,6 +69,9 @@ Item {
         anchors.right: parent.right
         anchors.left: parent.left
 
+        LayoutMirroring.enabled: false;
+        LayoutMirroring.childrenInherit: true
+
         Repeater {
             id: tabBarRepeater
             TabButton {

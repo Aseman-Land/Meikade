@@ -10,5 +10,6 @@ import models 1.0
 AboutView {
     id: dis
     qtVersion: qVersion
+    applicationVersion: GTranslations.translate(AsemanApp.applicationVersion)
     headerBtn.onClicked: ViewportType.open = false
 }
