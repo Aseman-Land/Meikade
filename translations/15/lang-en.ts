@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="en_US">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="en_US" version="2.1">
 <context>
     <name>AboutForm</name>
     <message>
@@ -108,49 +106,49 @@ open source and free software technologies.&lt;br /&gt;Aseman promotes accessibi
     </message>
     <message>
         <source>Rename</source>
-        <translation type="unfinished"></translation>
+        <translation>Rename</translation>
     </message>
 </context>
 <context>
     <name>AddNoteForm</name>
     <message>
         <source>Type your note</source>
-        <translation type="unfinished"></translation>
+        <translation>Type your note</translation>
     </message>
     <message>
         <source>Save</source>
-        <translation type="unfinished">Save</translation>
+        <translation>Save</translation>
     </message>
     <message>
         <source>Edit Note</source>
-        <translation type="unfinished"></translation>
+        <translation>Edit Note</translation>
     </message>
     <message>
         <source>Close</source>
-        <translation type="unfinished">Close</translation>
+        <translation>Close</translation>
     </message>
     <message>
         <source>To buy premium account click on below button</source>
-        <translation type="unfinished"></translation>
+        <translation>For purchasing Meikade premium account click on the below botton</translation>
     </message>
     <message>
         <source>Premium Account</source>
-        <translation type="unfinished"></translation>
+        <translation>Premium Account</translation>
     </message>
     <message>
         <source>Don&apos;t show this message again</source>
-        <translation type="unfinished"></translation>
+        <translation>Don&apos;t show this message again</translation>
     </message>
 </context>
 <context>
     <name>AddNotePage</name>
     <message>
         <source>You create %1 note from %2 notes, Allowed to create using non-premium account.</source>
-        <translation type="unfinished"></translation>
+        <translation>You have created %1 note(s) from %2 notes that you are allowed to create while using non-premium account.</translation>
     </message>
     <message>
         <source>You create %1 note from %2 notes.</source>
-        <translation type="unfinished"></translation>
+        <translation>You have created %1 note(s) from %2 notes.</translation>
     </message>
 </context>
 <context>
@@ -270,11 +268,11 @@ open source and free software technologies.&lt;br /&gt;Aseman promotes accessibi
     <name>ChangelogsForm</name>
     <message>
         <source>ChangeLogs</source>
-        <translation type="unfinished"></translation>
+        <translation>ChangeLogs</translation>
     </message>
     <message>
         <source>Close</source>
-        <translation type="unfinished">Close</translation>
+        <translation>Close</translation>
     </message>
 </context>
 <context>
@@ -355,19 +353,19 @@ open source and free software technologies.&lt;br /&gt;Aseman promotes accessibi
     <name>DataOfflineInstaller</name>
     <message>
         <source>Premium Needed</source>
-        <translation type="unfinished"></translation>
+        <translation>Premium is needed</translation>
     </message>
     <message>
         <source>Your limit %1 offline poets ended. Do you want to buy premium account?</source>
-        <translation type="unfinished"></translation>
+        <translation>Your limit of %1 offline poets has ended. Do you want to purchase premium account?</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished">Cancel</translation>
+        <translation>Cancel</translation>
     </message>
     <message>
         <source>BUY Premium</source>
-        <translation type="unfinished"></translation>
+        <translation>BUY Premium</translation>
     </message>
 </context>
 <context>
@@ -413,19 +411,19 @@ It contains %2 of current items.</translation>
     <name>DeleteNoteForm</name>
     <message>
         <source>Delete List</source>
-        <translation type="unfinished">Delete List</translation>
+        <translation>Delete List</translation>
     </message>
     <message>
         <source>Are you sure about delete this list?</source>
-        <translation type="unfinished">Are you sure you want to delete this list?</translation>
+        <translation>Are you sure you want to delete this list?</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished">Cancel</translation>
+        <translation>Cancel</translation>
     </message>
     <message>
         <source>Confirm</source>
-        <translation type="unfinished">Confirm</translation>
+        <translation>Confirm</translation>
     </message>
 </context>
 <context>
@@ -638,11 +636,11 @@ It contains %2 of current items.</translation>
     <name>IntroPage</name>
     <message>
         <source>You install %1 offline poet from %2 poets, Allowed to install using non-premium account.</source>
-        <translation type="unfinished"></translation>
+        <translation>You have installed %1 of %2 offline poets that you are allowed to install while using non-premium account.</translation>
     </message>
     <message>
         <source>You install %1 offline poet from %2 poets.</source>
-        <translation type="unfinished"></translation>
+        <translation>You have installed %1 of %2 offline poets.</translation>
     </message>
 </context>
 <context>
@@ -665,8 +663,8 @@ It contains %2 of current items.</translation>
     <message>
         <source>Meikade 4 is online by default now. It means you can discover between tousands of poems freely without downloading to your storages. But it also available to download them to your 
 storage and read them offline. Please select your poets that your want to read online. You can also setup it later on the every poet/book page.</source>
-        <translation type="vanished">Meikade 4 is online by default, which means you can discover thousands of poems everyday without downloading them to your device storage. But you can also access 
-your poetry in an offline mode via downloading your preferred poems. Please select your preferred poets that you wish to read offline. You can edit this list later in each poet or book 
+        <translation type="vanished">Meikade 4 is online by default, which means you can access thousands of poems everyday without downloading them to your device storage. But you can also access 
+your poetry in an offline mode via downloading your selected poets. Please select the preferred poets that you wish to access offline. You can edit this list later in each poet or book 
 page.</translation>
     </message>
     <message>
@@ -683,15 +681,15 @@ page.</translation>
     </message>
     <message>
         <source>To buy premium account click on below button</source>
-        <translation type="unfinished"></translation>
+        <translation>For purchasing premium account click on the button below</translation>
     </message>
     <message>
         <source>Premium Account</source>
-        <translation type="unfinished"></translation>
+        <translation>Premium Account</translation>
     </message>
     <message>
         <source>If you prefer to view some poems offline, Please mark them in the below list to download them.</source>
-        <translation type="unfinished"></translation>
+        <translation>If you prefer to access some poems offline, Please mark them in the below list to download them.</translation>
     </message>
 </context>
 <context>
@@ -733,15 +731,15 @@ page.</translation>
     </message>
     <message>
         <source>To buy premium account click on below button</source>
-        <translation type="unfinished"></translation>
+        <translation>For purchasing premium account click on the button below</translation>
     </message>
     <message>
         <source>Premium Account</source>
-        <translation type="unfinished"></translation>
+        <translation>Premium Account</translation>
     </message>
     <message>
         <source>Don&apos;t show this message again</source>
-        <translation type="unfinished"></translation>
+        <translation>Don&apos;t show this message again</translation>
     </message>
 </context>
 <context>
@@ -775,11 +773,11 @@ page.</translation>
     </message>
     <message>
         <source>You create %1 lists from %2 lists, Allowed to create using non-premium account.</source>
-        <translation type="unfinished"></translation>
+        <translation>You have created %1 of %2 lists that you are allowed to install while using non-premium account.</translation>
     </message>
     <message>
         <source>You create %1 lists from %2 lists.</source>
-        <translation type="unfinished"></translation>
+        <translation>You have created %1 of %2 lists.</translation>
     </message>
 </context>
 <context>
@@ -864,26 +862,26 @@ page.</translation>
     </message>
     <message>
         <source>To buy premium account click on below button</source>
-        <translation type="unfinished"></translation>
+        <translation>For purchasing premium account click on the button below</translation>
     </message>
     <message>
         <source>Premium Account</source>
-        <translation type="unfinished"></translation>
+        <translation>Premium Account</translation>
     </message>
     <message>
         <source>Don&apos;t show this message again</source>
-        <translation type="unfinished"></translation>
+        <translation>Don&apos;t show this message again</translation>
     </message>
 </context>
 <context>
     <name>ManageOfflinePoetsPage</name>
     <message>
         <source>You install %1 offline poet from %2 poets, Allowed to install using non-premium account.</source>
-        <translation type="unfinished"></translation>
+        <translation>You have installed %1 of %2 offline poets that you are allowed to install using non-premium account.</translation>
     </message>
     <message>
         <source>You install %1 offline poet from %2 poets.</source>
-        <translation type="unfinished"></translation>
+        <translation>You have installed %1 of %2 offline poets.</translation>
     </message>
 </context>
 <context>
@@ -941,7 +939,7 @@ page.</translation>
     </message>
     <message>
         <source>Meikade</source>
-        <translation type="unfinished">Meikade</translation>
+        <translation>Meikade</translation>
     </message>
 </context>
 <context>
@@ -998,52 +996,52 @@ page.</translation>
     <name>NotesListForm</name>
     <message>
         <source>There is no item here</source>
-        <translation type="unfinished"></translation>
+        <translation>There is no item here</translation>
     </message>
     <message>
         <source>Notes</source>
-        <translation type="unfinished">Notes</translation>
+        <translation>Notes</translation>
     </message>
     <message>
         <source>Close</source>
-        <translation type="unfinished">Close</translation>
+        <translation>Close</translation>
     </message>
 </context>
 <context>
     <name>NotesPage</name>
     <message>
         <source>Change Name</source>
-        <translation type="unfinished">Change Name</translation>
+        <translation>Change Name</translation>
     </message>
     <message>
         <source>Delete</source>
-        <translation type="unfinished">Delete</translation>
+        <translation>Delete</translation>
     </message>
 </context>
 <context>
     <name>NotesPoetsListForm</name>
     <message>
         <source>There is no item here</source>
-        <translation type="unfinished"></translation>
+        <translation>There is no item here</translation>
     </message>
     <message>
         <source>Favoriteds</source>
-        <translation type="obsolete">Favorites</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Close</source>
-        <translation type="unfinished">Close</translation>
+        <translation>Close</translation>
     </message>
     <message>
         <source>Notes</source>
-        <translation type="unfinished">Notes</translation>
+        <translation>Notes</translation>
     </message>
 </context>
 <context>
     <name>NotesPoetsListModel</name>
     <message>
         <source>%1 items</source>
-        <translation type="unfinished">%1 of items</translation>
+        <translation>%1 of items</translation>
     </message>
 </context>
 <context>
@@ -1113,7 +1111,7 @@ page.</translation>
     </message>
     <message>
         <source>Note</source>
-        <translation type="unfinished"></translation>
+        <translation>Note</translation>
     </message>
 </context>
 <context>
@@ -1222,74 +1220,74 @@ page.</translation>
     <name>PremiumConfirmForm</name>
     <message>
         <source>Monthly</source>
-        <translation type="unfinished"></translation>
+        <translation>Monthly</translation>
     </message>
     <message>
         <source>Yearly</source>
-        <translation type="unfinished"></translation>
+        <translation>Yearly</translation>
     </message>
     <message>
         <source>Confirm</source>
-        <translation type="unfinished">Confirm</translation>
+        <translation>Confirm</translation>
     </message>
     <message>
         <source>Premium Account</source>
-        <translation type="unfinished"></translation>
+        <translation>Premium Account</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished">Cancel</translation>
+        <translation>Cancel</translation>
     </message>
     <message>
         <source>Coupon</source>
-        <translation type="unfinished"></translation>
+        <translation>Coupon</translation>
     </message>
     <message>
         <source>Submit</source>
-        <translation type="unfinished">Submit</translation>
+        <translation>Submit</translation>
     </message>
     <message>
         <source>You must login with you account before active premium account.</source>
-        <translation type="unfinished"></translation>
+        <translation>You must login to your account before activating premium account.</translation>
     </message>
     <message>
         <source>Login</source>
-        <translation type="unfinished">Login</translation>
+        <translation>Login</translation>
     </message>
 </context>
 <context>
     <name>PremiumConfirmPage</name>
     <message>
         <source>%1% OFF Coupon</source>
-        <translation type="unfinished"></translation>
+        <translation>%1% OFF Coupon</translation>
     </message>
     <message>
         <source>Toman</source>
-        <translation type="unfinished"></translation>
+        <translation>Toman</translation>
     </message>
     <message>
         <source>Unlimited Notes</source>
-        <translation type="unfinished"></translation>
+        <translation>Unlimited Notes</translation>
     </message>
     <message>
         <source>%1 Notes</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 Notes</translation>
     </message>
     <message>
         <source>Unlimited Lists</source>
-        <translation type="unfinished"></translation>
+        <translation>Unlimited Lists</translation>
     </message>
     <message>
         <source>%1 Lists</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 Lists</translation>
     </message>
     <message>
         <source>Unlimited Offline Poems</source>
-        <translation type="unfinished"></translation>
+        <translation>Unlimited Offline Poems</translation>
     </message>
     <message>
         <source>%1 Offline Poems</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 Offline Poems</translation>
     </message>
 </context>
 <context>
@@ -1338,11 +1336,11 @@ page.</translation>
     </message>
     <message>
         <source>Accurate word search</source>
-        <translation type="unfinished"></translation>
+        <translation>Word search</translation>
     </message>
     <message>
         <source>(Read More)</source>
-        <translation type="unfinished"></translation>
+        <translation>(Read More)</translation>
     </message>
 </context>
 <context>
@@ -1379,11 +1377,11 @@ page.</translation>
     <name>SearchSmartAbout</name>
     <message>
         <source>Smart Search</source>
-        <translation type="unfinished"></translation>
+        <translation>Smart Search</translation>
     </message>
     <message>
         <source>Some about text</source>
-        <translation type="unfinished"></translation>
+        <translation>Description</translation>
     </message>
 </context>
 <context>
@@ -1392,7 +1390,9 @@ page.</translation>
         <source>Meikade online search is a smart search that uses AI alghorithms to give you better results.
 It removes all extra spaces you may entered or search between other positive spelling or meanings.
 It&apos;s experimental currently and Meikade technical team working on it. But if it fail to find true result, You can disable it Using accurate search checkbox.</source>
-        <translation type="unfinished"></translation>
+        <translation>Meikade online search is a smart search that uses Artificial Intelligence algorithms to give you better results.
+It removes extra spaces you may have entered or search between other possible spellings or similar meanings.
+Currently this method of searching is experimental and Meikade&apos;s AI team is working on it. If it fails to find your desired result, you can always disable it via checking word search checkbox.</translation>
     </message>
 </context>
 <context>
@@ -1447,19 +1447,19 @@ It&apos;s experimental currently and Meikade technical team working on it. But i
     </message>
     <message>
         <source>Account State</source>
-        <translation type="unfinished"></translation>
+        <translation>Account State</translation>
     </message>
     <message>
         <source>Upgrade</source>
-        <translation type="unfinished"></translation>
+        <translation>Upgrade</translation>
     </message>
     <message>
         <source>Login</source>
-        <translation type="unfinished">Login</translation>
+        <translation>Login</translation>
     </message>
     <message>
         <source>Show Phrase Number</source>
-        <translation type="unfinished"></translation>
+        <translation>Show Phrase Number</translation>
     </message>
 </context>
 <context>
@@ -1482,7 +1482,7 @@ It&apos;s experimental currently and Meikade technical team working on it. But i
     </message>
     <message>
         <source>%1 days</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 days</translation>
     </message>
 </context>
 <context>
@@ -1564,7 +1564,7 @@ It&apos;s experimental currently and Meikade technical team working on it. But i
     </message>
     <message>
         <source>Sticker saved on %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Sticker saved on %1</translation>
     </message>
 </context>
 <context>
@@ -1626,7 +1626,7 @@ It&apos;s experimental currently and Meikade technical team working on it. But i
     <name>Subscription</name>
     <message>
         <source>Free Account</source>
-        <translation type="unfinished"></translation>
+        <translation>Free Account</translation>
     </message>
 </context>
 <context>

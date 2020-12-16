@@ -1,7 +1,6 @@
 Meikade 4.2 changelogs:
 - iOS Support
 - English Poems
-- Premium Accounts
 - More Advances Search
 - Notes
 - Sync Notes

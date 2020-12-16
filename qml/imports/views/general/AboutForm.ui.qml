@@ -9,6 +9,7 @@ import QtQuick.Controls.IOSStyle 2.0
 import AsemanQml.MaterialIcons 2.0
 import QtQuick.Layouts 1.0
 import globals 1.0
+import requests 1.0
 
 Page {
     width: Constants.width
@@ -19,6 +20,7 @@ Page {
 
     property alias headerBtn: headerBtn
     property string qtVersion: "5.15.0"
+    property string applicationVersion: "4.2.0"
 
     Rectangle {
         anchors.fill: parent
@@ -73,7 +75,7 @@ Page {
                     font.pixelSize: 9 * Devices.fontDensity
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                     horizontalAlignment: Text.AlignLeft
-                    text: qsTr("Version:") + " " + AsemanApp.applicationVersion
+                    text: qsTr("Version:") + " " + applicationVersion
                 }
 
                 RowLayout {
@@ -170,6 +172,7 @@ Page {
                     sourceSize.width: 160 * Devices.density
                     sourceSize.height: 160 * Devices.density
                     source: "../images/aseman.png"
+                    visible: Bootstrap.aseman
                 }
 
                 Label {
@@ -179,11 +182,13 @@ Page {
                     horizontalAlignment: Text.AlignJustify
                     textFormat: Text.StyledText
                     text: qsTr("<b><u>Aseman</u></b>, Aseman is a non-profit and community based company that created in 2013 by members of the Idehgostar company. Aseman created to leads open-source and free software.<br />Aseman promotes openness, innovation and participation on the digital and computers world.") + Translations.refresher
+                    visible: Bootstrap.aseman
                 }
 
                 RowLayout {
                     Layout.alignment: Qt.AlignHCenter
                     spacing: 0
+                    visible: Bootstrap.aseman
 
                     Repeater {
                         model: ListModel {
