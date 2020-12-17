@@ -2,8 +2,11 @@ pragma Singleton
 
 import QtQuick 2.0
 import AsemanQml.Base 2.0
+import globals 1.0
 
 AsemanObject {
+
+    onPremiumDaysChanged: AsemanGlobals.lastPremiumDays = premiumDays
 
     readonly property int notesLimits: activeSubscription && Bootstrap.subscription? currentPackage.package.extra.notes_limits : -1
     readonly property int listsLimits: activeSubscription && Bootstrap.subscription? currentPackage.package.extra.lists_limits : -1
@@ -11,7 +14,7 @@ AsemanObject {
 
     readonly property int premium:  premiumDays > 0
     readonly property int premiumDays: {
-        if (!activeSubscription || !Bootstrap.subscription)
+        if (!activeSubscription || !Bootstrap.subscription || Bootstrap.fullyUnlocked)
             return 1000;
 
         try {
@@ -64,6 +67,7 @@ AsemanObject {
     }
 
     function init() {
+        AsemanGlobals.lastPremiumDays = premiumDays;
         refresh()
     }
 }

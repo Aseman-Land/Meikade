@@ -36,6 +36,8 @@ AsemanObject {
     property alias syncViews: _sync.syncViews
     property alias syncTopPoets: _sync.syncTopPoets
 
+    property int lastPremiumDays: -1
+
     Component.onCompleted: {
         Tools.mkDir(cachePath);
     }

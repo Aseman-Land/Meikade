@@ -3,7 +3,9 @@ CONFIG += c++11
 
 qtHaveModule(webview): QT += webview
 
-DEFINES += MEIKADE_VERSION='\\"$${VERSION}\\"'
+DEFINES += \
+    MEIKADE_VERSION='\\"$${VERSION}\\"' \
+    UNLOCK_PASSWORD='\\"$${UNLOCK_PASSWORD}\\"'
 
 disable-subscription: DEFINES += DISABLE_SUBSCRIPTION
 
