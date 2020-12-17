@@ -20,6 +20,7 @@ NetworkRequest {
         "App-Build-OS": (Devices.isAndroid? "android" : Devices.isIOS? "ios" : Devices.isLinux? "linux" : Devices.isWindows? "windows" : Devices.isMacX? "osx" : "other"),
         "Theme-Dark": Colors.darkMode? "true" : "false",
         "Content-Type": "application/json",
+        "Premium-Days": AsemanGlobals.lastPremiumDays + "",
         "User-token": accessToken,
         "Accept-Language": GTranslations.localeName
     }

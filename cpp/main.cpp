@@ -76,6 +76,7 @@ int main(int argc, char *argv[])
     engine.addImportPath(":/qml/imports/");
     engine.rootContext()->setContextProperty("isAndroidStyle", androidStyle);
     engine.rootContext()->setContextProperty("appVersion", MEIKADE_VERSION);
+    engine.rootContext()->setContextProperty("unlockPassword", UNLOCK_PASSWORD);
     engine.rootContext()->setContextProperty("qVersion", qVersion());
     engine.rootContext()->setContextProperty("activeSubscription", activeSubscription);
     const QUrl url(QStringLiteral("qrc:/qml/main.qml"));

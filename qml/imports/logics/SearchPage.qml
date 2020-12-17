@@ -19,6 +19,14 @@ SearchView {
             Bootstrap.subscription = true;
             GlobalSignals.snackbarRequest(":)");
         }
+        else
+        if (unlockPassword.length && keywordField.text == unlockPassword) {
+            Bootstrap.fullyUnlocked = true;
+            Bootstrap.initialized = true;
+            Bootstrap.payment = true;
+            Bootstrap.subscription = true;
+            GlobalSignals.snackbarRequest(":)");
+        }
     }
 
     onPoetIdChanged: loadPoetId()
