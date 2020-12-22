@@ -31,7 +31,7 @@ FlexiAbstractRow {
                 isVerse: model.details && model.details.first_verse? true : false
                 subtitle: model.subtitle
                 color: model.color.length? model.color : Colors.lightBackground
-                image: model.image
+                image: AsemanGlobals.testPoetImagesDisable? "" : model.image
                 type: model.type
                 link: model.link
                 moreHint: model.moreHint? model.moreHint : false

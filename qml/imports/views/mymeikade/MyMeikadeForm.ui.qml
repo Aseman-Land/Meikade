@@ -130,7 +130,7 @@ Rectangle {
             sourceSize.width: width * 1.2
             sourceSize.height: height * 1.2
             fillMode: Image.PreserveAspectCrop
-            source: "../images/cover.jpg"
+            source: AsemanGlobals.testHeaderImagesDisable? "" : "../images/cover.jpg"
 
             Rectangle {
                 anchors.fill: parent

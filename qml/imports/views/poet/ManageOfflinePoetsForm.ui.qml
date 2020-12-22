@@ -172,13 +172,14 @@ Item {
                             anchors.centerIn: parent
                             radius: Constants.radius * 1.5
                             scale: 0.5
+                            visible: !AsemanGlobals.testPoetImagesDisable
 
                             CachedImage {
                                 anchors.fill: parent
                                 sourceSize.width: 92 * Devices.density
                                 sourceSize.height: 92 * Devices.density
                                 asynchronous: true
-                                source: model.image
+                                source: AsemanGlobals.testPoetImagesDisable? "" : model.image
                             }
                         }
                     }
