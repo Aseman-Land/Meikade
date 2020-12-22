@@ -54,6 +54,11 @@ int main(int argc, char *argv[])
     activeSubscription = false;
 #endif
 
+    bool testMode = false;
+#ifdef TEST_MODE
+    testMode = true;
+#endif
+
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     QCoreApplication::setAttribute(Qt::AA_ShareOpenGLContexts);
 #if (QT_VERSION >= QT_VERSION_CHECK(5, 14, 0))
@@ -79,7 +84,8 @@ int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty("unlockPassword", UNLOCK_PASSWORD);
     engine.rootContext()->setContextProperty("qVersion", qVersion());
     engine.rootContext()->setContextProperty("activeSubscription", activeSubscription);
-    const QUrl url(QStringLiteral("qrc:/qml/main.qml"));
+    engine.rootContext()->setContextProperty("testMode", testMode);
+    const QUrl url(testMode? QStringLiteral("qrc:/qml/maintest.qml") : QStringLiteral("qrc:/qml/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated, &app, [url](QObject *obj, const QUrl &objUrl) {
         if (!obj && url == objUrl)
             QCoreApplication::exit(-1);

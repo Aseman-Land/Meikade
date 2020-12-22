@@ -17,6 +17,7 @@ AsemanWindow {
     visible: true
 
     property alias viewport: viewport
+    property alias mainLoader: mainLoader
 
     IOSStyle.theme: AsemanGlobals.iosTheme
     Material.theme: AsemanGlobals.androidTheme
@@ -28,7 +29,9 @@ AsemanWindow {
         id: viewport
         anchors.fill: parent
         mainItem: MeikadeLoader {
+            id: mainLoader
             anchors.fill: parent
+            active: !testMode
             sourceComponent: MainPage {
                 anchors.fill: parent
             }

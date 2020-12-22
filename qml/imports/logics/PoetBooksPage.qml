@@ -59,7 +59,7 @@ PoetBooksView {
         }
     }
 
-    Component.onCompleted: avatar.source = Constants.thumbsBaseUrl + id + ".png"
+    Component.onCompleted: avatar.source = AsemanGlobals.testPoetImagesDisable? "" : Constants.thumbsBaseUrl + id + ".png"
 
     progressBar.running: catsModel.offlineInstaller.uninstalling || catsModel.offlineInstaller.installing || catsModel.offlineInstaller.downloading
     progressBar.progress: catsModel.offlineInstaller.size? (catsModel.offlineInstaller.downloadedBytes / catsModel.offlineInstaller.size) * 0.9 + 0.1 : 0.1

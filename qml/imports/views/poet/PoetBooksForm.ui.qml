@@ -79,6 +79,7 @@ Item {
                     height: parent.height * 2
                     anchors.centerIn: parent
                     scale: 0.5
+                    visible: !AsemanGlobals.testPoetImagesDisable
 
                     Rectangle {
                         anchors.fill: parent

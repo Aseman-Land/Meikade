@@ -40,7 +40,7 @@ Rectangle {
 
     Image {
         anchors.fill: parent
-        source: "images/cover.jpg"
+        source: AsemanGlobals.testHeaderImagesDisable? "" : "images/cover.jpg"
         fillMode: Image.PreserveAspectCrop
     }
 

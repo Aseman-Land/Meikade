@@ -154,7 +154,7 @@ Item {
             sourceSize.width: width * 1.2
             sourceSize.height: height * 1.2
             fillMode: Image.PreserveAspectCrop
-            source: "../images/cover.jpg"
+            source: AsemanGlobals.testHeaderImagesDisable? "" : "../images/cover.jpg"
 
             Rectangle {
                 anchors.fill: parent
@@ -181,6 +181,7 @@ Item {
                     scale: 0.5
                     Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
                     radius: Constants.radius * 2
+                    visible: !AsemanGlobals.testPoetImagesDisable
 
                     Rectangle {
                         anchors.fill: parent

@@ -26,7 +26,7 @@ PoetView {
     property alias image: loader.image
 
     profileLabel.text: loader.name
-    avatar.source: loader.image
+    avatar.source: AsemanGlobals.testPoetImagesDisable? "" : loader.image
 
     AsemanListModel {
         id: navigModel

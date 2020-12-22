@@ -9,6 +9,14 @@ import globals 1.0
 AsemanObject {
     readonly property string cachePath: AsemanApp.homePath + "/cache"
 
+    property bool testHomeDisable: false
+    property bool testSearchDisable: false
+    property bool testMyMeikadeDisable: false
+    property bool testIntroDisable: false
+    property bool testPoetImagesDisable: false
+    property bool testHeaderImagesDisable: false
+    property bool testLogoDisable: false
+
     property alias settings: _settings
     property alias disablePremiumListsWarn: _settings.disablePremiumListsWarn
     property alias disablePremiumNotesWarn: _settings.disablePremiumNotesWarn

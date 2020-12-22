@@ -7,6 +7,7 @@ DEFINES += \
     MEIKADE_VERSION='\\"$${VERSION}\\"' \
     UNLOCK_PASSWORD='\\"$${UNLOCK_PASSWORD}\\"'
 
+test-mode: DEFINES += TEST_MODE
 disable-subscription: DEFINES += DISABLE_SUBSCRIPTION
 
 SOURCES += \
