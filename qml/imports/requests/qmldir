@@ -3,6 +3,7 @@ singleton RandomPoemRequester 1.0 RandomPoemRequester.qml
 singleton StoreActionsBulk 1.0 StoreActionsBulk.qml
 singleton Subscription 1.0 Subscription.qml
 singleton Bootstrap 1.0 Bootstrap.qml
+singleton ALogger 1.0 Logger.qml
 RandomPoemRequest 1.0 RandomPoemRequest.qml
 HomeRequest 1.0 HomeRequest.qml
 LoginRequest 1.0 LoginRequest.qml
@@ -33,3 +34,4 @@ CouponRequest 1.0 CouponRequest.qml
 InitPaymentRequest 1.0 InitPaymentRequest.qml
 BootstrapRequest 1.0 BootstrapRequest.qml
 PoetsTypeRequest 1.0 PoetsTypeRequest.qml
+LoggerRequest 1.0 LoggerRequest.qml
