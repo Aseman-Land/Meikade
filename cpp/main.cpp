@@ -82,6 +82,7 @@ int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty("isAndroidStyle", androidStyle);
     engine.rootContext()->setContextProperty("appVersion", MEIKADE_VERSION);
     engine.rootContext()->setContextProperty("unlockPassword", UNLOCK_PASSWORD);
+    engine.rootContext()->setContextProperty("loggerPath", LOGGER_PATH);
     engine.rootContext()->setContextProperty("qVersion", qVersion());
     engine.rootContext()->setContextProperty("activeSubscription", activeSubscription);
     engine.rootContext()->setContextProperty("testMode", testMode);

@@ -3,6 +3,8 @@ import AsemanQml.Base 2.0
 import AsemanQml.Viewport 2.0
 import views 1.0
 import globals 1.0
+import requests 1.0
+import micros 1.0
 
 HafizFaalView {
     id: dis
@@ -21,7 +23,12 @@ HafizFaalView {
         url: "page:/poet?id=2&poemId=" + poemId
 
         property int currentItem
+
+        Component.onCompleted: ALogger.log("hafiz.faal", poemId, clock.getMs());
+        Component.onDestruction: clock.reset()
     }
 
     closeBtn.onClicked: ViewportType.open = false
+
+    Clock { id: clock }
 }

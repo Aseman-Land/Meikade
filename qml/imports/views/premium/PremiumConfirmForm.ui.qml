@@ -194,6 +194,7 @@ Item {
                 horizontalAlignment: Text.AlignLeft
                 placeholder: qsTr("Coupon") + Translations.refresher
                 font.pixelSize: 10 * Devices.fontDensity
+                inputMethodHints: Qt.ImhSensitiveData | Qt.ImhNoPredictiveText
                 selectByMouse: true
                 enabled: !couponBusy.running
             }
