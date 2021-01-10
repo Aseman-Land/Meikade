@@ -59,7 +59,7 @@ DrawerFrame {
             validator: RegExpValidator { regExp: /[\w\s]+/ }
             color: isValid || focus? Colors.foreground : "#a00"
 
-            property bool isValid: length > 0
+            property bool isValid: text.length > 0 || preeditText.length > 0
 
             Label {
                 anchors.left: parent.left
