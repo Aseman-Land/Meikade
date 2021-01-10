@@ -151,6 +151,7 @@ Page {
                     Layout.fillWidth: true
                     font.pixelSize: 9 * Devices.fontDensity
                     highlighted: true
+                    enabled: messageField.length > 10
                     text: qsTr("Send") + Translations.refresher
                 }
             }

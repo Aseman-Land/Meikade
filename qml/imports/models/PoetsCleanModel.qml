@@ -35,4 +35,8 @@ AsemanListModel {
             }
         }
     }
+
+    function refresh() {
+        poetsReq.refresh();
+    }
 }
