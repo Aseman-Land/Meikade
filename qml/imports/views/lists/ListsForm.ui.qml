@@ -11,11 +11,14 @@ import globals 1.0
 import micros 1.0
 import models 1.0
 import requests 1.0
+import queries 1.0
 
 Item {
     id: dis
     width: Constants.width
     height: Constants.height
+
+    property real menuWidth: 200
 
     property alias listView: listView
     property alias headerItem: headerItem
@@ -28,7 +31,7 @@ Item {
     property string premiumMsg
 
     signal clicked(int index)
-    signal pressAndHold(int index, variant pos)
+    signal pressAndHold(int index, variant pos, int side)
     signal addListRequest()
     signal premiumBuyRequest()
 
@@ -169,11 +172,19 @@ Item {
                 Rectangle {
                     anchors.fill: parent
                     color: Colors.background
+
+                    Rectangle {
+                        anchors.fill: parent
+                        color: Colors.foreground
+                        opacity: 0.1
+                        visible: itemDel.pressed
+                    }
                 }
 
-                ItemDelegate {
+                MouseArea {
                     id: itemDel
                     anchors.fill: parent
+                    pressAndHoldInterval: 400
 
                     PointMapListener {
                         id: listener
@@ -185,7 +196,7 @@ Item {
 
                     Connections {
                         target: itemDel
-                        onPressAndHold: dis.pressAndHold(model.index, listener.result)
+                        onPressAndHold: dis.pressAndHold(model.index, listener.result, 0)
                         onClicked: {
                             if (selectMode)
                                 checkBox.toggle()
@@ -251,13 +262,20 @@ Item {
                         }
                     }
 
-                    Label {
+                    Button {
+                        id: menuBtn
+                        Layout.preferredWidth: 30 * Devices.density
                         font.family: MaterialIcons.family
-                        font.pixelSize: 16 * Devices.fontDensity
-                        text: LayoutMirroring.enabled? MaterialIcons.mdi_chevron_left : MaterialIcons.mdi_chevron_right
-                        color: Colors.foreground
-                        visible: !selectMode
-                        opacity: 0.4
+                        font.pixelSize: 12 * Devices.fontDensity
+                        text: MaterialIcons.mdi_dots_horizontal
+                        visible: !selectMode && model.listId > UserActions.TypeItemListsStart
+                        flat: true
+                        opacity: 0.6
+
+                        Connections {
+                            onClicked: dis.pressAndHold(model.index, Qt.point((dis.LayoutMirroring.enabled? menuBtn.x + menuBtn.width + menuWidth/2 : menuBtn.x - menuWidth/2), listener.result.y),
+                                                        (dis.LayoutMirroring.enabled? -1 : 1))
+                        }
                     }
 
                     CheckBox {

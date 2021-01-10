@@ -38,6 +38,7 @@ Viewport {
     mainItem: ListsView {
         id: lists
         anchors.fill: parent
+        menuWidth: 220 * Devices.density
 
         headerItem.anchors.topMargin: selectMode? -Devices.statusBarHeight : 0
 
@@ -90,7 +91,7 @@ Viewport {
             if (item.listId < UserActions.TypeItemListsStart)
                 return;
 
-            mainViewport.append(menuComponent, {"pointPad": pos, "item": item}, "menu");
+            mainViewport.append(menuComponent, {"pointPad": pos, "item": item, "side": side}, "menu");
         }
 
         onClicked: {
@@ -165,15 +166,28 @@ Viewport {
             id: menuItem
             x: pointPad.x - width/2
             y: Math.min(pointPad.y, dis.height - height - 100 * Devices.density)
-            width: 220 * Devices.density
+            width: lists.menuWidth
             ViewportType.transformOrigin: {
                 var y = 0;
-                var x = width/2;
+                var x;
+                switch (side) {
+                case 0:
+                    x = width/2;
+                    break;
+                case 1:
+                    x = width;
+                    break;
+                case -1:
+                    x = 0;
+                    break;
+                }
+
                 return Qt.point(x, y);
             }
 
             property point pointPad
             property int index
+            property int side
             property variant item
 
             onItemClicked: {
