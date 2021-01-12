@@ -33,14 +33,8 @@
         <translation>تیم توسعه می‌کده:</translation>
     </message>
     <message>
-        <source>- Bardia Daneshvar
-- AmirHossein Mousavi
-- Ali Rasooli
-- Hanieh Sahranavard</source>
-        <translation>- بردیا دانشور
-- امیرحسین موسوی
-- علی رسولی
-- هانیه صحرانورد</translation>
+        <source>Aseman</source>
+        <translation>آسمان</translation>
     </message>
     <message>
         <source>Thanks to:</source>
