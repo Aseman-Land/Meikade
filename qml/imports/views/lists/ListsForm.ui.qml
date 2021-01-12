@@ -103,6 +103,10 @@ Item {
                     visible: premiumMsg.length
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                     color: Subscription.listsLimits > listView.count? Colors.foreground : "#a00"
+
+                    Connections {
+                        onLinkActivated: Qt.openUrlExternally(link)
+                    }
                 }
 
                 Label {
@@ -112,13 +116,13 @@ Item {
                     horizontalAlignment: Text.AlignHCenter
                     font.pixelSize: 8 * Devices.fontDensity
                     text: qsTr("To buy premium account click on below button") + Translations.refresher
-                    visible: !addBtn.visible && premiumMsg.length && !AsemanGlobals.disablePremiumListsWarn && Bootstrap.payment
+                    visible: !addBtn.visible && premiumMsg.length && !AsemanGlobals.disablePremiumListsWarn && Bootstrap.payment && AsemanGlobals.trusted
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                 }
 
                 ColumnLayout {
                     Layout.alignment: Qt.AlignHCenter
-                    visible: !addBtn.visible && premiumMsg.length && !AsemanGlobals.disablePremiumListsWarn && Bootstrap.payment
+                    visible: !addBtn.visible && premiumMsg.length && !AsemanGlobals.disablePremiumListsWarn && Bootstrap.payment && AsemanGlobals.trusted
                     spacing: 0
 
                     RoundButton {

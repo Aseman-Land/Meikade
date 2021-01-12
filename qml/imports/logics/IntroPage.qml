@@ -34,10 +34,11 @@ IntroView {
             if (Subscription.premium || Subscription.offlineLimits < 0 || !Bootstrap.initialized)
                 return "";
 
-            if (Bootstrap.payment)
-                return GTranslations.translate( qsTr("You install %1 offline poet from %2 poets, Allowed to install using non-premium account.").arg(setupOfflinesForm.offlinePoetsCount).arg(Subscription.offlineLimits) )
+            var tgLink = "<a href='https://t.me/poshtibanimoon'>" + qsTr("Click Here") +"</a>";
+            if (Bootstrap.payment && AsemanGlobals.trusted)
+                return GTranslations.translate( qsTr("You install %1 offline poet from %2 poets, Allowed to install using non-premium account.").arg(setupOfflinesForm.offlinePoetsCount).arg(Subscription.offlineLimits) );
             else
-                return GTranslations.translate( qsTr("You install %1 offline poet from %2 poets.").arg(setupOfflinesForm.offlinePoetsCount).arg(Subscription.offlineLimits) )
+                return GTranslations.translate( qsTr("You install %1 offline poet from %2 poets. for more information contact us on telegram:").arg(setupOfflinesForm.offlinePoetsCount).arg(Subscription.offlineLimits) ) + " " + tgLink;
         }
 
         onPremiumBuyRequest: Viewport.controller.trigger("bottomdrawer:/account/premium/buy")

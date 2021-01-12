@@ -37,7 +37,7 @@ Page {
             horizontalAlignment: Text.AlignHCenter
             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
             font.pixelSize: 9 * Devices.fontDensity
-            visible: Bootstrap.initialized
+//            visible: Bootstrap.initialized
             text: qsTr("You can also do below optional steps:") + Translations.refresher
         }
 
@@ -48,7 +48,7 @@ Page {
             horizontalAlignment: Text.AlignHCenter
             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
             font.pixelSize: 9 * Devices.fontDensity
-            visible: AsemanGlobals.accessToken.length == 0 && Bootstrap.initialized
+            visible: AsemanGlobals.accessToken.length == 0 /*&& Bootstrap.initialized*/
             text: qsTr("To keep your data like favorites safe, You can create Meikade Cloud Account and login to sync your data. To do that click below button:") + Translations.refresher
         }
 
