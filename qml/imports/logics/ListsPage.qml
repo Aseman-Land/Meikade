@@ -47,7 +47,7 @@ Viewport {
                 return "";
 
             var tgLink = "<a href='https://t.me/poshtibanimoon'>" + qsTr("Click Here") +"</a>";
-            if (Bootstrap.payment && AsemanGlobals.trusted)
+            if (Bootstrap.payment && Bootstrap.trusted)
                 return GTranslations.translate( qsTr("You create %1 lists from %2 lists, Allowed to create using non-premium account.").arg(lModel.count).arg(Subscription.listsLimits) )
             else
                 return GTranslations.translate( qsTr("You create %1 lists from %2 lists. for more information contact us on telegram:").arg(lModel.count).arg(Subscription.listsLimits) ) + " " + tgLink

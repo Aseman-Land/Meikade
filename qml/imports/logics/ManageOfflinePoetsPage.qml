@@ -16,7 +16,7 @@ ManageOfflinePoetsView {
             return "";
 
         var tgLink = "<a href='https://t.me/poshtibanimoon'>" + qsTr("Click Here") +"</a>";
-        if (Bootstrap.payment && AsemanGlobals.trusted)
+        if (Bootstrap.payment && Bootstrap.trusted)
             return GTranslations.translate( qsTr("You install %1 offline poet from %2 poets, Allowed to install using non-premium account.").arg(offlinePoetsCount).arg(Subscription.offlineLimits) );
         else
             return GTranslations.translate( qsTr("You install %1 offline poet from %2 poets. for more information contact us on telegram:").arg(offlinePoetsCount).arg(Subscription.offlineLimits) ) + " " + tgLink;
