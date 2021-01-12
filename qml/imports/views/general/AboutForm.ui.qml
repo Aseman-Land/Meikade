@@ -122,12 +122,11 @@ Page {
                     }
                 }
 
-                ColumnLayout {
+                RowLayout {
                     Layout.fillWidth: true
                     spacing: 4 * Devices.density
 
                     Label {
-                        Layout.fillWidth: true
                         font.pixelSize: 9 * Devices.fontDensity
                         font.bold: true
                         horizontalAlignment: Text.AlignLeft
@@ -138,7 +137,7 @@ Page {
                         Layout.fillWidth: true
                         font.pixelSize: 9 * Devices.fontDensity
                         horizontalAlignment: Text.AlignLeft
-                        text: qsTr("- Bardia Daneshvar\n- AmirHossein Mousavi\n- Ali Rasooli\n- Hanieh Sahranavard") + Translations.refresher
+                        text: qsTr("Aseman") + Translations.refresher
                     }
                 }
 
