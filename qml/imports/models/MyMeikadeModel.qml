@@ -34,7 +34,7 @@ AsemanListModel {
             }
         ]
 
-        if (Bootstrap.initialized) {
+//        if (Bootstrap.initialized) {
             res[res.length] = {
                 "title": qsTr("Sync") + Translations.refresher,
                 "icon": "mdi_cloud_sync",
@@ -53,7 +53,7 @@ AsemanListModel {
                 "link": "page:/abouts",
                 "underco": false
             };
-        }
+//        }
 
         return res;
     }

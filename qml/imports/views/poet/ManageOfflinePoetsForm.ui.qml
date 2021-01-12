@@ -72,6 +72,10 @@ Item {
                     text: premiumMsg
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                     color: Subscription.offlineLimits > offlinePoetsCount? Colors.foreground : "#a00"
+
+                    Connections {
+                        onLinkActivated: Qt.openUrlExternally(link)
+                    }
                 }
 
                 Label {
@@ -81,13 +85,13 @@ Item {
                     horizontalAlignment: Text.AlignHCenter
                     font.pixelSize: 8 * Devices.fontDensity
                     text: qsTr("To buy premium account click on below button") + Translations.refresher
-                    visible: Subscription.offlineLimits <= offlinePoetsCount && !AsemanGlobals.disablePremiumOfflinesWarn && Bootstrap.payment
+                    visible: Subscription.offlineLimits <= offlinePoetsCount && !AsemanGlobals.disablePremiumOfflinesWarn && Bootstrap.payment && AsemanGlobals.trusted
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                 }
 
                 ColumnLayout {
                     Layout.alignment: Qt.AlignHCenter
-                    visible: Subscription.offlineLimits <= offlinePoetsCount && !AsemanGlobals.disablePremiumOfflinesWarn && Bootstrap.payment
+                    visible: Subscription.offlineLimits <= offlinePoetsCount && !AsemanGlobals.disablePremiumOfflinesWarn && Bootstrap.payment && AsemanGlobals.trusted
                     spacing: 0
 
                     RoundButton {

@@ -27,10 +27,11 @@ AddNoteView {
         if (Subscription.premium || Subscription.notesLimits < 0 || !Bootstrap.initialized)
             return "";
 
-        if (Bootstrap.payment)
+        var tgLink = "<a href='https://t.me/poshtibanimoon'>" + qsTr("Click Here") +"</a>";
+        if (Bootstrap.payment && AsemanGlobals.trusted)
             return GTranslations.translate( qsTr("You create %1 note from %2 notes, Allowed to create using non-premium account.").arg(currentNotesCount).arg(Subscription.notesLimits) )
         else
-            return GTranslations.translate( qsTr("You create %1 note from %2 notes.").arg(currentNotesCount).arg(Subscription.notesLimits) )
+            return GTranslations.translate( qsTr("You create %1 note from %2 notes. for more information contact us on telegram:").arg(currentNotesCount).arg(Subscription.notesLimits) ) + " " + tgLink
     }
 
     onPremiumBuyRequest: Viewport.controller.trigger("bottomdrawer:/account/premium/buy")

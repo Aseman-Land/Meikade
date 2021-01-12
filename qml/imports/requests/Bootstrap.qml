@@ -34,11 +34,11 @@ AsemanObject {
     BootstrapRequest {
         id: req
         onSuccessfull: {
-            try { bstrap.initialized = response.result.initialized } catch (e) {}
-            try { bstrap.subscription = response.result.subscription } catch (e) {}
-            try { bstrap.payment = response.result.payment } catch (e) {}
-            try { bstrap.aseman = response.result.aseman } catch (e) {}
-            try { bstrap.fullyUnlocked = response.result.fullyUnlocked } catch (e) {}
+            try { if (!bstrap.initialized) bstrap.initialized = response.result.initialized } catch (e) {}
+            try { if (!bstrap.subscription) bstrap.subscription = response.result.subscription } catch (e) {}
+            try { if (!bstrap.payment) bstrap.payment = response.result.payment } catch (e) {}
+            try { if (!bstrap.aseman) bstrap.aseman = response.result.aseman } catch (e) {}
+            try { if (!bstrap.fullyUnlocked) bstrap.fullyUnlocked = response.result.fullyUnlocked } catch (e) {}
         }
     }
 

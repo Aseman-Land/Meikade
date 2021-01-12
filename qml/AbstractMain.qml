@@ -24,6 +24,7 @@ AsemanApplication {
         DataDbUpdater.init();
         MyUserRequest.init();
         StoreActionsBulk.init();
+        ActivityManager.reload();
 
         if (Devices.isDesktop) Devices.fontScale = 1.1;
         if (Devices.isMacX) Devices.fontScale = 1.2;
