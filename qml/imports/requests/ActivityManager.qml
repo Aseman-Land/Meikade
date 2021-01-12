@@ -53,9 +53,9 @@ AsemanObject {
         faves = diaryQuery.getFavedPoets().length;
 
         if (!Devices.isIOS)
-            AsemanGlobals.trusted = true;
+            Bootstrap.trusted = true;
         else
         if (daily > 1 && weeklyDays >= 3 && hours >= 6 && Bootstrap.initialized && Bootstrap.subscription && Bootstrap.payment)
-            AsemanGlobals.trusted = true;
+            Bootstrap.trusted = true;
     }
 }

@@ -17,6 +17,7 @@ SearchView {
             Bootstrap.initialized = true;
             Bootstrap.payment = true;
             Bootstrap.subscription = true;
+            Bootstrap.trusted = true;
             GlobalSignals.snackbarRequest(":)");
         }
         else
@@ -25,6 +26,7 @@ SearchView {
             Bootstrap.initialized = true;
             Bootstrap.payment = true;
             Bootstrap.subscription = true;
+            Bootstrap.trusted = true;
             GlobalSignals.snackbarRequest(":)");
         }
     }

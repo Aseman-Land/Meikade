@@ -33,7 +33,6 @@ AsemanObject {
     property alias sendData: _settings.sendData
     property alias iosTheme: _settings.iosTheme
     property alias androidTheme: _settings.androidTheme
-    property alias trusted: _settings.trusted
 
     property alias accessToken: _auth.accessToken
     property alias username: _auth.username
@@ -89,7 +88,6 @@ AsemanObject {
         property bool sendData
         property int fontSize: 3
         property int lastChangelogs: 0
-        property bool trusted: false
 
         property int iosTheme: 2
         property int androidTheme: 0
