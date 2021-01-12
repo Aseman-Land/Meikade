@@ -87,6 +87,7 @@ PoemView {
     }
 
     Component.onCompleted: if (loader.poemId == 0) loader.random()
+    Component.onDestruction: if (menuObject) menuObject.ViewportType.open = false
 
     PoemLoaderModel {
         id: loader
