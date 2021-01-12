@@ -31,16 +31,15 @@ AsemanListModel {
                 "icon": "mdi_settings",
                 "link": "page:/settings",
                 "underco": false
-            }
-        ]
-
-//        if (Bootstrap.initialized) {
-            res[res.length] = {
+            },{
                 "title": qsTr("Sync") + Translations.refresher,
                 "icon": "mdi_cloud_sync",
                 "link": "float:/syncs",
                 "underco": false
-            };
+            }
+        ]
+
+        if (Bootstrap.initialized) {
             res[res.length] = {
                 "title": qsTr("Contact US") + Translations.refresher,
                 "icon": "mdi_email",
@@ -53,7 +52,7 @@ AsemanListModel {
                 "link": "page:/abouts",
                 "underco": false
             };
-//        }
+        }
 
         return res;
     }
