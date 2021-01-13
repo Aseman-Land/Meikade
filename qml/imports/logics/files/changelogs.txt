@@ -1,3 +1,6 @@
+Meikade 4.2.4 changelogs:
+- Some bugfix and improvements
+
 Meikade 4.2 changelogs:
 - iOS Support
 - English Poems
