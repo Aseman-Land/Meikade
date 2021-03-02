@@ -8,7 +8,10 @@
 #include <QQueue>
 #include <QPair>
 #include <QThread>
+
+#ifdef QT_SQL_LIB
 #include <QSqlDatabase>
+#endif
 
 class MeikadeOfflineItem : public QObject
 {
@@ -151,9 +154,11 @@ Q_SIGNALS:
 protected:
     void run();
 
+#ifdef QT_SQL_LIB
     void moveTables(QSqlDatabase &srcDb, QSqlDatabase &dstDb, const QString &table);
     void deletePoet(QSqlDatabase &db, qint32 poetId);
     void deleteCat(QSqlDatabase &db, qint32 poetId, qint32 catId);
+#endif
 };
 
 Q_DECLARE_METATYPE(MeikadeOfflineItemInstaller::InstallThread::PathUnit)

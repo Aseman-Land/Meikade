@@ -12,10 +12,15 @@
 #include <QThread>
 #include <QMutex>
 #include <QQueue>
+#include <QSet>
+#include <QCryptographicHash>
+
+#ifdef QT_SQL_LIB
 #include <QSqlDatabase>
 #include <QSqlQuery>
 #include <QSqlRecord>
 #include <QSqlError>
+#endif
 
 #define QUERY_EXEC(QUERY) \
     if (!QUERY.exec()) qDebug() << __FUNCTION__ << __LINE__ << QUERY.lastError().text() << QUERY.lastQuery()
@@ -49,7 +54,9 @@ MeikadeOfflineItem::MeikadeOfflineItem(QObject *parent) :
     p = new Private;
     p->connectionName = QUuid::createUuid().toString();
 
+#ifdef QT_SQL_LIB
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE", p->connectionName);
+#endif
 
     Private::objects.insert(this);
 }
@@ -76,6 +83,7 @@ void MeikadeOfflineItem::setDatabasePath(const QString &databasePath)
 
     p->databasePath = databasePath;
 
+#ifdef QT_SQL_LIB
     QSqlDatabase db = QSqlDatabase::database(p->connectionName);
     if (db.isOpen())
         db.close();
@@ -84,6 +92,7 @@ void MeikadeOfflineItem::setDatabasePath(const QString &databasePath)
         db.setDatabaseName(p->databasePath);
         db.open();
     }
+#endif
 
     connectToInstaller();
     Q_EMIT databasePathChanged();
@@ -151,6 +160,7 @@ bool MeikadeOfflineItem::uninstalling() const
 
 bool MeikadeOfflineItem::installed() const
 {
+#ifdef QT_SQL_LIB
     QSqlDatabase db = QSqlDatabase::database(p->connectionName);
 
     QSqlQuery q(db);
@@ -160,10 +170,14 @@ bool MeikadeOfflineItem::installed() const
     q.exec();
 
     return q.next();
+#else
+    return false;
+#endif
 }
 
 int MeikadeOfflineItem::checkCount() const
 {
+#ifdef QT_SQL_LIB
     QSqlDatabase db = QSqlDatabase::database(p->connectionName);
 
     QSqlQuery q(db);
@@ -174,6 +188,9 @@ int MeikadeOfflineItem::checkCount() const
         return 0;
 
     return q.record().value(0).toInt();
+#else
+    return 0;
+#endif
 }
 
 void MeikadeOfflineItem::install(bool active)
@@ -259,7 +276,9 @@ MeikadeOfflineItem::~MeikadeOfflineItem()
 {
     Private::objects.remove(this);
 
+#ifdef QT_SQL_LIB
     QSqlDatabase::removeDatabase(p->connectionName);
+#endif
     delete p;
 }
 
@@ -412,6 +431,7 @@ MeikadeOfflineItemInstaller::~MeikadeOfflineItemInstaller()
 
 
 void MeikadeOfflineItemInstaller::InstallThread::run() {
+#ifdef QT_SQL_LIB
     mutex.lock();
     while (filePaths.count())
     {
@@ -491,8 +511,10 @@ void MeikadeOfflineItemInstaller::InstallThread::run() {
         mutex.lock();
     }
     mutex.unlock();
+#endif
 }
 
+#ifdef QT_SQL_LIB
 void MeikadeOfflineItemInstaller::InstallThread::moveTables(QSqlDatabase &srcDb, QSqlDatabase &dstDb, const QString &table)
 {
     QSqlQuery("BEGIN", dstDb).exec();
@@ -586,7 +608,7 @@ void MeikadeOfflineItemInstaller::InstallThread::deleteCat(QSqlDatabase &db, qin
         deleteCat(db, poetId, r.value("id").toInt());
     }
 }
-
+#endif
 
 
 MeikadeOfflineItemGlobal::MeikadeOfflineItemGlobal(QObject *parent) :

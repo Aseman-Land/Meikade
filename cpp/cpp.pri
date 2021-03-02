@@ -1,6 +1,7 @@
-QT += quick qml quickcontrols2 sql asemancore network widgets
+QT += quick qml quickcontrols2 asemancore network widgets
 CONFIG += c++11
 
+qtHaveModule(sql): QT += sql
 qtHaveModule(webview): QT += webview
 
 DEFINES += \

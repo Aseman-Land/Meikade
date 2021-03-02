@@ -22,7 +22,7 @@ NetworkRequest {
         "Content-Type": "application/json",
         "Premium-Days": AsemanGlobals.lastPremiumDays + "",
         "User-token": accessToken,
-        "Accept-Language": GTranslations.localeName
+        "Accept-Language": GTranslations.localeName,
     }
 
     property string accessToken: AsemanGlobals.accessToken

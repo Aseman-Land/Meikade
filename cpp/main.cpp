@@ -59,7 +59,9 @@ int main(int argc, char *argv[])
     testMode = true;
 #endif
 
+#if !defined(Q_OS_LINUX) || defined(Q_OS_ANDROID)
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+#endif
     QCoreApplication::setAttribute(Qt::AA_ShareOpenGLContexts);
 #if (QT_VERSION >= QT_VERSION_CHECK(5, 14, 0))
 #ifdef Q_OS_ANDROID
