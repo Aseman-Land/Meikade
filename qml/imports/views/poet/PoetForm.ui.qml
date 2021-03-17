@@ -15,9 +15,11 @@ Item {
     width: Constants.width
     height: Constants.height
     property alias menuBtn: menuBtn
+    property alias settingsLabel: settingsLabel
     property alias viewsLabel: viewsLabel
     property alias bioTitle: bioTitle
     property alias bioBtn: bioBtn
+    property alias poetBioScene: poetBioScene
     property alias gridView: gridView
     property alias coverImage: coverImage
     property alias avatarBtn: avatarBtn
@@ -25,6 +27,7 @@ Item {
     property alias profileLabel: profileLabel
     property alias settingsBtn: settingsBtn
     property alias progressBar: progressBar
+    property bool readWriteMode: false
 
     property int viewCount
 
@@ -37,6 +40,8 @@ Item {
                                      - Devices.statusBarHeight)
 
     property alias downloadProgress: progressBar.progress
+
+    signal addBookRequest()
 
     Rectangle {
         anchors.fill: parent
@@ -66,7 +71,56 @@ Item {
 
         footer: Item {
             width: gridView.width
-            height: poetBioBack.height + 10 * Devices.density
+            height: (readWriteMode? addColumn.height + 40 * Devices.density : poetBioBack.height) + 10 * Devices.density
+
+            ColumnLayout {
+                id: addColumn
+                anchors.left: parent.left
+                anchors.right: parent.right
+                y: 20 * Devices.density
+                visible: readWriteMode
+                spacing: 4 * Devices.density
+
+                Label {
+                    Layout.fillWidth: true
+                    horizontalAlignment: Text.AlignHCenter
+                    font.pixelSize: 8 * Devices.fontDensity
+                    text: qsTr("To add new book please tap on the below button.") + Translations.refresher
+                    wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                    opacity: 0.7
+                }
+
+                RoundButton {
+                    Layout.alignment: Qt.AlignHCenter
+                    Layout.preferredWidth: addRow.width + 60 * Devices.density
+                    highlighted: true
+                    IOSStyle.accent: Colors.primary
+                    Material.accent: Colors.primary
+
+                    Connections {
+                        onClicked: addBookRequest()
+                    }
+
+                    RowLayout {
+                        id: addRow
+                        x: 30 * Devices.density
+                        anchors.verticalCenter: parent.verticalCenter
+
+                        Label {
+                            font.pixelSize: 12 * Devices.fontDensity
+                            font.family: MaterialIcons.family
+                            text: MaterialIcons.mdi_plus
+                            color: "#fff"
+                        }
+
+                        Label {
+                            text: qsTr("New Book") + Translations.refresher
+                            font.pixelSize: 9 * Devices.fontDensity
+                            color: "#fff"
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -245,6 +299,7 @@ Item {
         }
 
         Label {
+            id: settingsLabel
             anchors.top: parent.top
             anchors.right: parent.right
             anchors.topMargin: Devices.statusBarHeight

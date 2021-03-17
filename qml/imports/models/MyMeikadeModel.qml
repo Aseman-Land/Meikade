@@ -21,6 +21,12 @@ AsemanListModel {
                 "underco": false
             },
             {
+                "title": qsTr("My Poems") + Translations.refresher,
+                "icon": "mdi_notebook",
+                "link": "float:/mypoems",
+                "underco": false
+            },
+            {
                 "title": qsTr("Manage Offlines") + Translations.refresher,
                 "icon": "mdi_view_dashboard",
                 "link": "float:/offline/manage",

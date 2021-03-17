@@ -45,6 +45,21 @@ ViewportController {
     }
 
     ViewportControllerRoute {
+        route: /\w+\:\/mypoems/
+        source: "MyBooksRoute.qml"
+    }
+
+    ViewportControllerRoute {
+        route: /\w+\:\/mypoems\/add(?:\?.*bookId\=.+)?/
+        source: "AddBookRoute.qml"
+    }
+
+    ViewportControllerRoute {
+        route: /\w+\:\/mypoems(?:\?.*bookId\=.+)?/
+        source: "MySubBooksRoute.qml"
+    }
+
+    ViewportControllerRoute {
         route: /\w+\:\/poem\/random(?:\?.+)?/
         source: "PoemRoute.qml"
 //        source: "RandomPoemRoute.qml"
