@@ -27,7 +27,8 @@ UserBaseQuery {
         TypeCatViewDate = 4,
         TypePoemViewDate = 5,
         TypeTopPoets = 6,
-        TypeListCreate = 7,
+        TypeItemBooksStart = 896999999,
+        TypeItemBooksEnd = 996999999,
         TypeItemViewDiaryStart = 997000000,
         TypeItemViewDiaryEnd = 999999999,
         TypeItemListsStart = 1000000000,
@@ -87,6 +88,14 @@ UserBaseQuery {
             res[res.length] = l.type;
         })
         return res;
+    }
+
+    function getBooks() {
+        var list = select("", "(type < :typeEnd AND type > :typeStart) AND poetId = :poetId AND catId = :catId AND " +
+                          "poemId = :poemId AND verseId = :verseId AND declined = 0", "ORDER BY value",
+                          {typeEnd: UserActions.TypeItemBooksEnd, typeStart: UserActions.TypeItemBooksStart, poetId: poetId,
+                           catId: catId, poemId: poemId, verseId: verseId});
+        return list;
     }
 
     function pushAction() {

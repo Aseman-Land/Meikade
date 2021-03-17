@@ -1240,7 +1240,7 @@ It containts %2 items currently.</source>
     </message>
     <message>
         <source>Choose Lists</source>
-        <translation>افزودن به لیست</translation>
+        <translation>افزودن/حذف لیست</translation>
     </message>
     <message>
         <source>Note</source>

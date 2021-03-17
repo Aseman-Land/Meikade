@@ -49,7 +49,7 @@ AsemanObject {
         monthly = monthList.length;
         weeklyDays = activityHash.count;
         daily = (Math.floor(monthList.length / 3) / 10);
-        weekly = (Math.floor(sum / 7 / (100 * hours)) / 100);
+        weekly = hours? (Math.floor(sum / 7 / (100 * hours)) / 100) : 0;
         faves = diaryQuery.getFavedPoets().length;
 
         if (!Devices.isIOS)

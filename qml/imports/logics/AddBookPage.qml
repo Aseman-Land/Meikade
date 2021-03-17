@@ -7,13 +7,14 @@ import requests 1.0
 import queries 1.0
 import globals 1.0
 
-AddListView {
+AddBookView {
     id: home
     width: Math.min(Viewport.viewport.width * 0.9, 500*Devices.density)
     height: 230 * Devices.density
     nameField.text: currentName
     renameMode: actionId != 0
 
+    property int bookId
     property int actionId
     property string currentName
 
@@ -24,21 +25,22 @@ AddListView {
     function confirm() {
         var actionId = home.actionId;
         if (actionId == 0) {
-            actionId = UserActions.TypeItemListsStart + Tools.dateToSec(new Date) - Tools.dateToSec(new Date(2020, 1, 1))
-            if (actionId < UserActions.TypeItemListsStart || actionId >= UserActions.TypeItemListsEnd)
-                actionId = UserActions.TypeItemListsStart + (actionId % (UserActions.TypeItemListsEnd - UserActions.TypeItemListsStart))
+            actionId = UserActions.TypeItemBooksStart + Math.floor((Tools.dateToSec(new Date) - Tools.dateToSec(new Date(2020, 1, 1))) / 10);
+            if (actionId < UserActions.TypeItemBooksStart || actionId >= UserActions.TypeItemBooksEnd)
+                actionId = UserActions.TypeItemBooksStart + (actionId % (UserActions.TypeItemBooksEnd - UserActions.TypeItemBooksStart))
         }
 
         var extra = {
             "public": false
         };
 
+        createAction.catId = bookId;
         createAction.type = actionId;
         createAction.value = nameField.text;
         createAction.extra = Tools.variantToJson(extra, true);
         createAction.pushAction();
 
-        GlobalSignals.listsRefreshed()
+        GlobalSignals.booksRefreshed()
         home.ViewportType.open = false;
     }
 

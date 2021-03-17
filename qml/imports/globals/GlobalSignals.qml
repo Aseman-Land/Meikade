@@ -7,6 +7,7 @@ QtObject {
     signal topPoetsRefreshed()
     signal favoritesRefreshed()
     signal listsRefreshed()
+    signal booksRefreshed()
     signal notesRefreshed()
 
     signal snackbarRequest(string text)

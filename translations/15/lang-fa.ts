@@ -223,6 +223,33 @@
     </message>
 </context>
 <context>
+    <name>AddBookForm</name>
+    <message>
+        <source>Add Book</source>
+        <translation>دفتر جدید</translation>
+    </message>
+    <message>
+        <source>Please enter book name:</source>
+        <translation>نام دفتر خود را وارد کنید:</translation>
+    </message>
+    <message>
+        <source>Book Name</source>
+        <translation>نام دفتر</translation>
+    </message>
+    <message>
+        <source>Add</source>
+        <translation>ساخت دفتر</translation>
+    </message>
+    <message>
+        <source>Rename Book</source>
+        <translation>تغییر نام دفتر</translation>
+    </message>
+    <message>
+        <source>Rename</source>
+        <translation>تغییر نام</translation>
+    </message>
+</context>
+<context>
     <name>AddNoteForm</name>
     <message>
         <source>Type your note</source>
@@ -1087,6 +1114,10 @@ It containts %2 items currently.</source>
         <translation>مدیریت آفلاین‌ها</translation>
     </message>
     <message>
+        <source>My Poems</source>
+        <translation>گنجینه من</translation>
+    </message>
+    <message>
         <source>Settings</source>
         <translation>تنظیمات</translation>
     </message>
@@ -1233,7 +1264,7 @@ It containts %2 items currently.</source>
     </message>
     <message>
         <source>Choose Lists</source>
-        <translation>افزودن به لیست</translation>
+        <translation>افزودن/حذف لیست</translation>
     </message>
     <message>
         <source>Note</source>
@@ -1302,6 +1333,33 @@ It containts %2 items currently.</source>
     <message>
         <source>Views</source>
         <translation>بازدید</translation>
+    </message>
+    <message>
+        <source>New Book</source>
+        <translation>دفتر جدید</translation>
+    </message>
+    <message>
+        <source>To add new book please tap on the below button.</source>
+        <translation>برای اضافه کردن دفتر شعر جدید، کلید زیر را لمس کنید.</translation>
+    </message>
+</context>
+<context>
+    <name>PoetBooksForm</name>
+    <message>
+        <source>New Poem</source>
+        <translation>شعر جدید</translation>
+    </message>
+    <message>
+        <source>To add new poem please tap on the below button.</source>
+        <translation>برای اضافه کردن شعر جدید، کلید زیر را لمس کنید.</translation>
+    </message>
+    <message>
+        <source>New Book</source>
+        <translation>دفتر جدید</translation>
+    </message>
+    <message>
+        <source>if you want to add a sub-book category, please tap on the below button.</source>
+        <translation>در صورتی که میخواهید در این زیرشاخه، دفتر دیگری اضافه کنید، کلید زیر را لمس کنید.</translation>
     </message>
 </context>
 <context>

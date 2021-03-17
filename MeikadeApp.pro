@@ -10,4 +10,4 @@ include(qml/qml.pri)
 include(cpp/cpp.pri)
 include(objective-c/objective-c.pri)
 
-ANDROID_ABIS = armeabi-v7a arm64-v8a x86 x86_64
+ANDROID_ABIS = armeabi-v7a arm64-v8a x86_64

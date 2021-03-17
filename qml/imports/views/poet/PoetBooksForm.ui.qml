@@ -24,9 +24,15 @@ Item {
     property alias avatarBtn: avatarBtn
     property alias progressBar: progressBar
 
+    property bool readWriteMode: false
+    property bool poemAddMode: true
+    property bool bookAddMode: true
+
     property real progress: progressBar.progress
 
     signal navigationClicked(string link, int index)
+    signal addBookRequest()
+    signal addPoemRequest()
 
     Rectangle {
         anchors.fill: parent
@@ -46,8 +52,106 @@ Item {
         anchors.bottom: parent.bottom
         anchors.left: parent.left
 
-        topMargin: 4 * Devices.density
-        bottomMargin: 4 * Devices.density + Devices.navigationBarHeight
+        topMargin: 12 * Devices.density
+
+        footer: Item {
+            width: listView.width
+            height: (readWriteMode? addColumn.height + 40 * Devices.density : 0) + 4 * Devices.density + Devices.navigationBarHeight
+
+            ColumnLayout {
+                id: addColumn
+                anchors.left: parent.left
+                anchors.right: parent.right
+                y: 20 * Devices.density
+                visible: readWriteMode
+                spacing: 4 * Devices.density
+
+                Label {
+                    Layout.fillWidth: true
+                    horizontalAlignment: Text.AlignHCenter
+                    font.pixelSize: 8 * Devices.fontDensity
+                    text: qsTr("To add new poem please tap on the below button.") + Translations.refresher
+                    wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                    opacity: 0.7
+                    visible: poemAddMode
+                }
+
+                RoundButton {
+                    Layout.alignment: Qt.AlignHCenter
+                    Layout.preferredWidth: addRow.width + 60 * Devices.density
+                    highlighted: true
+                    IOSStyle.accent: Colors.primary
+                    Material.accent: Colors.primary
+                    visible: poemAddMode
+
+                    Connections {
+                        onClicked: addPoemRequest()
+                    }
+
+                    RowLayout {
+                        id: addRow
+                        x: 30 * Devices.density
+                        anchors.verticalCenter: parent.verticalCenter
+
+                        Label {
+                            font.pixelSize: 12 * Devices.fontDensity
+                            font.family: MaterialIcons.family
+                            text: MaterialIcons.mdi_plus
+                            color: "#fff"
+                        }
+
+                        Label {
+                            text: qsTr("New Poem") + Translations.refresher
+                            font.pixelSize: 9 * Devices.fontDensity
+                            color: "#fff"
+                        }
+                    }
+                }
+
+                Label {
+                    visible: bookAddMode
+                    Layout.topMargin: poemAddMode? 20 * Devices.density : 0
+                    Layout.fillWidth: true
+                    horizontalAlignment: Text.AlignHCenter
+                    font.pixelSize: 8 * Devices.fontDensity
+                    text: qsTr("if you want to add a sub-book category, please tap on the below button.") + Translations.refresher
+                    wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                    opacity: 0.7
+                }
+
+                RoundButton {
+                    visible: bookAddMode
+                    Layout.alignment: Qt.AlignHCenter
+                    Layout.preferredWidth: addSubBookRow.width + 60 * Devices.density
+                    highlighted: true
+                    IOSStyle.accent: Colors.primary
+                    Material.accent: Colors.primary
+
+                    Connections {
+                        onClicked: addBookRequest()
+                    }
+
+                    RowLayout {
+                        id: addSubBookRow
+                        x: 30 * Devices.density
+                        anchors.verticalCenter: parent.verticalCenter
+
+                        Label {
+                            font.pixelSize: 12 * Devices.fontDensity
+                            font.family: MaterialIcons.family
+                            text: MaterialIcons.mdi_plus
+                            color: "#fff"
+                        }
+
+                        Label {
+                            text: qsTr("New Book") + Translations.refresher
+                            font.pixelSize: 9 * Devices.fontDensity
+                            color: "#fff"
+                        }
+                    }
+                }
+            }
+        }
     }
 
     Header {
