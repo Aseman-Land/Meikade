@@ -16,6 +16,9 @@ Item {
     height: Constants.height
     clip: true
 
+    property alias busyIndicator: busyIndicator
+
+    property alias headerFooter: headerFooter
     property alias backBtn: backBtn
     property alias viewsLabel: viewsLabel
     property alias listView: listView
@@ -23,6 +26,7 @@ Item {
     property alias coverScene: coverScene
     property alias profileLabel: titleLabel
     property alias searchBtn: searchBtn
+    property alias searchLabel: searchLabel
     property alias menuBtn: menuBtn
     property alias menuBtnPosition: menuBtnListener.result
     property alias navigationRepeater: navigationRepeater
@@ -36,6 +40,7 @@ Item {
 
     property bool headerVisible: true
 
+    property bool selectable: true
     property bool selectMode
     property real selectModeAnimRatio: selectMode? 1 : 0
     property variant selectedList: new Array
@@ -240,6 +245,9 @@ Item {
                     }
 
                     onClicked: {
+                        if (!selectable)
+                            return;
+
                         dis.selectMode = true;
                         checkbox.checked = !checkbox.checked;
                     }
@@ -406,6 +414,7 @@ Item {
         }
 
         Label {
+            id: searchLabel
             anchors.top: parent.top
             anchors.right: parent.right
             anchors.topMargin: Devices.statusBarHeight

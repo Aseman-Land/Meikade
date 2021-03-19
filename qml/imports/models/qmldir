@@ -25,3 +25,4 @@ SearchPoetsOfflineModel 1.0 SearchPoetsOfflineModel.qml
 NotesPoetsListModel 1.0 NotesPoetsListModel.qml
 NotesListModel 1.0 NotesListModel.qml
 BooksModel 1.0 BooksModel.qml
+MyPoemLoaderModel 1.0 MyPoemLoaderModel.qml

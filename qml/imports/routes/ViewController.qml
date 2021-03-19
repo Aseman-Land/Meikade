@@ -55,8 +55,23 @@ ViewportController {
     }
 
     ViewportControllerRoute {
+        route: /\w+\:\/mypoems\/poem\/add(?:\?.*bookId\=.+)?/
+        source: "AddPoemRoute.qml"
+    }
+
+    ViewportControllerRoute {
+        route: /\w+\:\/mypoems\/poem\/edit(?:\?.*bookId\=.+)?/
+        source: "EditPoemRoute.qml"
+    }
+
+    ViewportControllerRoute {
         route: /\w+\:\/mypoems(?:\?.*bookId\=.+)?/
         source: "MySubBooksRoute.qml"
+    }
+
+    ViewportControllerRoute {
+        route: /\w+\:\/mypoems\/poem(?:\?.*poemId\=.+)?/
+        source: "MyPoemRoute.qml"
     }
 
     ViewportControllerRoute {

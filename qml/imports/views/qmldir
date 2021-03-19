@@ -35,3 +35,4 @@ NotesPoetsListView 1.0 notes/NotesPoetsListForm.ui.qml
 AddNoteView 1.0 notes/AddNoteForm.ui.qml
 PremiumConfirmView 1.0 premium/PremiumConfirmForm.ui.qml
 AddBookView 1.0 mypoems/AddBookForm.ui.qml
+EditPoemView 1.0 mypoems/EditPoemForm.ui.qml

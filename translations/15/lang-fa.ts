@@ -250,6 +250,67 @@
     </message>
 </context>
 <context>
+    <name>AddPoemRoute</name>
+    <message>
+        <source>Add Poem</source>
+        <translation>شعر جدید</translation>
+    </message>
+    <message>
+        <source>Please enter poem name:</source>
+        <translation>نام شعر خود را وارد کنید:</translation>
+    </message>
+    <message>
+        <source>Poem Name</source>
+        <translation>نام شعر</translation>
+    </message>
+    <message>
+        <source>Rename Poem</source>
+        <translation>تغییر نام شعر</translation>
+    </message>
+</context>
+<context>
+    <name>MyPoemPage</name>
+    <message>
+        <source>Edit Poem</source>
+        <translation>ویرایش شعر</translation>
+    </message>
+    <message>
+        <source>To edit poem touch below button.</source>
+        <translation>برای ویرایش شعر کلید زیر را لمس کنید.</translation>
+    </message>
+</context>
+<context>
+    <name>EditPoemForm</name>
+    <message>
+        <source>To add your poem, please type every verse in a single line. After all verses written press save button.</source>
+        <translation>برای وارد کردن شعر خود، عر مصراع را در یک سطر وارد کنید. بعد از کامل شدن شعر، دکمه ثبت شعر را بزنید.</translation>
+    </message>
+    <message>
+        <source>Note</source>
+        <translation>توجه</translation>
+    </message>
+    <message>
+        <source>Poem Text</source>
+        <translation>متن شعر</translation>
+    </message>
+    <message>
+        <source>Preview</source>
+        <translation>پیش‌نمایش</translation>
+    </message>
+    <message>
+        <source>Save poem</source>
+        <translation>ذخیره‌سازی</translation>
+    </message>
+    <message>
+        <source>Every verse in a single line:</source>
+        <translation>هر مصراع در یک خط:</translation>
+    </message>
+    <message>
+        <source>To make verses showin in center of the line, add a ':' in the first of the line.</source>
+        <translation>برای مشخص کردن بند گردان در ترکیب‌بند و ترجیع‌بند و همچنین بند مسمط، اول مصراع‌های مورد نظر دونقطه (:) بگذارید.</translation>
+    </message>
+</context>
+<context>
     <name>AddNoteForm</name>
     <message>
         <source>Type your note</source>

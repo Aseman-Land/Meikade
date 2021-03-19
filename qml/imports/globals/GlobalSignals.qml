@@ -9,6 +9,7 @@ QtObject {
     signal listsRefreshed()
     signal booksRefreshed()
     signal notesRefreshed()
+    signal poemsRefreshed()
 
     signal snackbarRequest(string text)
     signal syncRequest()

@@ -35,3 +35,5 @@ TestDialog 1.0 TestDialog.qml
 MyBooksPage 1.0 MyBooksPage.qml
 AddBookPage 1.0 AddBookPage.qml
 MySubBooksPage 1.0 MySubBooksPage.qml
+MyPoemPage 1.0 MyPoemPage.qml
+EditPoemPage 1.0 EditPoemPage.qml

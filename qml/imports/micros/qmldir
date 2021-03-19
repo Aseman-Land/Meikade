@@ -13,3 +13,4 @@ DrawerFrame 1.0 DrawerFrame.qml
 MeikadeLoader 1.0 MeikadeLoader.qml
 SamsungInputBugFixer 1.0 SamsungInputBugFixer.qml
 Clock 1.0 Clock.qml
+PoemTypeIcon 1.0 PoemTypeIcon.qml

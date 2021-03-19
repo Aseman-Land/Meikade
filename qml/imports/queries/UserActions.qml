@@ -98,6 +98,12 @@ UserBaseQuery {
         return list;
     }
 
+    function getBooksItem(type) {
+        var list = select("", "type = :type AND declined = 0", "ORDER BY value",
+                          {"type": type});
+        return list;
+    }
+
     function pushAction() {
         updatedAt = Tools.dateToSec(new Date);
         synced = 0;

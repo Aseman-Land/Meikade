@@ -8,7 +8,7 @@ import globals 1.0
 AsemanListModel {
     id: model
 
-    property alias bookId: userActions.catId
+    property int bookId
     property bool hasPoem: false
     property bool hasBook: false
 
@@ -21,38 +21,96 @@ AsemanListModel {
     Connections {
         target: GlobalSignals
         onBooksRefreshed: refresh()
+        onPoemsRefreshed: refresh()
     }
 
     function refresh() {
+        model.clear();
+
+        loadBooks();
+        loadPoems()
+    }
+
+    function loadBooks() {
+        userActions.catId = bookId;
+        userActions.poemId = 0;
+
         var books = userActions.getBooks();
 
         hasBook = (books.length? true : false);
 
-        model.clear();
-
-        var items = new Array;
+        var booksItems = new Array;
         books.forEach(function(l){
-            var extra = Tools.jsonToVariant(l.extra)
-            items[items.length] = {
+            userActions.catId = l.type;
+            userActions.poemId = -1;
+            booksItems[booksItems.length] = {
                 "title": l.value,
-                "subtitle": "",
+                "subtitle": userActions.getBooks().length + " poems",
                 "color": "",
                 "image": "",
                 "type": "fullback",
                 "link": "page:/mypoems?bookId=" + l.type,
                 "listId": l.type,
                 "heightRatio": 0.6,
-                "details": null
+                "details": {
+                    "first_verse": ""
+                }
             };
         });
 
-        if (items.length) {
+        if (booksItems.length) {
             model.append({
                 "type": bookId? "column" : "grid",
                 "section": "",
                 "color": "transparent",
                 "background": false,
-                "modelData": items
+                "modelData": booksItems
+            });
+        }
+    }
+
+    function loadPoems() {
+        userActions.catId = bookId;
+        userActions.poemId = -1;
+
+        var poems = userActions.getBooks();
+
+        hasPoem = (poems.length? true : false);
+
+        var poemsItems = new Array;
+        poems.forEach(function(l){
+            var extra = Tools.jsonToVariant(l.extra)
+
+            var firstVerse = "";
+            try {
+                var firstVerse_idx = extra.text.indexOf("\n");
+                firstVerse = (firstVerse_idx > 0? extra.text.slice(0, firstVerse_idx) : extra.text);
+            } catch (e) {}
+            if (firstVerse.length == 0)
+                firstVerse = " ";
+
+            poemsItems[poemsItems.length] = {
+                "title": l.value,
+                "subtitle": "",
+                "color": "",
+                "image": "",
+                "type": "fullback",
+                "link": "page:/mypoems/poem?poemId=" + l.type,
+                "listId": l.type,
+                "heightRatio": 0.6,
+                "details": {
+                    "first_verse": firstVerse
+                }
+            };
+        });
+
+        if (poemsItems.length) {
+            model.append({
+                "type": bookId? "column" : "grid",
+                "section": "",
+                "color": "transparent",
+                "background": false,
+                "modelData": poemsItems
             });
         }
     }

@@ -18,6 +18,8 @@ AddBookView {
     property int actionId
     property string currentName
 
+    property alias poemId: createAction.poemId
+
     cancelBtn.onClicked: home.ViewportType.open = false;
     confirmBtn.onClicked: confirm()
     nameField.onAccepted: confirm()
@@ -33,6 +35,11 @@ AddBookView {
         var extra = {
             "public": false
         };
+
+        if (createAction.poemId == -1) {
+            extra["first_verse"] = "";
+            extra["text"] = "";
+        }
 
         createAction.catId = bookId;
         createAction.type = actionId;

@@ -80,8 +80,8 @@ Item {
                     Layout.alignment: Qt.AlignHCenter
                     Layout.preferredWidth: addRow.width + 60 * Devices.density
                     highlighted: true
-                    IOSStyle.accent: Colors.primary
-                    Material.accent: Colors.primary
+                    IOSStyle.accent: Colors.accent
+                    Material.accent: Colors.accent
                     visible: poemAddMode
 
                     Connections {
@@ -96,7 +96,7 @@ Item {
                         Label {
                             font.pixelSize: 12 * Devices.fontDensity
                             font.family: MaterialIcons.family
-                            text: MaterialIcons.mdi_plus
+                            text: MaterialIcons.mdi_feather
                             color: "#fff"
                         }
 
@@ -139,7 +139,7 @@ Item {
                         Label {
                             font.pixelSize: 12 * Devices.fontDensity
                             font.family: MaterialIcons.family
-                            text: MaterialIcons.mdi_plus
+                            text: MaterialIcons.mdi_notebook
                             color: "#fff"
                         }
 
