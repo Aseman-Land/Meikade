@@ -94,11 +94,15 @@ PoemView {
         poemId: dis.poemId
     }
 
+    Query.UserActions {
+        id: loadAction
+    }
+
     Timer {
         id: editTimer
         interval: 400
         repeat: false
-        running: true
+//        running: true
         onTriggered: if (loader.versesModel.count == 0) edit()
     }
 
@@ -141,7 +145,7 @@ PoemView {
 
             var map = loader.versesModel.get(index);
 
-            menuObject = Viewport.viewport.append(menuComponent, {"pointPad": pos, "index": index, "map": map, "verseText": map.text, "verseId": map.vorder}, "menu");
+//            menuObject = Viewport.viewport.append(menuComponent, {"pointPad": pos, "index": index, "map": map, "verseText": map.text, "verseId": map.vorder}, "menu");
         }
 
         navigationRepeater.model: loader.categoriesModel
@@ -221,8 +225,33 @@ PoemView {
             onItemClicked: {
                 switch (index) {
                 case 0:
+                    Viewport.controller.trigger("dialog:/mypoems/poem/add", {"actionId": loader.poemId})
                     break;
                 case 1:
+                    var properties = {
+                        "title": qsTr("Delete"),
+                        "body": qsTr("Do you realy want to delete this poem?"),
+                        "buttons": [qsTr("Cancel"), qsTr("Delete")]
+                    };
+
+                    var poemId = loader.poemId;
+                    var action = loadAction;
+                    var page = dis
+                    var obj = Viewport.controller.trigger("dialog:/general/error", properties);
+                    obj.itemClicked.connect(function(idx) {
+                        switch (idx) {
+                        case 0: // Cancel
+                            break;
+
+                        case 1: // Delete
+                            action.deleteBook(poemId)
+                            page.ViewportType.open = false;
+                            GlobalSignals.poemsRefreshed();
+                            GlobalSignals.booksRefreshed();
+                            break;
+                        }
+                        obj.ViewportType.open = false;
+                    });
                     break;
                 }
 

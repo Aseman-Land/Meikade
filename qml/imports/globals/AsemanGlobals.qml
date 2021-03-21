@@ -40,6 +40,7 @@ AsemanObject {
 
     property alias lastSync: _sync.lastSync
     property alias syncFavorites: _sync.syncFavorites
+    property alias syncMyPoems: _sync.syncMyPoems
     property alias syncNotes: _sync.syncNotes
     property alias syncViews: _sync.syncViews
     property alias syncTopPoets: _sync.syncTopPoets
@@ -56,9 +57,11 @@ AsemanObject {
 
         if (accessToken.length) {
             lastSync = "";
+            syncMyPoems = false;
             syncFavorites = false;
             syncViews = false;
             syncTopPoets = false;
+            syncNotes = false;
         }
     }
 
@@ -121,6 +124,7 @@ AsemanObject {
         property bool syncNotes: false
         property bool syncViews: false
         property bool syncTopPoets: false
+        property bool syncMyPoems: false
     }
 }
 

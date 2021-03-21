@@ -32,6 +32,8 @@ AsemanObject {
             if (AsemanGlobals.syncViews) actions.query("UPDATE actions SET synced = 1 WHERE type = " + UserActions.TypePoemViewDate +
                                                        " OR (type >= " + UserActions.TypeItemViewDiaryStart +
                                                        " AND type < " + UserActions.TypeItemViewDiaryEnd + " )");
+            if (AsemanGlobals.syncMyPoems) actions.query("UPDATE actions SET synced = 1 WHERE type >= " + UserActions.TypeItemBooksStart +
+                                                         " AND type < " + UserActions.TypeItemBooksEnd);
             if (AsemanGlobals.syncFavorites) actions.query("UPDATE actions SET synced = 1 WHERE type = " + UserActions.TypeFavorite +
                                                            " OR (type >= " + UserActions.TypeItemListsStart +
                                                            " AND type < " + UserActions.TypeItemListsEnd + " )");
@@ -119,6 +121,9 @@ AsemanObject {
                 case UserActions.TypeUnknown:
                 case UserActions.TypeNote:
                 default:
+                    if (actions.type >= UserActions.TypeItemBooksStart && actions.type < UserActions.TypeItemBooksEnd && AsemanGlobals.syncMyPoems)
+                        break;
+                    else
                     if (actions.type >= UserActions.TypeItemListsStart && actions.type < UserActions.TypeItemListsEnd && AsemanGlobals.syncFavorites)
                         break;
                     else
@@ -165,7 +170,7 @@ AsemanObject {
     function syncActionsInterval() {
         if (AsemanGlobals.accessToken.length == 0)
             return;
-        if (!AsemanGlobals.syncFavorites && !AsemanGlobals.syncTopPoets && !AsemanGlobals.syncViews && !AsemanGlobals.syncNotes)
+        if (!AsemanGlobals.syncFavorites && !AsemanGlobals.syncTopPoets && !AsemanGlobals.syncViews && !AsemanGlobals.syncNotes && !AsemanGlobals.syncMyPoems)
             return;
 
         storeInterval.restart();
@@ -231,6 +236,8 @@ AsemanObject {
             case UserActions.TypeUnknown:
             case UserActions.TypeNote:
             default:
+                if (it.type >= UserActions.TypeItemBooksStart && it.type < UserActions.TypeItemBooksEnd && AsemanGlobals.syncMyPoems)
+                    break;
                 if (it.type >= UserActions.TypeItemListsStart && it.type < UserActions.TypeItemListsEnd && AsemanGlobals.syncFavorites)
                     break;
                 else

@@ -278,6 +278,41 @@
         <source>To edit poem touch below button.</source>
         <translation>برای ویرایش شعر کلید زیر را لمس کنید.</translation>
     </message>
+    <message>
+        <source>Rename</source>
+        <translation>تغییر نام</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>پاک کردن</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>لغو</translation>
+    </message>
+    <message>
+        <source>Do you realy want to delete this poem?</source>
+        <translation>آیا از پاک کردن این شعر مطمئن هستید؟</translation>
+    </message>
+</context>
+<context>
+        <name>MySubBooksPage</name>
+        <message>
+            <source>Rename</source>
+            <translation>تغییر نام</translation>
+        </message>
+        <message>
+            <source>Delete</source>
+            <translation>پاک کردن</translation>
+        </message>
+        <message>
+            <source>Cancel</source>
+            <translation>لغو</translation>
+        </message>
+        <message>
+            <source>Do you realy want to delete this book? Not that all sub books and poems will deleted.</source>
+            <translation>آیا از پاک کردن این دفتر مطمئن هستید؟ توجه داشته باشید که تمامی دفترها و اشعار زیر مجموعه آن پاک خواهند شد.</translation>
+        </message>
 </context>
 <context>
     <name>EditPoemForm</name>
@@ -1884,6 +1919,10 @@ It&apos;s experimental currently and Meikade technical team working on it. But i
     <message>
         <source>Items you want to sync with Meikade&apos;s cloud services:</source>
         <translation>مواردی که قصد همگام‌سازی آن‌ها را دارید، فعال کنید:</translation>
+    </message>
+    <message>
+        <source>My Poems</source>
+        <translation>گنجینه من</translation>
     </message>
     <message>
         <source>Favorites</source>

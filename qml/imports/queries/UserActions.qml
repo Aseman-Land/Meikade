@@ -110,4 +110,26 @@ UserBaseQuery {
         push();
         GlobalSignals.syncRequest();
     }
+
+    function deleteBookRecursively(type) {
+        if (type == 0 || !type)
+            return;
+
+        var list = select("", "(type < :typeEnd AND type > :typeStart) AND catId = :catId AND declined = 0", "ORDER BY value",
+                          {typeEnd: UserActions.TypeItemBooksEnd, typeStart: UserActions.TypeItemBooksStart, "catId": type});
+        list.forEach(function(l){ deleteBookRecursively(l.type) });
+
+        deleteBook(type);
+    }
+
+    function deleteBook(type) {
+        var binds = {
+            "declined": 1,
+            "synced": 0,
+            "type": type,
+            "updatedAt": Tools.dateToSec(new Date)
+        };
+        query("UPDATE actions SET declined=:declined, synced=:synced WHERE type=:type", binds);
+        GlobalSignals.syncRequest();
+    }
 }

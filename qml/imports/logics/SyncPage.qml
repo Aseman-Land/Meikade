@@ -24,6 +24,9 @@ SyncView {
     syncBtn.onClicked: StoreActionsBulk.syncActionsInterval()
     syncIndicator.running: StoreActionsBulk.syncing
 
+    mypoemsSwitch.checked: AsemanGlobals.syncMyPoems
+    mypoemsSwitch.onCheckedChanged: if (!initTimer.running) { AsemanGlobals.syncMyPoems = mypoemsSwitch.checked; StoreActionsBulk.syncActionsInterval(); AsemanGlobals.lastSync = "" }
+
     syncListsSwitch.checked: AsemanGlobals.syncFavorites
     syncListsSwitch.onCheckedChanged: if (!initTimer.running) { AsemanGlobals.syncFavorites = syncListsSwitch.checked; StoreActionsBulk.syncActionsInterval(); AsemanGlobals.lastSync = "" }
 

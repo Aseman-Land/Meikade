@@ -88,6 +88,9 @@ AsemanObject {
 
             case PoemTypeIcon.TypeNormalText:
                 pos = 4;
+                if (text[0] == ':') {
+                    text = text.slice(1);
+                }
                 break;
 
             case PoemTypeIcon.TypeLeftRight_LTR:
@@ -100,6 +103,9 @@ AsemanObject {
 
             case PoemTypeIcon.TypeNormalText_LTR:
                 pos = -5;
+                if (text[0] == ':') {
+                    text = text.slice(1);
+                }
                 break;
             }
 

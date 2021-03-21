@@ -11,18 +11,28 @@ AddBookView {
     id: home
     width: Math.min(Viewport.viewport.width * 0.9, 500*Devices.density)
     height: 230 * Devices.density
-    nameField.text: currentName
     renameMode: actionId != 0
 
     property int bookId
     property int actionId
-    property string currentName
 
     property alias poemId: createAction.poemId
 
     cancelBtn.onClicked: home.ViewportType.open = false;
     confirmBtn.onClicked: confirm()
     nameField.onAccepted: confirm()
+
+    onActionIdChanged: Qt.callLater(load)
+
+    function load() {
+        var books = createAction.getBooksItem(actionId);
+        if (books.length == 0)
+            return;
+
+        let r = books[0];
+        nameField.text = r.value;
+        bookId = r.catId;
+    }
 
     function confirm() {
         var actionId = home.actionId;
@@ -39,6 +49,7 @@ AddBookView {
         if (createAction.poemId == -1) {
             extra["first_verse"] = "";
             extra["text"] = "";
+            extra["type"] = 0;
         }
 
         createAction.catId = bookId;
@@ -48,6 +59,7 @@ AddBookView {
         createAction.pushAction();
 
         GlobalSignals.booksRefreshed()
+        GlobalSignals.poemsRefreshed()
         home.ViewportType.open = false;
     }
 

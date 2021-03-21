@@ -31,6 +31,27 @@ PoetBooksView {
         data: []
     }
 
+    Connections {
+        target: GlobalSignals
+        onBooksRefreshed: load()
+    }
+
+    onBookIdChanged: Qt.callLater(load)
+
+    function load() {
+        var books = loadAction.getBooksItem(bookId);
+        if (books.length == 0)
+            return;
+
+        let r = books[0];
+        title = r.value;
+
+        var data = Tools.toVariantList(navigData);
+        data[data.length-1].title = title;
+
+        navigData = data;
+    }
+
     progressBar.running: false
 
     menuBtn.onClicked: Viewport.viewport.append(menuComponent, {}, "menu")
@@ -87,9 +108,17 @@ PoetBooksView {
         }
     }
 
+    Query.UserActions {
+        id: loadAction
+        poemId: 0
+        poetId: 0
+        declined: 0
+    }
+
     Component {
         id: menuComponent
         MenuView {
+            id: menu
             x: LayoutMirroring.enabled? 30 * Devices.density : parent.width - 30 * Devices.density - width
             y: 40 * Devices.density + Devices.statusBarHeight
             width: 220 * Devices.density
@@ -98,12 +127,33 @@ PoetBooksView {
             onItemClicked: {
                 switch (index) {
                 case 0:
+                    Viewport.controller.trigger("dialog:/mypoems/add", {"actionId": bookModel.bookId})
                     break;
                 case 1:
-                    Viewport.controller.trigger("page:/poem/random?poetId=" + dis.id + "&catId=" + dis.catId);
-                    break;
-                case 2:
-                    Viewport.controller.trigger("float:/search?poetId=" + dis.id)
+                    var properties = {
+                        "title": qsTr("Delete"),
+                        "body": qsTr("Do you realy want to delete this book? Not that all sub books and poems will deleted."),
+                        "buttons": [qsTr("Cancel"), qsTr("Delete")]
+                    };
+
+                    var bookId = bookModel.bookId;
+                    var action = loadAction;
+                    var page = dis
+                    var obj = Viewport.controller.trigger("dialog:/general/error", properties);
+                    obj.itemClicked.connect(function(idx) {
+                        switch (idx) {
+                        case 0: // Cancel
+                            break;
+
+                        case 1: // Delete
+                            action.deleteBookRecursively(bookId)
+                            page.ViewportType.open = false;
+                            GlobalSignals.poemsRefreshed();
+                            GlobalSignals.booksRefreshed();
+                            break;
+                        }
+                        obj.ViewportType.open = false;
+                    });
                     break;
                 }
 
@@ -113,20 +163,15 @@ PoetBooksView {
             model: AsemanListModel {
                 data: [
                     {
-                        title: qsTr("Enable offline"),
-                        icon: "mdi_download",
+                        title: qsTr("Rename"),
+                        icon: "mdi_pencil",
                         enabled: true
                     },
                     {
-                        title: qsTr("Random poem"),
-                        icon: "mdi_shuffle",
+                        title: qsTr("Delete"),
+                        icon: "mdi_delete",
                         enabled: true
                     },
-                    {
-                        title: qsTr("Search on this poet"),
-                        icon: "mdi_magnify",
-                        enabled: true
-                    }
                 ]
             }
         }
