@@ -104,6 +104,12 @@ UserBaseQuery {
         return list;
     }
 
+    function getMyPoemsCount() {
+        var list = select("", "(type < :typeEnd AND type > :typeStart) AND poemId = -1 AND declined = 0", "ORDER BY value",
+                          {"typeEnd": UserActions.TypeItemBooksEnd, "typeStart": UserActions.TypeItemBooksStart});
+        return list.length;
+    }
+
     function pushAction() {
         updatedAt = Tools.dateToSec(new Date);
         synced = 0;
@@ -115,7 +121,7 @@ UserBaseQuery {
         if (type == 0 || !type)
             return;
 
-        var list = select("", "(type < :typeEnd AND type > :typeStart) AND catId = :catId AND declined = 0", "ORDER BY value",
+        var list = select("", "(type < :typeEnd AND type > :typeStart) AND catId = -1 AND declined = 0", "ORDER BY value",
                           {typeEnd: UserActions.TypeItemBooksEnd, typeStart: UserActions.TypeItemBooksStart, "catId": type});
         list.forEach(function(l){ deleteBookRecursively(l.type) });
 

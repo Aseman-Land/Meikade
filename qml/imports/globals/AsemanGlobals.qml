@@ -19,6 +19,7 @@ AsemanObject {
 
     property alias settings: _settings
     property alias disablePremiumListsWarn: _settings.disablePremiumListsWarn
+    property alias disablePremiumMyBooksWarn: _settings.disablePremiumMyBooksWarn
     property alias disablePremiumNotesWarn: _settings.disablePremiumNotesWarn
     property alias disablePremiumOfflinesWarn: _settings.disablePremiumOfflinesWarn
     property alias languageInited: _settings.languageInited
@@ -80,6 +81,7 @@ AsemanObject {
         property bool disablePremiumListsWarn: false
         property bool disablePremiumNotesWarn: false
         property bool disablePremiumOfflinesWarn: false
+        property bool disablePremiumMyBooksWarn: false
 
         property bool languageInited: false
         property string language: "fa"

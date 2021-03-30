@@ -34,6 +34,8 @@ Item {
 
     property real progress: progressBar.progress
 
+    property int poemsCount
+
     signal navigationClicked(string link, int index)
     signal addBookRequest()
     signal addPoemRequest()
@@ -78,9 +80,9 @@ Item {
                     font.pixelSize: 8 * Devices.fontDensity
                     opacity: 0.8
                     text: premiumMsg
-                    visible: premiumMsg.length
+                    visible: premiumMsg.length && poemAddMode
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                    color: Subscription.mypoemsLimits > listView.count? Colors.foreground : "#a00"
+                    color: Subscription.mypoemsLimits > poemsCount? Colors.foreground : "#a00"
 
                     Connections {
                         onLinkActivated: Qt.openUrlExternally(link)
@@ -94,13 +96,13 @@ Item {
                     horizontalAlignment: Text.AlignHCenter
                     font.pixelSize: 8 * Devices.fontDensity
                     text: qsTr("To buy premium account click on below button") + Translations.refresher
-                    visible: !addBtn.visible && premiumMsg.length && !AsemanGlobals.disablePremiumListsWarn && Bootstrap.payment && Bootstrap.trusted
+                    visible: !addBtn.visible && premiumMsg.length && !AsemanGlobals.disablePremiumMyBooksWarn && Bootstrap.payment && Bootstrap.trusted && poemAddMode
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                 }
 
                 ColumnLayout {
                     Layout.alignment: Qt.AlignHCenter
-                    visible: !addBtn.visible && premiumMsg.length && !AsemanGlobals.disablePremiumListsWarn && Bootstrap.payment && Bootstrap.trusted
+                    visible: !addBtn.visible && premiumMsg.length && !AsemanGlobals.disablePremiumMyBooksWarn && Bootstrap.payment && Bootstrap.trusted && poemAddMode
                     spacing: 0
 
                     RoundButton {
@@ -131,7 +133,7 @@ Item {
 
                         Connections {
                             target: premiumDisMisBtn
-                            onClicked: AsemanGlobals.disablePremiumListsWarn = true
+                            onClicked: AsemanGlobals.disablePremiumMyBooksWarn = true
                         }
                     }
                 }
@@ -143,7 +145,7 @@ Item {
                     text: qsTr("To add new poem please tap on the below button.") + Translations.refresher
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                     opacity: 0.7
-                    visible: poemAddMode
+                    visible: addBtn.visible
                 }
 
                 RoundButton {
@@ -153,8 +155,7 @@ Item {
                     highlighted: true
                     IOSStyle.accent: Colors.accent
                     Material.accent: Colors.accent
-                    enabled: Subscription.listsLimits > listView.count || premiumMsg.length == 0
-                    visible: poemAddMode
+                    visible: poemAddMode && (Subscription.mypoemsLimits > poemsCount || premiumMsg.length == 0)
 
                     Connections {
                         onClicked: addPoemRequest()

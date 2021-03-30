@@ -28,16 +28,29 @@ PoetBooksView {
     property string url
     property variant properties
 
-
     premiumMsg: {
         if (Subscription.premium || Subscription.mypoemsLimits < 0 || !Bootstrap.initialized)
             return "";
 
         var tgLink = "<a href='https://t.me/poshtibanimoon'>" + qsTr("Click Here") +"</a>";
         if (Bootstrap.payment && Bootstrap.trusted)
-            return GTranslations.translate( qsTr("You create %1 poem from %2 poems, Allowed to create using non-premium account.").arg(2).arg(Subscription.mypoemsLimits) )
+            return GTranslations.translate( qsTr("You create %1 poem from %2 poems, Allowed to create using non-premium account.").arg(poemsCount).arg(Subscription.mypoemsLimits) )
         else
-            return GTranslations.translate( qsTr("You create %1 poems from %2 poems. for more information contact us on telegram:").arg(2).arg(Subscription.mypoemsLimits) ) + " " + tgLink
+            return GTranslations.translate( qsTr("You create %1 poems from %2 poems. for more information contact us on telegram:").arg(poemsCount).arg(Subscription.mypoemsLimits) ) + " " + tgLink
+    }
+
+    Component.onCompleted: premiumTimer.restart()
+
+    Connections {
+        target: GlobalSignals
+        onPoemsRefreshed: premiumTimer.restart()
+    }
+
+    Timer {
+        id: premiumTimer
+        interval: 100
+        repeat: false
+        onTriggered: poemsCount = loadAction.getMyPoemsCount()
     }
 
     AsemanListModel {
