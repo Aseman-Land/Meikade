@@ -17,6 +17,7 @@ AddBookView {
     property int actionId
 
     property alias poemId: createAction.poemId
+    property variant extra: Tools.jsonToVariant("{}")
 
     cancelBtn.onClicked: home.ViewportType.open = false;
     confirmBtn.onClicked: confirm()
@@ -32,6 +33,7 @@ AddBookView {
         let r = books[0];
         nameField.text = r.value;
         bookId = r.catId;
+        extra = Tools.toVariantMap( Tools.jsonToVariant(r.extra) );
     }
 
     function confirm() {
@@ -42,11 +44,10 @@ AddBookView {
                 actionId = UserActions.TypeItemBooksStart + (actionId % (UserActions.TypeItemBooksEnd - UserActions.TypeItemBooksStart))
         }
 
-        var extra = {
-            "public": false
-        };
+        var extra = Tools.toVariantMap(home.extra);
+        extra["public"] = false;
 
-        if (createAction.poemId == -1) {
+        if (createAction.poemId == -1 && home.actionId == 0) {
             extra["first_verse"] = "";
             extra["text"] = "";
             extra["type"] = 0;
