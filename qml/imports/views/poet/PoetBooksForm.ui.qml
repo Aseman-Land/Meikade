@@ -9,6 +9,8 @@ import QtQuick.Controls.IOSStyle 2.0
 import globals 1.0
 import micros 1.0
 import models 1.0
+import requests 1.0
+import queries 1.0
 
 Item {
     id: booksList
@@ -23,6 +25,8 @@ Item {
     property alias avatar: avatar
     property alias avatarBtn: avatarBtn
     property alias progressBar: progressBar
+
+    property string premiumMsg
 
     property bool readWriteMode: false
     property bool poemAddMode: true
@@ -68,6 +72,72 @@ Item {
 
                 Label {
                     Layout.fillWidth: true
+                    Layout.leftMargin: 20 * Devices.density
+                    Layout.rightMargin: 20 * Devices.density
+                    horizontalAlignment: Text.AlignHCenter
+                    font.pixelSize: 8 * Devices.fontDensity
+                    opacity: 0.8
+                    text: premiumMsg
+                    visible: premiumMsg.length
+                    wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                    color: Subscription.mypoemsLimits > listView.count? Colors.foreground : "#a00"
+
+                    Connections {
+                        onLinkActivated: Qt.openUrlExternally(link)
+                    }
+                }
+
+                Label {
+                    Layout.fillWidth: true
+                    Layout.leftMargin: 20 * Devices.density
+                    Layout.rightMargin: 20 * Devices.density
+                    horizontalAlignment: Text.AlignHCenter
+                    font.pixelSize: 8 * Devices.fontDensity
+                    text: qsTr("To buy premium account click on below button") + Translations.refresher
+                    visible: !addBtn.visible && premiumMsg.length && !AsemanGlobals.disablePremiumListsWarn && Bootstrap.payment && Bootstrap.trusted
+                    wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                }
+
+                ColumnLayout {
+                    Layout.alignment: Qt.AlignHCenter
+                    visible: !addBtn.visible && premiumMsg.length && !AsemanGlobals.disablePremiumListsWarn && Bootstrap.payment && Bootstrap.trusted
+                    spacing: 0
+
+                    RoundButton {
+                        id: premiumBtn
+                        Layout.alignment: Qt.AlignHCenter
+                        Layout.preferredWidth: listView.width * 0.5
+                        text: qsTr("Premium Account") + Translations.refresher
+                        font.pixelSize: 9 * Devices.fontDensity
+                        highlighted: true
+                        Material.accent: Subscription.premiumColor
+                        IOSStyle.accent: Subscription.premiumColor
+                        Material.elevation: 0
+
+                        Connections {
+                            target: premiumBtn
+                            onClicked: dis.premiumBuyRequest()
+                        }
+                    }
+
+                    RoundButton {
+                        id: premiumDisMisBtn
+                        Layout.alignment: Qt.AlignHCenter
+                        text: qsTr("Don't show this message again") + Translations.refresher
+                        font.underline: true
+                        font.pixelSize: 8 * Devices.fontDensity
+                        flat: true
+                        highlighted: true
+
+                        Connections {
+                            target: premiumDisMisBtn
+                            onClicked: AsemanGlobals.disablePremiumListsWarn = true
+                        }
+                    }
+                }
+
+                Label {
+                    Layout.fillWidth: true
                     horizontalAlignment: Text.AlignHCenter
                     font.pixelSize: 8 * Devices.fontDensity
                     text: qsTr("To add new poem please tap on the below button.") + Translations.refresher
@@ -77,11 +147,13 @@ Item {
                 }
 
                 RoundButton {
+                    id: addBtn
                     Layout.alignment: Qt.AlignHCenter
                     Layout.preferredWidth: addRow.width + 60 * Devices.density
                     highlighted: true
                     IOSStyle.accent: Colors.accent
                     Material.accent: Colors.accent
+                    enabled: Subscription.listsLimits > listView.count || premiumMsg.length == 0
                     visible: poemAddMode
 
                     Connections {

@@ -164,7 +164,7 @@ PoemView {
 
     ColumnLayout {
         id: editColumn
-        parent: dis.form
+        parent: dis.form.extraScene
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.margins: 8 * Devices.density

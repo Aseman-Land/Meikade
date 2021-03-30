@@ -313,6 +313,18 @@
             <source>Do you realy want to delete this book? Not that all sub books and poems will deleted.</source>
             <translation>آیا از پاک کردن این دفتر مطمئن هستید؟ توجه داشته باشید که تمامی دفترها و اشعار زیر مجموعه آن پاک خواهند شد.</translation>
         </message>
+        <message>
+            <source>Click Here</source>
+            <translation>کلیک کنید</translation>
+        </message>
+        <message>
+            <source>You create %1 poem from %2 poems, Allowed to create using non-premium account.</source>
+            <translation>شما %1 شعر از %2 شعر که با اکانت غیرحرفه‌ای میتوانید بسازید را ساخته‌اید.</translation>
+        </message>
+        <message>
+            <source>You create %1 poems from %2 poems. for more information contact us on telegram:</source>
+            <translation>شما %1 شعر از %2 شعر که میتوانید بسازید ساخته‌اید. برای اطلاعات بیشتر با ما در تلگرام تماس بگیرید:</translation>
+        </message>
 </context>
 <context>
     <name>EditPoemForm</name>
@@ -1457,6 +1469,18 @@ It containts %2 items currently.</source>
         <source>if you want to add a sub-book category, please tap on the below button.</source>
         <translation>در صورتی که میخواهید در این زیرشاخه، دفتر دیگری اضافه کنید، کلید زیر را لمس کنید.</translation>
     </message>
+    <message>
+        <source>To buy premium account click on below button</source>
+        <translation>برای خرید اکانت حرفه‌ای روی دکمه زیر کلیک کنید</translation>
+    </message>
+    <message>
+        <source>Premium Account</source>
+        <translation>اکانت حرفه‌ای</translation>
+    </message>
+    <message>
+        <source>Don&apos;t show this message again</source>
+        <translation>عدم نمایش مجدد این پیغام</translation>
+    </message>
 </context>
 <context>
     <name>PoetPage</name>
@@ -1566,8 +1590,16 @@ It containts %2 items currently.</source>
         <translation>شاعرهای آفلاین نامحدود</translation>
     </message>
     <message>
+        <source>Unlimited Personal Poems</source>
+        <translation>شعر شخصی نامحدود</translation>
+    </message>
+    <message>
         <source>%1 Offline Poems</source>
         <translation>%1 شاعر آفلاین</translation>
+    </message>
+    <message>
+        <source>%1 Personal Poems</source>
+        <translation>%1 شعر شخصی</translation>
     </message>
 </context>
 <context>

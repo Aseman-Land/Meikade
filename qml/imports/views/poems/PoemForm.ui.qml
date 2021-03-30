@@ -28,6 +28,7 @@ Item {
     property alias searchBtn: searchBtn
     property alias searchLabel: searchLabel
     property alias menuBtn: menuBtn
+    property alias extraScene: extraScene
     property alias menuBtnPosition: menuBtnListener.result
     property alias navigationRepeater: navigationRepeater
     property alias statusBarRect: statusBarRect
@@ -320,6 +321,11 @@ Item {
                 }
             }
         }
+    }
+
+    Item {
+        id: extraScene
+        anchors.fill: listView
     }
 
     HScrollBar {

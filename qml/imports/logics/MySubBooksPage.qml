@@ -7,6 +7,8 @@ import globals 1.0
 import views 1.0
 import models 1.0
 import micros 1.0
+import requests 1.0
+import queries 1.0
 
 PoetBooksView {
     id: dis
@@ -25,6 +27,18 @@ PoetBooksView {
 
     property string url
     property variant properties
+
+
+    premiumMsg: {
+        if (Subscription.premium || Subscription.mypoemsLimits < 0 || !Bootstrap.initialized)
+            return "";
+
+        var tgLink = "<a href='https://t.me/poshtibanimoon'>" + qsTr("Click Here") +"</a>";
+        if (Bootstrap.payment && Bootstrap.trusted)
+            return GTranslations.translate( qsTr("You create %1 poem from %2 poems, Allowed to create using non-premium account.").arg(2).arg(Subscription.mypoemsLimits) )
+        else
+            return GTranslations.translate( qsTr("You create %1 poems from %2 poems. for more information contact us on telegram:").arg(2).arg(Subscription.mypoemsLimits) ) + " " + tgLink
+    }
 
     AsemanListModel {
         id: navigModel
