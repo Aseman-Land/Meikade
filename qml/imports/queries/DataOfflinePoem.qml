@@ -10,8 +10,8 @@ DataBaseQuery {
 
     function random(poetId, catId, callback) {
         queryAsync("SELECT poem.id AS poem_id FROM poem " +
-                   (catId || poetId? "INNER JOIN cat ON poem.cat_id = cat.id " + (catId? " AND cat.id = :catId " : "") : "") +
-                   (poetId? "INNER JOIN poet ON cat.poet_id = poet.id AND poet.id = :poetId " : "") +
+                   (catId || poetId? "LEFT JOIN cat ON poem.cat_id = cat.id " + (catId? " AND cat.id = :catId " : "") : "") +
+                   (poetId? "LEFT JOIN poet ON cat.poet_id = poet.id AND poet.id = :poetId " : "") +
                    "ORDER BY RANDOM() LIMIT 1", {"poetId": poetId, "catId": catId}, function(res){
             _getItems(res[0].poem_id, callback);
         });
@@ -32,8 +32,8 @@ DataBaseQuery {
                    "poet.color AS poet_color, poet.id AS poet_id, poem.cat_id AS poem_category_id, cat.poet_id AS poem_poet_id, " +
                    "cat2.id AS cat2_id, cat2.text AS cat2_title " +
                    "FROM poem " +
-                   "INNER JOIN cat ON poem.cat_id = cat.id " +
-                   "INNER JOIN poet ON cat.poet_id = poet.id " +
+                   "LEFT JOIN cat ON poem.cat_id = cat.id " +
+                   "LEFT JOIN poet ON cat.poet_id = poet.id " +
                    "LEFT OUTER JOIN cat AS cat2 ON cat.parent_id = cat2.id " +
                    "WHERE poem.id = :poem_id",
                    {"poem_id": poem_id}, function(res) {
