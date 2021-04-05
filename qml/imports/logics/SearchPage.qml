@@ -11,6 +11,7 @@ SearchView {
     id: home
 
     property int poetId
+    readonly property real tabletWidth: Viewport.viewport.width > Viewport.viewport.height? Viewport.viewport.height * 3 / 5 : 0
 
     keywordField.onTextChanged: {
         if (Bootstrap.paymentUnlockCode.length && keywordField.text == Bootstrap.paymentUnlockCode) {
@@ -184,7 +185,7 @@ SearchView {
     Component {
         id: filter_component
         SearchFilterPage {
-            width: home.width
+            width: tabletWidth? tabletWidth : home.width
             height: View.root.height * 0.9
             x: Viewport.viewport.width/2 - width/2
             poetsList.model: onlineSearchSwitch.checked? poetsModel : offlinePoetsModel
