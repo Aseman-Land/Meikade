@@ -184,8 +184,9 @@ SearchView {
     Component {
         id: filter_component
         SearchFilterPage {
-            width: parent.width
+            width: home.width
             height: View.root.height * 0.9
+            x: Viewport.viewport.width/2 - width/2
             poetsList.model: onlineSearchSwitch.checked? poetsModel : offlinePoetsModel
             acceptBtn.onClicked: {
                 searchFilterModel.clear();

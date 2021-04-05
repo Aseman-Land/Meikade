@@ -11,6 +11,8 @@ ViewportController {
     property int waitCount: 0
     property variant waitObj
 
+    readonly property bool tabletMode: viewController.viewport && viewController.viewport.width > viewController.viewport.height
+
     onWaitCountChanged: {
         if (waitCount > 0) {
             if (!waitObj) waitObj = trigger("dialog:/wait");
@@ -27,26 +29,31 @@ ViewportController {
     ViewportControllerRoute {
         route: /\w+\:\/settings/
         source: "SettingsRoute.qml"
+        viewportType: tabletMode? "popup" : ""
     }
 
     ViewportControllerRoute {
         route: /\w+\:\/contactus/
         source: "ContactRoute.qml"
+        viewportType: tabletMode? "popup" : ""
     }
 
     ViewportControllerRoute {
         route: /\w+\:\/changelogs/
         source: "ChangelogsRoute.qml"
+        viewportType: tabletMode? "popup" : ""
     }
 
     ViewportControllerRoute {
         route: /\w+\:\/syncs/
         source: "SyncRoute.qml"
+        viewportType: tabletMode? "popup" : ""
     }
 
     ViewportControllerRoute {
         route: /\w+\:\/mypoems/
         source: "MyBooksRoute.qml"
+        viewportType: tabletMode? "popup" : ""
     }
 
     ViewportControllerRoute {
@@ -67,6 +74,7 @@ ViewportController {
     ViewportControllerRoute {
         route: /\w+\:\/mypoems(?:\?.*bookId\=.+)?/
         source: "MySubBooksRoute.qml"
+        viewportType: tabletMode? "popup" : ""
     }
 
     ViewportControllerRoute {
@@ -89,6 +97,7 @@ ViewportController {
     ViewportControllerRoute {
         route: /\w+\:\/poet(?:\?.*catId\=.+)?/
         source: "PoetBooksRoute.qml"
+        viewportType: tabletMode? "popup" : ""
     }
 
     ViewportControllerRoute {
@@ -99,11 +108,13 @@ ViewportController {
     ViewportControllerRoute {
         route: /\w+\:\/poet(?:\?.+)?/
         source: "PoetRoute.qml"
+        viewportType: tabletMode? "popup" : ""
     }
 
     ViewportControllerRoute {
         route: /\w+\:\/search(?:\?.+)?/
         source: "SearchRoute.qml"
+        viewportType: tabletMode? "popup" : ""
     }
 
     ViewportControllerRoute {
@@ -119,11 +130,13 @@ ViewportController {
     ViewportControllerRoute {
         route: /\w+\:\/poets(?:\?.+)?/
         source: "PoetsListRoute.qml"
+        viewportType: tabletMode? "popup" : ""
     }
 
     ViewportControllerRoute {
         route: /\w+\:\/lists(?:\?.+)?/
         source: "ListsRoute.qml"
+        viewportType: tabletMode? "popup" : ""
     }
 
     ViewportControllerRoute {
@@ -139,6 +152,7 @@ ViewportController {
     ViewportControllerRoute {
         route: /\w+\:\/notes(?:\?.+)?/
         source: "NotesRoute.qml"
+        viewportType: tabletMode? "popup" : ""
     }
 
     ViewportControllerRoute {
@@ -149,41 +163,44 @@ ViewportController {
     ViewportControllerRoute {
         route: /\w+\:\/offline\/manage/
         source: "ManageOfflinePoetsRoute.qml"
+        viewportType: tabletMode? "popup" : ""
     }
 
     ViewportControllerRoute {
         route: /\w+\:\/favorites/
 //        route: /\w+\:\/poets\/top/
         source: "TopPoetsRoute.qml"
+        viewportType: tabletMode? "popup" : ""
     }
 
     ViewportControllerRoute {
         route: /\w+\:\/recents/
         source: "MostReadedPoemsRoute.qml"
-        viewportType: "float"
+        viewportType: tabletMode? "popup" : "float"
     }
 
     ViewportControllerRoute {
         route: /\w+\:\/abouts/
         source: "AboutRoute.qml"
+        viewportType: tabletMode? "popup" : ""
     }
 
     ViewportControllerRoute {
         route: /\w+\:\/poem\/hafiz_faal/
         source: "HafizFaalRoute.qml"
-        viewportType: "float"
+        viewportType: tabletMode? "popup" : "float"
     }
 
     ViewportControllerRoute {
         route: /\w+\:\/auth\/float/
         source: "AuthRoute.qml"
-        viewportType: "float"
+        viewportType: tabletMode? "popup" : "float"
     }
 
     ViewportControllerRoute {
         route: /\w+\:\/auth\/changePassword(?:\?.+)?/
         source: "ChangePasswordRoute.qml"
-        viewportType: "float"
+        viewportType: tabletMode? "popup" : "float"
     }
 
     ViewportControllerRoute {
@@ -194,7 +211,7 @@ ViewportController {
     ViewportControllerRoute {
         route: /\w+\:\/sticker\/export/
         source: "StickerRoute.qml"
-        viewportType: "float"
+        viewportType: tabletMode? "popup" : "float"
     }
 
     ViewportControllerRoute {

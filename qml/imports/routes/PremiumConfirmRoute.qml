@@ -3,4 +3,9 @@ import AsemanQml.Viewport 2.0
 import logics 1.0
 
 PremiumConfirmPage {
+    ViewportType.maximumWidth: Viewport.viewport.width > Viewport.viewport.height? Viewport.viewport.height * 3 / 5 : 0
+    ViewportType.touchToClose: true
+
+    x: Viewport.viewport.width/2 - width/2
+    width: ViewportType.maximumWidth
 }
