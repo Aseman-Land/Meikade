@@ -347,7 +347,7 @@ PoemView {
                     {
                         title: qsTr("Create Sticker"),
                         icon: "mdi_sticker",
-                        enabled: !Devices.isIOS
+                        enabled: true
                     },
                     {
                         title: qsTr("Share"),
@@ -506,7 +506,7 @@ PoemView {
                     {
                         title: qsTr("Create Sticker"),
                         icon: "mdi_sticker",
-                        enabled: !Devices.isIOS
+                        enabled: true,
                     },
                     {
                         title: qsTr("Share"),

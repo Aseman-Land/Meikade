@@ -1879,6 +1879,10 @@ It&apos;s experimental currently and Meikade technical team working on it. But i
         <source>Sticker saved on %1</source>
         <translation>استیکر در آدرس %1 ذخیره شد</translation>
     </message>
+    <message>
+        <source>Sticker saved to Gallery</source>
+        <translation>استیکر در گالری ذخیره شد</translation>
+    </message>
 </context>
 <context>
     <name>StickerModel</name>
