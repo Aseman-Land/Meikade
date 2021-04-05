@@ -286,10 +286,16 @@ PoemView {
         onLessRequest: loader.less()
     }
 
+    PointMapListener {
+        id: listener
+        source: dis
+        dest: Viewport.viewport
+    }
+
     Component {
         id: globalMenuComponent
         MenuView {
-            x: LayoutMirroring.enabled? 30 * Devices.density : parent.width - width - 30 * Devices.density
+            x: listener.result.x + (LayoutMirroring.enabled? 30 * Devices.density : dis.width - width - 30 * Devices.density)
             y: form.menuBtnPosition.y + 30 * Devices.density
             width: 220 * Devices.density
             ViewportType.transformOrigin: {

@@ -277,7 +277,7 @@ Item {
                         opacity: 0.6
 
                         Connections {
-                            onClicked: dis.pressAndHold(model.index, Qt.point((dis.LayoutMirroring.enabled? menuBtn.x + menuBtn.width + menuWidth/2 : menuBtn.x - menuWidth/2), listener.result.y),
+                            onClicked: dis.pressAndHold(model.index, Qt.point((dis.LayoutMirroring.enabled? menuBtn.x + menuBtn.width + menuWidth/2 : menuBtn.x - menuWidth/2) + listener.result.x - itemDel.width/2, listener.result.y),
                                                         (dis.LayoutMirroring.enabled? -1 : 1))
                         }
                     }
