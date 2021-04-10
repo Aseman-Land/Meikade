@@ -71,9 +71,9 @@ Item {
                 highlighted: true
                 radius: 6 * Devices.density
                 font.pixelSize: 8 * Devices.fontDensity
-                Material.accent: Qt.darker(Colors.header, 1.3)
+                Material.accent: Qt.darker(Colors.headerColor, 1.3)
                 Material.theme: Material.Dark
-                IOSStyle.accent: Qt.darker(Colors.header, 1.3)
+                IOSStyle.accent: Qt.darker(Colors.headerColor, 1.3)
                 IOSStyle.theme: IOSStyle.Dark
                 Material.elevation: 0
             }

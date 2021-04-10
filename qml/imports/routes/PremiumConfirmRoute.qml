@@ -7,5 +7,5 @@ PremiumConfirmPage {
     ViewportType.touchToClose: true
 
     x: Viewport.viewport.width/2 - width/2
-    width: ViewportType.maximumWidth
+    width: ViewportType.maximumWidth? ViewportType.maximumWidth : Viewport.viewport.width
 }

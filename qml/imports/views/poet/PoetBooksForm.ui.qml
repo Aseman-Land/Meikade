@@ -264,14 +264,14 @@ Item {
 
                     Rectangle {
                         anchors.fill: parent
-                        color: Colors.headerTextColor
+                        color: Colors.lightHeader? Colors.primary : Colors.headerTextColor
                         visible: avatar.status != Image.Ready
                     }
 
                     Label {
                         anchors.centerIn: parent
                         color: Colors.headerColor
-                        font.pixelSize: 36 * Devices.fontDensity
+                        font.pixelSize: 28 * Devices.fontDensity
                         font.family: MaterialIcons.family
                         text: MaterialIcons.mdi_account
                     }

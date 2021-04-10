@@ -63,14 +63,10 @@ Item {
         contentHeight: scene.height
         clip: true
 
-        MouseArea {
+        EscapeItem {
             id: scene
             width: flickable.width
             height: Math.max(editArea.paintedHeight, flickable.height) + flickable.height/2
-
-            Connections {
-                onClicked: editArea.focus = true
-            }
 
             ColumnLayout {
                 y: coverImage.height + headerFooter.height + 10 * Devices.density

@@ -37,7 +37,7 @@ Page {
         contentHeight: scene.height
         bottomMargin: Devices.navigationBarHeight
 
-        Item {
+        EscapeItem {
             id: scene
             width: flick.width
             height: Math.max(sceneColumn.height + 20 * Devices.density,
