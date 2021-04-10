@@ -93,6 +93,8 @@ MainView {
     }
 
     function loadThemeWized() {
+        if (Devices.isAndroid)
+            return;
         if (AsemanGlobals.themeDone)
             return;
 
