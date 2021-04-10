@@ -33,6 +33,11 @@ ViewportController {
     }
 
     ViewportControllerRoute {
+        route: /\w+\:\/settings\/theme/
+        source: "ThemeWizardRoute.qml"
+    }
+
+    ViewportControllerRoute {
         route: /\w+\:\/contactus/
         source: "ContactRoute.qml"
         viewportType: tabletMode? "popup" : ""

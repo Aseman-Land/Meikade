@@ -319,5 +319,8 @@
         <file>imports/globals/fonts/DroidNaskh-Regular.ttf</file>
         <file>imports/globals/fonts/IRANSans_Regular.ttf</file>
         <file>imports/globals/fonts/Ubuntu-R.ttf</file>
+        <file>imports/views/general/ThemeWizardForm.ui.qml</file>
+        <file>imports/logics/ThemeWizardPage.qml</file>
+        <file>imports/routes/ThemeWizardRoute.qml</file>
     </qresource>
 </RCC>

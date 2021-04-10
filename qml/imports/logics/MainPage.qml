@@ -80,7 +80,10 @@ MainView {
         if (!AsemanGlobals.introDone)
             return;
         if (AsemanGlobals.lastChangelogs >= 430)
+        {
+//            Tools.jsDelayCall(100, function(){ Viewport.controller.trigger("bottomdrawer:/settings/theme") });
             return;
+        }
 
         Tools.jsDelayCall(1000, function(){ Viewport.controller.trigger("float:/changelogs") });
         AsemanGlobals.lastChangelogs = 430;
