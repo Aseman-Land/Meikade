@@ -12,6 +12,7 @@ MainView {
     id: form
 
     readonly property bool firstPage: currentIndex == 0
+    readonly property bool lightToolbar: Colors.lightHeader && currentIndex != 2
 
     onFirstPageChanged: {
         if (firstPage)

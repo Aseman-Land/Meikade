@@ -6,16 +6,19 @@ import globals 1.0
 AbstractMain {
     id: app
     statusBarStyle: {
-        if (AsemanGlobals.introDone)
-            return AsemanApplication.StatusBarStyleLight;
-
         if (mWin.viewport.currentType == "float" && !Devices.isAndroid)
+            return AsemanApplication.StatusBarStyleLight;
+        else
+        if (mWin.viewport.currentType == "popup")
             return AsemanApplication.StatusBarStyleLight;
         else
         if (Colors.darkMode)
             return AsemanApplication.StatusBarStyleLight;
         else
+        if (mWin.viewport.currentItem && mWin.viewport.currentItem.lightToolbar == true)
             return AsemanApplication.StatusBarStyleDark;
+        else
+            return (AsemanGlobals.introDone? AsemanApplication.StatusBarStyleLight : AsemanApplication.StatusBarStyleDark );
     }
 
     MainWindow {

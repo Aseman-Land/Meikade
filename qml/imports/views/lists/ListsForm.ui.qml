@@ -18,6 +18,8 @@ Item {
     width: Constants.width
     height: Constants.height
 
+    readonly property bool lightToolbar: Colors.lightHeader
+
     property real menuWidth: 200
 
     property alias listView: listView
@@ -316,9 +318,9 @@ Item {
         anchors.right: parent.right
         anchors.left: parent.left
         text: qsTr("Lists") + Translations.refresher
-        color: selectMode? "transparent" : Colors.header
+        color: selectMode? "transparent" : Colors.headerColor
         shadow: selectMode? false : Devices.isAndroid
-        light: !selectMode || Colors.darkMode
+        light: (!selectMode || Colors.darkMode) && !Colors.lightHeader
 
         RowLayout {
             anchors.left: parent.left

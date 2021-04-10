@@ -30,10 +30,14 @@ AsemanObject {
     property alias lastChangelogs: _settings.lastChangelogs
     property alias onlineSearch: _settings.onlineSearch
     property alias smartSearch: _settings.smartSearch
+//    property bool introDone: false
     property alias introDone: _settings.introDone
     property alias sendData: _settings.sendData
     property alias iosTheme: _settings.iosTheme
     property alias androidTheme: _settings.androidTheme
+    property alias width: _settings.width
+    property alias height: _settings.height
+    property alias mixedHeaderColor: _settings.mixedHeaderColor
 
     property alias accessToken: _auth.accessToken
     property alias username: _auth.username
@@ -50,6 +54,9 @@ AsemanObject {
 
     Component.onCompleted: {
         Tools.mkDir(cachePath);
+
+        if (mixedHeaderColor == -1)
+            mixedHeaderColor = Devices.isIOS? 1 : 0
     }
 
     onAccessTokenChanged: {
@@ -96,6 +103,10 @@ AsemanObject {
 
         property int iosTheme: 2
         property int androidTheme: 0
+
+        property int width: 1280
+        property int height: 700
+        property int mixedHeaderColor: -1
     }
 
     Settings {

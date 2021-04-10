@@ -18,6 +18,8 @@ Rectangle {
     clip: true
     color: Colors.deepBackground
 
+    readonly property bool lightToolbar: Colors.lightHeader
+
     property alias keywordField: keywordField
     property alias listView: listView
     property alias headerItem: headerItem
@@ -266,7 +268,8 @@ Rectangle {
 
     Header {
         id: headerItem
-        color: Colors.primary
+        color: Colors.headerColor
+        light: !Colors.lightHeader
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.top: parent.top
@@ -280,7 +283,7 @@ Rectangle {
             anchors.topMargin: 8 * Devices.density + Devices.statusBarHeight
             radius: Constants.radius
             color: "#000"
-            opacity: 0.3
+            opacity: Colors.lightHeader? 0.1 : 0.3
         }
 
         RowLayout {
@@ -297,7 +300,7 @@ Rectangle {
                 text: MaterialIcons.mdi_magnify
                 font.family: MaterialIcons.family
                 font.pixelSize: 16 * Devices.fontDensity
-                color: "#fff"
+                color: Colors.headerTextColor
             }
 
             TextField {
@@ -307,9 +310,10 @@ Rectangle {
                 horizontalAlignment: Text.AlignLeft
                 placeholderText: qsTr("Search") + Translations.refresher
                 selectByMouse: true
-                Material.theme: Material.Dark
-                IOSStyle.theme: IOSStyle.Dark
+                Material.theme: Colors.lightHeader? Material.Light : Material.Dark
+                IOSStyle.theme: Colors.lightHeader? IOSStyle.Light : IOSStyle.Dark
                 font.pixelSize: 9 * Devices.fontDensity
+                color: Colors.headerTextColor
                 background: Item {}
 
                 SamsungInputBugFixer {}
@@ -344,8 +348,8 @@ Rectangle {
             font.family: MaterialIcons.family
             font.pixelSize: 16 * Devices.density
             text: MaterialIcons.mdi_close
-            IOSStyle.foreground: "#fff"
-            Material.foreground: "#fff"
+            IOSStyle.foreground: Colors.headerTextColor
+            Material.foreground: Colors.headerTextColor
             visible: keywordField.text.length
             onClicked: keywordField.text = ""
         }

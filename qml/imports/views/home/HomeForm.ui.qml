@@ -13,6 +13,8 @@ Item {
     width: Constants.width
     height: Constants.height
 
+    readonly property bool lightToolbar: Colors.lightHeader
+
     property alias list: list
     property alias headerItem: headerItem
 
@@ -88,13 +90,23 @@ Item {
 
     Header {
         id: headerItem
-        color: Colors.primary
+        color: Colors.headerColor
+        light: !Colors.lightHeader
         anchors.left: parent.left
         anchors.right: parent.right
-        text: qsTr("Meikade") + Translations.refresher
         anchors.top: parent.top
         titleFontSize: 10 * Devices.fontDensity
         shadow: Devices.isAndroid
         opacity: Devices.isIOS || Devices.isDesktop? 0.8 : 1
+    }
+
+    Image {
+        height: Devices.standardTitleBarHeight * 0.9
+        width: height
+        y: Devices.statusBarHeight + Devices.standardTitleBarHeight/2 - height/2
+        anchors.horizontalCenter: headerItem.horizontalCenter
+        source: Colors.lightHeader? "icons/meikade.png" : "icons/meikade-abstract"
+        sourceSize.width: width * 1.2
+        sourceSize.height: height * 1.2
     }
 }

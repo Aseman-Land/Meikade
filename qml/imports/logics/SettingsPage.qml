@@ -58,6 +58,9 @@ SettingsView {
     phraseSwitch.onCheckedChanged: if (!initTimer.running) AsemanGlobals.phrase = phraseSwitch.checked
     phraseSwitch.checked: AsemanGlobals.phrase
 
+    mixedHeaderSwitch.onCheckedChanged: if (!initTimer.running) AsemanGlobals.mixedHeaderColor = mixedHeaderSwitch.checked? 1 : 0
+    mixedHeaderSwitch.checked: AsemanGlobals.mixedHeaderColor == 1? 1 : 0
+
     phraseNumberSwitch.onCheckedChanged: if (!initTimer.running) AsemanGlobals.phraseNumber = phraseNumberSwitch.checked
     phraseNumberSwitch.checked: AsemanGlobals.phraseNumber
 

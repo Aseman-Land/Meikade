@@ -32,6 +32,8 @@ Rectangle {
     id: sticker_dialog
     color: "#111111"
 
+    readonly property bool lightToolbar: true
+
     property alias text: txt.text
     property alias poet: poet_txt.text
 

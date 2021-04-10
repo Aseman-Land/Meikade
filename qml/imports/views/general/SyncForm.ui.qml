@@ -13,6 +13,9 @@ import globals 1.0
 Page {
     width: Constants.width
     height: Constants.height
+
+    readonly property bool lightToolbar: Colors.lightHeader
+
     property alias syncDateLabel: syncDateLabel
     property alias syncTimeLabel: syncTimeLabel
     property alias mypoemsSwitch: mypoemsSwitch
@@ -232,7 +235,8 @@ Page {
         anchors.right: parent.right
         anchors.top: parent.top
         text: qsTr("Sync") + Translations.refresher
-        color: Colors.primary
+        color: Colors.headerColor
+        light: !Colors.lightHeader
         shadow: Devices.isAndroid
 
         RowLayout {

@@ -12,6 +12,9 @@ Page {
     id: page
     width: Constants.width
     height: Constants.height
+
+    readonly property bool lightToolbar: Colors.lightHeader
+
     property alias forgetBtn: forgetBtn
     property alias signupBtn: signupBtn
     property alias passTxt: passTxt
@@ -148,7 +151,8 @@ Page {
         anchors.left: parent.left
         anchors.right: parent.right
         text: qsTr("Authenticating") + Translations.refresher
-        color: Colors.header
+        color: Colors.headerColor
+        light: !Colors.lightHeader
         shadow: Devices.isAndroid
 
         RowLayout {

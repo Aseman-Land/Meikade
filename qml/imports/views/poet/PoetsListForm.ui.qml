@@ -13,6 +13,9 @@ Item {
     id: poetsList
     width: Constants.width
     height: Constants.height
+
+    readonly property bool lightToolbar: Colors.lightHeader
+
     property alias tabBarRepeater: tabBarRepeater
 
     property alias tabBar: tabBar
@@ -47,7 +50,8 @@ Item {
         anchors.top: parent.top
         anchors.right: parent.right
         anchors.left: parent.left
-        color: Colors.header
+        color: Colors.headerColor
+        light: !Colors.lightHeader
         text: qsTr("All Poets") + Translations.refresher
         titleFontSize: 10 * Devices.fontDensity
         shadow: Devices.isAndroid
@@ -55,6 +59,7 @@ Item {
         HeaderMenuButton {
             id: headerBtn
             ratio: 1
+            buttonColor: Colors.headerTextColor
         }
     }
 

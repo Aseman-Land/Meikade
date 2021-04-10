@@ -17,6 +17,8 @@ Item {
     width: Constants.width
     height: Constants.height
 
+    readonly property bool lightToolbar: Colors.lightHeader
+
     property alias listView: listView
     property alias headerItem: headerItem
     property alias headerBtn: headerBtn
@@ -232,7 +234,8 @@ Item {
         anchors.top: parent.top
         anchors.right: parent.right
         anchors.left: parent.left
-        color: Colors.header
+        color: Colors.headerColor
+        light: !Colors.lightHeader
         shadow: Devices.isAndroid
 
         RowLayout {
@@ -243,6 +246,7 @@ Item {
             HeaderMenuButton {
                 id: headerBtn
                 ratio: 1
+                buttonColor: Colors.headerTextColor
             }
 
             Item {
@@ -260,13 +264,13 @@ Item {
 
                     Rectangle {
                         anchors.fill: parent
-                        color: Colors.background
+                        color: Colors.headerTextColor
                         visible: avatar.status != Image.Ready
                     }
 
                     Label {
                         anchors.centerIn: parent
-                        color: Colors.primary
+                        color: Colors.headerColor
                         font.pixelSize: 36 * Devices.fontDensity
                         font.family: MaterialIcons.family
                         text: MaterialIcons.mdi_account
@@ -327,13 +331,13 @@ Item {
                                     font.family: MaterialIcons.family
                                     text: LayoutMirroring.enabled? MaterialIcons.mdi_chevron_left : MaterialIcons.mdi_chevron_right
                                     font.pixelSize: 14 * Devices.fontDensity
-                                    color: Colors.headerText
+                                    color: Colors.headerTextColor
                                 }
 
                                 Label {
                                     text: model.title
                                     font.pixelSize: 9 * Devices.fontDensity
-                                    color: Colors.headerText
+                                    color: Colors.headerTextColor
                                     maximumLineCount: 1
                                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                                     elide: Text.ElideRight
@@ -370,7 +374,7 @@ Item {
                     font.family: MaterialIcons.family
                     font.pixelSize: 14 * Devices.fontDensity
                     text: MaterialIcons.mdi_dots_vertical
-                    color: Colors.headerText
+                    color: Colors.headerTextColor
                 }
             }
         }
