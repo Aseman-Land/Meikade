@@ -17,6 +17,7 @@ Page {
     property alias setupOfflinesForm: setupOfflinesForm
     property alias setupHomeForm: setupHomeForm
     property alias welcomForm: welcomForm
+    property alias setupThemeForm: setupThemeForm
 
     property alias list: list
 
@@ -33,6 +34,9 @@ Page {
         }
         IntroSetupOfflines {
             id: setupOfflinesForm
+        }
+        IntroSetupTheme {
+            id: setupThemeForm
         }
         IntroDoneForm {
             id: doneForm

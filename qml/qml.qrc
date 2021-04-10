@@ -326,5 +326,9 @@
         <file>imports/views/general/themes/light-color.png</file>
         <file>imports/views/general/themes/light-light.png</file>
         <file>imports/views/general/themes/auto.png</file>
+        <file>imports/views/intro/IntroSetupTheme.ui.qml</file>
+        <file>imports/views/general/ThemeWizardFrame.ui.qml</file>
+        <file>imports/models/ThemesModel.qml</file>
+        <file>imports/views/general/themes/auto-red.png</file>
     </qresource>
 </RCC>

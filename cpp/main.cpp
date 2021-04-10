@@ -78,6 +78,7 @@ int main(int argc, char *argv[])
     QtWebView::initialize();
 #endif
     QApplication app(argc, argv);
+    app.setWindowIcon(QIcon(":/qml/imports/views/images/meikade.png"));
 
     QQmlApplicationEngine engine;
     engine.addImportPath(":/qml/imports/");

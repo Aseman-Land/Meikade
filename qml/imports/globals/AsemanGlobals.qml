@@ -32,6 +32,7 @@ AsemanObject {
     property alias smartSearch: _settings.smartSearch
 //    property bool introDone: false
     property alias introDone: _settings.introDone
+//    property bool themeDone: false
     property alias themeDone: _settings.themeDone
     property alias sendData: _settings.sendData
     property alias iosTheme: _settings.iosTheme

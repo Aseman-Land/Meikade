@@ -1709,11 +1709,21 @@ It&apos;s experimental currently and Meikade technical team working on it. But i
     </message>
 </context>
 <context>
-        <name>ThemeWizardForm</name>
+        <name>IntroSetupTheme</name>
+        <message>
+            <source>Theme</source>
+            <translation>انتخاب پوسته</translation>
+        </message>
+</context>
+<context>
+        <name>ThemeWizardFrame</name>
         <message>
             <source>Please select theme</source>
             <translation>پوسته مورد علاقه خود را انتخاب کنید</translation>
         </message>
+</context>
+<context>
+        <name>ThemeWizardForm</name>
         <message>
             <source>Apply and Close</source>
             <translation>انتخاب و تایید</translation>

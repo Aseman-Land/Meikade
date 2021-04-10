@@ -18,7 +18,7 @@ Item {
     readonly property bool lightToolbar: Colors.lightHeader
 
     property alias headerItem: headerItem
-    property alias listView: listView
+    property alias listView: frame.listView
     property alias closeBtn: closeBtn
     property alias applyBtn: applyBtn
 
@@ -35,83 +35,10 @@ Item {
         anchors.left: parent.left
         spacing: 0
 
-        Label {
-            Layout.fillWidth: true
-            Layout.topMargin: 8 * Devices.density
-            font.pixelSize: 9 * Devices.fontDensity
-            text: qsTr("Please select theme") + Translations.refresher
-            horizontalAlignment: Text.AlignHCenter
-        }
-
-        Item {
-            Layout.fillWidth: true
-            Layout.topMargin: 8 * Devices.density
-            Layout.preferredHeight: 12 * Devices.density
-            clip: true
-
-            Rectangle {
-                width: 15 * Devices.density
-                height: width
-                rotation: 45
-                color: Colors.accent
-                anchors.verticalCenter: parent.top
-                anchors.horizontalCenter: parent.horizontalCenter
-            }
-        }
-
-        ListView {
-            id: listView
+        ThemeWizardFrame {
+            id: frame
             Layout.fillWidth: true
             Layout.fillHeight: true
-            orientation: ListView.Horizontal
-
-            LayoutMirroring.enabled: false
-            LayoutMirroring.childrenInherit: true
-
-            model: ListModel {
-                ListElement {
-                    image: "themes/auto.png"
-                    configTheme: 0
-                    configColorToolbar: false
-                }
-                ListElement {
-                    image: "themes/light-light.png"
-                    configTheme: 1
-                    configColorToolbar: false
-                }
-                ListElement {
-                    image: "themes/light-color.png"
-                    configTheme: 1
-                    configColorToolbar: true
-                }
-                ListElement {
-                    image: "themes/dark-color.png"
-                    configTheme: 2
-                    configColorToolbar: true
-                }
-            }
-            leftMargin: (width - listView.height * 0.6)/2
-            rightMargin: leftMargin
-            highlightRangeMode: ListView.StrictlyEnforceRange
-            highlightMoveDuration: 250
-            snapMode: ListView.SnapOneItem
-            preferredHighlightBegin: leftMargin
-            preferredHighlightEnd: width - rightMargin
-            delegate: Item {
-                width: height * 0.6
-                height: listView.height
-
-                Image {
-                    anchors.fill: parent
-                    anchors.topMargin: 20 * Devices.density
-                    anchors.bottomMargin: 20 * Devices.density
-                    source: model.image
-                    fillMode: Image.PreserveAspectFit
-                    sourceSize.width: width * 1.2
-                    sourceSize.height: height * 1.2
-                    asynchronous: true
-                }
-            }
         }
 
         Button {
