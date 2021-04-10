@@ -212,11 +212,23 @@ void StickerModel::refresh()
         size_16_6.type = Size;
         size_16_6.command1 = 16.0/6;
 
+        StickerModelItem size_1_2;
+        size_1_2.title = tr("1:2");
+        size_1_2.type = Size;
+        size_1_2.command1 = 1.0/2;
+
+        StickerModelItem size_1_3;
+        size_1_3.title = tr("1:3");
+        size_1_3.type = Size;
+        size_1_3.command1 = 1.0/3;
+
         p->list << size_1_1;
         p->list << size_4_3;
         p->list << size_3_4;
         p->list << size_16_9;
         p->list << size_16_6;
+        p->list << size_1_2;
+        p->list << size_1_3;
     }
         break;
 

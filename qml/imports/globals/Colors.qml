@@ -20,8 +20,8 @@ QtObject {
     }
 
     readonly property bool lightHeader: AsemanGlobals.mixedHeaderColor && !darkMode
-    readonly property color headerColor: AsemanGlobals.mixedHeaderColor? lightBackground : primary
-    readonly property color headerTextColor: AsemanGlobals.mixedHeaderColor? foreground : "#fff"
+    readonly property color headerColor: AsemanGlobals.mixedHeaderColor && !darkMode? lightBackground : primary
+    readonly property color headerTextColor: AsemanGlobals.mixedHeaderColor && !darkMode? foreground : "#fff"
     readonly property color primary: androidStyle? Material.primary : IOSStyle.primary
     readonly property color accent: androidStyle? Material.accent : IOSStyle.accent
     readonly property color background: androidStyle? Material.background : IOSStyle.background
