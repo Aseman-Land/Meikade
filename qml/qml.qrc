@@ -322,5 +322,9 @@
         <file>imports/views/general/ThemeWizardForm.ui.qml</file>
         <file>imports/logics/ThemeWizardPage.qml</file>
         <file>imports/routes/ThemeWizardRoute.qml</file>
+        <file>imports/views/general/themes/dark-color.png</file>
+        <file>imports/views/general/themes/light-color.png</file>
+        <file>imports/views/general/themes/light-light.png</file>
+        <file>imports/views/general/themes/auto.png</file>
     </qresource>
 </RCC>

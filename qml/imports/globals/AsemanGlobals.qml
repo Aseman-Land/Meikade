@@ -32,6 +32,7 @@ AsemanObject {
     property alias smartSearch: _settings.smartSearch
 //    property bool introDone: false
     property alias introDone: _settings.introDone
+    property alias themeDone: _settings.themeDone
     property alias sendData: _settings.sendData
     property alias iosTheme: _settings.iosTheme
     property alias androidTheme: _settings.androidTheme
@@ -97,6 +98,7 @@ AsemanObject {
         property bool onlineSearch: true
         property bool smartSearch: true
         property bool introDone
+        property bool themeDone
         property bool sendData
         property int fontSize: 3
         property int lastChangelogs: 0

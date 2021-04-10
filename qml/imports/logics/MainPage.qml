@@ -74,6 +74,9 @@ MainView {
         onIntroDoneChanged: loadChangelogs()
     }
 
+    property Item changelogItem
+    onChangelogItemChanged: if (!changelogItem) loadThemeWized()
+
     function loadChangelogs() {
         if (!Bootstrap.initialized)
             return;
@@ -81,12 +84,20 @@ MainView {
             return;
         if (AsemanGlobals.lastChangelogs >= 430)
         {
-//            Tools.jsDelayCall(100, function(){ Viewport.controller.trigger("bottomdrawer:/settings/theme") });
+            loadThemeWized();
             return;
         }
 
-        Tools.jsDelayCall(1000, function(){ Viewport.controller.trigger("float:/changelogs") });
+        Tools.jsDelayCall(1000, function(){ changelogItem = Viewport.controller.trigger("float:/changelogs") });
         AsemanGlobals.lastChangelogs = 430;
+    }
+
+    function loadThemeWized() {
+        if (AsemanGlobals.themeDone)
+            return;
+
+        Tools.jsDelayCall(400, function(){ Viewport.controller.trigger("bottomdrawer:/settings/theme") });
+        AsemanGlobals.themeDone = true;
     }
 
     Loader {
