@@ -44,7 +44,6 @@ AddListView {
 
     UserActions {
         id: createAction
-        type: UserActions.TypeListCreate
         poemId: 0
         poetId: 0
         declined: 0

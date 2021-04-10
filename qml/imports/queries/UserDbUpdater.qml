@@ -50,7 +50,7 @@ AsemanObject {
         general.begin();
         favList.forEach( function(fav) {
             var res = dataDb.query("SELECT poet.name AS poet_name, poet.id AS poet_id, poem.title AS poem_title FROM poem " +
-                                   "INNER JOIN cat ON poem.cat_id = cat.id INNER JOIN poet ON cat.poet_id = poet.id WHERE poem.id = :poem_id LIMIT 1",
+                                   "LEFT JOIN cat ON poem.cat_id = cat.id LEFT JOIN poet ON cat.poet_id = poet.id WHERE poem.id = :poem_id LIMIT 1",
                                    {"poem_id": fav.poem_id});
 
             var vorderRes = dataDb.query("SELECT text FROM verse WHERE poem_id = :poem_id AND vorder = :vorder",

@@ -107,10 +107,20 @@ AsemanObject {
                 if (r.verses.length > 100)
                     versesModel.cachePath = "";
 
+                var rtl = true;
+                for (var vi=0; vi<r.verses.length; vi++)
+                    if (r.verses[vi].position < -1) {
+                        rtl = false;
+                        break;
+                    }
+
                 var lastCount = versesModel.count;
                 for (var vi=0; vi<r.verses.length; vi++) {
                     var v = r.verses[vi];
                     v.text = Tools.stringReplace(v.text, "\\s+", " ", true);
+                    if (v.position == -1 && rtl) {
+                        v.position = 4;
+                    }
 
                     try { v.favorited = attrs[v.vorder][UserActions.TypeFavorite]; } catch (ve) { v.favorited = false; }
                     if (!v.favorited) v.favorited = false;

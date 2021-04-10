@@ -33,9 +33,9 @@ DataBaseQuery {
                    "cat.text AS categories__title, parentCat.id AS categories2__id, parentCat.text AS categories2__title," +
                    "verse.vorder AS verses__vorder, verse.position AS verses__position, verse.text AS verses__text, " +
                    "verse2.vorder AS verses2__vorder, verse2.position AS verses2__position, verse2.text AS verses2__text FROM verse " +
-                   "INNER JOIN poet ON verse.poet = poet.id " +
-                   "INNER JOIN poem ON verse.poem_id = poem.id " +
-                   "INNER JOIN cat ON poem.cat_id = cat.id " +
+                   "LEFT JOIN poet ON verse.poet = poet.id " +
+                   "LEFT JOIN poem ON verse.poem_id = poem.id " +
+                   "LEFT JOIN cat ON poem.cat_id = cat.id " +
                    "LEFT OUTER JOIN cat AS parentCat ON cat.parent_id = parentCat.id " +
                    "LEFT OUTER JOIN verse AS verse2 ON verse2.poem_id = verse.poem_id AND " +
                    "((verse2.vorder % 2 == 0 AND verse2.vorder = verse.vorder + 1) OR " +

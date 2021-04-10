@@ -17,6 +17,7 @@ SearchView {
             Bootstrap.initialized = true;
             Bootstrap.payment = true;
             Bootstrap.subscription = true;
+            Bootstrap.trusted = true;
             GlobalSignals.snackbarRequest(":)");
         }
         else
@@ -25,6 +26,7 @@ SearchView {
             Bootstrap.initialized = true;
             Bootstrap.payment = true;
             Bootstrap.subscription = true;
+            Bootstrap.trusted = true;
             GlobalSignals.snackbarRequest(":)");
         }
     }
@@ -182,8 +184,9 @@ SearchView {
     Component {
         id: filter_component
         SearchFilterPage {
-            width: parent.width
+            width: home.width
             height: View.root.height * 0.9
+            x: Viewport.viewport.width/2 - width/2
             poetsList.model: onlineSearchSwitch.checked? poetsModel : offlinePoetsModel
             acceptBtn.onClicked: {
                 searchFilterModel.clear();

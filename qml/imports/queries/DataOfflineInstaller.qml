@@ -16,7 +16,7 @@ MeikadeOfflineItem {
             install(active);
             return true;
         } else {
-            if (Bootstrap.payment) {
+            if (Bootstrap.payment && Bootstrap.trusted) {
                 var errorInputs = {
                     "title": qsTr("Premium Needed"),
                     "body": GTranslations.translate( qsTr("Your limit %1 offline poets ended. Do you want to buy premium account?").arg(Subscription.offlineLimits) ),

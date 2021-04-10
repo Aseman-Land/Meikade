@@ -72,8 +72,11 @@ Rectangle {
         item: frame
         onSaved: {
             console.debug(dest)
+            if (Devices.isIOS)
+                Devices.saveToGallery(dest)
+            else
+                lastDest = dest
             indicator_disabler.restart()
-            lastDest = dest
         }
 
         property string lastDest
@@ -108,7 +111,8 @@ Rectangle {
                                              function(res) {
                     if(res["android.permission.WRITE_EXTERNAL_STORAGE"] == true &&
                        res["android.permission.READ_EXTERNAL_STORAGE"] == true) {
-                        writer.save(Devices.picturesLocation + "/Meikade", Qt.size(1080, 1080/frame.ratio))
+                        let path = Devices.isIOS? AsemanApp.homePath : Devices.picturesLocation
+                        writer.save(path + "/Meikade", Qt.size(1080, 1080/frame.ratio))
                     }
                 })
             }
@@ -446,10 +450,14 @@ Rectangle {
                 indicator.running = false
                 indicator_hide_timer.restart()
 
-                GlobalSignals.snackbarRequest( qsTr("Sticker saved on %1").arg(writer.lastDest) )
-                var shared = Devices.shareFile(writer.lastDest)
-                if(!shared)
-                    Devices.openFile(writer.lastDest)
+                if (Devices.isIOS) {
+                    GlobalSignals.snackbarRequest( qsTr("Sticker saved to Gallery") )
+                } else {
+                    GlobalSignals.snackbarRequest( qsTr("Sticker saved on %1").arg(writer.lastDest) )
+                    var shared = Devices.shareFile(writer.lastDest)
+                    if(!shared)
+                        Devices.openFile(writer.lastDest)
+                }
             }
         }
 

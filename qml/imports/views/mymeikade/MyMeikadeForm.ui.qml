@@ -130,7 +130,7 @@ Rectangle {
             sourceSize.width: width * 1.2
             sourceSize.height: height * 1.2
             fillMode: Image.PreserveAspectCrop
-            source: "../images/cover.jpg"
+            source: AsemanGlobals.testHeaderImagesDisable? "" : "../images/cover.jpg"
 
             Rectangle {
                 anchors.fill: parent
@@ -144,14 +144,14 @@ Rectangle {
                 scale: Math.min(0.6 + ratioAbs*0.4, 1)
                 opacity: ratioAbs * 2 - 1
                 visible: opacity > 0 && !signedIn
-                enabled: Bootstrap.initialized
+//                enabled: Bootstrap.initialized
 
                 Label {
                     id: loginLabel
                     anchors.centerIn: parent
                     font.pixelSize: 10 * Devices.fontDensity
                     color: "#fff"
-                    text: Bootstrap.initialized? qsTr("Login / Register") + Translations.refresher : qsTr("Meikade")
+                    text: /*Bootstrap.initialized?*/ qsTr("Login / Register") + Translations.refresher /*: qsTr("Meikade")*/
 
                     Rectangle {
                         anchors.fill: parent

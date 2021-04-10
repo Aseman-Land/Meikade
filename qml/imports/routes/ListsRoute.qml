@@ -4,6 +4,8 @@ import globals 1.0
 import AsemanQml.Viewport 2.0
 
 ListsPage {
+    ViewportType.maximumWidth: Viewport.viewport.width > Viewport.viewport.height? Viewport.viewport.height * 3 / 5 : 0
+    ViewportType.touchToClose: true
     width: parent.width
     height: Viewport.viewport.height * 0.7
     mainViewport: Viewport.viewport

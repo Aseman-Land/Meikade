@@ -32,14 +32,8 @@
         <translation>تیم توسعه می‌کده:</translation>
     </message>
     <message>
-        <source>- Bardia Daneshvar
-- AmirHossein Mousavi
-- Ali Rasooli
-- Hanieh Sahranavard</source>
-        <translation>- بردیا دانشور
-- امیرحسین موسوی
-- علی رسولی
-- هانیه صحرانورد</translation>
+        <source>Aseman</source>
+        <translation>آسمان</translation>
     </message>
     <message>
         <source>Thanks to:</source>
@@ -147,8 +141,12 @@
         <translation>شما %1 یادداشت از %2 یادداشت که با اکانت غیرحرفه‌ای میتوانید بسازید ساخته‌اید.</translation>
     </message>
     <message>
-        <source>You create %1 note from %2 notes.</source>
-        <translation>شما %1 یادداشت از %2 یادداشت که میتوانید بسازید ساخته‌اید.</translation>
+        <source>You install %1 offline poet from %2 poets. for more information contact us on telegram:</source>
+        <translation>شما %1 شاعر از %2 شاعر که می‌توانید نصب کنید را استفاده کردید. برای اطلاعات بیشتر با ما در تلگرام تماس بگیرید:</translation>
+    </message>
+    <message>
+        <source>Click Here</source>
+        <translation>کلیک کنید</translation>
     </message>
 </context>
 <context>
@@ -682,8 +680,12 @@ It containts %2 items currently.</source>
         <translation>شما %1 شاعر از %2 شاعر که با اکانت غیرحرفه‌ای میتوانید آفلاین نصب کنید را استفاده کردید.</translation>
     </message>
     <message>
-        <source>You install %1 offline poet from %2 poets.</source>
-        <translation>شما %1 شاعر از %2 شاعر که می‌توانید نصب کنید را استفاده کردید.</translation>
+        <source>You install %1 offline poet from %2 poets. for more information contact us on telegram:</source>
+        <translation>شما %1 شاعر از %2 شاعر که می‌توانید نصب کنید را استفاده کردید. برای اطلاعات بیشتر با ما در تلگرام تماس بگیرید:</translation>
+    </message>
+    <message>
+        <source>Click Here</source>
+        <translation>کلیک کنید</translation>
     </message>
 </context>
 <context>
@@ -899,8 +901,12 @@ It containts %2 items currently.</source>
         <translation>شما %1 لیست از %2 لیست که با اکانت غیرحرفه‌ای میتوانید بسازید ساخته‌اید.</translation>
     </message>
     <message>
-        <source>You create %1 lists from %2 lists.</source>
-        <translation>شما %1 لیست از %2 لیست که میتوانید بسازید ساخته‌اید.</translation>
+        <source>You create %1 lists from %2 lists. for more information contact us on telegram:</source>
+        <translation>شما %1 لیست از %2 لیست که میتوانید بسازید ساخته‌اید. برای اطلاعات بیشتر با ما در تلگرام تماس بگیرید:</translation>
+    </message>
+    <message>
+        <source>Click Here</source>
+        <translation>کلیک کنید</translation>
     </message>
 </context>
 <context>
@@ -1003,8 +1009,12 @@ It containts %2 items currently.</source>
         <translation>شما %1 شاعر از %2 شاعر که با اکانت غیرحرفه‌ای میتوانید آفلاین نصب کنید را استفاده کردید.</translation>
     </message>
     <message>
-        <source>You install %1 offline poet from %2 poets.</source>
-        <translation></translation>
+        <source>You install %1 offline poet from %2 poets. for more information contact us on telegram:</source>
+        <translation>شما %1 شاعر از %2 شاعر که می‌توانید نصب کنید را استفاده کردید. برای اطلاعات بیشتر با ما در تلگرام تماس بگیرید:</translation>
+    </message>
+    <message>
+        <source>Click Here</source>
+        <translation>کلیک کنید</translation>
     </message>
 </context>
 <context>
@@ -1230,7 +1240,7 @@ It containts %2 items currently.</source>
     </message>
     <message>
         <source>Choose Lists</source>
-        <translation>افزودن به لیست</translation>
+        <translation>افزودن/حذف لیست</translation>
     </message>
     <message>
         <source>Note</source>

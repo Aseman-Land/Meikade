@@ -15,10 +15,11 @@ ManageOfflinePoetsView {
         if (Subscription.premium || Subscription.offlineLimits < 0 || !Bootstrap.initialized)
             return "";
 
-        if (Bootstrap.payment)
+        var tgLink = "<a href='https://t.me/poshtibanimoon'>" + qsTr("Click Here") +"</a>";
+        if (Bootstrap.payment && Bootstrap.trusted)
             return GTranslations.translate( qsTr("You install %1 offline poet from %2 poets, Allowed to install using non-premium account.").arg(offlinePoetsCount).arg(Subscription.offlineLimits) );
         else
-            return GTranslations.translate( qsTr("You install %1 offline poet from %2 poets.").arg(offlinePoetsCount).arg(Subscription.offlineLimits) );
+            return GTranslations.translate( qsTr("You install %1 offline poet from %2 poets. for more information contact us on telegram:").arg(offlinePoetsCount).arg(Subscription.offlineLimits) ) + " " + tgLink;
     }
 
     onPremiumBuyRequest: Viewport.controller.trigger("bottomdrawer:/account/premium/buy")

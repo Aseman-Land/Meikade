@@ -66,6 +66,10 @@ Page {
                     text: premiumMsg
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                     color: Subscription.offlineLimits > offlinePoetsCount? Colors.foreground : "#a00"
+
+                    Connections {
+                        onLinkActivated: Qt.openUrlExternally(link)
+                    }
                 }
 
                 Label {
@@ -75,7 +79,7 @@ Page {
                     horizontalAlignment: Text.AlignHCenter
                     font.pixelSize: 8 * Devices.fontDensity
                     text: qsTr("To buy premium account click on below button") + Translations.refresher
-                    visible: Subscription.offlineLimits <= offlinePoetsCount && Bootstrap.payment
+                    visible: Subscription.offlineLimits <= offlinePoetsCount && Bootstrap.payment && Bootstrap.trusted
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                 }
 
@@ -86,7 +90,7 @@ Page {
                     text: qsTr("Premium Account") + Translations.refresher
                     font.pixelSize: 9 * Devices.fontDensity
                     highlighted: true
-                    visible: Subscription.offlineLimits <= offlinePoetsCount && Bootstrap.payment
+                    visible: Subscription.offlineLimits <= offlinePoetsCount && Bootstrap.payment && Bootstrap.trusted
                     Material.accent: Subscription.premiumColor
                     IOSStyle.accent: Subscription.premiumColor
                     Material.elevation: 0
@@ -146,13 +150,14 @@ Page {
                             anchors.centerIn: parent
                             radius: Constants.radius * 1.5
                             scale: 0.5
+                            visible: !AsemanGlobals.testPoetImagesDisable
 
                             CachedImage {
                                 anchors.fill: parent
                                 sourceSize.width: 92 * Devices.density
                                 sourceSize.height: 92 * Devices.density
                                 asynchronous: true
-                                source: model.image
+                                source: AsemanGlobals.testPoetImagesDisable? "" : model.image
                             }
                         }
                     }

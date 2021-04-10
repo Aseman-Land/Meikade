@@ -54,7 +54,7 @@ Item {
                     title.color: foregroundColor
                     subtitle.text: GTranslations.translate(delg.subtitle)
                     subtitle.color: foregroundColor
-                    image.source: delg.image.length? delg.image : Constants.thumbsBaseUrl + poetId + ".png"
+                    image.source: AsemanGlobals.testPoetImagesDisable? "" : (delg.image.length? delg.image : Constants.thumbsBaseUrl + poetId + ".png")
                     background.color: delg.color
                     button.onClicked: delg.clicked()
                 }

@@ -58,7 +58,11 @@ AsemanListModel {
                         if (caps.length === 0)
                             continue;
 
-                        d["id"] = caps[0][1];
+                        var id = caps[0][1];
+                        if (id > 1000 && !Bootstrap.initialized)
+                            continue;
+
+                        d["id"] = id;
                         d["catId"] = 0;
                         d["checked"] = actionsHash.contains(d.id);
                         d["image"] = Constants.thumbsBaseUrl + caps[0][1] + ".png";

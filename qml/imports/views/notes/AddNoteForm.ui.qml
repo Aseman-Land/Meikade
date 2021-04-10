@@ -90,6 +90,10 @@ Page {
                     visible: premiumMsg.length
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                     color: Subscription.notesLimits > currentNotesCount? Colors.foreground : "#a00"
+
+                    Connections {
+                        onLinkActivated: Qt.openUrlExternally(link)
+                    }
                 }
 
                 Label {
@@ -99,13 +103,13 @@ Page {
                     horizontalAlignment: Text.AlignHCenter
                     font.pixelSize: 8 * Devices.fontDensity
                     text: qsTr("To buy premium account click on below button") + Translations.refresher
-                    visible: !noteField.visible && premiumMsg.length && !AsemanGlobals.disablePremiumNotesWarn && Bootstrap.payment
+                    visible: !noteField.visible && premiumMsg.length && !AsemanGlobals.disablePremiumNotesWarn && Bootstrap.payment && Bootstrap.trusted
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                 }
 
                 ColumnLayout {
                     Layout.alignment: Qt.AlignHCenter
-                    visible: !noteField.visible && premiumMsg.length && !AsemanGlobals.disablePremiumNotesWarn && Bootstrap.payment
+                    visible: !noteField.visible && premiumMsg.length && !AsemanGlobals.disablePremiumNotesWarn && Bootstrap.payment && Bootstrap.trusted
                     spacing: 0
 
                     RoundButton {

@@ -7,6 +7,8 @@ NotesPage {
     width: parent.width
     height: Viewport.viewport.height * 0.7
     mainViewport: Viewport.viewport
+    ViewportType.maximumWidth: Viewport.viewport.width > Viewport.viewport.height? Viewport.viewport.height * 3 / 5 : 0
+    ViewportType.touchToClose: true
 
     onCloseRequest: ViewportType.open = false;
     onLinkRequest: Viewport.controller.trigger(link, properties)

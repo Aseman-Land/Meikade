@@ -59,7 +59,7 @@ PoetBooksView {
         }
     }
 
-    Component.onCompleted: avatar.source = Constants.thumbsBaseUrl + id + ".png"
+    Component.onCompleted: avatar.source = AsemanGlobals.testPoetImagesDisable? "" : Constants.thumbsBaseUrl + id + ".png"
 
     progressBar.running: catsModel.offlineInstaller.uninstalling || catsModel.offlineInstaller.installing || catsModel.offlineInstaller.downloading
     progressBar.progress: catsModel.offlineInstaller.size? (catsModel.offlineInstaller.downloadedBytes / catsModel.offlineInstaller.size) * 0.9 + 0.1 : 0.1
@@ -121,10 +121,16 @@ PoetBooksView {
         }
     }
 
+    PointMapListener {
+        id: listener
+        source: dis
+        dest: Viewport.viewport
+    }
+
     Component {
         id: menuComponent
         MenuView {
-            x: LayoutMirroring.enabled? 30 * Devices.density : parent.width - 30 * Devices.density - width
+            x: listener.result.x + (LayoutMirroring.enabled? 30 * Devices.density : dis.width - 30 * Devices.density - width)
             y: 40 * Devices.density + Devices.statusBarHeight
             width: 220 * Devices.density
             ViewportType.transformOrigin: Qt.point((LayoutMirroring.enabled? -20 * Devices.density : width + 20 * Devices.density), -20 * Devices.density)

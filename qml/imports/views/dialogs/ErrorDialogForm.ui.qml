@@ -25,7 +25,6 @@ Item {
 
     ColumnLayout {
         id: columnLayout
-        anchors.verticalCenter: parent.verticalCenter
         anchors.right: parent.right
         anchors.left: parent.left
         spacing: 0

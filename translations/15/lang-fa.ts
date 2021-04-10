@@ -33,14 +33,8 @@
         <translation>تیم توسعه می‌کده:</translation>
     </message>
     <message>
-        <source>- Bardia Daneshvar
-- AmirHossein Mousavi
-- Ali Rasooli
-- Hanieh Sahranavard</source>
-        <translation>- بردیا دانشور
-- امیرحسین موسوی
-- علی رسولی
-- هانیه صحرانورد</translation>
+        <source>Aseman</source>
+        <translation>آسمان</translation>
     </message>
     <message>
         <source>Thanks to:</source>
@@ -229,6 +223,141 @@
     </message>
 </context>
 <context>
+    <name>AddBookForm</name>
+    <message>
+        <source>Add Book</source>
+        <translation>دفتر جدید</translation>
+    </message>
+    <message>
+        <source>Please enter book name:</source>
+        <translation>نام دفتر خود را وارد کنید:</translation>
+    </message>
+    <message>
+        <source>Book Name</source>
+        <translation>نام دفتر</translation>
+    </message>
+    <message>
+        <source>Add</source>
+        <translation>ساخت دفتر</translation>
+    </message>
+    <message>
+        <source>Rename Book</source>
+        <translation>تغییر نام دفتر</translation>
+    </message>
+    <message>
+        <source>Rename</source>
+        <translation>تغییر نام</translation>
+    </message>
+</context>
+<context>
+    <name>AddPoemRoute</name>
+    <message>
+        <source>Add Poem</source>
+        <translation>شعر جدید</translation>
+    </message>
+    <message>
+        <source>Please enter poem name:</source>
+        <translation>نام شعر خود را وارد کنید:</translation>
+    </message>
+    <message>
+        <source>Poem Name</source>
+        <translation>نام شعر</translation>
+    </message>
+    <message>
+        <source>Rename Poem</source>
+        <translation>تغییر نام شعر</translation>
+    </message>
+</context>
+<context>
+    <name>MyPoemPage</name>
+    <message>
+        <source>Edit Poem</source>
+        <translation>ویرایش شعر</translation>
+    </message>
+    <message>
+        <source>To edit poem touch below button.</source>
+        <translation>برای ویرایش شعر کلید زیر را لمس کنید.</translation>
+    </message>
+    <message>
+        <source>Rename</source>
+        <translation>تغییر نام</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>پاک کردن</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>لغو</translation>
+    </message>
+    <message>
+        <source>Do you realy want to delete this poem?</source>
+        <translation>آیا از پاک کردن این شعر مطمئن هستید؟</translation>
+    </message>
+</context>
+<context>
+        <name>MySubBooksPage</name>
+        <message>
+            <source>Rename</source>
+            <translation>تغییر نام</translation>
+        </message>
+        <message>
+            <source>Delete</source>
+            <translation>پاک کردن</translation>
+        </message>
+        <message>
+            <source>Cancel</source>
+            <translation>لغو</translation>
+        </message>
+        <message>
+            <source>Do you realy want to delete this book? Not that all sub books and poems will deleted.</source>
+            <translation>آیا از پاک کردن این دفتر مطمئن هستید؟ توجه داشته باشید که تمامی دفترها و اشعار زیر مجموعه آن پاک خواهند شد.</translation>
+        </message>
+        <message>
+            <source>Click Here</source>
+            <translation>کلیک کنید</translation>
+        </message>
+        <message>
+            <source>You create %1 poem from %2 poems, Allowed to create using non-premium account.</source>
+            <translation>شما %1 شعر از %2 شعر که با اکانت غیرحرفه‌ای میتوانید بسازید را ساخته‌اید.</translation>
+        </message>
+        <message>
+            <source>You create %1 poems from %2 poems. for more information contact us on telegram:</source>
+            <translation>شما %1 شعر از %2 شعر که میتوانید بسازید ساخته‌اید. برای اطلاعات بیشتر با ما در تلگرام تماس بگیرید:</translation>
+        </message>
+</context>
+<context>
+    <name>EditPoemForm</name>
+    <message>
+        <source>To add your poem, please type every verse in a single line. After all verses written press save button.</source>
+        <translation>برای وارد کردن شعر خود، عر مصراع را در یک سطر وارد کنید. بعد از کامل شدن شعر، دکمه ثبت شعر را بزنید.</translation>
+    </message>
+    <message>
+        <source>Note</source>
+        <translation>توجه</translation>
+    </message>
+    <message>
+        <source>Poem Text</source>
+        <translation>متن شعر</translation>
+    </message>
+    <message>
+        <source>Preview</source>
+        <translation>پیش‌نمایش</translation>
+    </message>
+    <message>
+        <source>Save poem</source>
+        <translation>ذخیره‌سازی</translation>
+    </message>
+    <message>
+        <source>Every verse in a single line:</source>
+        <translation>هر مصراع در یک خط:</translation>
+    </message>
+    <message>
+        <source>To make verses showin in center of the line, add a ':' in the first of the line.</source>
+        <translation>برای مشخص کردن بند گردان در ترکیب‌بند و ترجیع‌بند و همچنین بند مسمط، اول مصراع‌های مورد نظر دونقطه (:) بگذارید.</translation>
+    </message>
+</context>
+<context>
     <name>AddNoteForm</name>
     <message>
         <source>Type your note</source>
@@ -266,8 +395,12 @@
         <translation>شما %1 یادداشت از %2 یادداشت که با اکانت غیرحرفه‌ای می‌توانید بنویسید را نوشته‌اید.</translation>
     </message>
     <message>
-        <source>You create %1 note from %2 notes.</source>
-        <translation>شما %1 یادداشت از %2 یادداشت که میتوانید بنویسید را نوشته‌اید.</translation>
+        <source>You create %1 note from %2 notes. for more information contact us on telegram:</source>
+        <translation>شما %1 یادداشت از %2 یادداشت که میتوانید بنویسید را نوشته‌اید. برای اطلاعات بیشتر با ما در تلگرام تماس بگیرید:</translation>
+    </message>
+    <message>
+        <source>Click Here</source>
+        <translation>کلیک کنید</translation>
     </message>
 </context>
 <context>
@@ -762,8 +895,12 @@ It containts %2 items currently.</source>
         <translation>شما آثار %1 شاعر از حداکثر %2 شاعر که می‌توانید با اکانت غیرحرفه‌ای آفلاین کنید را نصب کرده‌اید.</translation>
     </message>
     <message>
-        <source>You install %1 offline poet from %2 poets.</source>
-        <translation>شما %1 شاعر از %2 شاعر که می‌توانید نصب کنید را استفاده کردید.</translation>
+        <source>You install %1 offline poet from %2 poets. for more information contact us on telegram:</source>
+        <translation>شما %1 شاعر از %2 شاعر که می‌توانید نصب کنید را استفاده کردید. برای اطلاعات بیشتر با ما در تلگرام تماس بگیرید:</translation>
+    </message>
+    <message>
+        <source>Click Here</source>
+        <translation>کلیک کنید</translation>
     </message>
 </context>
 <context>
@@ -892,8 +1029,12 @@ It containts %2 items currently.</source>
         <translation>شما %1 لیست از %2 لیست که با اکانت غیرحرفه‌ای میتوانید بسازید را ساخته‌اید.</translation>
     </message>
     <message>
-        <source>You create %1 lists from %2 lists.</source>
-        <translation>شما %1 لیست از %2 لیست که میتوانید بسازید ساخته‌اید.</translation>
+        <source>You create %1 lists from %2 lists. for more information contact us on telegram:</source>
+        <translation>شما %1 لیست از %2 لیست که میتوانید بسازید ساخته‌اید. برای اطلاعات بیشتر با ما در تلگرام تماس بگیرید:</translation>
+    </message>
+    <message>
+        <source>Click Here</source>
+        <translation>کلیک کنید</translation>
     </message>
 </context>
 <context>
@@ -996,8 +1137,12 @@ It containts %2 items currently.</source>
         <translation>شما آثار %1 شاعر از حداکثر %2 شاعر که می‌توانید با اکانت غیرحرفه‌ای آفلاین کنید را نصب کرده‌اید.</translation>
     </message>
     <message>
-        <source>You install %1 offline poet from %2 poets.</source>
-        <translation>شما %1 شاعر از %2 شاعر که می‌توانید نصب کنید را استفاده کردید.</translation>
+        <source>You install %1 offline poet from %2 poets. for more information contact us on telegram:</source>
+        <translation>شما %1 شاعر از %2 شاعر که می‌توانید نصب کنید را استفاده کردید. برای اطلاعات بیشتر با ما در تلگرام تماس بگیرید:</translation>
+    </message>
+    <message>
+        <source>Click Here</source>
+        <translation>کلیک کنید</translation>
     </message>
 </context>
 <context>
@@ -1075,6 +1220,10 @@ It containts %2 items currently.</source>
     <message>
         <source>Manage Offlines</source>
         <translation>مدیریت آفلاین‌ها</translation>
+    </message>
+    <message>
+        <source>My Poems</source>
+        <translation>گنجینه من</translation>
     </message>
     <message>
         <source>Settings</source>
@@ -1223,7 +1372,7 @@ It containts %2 items currently.</source>
     </message>
     <message>
         <source>Choose Lists</source>
-        <translation>افزودن به لیست</translation>
+        <translation>افزودن/حذف لیست</translation>
     </message>
     <message>
         <source>Note</source>
@@ -1292,6 +1441,45 @@ It containts %2 items currently.</source>
     <message>
         <source>Views</source>
         <translation>بازدید</translation>
+    </message>
+    <message>
+        <source>New Book</source>
+        <translation>دفتر جدید</translation>
+    </message>
+    <message>
+        <source>To add new book please tap on the below button.</source>
+        <translation>برای اضافه کردن دفتر شعر جدید، کلید زیر را لمس کنید.</translation>
+    </message>
+</context>
+<context>
+    <name>PoetBooksForm</name>
+    <message>
+        <source>New Poem</source>
+        <translation>شعر جدید</translation>
+    </message>
+    <message>
+        <source>To add new poem please tap on the below button.</source>
+        <translation>برای اضافه کردن شعر جدید، کلید زیر را لمس کنید.</translation>
+    </message>
+    <message>
+        <source>New Book</source>
+        <translation>دفتر جدید</translation>
+    </message>
+    <message>
+        <source>if you want to add a sub-book category, please tap on the below button.</source>
+        <translation>در صورتی که میخواهید در این زیرشاخه، دفتر دیگری اضافه کنید، کلید زیر را لمس کنید.</translation>
+    </message>
+    <message>
+        <source>To buy premium account click on below button</source>
+        <translation>برای خرید اکانت حرفه‌ای روی دکمه زیر کلیک کنید</translation>
+    </message>
+    <message>
+        <source>Premium Account</source>
+        <translation>اکانت حرفه‌ای</translation>
+    </message>
+    <message>
+        <source>Don&apos;t show this message again</source>
+        <translation>عدم نمایش مجدد این پیغام</translation>
     </message>
 </context>
 <context>
@@ -1402,8 +1590,16 @@ It containts %2 items currently.</source>
         <translation>شاعرهای آفلاین نامحدود</translation>
     </message>
     <message>
+        <source>Unlimited Personal Poems</source>
+        <translation>شعر شخصی نامحدود</translation>
+    </message>
+    <message>
         <source>%1 Offline Poems</source>
         <translation>%1 شاعر آفلاین</translation>
+    </message>
+    <message>
+        <source>%1 Personal Poems</source>
+        <translation>%1 شعر شخصی</translation>
     </message>
 </context>
 <context>
@@ -1683,6 +1879,10 @@ It&apos;s experimental currently and Meikade technical team working on it. But i
         <source>Sticker saved on %1</source>
         <translation>استیکر در آدرس %1 ذخیره شد</translation>
     </message>
+    <message>
+        <source>Sticker saved to Gallery</source>
+        <translation>استیکر در گالری ذخیره شد</translation>
+    </message>
 </context>
 <context>
     <name>StickerModel</name>
@@ -1755,6 +1955,10 @@ It&apos;s experimental currently and Meikade technical team working on it. But i
     <message>
         <source>Items you want to sync with Meikade&apos;s cloud services:</source>
         <translation>مواردی که قصد همگام‌سازی آن‌ها را دارید، فعال کنید:</translation>
+    </message>
+    <message>
+        <source>My Poems</source>
+        <translation>گنجینه من</translation>
     </message>
     <message>
         <source>Favorites</source>

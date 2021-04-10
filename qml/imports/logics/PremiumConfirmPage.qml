@@ -12,7 +12,7 @@ import micros 1.0
 PremiumConfirmView {
     id: home
     width: Viewport.viewport.width
-    height: 450 * Devices.density
+    height: 480 * Devices.density
 
     busyIndicator.running: pkgReq.refreshing
 
@@ -76,17 +76,22 @@ PremiumConfirmView {
             var lists_limits = 0;
             var notes_limits = 0;
             var offline_limits = 0;
+            var mypoems_limits = 0;
 
             try {
                 extra = paysModel.get(intervalPayCombo.currentIndex).extra;
                 lists_limits = extra.lists_limits;
                 notes_limits = extra.notes_limits;
                 offline_limits = extra.offline_limits;
+                mypoems_limits = extra.mypoems_limits;
             } catch (e) {
                 return extra;
             }
 
             return [
+                {
+                    title: GTranslations.translate( offline_limits === -1? qsTr("Unlimited Personal Poems") : qsTr("%1 Personal Poems").arg(mypoems_limits))
+                },
                 {
                     title: GTranslations.translate( notes_limits === -1? qsTr("Unlimited Notes") : qsTr("%1 Notes").arg(notes_limits))
                 },

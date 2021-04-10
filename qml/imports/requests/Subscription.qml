@@ -11,6 +11,7 @@ AsemanObject {
     readonly property int notesLimits: activeSubscription && Bootstrap.subscription? currentPackage.package.extra.notes_limits : -1
     readonly property int listsLimits: activeSubscription && Bootstrap.subscription? currentPackage.package.extra.lists_limits : -1
     readonly property int offlineLimits: activeSubscription && Bootstrap.subscription? currentPackage.package.extra.offline_limits : -1
+    readonly property int mypoemsLimits: activeSubscription && Bootstrap.subscription? currentPackage.package.extra.mypoems_limits : -1
 
     readonly property int premium:  premiumDays > 0
     readonly property int premiumDays: {
@@ -50,7 +51,8 @@ AsemanObject {
                         color: "#008fdc",
                         lists_limits: 3,
                         notes_limits: 5,
-                        offline_limits: -1
+                        offline_limits: -1,
+                        mypoems_limits: 3
                     }
                 },
                 starts_at: "1990-11-21T16:40:59+03:30",

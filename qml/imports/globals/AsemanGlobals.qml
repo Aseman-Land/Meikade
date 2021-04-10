@@ -9,8 +9,17 @@ import globals 1.0
 AsemanObject {
     readonly property string cachePath: AsemanApp.homePath + "/cache"
 
+    property bool testHomeDisable: false
+    property bool testSearchDisable: false
+    property bool testMyMeikadeDisable: false
+    property bool testIntroDisable: false
+    property bool testPoetImagesDisable: false
+    property bool testHeaderImagesDisable: false
+    property bool testLogoDisable: false
+
     property alias settings: _settings
     property alias disablePremiumListsWarn: _settings.disablePremiumListsWarn
+    property alias disablePremiumMyBooksWarn: _settings.disablePremiumMyBooksWarn
     property alias disablePremiumNotesWarn: _settings.disablePremiumNotesWarn
     property alias disablePremiumOfflinesWarn: _settings.disablePremiumOfflinesWarn
     property alias languageInited: _settings.languageInited
@@ -32,6 +41,7 @@ AsemanObject {
 
     property alias lastSync: _sync.lastSync
     property alias syncFavorites: _sync.syncFavorites
+    property alias syncMyPoems: _sync.syncMyPoems
     property alias syncNotes: _sync.syncNotes
     property alias syncViews: _sync.syncViews
     property alias syncTopPoets: _sync.syncTopPoets
@@ -48,9 +58,11 @@ AsemanObject {
 
         if (accessToken.length) {
             lastSync = "";
+            syncMyPoems = false;
             syncFavorites = false;
             syncViews = false;
             syncTopPoets = false;
+            syncNotes = false;
         }
     }
 
@@ -69,6 +81,7 @@ AsemanObject {
         property bool disablePremiumListsWarn: false
         property bool disablePremiumNotesWarn: false
         property bool disablePremiumOfflinesWarn: false
+        property bool disablePremiumMyBooksWarn: false
 
         property bool languageInited: false
         property string language: "fa"
@@ -113,6 +126,7 @@ AsemanObject {
         property bool syncNotes: false
         property bool syncViews: false
         property bool syncTopPoets: false
+        property bool syncMyPoems: false
     }
 }
 

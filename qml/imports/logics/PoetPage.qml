@@ -26,7 +26,7 @@ PoetView {
     property alias image: loader.image
 
     profileLabel.text: loader.name
-    avatar.source: loader.image
+    avatar.source: AsemanGlobals.testPoetImagesDisable? "" : loader.image
 
     AsemanListModel {
         id: navigModel
@@ -94,10 +94,16 @@ PoetView {
         model: loader.booksModel
     }
 
+    PointMapListener {
+        id: listener
+        source: dis
+        dest: Viewport.viewport
+    }
+
     Component {
         id: menuComponent
         MenuView {
-            x: LayoutMirroring.enabled? 30 * Devices.density : parent.width - 30 * Devices.density - width
+            x: listener.result.x + (LayoutMirroring.enabled? 30 * Devices.density : dis.width - 30 * Devices.density - width)
             y: 40 * Devices.density + Devices.statusBarHeight
             width: 220 * Devices.density
             ViewportType.transformOrigin: Qt.point((LayoutMirroring.enabled? -20 * Devices.density : width + 20 * Devices.density), -20 * Devices.density)

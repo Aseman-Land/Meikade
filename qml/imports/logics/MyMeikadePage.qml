@@ -47,27 +47,15 @@ MyMeikadeView {
     }
 
     function refreshDiaries() {
-        var monthList = diaryQuery.getDiaries(Tools.dateFromSec(Tools.dateToSec(new Date) - (30 * 24 * 3600)));
-
-        var sum = 0;
-        monthList.forEach(function(m){
-            sum += (m.value * 1)
-        })
-
-        dailyDiary.numberLabel.text = Tools.trNums(Math.floor(monthList.length / 3) / 10);
-        weeklyDiary.numberLabel.text = Tools.trNums(Math.floor(sum / 7 / 36) / 100);
-        favesDiary.numberLabel.text = Tools.trNums(diaryQuery.getFavedPoets().length);
+        ActivityManager.reload();
+        dailyDiary.numberLabel.text = Tools.trNums(ActivityManager.daily);
+        weeklyDiary.numberLabel.text = Tools.trNums(ActivityManager.weekly);
+        favesDiary.numberLabel.text = Tools.trNums(ActivityManager.faves);
     }
 
     onVisibleChanged: {
         if (visible)
             refreshDiaries();
-    }
-
-    UserActions {
-        id: diaryQuery
-        declined: 0
-        synced: 0
     }
 
     Component {

@@ -15,6 +15,7 @@ Page {
     height: Constants.height
     property alias syncDateLabel: syncDateLabel
     property alias syncTimeLabel: syncTimeLabel
+    property alias mypoemsSwitch: mypoemsSwitch
     property alias syncListsSwitch: syncListsSwitch
     property alias syncNotesSwitch: syncNotesSwitch
     property alias syncPoemsSwitch: syncPoemsSwitch
@@ -122,6 +123,22 @@ Page {
                         text: qsTr("Items you want to sync with Meikade's cloud services:")
                               + Translations.refresher
                         font.pixelSize: 9 * Devices.fontDensity
+                    }
+
+                    RowLayout {
+                        id: mypoemsRow
+                        spacing: 0
+
+                        Label {
+                            Layout.fillWidth: true
+                            horizontalAlignment: Text.AlignLeft
+                            text: qsTr("My Poems") + Translations.refresher
+                            font.pixelSize: 9 * Devices.fontDensity
+                        }
+
+                        Switch {
+                            id: mypoemsSwitch
+                        }
                     }
 
                     RowLayout {

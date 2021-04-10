@@ -9,6 +9,8 @@ import QtQuick.Controls.IOSStyle 2.0
 import globals 1.0
 import micros 1.0
 import models 1.0
+import requests 1.0
+import queries 1.0
 
 Item {
     id: booksList
@@ -24,9 +26,19 @@ Item {
     property alias avatarBtn: avatarBtn
     property alias progressBar: progressBar
 
+    property string premiumMsg
+
+    property bool readWriteMode: false
+    property bool poemAddMode: true
+    property bool bookAddMode: true
+
     property real progress: progressBar.progress
 
+    property int poemsCount
+
     signal navigationClicked(string link, int index)
+    signal addBookRequest()
+    signal addPoemRequest()
 
     Rectangle {
         anchors.fill: parent
@@ -46,8 +58,173 @@ Item {
         anchors.bottom: parent.bottom
         anchors.left: parent.left
 
-        topMargin: 4 * Devices.density
-        bottomMargin: 4 * Devices.density + Devices.navigationBarHeight
+        topMargin: 12 * Devices.density
+
+        footer: Item {
+            width: listView.width
+            height: (readWriteMode? addColumn.height + 40 * Devices.density : 0) + 4 * Devices.density + Devices.navigationBarHeight
+
+            ColumnLayout {
+                id: addColumn
+                anchors.left: parent.left
+                anchors.right: parent.right
+                y: 20 * Devices.density
+                visible: readWriteMode
+                spacing: 4 * Devices.density
+
+                Label {
+                    Layout.fillWidth: true
+                    Layout.leftMargin: 20 * Devices.density
+                    Layout.rightMargin: 20 * Devices.density
+                    horizontalAlignment: Text.AlignHCenter
+                    font.pixelSize: 8 * Devices.fontDensity
+                    opacity: 0.8
+                    text: premiumMsg
+                    visible: premiumMsg.length && poemAddMode
+                    wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                    color: Subscription.mypoemsLimits > poemsCount? Colors.foreground : "#a00"
+
+                    Connections {
+                        onLinkActivated: Qt.openUrlExternally(link)
+                    }
+                }
+
+                Label {
+                    Layout.fillWidth: true
+                    Layout.leftMargin: 20 * Devices.density
+                    Layout.rightMargin: 20 * Devices.density
+                    horizontalAlignment: Text.AlignHCenter
+                    font.pixelSize: 8 * Devices.fontDensity
+                    text: qsTr("To buy premium account click on below button") + Translations.refresher
+                    visible: !addBtn.visible && premiumMsg.length && !AsemanGlobals.disablePremiumMyBooksWarn && Bootstrap.payment && Bootstrap.trusted && poemAddMode
+                    wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                }
+
+                ColumnLayout {
+                    Layout.alignment: Qt.AlignHCenter
+                    visible: !addBtn.visible && premiumMsg.length && !AsemanGlobals.disablePremiumMyBooksWarn && Bootstrap.payment && Bootstrap.trusted && poemAddMode
+                    spacing: 0
+
+                    RoundButton {
+                        id: premiumBtn
+                        Layout.alignment: Qt.AlignHCenter
+                        Layout.preferredWidth: listView.width * 0.5
+                        text: qsTr("Premium Account") + Translations.refresher
+                        font.pixelSize: 9 * Devices.fontDensity
+                        highlighted: true
+                        Material.accent: Subscription.premiumColor
+                        IOSStyle.accent: Subscription.premiumColor
+                        Material.elevation: 0
+
+                        Connections {
+                            target: premiumBtn
+                            onClicked: dis.premiumBuyRequest()
+                        }
+                    }
+
+                    RoundButton {
+                        id: premiumDisMisBtn
+                        Layout.alignment: Qt.AlignHCenter
+                        text: qsTr("Don't show this message again") + Translations.refresher
+                        font.underline: true
+                        font.pixelSize: 8 * Devices.fontDensity
+                        flat: true
+                        highlighted: true
+
+                        Connections {
+                            target: premiumDisMisBtn
+                            onClicked: AsemanGlobals.disablePremiumMyBooksWarn = true
+                        }
+                    }
+                }
+
+                Label {
+                    Layout.fillWidth: true
+                    horizontalAlignment: Text.AlignHCenter
+                    font.pixelSize: 8 * Devices.fontDensity
+                    text: qsTr("To add new poem please tap on the below button.") + Translations.refresher
+                    wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                    opacity: 0.7
+                    visible: addBtn.visible
+                }
+
+                RoundButton {
+                    id: addBtn
+                    Layout.alignment: Qt.AlignHCenter
+                    Layout.preferredWidth: addRow.width + 60 * Devices.density
+                    highlighted: true
+                    IOSStyle.accent: Colors.accent
+                    Material.accent: Colors.accent
+                    visible: poemAddMode && (Subscription.mypoemsLimits > poemsCount || premiumMsg.length == 0)
+
+                    Connections {
+                        onClicked: addPoemRequest()
+                    }
+
+                    RowLayout {
+                        id: addRow
+                        x: 30 * Devices.density
+                        anchors.verticalCenter: parent.verticalCenter
+
+                        Label {
+                            font.pixelSize: 12 * Devices.fontDensity
+                            font.family: MaterialIcons.family
+                            text: MaterialIcons.mdi_feather
+                            color: "#fff"
+                        }
+
+                        Label {
+                            text: qsTr("New Poem") + Translations.refresher
+                            font.pixelSize: 9 * Devices.fontDensity
+                            color: "#fff"
+                        }
+                    }
+                }
+
+                Label {
+                    visible: bookAddMode
+                    Layout.topMargin: poemAddMode? 20 * Devices.density : 0
+                    Layout.fillWidth: true
+                    horizontalAlignment: Text.AlignHCenter
+                    font.pixelSize: 8 * Devices.fontDensity
+                    text: qsTr("if you want to add a sub-book category, please tap on the below button.") + Translations.refresher
+                    wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                    opacity: 0.7
+                }
+
+                RoundButton {
+                    visible: bookAddMode
+                    Layout.alignment: Qt.AlignHCenter
+                    Layout.preferredWidth: addSubBookRow.width + 60 * Devices.density
+                    highlighted: true
+                    IOSStyle.accent: Colors.primary
+                    Material.accent: Colors.primary
+
+                    Connections {
+                        onClicked: addBookRequest()
+                    }
+
+                    RowLayout {
+                        id: addSubBookRow
+                        x: 30 * Devices.density
+                        anchors.verticalCenter: parent.verticalCenter
+
+                        Label {
+                            font.pixelSize: 12 * Devices.fontDensity
+                            font.family: MaterialIcons.family
+                            text: MaterialIcons.mdi_notebook
+                            color: "#fff"
+                        }
+
+                        Label {
+                            text: qsTr("New Book") + Translations.refresher
+                            font.pixelSize: 9 * Devices.fontDensity
+                            color: "#fff"
+                        }
+                    }
+                }
+            }
+        }
     }
 
     Header {
@@ -79,6 +256,7 @@ Item {
                     height: parent.height * 2
                     anchors.centerIn: parent
                     scale: 0.5
+                    visible: !AsemanGlobals.testPoetImagesDisable
 
                     Rectangle {
                         anchors.fill: parent

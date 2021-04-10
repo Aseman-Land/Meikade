@@ -87,6 +87,7 @@ PoemView {
     }
 
     Component.onCompleted: if (loader.poemId == 0) loader.random()
+    Component.onDestruction: if (menuObject) menuObject.ViewportType.open = false
 
     PoemLoaderModel {
         id: loader
@@ -285,10 +286,16 @@ PoemView {
         onLessRequest: loader.less()
     }
 
+    PointMapListener {
+        id: listener
+        source: dis
+        dest: Viewport.viewport
+    }
+
     Component {
         id: globalMenuComponent
         MenuView {
-            x: LayoutMirroring.enabled? 30 * Devices.density : parent.width - width - 30 * Devices.density
+            x: listener.result.x + (LayoutMirroring.enabled? 30 * Devices.density : dis.width - width - 30 * Devices.density)
             y: form.menuBtnPosition.y + 30 * Devices.density
             width: 220 * Devices.density
             ViewportType.transformOrigin: {
@@ -340,7 +347,7 @@ PoemView {
                     {
                         title: qsTr("Create Sticker"),
                         icon: "mdi_sticker",
-                        enabled: !Devices.isIOS
+                        enabled: true
                     },
                     {
                         title: qsTr("Share"),
@@ -499,7 +506,7 @@ PoemView {
                     {
                         title: qsTr("Create Sticker"),
                         icon: "mdi_sticker",
-                        enabled: !Devices.isIOS
+                        enabled: true,
                     },
                     {
                         title: qsTr("Share"),

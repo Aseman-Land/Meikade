@@ -1,4 +1,4 @@
-VERSION = 4.2.2
+VERSION = 4.4.0
 TARGET = Meikade
 
 QMAKE_TARGET_BUNDLE_PREFIX = com.meikade
@@ -9,3 +9,5 @@ include(translations/translations.pri)
 include(qml/qml.pri)
 include(cpp/cpp.pri)
 include(objective-c/objective-c.pri)
+
+ANDROID_ABIS = armeabi-v7a arm64-v8a x86 x86_64

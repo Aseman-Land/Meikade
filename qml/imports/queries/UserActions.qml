@@ -27,7 +27,8 @@ UserBaseQuery {
         TypeCatViewDate = 4,
         TypePoemViewDate = 5,
         TypeTopPoets = 6,
-        TypeListCreate = 7,
+        TypeItemBooksStart = 896999999,
+        TypeItemBooksEnd = 996999999,
         TypeItemViewDiaryStart = 997000000,
         TypeItemViewDiaryEnd = 999999999,
         TypeItemListsStart = 1000000000,
@@ -89,10 +90,52 @@ UserBaseQuery {
         return res;
     }
 
+    function getBooks() {
+        var list = select("", "(type < :typeEnd AND type > :typeStart) AND poetId = :poetId AND catId = :catId AND " +
+                          "poemId = :poemId AND verseId = :verseId AND declined = 0", "ORDER BY value",
+                          {typeEnd: UserActions.TypeItemBooksEnd, typeStart: UserActions.TypeItemBooksStart, poetId: poetId,
+                           catId: catId, poemId: poemId, verseId: verseId});
+        return list;
+    }
+
+    function getBooksItem(type) {
+        var list = select("", "type = :type AND declined = 0", "ORDER BY value",
+                          {"type": type});
+        return list;
+    }
+
+    function getMyPoemsCount() {
+        var list = select("", "(type < :typeEnd AND type > :typeStart) AND poemId = -1 AND declined = 0", "ORDER BY value",
+                          {"typeEnd": UserActions.TypeItemBooksEnd, "typeStart": UserActions.TypeItemBooksStart});
+        return list.length;
+    }
+
     function pushAction() {
         updatedAt = Tools.dateToSec(new Date);
         synced = 0;
         push();
+        GlobalSignals.syncRequest();
+    }
+
+    function deleteBookRecursively(type) {
+        if (type == 0 || !type)
+            return;
+
+        var list = select("", "(type < :typeEnd AND type > :typeStart) AND catId = -1 AND declined = 0", "ORDER BY value",
+                          {typeEnd: UserActions.TypeItemBooksEnd, typeStart: UserActions.TypeItemBooksStart, "catId": type});
+        list.forEach(function(l){ deleteBookRecursively(l.type) });
+
+        deleteBook(type);
+    }
+
+    function deleteBook(type) {
+        var binds = {
+            "declined": 1,
+            "synced": 0,
+            "type": type,
+            "updatedAt": Tools.dateToSec(new Date)
+        };
+        query("UPDATE actions SET declined=:declined, synced=:synced WHERE type=:type", binds);
         GlobalSignals.syncRequest();
     }
 }

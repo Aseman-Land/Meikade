@@ -32,7 +32,9 @@ MainView {
     MeikadeLoader {
         parent: form.homePage
         anchors.fill: parent
-        active: true
+        active: !AsemanGlobals.testHomeDisable
+        visible: form.currentIndex == 0
+        onVisibleChanged: if (visible && !AsemanGlobals.testHomeDisable) active = true
         sourceComponent: HomePage {
             anchors.fill: parent
         }
@@ -43,7 +45,7 @@ MainView {
         parent: form.searchPage
         anchors.fill: parent
         visible: form.currentIndex == 1
-        onVisibleChanged: if (visible) active = true
+        onVisibleChanged: if (visible && !AsemanGlobals.testSearchDisable) active = true
         sourceComponent: SearchPage {
             id: search
             anchors.fill: parent
@@ -60,7 +62,7 @@ MainView {
         parent: form.myMeikadePage
         anchors.fill: parent
         visible: form.currentIndex == 2
-        onVisibleChanged: if (visible) active = true
+        onVisibleChanged: if (visible && !AsemanGlobals.testMyMeikadeDisable) active = true
         sourceComponent: MyMeikadePage {
             anchors.fill: parent
         }
@@ -85,7 +87,7 @@ MainView {
 
     Loader {
         anchors.fill: parent
-        active: !AsemanGlobals.introDone
+        active: !AsemanGlobals.introDone && !AsemanGlobals.testIntroDisable
         z: 1000
         sourceComponent: IntroPage {
             anchors.fill: parent

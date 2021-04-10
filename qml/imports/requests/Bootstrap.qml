@@ -14,6 +14,7 @@ AsemanObject {
     property bool payment: false
     property bool aseman: false
     property bool fullyUnlocked: false
+    property bool trusted: false
 
     readonly property string paymentUnlockCode: try { return req.response.result.paymentUnlockCode; } catch (e) { return ""; }
 
@@ -22,6 +23,7 @@ AsemanObject {
     onPaymentChanged: write("payment", payment);
     onAsemanChanged: write("aseman", aseman);
     onFullyUnlockedChanged: write("fullyUnlocked", fullyUnlocked);
+    onTrustedChanged: write("trusted", trusted);
 
     Component.onCompleted: {
         read("initialized");
@@ -29,16 +31,18 @@ AsemanObject {
         read("payment");
         read("aseman");
         read("fullyUnlocked");
+        read("trusted");
     }
 
     BootstrapRequest {
         id: req
         onSuccessfull: {
-            try { bstrap.initialized = response.result.initialized } catch (e) {}
-            try { bstrap.subscription = response.result.subscription } catch (e) {}
-            try { bstrap.payment = response.result.payment } catch (e) {}
-            try { bstrap.aseman = response.result.aseman } catch (e) {}
-            try { bstrap.fullyUnlocked = response.result.fullyUnlocked } catch (e) {}
+            try { if (!bstrap.initialized) bstrap.initialized = response.result.initialized } catch (e) {}
+            try { if (!bstrap.subscription) bstrap.subscription = response.result.subscription } catch (e) {}
+            try { if (!bstrap.payment) bstrap.payment = response.result.payment } catch (e) {}
+            try { if (!bstrap.aseman) bstrap.aseman = response.result.aseman } catch (e) {}
+            try { if (!bstrap.fullyUnlocked) bstrap.fullyUnlocked = response.result.fullyUnlocked } catch (e) {}
+            try { if (!bstrap.trusted) bstrap.trusted = response.result.trusted } catch (e) {}
         }
     }
 

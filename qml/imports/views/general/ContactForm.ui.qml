@@ -72,7 +72,7 @@ Page {
                     font.pixelSize: 9 * Devices.fontDensity
                     horizontalAlignment: Text.AlignLeft
                     selectByMouse: true
-                    validator: RegExpValidator { regExp: /\w+/ }
+                    validator: RegExpValidator { regExp: /(\w|\s)+/ }
                     Layout.bottomMargin: 10 * Devices.density
                 }
 
@@ -151,6 +151,7 @@ Page {
                     Layout.fillWidth: true
                     font.pixelSize: 9 * Devices.fontDensity
                     highlighted: true
+                    enabled: messageField.length > 10
                     text: qsTr("Send") + Translations.refresher
                 }
             }

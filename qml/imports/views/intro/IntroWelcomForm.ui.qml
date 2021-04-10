@@ -22,7 +22,7 @@ Page {
         spacing: 6 * Devices.density
 
         Image {
-            source: "icons/meikade.png"
+            source: AsemanGlobals.testLogoDisable? "" : "icons/meikade.png"
             Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
             Layout.preferredWidth: 192 * Devices.density
             Layout.preferredHeight: 192 * Devices.density
