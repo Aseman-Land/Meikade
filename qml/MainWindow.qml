@@ -25,6 +25,17 @@ AsemanWindow {
     LayoutMirroring.enabled: GTranslations.textDirection === Qt.RightToLeft
     LayoutMirroring.childrenInherit: true
 
+    Component.onCompleted: restoreSize()
+    onWidthChanged: storeSize()
+    onHeightChanged: storeSize()
+
+    Timer {
+        id: initBlocker
+        interval: 500
+        repeat: false
+        running: true
+    }
+
     Viewport {
         id: viewport
         anchors.fill: parent
@@ -35,6 +46,8 @@ AsemanWindow {
             sourceComponent: MainPage {
                 anchors.fill: parent
             }
+
+            readonly property bool lightToolbar: mainLoader.item? mainLoader.item.lightToolbar : false
         }
         Component.onCompleted: ViewController.viewport = viewport
     }
@@ -44,5 +57,25 @@ AsemanWindow {
     Connections {
         target: GlobalSignals
         onSnackbarRequest: snackbar.open(text)
+    }
+
+    function restoreSize() {
+        if (!Devices.isDesktop)
+            return;
+
+        width = AsemanGlobals.width
+        height = AsemanGlobals.height
+        x = screen.width/2 - AsemanGlobals.width/2
+        y = screen.height/2 - AsemanGlobals.height/2
+    }
+
+    function storeSize() {
+        if (!Devices.isDesktop)
+            return;
+        if (initBlocker.running)
+            return;
+
+        AsemanGlobals.width = width
+        AsemanGlobals.height = height
     }
 }

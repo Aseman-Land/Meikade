@@ -15,6 +15,8 @@ Page {
     width: Constants.width
     height: Constants.height
 
+    readonly property bool lightToolbar: Colors.lightHeader
+
     property alias poemText: poemText.text
     property alias closeBtn: closeBtn
     property alias confirmBtn: confirmBtn
@@ -190,7 +192,8 @@ Page {
         anchors.right: parent.right
         anchors.left: parent.left
         text: qsTr("Edit Note") + Translations.refresher
-        color: Colors.header
+        color: Colors.headerColor
+        light: !Colors.lightHeader
         shadow: Devices.isAndroid
 
         RowLayout {

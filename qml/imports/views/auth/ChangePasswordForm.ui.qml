@@ -13,6 +13,8 @@ Page {
     width: Constants.width
     height: Constants.height
 
+    readonly property bool lightToolbar: Colors.lightHeader
+
     property alias cancelBtn: cancelBtn
     property alias headerItem: headerItem
     property alias sendBtn: sendBtn
@@ -95,7 +97,8 @@ Page {
         anchors.left: parent.left
         anchors.right: parent.right
         text: qsTr("Change Password") + Translations.refresher
-        color: Colors.header
+        color: Colors.headerColor
+        light: !Colors.lightHeader
         shadow: Devices.isAndroid
 
         RowLayout {

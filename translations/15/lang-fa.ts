@@ -1774,6 +1774,10 @@ It&apos;s experimental currently and Meikade technical team working on it. But i
         <source>Show Phrase Number</source>
         <translation>نمایش شماره فال</translation>
     </message>
+    <message>
+        <source>Mixed Header</source>
+        <translation>نوار ابزار بی‌رنگ</translation>
+    </message>
 </context>
 <context>
     <name>SettingsPage</name>

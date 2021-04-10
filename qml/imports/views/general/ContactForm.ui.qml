@@ -15,6 +15,8 @@ Page {
     width: Constants.width
     height: Constants.height
 
+    readonly property bool lightToolbar: Colors.lightHeader
+
     property alias headerItem: headerItem
     property alias closeBtn: closeBtn
     property alias nameField: nameField
@@ -172,7 +174,8 @@ Page {
         anchors.right: parent.right
         anchors.left: parent.left
         text: qsTr("Contact us") + Translations.refresher
-        color: Colors.primary
+        color: Colors.headerColor
+        light: !Colors.lightHeader
         shadow: Devices.isAndroid
 
         RowLayout {

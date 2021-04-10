@@ -22,6 +22,7 @@ Item {
     property alias languageCombo: languageCombo
     property alias themeCombo: themeCombo
     property alias phraseSwitch: phraseSwitch
+    property alias mixedHeaderSwitch: mixedHeaderSwitch
     property alias phraseNumberSwitch: phraseNumberSwitch
     property alias fontSizeSlider: fontSizeSlider
     property alias accountStateLabel: accountStateLabel
@@ -162,6 +163,19 @@ Item {
                             IOSStyle.theme: AsemanGlobals.iosTheme
                             Material.theme: AsemanGlobals.androidTheme
                         }
+                    }
+                }
+
+                RowLayout {
+                    Label {
+                        Layout.fillWidth: true
+                        font.pixelSize: 9 * Devices.fontDensity
+                        horizontalAlignment: Text.AlignLeft
+                        text: qsTr("Mixed Header") + Translations.refresher
+                    }
+
+                    Switch {
+                        id: mixedHeaderSwitch
                     }
                 }
 
