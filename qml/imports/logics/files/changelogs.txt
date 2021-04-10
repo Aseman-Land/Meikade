@@ -1,17 +1,26 @@
-Meikade 4.2.4 changelogs:
+### Meikade 4.3.0 changelogs
+- Personal Poems, You can store your personal poems in My Meikade
+- Tablet mode for Landscape screens
+- UI improvement on the iOS devices
+- Improve on the search functions
+- Improve sticker export
+- Many other bugfix and improvements
+<br /><br />
+### Meikade 4.2.4 changelogs
 - Some bugfix and improvements
-
-Meikade 4.2 changelogs:
+<br /><br />
+### Meikade 4.2 changelogs
 - iOS Support
 - English Poems
 - More Advances Search
 - Notes
 - Sync Notes
 - Improvement and Bugfixes
-
-Meikade 4.1 changelogs:
+<br /><br />
+### Meikade 4.1 changelogs
 - Lists
 - Sync Lists
 - Search between poets
 - Search in offline only
 - Font size settings
+<br /><br />

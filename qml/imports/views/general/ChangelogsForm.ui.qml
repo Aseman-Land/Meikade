@@ -44,7 +44,18 @@ Page {
                 anchors.top: parent.top
                 anchors.topMargin: 10 * Devices.density
                 anchors.margins: 10 * Devices.density
-                spacing: 0
+                spacing: 20 * Devices.density
+
+                Image {
+                    Layout.topMargin: 20 * Devices.density
+                    Layout.fillWidth: true
+                    Layout.preferredHeight: 128 * Devices.density
+                    horizontalAlignment: Image.AlignHCenter
+                    source: "../home/icons/meikade.png"
+                    sourceSize.width: 140 * Devices.density
+                    sourceSize.height: 140 * Devices.density
+                    fillMode: Image.PreserveAspectFit
+                }
 
                 Label {
                     id: textLabel
@@ -53,6 +64,8 @@ Page {
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                     horizontalAlignment: Text.AlignLeft
                     Layout.bottomMargin: 10 * Devices.density
+                    textFormat: Text.MarkdownText
+                    lineHeight: 1.2
                 }
             }
         }

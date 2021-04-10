@@ -79,11 +79,11 @@ MainView {
             return;
         if (!AsemanGlobals.introDone)
             return;
-        if (AsemanGlobals.lastChangelogs >= 420)
+        if (AsemanGlobals.lastChangelogs >= 430)
             return;
 
         Tools.jsDelayCall(1000, function(){ Viewport.controller.trigger("float:/changelogs") });
-        AsemanGlobals.lastChangelogs = 420;
+        AsemanGlobals.lastChangelogs = 430;
     }
 
     Loader {
