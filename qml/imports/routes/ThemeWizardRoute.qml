@@ -7,6 +7,6 @@ import globals 1.0
 ThemeWizardPage {
     width: Viewport.viewport.width
     height: 480 * Devices.density
-    ViewportType.maximumWidth: Viewport.viewport.width > Viewport.viewport.height? Viewport.viewport.height * 3 / 5 : 0
+    ViewportType.maximumWidth: Viewport.viewport.width > Viewport.viewport.height && !Devices.isMobile? Viewport.viewport.height * 3 / 5 : 0
     ViewportType.touchToClose: true
 }

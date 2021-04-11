@@ -11,7 +11,7 @@ SearchView {
     id: home
 
     property int poetId
-    readonly property real tabletWidth: Viewport.viewport.width > Viewport.viewport.height? Viewport.viewport.height * 3 / 5 : 0
+    readonly property real tabletWidth: Viewport.viewport.width > Viewport.viewport.height && !Devices.isMobile? Viewport.viewport.height * 3 / 5 : 0
 
     keywordField.onTextChanged: {
         if (Bootstrap.paymentUnlockCode.length && keywordField.text == Bootstrap.paymentUnlockCode) {
