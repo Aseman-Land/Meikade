@@ -114,8 +114,8 @@ Page {
                 highlighted: true
                 radius: 6 * Devices.density
                 font.pixelSize: 8 * Devices.fontDensity
-                IOSStyle.accent: Qt.darker(Colors.header, 1.3)
-                Material.accent: Qt.darker(Colors.header, 1.3)
+                IOSStyle.accent: Qt.darker(Colors.primary, 1.3)
+                Material.accent: Qt.darker(Colors.primary, 1.3)
                 Material.theme: Material.Dark
                 Material.elevation: 0
             }

@@ -1,5 +1,6 @@
 QT += quick qml quickcontrols2 asemancore network widgets
 CONFIG += c++11
+QTPLUGIN -= qsqlmysql
 
 qtHaveModule(sql): QT += sql
 qtHaveModule(webview): QT += webview
@@ -16,10 +17,11 @@ SOURCES += \
     $$PWD/old/stickermodel.cpp \
     $$PWD/old/stickerwriter.cpp \
     $$PWD/main.cpp \
-    $$PWD/meikadeofflinemanager.cpp
+    $$PWD/meikadeofflinemanager.cpp \
+    $$PWD/meikadetools.cpp
 
 HEADERS += \
     $$PWD/old/stickermodel.h \
     $$PWD/old/stickerwriter.h \
-    $$PWD/meikadeofflinemanager.h
-
+    $$PWD/meikadeofflinemanager.h \ \
+    $$PWD/meikadetools.h

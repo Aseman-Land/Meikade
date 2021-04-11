@@ -17,6 +17,7 @@
 */
 
 #include "meikadeofflinemanager.h"
+#include "meikadetools.h"
 
 #include "old/stickermodel.h"
 #include "old/stickerwriter.h"
@@ -33,6 +34,11 @@
 #ifdef QT_WEBVIEW_LIB
 #include <QtWebView>
 #endif
+
+static QObject *create_meikadetoole_singleton(QQmlEngine *, QJSEngine *)
+{
+    return new MeikadeTools;
+}
 
 int main(int argc, char *argv[])
 {
@@ -73,6 +79,7 @@ int main(int argc, char *argv[])
     qmlRegisterType<MeikadeOfflineItemGlobal>("Meikade", 1, 0, "MeikadeOfflineItemGlobal");
     qmlRegisterType<StickerModel>("Meikade", 1, 0, "StickerModel");
     qmlRegisterType<StickerWriter>("Meikade", 1, 0, "StickerWriter");
+    qmlRegisterSingletonType<MeikadeTools>("Meikade", 1, 0, "MeikadeTools", create_meikadetoole_singleton);
 
 #ifdef QT_WEBVIEW_LIB
     QtWebView::initialize();
@@ -95,12 +102,6 @@ int main(int argc, char *argv[])
             QCoreApplication::exit(-1);
     }, Qt::QueuedConnection);
     engine.load(url);
-
-#ifdef Q_OS_MACX
-    QTimer::singleShot(100, [](){
-        MacManager::removeTitlebarFromWindow();
-    });
-#endif
 
     return app.exec();
 }

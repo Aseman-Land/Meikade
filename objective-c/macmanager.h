@@ -8,6 +8,6 @@
 class MacManager
 {
 public:
-    static void removeTitlebarFromWindow(long winId = -1);
+    static void removeTitlebarFromWindow(double r, double g, double b);
 };
 #endif // MACMANAGER_H

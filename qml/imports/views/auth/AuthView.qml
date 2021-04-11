@@ -41,6 +41,7 @@ Page {
     HeaderMenuButton {
         ratio: 1
         visible: _viewport.count
+        buttonColor: Colors.headerTextColor
         onClicked: _viewport.closeLast()
     }
 

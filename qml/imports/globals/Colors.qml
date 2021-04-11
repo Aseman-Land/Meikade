@@ -4,6 +4,7 @@ import QtQuick 2.10
 import QtQuick.Controls.Material 2.0
 import QtQuick.Controls.IOSStyle 2.0
 import AsemanQml.Base 2.0
+import Meikade 1.0
 
 QtObject {
     IOSStyle.theme: AsemanGlobals.iosTheme
@@ -31,4 +32,7 @@ QtObject {
 
     readonly property color lightBackground: Qt.darker(background, (androidStyle? (Material.theme == Material.Dark? 0.9 : 0.9) : (IOSStyle.theme == IOSStyle.Dark? 0.9 : 0.9)))
     readonly property color deepBackground: Qt.darker(background, (androidStyle? (Material.theme == Material.Dark? 1.4 : 1.05) : (IOSStyle.theme == IOSStyle.Dark? 1.4 : 1.05)))
+
+    Component.onCompleted: MeikadeTools.setupWindowColor(headerColor)
+    onHeaderColorChanged: MeikadeTools.setupWindowColor(headerColor)
 }

@@ -1,14 +1,11 @@
 #include "macmanager.h"
 #include <Cocoa/Cocoa.h>
 
-void MacManager::removeTitlebarFromWindow(long winId)
+void MacManager::removeTitlebarFromWindow(double r, double g, double b)
 {
-    if(winId == -1)
-    {
-        QWindowList windows = QGuiApplication::allWindows();
-        QWindow* win = windows.first();
-        winId = win->winId();
-    }
+    QWindowList windows = QGuiApplication::allWindows();
+    QWindow* win = windows.first();
+    long winId = win->winId();
 
     NSView *nativeView = reinterpret_cast<NSView *>(winId);
     NSWindow* nativeWindow = [nativeView window];
@@ -16,9 +13,9 @@ void MacManager::removeTitlebarFromWindow(long winId)
     nativeWindow.titlebarAppearsTransparent=YES;
     nativeWindow.titleVisibility = NSWindowTitleHidden;
 
-    CGFloat rFloat = 0.553;
-    CGFloat gFloat = 0.059;
-    CGFloat bFloat = 0.012;
+    CGFloat rFloat = r;
+    CGFloat gFloat = g;
+    CGFloat bFloat = b;
 
     NSColor *myColor = [NSColor colorWithRed:rFloat green:gFloat blue:bFloat alpha:1.0f];
     nativeWindow.backgroundColor = myColor;
