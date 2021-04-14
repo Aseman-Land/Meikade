@@ -22,9 +22,9 @@ import AsemanQml.Controls 2.0
 
 AsemanApplication {
     id: app
-    applicationName: "Meikade"
+    applicationName: "MeikadeClassic"
     applicationAbout: "Persian Poetry App"
-    applicationDisplayName: "Meikade"
+    applicationDisplayName: "Meikade Classic"
     applicationVersion: "3.6.3"
     applicationId: "7e861c79-2b50-427b-93b6-4591b54eb821"
     organizationDomain: "NileGroup"
