@@ -5,6 +5,7 @@ import QtQuick.Controls.Material 2.0
 import QtQuick.Controls.IOSStyle 2.0
 import QtQuick.Layouts 1.3
 import AsemanQml.Base 2.0
+import QtGraphicalEffects 1.0
 
 AbstractDelegate {
     id: delItem
@@ -24,6 +25,28 @@ AbstractDelegate {
         id: background
         anchors.fill: parent
         color: "#18f"
+
+        FastBlur {
+            id: blurItem
+            height: parent.height
+            width: height
+            anchors.right: parent.right
+            source: image
+            radius: 32
+            opacity: 0.7
+            cached: true
+        }
+
+        Rectangle {
+            width: parent.height
+            height: parent.width
+            anchors.centerIn: parent
+            rotation: LayoutMirroring.enabled? -90 : 90
+            gradient: Gradient {
+                GradientStop { position: 0.0; color: "transparent" }
+                GradientStop { position: blurItem.width / background.width; color: background.color }
+            }
+        }
     }
 
     ColumnLayout {

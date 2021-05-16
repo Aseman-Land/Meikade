@@ -32,15 +32,16 @@ Item {
     Component.onCompleted: if (moreHint) moreRequest();
 
 //    ShadowRectangle {
-//        anchors.fill: dswitch
+//        anchors.fill: dswitchLoader
 //        anchors.margins: -30
 //        shadowRadius: 32
 //        shadowOpacity: 0.3
 //        radius: Constants.radius
-//        visible: dswitch.current == 0
+//        visible: dswitchLoader.item && dswitchLoader.item.current == 0
 //    }
 
     Loader {
+        id: dswitchLoader
         asynchronous: Devices.isAndroid
         anchors.fill: parent
         sourceComponent: DelegateSwitch {
@@ -49,14 +50,38 @@ Item {
 
             Component {
                 NormalDelegate {
+                    id: norm_del
                     anchors.fill: parent
                     title.text: GTranslations.translate(delg.displayTitle)
-                    title.color: foregroundColor
+                    title.color: "#fff"
                     subtitle.text: GTranslations.translate(delg.subtitle)
-                    subtitle.color: foregroundColor
+                    subtitle.color: "#fff"
                     image.source: AsemanGlobals.testPoetImagesDisable? "" : (delg.image.length? delg.image : Constants.thumbsBaseUrl + poetId + ".png")
                     background.color: delg.color
                     button.onClicked: delg.clicked()
+
+                    image.onCachedSourceChanged: loadColors()
+                    Component.onCompleted: loadColors()
+
+                    function loadColors() {
+//                        return;
+                        if ((image.cachedSource + "").length == 0)
+                            return;
+                        var color = Colors.getAnalizedColor(image.cachedSource);
+                        if (color == undefined)
+                            analizer.source = image.cachedSource
+                        else
+                            background.color = color;
+                    }
+
+                    ImageColorAnalizor {
+                        id: analizer
+                        method: ImageColorAnalizor.Normal
+                        onColorChanged: {
+                            norm_del.background.color = color;
+                            Colors.setAnalizedColor(norm_del.image.cachedSource, color);
+                        }
+                    }
                 }
             }
             Component {
