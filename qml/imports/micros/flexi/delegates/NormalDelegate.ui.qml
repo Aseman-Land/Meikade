@@ -1,5 +1,6 @@
 import QtQuick 2.12
 import globals 1.0
+import micros 1.0
 import QtQuick.Controls 2.0
 import QtQuick.Controls.Material 2.0
 import QtQuick.Controls.IOSStyle 2.0
@@ -20,6 +21,7 @@ AbstractDelegate {
 
     Rectangle {
         anchors.fill: parent
+        anchors.margins: 0.5
         color: Colors.primary
         radius: delItem.radius
     }
@@ -95,21 +97,18 @@ AbstractDelegate {
                 height: 42 * Devices.density
                 width: 42 * Devices.density
 
-                CachedImage {
+                ImageDownloader {
                     id: cachedImage
+                }
+
+                Image {
+                    id: image
+                    anchors.fill: parent
                     width: parent.width
                     height: parent.height
                     anchors.centerIn: parent
                     sourceSize.width: 100 * Devices.density
                     sourceSize.height: 100 * Devices.density
-                    fillMode: Image.PreserveAspectCrop
-                    asynchronous: true
-                    visible: false
-                }
-
-                Image {
-                    id: image
-                    anchors.fill: cachedImage
                     fillMode: Image.PreserveAspectCrop
                     asynchronous: true
                 }

@@ -24,19 +24,18 @@ DelegateDataAnalizer::DelegateDataAnalizer(QObject *parent)
     , mBlur(0)
     , mColorAnalizer(false)
 {
-    mColorAnalizerObj = new QAsemanImageColorAnalizor(this);
+    mColorAnalizerObj = Q_NULLPTR;
 
     mReloadImageTimer = new QTimer(this);
-    mReloadImageTimer->setInterval(100);
+    mReloadImageTimer->setInterval(10);
     mReloadImageTimer->setSingleShot(true);
 
     mReloadColorTimer = new QTimer(this);
-    mReloadColorTimer->setInterval(100);
+    mReloadColorTimer->setInterval(10);
     mReloadColorTimer->setSingleShot(true);
 
     connect(mReloadImageTimer, &QTimer::timeout, this, &DelegateDataAnalizer::reload_image);
     connect(mReloadColorTimer, &QTimer::timeout, this, &DelegateDataAnalizer::reload_color);
-    connect(mColorAnalizerObj, &QAsemanImageColorAnalizor::colorChanged, this, &DelegateDataAnalizer::color_updated);
 }
 
 DelegateDataAnalizer::~DelegateDataAnalizer()
@@ -70,8 +69,6 @@ void DelegateDataAnalizer::setCachePath(const QString &cachePath)
         return;
 
     mCachePath = cachePath;
-    QDir().mkpath(cachePath);
-    auto list = QDir(mCachePath).entryList({"analizer_cache_*"});
     reload();
     Q_EMIT cachePathChanged();
 }
@@ -154,6 +151,15 @@ void DelegateDataAnalizer::setImageResult(const QUrl &result)
 QColor DelegateDataAnalizer::color() const
 {
     return mColor.isValid()? mColor : mDefaultColor;
+}
+
+QColor DelegateDataAnalizer::textColor() const
+{
+    auto c = color();
+    if ((c.red() + c.green() + c.blue()) / 3 < 192)
+        return QColor("#ffffff");
+    else
+        return QColor("#333333");
 }
 
 void DelegateDataAnalizer::setColor(const QColor &color)
@@ -255,6 +261,12 @@ void DelegateDataAnalizer::reload_color()
             }
         }
     }
+    
+     if (!mColorAnalizerObj)
+     {
+         mColorAnalizerObj = new QAsemanImageColorAnalizor(this);
+         connect(mColorAnalizerObj, &QAsemanImageColorAnalizor::colorChanged, this, &DelegateDataAnalizer::color_updated);
+     }
     
     mColorAnalizerObj->setSource(mSource);
 }

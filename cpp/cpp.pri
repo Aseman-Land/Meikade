@@ -18,10 +18,12 @@ SOURCES += \
     $$PWD/old/stickerwriter.cpp \
     $$PWD/main.cpp \
     $$PWD/meikadeofflinemanager.cpp \
-    $$PWD/meikadetools.cpp
+    $$PWD/meikadetools.cpp \
+    $$PWD/delegatedataanalizer.cpp
 
 HEADERS += \
     $$PWD/old/stickermodel.h \
     $$PWD/old/stickerwriter.h \
     $$PWD/meikadeofflinemanager.h \ \
-    $$PWD/meikadetools.h
+    $$PWD/meikadetools.h \
+    $$PWD/delegatedataanalizer.h

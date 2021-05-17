@@ -330,5 +330,6 @@
         <file>imports/views/general/ThemeWizardFrame.ui.qml</file>
         <file>imports/models/ThemesModel.qml</file>
         <file>imports/views/general/themes/auto-red.png</file>
+        <file>imports/micros/ImageDownloader.qml</file>
     </qresource>
 </RCC>

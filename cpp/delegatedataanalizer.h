@@ -24,6 +24,7 @@ class DelegateDataAnalizer : public QObject
     Q_PROPERTY(bool colorAnalizer READ colorAnalizer WRITE setColorAnalizer NOTIFY colorAnalizerChanged)
     Q_PROPERTY(QUrl imageResult READ imageResult NOTIFY imageResultChanged)
     Q_PROPERTY(QColor color READ color NOTIFY colorChanged)
+    Q_PROPERTY(QColor textColor READ textColor NOTIFY colorChanged)
 
 public:
     DelegateDataAnalizer(QObject *parent = Q_NULLPTR);
@@ -34,6 +35,7 @@ public:
 
     QUrl imageResult() const;
     QColor color() const;
+    QColor textColor() const;
 
     qreal radius() const;
     void setRadius(const qreal &radius);

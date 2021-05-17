@@ -45,12 +45,12 @@ Item {
                     id: norm_del
                     anchors.fill: parent
                     title.text: GTranslations.translate(delg.displayTitle)
-                    title.color: "#fff"
+                    title.color: analizer.textColor
                     subtitle.text: GTranslations.translate(delg.subtitle)
-                    subtitle.color: "#fff"
+                    subtitle.color: analizer.textColor
                     cachedImage.source: AsemanGlobals.testPoetImagesDisable? "" : (delg.image.length? delg.image : Constants.thumbsBaseUrl + poetId + ".png")
                     image.source: analizer_small.imageResult
-                    background.color: analizer.color
+                    background.color: Colors.darkMode? Qt.darker(analizer.color, 1.5) : analizer.color
                     blurImage.source: analizer.imageResult
                     button.onClicked: delg.clicked()
 

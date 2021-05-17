@@ -1,5 +1,6 @@
 import QtQuick 2.12
 import globals 1.0
+import micros 1.0
 import QtQuick.Controls 2.3
 import AsemanQml.Base 2.0
 import QtQuick.Controls.Material 2.0
@@ -16,23 +17,18 @@ AbstractDelegate {
 
     Rectangle {
         anchors.fill: parent
+        anchors.margins: 0.5
         color: Colors.primary
         radius: adel.radius
     }
 
-    CachedImage {
+    ImageDownloader {
         id: cachedImage
-        anchors.fill: parent
-        fillMode: Image.PreserveAspectCrop
-        asynchronous: true
-        sourceSize.width: 120 * Devices.density
-        sourceSize.height: 120 * Devices.density
-        visible: false
     }
 
     Image {
         id: image
-        anchors.fill: cachedImage
+        anchors.fill: parent
         fillMode: Image.PreserveAspectCrop
         asynchronous: true
         sourceSize.width: 120 * Devices.density
