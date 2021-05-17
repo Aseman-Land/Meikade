@@ -37,6 +37,7 @@ AbstractDelegate {
             anchors.right: parent.right
             opacity: 0.7
             fillMode: Image.PreserveAspectCrop
+            asynchronous: true
         }
 
         Rectangle {

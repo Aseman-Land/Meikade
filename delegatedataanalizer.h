@@ -7,6 +7,7 @@
 #include <QTimer>
 #include <QImage>
 #include <QMutex>
+#include <QThreadPool>
 
 #include <QAsemanImageColorAnalizor>
 
@@ -92,6 +93,8 @@ private:
     bool mColorAnalizer;
 
     static QMutex mImageResultMutex;
+    static QThreadPool *mThreadPool;
+
     QUrl mImageResult;
     QColor mColor;
 

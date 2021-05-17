@@ -16,6 +16,7 @@
 #include <QGuiApplication>
 
 QMutex DelegateDataAnalizer::mImageResultMutex;
+QThreadPool *DelegateDataAnalizer::mThreadPool = Q_NULLPTR;
 
 DelegateDataAnalizer::DelegateDataAnalizer(QObject *parent)
     : QObject(parent)
@@ -70,6 +71,7 @@ void DelegateDataAnalizer::setCachePath(const QString &cachePath)
 
     mCachePath = cachePath;
     QDir().mkpath(cachePath);
+    auto list = QDir(mCachePath).entryList({"analizer_cache_*"});
     reload();
     Q_EMIT cachePathChanged();
 }
@@ -171,49 +173,25 @@ void DelegateDataAnalizer::reload()
     if (mBlur || mRadius)
     {
         mReloadImageTimer->stop();
-        try {
-            const auto image_key = getKey<QList<qreal>>(mSource, {mRadius, mBlur});
-            const auto image_path = mCachePath + "/" + image_key + ".png";
-            if (QFileInfo::exists(image_path))
-                setImageResult(QUrl::fromLocalFile(image_path));
-            else
-                throw false;
-        } catch(...) {
-            mReloadImageTimer->start();
-        }
+        mReloadImageTimer->start();
     }
 
     if (mColorAnalizer)
     {
         mReloadColorTimer->stop();
-        try {
-            const auto color_key = getKey(mSource, QString("color"));
-            const auto color_path = mCachePath + "/" + color_key + ".color";
-            if (QFileInfo::exists(color_path))
-            {
-                QFile f(color_path);
-                if (f.open(QFile::ReadOnly))
-                {
-                    QColor color = QString::fromUtf8( f.readAll().trimmed() );
-                    if (color.isValid())
-                        setColor(color);
-                    else
-                        throw false;
-                }
-                else
-                    throw false;
-            }
-            else
-                throw false;
-        } catch(...) {
-            mReloadColorTimer->start();
-        }
+        mReloadColorTimer->start();
     }
 }
 
 void DelegateDataAnalizer::reload_image()
 {
-    const auto image_key = getKey<QList<qreal>>(mSource, {mRadius, mBlur});
+    const auto image_key = getKey(mSource, QList<qint32>() << mRadius*(100) << mBlur*(100));
+    const auto image_path = mCachePath + "/" + image_key + ".png";
+    if (QFileInfo::exists(image_path))
+    {
+        setImageResult(QUrl::fromLocalFile(image_path));
+        return;
+    }
 
     class AnalizerRunnable: public QRunnable
     {
@@ -249,16 +227,35 @@ void DelegateDataAnalizer::reload_image()
     runnable->size = mSize * qGuiApp->devicePixelRatio();
     runnable->blur = mBlur;
     runnable->radius = mRadius * qGuiApp->devicePixelRatio();
-    runnable->image_path = mCachePath + "/" + image_key + ".png";
+    runnable->image_path = image_path;
     runnable->path = mSource.toLocalFile();
     runnable->dis = this;
     runnable->setAutoDelete(true);
 
-    QThreadPool::globalInstance()->start(runnable);
+    if (!mThreadPool)
+        mThreadPool = new QThreadPool();
+    
+    mThreadPool->start(runnable);
 }
 
 void DelegateDataAnalizer::reload_color()
 {
+    const auto color_key = getKey(mSource, QString("color"));
+    const auto color_path = mCachePath + "/" + color_key + ".color";
+    if (QFileInfo::exists(color_path))
+    {
+        QFile f(color_path);
+        if (f.open(QFile::ReadOnly))
+        {
+            QColor color = QString::fromUtf8( f.readAll().trimmed() );
+            if (color.isValid())
+            {
+                setColor(color);
+                return;
+            }
+        }
+    }
+    
     mColorAnalizerObj->setSource(mSource);
 }
 
@@ -299,7 +296,7 @@ QString DelegateDataAnalizer::getKey(const QUrl &source, T value)
 {
     QByteArray res;
     QDataStream stream(&res, QIODevice::WriteOnly);
-    stream << source;
+    stream << QFileInfo(source.toString()).fileName();
     stream << value;
 
     return "analizer_cache_" + QCryptographicHash::hash(res, QCryptographicHash::Md5).toHex();
