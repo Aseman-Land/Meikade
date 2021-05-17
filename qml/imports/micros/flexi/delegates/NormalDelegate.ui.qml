@@ -12,29 +12,31 @@ AbstractDelegate {
     width: 400
     height: 100 * Devices.density
     property alias subtitle: subtitle
+    property alias cachedImage: cachedImage
     property alias image: image
     property alias title: title
     property alias background: background
+    property alias blurImage: blurImage
 
     Rectangle {
         anchors.fill: parent
         color: Colors.primary
+        radius: delItem.radius
     }
 
     Rectangle {
         id: background
         anchors.fill: parent
         color: "#18f"
+        radius: delItem.radius
 
-        FastBlur {
-            id: blurItem
+        Image {
+            id: blurImage
             height: parent.height
             width: height
             anchors.right: parent.right
-            source: image
-            radius: 32
             opacity: 0.7
-            cached: true
+            fillMode: Image.PreserveAspectCrop
         }
 
         Rectangle {
@@ -42,9 +44,10 @@ AbstractDelegate {
             height: parent.width
             anchors.centerIn: parent
             rotation: LayoutMirroring.enabled? -90 : 90
+            radius: delItem.radius
             gradient: Gradient {
                 GradientStop { position: 0.0; color: "transparent" }
-                GradientStop { position: blurItem.width / background.width; color: background.color }
+                GradientStop { position: (blurImage.width - delItem.radius) / background.width; color: background.color }
             }
         }
     }
@@ -92,16 +95,22 @@ AbstractDelegate {
                 width: 42 * Devices.density
 
                 CachedImage {
-                    id: image
-                    width: parent.width * 2
-                    height: parent.height * 2
+                    id: cachedImage
+                    width: parent.width
+                    height: parent.height
                     anchors.centerIn: parent
-                    scale: 0.5
                     sourceSize.width: 100 * Devices.density
                     sourceSize.height: 100 * Devices.density
                     fillMode: Image.PreserveAspectCrop
                     asynchronous: true
-                    radius: delItem.radius
+                    visible: false
+                }
+
+                Image {
+                    id: image
+                    anchors.fill: cachedImage
+                    fillMode: Image.PreserveAspectCrop
+                    asynchronous: true
                 }
             }
         }

@@ -10,17 +10,29 @@ AbstractDelegate {
     width: Constants.width
     height: 100 * Devices.density
     property alias image: image
+    property alias cachedImage: cachedImage
     property alias title: title
     property alias background: background
 
     Rectangle {
         anchors.fill: parent
         color: Colors.primary
+        radius: adel.radius
     }
 
     CachedImage {
-        id: image
+        id: cachedImage
         anchors.fill: parent
+        fillMode: Image.PreserveAspectCrop
+        asynchronous: true
+        sourceSize.width: 120 * Devices.density
+        sourceSize.height: 120 * Devices.density
+        visible: false
+    }
+
+    Image {
+        id: image
+        anchors.fill: cachedImage
         fillMode: Image.PreserveAspectCrop
         asynchronous: true
         sourceSize.width: 120 * Devices.density
@@ -31,6 +43,7 @@ AbstractDelegate {
         id: background
         anchors.fill: parent
         color: "#18f"
+        radius: adel.radius
     }
 
     Label {

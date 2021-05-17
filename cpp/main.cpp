@@ -18,6 +18,7 @@
 
 #include "meikadeofflinemanager.h"
 #include "meikadetools.h"
+#include "delegatedataanalizer.h"
 
 #include "old/stickermodel.h"
 #include "old/stickerwriter.h"
@@ -79,6 +80,7 @@ int main(int argc, char *argv[])
     qmlRegisterType<MeikadeOfflineItemGlobal>("Meikade", 1, 0, "MeikadeOfflineItemGlobal");
     qmlRegisterType<StickerModel>("Meikade", 1, 0, "StickerModel");
     qmlRegisterType<StickerWriter>("Meikade", 1, 0, "StickerWriter");
+    qmlRegisterType<DelegateDataAnalizer>("Meikade", 1, 0, "DelegateDataAnalizer");
     qmlRegisterSingletonType<MeikadeTools>("Meikade", 1, 0, "MeikadeTools", create_meikadetoole_singleton);
 
 #ifdef QT_WEBVIEW_LIB

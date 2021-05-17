@@ -1,4 +1,4 @@
-QT += quick qml quickcontrols2 asemancore network widgets
+QT += quick qml quickcontrols2 asemancore network widgets asemangui
 CONFIG += c++11
 QTPLUGIN -= qsqlmysql
 

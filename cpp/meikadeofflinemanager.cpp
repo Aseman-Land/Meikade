@@ -164,7 +164,8 @@ bool MeikadeOfflineItem::installed() const
     QSqlDatabase db = QSqlDatabase::database(p->connectionName);
 
     QSqlQuery q(db);
-    q.prepare("SELECT state FROM offline WHERE poet_id = :poet_id AND cat_id = :cat_id AND state = 1");
+    q.prepare("SELECT state FROM offline INNER JOIN poet ON offline.poet_id = poet.id "
+              "WHERE offline.poet_id = :poet_id AND offline.cat_id = :cat_id AND state = 1");
     q.bindValue(":poet_id", p->poetId);
     q.bindValue(":cat_id", p->catId <= 0? 0 : p->catId);
     q.exec();

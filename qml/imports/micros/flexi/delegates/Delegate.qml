@@ -1,5 +1,6 @@
 import QtQuick 2.12
 import AsemanQml.Base 2.0
+import Meikade 1.0
 import globals 1.0
 
 Item {
@@ -31,15 +32,6 @@ Item {
 
     Component.onCompleted: if (moreHint) moreRequest();
 
-//    ShadowRectangle {
-//        anchors.fill: dswitchLoader
-//        anchors.margins: -30
-//        shadowRadius: 32
-//        shadowOpacity: 0.3
-//        radius: Constants.radius
-//        visible: dswitchLoader.item && dswitchLoader.item.current == 0
-//    }
-
     Loader {
         id: dswitchLoader
         asynchronous: Devices.isAndroid
@@ -56,46 +48,54 @@ Item {
                     title.color: "#fff"
                     subtitle.text: GTranslations.translate(delg.subtitle)
                     subtitle.color: "#fff"
-                    image.source: AsemanGlobals.testPoetImagesDisable? "" : (delg.image.length? delg.image : Constants.thumbsBaseUrl + poetId + ".png")
-                    background.color: delg.color
+                    cachedImage.source: AsemanGlobals.testPoetImagesDisable? "" : (delg.image.length? delg.image : Constants.thumbsBaseUrl + poetId + ".png")
+                    image.source: analizer_small.imageResult
+                    background.color: analizer.color
+                    blurImage.source: analizer.imageResult
                     button.onClicked: delg.clicked()
 
-                    image.onCachedSourceChanged: loadColors()
-                    Component.onCompleted: loadColors()
-
-                    function loadColors() {
-//                        return;
-                        if ((image.cachedSource + "").length == 0)
-                            return;
-                        var color = Colors.getAnalizedColor(image.cachedSource);
-                        if (color == undefined)
-                            analizer.source = image.cachedSource
-                        else
-                            background.color = color;
+                    DelegateDataAnalizer {
+                        id: analizer
+                        source: norm_del.cachedImage.cachedSource
+                        colorAnalizer: true
+                        defaultColor: delg.color
+                        blur: 32
+                        size: Qt.size(norm_del.height, norm_del.height)
+                        radius: norm_del.radius
+                        cachePath: AsemanGlobals.cachePath
                     }
 
-                    ImageColorAnalizor {
-                        id: analizer
-                        method: ImageColorAnalizor.Normal
-                        onColorChanged: {
-                            norm_del.background.color = color;
-                            Colors.setAnalizedColor(norm_del.image.cachedSource, color);
-                        }
+                    DelegateDataAnalizer {
+                        id: analizer_small
+                        source: norm_del.cachedImage.cachedSource
+                        size: Qt.size(norm_del.image.height, norm_del.image.height)
+                        radius: norm_del.radius / 2
+                        cachePath: AsemanGlobals.cachePath
                     }
                 }
             }
             Component {
                 FullBackgroundedDelegate {
+                    id: full_del
                     anchors.fill: parent
                     title.text: GTranslations.translate(delg.displayTitle)
                     title.color: foregroundColor
-                    image.source: delg.image
+                    cachedImage.source: delg.image
+                    image.source: analizer.imageResult
                     background.color: delg.color
                     button.onClicked: delg.clicked()
                     Component.onCompleted: {
                         if (!isVerse) {
                             title.horizontalAlignment = Text.AlignHCenter;
                         }
+                    }
+
+                    DelegateDataAnalizer {
+                        id: analizer
+                        source: full_del.cachedImage.cachedSource
+                        size: Qt.size(full_del.image.height, full_del.image.height)
+                        radius: full_del.radius
+                        cachePath: AsemanGlobals.cachePath
                     }
                 }
             }

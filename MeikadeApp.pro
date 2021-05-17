@@ -18,3 +18,9 @@ contains(ANDROID_TARGET_ARCH,) {
         arm64-v8a \
         x86_64
 }
+
+HEADERS += \
+    delegatedataanalizer.h
+
+SOURCES += \
+    delegatedataanalizer.cpp
