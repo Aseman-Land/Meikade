@@ -12,7 +12,7 @@ MainView {
     id: form
 
     readonly property bool firstPage: currentIndex == 0
-    readonly property bool lightToolbar: Colors.lightHeader && currentIndex != 2
+    readonly property bool lightToolbar: Colors.lightHeader && currentIndex != 3
 
     onFirstPageChanged: {
         if (firstPage)
@@ -43,9 +43,20 @@ MainView {
 
     MeikadeLoader {
         active: false
-        parent: form.searchPage
+        parent: form.explorePage
         anchors.fill: parent
         visible: form.currentIndex == 1
+        onVisibleChanged: if (visible && !AsemanGlobals.testHomeDisable) active = true
+        sourceComponent: ExplorePage {
+            anchors.fill: parent
+        }
+    }
+
+    MeikadeLoader {
+        active: false
+        parent: form.searchPage
+        anchors.fill: parent
+        visible: form.currentIndex == 2
         onVisibleChanged: if (visible && !AsemanGlobals.testSearchDisable) active = true
         sourceComponent: SearchPage {
             id: search
@@ -62,7 +73,7 @@ MainView {
         active: false
         parent: form.myMeikadePage
         anchors.fill: parent
-        visible: form.currentIndex == 2
+        visible: form.currentIndex == 3
         onVisibleChanged: if (visible && !AsemanGlobals.testMyMeikadeDisable) active = true
         sourceComponent: MyMeikadePage {
             anchors.fill: parent

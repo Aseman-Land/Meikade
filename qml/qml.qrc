@@ -331,5 +331,11 @@
         <file>imports/models/ThemesModel.qml</file>
         <file>imports/views/general/themes/auto-red.png</file>
         <file>imports/micros/ImageDownloader.qml</file>
+        <file>imports/views/explore/icons/meikade-abstract.png</file>
+        <file>imports/views/explore/icons/meikade.png</file>
+        <file>imports/views/explore/ExploreForm.ui.qml</file>
+        <file>imports/views/explore/ExploreView.qml</file>
+        <file>imports/models/ExploreModel.qml</file>
+        <file>imports/logics/ExplorePage.qml</file>
     </qresource>
 </RCC>

@@ -17,6 +17,7 @@ Page {
     property alias myMeikadePage: myMeikadePage
     property alias searchPage: searchPage
     property alias homePage: homePage
+    property alias explorePage: explorePage
     property alias footerListView: footerListView
     property alias swipeView: swipeView
 
@@ -40,13 +41,18 @@ Page {
             anchors.fill: parent
         }
         Item {
-            id: searchPage
+            id: explorePage
             visible: swipeView.currentIndex == 1
             anchors.fill: parent
         }
         Item {
-            id: myMeikadePage
+            id: searchPage
             visible: swipeView.currentIndex == 2
+            anchors.fill: parent
+        }
+        Item {
+            id: myMeikadePage
+            visible: swipeView.currentIndex == 3
             anchors.fill: parent
         }
     }
@@ -120,6 +126,12 @@ Page {
                         icon_o: "mdi_home_outline",
                         iconSizeRatio: 1.1
                     },
+                    {
+                       name: qsTr("Explore") + Translations.refresher,
+                       icon: "mdi_earth",
+                       icon_o: "mdi_earth",
+                       iconSizeRatio: 1.1
+                   },
                     {
                         name: qsTr("Search") + Translations.refresher,
                         icon: "mdi_magnify",
