@@ -595,6 +595,10 @@
         <translation>تراکم پیکسلی تصویر</translation>
     </message>
     <message>
+        <source>Meikade Version</source>
+        <translation>نسخه می‌کده</translation>
+    </message>
+    <message>
         <source>LCD Size</source>
         <translation>اندازه تصویر</translation>
     </message>
@@ -1077,6 +1081,10 @@ It containts %2 items currently.</source>
     <message>
         <source>Home</source>
         <translation>خانه</translation>
+    </message>
+    <message>
+        <source>Explore</source>
+        <translation>اکسپلور</translation>
     </message>
     <message>
         <source>Search</source>

@@ -108,7 +108,15 @@ Item {
                             anchors.centerIn: parent
                             font.family: MaterialIcons.family
                             font.pixelSize: 14 * Devices.fontDensity
-                            text: MaterialIcons.mdi_heart
+                            text: model.isVerse? MaterialIcons.mdi_text_short : MaterialIcons.mdi_format_columns
+
+                            Label {
+                                anchors.horizontalCenter: parent.left
+                                anchors.verticalCenter: parent.bottom
+                                font.family: MaterialIcons.family
+                                font.pixelSize: 7 * Devices.fontDensity
+                                text: MaterialIcons.mdi_heart
+                            }
                         }
                     }
 

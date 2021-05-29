@@ -5,12 +5,12 @@ import models 1.0
 import views 1.0
 import globals 1.0
 
-ExploreView {
+HomeView {
     id: home
 
     list {
         onLinkRequest: Viewport.controller.trigger(link, properties)
-        model: ExploreModel {
+        model: HomeModel {
             cachePath: AsemanGlobals.cachePath + "/home.cache"
         }
     }

@@ -59,9 +59,9 @@ Item {
                         source: norm_del.cachedImage.cachedSource
                         colorAnalizer: true
                         defaultColor: delg.color
-                        blur: 32
-                        size: Qt.size(norm_del.height, norm_del.height)
-                        radius: norm_del.radius
+//                        blur: 32
+//                        size: Qt.size(norm_del.height, norm_del.height)
+//                        radius: norm_del.radius
                         cachePath: AsemanGlobals.cachePath
                     }
 

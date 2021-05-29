@@ -34,6 +34,7 @@ AsemanListModel {
                         if (j != "extra")
                             item[j] = extraJson[j];
 
+                    item["isVerse"] = (item.verseId == 0? false : true)
                     if (item.verseId == 0 && item.details && item.details.first_verse && !item.verseText)
                         item["verseText"] = item.details.first_verse;
 

@@ -5,16 +5,24 @@ import requests 1.0
 import globals 1.0
 
 AsemanListModel {
-    property alias refreshing: homeReq.refreshing
+    property bool refreshing: false
 
-    HomeRequest {
-        id: homeReq
-    }
-
-    AsemanListModelSource {
-        source: homeReq.response
-        path: "result"
-    }
-
-    function refresh() { homeReq.refresh() }
+    data: [
+        {
+            "background": false,
+            "color": "transparent",
+            "modelData": [
+            ],
+            "section": "Recents\\More\\float:/recents",
+            "type": "recents"
+        },
+        {
+            "background": false,
+            "color": "transparent",
+            "modelData": [
+            ],
+            "section": "Favorites\\More\\float:/favorites",
+            "type": "favorites"
+        },
+    ]
 }

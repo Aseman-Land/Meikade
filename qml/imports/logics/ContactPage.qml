@@ -21,7 +21,8 @@ ContactView {
         res += "<b>" +qsTr("Device Name") + ":</b> " + Devices.deviceName + "<br />";
 //        res += "<b>" +qsTr("Device ID") + ":</b> " + Devices.deviceId + "<br />";
         res += "<b>" +qsTr("LCD Density") + ":</b> " + Math.floor(Devices.deviceDensity*100)/100 + "<br />";
-        res += "<b>" +qsTr("LCD Size") + ":</b> " + Math.floor(Devices.lcdPhysicalSize*100)/100;
+        res += "<b>" +qsTr("LCD Size") + ":</b> " + Math.floor(Devices.lcdPhysicalSize*100)/100 + "<br />";
+        res += "<b>" +qsTr("Meikade Version") + ":</b> " + appVersion;
         return res;
     }
 
