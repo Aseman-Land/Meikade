@@ -313,6 +313,7 @@ Rectangle {
                 Material.theme: Colors.lightHeader? Material.Light : Material.Dark
                 IOSStyle.theme: Colors.lightHeader? IOSStyle.Light : IOSStyle.Dark
                 font.pixelSize: 9 * Devices.fontDensity
+                inputMethodHints: Qt.ImhNoPredictiveText
                 color: Colors.headerTextColor
                 background: Item {}
 
