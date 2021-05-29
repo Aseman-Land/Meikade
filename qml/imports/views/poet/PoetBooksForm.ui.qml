@@ -41,6 +41,7 @@ Item {
     signal navigationClicked(string link, int index)
     signal addBookRequest()
     signal addPoemRequest()
+    signal premiumBuyRequest()
 
     Rectangle {
         anchors.fill: parent

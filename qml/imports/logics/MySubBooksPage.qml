@@ -8,7 +8,6 @@ import views 1.0
 import models 1.0
 import micros 1.0
 import requests 1.0
-import queries 1.0
 
 PoetBooksView {
     id: dis
@@ -39,6 +38,7 @@ PoetBooksView {
             return GTranslations.translate( qsTr("You create %1 poems from %2 poems. for more information contact us on telegram:").arg(poemsCount).arg(Subscription.mypoemsLimits) ) + " " + tgLink
     }
 
+    onPremiumBuyRequest: Viewport.controller.trigger("bottomdrawer:/account/premium/buy")
     Component.onCompleted: premiumTimer.restart()
 
     Connections {
