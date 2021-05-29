@@ -13,6 +13,7 @@ DrawerFrame {
     width: Constants.width
     height: Constants.height
 
+    property alias descriptionLabel: descriptionLabel
     property alias confirmBtn: confirmBtn
     property alias nameField: nameField
     property bool renameMode
@@ -36,7 +37,7 @@ DrawerFrame {
             spacing: 20 * Devices.density
 
             Label {
-                id: contactName
+                id: descriptionLabel
                 Layout.fillWidth: true
                 horizontalAlignment: Text.AlignLeft
                 font.pixelSize: 9 * Devices.fontDensity
