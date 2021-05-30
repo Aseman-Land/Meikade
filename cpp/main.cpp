@@ -36,6 +36,21 @@
 #include <QtWebView>
 #endif
 
+static void register_fcm(QQmlEngine *engine)
+{
+#ifdef QTFIREBASE_VERSION
+    engine->rootContext()->setContextProperty("qtFirebaseVersion", QString(QTFIREBASE_VERSION));
+#endif
+
+#ifdef QTFIREBASE_GIT_VERSION
+    engine->rootContext()->setContextProperty("qtFirebaseGitVersion", QString(QTFIREBASE_GIT_VERSION));
+#endif
+
+#ifdef QTFIREBASE_GIT_BRANCH
+    engine->rootContext()->setContextProperty("qtFirebaseGitBranch", QString(QTFIREBASE_GIT_BRANCH));
+#endif
+}
+
 static QObject *create_meikadetoole_singleton(QQmlEngine *, QJSEngine *)
 {
     return new MeikadeTools;
@@ -91,6 +106,7 @@ int main(int argc, char *argv[])
 
     QQmlApplicationEngine engine;
     engine.addImportPath(":/qml/imports/");
+    register_fcm(&engine);
     engine.rootContext()->setContextProperty("isAndroidStyle", androidStyle);
     engine.rootContext()->setContextProperty("appVersion", MEIKADE_VERSION);
     engine.rootContext()->setContextProperty("unlockPassword", UNLOCK_PASSWORD);

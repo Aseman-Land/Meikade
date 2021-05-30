@@ -1,0 +1,3 @@
+[submodule "QtFirebase"]
+	path = QtFirebase
+	url = https://github.com/Larpon/QtFirebase.git
