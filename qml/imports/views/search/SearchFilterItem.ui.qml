@@ -14,6 +14,7 @@ ItemDelegate {
 
     property bool addMode: true
     property string poetName: "Poet Name"
+    property alias frame: frame
 
     Rectangle {
         id: frame

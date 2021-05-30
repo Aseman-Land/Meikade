@@ -160,6 +160,15 @@ DrawerFrame {
                 }
             }
 
+            Rectangle {
+                anchors.fill: parent
+                anchors.leftMargin: 4 * Devices.density
+                anchors.rightMargin: 4 * Devices.density
+                z: -1
+                color: "#22ffffff"
+                radius: 10 * Devices.density
+            }
+
             HScrollBar {
                 color: Colors.primary
                 scrollArea: selectedList
