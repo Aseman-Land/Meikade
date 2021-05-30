@@ -305,7 +305,7 @@ PoemView {
             }
 
             onItemClicked: {
-                switch (index) {
+                switch (index + (form.selectMode? 1 : 0)) {
                 case 0:
                     form.selectMode = false;
                     Viewport.controller.trigger("bottomdrawer:/lists", {"selectMode": faveActionQuery.getLists(), "poetId": faveActionQuery.poetId,
@@ -333,33 +333,40 @@ PoemView {
             }
 
             model: AsemanListModel {
-                data: [
-                    {
-                        title: qsTr("Choose Lists"),
-                        icon: "mdi_library",
-                        enabled: true
-                    },
-                    {
-                        title: qsTr("Copy"),
-                        icon: "mdi_content_copy",
-                        enabled: true
-                    },
-                    {
-                        title: qsTr("Create Sticker"),
-                        icon: "mdi_sticker",
-                        enabled: true
-                    },
-                    {
-                        title: qsTr("Share"),
-                        icon: "mdi_share_variant",
-                        enabled: true
-                    },
-                    {
-                        title: qsTr("Select"),
-                        icon: "mdi_select",
-                        enabled: true
-                    },
-                ]
+                data: {
+                    var items = [
+                        {
+                            title: qsTr("Choose Lists"),
+                            icon: "mdi_library",
+                            enabled: true
+                        },
+                        {
+                            title: qsTr("Copy"),
+                            icon: "mdi_content_copy",
+                            enabled: true
+                        },
+                        {
+                            title: qsTr("Create Sticker"),
+                            icon: "mdi_sticker",
+                            enabled: true
+                        },
+                        {
+                            title: qsTr("Share"),
+                            icon: "mdi_share_variant",
+                            enabled: true
+                        },
+                        {
+                            title: qsTr("Select"),
+                            icon: "mdi_select",
+                            enabled: true
+                        },
+                    ];
+
+                    var res = new Array;
+                    for (var i=(form.selectMode? 1 : 0); i<items.length - (form.selectMode? 1 : 0); i++)
+                        res[res.length] = items[i];
+                    return res;
+                }
             }
         }
     }
