@@ -45,10 +45,16 @@ PoemView {
         var poemId = poemIds[0][1];
 
         loader.clear()
+        loader.poemId = 0;
         loader.poemId = poemId;
 
         dis.poemId = poemIds[0][1];
         dis.id = ids[0][1];
+
+        if (poetName.length)
+            poet = poetName;
+        if (verse_id)
+            verseId = verse_id;
 
         userActionTimer.restart();
     }

@@ -78,6 +78,23 @@ SearchView {
         var properties = convertUnitToMap(item);
         properties["verseId"] = item.verses[0].vorder;
 
+        var neighbors = new Array;
+        for (var i=0; i<listView.model.count; i++) {
+            var n = listView.model.get(i);
+            try {
+                neighbors[neighbors.length] = {
+                    "link": n.link,
+                    "subtitle": "0 poems",
+                    "title": n.poem.title,
+                    "verseId": n.verses[0].vorder,
+                    "poet": n.poet.name
+                };
+            } catch(e) {}
+        }
+
+        properties["neighbors"] = neighbors;
+        properties["neighborsIndex"] = index;
+
         Viewport.controller.trigger(link, properties);
     }
 

@@ -25,7 +25,7 @@ Rectangle {
 
     property Item menuObject
 
-    signal changeRequest(string link, string title, string subtitle)
+    signal changeRequest(string link, string title, string subtitle, int verse_id, string poetName)
 
     Timer {
         interval: 5
@@ -53,7 +53,9 @@ Rectangle {
             neighborsIndex = nextIndex;
 
             var unit = neighbors[neighborsIndex];
-            poemView.changeRequest(unit.link, unit.title, unit.subtitle)
+            poemView.changeRequest(unit.link, unit.title, unit.subtitle,
+                                   (unit.verseId != undefined? unit.verseId : 0),
+                                   (unit.poet != undefined? unit.poet : ""))
         }
 
         property int nextIndex: neighborsIndex
@@ -104,7 +106,7 @@ Rectangle {
             PoemViewNeighbor {
                 anchors.left: form.right
                 scale: form.scale
-                poet: form.poet
+                poet: unit && unit.poet != undefined? unit.poet : form.poet
                 visible: neighbors? neighborsIndex+1 < neighbors.length : false
                 unit: neighbors? neighbors[neighborsIndex+1] : null
             }
@@ -112,7 +114,7 @@ Rectangle {
             PoemViewNeighbor {
                 anchors.right: form.left
                 scale: form.scale
-                poet: form.poet
+                poet: unit && unit.poet != undefined? unit.poet : form.poet
                 visible: neighborsIndex > 0
                 unit: neighbors? neighbors[neighborsIndex-1] : null
             }

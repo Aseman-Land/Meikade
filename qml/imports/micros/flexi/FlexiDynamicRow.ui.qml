@@ -36,7 +36,27 @@ FlexiAbstractRow {
 
             Connections {
                 target: itemDel
-                onClicked: homeRow.clicked(itemDel.link, list.model.get(index))
+                onClicked: {
+                    var properties = list.model.get(index);
+
+                    var neighbors = new Array;
+                    for (var i=0; i<list.model.count; i++) {
+                        var n = list.model.get(i);
+                        try {
+                            neighbors[neighbors.length] = {
+                                "link": n.link,
+                                "subtitle": "0 poems",
+                                "title": n.title,
+                                "poet": n.subtitle
+                            };
+                        } catch(e) {}
+                    }
+
+                    properties["neighbors"] = neighbors;
+                    properties["neighborsIndex"] = model.index;
+
+                    homeRow.clicked(itemDel.link, properties)
+                }
 //                onClicked: homeRow.clicked(itemDel.link, {})
                 onMoreRequest: homeRow.moreRequest()
             }

@@ -166,6 +166,9 @@ AsemanObject {
         onResponseChanged: if (response && response.result) prv.analizeResult(response.result, verse_offset, verse_limit)
 
         onPoem_idChanged: {
+            if (poem_id == 0)
+                return;
+
             verse_limit = loadSteps;
             verse_offset = 0;
             Tools.jsDelayCall(10, refresh);
@@ -204,6 +207,9 @@ AsemanObject {
         poem_id: poemReq.poem_id
 
         onPoem_idChanged: {
+            if (poem_id == 0)
+                return;
+
             limit = loadSteps;
             offset = 0;
             Tools.jsDelayCall(10, refresh);
