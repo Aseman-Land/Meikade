@@ -222,12 +222,36 @@ Item {
 
             MouseArea {
                 id: itemDel
-                height: del.position === PoemVersesModel.PositionRight || del.position === PoemVersesModel.PositionCenteredVerse1 ||
-                        del.position === PoemVersesModel.PositionLeft || del.position === PoemVersesModel.PositionCenteredVerse2? delFrame.height * 2 : delFrame.height
+                height: (del.position === PoemVersesModel.PositionRight || del.position === PoemVersesModel.PositionCenteredVerse1 ||
+                        del.position === PoemVersesModel.PositionLeft || del.position === PoemVersesModel.PositionCenteredVerse2) && nextItemHasSameType? delFrame.height * 2 : delFrame.height
                 anchors.left: parent.left
                 anchors.right: parent.right
                 y: del.position === PoemVersesModel.PositionLeft || del.position === PoemVersesModel.PositionCenteredVerse2? delFrame.height - height : 0
                 pressAndHoldInterval: 300
+
+                property bool inited: false
+                property bool nextItemHasSameType: false
+                Component.onCompleted: inited = true
+
+                Connections {
+                    target: itemDel
+                    onInitedChanged: {
+                        if (index + 1 >= listView.count)
+                            return;
+
+                        var nextItem = listView.model.get(index+1);
+                        var position = (nextItem.position < 0? -1 * (1 + nextItem.position) : nextItem.position);
+                        if ((del.position === PoemVersesModel.PositionRight || del.position === PoemVersesModel.PositionLeft) &&
+                            (position === PoemVersesModel.PositionRight || position === PoemVersesModel.PositionLeft))
+                            itemDel.nextItemHasSameType = true;
+                        else
+                        if ((del.position === PoemVersesModel.PositionCenteredVerse1 || del.position === PoemVersesModel.PositionCenteredVerse2) &&
+                            (position === PoemVersesModel.PositionCenteredVerse1 || position === PoemVersesModel.PositionCenteredVerse2))
+                            itemDel.nextItemHasSameType = true;
+                        else
+                            itemDel.nextItemHasSameType = false;
+                    }
+                }
 
                 Connections {
                     target: itemDel
