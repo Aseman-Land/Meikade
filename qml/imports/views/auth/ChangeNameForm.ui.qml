@@ -55,7 +55,6 @@ DrawerFrame {
             selectByMouse: true
             leftPadding: 34 * Devices.density
             rightPadding: 34 * Devices.density
-            validator: RegExpValidator { regExp: /[\w\s]+/ }
             color: isValid || focus? Colors.foreground : "#a00"
 
             property bool isValid: length > 5
