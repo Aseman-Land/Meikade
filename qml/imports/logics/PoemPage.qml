@@ -48,7 +48,7 @@ PoemView {
         loader.poemId = 0;
         loader.poemId = poemId;
 
-        dis.poemId = poemIds[0][1];
+        dis.poemId = poemId;
         dis.id = ids[0][1];
 
         if (poetName.length)
@@ -99,6 +99,55 @@ PoemView {
         id: loader
         poemId: dis.poemId
         versesModel.cachePath: poemId? AsemanGlobals.cachePath + "/poem-" + poemId + ".cache" : ""
+        onRefrshingChanged: neighboarsLoader.loadNeighboars()
+        onPoetIdChanged: neighboarsLoader.loadNeighboars()
+        onCatIdChanged: neighboarsLoader.loadNeighboars()
+    }
+
+    CatsModel {
+        id: neighboarsLoader
+        limit: 200000
+
+        onRefreshingChanged: {
+            if (refreshing)
+                return;
+
+            var nbrs = new Array;
+            var nidx = 0;
+            var list = Tools.toVariantList(data[0].modelData);
+            for (var i=0; i<list.length; i++) {
+                var n = list[i];
+                try {
+                    nbrs[nbrs.length] = {
+                        "link": n.link,
+                        "subtitle": n.subtitle,
+                        "title": n.title,
+                        "poet": poet
+                    };
+                    var poemIds = Tools.stringRegExp(n.link, "poemId\\=(\\d+)", false);
+                    var poemId = poemIds[0][1];
+
+                    if (poemId == dis.poemId)
+                        nidx = i;
+                } catch(e) {}
+            }
+
+            neighbors = nbrs;
+            neighborsIndex = nidx;
+
+        }
+
+        function loadNeighboars() {
+            if (loader.refrshing || loader.catId == 0 || loader.poetId == 0 || refreshing)
+                return;
+            try {
+                if (neighbors == null || neighbors.length == 0) {
+                    neighboarsLoader.poetId = loader.poetId;
+                    neighboarsLoader.parentId = loader.catId;
+                    neighboarsLoader.refresh();
+                }
+            } catch (e) {}
+        }
     }
 
     Timer {
@@ -287,6 +336,7 @@ PoemView {
         backBtn.onClicked: ViewportType.open = false
 
         listView.model: loader.versesModel
+        extraRefreshing: neighboarsLoader.refreshing
 
         onMoreRequest: loader.more()
         onLessRequest: loader.less()

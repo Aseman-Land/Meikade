@@ -14,7 +14,7 @@ BaseRequest {
     onRefreshRequest: refresh()
 
     function refresh() {
-        if (refreshing)
+        if (refreshing || poet_id == 0)
             return;
 
         offset = 0;

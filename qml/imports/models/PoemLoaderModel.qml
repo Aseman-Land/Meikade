@@ -70,6 +70,7 @@ AsemanObject {
                 dis.title = r.poem.title;
                 dis.views = r.poem.views;
                 dis.phrase = r.poem.phrase;
+                dis.catId = r.poem.category_id;
                 dis.poetId = r.poet.id;
                 dis.poet = r.poet.name;
                 dis.poetImage = r.poet.image;

@@ -32,6 +32,7 @@ Item {
     property alias menuBtnPosition: menuBtnListener.result
     property alias navigationRepeater: navigationRepeater
     property alias statusBarRect: statusBarRect
+    property bool extraRefreshing
 
     property string viewCount
     property alias poet: titleLabel.text
@@ -490,7 +491,7 @@ Item {
                             Layout.preferredWidth: 28 * Devices.density
                             Material.accent: "#fff"
                             IOSStyle.foreground: "#fff"
-                            running: navigationRepeater.model && navigationRepeater.model.refreshing !== undefined && navigationRepeater.model.refreshing && navigationRepeater.count == 0? true : false
+                            running: (navigationRepeater.model && navigationRepeater.model.refreshing !== undefined && navigationRepeater.model.refreshing && navigationRepeater.count == 0) || extraRefreshing? true : false
                             visible: running
                         }
 

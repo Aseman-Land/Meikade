@@ -12,6 +12,7 @@ AsemanListModel {
     property alias poetId: catsReq.poet_id
     property alias parentId: catsReq.parent_id
     property alias offlineInstaller: offlineInstaller
+    property alias limit: catsReq.limit
 
     readonly property int realCount: {
         var count = 0;
