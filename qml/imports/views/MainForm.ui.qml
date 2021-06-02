@@ -101,7 +101,7 @@ Page {
             anchors.bottom: parent.bottom
             anchors.bottomMargin: Devices.navigationBarHeight
             anchors.horizontalCenter: parent.horizontalCenter
-            width: Math.min(parent.width * 0.8, 400 * Devices.density)
+            width: Math.min(parent.width * 0.9, 400 * Devices.density)
             orientation: ListView.Horizontal
             maximumFlickVelocity: View.flickVelocity
             boundsBehavior: Flickable.StopAtBounds

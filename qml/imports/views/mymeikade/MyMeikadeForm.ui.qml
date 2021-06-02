@@ -167,18 +167,18 @@ Rectangle {
             ColumnLayout {
                 id: profileColumn
                 anchors.centerIn: parent
-                spacing: 20 * Devices.density
+                anchors.verticalCenterOffset: signedIn? -30 * Devices.density * opacity : 0
+                spacing: 13 * Devices.density
                 scale: Math.min(0.6 + ratioAbs*0.4, 1)
                 opacity: ratioAbs * 2 - 1
                 visible: opacity > 0 && signedIn
 
                 Rectangle {
-                    Layout.preferredWidth: 92 * Devices.density
-                    Layout.preferredHeight: 92 * Devices.density
+                    Layout.preferredWidth: 72 * Devices.density
+                    Layout.preferredHeight: 72 * Devices.density
                     radius: height / 2
                     Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
                     color: "#fff"
-                    visible: false
 
                     RoundedItem {
                         anchors.fill: parent
@@ -188,7 +188,7 @@ Rectangle {
                         Label {
                             anchors.centerIn: parent
                             color: Colors.primary
-                            font.pixelSize: 32 * Devices.fontDensity
+                            font.pixelSize: 26 * Devices.fontDensity
                             font.family: MaterialIcons.family
                             text: MaterialIcons.mdi_account
                         }
@@ -212,7 +212,7 @@ Rectangle {
 
                     Rectangle {
                         anchors.fill: parent
-                        anchors.margins: -8 * Devices.density
+                        anchors.margins: -6 * Devices.density
                         radius: Constants.radius
                         color: "#222"
                         z: -1
