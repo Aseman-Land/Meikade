@@ -28,7 +28,7 @@ Page {
 
     AsemanFlickable {
         id: flick
-        anchors.top: headerItem.bottom
+        anchors.top: tabBar.bottom
         anchors.bottom: parent.bottom
         anchors.right: parent.right
         anchors.left: parent.left
@@ -36,6 +36,8 @@ Page {
         contentWidth: scene.width
         contentHeight: scene.height
         bottomMargin: Devices.navigationBarHeight
+        visible: tabBar.currentIndex == 0
+        clip: true
 
         EscapeItem {
             id: scene
@@ -166,6 +168,144 @@ Page {
         anchors.bottom: flick.bottom
         anchors.right: flick.right
         color: Colors.primary
+        visible: flick.visible
+    }
+
+    AsemanListView {
+        id: listView
+        anchors.top: tabBar.bottom
+        anchors.bottom: parent.bottom
+        anchors.right: parent.right
+        anchors.left: parent.left
+        visible: tabBar.currentIndex == 1
+        model: 20
+        clip: true
+        delegate: Item {
+            width: listView.width
+            height: mainRow.height + 10 * Devices.density
+
+            RowLayout {
+                id: mainRow
+                anchors.left: parent.left
+                anchors.right: parent.right
+                anchors.margins: 10 * Devices.density
+                y: 5 * Devices.density
+                spacing: 10 * Devices.density
+
+                Rectangle {
+                    Layout.alignment: Qt.AlignTop
+                    Layout.topMargin: 6 * Devices.density
+                    Layout.preferredHeight: 40 * Devices.density
+                    Layout.preferredWidth: 40 * Devices.density
+                    radius: 6 * Devices.density
+                    color: Colors.primary
+
+                    Label {
+                        anchors.centerIn: parent
+                        font.pixelSize: 16 * Devices.fontDensity
+                        font.family: MaterialIcons.family
+                        text: MaterialIcons.mdi_bug
+                        color: "#fff"
+                    }
+                }
+
+                ColumnLayout {
+                    Layout.fillWidth: true
+                    spacing: 4 * Devices.density
+
+                    Label {
+                        Layout.fillWidth: true
+                        font.pixelSize: 9 * Devices.fontDensity
+                        horizontalAlignment: Text.AlignLeft
+                        wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                        elide: Text.ElideRight
+                        maximumLineCount: 1
+                        text: "عنوان تستی"
+                    }
+
+                    Label {
+                        Layout.fillWidth: true
+                        font.pixelSize: 8 * Devices.fontDensity
+                        horizontalAlignment: Text.AlignLeft
+                        wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                        elide: Text.ElideRight
+                        text: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد."
+                    }
+
+                    RowLayout {
+                        Label {
+                            Layout.fillWidth: true
+                            font.pixelSize: 8 * Devices.fontDensity
+                            horizontalAlignment: Text.AlignLeft
+                            wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                            elide: Text.ElideRight
+                            opacity: 0.7
+                            text: GTranslations.translate( CalendarConv.convertDateTimeToString(new Date) )
+                        }
+
+                        Button {
+                            id: voteBtn
+                            flat: true
+                            Layout.preferredWidth: voteRow.width + 8 * Devices.density
+
+                            RowLayout {
+                                id: voteRow
+                                x: 4 * Devices.density
+                                anchors.verticalCenter: parent.verticalCenter
+                                spacing: 8 * Devices.density
+
+                                Label {
+                                    font.pixelSize: 10 * Devices.fontDensity
+                                    font.family: MaterialIcons.family
+                                    text: MaterialIcons.mdi_thumb_up
+                                    opacity: 0.6
+                                }
+
+                                Label {
+                                    font.pixelSize: 8 * Devices.fontDensity
+                                    text: "۱۰۰ نفر"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            Rectangle {
+                anchors.bottom: parent.bottom
+                anchors.left: parent.left
+                anchors.right: parent.right
+                height: 1 * Devices.density
+                color: Colors.foreground
+                opacity: 0.1
+            }
+        }
+    }
+
+    HScrollBar {
+        scrollArea: listView
+        anchors.top: listView.top
+        anchors.bottom: listView.bottom
+        anchors.right: listView.right
+        color: Colors.primary
+        visible: listView.visible
+    }
+
+    TabBar {
+        id: tabBar
+        anchors.top: headerItem.bottom
+        anchors.right: parent.right
+        anchors.left: parent.left
+
+        TabButton {
+            text: qsTr("Send Message") + Translations.refresher
+            font.pixelSize: 8 * Devices.fontDensity
+        }
+
+        TabButton {
+            text: qsTr("User's Requests") + Translations.refresher
+            font.pixelSize: 8 * Devices.fontDensity
+        }
     }
 
     Header {

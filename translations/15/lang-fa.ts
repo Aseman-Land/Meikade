@@ -534,6 +534,14 @@
         <translation>تماس با ما</translation>
     </message>
     <message>
+        <source>Send Message</source>
+        <translation>ارسال پیغام</translation>
+    </message>
+    <message>
+        <source>User&apos;s Requests</source>
+        <translation>درخواست‌های کاربران</translation>
+    </message>
+    <message>
         <source>Close</source>
         <translation>بستن</translation>
     </message>
