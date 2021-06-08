@@ -33,7 +33,7 @@ DataBaseQuery {
 
         analize( query("SELECT poet.name, poet.cat_id, poet.description, poet.id, COUNT(cat.id) as catCount FROM offline " +
                        "INNER JOIN poet ON offline.poet_id = poet.id " +
-                       "INNER JOIN cat ON offline.poet_id = cat.poet_id AND cat.parent_id = 0 " +
+                       "LEFT JOIN cat ON offline.poet_id = cat.poet_id AND cat.parent_id = 0 " +
                        "WHERE offline.cat_id = 0 GROUP BY offline.poet_id ORDER BY poet.name", {}) );
 
         return items;

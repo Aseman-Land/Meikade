@@ -559,6 +559,10 @@ void MeikadeOfflineItemInstaller::InstallThread::deletePoet(QSqlDatabase &db, qi
         QSqlRecord r = q.record();
         deleteCat(db, poetId, r.value("id").toInt());
     }
+
+    q.prepare("DELETE FROM poet WHERE id = :poet_id");
+    q.bindValue(":poet_id", poetId);
+    QUERY_EXEC(q);
 }
 
 void MeikadeOfflineItemInstaller::InstallThread::deleteCat(QSqlDatabase &db, qint32 poetId, qint32 catId)

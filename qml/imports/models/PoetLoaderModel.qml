@@ -76,6 +76,7 @@ AsemanObject {
                 typesModel.clear();
                 r.types.forEach(typesModel.append);
             } catch (e) {
+                console.debug(e)
             }
         }
     }
