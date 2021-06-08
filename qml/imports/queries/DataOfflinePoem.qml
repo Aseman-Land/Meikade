@@ -10,8 +10,8 @@ DataBaseQuery {
 
     function random(poetId, catId, callback) {
         queryAsync("SELECT poem.id AS poem_id FROM poem " +
-                   (catId || poetId? "LEFT JOIN cat ON poem.cat_id = cat.id " + (catId? " AND cat.id = :catId " : "") : "") +
-                   (poetId? "LEFT JOIN poet ON cat.poet_id = poet.id AND poet.id = :poetId " : "") +
+                   (catId || poetId? "INNER JOIN cat ON poem.cat_id = cat.id " + (catId? " AND cat.id = :catId " : "") : "") +
+                   (poetId? "INNER JOIN poet ON cat.poet_id = poet.id AND poet.id = :poetId " : "") +
                    "ORDER BY RANDOM() LIMIT 1", {"poetId": poetId, "catId": catId}, function(res){
             _getItems(res[0].poem_id, callback);
         });
