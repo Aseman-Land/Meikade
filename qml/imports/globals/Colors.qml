@@ -8,7 +8,7 @@ import Meikade 1.0
 
 QtObject {
     IOSStyle.theme: AsemanGlobals.iosTheme
-    Material.theme: AsemanGlobals.androidTheme
+    Material.theme: AsemanGlobals.androidEffectiveTheme
 
     Component.onCompleted: MeikadeTools.setupWindowColor(headerColor)
     onHeaderColorChanged: MeikadeTools.setupWindowColor(headerColor)

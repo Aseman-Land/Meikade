@@ -20,7 +20,7 @@ AsemanWindow {
     property alias mainLoader: mainLoader
 
     IOSStyle.theme: AsemanGlobals.iosTheme
-    Material.theme: AsemanGlobals.androidTheme
+    Material.theme: AsemanGlobals.androidEffectiveTheme
 
     LayoutMirroring.enabled: GTranslations.textDirection === Qt.RightToLeft
     LayoutMirroring.childrenInherit: true

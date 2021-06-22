@@ -72,9 +72,12 @@ SettingsView {
         if (isAndroidStyle) {
             switch (themeCombo.currentIndex) {
             case 0:
-                AsemanGlobals.androidTheme = Material.Light;
+                AsemanGlobals.androidTheme = Material.System;
                 break;
             case 1:
+                AsemanGlobals.androidTheme = Material.Light;
+                break;
+            case 2:
                 AsemanGlobals.androidTheme = Material.Dark;
                 break;
             }
@@ -110,11 +113,14 @@ SettingsView {
 
         if (isAndroidStyle) {
             switch (AsemanGlobals.androidTheme) {
-            case Material.Light:
+            case Material.System:
                 themeCombo.currentIndex = 0;
                 break;
-            case Material.Dark:
+            case Material.Light:
                 themeCombo.currentIndex = 1;
+                break;
+            case Material.Dark:
+                themeCombo.currentIndex = 2;
                 break;
             }
         } else {

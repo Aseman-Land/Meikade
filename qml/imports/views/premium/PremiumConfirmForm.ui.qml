@@ -16,7 +16,7 @@ Item {
     height: Constants.height
 
     IOSStyle.theme: forceDark? IOSStyle.Dark : AsemanGlobals.iosTheme
-    Material.theme: forceDark? Material.Dark : AsemanGlobals.androidTheme
+    Material.theme: forceDark? Material.Dark : AsemanGlobals.androidEffectiveTheme
 
     property alias titleLabel: titleLabel
     property alias subtitleLabel: subtitleLabel
@@ -241,7 +241,7 @@ Item {
                 text: model.text
             }
             IOSStyle.theme: AsemanGlobals.iosTheme
-            Material.theme: AsemanGlobals.androidTheme
+            Material.theme: AsemanGlobals.androidEffectiveTheme
         }
     }
 

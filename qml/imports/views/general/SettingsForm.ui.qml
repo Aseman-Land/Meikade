@@ -131,7 +131,7 @@ Item {
                                 text: model.title
                             }
                             IOSStyle.theme: AsemanGlobals.iosTheme
-                            Material.theme: AsemanGlobals.androidTheme
+                            Material.theme: AsemanGlobals.androidEffectiveTheme
                         }
                     }
                 }
@@ -148,8 +148,7 @@ Item {
                         id: themeCombo
                         Layout.preferredWidth: 100 * Devices.density
                         font.pixelSize: 9 * Devices.fontDensity
-                        model: isAndroidStyle? [qsTr("Light") + Translations.refresher, qsTr("Dark")] :
-                                               [qsTr("Auto") + Translations.refresher, qsTr("Light"), qsTr("Dark")]
+                        model: [qsTr("Auto") + Translations.refresher, qsTr("Light"), qsTr("Dark")]
                         delegate: ItemDelegate {
                             width: themeCombo.width
 
@@ -161,7 +160,7 @@ Item {
                                 text: modelData
                             }
                             IOSStyle.theme: AsemanGlobals.iosTheme
-                            Material.theme: AsemanGlobals.androidTheme
+                            Material.theme: AsemanGlobals.androidEffectiveTheme
                         }
                     }
                 }

@@ -51,9 +51,12 @@ IntroView {
             if (isAndroidStyle) {
                 switch (item.configTheme) {
                 case 0:
-                    AsemanGlobals.androidTheme = Material.Light;
+                    AsemanGlobals.androidTheme = Material.System;
                     break;
                 case 1:
+                    AsemanGlobals.androidTheme = Material.Light;
+                    break;
+                case 2:
                     AsemanGlobals.androidTheme = Material.Dark;
                     break;
                 }

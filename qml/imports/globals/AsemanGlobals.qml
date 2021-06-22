@@ -7,6 +7,15 @@ import QtQuick.Controls.IOSStyle 2.0
 import globals 1.0
 
 AsemanObject {
+    Timer {
+        id: clockTimer
+        interval: 60 * 1000
+        repeat: true
+        running: true
+        onTriggered: dateTime = new Date;
+        property variant dateTime: new Date
+    }
+
     readonly property string cachePath: AsemanApp.homePath + "/cache"
 
     property bool testHomeDisable: false
@@ -40,6 +49,19 @@ AsemanObject {
     property alias width: _settings.width
     property alias height: _settings.height
     property alias mixedHeaderColor: _settings.mixedHeaderColor
+    readonly property int androidEffectiveTheme: {
+        let h = clockTimer.dateTime.getHours()
+        switch (androidTheme) {
+        case Material.System:
+            return h > 18? Material.Dark : Material.Light
+        case Material.Dark:
+            return Material.Dark;
+        case Material.Light:
+            return Material.Light;
+        default:
+            return Material.Light;
+        }
+    }
 
     property alias accessToken: _auth.accessToken
     property alias username: _auth.username
