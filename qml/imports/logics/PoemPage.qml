@@ -32,7 +32,7 @@ PoemView {
     property alias subtitle: loader.poet
     property alias image: loader.poetImage
 
-    onPoemIdChanged: console.debug(poemId) // form.selectMode = false;
+    onPoemIdChanged: form.selectMode = false;
     onVerseIdChanged: highlightTimer.restart()
 
     onChangeRequest: {

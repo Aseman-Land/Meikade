@@ -7,7 +7,7 @@ import globals 1.0
 AsemanListModel {
     property alias refreshing: homeReq.refreshing
 
-    HomeRequest {
+    ExploreRequest {
         id: homeReq
     }
 

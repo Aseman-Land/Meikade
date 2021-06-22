@@ -15,17 +15,33 @@ PoetBooksView {
 
     property alias id: catsModel.poetId
     property alias catId: catsModel.parentId
-    property alias navigData: navigModel.data
+    property variant navigData
     property string title
-    property string poet
-    property string poetImage
+    property string poet: subtitle
+    property string poetImage: "https://meikade.com/offlines/thumbs/" + id + ".png"
+    property string subtitle
 
     property string url
     property variant properties
 
+    onNavigDataChanged: if (navigData.length) navigModel.data = navigData;
+
     AsemanListModel {
         id: navigModel
-        data: []
+        data: [
+            {
+                "title": subtitle,
+                "image": poetImage,
+                "id": id,
+                "link": "page:/poet?id=" + id,
+            },
+            {
+                "title": title,
+                "image": poetImage,
+                "id": catId,
+                "link": url,
+            },
+        ]
     }
 
     Query.UserActions {

@@ -101,7 +101,7 @@ Item {
             }
 
             current: {
-                switch (type) {
+                switch (type.toLowerCase()) {
                 case "normal":
                     return 0;
                 case "fullback":

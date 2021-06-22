@@ -7,6 +7,7 @@ singleton ALogger 1.0 Logger.qml
 singleton ActivityManager 1.0 ActivityManager.qml
 RandomPoemRequest 1.0 RandomPoemRequest.qml
 HomeRequest 1.0 HomeRequest.qml
+ExploreRequest 1.0 ExploreRequest.qml
 LoginRequest 1.0 LoginRequest.qml
 RegisterRequest 1.0 RegisterRequest.qml
 UserRequest 1.0 UserRequest.qml

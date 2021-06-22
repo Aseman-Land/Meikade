@@ -337,5 +337,6 @@
         <file>imports/views/explore/ExploreView.qml</file>
         <file>imports/models/ExploreModel.qml</file>
         <file>imports/logics/ExplorePage.qml</file>
+        <file>imports/requests/ExploreRequest.qml</file>
     </qresource>
 </RCC>
