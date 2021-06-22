@@ -363,24 +363,33 @@ PoemView {
             onItemClicked: {
                 switch (index + (form.selectMode? 1 : 0)) {
                 case 0:
+                    faveActionQuery.declined = (faveActionQuery.updatedAt && !faveActionQuery.declined? 1 : 0);
+                    faveActionQuery.updatedAt = Tools.dateToSec(new Date);
+                    faveActionQuery.extra = viewActionQuery.extra
+                    faveActionQuery.pushAction();
+                    form.selectMode = false;
+                    GlobalSignals.snackbarRequest(faveActionQuery.declined? qsTr("Poem Unfavorited") : qsTr("Poem favorited"));
+                    GlobalSignals.favoritesRefreshed();
+                    break;
+                case 1:
                     form.selectMode = false;
                     Viewport.controller.trigger("bottomdrawer:/lists", {"selectMode": faveActionQuery.getLists(), "poetId": faveActionQuery.poetId,
                                                 "catId": faveActionQuery.catId, "poemId": faveActionQuery.poemId, "verseId": faveActionQuery.verseId,
                                                 "extra": viewActionQuery.extra});
                     break;
-                case 1:
+                case 2:
                     Devices.clipboard = dis.getText(false);
                     form.selectMode = false;
                     GlobalSignals.snackbarRequest(qsTr("Poem copied"));
                     break;
-                case 2:
+                case 3:
                     Viewport.controller.trigger("float:/sticker/export", {"poet": poet, "text": dis.getText(true)})
                     break;
-                case 3:
+                case 4:
                     Devices.share(dis.title, dis.getText(false));
                     form.selectMode = false;
                     break;
-                case 4:
+                case 5:
                     dis.form.selectMode = !dis.form.selectMode;
                     break;
                 }
@@ -391,6 +400,11 @@ PoemView {
             model: AsemanListModel {
                 data: {
                     var items = [
+                        {
+                            title: faveActionQuery.updatedAt && !faveActionQuery.declined? qsTr("Remove Bookmarks") : qsTr("Add to Bookmarks"),
+                            icon: faveActionQuery.updatedAt && !faveActionQuery.declined? "mdi_bookmark" : "mdi_bookmark_outline",
+                            enabled: true
+                        },
                         {
                             title: qsTr("Choose Lists"),
                             icon: "mdi_library",
@@ -453,6 +467,7 @@ PoemView {
                 poetId: dis.poetId
                 declined: 0
                 synced: 0
+                Component.onCompleted: fetch()
             }
 
             function getText(cleanText) {
@@ -501,6 +516,20 @@ PoemView {
 
                 switch (index) {
                 case 0:
+                    verseFaveActionQuery.declined = (verseFaveActionQuery.updatedAt && !verseFaveActionQuery.declined? 1 : 0);
+                    verseFaveActionQuery.updatedAt = Tools.dateToSec(new Date);
+                    verseFaveActionQuery.extra = Tools.variantToJson(map, true);
+                    verseFaveActionQuery.pushAction();
+
+                    GlobalSignals.snackbarRequest(verseFaveActionQuery.declined? qsTr("Verse Unfavorited") : qsTr("Verse favorited"));
+                    GlobalSignals.favoritesRefreshed();
+
+                    var item = poemLoader.versesModel.get(idx);
+                    poemLoader.versesModel.remove(idx);
+                    item.favorited = (!verseFaveActionQuery.declined);
+                    poemLoader.versesModel.insert(idx, item);
+                    break;
+                case 1:
                     var poemText = getText(false);
                     poemText = Tools.stringReplace(poemText, "\n+", "\n", true);
 
@@ -515,7 +544,7 @@ PoemView {
                     });
                     break;
 
-                case 1:
+                case 2:
                     Viewport.controller.trigger("bottomdrawer:/lists", {"selectMode": verseFaveActionQuery.getLists(), "poetId": verseFaveActionQuery.poetId,
                                                 "catId": verseFaveActionQuery.catId, "poemId": verseFaveActionQuery.poemId,
                                                 "verseId": verseFaveActionQuery.verseId, "extra": extra}).saved.connect(function(lists){
@@ -534,14 +563,14 @@ PoemView {
                         poemLoader.versesModel.insert(idx, item);
                     });
                     break;
-                case 2:
+                case 3:
                     Devices.clipboard = getText(false);
                     GlobalSignals.snackbarRequest(qsTr("Verse copied"));
                     break;
-                case 3:
+                case 4:
                     Viewport.controller.trigger("float:/sticker/export", {"poet": poet, "text": getText(true)})
                     break;
-                case 4:
+                case 5:
                     Devices.share(dis.title, getText(false));
                     break;
                 }
@@ -551,6 +580,11 @@ PoemView {
 
             model: AsemanListModel {
                 data: [
+                    {
+                        title: verseFaveActionQuery.updatedAt && !verseFaveActionQuery.declined? qsTr("Remove Bookmarks") : qsTr("Add to Bookmarks"),
+                        icon: verseFaveActionQuery.updatedAt && !verseFaveActionQuery.declined? "mdi_bookmark" : "mdi_bookmark_outline",
+                        enabled: true
+                    },
                     {
                         title: qsTr("Note"),
                         icon: "mdi_note",

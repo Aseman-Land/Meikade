@@ -1340,7 +1340,7 @@ It containts %2 items currently.</source>
     <name>PoemPage</name>
     <message>
         <source>Add to Bookmarks</source>
-        <translation type="vanished">افزودن به علاقه‌مندی‌ها</translation>
+        <translation>افزودن به علاقه‌مندی‌ها</translation>
     </message>
     <message>
         <source>Copy</source>
@@ -1360,15 +1360,15 @@ It containts %2 items currently.</source>
     </message>
     <message>
         <source>Remove Bookmarks</source>
-        <translation type="vanished">حذف از علاقه‌مندی‌ها</translation>
+        <translation>حذف از علاقه‌مندی‌ها</translation>
     </message>
     <message>
         <source>Poem Unfavorited</source>
-        <translation type="vanished">شعر از علاقه‌مندی‌ها حذف شد</translation>
+        <translation>شعر از علاقه‌مندی‌ها حذف شد</translation>
     </message>
     <message>
         <source>Poem favorited</source>
-        <translation type="vanished">شعر به علاقه‌مندی‌ها اضافه شد</translation>
+        <translation>شعر به علاقه‌مندی‌ها اضافه شد</translation>
     </message>
     <message>
         <source>Poem copied</source>
@@ -1376,11 +1376,11 @@ It containts %2 items currently.</source>
     </message>
     <message>
         <source>Verse Unfavorited</source>
-        <translation type="vanished">بیت از علاقه‌مندی‌ها حذف شد</translation>
+        <translation>بیت از علاقه‌مندی‌ها حذف شد</translation>
     </message>
     <message>
         <source>Verse favorited</source>
-        <translation type="vanished">بیت به علاقه‌مندی‌ها اضافه شد</translation>
+        <translation>بیت به علاقه‌مندی‌ها اضافه شد</translation>
     </message>
     <message>
         <source>Verse copied</source>
