@@ -23,6 +23,9 @@ AddNoteView {
 
     noteField.onCursorRectangleChanged: ensureVisible(noteField.cursorRectangle)
 
+    deleteBtn.visible: createAction.value.length > 0
+    deleteBtn.onClicked: Viewport.viewport.append(delete_component, {}, "bottomdrawer")
+
     premiumMsg: {
         if (Subscription.premium || Subscription.notesLimits < 0 || !Bootstrap.initialized)
             return "";
@@ -76,6 +79,22 @@ AddNoteView {
             queryAsync("SELECT COUNT(*) as cnt FROM actions WHERE type = :type AND declined = 0", {"type": UserActions.TypeNote}, function(res){
                 currentNotesCount = res[0].cnt;
             })
+        }
+    }
+
+    Component {
+        id: delete_component
+        DeleteListView {
+            id: deleteDialog
+            width: parent.width
+            height: 240 * Devices.density
+            bodyLabel.text: qsTr("Are you sure about delete this note?") + Translations.refresher
+            rejectBtn.onClicked: deleteDialog.ViewportType.open = false;
+            confirmBtn.onClicked: {
+                deleteDialog.ViewportType.open = false;
+                noteField.text = "";
+                home.confirm();
+            }
         }
     }
 }

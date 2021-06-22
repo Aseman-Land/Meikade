@@ -20,6 +20,7 @@ Page {
     property alias poemText: poemText.text
     property alias closeBtn: closeBtn
     property alias confirmBtn: confirmBtn
+    property alias deleteBtn: deleteBtn
     property alias noteField: noteField
     property alias flick: flick
     property alias scene: scene
@@ -37,7 +38,7 @@ Page {
         anchors.top: headerItem.bottom
         anchors.right: parent.right
         anchors.left: parent.left
-        anchors.bottom: confirmBtn.top
+        anchors.bottom: buttonsRow.top
         contentWidth: scene.width
         contentHeight: scene.height
         flickableDirection: Flickable.VerticalFlick
@@ -171,19 +172,36 @@ Page {
         scrollArea: flick
     }
 
-    Button {
-        id: confirmBtn
+    RowLayout {
+        id: buttonsRow
         anchors.right: parent.right
         anchors.left: parent.left
         anchors.bottom: parent.bottom
         anchors.margins: 10 * Devices.density
         anchors.bottomMargin: Devices.navigationBarHeight + 10 * Devices.density
-        font.pixelSize: 9 * Devices.fontDensity
-        text: qsTr("Save") + Translations.refresher
-        highlighted: true
-        Material.accent: Colors.noteButton
-        IOSStyle.accent: Colors.noteButton
-        Material.elevation: 0
+
+        Button {
+            id: deleteBtn
+            Layout.preferredWidth: 50 * Devices.density
+            font.pixelSize: 14 * Devices.fontDensity
+            font.family: MaterialIcons.family
+            text: MaterialIcons.mdi_trash_can
+            flat: true
+            highlighted: true
+            Material.accent: Material.Red
+            IOSStyle.accent: IOSStyle.Red
+        }
+
+        Button {
+            id: confirmBtn
+            Layout.fillWidth: true
+            font.pixelSize: 9 * Devices.fontDensity
+            text: qsTr("Save") + Translations.refresher
+            highlighted: true
+            Material.accent: Colors.noteButton
+            IOSStyle.accent: Colors.noteButton
+            Material.elevation: 0
+        }
     }
 
     Header {

@@ -402,6 +402,10 @@
         <source>Click Here</source>
         <translation>کلیک کنید</translation>
     </message>
+    <message>
+        <source>Are you sure about delete this note?</source>
+        <translation>آیا از پاک کردن این یادداشت مطمئنید؟</translation>
+    </message>
 </context>
 <context>
     <name>AuthPage</name>
