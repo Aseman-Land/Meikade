@@ -1325,8 +1325,8 @@ It containts %2 items currently.</source>
 <context>
     <name>NotesPoetsListModel</name>
     <message>
-        <source>%1 items</source>
-        <translation>%1 عنوان</translation>
+        <source>%1 notes</source>
+        <translation>%1 یادداشت</translation>
     </message>
 </context>
 <context>

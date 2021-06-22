@@ -29,7 +29,7 @@ AsemanListModel {
                     if (!extraJson.poet) extraJson["poet"] = extraJson.subtitle
 
                     extraJson["type"] = "normal";
-                    extraJson["subtitle"] = qsTr("%1 items").arg(item.verses);
+                    extraJson["subtitle"] = qsTr("%1 notes").arg(GTranslations.translate(item.verses));
 
                     for (var j in extraJson)
                         if (j != "extra")
