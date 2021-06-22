@@ -10,8 +10,6 @@ import requests 1.0
 
 ChangePasswordView {
     id: auth
-    Material.accent: Colors.primary
-    IOSStyle.accent: Colors.primary
 
     property string accessToken
 

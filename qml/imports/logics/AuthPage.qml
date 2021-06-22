@@ -10,8 +10,6 @@ import requests 1.0
 
 AuthView {
     id: auth
-    Material.accent: Colors.primary
-    IOSStyle.accent: Colors.primary
 
     onLoginRequest: {
         loginReq.username = username;

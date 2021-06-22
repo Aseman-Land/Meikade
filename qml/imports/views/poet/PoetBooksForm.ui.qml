@@ -200,8 +200,6 @@ Item {
                     Layout.alignment: Qt.AlignHCenter
                     Layout.preferredWidth: addSubBookRow.width + 60 * Devices.density
                     highlighted: true
-                    IOSStyle.accent: Colors.primary
-                    Material.accent: Colors.primary
 
                     Connections {
                         onClicked: addBookRequest()

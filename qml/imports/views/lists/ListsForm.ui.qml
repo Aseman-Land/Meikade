@@ -306,8 +306,6 @@ Item {
         font.pixelSize: 9 * Devices.fontDensity
         text: qsTr("Done") + Translations.refresher
         highlighted: true
-        Material.accent: Colors.primary
-        IOSStyle.accent: Colors.primary
         visible: selectMode? true : false
         Material.elevation: 0
     }

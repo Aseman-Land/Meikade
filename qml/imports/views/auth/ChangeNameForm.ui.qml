@@ -80,8 +80,6 @@ DrawerFrame {
             enabled: nameField.isValid
             text: qsTr("Confirm") + Translations.refresher
             highlighted: true
-            Material.accent: Colors.primary
-            IOSStyle.accent: Colors.primary
             Material.elevation: 0
         }
     }

@@ -127,7 +127,8 @@ Page {
                     font.underline: true
                     flat: true
                     highlighted: true
-                    IOSStyle.accent: Colors.accent
+                    Material.accent: Colors.primary
+                    IOSStyle.accent: Colors.primary
                 }
 
                 Button {
@@ -140,7 +141,8 @@ Page {
                     font.underline: true
                     flat: true
                     highlighted: true
-                    IOSStyle.accent: Colors.accent
+                    Material.accent: Colors.primary
+                    IOSStyle.accent: Colors.primary
                 }
             }
         }

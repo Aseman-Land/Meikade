@@ -82,8 +82,6 @@ DrawerFrame {
             enabled: nameField.isValid
             text: renameMode? qsTr("Rename") : qsTr("Add") + Translations.refresher
             highlighted: true
-            Material.accent: Colors.primary
-            IOSStyle.accent: Colors.primary
             Material.elevation: 0
         }
     }
