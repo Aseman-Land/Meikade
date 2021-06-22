@@ -101,12 +101,13 @@ Item {
     }
 
     Image {
-        height: Devices.standardTitleBarHeight * 0.9
+        height: Devices.standardTitleBarHeight * 1.8
         width: height
         y: Devices.statusBarHeight + Devices.standardTitleBarHeight/2 - height/2
         anchors.horizontalCenter: headerItem.horizontalCenter
         source: Colors.lightHeader? "icons/meikade.png" : "icons/meikade-abstract"
         sourceSize.width: width * 1.2
         sourceSize.height: height * 1.2
+        scale: 0.5
     }
 }
