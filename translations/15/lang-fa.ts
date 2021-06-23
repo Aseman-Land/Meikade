@@ -896,8 +896,8 @@ It containts %2 items currently.</source>
 <context>
     <name>IntroForm</name>
     <message>
-        <source>Next</source>
-        <translation>بعدی</translation>
+        <source>Skip</source>
+        <translation>رد کردن</translation>
     </message>
     <message>
         <source>Prev</source>
@@ -926,8 +926,12 @@ It containts %2 items currently.</source>
         <translation>علاقه‌مندی‌ها</translation>
     </message>
     <message>
-        <source>Please choose at lease 5 your favorites.</source>
-        <translation>لطفا دست کم ۵ شاعر مورد علاقه خود را انتخاب کنید.</translation>
+        <source>Please choose at lease 3 your favorites.</source>
+        <translation>لطفا دست کم ۳ شاعر مورد علاقه خود را انتخاب کنید.</translation>
+    </message>
+    <message>
+        <source>Next</source>
+        <translation>بعدی</translation>
     </message>
 </context>
 <context>
@@ -968,12 +972,16 @@ It containts %2 items currently.</source>
         <translation>به می‌کده ۴ خوش آمدید</translation>
     </message>
     <message>
-        <source>Meikade 4 is designed to increase your poetry reading experiance and increase your sense quality.</source>
-        <translation>می‌کده ۴ با هدف افزایش کیفیت تجربه کاربری و حس دلنشین شعرخوانی طراحی شده و با توجه به نیازهای شما شخصی‌سازی می‌شود.</translation>
+        <source>Please choose your language</source>
+        <translation>لطفا زبان برنامه را انتخاب کنید</translation>
     </message>
     <message>
         <source>So It&apos;s neccessary to take some times and do next steps to personalize your Meikade. Choose language and press &quot;Next&quot; if you ready.</source>
         <translation>به همین منظور برای سفارشی‌سازی می‌کده بر طبق نیازهای شما، بهتر است مراحلی که در ادامه می‌آید را انجام دهید. کلید &quot;بعدی&quot; را بزنید.</translation>
+    </message>
+    <message>
+        <source>Next</source>
+        <translation>بعدی</translation>
     </message>
 </context>
 <context>
@@ -1056,6 +1064,17 @@ It containts %2 items currently.</source>
 <context>
     <name>LoginForm</name>
     <message>
+        <source>Authenticating</source>
+        <translation>ورود</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>لغو</translation>
+    </message>
+</context>
+<context>
+    <name>LoginColumnForm</name>
+    <message>
         <source>If you created account before, Just enter your username below. Otherwise click on &quot;Create new account&quot; button.</source>
         <translation>اگر قبلا در می‌کده عضو شده‌اید، نام کاربری و رمز عبور خود را وارد کنید. در غیر این صورت برای عضویت روی &quot;ساختن اکانت جدید&quot; کلیک کنید.</translation>
     </message>
@@ -1080,12 +1099,8 @@ It containts %2 items currently.</source>
         <translation>کلمه عبور را فراموش کرده‌ام</translation>
     </message>
     <message>
-        <source>Authenticating</source>
-        <translation>ورود</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation>لغو</translation>
+        <source>Skip authenticating</source>
+        <translation>ورود بدون عضویت</translation>
     </message>
 </context>
 <context>
@@ -1733,6 +1748,10 @@ It&apos;s experimental currently and Meikade technical team working on it. But i
         <message>
             <source>Theme</source>
             <translation>انتخاب پوسته</translation>
+        </message>
+        <message>
+            <source>Next</source>
+            <translation>بعدی</translation>
         </message>
 </context>
 <context>

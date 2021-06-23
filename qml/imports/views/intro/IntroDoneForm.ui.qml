@@ -90,7 +90,5 @@ Page {
         anchors.bottomMargin: Devices.standardTitleBarHeight
         highlighted: true
         text: qsTr("Finish") + Translations.refresher
-        Material.accent: Colors.primary
-        IOSStyle.accent: Colors.primary
     }
 }

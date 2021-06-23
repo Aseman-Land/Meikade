@@ -11,6 +11,10 @@ import requests 1.0
 AuthView {
     id: auth
 
+    property bool signUpLogin: false
+
+    signal loggedInSuccessfully()
+
     onLoginRequest: {
         loginReq.username = username;
         loginReq.password = Constants.hashPassword(password);
@@ -39,6 +43,7 @@ AuthView {
             AsemanGlobals.username = loginReq.username;
             GlobalSignals.snackbarRequest(qsTr("Logged in Successfully"));
             GlobalSignals.reinitSync(Viewport.controller);
+            auth.loggedInSuccessfully()
         }
     }
 
@@ -46,6 +51,7 @@ AuthView {
         id: registerReq
         allowGlobalBusy: true
         onSuccessfull: {
+            signUpLogin = true
             loginReq.username = username;
             loginReq.password = password;
             loginReq.networkManager.post(loginReq);

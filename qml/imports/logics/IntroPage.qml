@@ -11,9 +11,10 @@ import models 1.0
 IntroView {
     id: home
 
-    nextBtn.enabled: list.currentIndex != 1 || topHomeModel.count > 4
-
-    Component.onCompleted: Tools.jsDelayCall(1000, function(){ setupThemeForm.listView.currentIndex = 0 })
+    Component.onCompleted: {
+        Tools.jsDelayCall(1000, function(){ home.list.currentIndex = 0 });
+        Tools.jsDelayCall(1000, function(){ setupThemeForm.listView.currentIndex = 0 });
+    }
 
     TopPoetsHomeModel {
         id: topHomeModel
@@ -26,11 +27,30 @@ IntroView {
         running: true
     }
 
+    AuthPage {
+        parent: home.loginForm
+        anchors.fill: parent
+        introMode: true
+        loginForm.skipLoginBtn.onClicked: list.currentIndex++
+        onLoggedInSuccessfully: {
+            if (signUpLogin)
+                list.currentIndex++
+            else
+                AsemanGlobals.introDone = true
+        }
+    }
+
+    welcomForm {
+        nextBtn.onClicked: list.currentIndex++
+    }
+
     setupHomeForm {
         listView.model: TopPoetsModel {
             id: topModel
         }
 
+        nextBtn.enabled: topHomeModel.count > 2
+        nextBtn.onClicked: list.currentIndex++
         onChecked: {
             if (active)
                 topModel.append(poetId, properties);
@@ -40,6 +60,7 @@ IntroView {
     }
 
     setupThemeForm {
+        nextBtn.onClicked: list.currentIndex++
         listView.onCurrentIndexChanged: {
             if (stopTimer.running)
                 return;
@@ -75,26 +96,6 @@ IntroView {
             }
 
             AsemanGlobals.themeDone = true;
-        }
-    }
-
-    setupOfflinesForm {
-
-        premiumMsg: {
-            if (Subscription.premium || Subscription.offlineLimits < 0 || !Bootstrap.initialized)
-                return "";
-
-            var tgLink = "<a href='https://t.me/poshtibanimoon'>" + qsTr("Click Here") +"</a>";
-            if (Bootstrap.payment && Bootstrap.trusted)
-                return GTranslations.translate( qsTr("You install %1 offline poet from %2 poets, Allowed to install using non-premium account.").arg(setupOfflinesForm.offlinePoetsCount).arg(Subscription.offlineLimits) );
-            else
-                return GTranslations.translate( qsTr("You install %1 offline poet from %2 poets. for more information contact us on telegram:").arg(setupOfflinesForm.offlinePoetsCount).arg(Subscription.offlineLimits) ) + " " + tgLink;
-        }
-
-        onPremiumBuyRequest: Viewport.controller.trigger("bottomdrawer:/account/premium/buy")
-
-        listView.model: PoetsCleanModel {
-            id: poetsModel
         }
     }
 }

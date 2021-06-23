@@ -13,6 +13,7 @@ Page {
     height: Constants.height
 
     property alias listView: listView
+    property alias nextBtn: nextBtn
 
     readonly property real headerHeight: 200 * Devices.density
     readonly property real ratio: 1 - Math.min( Math.max(-headerListener.result.y / listView.headerItem.height, 0), 1)
@@ -33,9 +34,13 @@ Page {
 
     AsemanListView {
         id: listView
-        anchors.fill: parent
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.top: parent.top
+        anchors.bottom: nextBtn.top
+        clip: true
         model: 50
-        bottomMargin: Devices.standardTitleBarHeight * 2
+        bottomMargin: Devices.standardTitleBarHeight + 6 * Devices.density
         header: Item {
             width: listView.width
             height: headerHeight
@@ -186,7 +191,7 @@ Page {
                     Layout.fillWidth: true
                     horizontalAlignment: Text.AlignHCenter
                     font.pixelSize: 9 * Devices.fontDensity
-                    text: qsTr("Please choose at lease 5 your favorites.") + Translations.refresher
+                    text: qsTr("Please choose at lease 3 your favorites.") + Translations.refresher
                     scale: ratio*0.2 + 1
                     opacity: 0.8
                 }
@@ -195,14 +200,25 @@ Page {
     }
 
     Rectangle {
-        anchors.bottom: parent.bottom
+        anchors.bottom: nextBtn.top
         anchors.left: parent.left
         anchors.right: parent.right
-        height: Devices.standardTitleBarHeight * 2
+        height: Devices.standardTitleBarHeight
         gradient: Gradient {
-            GradientStop { position: 0.0; color: "transparent" }
-            GradientStop { position: 0.5; color: Colors.background }
+            GradientStop { position: 0; color: "transparent" }
+            GradientStop { position: 1; color: Colors.background }
         }
+    }
+
+    Button {
+        id: nextBtn
+        anchors.bottom: parent.bottom
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.bottomMargin: Devices.navigationBarHeight + Devices.standardTitleBarHeight
+        width: 300 * Devices.density
+        text: qsTr("Next") + Translations.refresher
+        font.pixelSize: 9 * Devices.fontDensity
+        highlighted: true
     }
 
     HScrollBar {

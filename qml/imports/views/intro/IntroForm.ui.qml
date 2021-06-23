@@ -14,9 +14,9 @@ Page {
     property alias prevBtn: prevBtn
     property alias nextBtn: nextBtn
     property alias doneForm: doneForm
-    property alias setupOfflinesForm: setupOfflinesForm
     property alias setupHomeForm: setupHomeForm
     property alias welcomForm: welcomForm
+    property alias loginForm: loginForm
     property alias setupThemeForm: setupThemeForm
 
     property alias list: list
@@ -29,11 +29,11 @@ Page {
         IntroWelcomForm {
             id: welcomForm
         }
+        Item {
+            id: loginForm
+        }
         IntroSetupHome {
             id: setupHomeForm
-        }
-        IntroSetupOfflines {
-            id: setupOfflinesForm
         }
         IntroSetupTheme {
             id: setupThemeForm
@@ -59,9 +59,9 @@ Page {
         anchors.right: parent.right
         flat: true
         highlighted: true
-        text: qsTr("Next") + Translations.refresher
+        text: qsTr("Skip") + Translations.refresher
         visible: list.currentIndex < list.count - 1
-        onClicked: list.currentIndex++
+        onClicked: AsemanGlobals.introDone = true
     }
 
     Button {

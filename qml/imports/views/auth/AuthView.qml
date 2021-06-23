@@ -11,6 +11,7 @@ Page {
     width: Constants.width
     height: Constants.height
 
+    property alias introMode: loginForm.introMode
     property alias loginForm: loginForm
     property Viewport viewport: _viewport
     property alias localViewport: _viewport
@@ -57,6 +58,7 @@ Page {
             sendBtn.onClicked: loginPage.signupRequest(userTxt.text, passTxt.text, fullnameTxt.text, emailTxt.text)
             emailTxt.onAccepted: loginPage.signupRequest(userTxt.text, passTxt.text, fullnameTxt.text, emailTxt.text)
             cancelBtn.onClicked: viewport.closeLast()
+            cancelBtn.visible: !introMode
 
             Timer {
                 id: userCheckTimer
@@ -79,6 +81,7 @@ Page {
             anchors.fill: parent
             backgroudMouseArea.onClicked: Devices.hideKeyboard()
             cancelBtn.onClicked: viewport.closeLast()
+            cancelBtn.visible: !introMode
             sendBtn.onClicked: loginPage.forgetRequest(userTxt.text)
         }
     }

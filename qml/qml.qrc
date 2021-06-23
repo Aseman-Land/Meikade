@@ -338,5 +338,7 @@
         <file>imports/models/ExploreModel.qml</file>
         <file>imports/logics/ExplorePage.qml</file>
         <file>imports/requests/ExploreRequest.qml</file>
+        <file>imports/views/auth/LoginColumnForm.ui.qml</file>
+        <file>imports/views/intro/IntroLoginForm.ui.qml</file>
     </qresource>
 </RCC>

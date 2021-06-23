@@ -14,6 +14,7 @@ Page {
     height: Constants.height
 
     property alias listView: frame.listView
+    property alias nextBtn: nextBtn
 
     Label {
         anchors.top: parent.top
@@ -31,4 +32,15 @@ Page {
         height: 500 * Devices.density
     }
 
+
+    Button {
+        id: nextBtn
+        anchors.bottom: parent.bottom
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.bottomMargin: Devices.navigationBarHeight + Devices.standardTitleBarHeight
+        width: 300 * Devices.density
+        text: qsTr("Next") + Translations.refresher
+        font.pixelSize: 9 * Devices.fontDensity
+        highlighted: true
+    }
 }
