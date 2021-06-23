@@ -340,5 +340,9 @@
         <file>imports/requests/ExploreRequest.qml</file>
         <file>imports/views/auth/LoginColumnForm.ui.qml</file>
         <file>imports/views/intro/IntroLoginForm.ui.qml</file>
+        <file>imports/requests/VoteSuggestionRequest.qml</file>
+        <file>imports/requests/UnvoteSuggestionRequest.qml</file>
+        <file>imports/requests/GetSuggestionsRequest.qml</file>
+        <file>imports/models/SuggestionsModel.qml</file>
     </qresource>
 </RCC>

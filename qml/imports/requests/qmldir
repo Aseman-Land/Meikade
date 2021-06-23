@@ -10,6 +10,9 @@ HomeRequest 1.0 HomeRequest.qml
 ExploreRequest 1.0 ExploreRequest.qml
 LoginRequest 1.0 LoginRequest.qml
 RegisterRequest 1.0 RegisterRequest.qml
+GetSuggestionsRequest 1.0 GetSuggestionsRequest.qml
+VoteSuggestionRequest 1.0 VoteSuggestionRequest.qml
+UnvoteSuggestionRequest 1.0 UnvoteSuggestionRequest.qml
 UserRequest 1.0 UserRequest.qml
 PoetsRequest 1.0 PoetsRequest.qml
 PoetRequest 1.0 PoetRequest.qml

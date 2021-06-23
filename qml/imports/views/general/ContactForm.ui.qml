@@ -9,6 +9,7 @@ import QtQuick.Controls.IOSStyle 2.0
 import globals 1.0
 import micros 1.0
 import models 1.0
+import requests 1.0
 
 Page {
     id: dis
@@ -25,6 +26,7 @@ Page {
     property alias attachSwitch: attachSwitch
     property alias detailsText: detailsText
     property alias sendBtn: sendBtn
+    property alias suggestionsModel: listView.model
 
     AsemanFlickable {
         id: flick
@@ -178,11 +180,44 @@ Page {
         anchors.right: parent.right
         anchors.left: parent.left
         visible: tabBar.currentIndex == 1
-        model: 20
         clip: true
+        model: SuggestionsModel { id: sugModel }
         delegate: Item {
+            id: sugItem
             width: listView.width
             height: mainRow.height + 10 * Devices.density
+
+            property int inited: 0
+            property bool voted: model.user.vote
+            property int votesCount: model.votes_count
+
+            Component.onCompleted: inited++
+
+            Connections {
+                onInitedChanged: {
+                    let date = Tools.dateFromSec( Math.floor(Date.parse(model.created_at) / 1000) );
+                    sugDate.text = GTranslations.translate( CalendarConv.convertDateTimeToString(date) );
+                    sugPeoples.text = GTranslations.translate( qsTr("%1 people").arg(sugItem.votesCount) );
+                }
+            }
+
+            VoteSuggestionRequest {
+                id: voteReq
+                _suggestion_id: model.id
+
+                Connections {
+                    onSuccessfull: sugModel.refresh()
+                }
+            }
+
+            UnvoteSuggestionRequest {
+                id: unvoteReq
+                _suggestion_id: model.id
+
+                Connections {
+                    onSuccessfull: sugModel.refresh()
+                }
+            }
 
             RowLayout {
                 id: mainRow
@@ -198,13 +233,13 @@ Page {
                     Layout.preferredHeight: 40 * Devices.density
                     Layout.preferredWidth: 40 * Devices.density
                     radius: 6 * Devices.density
-                    color: Colors.primary
+                    color: model.extra.color
 
                     Label {
                         anchors.centerIn: parent
                         font.pixelSize: 16 * Devices.fontDensity
                         font.family: MaterialIcons.family
-                        text: MaterialIcons.mdi_bug
+                        text: MaterialIcons[model.extra.icon]
                         color: "#fff"
                     }
                 }
@@ -220,7 +255,7 @@ Page {
                         wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                         elide: Text.ElideRight
                         maximumLineCount: 1
-                        text: "عنوان تستی"
+                        text: model.title
                     }
 
                     Label {
@@ -229,18 +264,18 @@ Page {
                         horizontalAlignment: Text.AlignLeft
                         wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                         elide: Text.ElideRight
-                        text: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد."
+                        text: model.description
                     }
 
                     RowLayout {
                         Label {
+                            id: sugDate
                             Layout.fillWidth: true
                             font.pixelSize: 8 * Devices.fontDensity
                             horizontalAlignment: Text.AlignLeft
                             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                             elide: Text.ElideRight
                             opacity: 0.7
-                            text: GTranslations.translate( CalendarConv.convertDateTimeToString(new Date) )
                         }
 
                         Button {
@@ -248,22 +283,52 @@ Page {
                             flat: true
                             Layout.preferredWidth: voteRow.width + 8 * Devices.density
 
+                            Connections {
+                                onClicked: {
+                                    if (model.status == 1)
+                                        return;
+
+                                    sugItem.voted = !sugItem.voted;
+                                    sugItem.votesCount += (sugItem.voted? 1 : -1);
+                                    sugItem.inited++;
+                                    if (model.user.vote)
+                                        unvoteReq.doRequest();
+                                    else
+                                        voteReq.doRequest();
+                                }
+                            }
+
+                            BusyIndicator {
+                                id: busyIndicator
+                                scale: 0.6
+                                anchors.centerIn: parent
+                                height: 28 * Devices.density
+                                width: 28 * Devices.density
+                                Material.accent: Colors.primary
+                                IOSStyle.foreground: Colors.primary
+                                running: unvoteReq.refreshing || voteReq.refreshing
+                            }
+
                             RowLayout {
                                 id: voteRow
                                 x: 4 * Devices.density
                                 anchors.verticalCenter: parent.verticalCenter
                                 spacing: 8 * Devices.density
+                                visible: !busyIndicator.running
 
                                 Label {
                                     font.pixelSize: 10 * Devices.fontDensity
                                     font.family: MaterialIcons.family
-                                    text: MaterialIcons.mdi_thumb_up
-                                    opacity: 0.6
+                                    text: model.status == 1? MaterialIcons.mdi_check : MaterialIcons.mdi_thumb_up
+                                    opacity: sugItem.voted? 1 : 0.6
+                                    color: model.status == 1? "#00aa00" : sugItem.voted? Colors.primary : Colors.foreground
                                 }
 
                                 Label {
+                                    id: sugPeoples
                                     font.pixelSize: 8 * Devices.fontDensity
-                                    text: "۱۰۰ نفر"
+                                    opacity: 1
+                                    color: model.status == 1? "#00aa00" : sugItem.voted? Colors.primary : Colors.foreground
                                 }
                             }
                         }

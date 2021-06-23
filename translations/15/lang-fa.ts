@@ -572,6 +572,10 @@
         <translation>ضمیمه کردن مشخصات دستگاه</translation>
     </message>
     <message>
+        <source>%1 people</source>
+        <translation>%1 نفر</translation>
+    </message>
+    <message>
         <source>Device details will send.</source>
         <translation>مشخصات دستگاه ارسال می‌شود.</translation>
     </message>
