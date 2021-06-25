@@ -344,5 +344,7 @@
         <file>imports/requests/UnvoteSuggestionRequest.qml</file>
         <file>imports/requests/GetSuggestionsRequest.qml</file>
         <file>imports/models/SuggestionsModel.qml</file>
+        <file>imports/logics/ChangeBioPage.qml</file>
+        <file>imports/routes/ChangeBioRoute.qml</file>
     </qresource>
 </RCC>

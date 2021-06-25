@@ -214,6 +214,11 @@ ViewportController {
     }
 
     ViewportControllerRoute {
+        route: /\w+\:\/auth\/changeBio(?:\?.+)?/
+        source: "ChangeBioRoute.qml"
+    }
+
+    ViewportControllerRoute {
         route: /\w+\:\/sticker\/export/
         source: "StickerRoute.qml"
         viewportType: tabletMode? "popup" : "float"

@@ -31,6 +31,13 @@ UserRequest {
             return "";
         }
     }
+    readonly property string _bio: {
+        try {
+            return _cache.details.bio
+        } catch (e) {
+            return "";
+        }
+    }
     readonly property variant _subscription: {
         if (AsemanGlobals.accessToken.length == 0)
             return new Array;

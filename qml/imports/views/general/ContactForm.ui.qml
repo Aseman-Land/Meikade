@@ -38,7 +38,7 @@ Page {
         contentWidth: scene.width
         contentHeight: scene.height
         bottomMargin: Devices.navigationBarHeight
-        visible: tabBar.currentIndex == 0
+        visible: tabBar.currentIndex == 1
         clip: true
 
         EscapeItem {
@@ -61,7 +61,7 @@ Page {
                     font.pixelSize: 9 * Devices.fontDensity
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                     horizontalAlignment: Text.AlignLeft
-                    text: qsTr("Fee\ls free and write what you want for us. Messages will sends ananymously if you leaves name and email forms empty.") + Translations.refresher
+                    text: qsTr("Feels free and write what you want for us. Messages will sends ananymously if you leaves name and email forms empty.") + Translations.refresher
                     Layout.bottomMargin: 10 * Devices.density
                 }
 
@@ -173,13 +173,19 @@ Page {
         visible: flick.visible
     }
 
+    BusyIndicator {
+        anchors.centerIn: parent
+        visible: listView.visible
+        running: sugModel.refreshing && listView.count == 0
+    }
+
     AsemanListView {
         id: listView
         anchors.top: tabBar.bottom
         anchors.bottom: parent.bottom
         anchors.right: parent.right
         anchors.left: parent.left
-        visible: tabBar.currentIndex == 1
+        visible: tabBar.currentIndex == 0
         clip: true
         model: SuggestionsModel { id: sugModel }
         delegate: Item {
@@ -363,12 +369,12 @@ Page {
         anchors.left: parent.left
 
         TabButton {
-            text: qsTr("Send Message") + Translations.refresher
+            text: qsTr("User's Requests") + Translations.refresher
             font.pixelSize: 8 * Devices.fontDensity
         }
 
         TabButton {
-            text: qsTr("User's Requests") + Translations.refresher
+            text: qsTr("Send Message") + Translations.refresher
             font.pixelSize: 8 * Devices.fontDensity
         }
     }

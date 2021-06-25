@@ -19,6 +19,7 @@ Rectangle {
     property alias avatarBtn: avatarBtn
     property alias avatar: avatar
     property alias profileLabel: profileLabel
+    property alias bioLabel: bioLabel
     property alias settingsBtn: settingsBtn
     property alias profileColumn: profileColumn
     property alias dailyDiary: dailyDiary
@@ -144,14 +145,13 @@ Rectangle {
                 scale: Math.min(0.6 + ratioAbs*0.4, 1)
                 opacity: ratioAbs * 2 - 1
                 visible: opacity > 0 && !signedIn
-//                enabled: Bootstrap.initialized
 
                 Label {
                     id: loginLabel
                     anchors.centerIn: parent
                     font.pixelSize: 10 * Devices.fontDensity
                     color: "#fff"
-                    text: /*Bootstrap.initialized?*/ qsTr("Login / Register") + Translations.refresher /*: qsTr("Meikade")*/
+                    text: qsTr("Login / Register") + Translations.refresher
 
                     Rectangle {
                         anchors.fill: parent
@@ -164,11 +164,14 @@ Rectangle {
                 }
             }
 
-            ColumnLayout {
+            RowLayout {
                 id: profileColumn
-                anchors.centerIn: parent
+                anchors.left: parent.left
+                anchors.right: parent.right
+                anchors.margins: 30 * Devices.density
+                anchors.verticalCenter: parent.verticalCenter
                 anchors.verticalCenterOffset: signedIn? -30 * Devices.density * opacity : 0
-                spacing: 13 * Devices.density
+                spacing: 20 * Devices.density
                 scale: Math.min(0.6 + ratioAbs*0.4, 1)
                 opacity: ratioAbs * 2 - 1
                 visible: opacity > 0 && signedIn
@@ -177,7 +180,7 @@ Rectangle {
                     Layout.preferredWidth: 72 * Devices.density
                     Layout.preferredHeight: 72 * Devices.density
                     radius: height / 2
-                    Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+                    Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
                     color: "#fff"
 
                     RoundedItem {
@@ -203,27 +206,34 @@ Rectangle {
                     }
                 }
 
-                Label {
-                    id: profileLabel
-                    font.pixelSize: 9 * Devices.fontDensity
-                    Layout.alignment: Qt.AlignHCenter
-                    color: "#fff"
-                    text: "Bardia Daneshvar"
+                ColumnLayout {
+                    spacing: 4 * Devices.density
 
-                    Rectangle {
-                        anchors.fill: parent
-                        anchors.margins: -6 * Devices.density
-                        radius: Constants.radius
-                        color: "#222"
-                        z: -1
-                        opacity: 0.6
+                    Label {
+                        id: profileLabel
+                        font.bold: true
+                        font.pixelSize: 9 * Devices.fontDensity
+                        Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
+                        color: "#fff"
+                        text: "Bardia Daneshvar"
+                    }
 
-                        ItemDelegate {
-                            id: avatarBtn
-                            anchors.fill: parent
-                        }
+                    Label {
+                        id: bioLabel
+                        Layout.fillWidth: true
+                        font.pixelSize: 8 * Devices.fontDensity
+                        horizontalAlignment: Text.AlignLeft
+                        wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                        text: "Test bio"
+                        color: "#fff"
                     }
                 }
+            }
+
+            ItemDelegate {
+                id: avatarBtn
+                anchors.fill: parent
+                visible: signedIn
             }
 
             Row {

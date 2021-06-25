@@ -31,6 +31,7 @@ MyMeikadeView {
         Viewport.controller.trigger(link, {});
     }
 
+    bioLabel.text: MyUserRequest._bio
     profileLabel.text: MyUserRequest._fullname
     authBtn.onClicked: Viewport.controller.trigger("float:/auth/float", {})
 
@@ -58,6 +59,11 @@ MyMeikadeView {
             refreshDiaries();
     }
 
+    Connections {
+        target: Devices
+        onSelectImageResult: console.debug(path)
+    }
+
     Component {
         id: menuComponent
         MenuView {
@@ -77,9 +83,15 @@ MyMeikadeView {
             onItemClicked: {
                 switch (index) {
                 case 0:
-                    Viewport.controller.trigger("dialog:/auth/changeName");
+                    Viewport.controller.trigger("dialog:/auth/changeName", {"text": profileLabel.text});
                     break;
                 case 1:
+                    Viewport.controller.trigger("dialog:/auth/changeBio", {"text": bioLabel.text});
+                    break;
+                case 2:
+                    Devices.getOpenPictures();
+                    break;
+                case 3:
                     Viewport.controller.trigger("float:/auth/changePassword", {"forgetMode": false});
                     break;
                 }
@@ -92,6 +104,16 @@ MyMeikadeView {
                     {
                         title: qsTr("Change Name"),
                         icon: "mdi_account",
+                        enabled: true
+                    },
+                    {
+                        title: qsTr("Change Bio"),
+                        icon: "mdi_pencil",
+                        enabled: true
+                    },
+                    {
+                        title: qsTr("Change Avatar"),
+                        icon: "mdi_image",
                         enabled: true
                     },
                     {

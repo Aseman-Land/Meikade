@@ -7,4 +7,5 @@ BaseRequest {
     url: baseUrl + "/user/details"
 
     property string name
+    property string bio
 }

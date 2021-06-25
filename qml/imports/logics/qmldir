@@ -25,6 +25,7 @@ WebBrowserPage 1.0 WebBrowserPage.qml
 AboutPage 1.0 AboutPage.qml
 SyncPage 1.0 SyncPage.qml
 ChangeNamePage 1.0 ChangeNamePage.qml
+ChangeBioPage 1.0 ChangeBioPage.qml
 StickerDialog 1.0 old/StickerDialog.qml
 AddListPage 1.0 AddListPage.qml
 AddNotePage 1.0 AddNotePage.qml

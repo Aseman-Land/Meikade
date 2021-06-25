@@ -445,6 +445,25 @@
     </message>
 </context>
 <context>
+    <name>ChangeBioPage</name>
+    <message>
+        <source>Bio updated successfully</source>
+        <translation>متن درباره من با موفقیت تغییر کرد</translation>
+    </message>
+    <message>
+        <source>Change Bio</source>
+        <translation>تغییر درباره من</translation>
+    </message>
+    <message>
+        <source>Please enter new biography:</source>
+        <translation>لطفا متنی درباره خودتان بنویسید:</translation>
+    </message>
+    <message>
+        <source>Biography</source>
+        <translation>درباره شما</translation>
+    </message>
+</context>
+<context>
     <name>ChangePasswordForm</name>
     <message>
         <source>Enter your new password and tap on the Change button.</source>
@@ -1288,8 +1307,12 @@ It containts %2 items currently.</source>
         <translation>تغییر نام</translation>
     </message>
     <message>
+        <source>Change Bio</source>
+        <translation>تغییر درباره من</translation>
+    </message>
+    <message>
         <source>Change Avatar</source>
-        <translation type="vanished">تغییر عکس</translation>
+        <translation>تغییر عکس</translation>
     </message>
     <message>
         <source>Change Password</source>

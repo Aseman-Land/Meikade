@@ -15,6 +15,8 @@ DrawerFrame {
 
     property alias confirmBtn: confirmBtn
     property alias nameField: nameField
+    property alias text: nameField.text
+    property alias description: contactName.text
 
     scene.height: Math.max(flickable.height, sceneColumn.height)
 
