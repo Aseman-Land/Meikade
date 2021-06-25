@@ -31,6 +31,7 @@ MyMeikadeView {
         Viewport.controller.trigger(link, {});
     }
 
+    avatar.source: MyUserRequest._image.length? setProfilePicReq.baseUrl + "/user/image/" + MyUserRequest._image : ""
     bioLabel.text: MyUserRequest._bio
     profileLabel.text: MyUserRequest._fullname
     authBtn.onClicked: Viewport.controller.trigger("float:/auth/float", {})
@@ -59,9 +60,34 @@ MyMeikadeView {
             refreshDiaries();
     }
 
+    UserSetProfileRequest {
+        id: setProfilePicReq
+        allowGlobalBusy: true
+        onSuccessfull: MyUserRequest.refresh();
+    }
+
+    UserUploadProfileRequest {
+        id: uploadReq
+        allowGlobalBusy: true
+        onSuccessfull: {
+            setProfilePicReq._image = response.file;
+            setProfilePicReq.doRequest();
+        }
+    }
+
     Connections {
         target: Devices
-        onSelectImageResult: console.debug(path)
+        onSelectImageResult: {
+            let p = Devices.localFilesPrePath + path;
+            let size = Tools.imageSize(p);
+            let ratio = size.width / size.height;
+
+            let img = AsemanGlobals.cachePath + "/" + Tools.createUuid() + ".png";
+            Tools.imageResize(p, Qt.size(256, 256/ratio), img, function(){
+                uploadReq.file = Devices.localFilesPrePath + img;
+                uploadReq.doRequest();
+            });
+        }
     }
 
     Component {

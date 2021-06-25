@@ -9,4 +9,8 @@ BaseRequest {
     url: baseUrl + "/user/upload"
 
     property url file
+
+    function doRequest() {
+        networkManager.post(this);
+    }
 }

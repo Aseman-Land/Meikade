@@ -33,7 +33,14 @@ UserRequest {
     }
     readonly property string _bio: {
         try {
-            return _cache.details.bio
+            return _cache.details.bio;
+        } catch (e) {
+            return "";
+        }
+    }
+    readonly property string _image: {
+        try {
+            return _cache.image;
         } catch (e) {
             return "";
         }

@@ -196,12 +196,13 @@ Rectangle {
                             text: MaterialIcons.mdi_account
                         }
 
-                        Image {
+                        CachedImage {
                             id: avatar
                             anchors.fill: parent
                             sourceSize.width: width * 1.2
                             sourceSize.height: height * 1.2
                             fillMode: Image.PreserveAspectCrop
+                            asynchronous: true
                         }
                     }
                 }

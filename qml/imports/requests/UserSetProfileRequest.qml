@@ -7,4 +7,8 @@ BaseRequest {
     url: baseUrl + "/user/image/" + _image
 
     property string _image
+
+    function doRequest() {
+        networkManager.put(this);
+    }
 }
