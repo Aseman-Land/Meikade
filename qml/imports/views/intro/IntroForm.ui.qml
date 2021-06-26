@@ -21,25 +21,38 @@ Page {
 
     property alias list: list
 
-    SwipeView {
+    Item {
         id: list
         anchors.fill: parent
-        interactive: false
+//        interactive: false
+
+        property int currentIndex: 0
+        property int count: 5
 
         IntroWelcomForm {
             id: welcomForm
+            anchors.fill: parent
+            visible: list.currentIndex == 0
         }
         Item {
             id: loginForm
+            anchors.fill: parent
+            visible: list.currentIndex == 1
         }
         IntroSetupHome {
             id: setupHomeForm
+            anchors.fill: parent
+            visible: list.currentIndex == 2
         }
         IntroSetupTheme {
             id: setupThemeForm
+            anchors.fill: parent
+            visible: list.currentIndex == 3
         }
         IntroDoneForm {
             id: doneForm
+            anchors.fill: parent
+            visible: list.currentIndex == 4
         }
     }
 
