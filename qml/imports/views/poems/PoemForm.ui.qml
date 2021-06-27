@@ -320,7 +320,7 @@ Item {
                 y: 30 * Devices.density
                 anchors.margins: 10 * Devices.density
                 spacing: 4 * Devices.density
-                visible: phrase.length
+                visible: phrase.length && listView.count > 0
 
                 RowLayout {
                     Layout.fillWidth: true
