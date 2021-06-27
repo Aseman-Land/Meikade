@@ -188,6 +188,32 @@ Page {
         visible: tabBar.currentIndex == 0
         clip: true
         model: SuggestionsModel { id: sugModel }
+
+        header: Item {
+            width: listView.width
+            height: descLbl.height + 20 * Devices.density
+
+            Label {
+                id: descLbl
+                anchors.left: parent.left
+                anchors.right: parent.right
+                anchors.margins: 10 * Devices.density
+                y: 10 * Devices.density
+                wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                text: qsTr("Features that suggested by Meikade users. You can rate them.") + Translations.refresher
+                font.pixelSize: 8 * Devices.fontDensity
+            }
+
+            Rectangle {
+                anchors.bottom: parent.bottom
+                anchors.left: parent.left
+                anchors.right: parent.right
+                height: 1 * Devices.density
+                color: Colors.foreground
+                opacity: 0.1
+            }
+        }
+
         delegate: Item {
             id: sugItem
             width: listView.width

@@ -11,4 +11,8 @@ BaseRequest {
     function doRequest() {
         networkManager.put(this);
     }
+
+    function deleteRequest() {
+        networkManager.deleteMethod(this);
+    }
 }

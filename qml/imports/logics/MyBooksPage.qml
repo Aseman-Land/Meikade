@@ -35,6 +35,9 @@ PoetView {
     progressBar.running: false
     progressBar.visible: false
 
+    avatar.header: MyUserRequest.headers
+    avatar.source: MyUserRequest._image
+
     gridView {
         onLinkRequest: {
             var navigData = dis.navigData;

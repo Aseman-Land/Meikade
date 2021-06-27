@@ -561,6 +561,10 @@
         <translation>ارسال پیغام</translation>
     </message>
     <message>
+        <source>Features that suggested by Meikade users. You can rate them.</source>
+        <translation>امکاناتی که توسط کاربران می‌کده پیشنهاد شده است. شما می‌توانید هرکدام از قابلیت‌های مورد نظر خود امتیاز دهید تا اولویت بالاتری پیدا کند یا از صفحه تارسال پیغام با ما در تماس باشید.</translation>
+    </message>
+    <message>
         <source>User&apos;s Requests</source>
         <translation>درخواست‌های کاربران</translation>
     </message>
@@ -1313,6 +1317,10 @@ It containts %2 items currently.</source>
     <message>
         <source>Change Avatar</source>
         <translation>تغییر عکس</translation>
+    </message>
+    <message>
+        <source>Unset Avatar</source>
+        <translation>حذف عکس</translation>
     </message>
     <message>
         <source>Change Password</source>

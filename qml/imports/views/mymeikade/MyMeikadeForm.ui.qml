@@ -6,6 +6,7 @@ import QtQuick.Controls 2.3
 import QtQuick.Layouts 1.3
 import AsemanQml.Controls 2.0
 import QtQuick.Controls.Material 2.0
+import QtQuick.Controls.IOSStyle 2.0
 import requests 1.0
 
 Rectangle {
@@ -194,6 +195,7 @@ Rectangle {
                             font.pixelSize: 26 * Devices.fontDensity
                             font.family: MaterialIcons.family
                             text: MaterialIcons.mdi_account
+                            visible: (avatar.source + "").length == 0
                         }
 
                         CachedImage {
@@ -203,6 +205,16 @@ Rectangle {
                             sourceSize.height: height * 1.2
                             fillMode: Image.PreserveAspectCrop
                             asynchronous: true
+
+                            BusyIndicator {
+                                anchors.centerIn: parent
+                                scale: 0.8
+                                Layout.preferredHeight: 28 * Devices.density
+                                Layout.preferredWidth: 28 * Devices.density
+                                running: (avatar.source + "").length && avatar.status != Image.Ready
+                                Material.accent: Colors.primary
+                                IOSStyle.foreground: Colors.primary
+                            }
                         }
                     }
                 }

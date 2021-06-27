@@ -40,7 +40,7 @@ UserRequest {
     }
     readonly property string _image: {
         try {
-            return _cache.image;
+            return baseUrl + "/user/image/" + _cache.image;
         } catch (e) {
             return "";
         }

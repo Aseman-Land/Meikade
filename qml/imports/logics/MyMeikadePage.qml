@@ -31,7 +31,8 @@ MyMeikadeView {
         Viewport.controller.trigger(link, {});
     }
 
-    avatar.source: MyUserRequest._image.length? setProfilePicReq.baseUrl + "/user/image/" + MyUserRequest._image : ""
+    avatar.header: MyUserRequest.headers
+    avatar.source: MyUserRequest._image
     bioLabel.text: MyUserRequest._bio
     profileLabel.text: MyUserRequest._fullname
     authBtn.onClicked: Viewport.controller.trigger("float:/auth/float", {})
@@ -118,6 +119,10 @@ MyMeikadeView {
                     Devices.getOpenPictures();
                     break;
                 case 3:
+                    setProfilePicReq._image = MyUserRequest._image;
+                    setProfilePicReq.deleteRequest();
+                    break;
+                case 4:
                     Viewport.controller.trigger("float:/auth/changePassword", {"forgetMode": false});
                     break;
                 }
@@ -141,6 +146,11 @@ MyMeikadeView {
                         title: qsTr("Change Avatar"),
                         icon: "mdi_image",
                         enabled: true
+                    },
+                    {
+                        title: qsTr("Unset Avatar"),
+                        icon: "mdi_image",
+                        enabled: MyUserRequest._image.length > 0
                     },
                     {
                         title: qsTr("Change Password"),

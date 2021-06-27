@@ -41,6 +41,9 @@ PoetBooksView {
     onPremiumBuyRequest: Viewport.controller.trigger("bottomdrawer:/account/premium/buy")
     Component.onCompleted: premiumTimer.restart()
 
+    avatar.header: MyUserRequest.headers
+    avatar.source: MyUserRequest._image
+
     Connections {
         target: GlobalSignals
         onPoemsRefreshed: premiumTimer.restart()
