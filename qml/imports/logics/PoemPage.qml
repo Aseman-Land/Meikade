@@ -94,8 +94,7 @@ PoemView {
 
     Component.onCompleted: {
         if (loader.poemId == 0) loader.random()
-//        if (!AsemanGlobals.helperSwipePoemDone)
-        {
+        if (!AsemanGlobals.helperSwipePoemDone) {
             Tools.jsDelayCall(1000, function(){
                 Viewport.controller.trigger("bottomdrawer:/helpers/poem/swipe");
                 AsemanGlobals.helperSwipePoemDone = true;
