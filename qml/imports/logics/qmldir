@@ -40,3 +40,4 @@ MySubBooksPage 1.0 MySubBooksPage.qml
 MyPoemPage 1.0 MyPoemPage.qml
 EditPoemPage 1.0 EditPoemPage.qml
 ThemeWizardPage 1.0 ThemeWizardPage.qml
+PoemSwipeHelperPage 1.0 PoemSwipeHelperPage.qml

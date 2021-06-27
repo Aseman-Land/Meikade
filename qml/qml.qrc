@@ -346,5 +346,10 @@
         <file>imports/models/SuggestionsModel.qml</file>
         <file>imports/logics/ChangeBioPage.qml</file>
         <file>imports/routes/ChangeBioRoute.qml</file>
+        <file>imports/micros/PoemSwipeHelperAnimation.qml</file>
+        <file>imports/micros/images/mobile-frame.png</file>
+        <file>imports/views/helpers/PoemSwipeHelperForm.ui.qml</file>
+        <file>imports/logics/PoemSwipeHelperPage.qml</file>
+        <file>imports/routes/PoemSwipeHelperRoute.qml</file>
     </qresource>
 </RCC>

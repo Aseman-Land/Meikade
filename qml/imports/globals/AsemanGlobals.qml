@@ -43,6 +43,7 @@ AsemanObject {
     property alias introDone: _settings.introDone
 //    property bool themeDone: false
     property alias themeDone: _settings.themeDone
+    property alias helperSwipePoemDone: _settings.helperSwipePoemDone
     property alias sendData: _settings.sendData
     property alias iosTheme: _settings.iosTheme
     property alias androidTheme: _settings.androidTheme
@@ -122,6 +123,7 @@ AsemanObject {
         property bool smartSearch: true
         property bool introDone
         property bool themeDone
+        property bool helperSwipePoemDone
         property bool sendData
         property int fontSize: 3
         property int lastChangelogs: 0

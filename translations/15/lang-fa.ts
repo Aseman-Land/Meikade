@@ -692,6 +692,21 @@
     </message>
 </context>
 <context>
+    <name>PoemSwipeHelperForm</name>
+    <message>
+        <source>Help</source>
+        <translation>راهنمایی</translation>
+    </message>
+    <message>
+        <source>To go to the next/previous poem, hold center of the screen and swipe it to the left or right.</source>
+        <translation>برای سریع‌تر رفتن به شعر قبل یا بعد، میتوانید انگشتتان را روی وسط صفحه نگه دارید و صفحه را به چپ یا راست بکشید.</translation>
+    </message>
+    <message>
+        <source>I Undrestand</source>
+        <translation>متوجه شدم</translation>
+    </message>
+</context>
+<context>
     <name>DeleteListPage</name>
     <message>
         <source>Are you sure about delete &quot;%1&quot;?

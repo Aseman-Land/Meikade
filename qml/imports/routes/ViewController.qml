@@ -225,6 +225,11 @@ ViewportController {
     }
 
     ViewportControllerRoute {
+        route: /\w+\:\/helpers\/poem\/swipe/
+        source: "PoemSwipeHelperRoute.qml"
+    }
+
+    ViewportControllerRoute {
         route: /dialog:\/general\/error.*/
         source: "ErrorDialogRoute.qml"
     }
