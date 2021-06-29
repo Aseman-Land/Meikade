@@ -368,6 +368,14 @@
         <translation>ذخیره یادداشت</translation>
     </message>
     <message>
+        <source>I Undrestand</source>
+        <translation>متوجه شدم</translation>
+    </message>
+    <message>
+        <source>To go to the poem, click on the verse</source>
+        <translation>برای رفتن به صفحه شعر، متن بیت را لمس کنید</translation>
+    </message>
+    <message>
         <source>Edit Note</source>
         <translation>ویرایش یادداشت</translation>
     </message>

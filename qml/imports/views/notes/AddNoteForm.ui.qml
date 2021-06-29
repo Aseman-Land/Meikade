@@ -21,6 +21,7 @@ Page {
     property alias closeBtn: closeBtn
     property alias confirmBtn: confirmBtn
     property alias poemBtn: poemBtn
+    property alias helper: helper
     property alias deleteBtn: deleteBtn
     property alias noteField: noteField
     property alias flick: flick
@@ -215,6 +216,19 @@ Page {
             Material.accent: Colors.noteButton
             IOSStyle.accent: Colors.noteButton
             Material.elevation: 0
+        }
+    }
+
+    Helper {
+        id: helper
+        anchors.fill: parent
+
+        HelperPoint {
+            x: parent.width/2
+            width: 180 * Devices.density
+            height: 180 * Devices.density
+            buttonText: qsTr("I Undrestand") + Translations.refresher
+            title: qsTr("To go to the poem, click on the verse") + Translations.refresher
         }
     }
 

@@ -134,7 +134,7 @@ Item {
                             maximumLineCount: 1
                             font.pixelSize: 8 * Devices.fontDensity
                             opacity: 0.8
-                            text: model.poet
+                            text: model.value
                         }
                     }
 

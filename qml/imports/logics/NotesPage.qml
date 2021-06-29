@@ -62,7 +62,12 @@ Viewport {
                 obj.saved.connect(function(text){});
                 obj.poemRequest.connect(function(){
                     linkRequest(map.link, map);
-                })
+                });
+
+                if (!AsemanGlobals.helperNotePoemDone) {
+                    obj.helper.next();
+                    AsemanGlobals.helperNotePoemDone = true;
+                }
             }
 
             Connections {
