@@ -28,7 +28,7 @@ AddNoteView {
     deleteBtn.onClicked: Viewport.viewport.append(delete_component, {}, "bottomdrawer")
 
     poemBtn.onClicked: {
-        ViewportType.open = false;
+//        ViewportType.open = false;
         poemRequest();
     }
 
