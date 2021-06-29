@@ -50,6 +50,12 @@ ViewportController {
     }
 
     ViewportControllerRoute {
+        route: /\w+\:\/messages/
+        source: "MessagesRoute.qml"
+        viewportType: "popup"
+    }
+
+    ViewportControllerRoute {
         route: /\w+\:\/syncs/
         source: "SyncRoute.qml"
         viewportType: tabletMode? "popup" : ""

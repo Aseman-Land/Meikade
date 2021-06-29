@@ -351,5 +351,10 @@
         <file>imports/views/helpers/PoemSwipeHelperForm.ui.qml</file>
         <file>imports/logics/PoemSwipeHelperPage.qml</file>
         <file>imports/routes/PoemSwipeHelperRoute.qml</file>
+        <file>imports/requests/GetMessagesRequest.qml</file>
+        <file>imports/models/MessagesModel.qml</file>
+        <file>imports/views/messages/MessagesForm.ui.qml</file>
+        <file>imports/logics/MessagesPage.qml</file>
+        <file>imports/routes/MessagesRoute.qml</file>
     </qresource>
 </RCC>

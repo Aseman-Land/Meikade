@@ -1,3 +1,4 @@
+singleton MessagesModel 1.0 MessagesModel.qml
 HomeModel 1.0 HomeModel.qml
 ExploreModel 1.0 ExploreModel.qml
 MyMeikadeModel 1.0 MyMeikadeModel.qml

@@ -7,6 +7,7 @@ import globals 1.0
 import micros 1.0
 import routes 1.0
 import requests 1.0
+import models 1.0
 
 MainView {
     id: form
@@ -28,6 +29,12 @@ MainView {
         }
 
         loadChangelogs();
+        MessagesModel.init();
+    }
+
+    Connections {
+        target: MessagesModel
+        onNewMessageArrived: ViewController.trigger("popup:/messages");
     }
 
     MeikadeLoader {

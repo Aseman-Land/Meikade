@@ -39,3 +39,4 @@ PremiumConfirmView 1.0 premium/PremiumConfirmForm.ui.qml
 AddBookView 1.0 mypoems/AddBookForm.ui.qml
 EditPoemView 1.0 mypoems/EditPoemForm.ui.qml
 PoemSwipeHelperView 1.0 helpers/PoemSwipeHelperForm.ui.qml
+MessagesView 1.0 messages/MessagesForm.ui.qml

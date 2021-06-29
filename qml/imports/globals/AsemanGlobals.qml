@@ -37,6 +37,7 @@ AsemanObject {
     property alias phraseNumber: _settings.phraseNumber
     property alias fontSize: _settings.fontSize
     property alias lastChangelogs: _settings.lastChangelogs
+    property alias lastMessageId: _settings.lastMessageId
     property alias onlineSearch: _settings.onlineSearch
     property alias smartSearch: _settings.smartSearch
 //    property bool introDone: false
@@ -127,6 +128,7 @@ AsemanObject {
         property bool sendData
         property int fontSize: 3
         property int lastChangelogs: 0
+        property int lastMessageId: -1
 
         property int iosTheme: 2
         property int androidTheme: 0

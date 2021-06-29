@@ -40,3 +40,4 @@ InitPaymentRequest 1.0 InitPaymentRequest.qml
 BootstrapRequest 1.0 BootstrapRequest.qml
 PoetsTypeRequest 1.0 PoetsTypeRequest.qml
 LoggerRequest 1.0 LoggerRequest.qml
+GetMessagesRequest 1.0 GetMessagesRequest.qml

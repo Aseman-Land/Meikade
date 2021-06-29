@@ -772,6 +772,17 @@ It containts %2 items currently.</source>
     </message>
 </context>
 <context>
+    <name>MessagesForm</name>
+    <message>
+        <source>Messages</source>
+        <translation>پیام‌ها</translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation>بستن</translation>
+    </message>
+</context>
+<context>
     <name>FavoritedPoetsListForm</name>
     <message>
         <source>There is no item here</source>
