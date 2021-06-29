@@ -116,7 +116,14 @@ MyMeikadeView {
                     Viewport.controller.trigger("dialog:/auth/changeBio", {"text": bioLabel.text});
                     break;
                 case 2:
-                    Devices.getOpenPictures();
+                    AsemanApp.requestPermissions(["android.permission.WRITE_EXTERNAL_STORAGE",
+                                                  "android.permission.READ_EXTERNAL_STORAGE"],
+                                                 function(res) {
+                        if(res["android.permission.WRITE_EXTERNAL_STORAGE"] == true &&
+                           res["android.permission.READ_EXTERNAL_STORAGE"] == true) {
+                            Devices.getOpenPictures();
+                        }
+                    });
                     break;
                 case 3:
                     setProfilePicReq._image = MyUserRequest._image;

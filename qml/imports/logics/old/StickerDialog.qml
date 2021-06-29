@@ -116,7 +116,7 @@ Rectangle {
                         let path = Devices.isIOS? AsemanApp.homePath : Devices.picturesLocation
                         writer.save(path + "/Meikade", Qt.size(1080, 1080/frame.ratio))
                     }
-                })
+                });
             }
         }
     }
@@ -363,8 +363,16 @@ Rectangle {
                             if(stateCommand == StickerModel.OpenImage) {
                                 if ((frame_image.source + "").length)
                                     frame_image.source = ""
-                                else
-                                    Devices.getOpenPictures();
+                                else {
+                                    AsemanApp.requestPermissions(["android.permission.WRITE_EXTERNAL_STORAGE",
+                                                                  "android.permission.READ_EXTERNAL_STORAGE"],
+                                                                 function(res) {
+                                        if(res["android.permission.WRITE_EXTERNAL_STORAGE"] == true &&
+                                           res["android.permission.READ_EXTERNAL_STORAGE"] == true) {
+                                            Devices.getOpenPictures();
+                                        }
+                                    });
+                                }
                             } else {
                                 smodel.state = stateCommand
                             }
