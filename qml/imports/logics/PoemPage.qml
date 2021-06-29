@@ -478,34 +478,6 @@ PoemView {
                 Component.onCompleted: fetch()
             }
 
-            function getText(cleanText) {
-                var text = "";
-                for (var i=index; i<loader.versesModel.count; i++) {
-                    var e = loader.versesModel.get(i);
-                    text += e.text + "\n";
-                    if (e.position === PoemVersesModel.PositionLeft || e.position === PoemVersesModel.PositionCenteredVerse2 || e.position === PoemVersesModel.PositionSingle) {
-                        text += "\n";
-                        break;
-                    }
-                }
-
-                if (!cleanText) {
-                    for (var j=1; j<loader.categoriesModel.count; j++) {
-                        text += loader.categoriesModel.get(j).title
-                        if (j < loader.categoriesModel.count-1)
-                            text += ", ";
-                        else
-                            text += " - ";
-                    }
-
-                    text += poet;
-                } else {
-                    text = Tools.stringReplace(text, "\n+", "\n", true);
-                }
-
-                return text.trim();
-            }
-
             onItemClicked: {
                 var idx = menuItem.index;
                 var poemLoader = loader;
@@ -538,7 +510,7 @@ PoemView {
                     poemLoader.versesModel.insert(idx, item);
                     break;
                 case 1:
-                    var poemText = getText(false);
+                    var poemText = loader.getText(false, menuItem.index);
                     poemText = Tools.stringReplace(poemText, "\n+", "\n", true);
 
                     Viewport.controller.trigger("float:/notes/add", {"poetId": verseFaveActionQuery.poetId,
@@ -572,14 +544,14 @@ PoemView {
                     });
                     break;
                 case 3:
-                    Devices.clipboard = getText(false);
+                    Devices.clipboard = loader.getText(false, menuItem.index);
                     GlobalSignals.snackbarRequest(qsTr("Verse copied"));
                     break;
                 case 4:
-                    Viewport.controller.trigger("float:/sticker/export", {"poet": poet, "text": getText(true)})
+                    Viewport.controller.trigger("float:/sticker/export", {"poet": poet, "text": loader.getText(true, menuItem.index)})
                     break;
                 case 5:
-                    Devices.share(dis.title, getText(false));
+                    Devices.share(dis.title, loader.getText(false, menuItem.index));
                     break;
                 }
 

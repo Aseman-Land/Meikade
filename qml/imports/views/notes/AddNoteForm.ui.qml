@@ -20,6 +20,7 @@ Page {
     property alias poemText: poemText.text
     property alias closeBtn: closeBtn
     property alias confirmBtn: confirmBtn
+    property alias poemBtn: poemBtn
     property alias deleteBtn: deleteBtn
     property alias noteField: noteField
     property alias flick: flick
@@ -67,10 +68,23 @@ Page {
                     Label {
                         id: poemText
                         Layout.fillWidth: true
+                        Layout.minimumHeight: 60 * Devices.density
                         horizontalAlignment: Text.AlignLeft
                         font.pixelSize: 9 * Devices.fontDensity
                         wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                         text: "Poem Description" + Translations.refresher
+
+                        BusyIndicator {
+                            anchors.centerIn: parent
+                            running: poemText.text.length == 0
+                        }
+
+                        ItemDelegate {
+                            id: poemBtn
+                            anchors.fill: parent
+                            anchors.margins: -10 * Devices.density
+                            z: -1
+                        }
                     }
                 }
 

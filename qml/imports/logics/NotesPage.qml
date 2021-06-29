@@ -7,6 +7,7 @@ import views 1.0
 import models 1.0
 import queries 1.0
 import micros 1.0
+import routes 1.0
 
 Viewport {
     id: dis
@@ -56,7 +57,12 @@ Viewport {
             closeBtn.onClicked: closeRequest()
             onClicked: {
                 var map = flModel.get(index);
-                linkRequest(map.link, map);
+                var obj = ViewController.trigger("float:/notes/add", {"poetId": map.poetId, "catId": map.catId, "poemId": map.poemId,
+                                                 "verseId": map.verseId, "poemText": "", "extra": map.extra});
+                obj.saved.connect(function(text){});
+                obj.poemRequest.connect(function(){
+                    linkRequest(map.link, map);
+                })
             }
 
             Connections {

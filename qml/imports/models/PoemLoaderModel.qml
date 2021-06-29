@@ -28,6 +28,36 @@ AsemanObject {
 
     readonly property bool refrshing: poemReq.refreshing || poemQuery.refreshing || randomReq.refreshing
 
+    signal finished()
+
+    function getText(cleanText, index) {
+        var text = "";
+        for (var i=index; i<versesModel.count; i++) {
+            var e = versesModel.get(i);
+            text += e.text + "\n";
+            if (e.position === PoemVersesModel.PositionLeft || e.position === PoemVersesModel.PositionCenteredVerse2 || e.position === PoemVersesModel.PositionSingle) {
+                text += "\n";
+                break;
+            }
+        }
+
+        if (!cleanText) {
+            for (var j=1; j<categoriesModel.count; j++) {
+                text += categoriesModel.get(j).title
+                if (j < categoriesModel.count-1)
+                    text += ", ";
+                else
+                    text += " - ";
+            }
+
+            text += poet;
+        } else {
+            text = Tools.stringReplace(text, "\n+", "\n", true);
+        }
+
+        return text.trim();
+    }
+
     function random() {
         randomReq.refresh();
     }
@@ -146,6 +176,8 @@ AsemanObject {
 
             } catch (e) {
             }
+
+            dis.finished();
         }
     }
 

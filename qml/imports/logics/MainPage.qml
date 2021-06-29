@@ -100,14 +100,14 @@ MainView {
             return;
         if (!AsemanGlobals.introDone)
             return;
-        if (AsemanGlobals.lastChangelogs >= 430)
+        if (AsemanGlobals.lastChangelogs >= 440)
         {
             loadThemeWized();
             return;
         }
 
         Tools.jsDelayCall(1000, function(){ changelogItem = Viewport.controller.trigger("float:/changelogs") });
-        AsemanGlobals.lastChangelogs = 430;
+        AsemanGlobals.lastChangelogs = 440;
     }
 
     function loadThemeWized() {

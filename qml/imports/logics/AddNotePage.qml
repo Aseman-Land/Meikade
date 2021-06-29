@@ -17,6 +17,7 @@ AddNoteView {
     property string extra
 
     signal saved(string text)
+    signal poemRequest()
 
     closeBtn.onClicked: home.ViewportType.open = false;
     confirmBtn.onClicked: confirm()
@@ -25,6 +26,16 @@ AddNoteView {
 
     deleteBtn.visible: createAction.value.length > 0
     deleteBtn.onClicked: Viewport.viewport.append(delete_component, {}, "bottomdrawer")
+
+    poemBtn.onClicked: {
+        ViewportType.open = false;
+        poemRequest();
+    }
+
+    Component.onCompleted: {
+        if (poemText.length == 0)
+            loader.poemId = home.poemId
+    }
 
     premiumMsg: {
         if (Subscription.premium || Subscription.notesLimits < 0 || !Bootstrap.initialized)
@@ -64,6 +75,23 @@ AddNoteView {
         home.ViewportType.open = false;
 
         home.saved(text);
+    }
+
+    PoemLoaderModel {
+        id: loader
+        onFinished: {
+            var index = 0;
+            for (var i=0; i<versesModel.count; i++) {
+                var m = versesModel.get(i);
+                if (m.vorder == verseId) {
+                    index = i;
+                    break;
+                }
+            }
+
+            var poemText = getText(false, index);
+            home.poemText = Tools.stringReplace(poemText, "\n+", "\n", true);
+        }
     }
 
     UserActions {
