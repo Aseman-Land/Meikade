@@ -24,4 +24,4 @@ RESOURCES += \
 DISTFILES += \
     lang-en.ts \
     lang-fa.ts
-    
+

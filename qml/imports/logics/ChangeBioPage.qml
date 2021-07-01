@@ -11,6 +11,8 @@ ChangeNameView {
     width: Math.min(Viewport.viewport.width * 0.9, 500*Devices.density)
     height: 230 * Devices.density
 
+    nameField.horizontalAlignment: Text.AlignLeft
+
     cancelBtn.onClicked: home.ViewportType.open = false;
     confirmBtn.onClicked: confirm()
     nameField.onAccepted: confirm()

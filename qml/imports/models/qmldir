@@ -1,4 +1,5 @@
 singleton MessagesModel 1.0 MessagesModel.qml
+singleton TopPoetsHomeModel 1.0 TopPoetsHomeModel.qml
 HomeModel 1.0 HomeModel.qml
 ExploreModel 1.0 ExploreModel.qml
 MyMeikadeModel 1.0 MyMeikadeModel.qml
@@ -13,7 +14,6 @@ OfflinePoetsModel 1.0 OfflinePoetsModel.qml
 ManageOfflinePoetsModel 1.0 ManageOfflinePoetsModel.qml
 OfflineCatsModel 1.0 OfflineCatsModel.qml
 TopPoetsModel 1.0 TopPoetsModel.qml
-TopPoetsHomeModel 1.0 TopPoetsHomeModel.qml
 ListsModel 1.0 ListsModel.qml
 FavoritedPoetsListModel 1.0 FavoritedPoetsListModel.qml
 FavoritedListModel 1.0 FavoritedListModel.qml

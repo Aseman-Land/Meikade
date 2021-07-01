@@ -2,6 +2,13 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="fa_IR">
 <context>
+    <name>FlexiTopPoetsRow</name>
+    <message>
+        <source>Add Poets</source>
+        <translation>اضافه کردن شاعر</translation>
+    </message>
+</context>
+<context>
     <name>AboutForm</name>
     <message>
         <source>Website</source>

@@ -16,10 +16,6 @@ IntroView {
         Tools.jsDelayCall(1000, function(){ setupThemeForm.listView.currentIndex = 0 });
     }
 
-    TopPoetsHomeModel {
-        id: topHomeModel
-    }
-
     Timer {
         id: stopTimer
         interval: 800
@@ -49,7 +45,7 @@ IntroView {
             id: topModel
         }
 
-        nextBtn.enabled: topHomeModel.count > 2
+        nextBtn.enabled: TopPoetsHomeModel.count > 2
         nextBtn.onClicked: list.currentIndex++
         onChecked: {
             if (active)
