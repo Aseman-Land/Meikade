@@ -63,7 +63,7 @@ int main(int argc, char *argv[])
     qputenv("QT_LOGGING_RULES", "qt.qml.connections=false");
 
     bool androidStyle;
-#ifndef Q_OS_ANDROID
+#ifdef Q_OS_ANDROID
     androidStyle = true;
     QQuickStyle::setStyle("Material");
 #else
