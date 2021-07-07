@@ -1177,7 +1177,7 @@ It containts %2 items currently.</source>
     </message>
     <message>
         <source>Explore</source>
-        <translation>اکسپلور</translation>
+        <translation>کاوش</translation>
     </message>
     <message>
         <source>Search</source>
