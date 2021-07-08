@@ -31,6 +31,7 @@
 #include <QQmlApplicationEngine>
 #include <QQuickStyle>
 #include <QQmlContext>
+#include <QIcon>
 #include <QTimer>
 #ifdef QT_WEBVIEW_LIB
 #include <QtWebView>
