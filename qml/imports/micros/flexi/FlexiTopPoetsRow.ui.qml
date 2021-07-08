@@ -17,6 +17,7 @@ FlexiGridRow {
         anchors.centerIn: parent
         visible: TopPoetsHomeModel.count == 0
         text: qsTr("Add Poets") + Translations.refresher
+        font.pixelSize: 9 * Devices.fontDensity
 //        highlighted: isAndroidStyle
         Material.elevation: 0
         Material.background: Colors.lightBackground
