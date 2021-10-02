@@ -126,7 +126,7 @@ MyMeikadeView {
                     });
                     break;
                 case 3:
-                    setProfilePicReq._image = MyUserRequest._image;
+                    setProfilePicReq._image = MyUserRequest._imageName;
                     setProfilePicReq.deleteRequest();
                     break;
                 case 4:

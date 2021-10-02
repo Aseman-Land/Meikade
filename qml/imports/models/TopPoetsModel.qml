@@ -7,6 +7,8 @@ import globals 1.0
 
 AsemanListModel {
     id: listModel
+
+    property string keyword
     property alias refreshing: poetsReq.refreshing
 
     function append(poetId, properties) {
@@ -23,6 +25,18 @@ AsemanListModel {
         actions.updatedAt = Tools.dateToSec(new Date);
         actions.pushAction();
         GlobalSignals.topPoetsRefreshed();
+    }
+
+    onKeywordChanged: refreshTimer.restart()
+
+    Timer {
+        id: refreshTimer
+        interval: 300
+        repeat: false
+        onTriggered: {
+            clear()
+            poetsReq.refresh()
+        }
     }
 
     HashObject {
@@ -56,6 +70,8 @@ AsemanListModel {
                         var d = modelData[j];
                         var caps = Tools.stringRegExp(d.link, "^\\w+\\:\\/poet\\?id\\=(\\d+)$");
                         if (caps.length === 0)
+                            continue;
+                        if (keyword.length && d.title.toLocaleLowerCase().indexOf(keyword.toLocaleLowerCase()) == -1)
                             continue;
 
                         var id = caps[0][1];

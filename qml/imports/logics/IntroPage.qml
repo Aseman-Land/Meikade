@@ -43,6 +43,7 @@ IntroView {
     setupHomeForm {
         listView.model: TopPoetsModel {
             id: topModel
+            keyword: home.setupHomeForm.keyword
         }
 
         nextBtn.enabled: TopPoetsHomeModel.count > 2
