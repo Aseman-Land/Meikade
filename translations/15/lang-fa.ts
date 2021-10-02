@@ -996,6 +996,10 @@ It containts %2 items currently.</source>
         <translation>لطفا دست کم ۳ شاعر مورد علاقه خود را انتخاب کنید.</translation>
     </message>
     <message>
+        <source>Search</source>
+        <translation>جستجو</translation>
+    </message>
+    <message>
         <source>Next</source>
         <translation>بعدی</translation>
     </message>

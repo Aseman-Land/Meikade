@@ -43,7 +43,17 @@ UserRequest {
             if (_cache.image.length == 0)
                 return "";
 
-            return baseUrl + "/user/image/" + _cache.image;
+            return baseUrl + "/user/image/" + _imageName;
+        } catch (e) {
+            return "";
+        }
+    }
+    readonly property string _imageName: {
+        try {
+            if (_cache.image.length == 0)
+                return "";
+
+            return _cache.image;
         } catch (e) {
             return "";
         }
