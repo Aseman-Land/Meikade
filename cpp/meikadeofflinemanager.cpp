@@ -36,6 +36,7 @@ public:
     QString databasePath;
     qint32 poetId = 0;
     qint32 catId = -1;
+    bool ignoreSslErrors = false;
 
     QNetworkAccessManager accessManager;
 
@@ -207,6 +208,7 @@ void MeikadeOfflineItem::install(bool active)
         Private::installers.take(hash)->deleteLater();
 
     MeikadeOfflineItemInstaller *installer = new MeikadeOfflineItemInstaller(p->databasePath, (active? p->sourceUrl : ""), p->poetId, p->catId);
+    installer->setIgnoreSslErrors(p->ignoreSslErrors);
     installer->download();
 
     Private::installers[hash] = installer;
@@ -271,6 +273,19 @@ QString MeikadeOfflineItem::getHash() const
     stream << p->sourceUrl;
 
     return QCryptographicHash::hash(data, QCryptographicHash::Md5).toHex();
+}
+
+bool MeikadeOfflineItem::ignoreSslErrors() const
+{
+    return p->ignoreSslErrors;
+}
+
+void MeikadeOfflineItem::setIgnoreSslErrors(bool newIgnoreSslErrors)
+{
+    if (p->ignoreSslErrors == newIgnoreSslErrors)
+        return;
+    p->ignoreSslErrors = newIgnoreSslErrors;
+    Q_EMIT ignoreSslErrorsChanged();
 }
 
 MeikadeOfflineItem::~MeikadeOfflineItem()
@@ -338,6 +353,13 @@ void MeikadeOfflineItemInstaller::download()
         Q_EMIT sizeChanged();
     });
 
+#if QT_CONFIG(ssl)
+    connect(mReply, &QNetworkReply::sslErrors, this, [this](const QList<QSslError> &errors){
+        if (mIgnoreSslErrors)
+            mReply->ignoreSslErrors(errors);
+    });
+#endif
+
     connect(mReply, &QNetworkReply::readyRead, this, [this, file](){
         file->write( mReply->readAll() );
     });
@@ -399,6 +421,16 @@ void MeikadeOfflineItemInstaller::stop()
     mDoing = false;
     Q_EMIT downloadingChanged();
     Q_EMIT doingChanged();
+}
+
+bool MeikadeOfflineItemInstaller::ignoreSslErrors() const
+{
+    return mIgnoreSslErrors;
+}
+
+void MeikadeOfflineItemInstaller::setIgnoreSslErrors(bool newIgnoreSslErrors)
+{
+    mIgnoreSslErrors = newIgnoreSslErrors;
 }
 
 bool MeikadeOfflineItemInstaller::installing() const
