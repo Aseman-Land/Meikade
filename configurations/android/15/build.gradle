@@ -5,7 +5,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.6.0'
+        classpath 'com.android.tools.build:gradle:3.2.0'
     }
 }
 
@@ -39,7 +39,7 @@ android {
 
     compileSdkVersion androidCompileSdkVersion.toInteger()
 
-    buildToolsVersion '28.0.3'
+    buildToolsVersion androidBuildToolsVersion
 
     sourceSets {
         main {
@@ -47,7 +47,7 @@ android {
             java.srcDirs = [qt5AndroidDir + '/src', 'src', 'java']
             aidl.srcDirs = [qt5AndroidDir + '/src', 'src', 'aidl']
             res.srcDirs = [qt5AndroidDir + '/res', 'res']
-            resources.srcDirs = ['resources']
+            resources.srcDirs = ['src']
             renderscript.srcDirs = ['src']
             assets.srcDirs = ['assets']
             jniLibs.srcDirs = ['libs']
@@ -58,7 +58,6 @@ android {
         abortOnError false
     }
 
-    // Do not compress Qt binary resources file
     aaptOptions {
         noCompress 'rcc'
     }

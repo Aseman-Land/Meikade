@@ -106,6 +106,7 @@ Item {
                                 sourceSize.width: 92 * Devices.density
                                 sourceSize.height: 92 * Devices.density
                                 asynchronous: true
+                                ignoreSslErrors: AsemanGlobals.ignoreSslErrors
                                 source: AsemanGlobals.testPoetImagesDisable? "" : model.image
                             }
                         }

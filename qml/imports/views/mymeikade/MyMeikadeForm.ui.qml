@@ -205,6 +205,7 @@ Rectangle {
                             sourceSize.height: height * 1.2
                             fillMode: Image.PreserveAspectCrop
                             asynchronous: true
+                            ignoreSslErrors: AsemanGlobals.ignoreSslErrors
 
                             BusyIndicator {
                                 anchors.centerIn: parent

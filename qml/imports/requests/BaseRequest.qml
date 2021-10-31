@@ -2,6 +2,7 @@ import QtQuick 2.0
 import AsemanQml.Base 2.0
 import AsemanQml.Controls 2.0
 import AsemanQml.Network 2.0
+import AsemanQml.Viewport 2.0
 import globals 1.0
 import routes 1.0
 
@@ -11,6 +12,7 @@ NetworkRequest {
     ignoreKeys: ["baseUrl", "refreshingState", "allowGlobalBusy", "networkManager", "allowShowErrors", "rawHeaders", "accessToken"]
     ignoreRegExp: /^_\w+$/
     headers: rawHeaders
+    ignoreSslErrors: AsemanGlobals.ignoreSslErrors
 
     readonly property variant rawHeaders: {
         "Unique-ID": AsemanGlobals.uniqueId,
@@ -36,6 +38,7 @@ NetworkRequest {
 
     signal refreshRequest()
 
+    onIgnoreSslErrorsChanged: if (!refreshing) refreshTimer.restart()
     onStatusChanged: if (status == 401 && AsemanGlobals.accessToken.length && accessToken == AsemanGlobals.accessToken) { AsemanGlobals.accessToken = ""; ViewController.trigger("float:/auth/float"); }
     onResponseChanged: if (_debug) console.debug(Tools.variantToJson(response))
     onHeadersChanged: if (!refreshing) refreshTimer.restart()
@@ -51,6 +54,19 @@ NetworkRequest {
 
     Component.onDestruction: if (refreshingState && allowGlobalBusy) ViewController.waitCount--
 
+    onSslErrorsChanged: {
+        if (AsemanGlobals.ignoreSslErrorsViewed)
+            return;
+
+        var dlg = ViewController.trigger("dialog:/general/error", {"title": qsTr("SSL Error"), "body": qsTr("You have connection security issue:%1Do you want to ignore it?").arg("\n" + sslErrors.trim() + "\n"), "buttons": [qsTr("Yes"), qsTr("No")]})
+        dlg.itemClicked.connect(function(index){
+            if (index == 0)
+                AsemanGlobals.ignoreSslErrors = true;
+
+            dlg.Viewport.viewport.closeLast();
+        })
+        AsemanGlobals.ignoreSslErrorsViewed = true;
+    }
     onServerError: {
         try {
             _showError("Server Error", response.message)
