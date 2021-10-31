@@ -1005,6 +1005,25 @@ It containts %2 items currently.</source>
     </message>
 </context>
 <context>
+    <name>BaseRequest</name>
+    <message>
+        <source>You have connection security issue:%1Do you want to ignore it?</source>
+        <translation>شما یک خطای امنیتی SSL دارید:%1آیا مایل به ادامه دادن هستید؟</translation>
+    </message>
+    <message>
+        <source>SSL Error</source>
+        <translation>خطا امنیتی</translation>
+    </message>
+    <message>
+        <source>Yes</source>
+        <translation>بله</translation>
+    </message>
+    <message>
+        <source>No</source>
+        <translation>خیر</translation>
+    </message>
+</context>
+<context>
     <name>IntroSetupOfflines</name>
     <message>
         <source>Offline Poets</source>

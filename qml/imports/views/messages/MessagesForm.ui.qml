@@ -87,6 +87,7 @@ DrawerFrame {
                                     visible: model.image.length > 0
                                     source: model.image
                                     fillMode: Image.PreserveAspectFit
+                                    ignoreSslErrors: AsemanGlobals.ignoreSslErrors
                                     asynchronous: true
 
                                     BusyIndicator {
