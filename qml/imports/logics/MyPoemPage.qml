@@ -217,7 +217,7 @@ PoemView {
             highlighted: true
             IOSStyle.accent: Qt.darker(Colors.primary, 1.3)
             Material.accent: Qt.darker(Colors.primary, 1.3)
-//            onClicked: edit()
+            onClicked: publish()
 
             RowLayout {
                 id: publishRow
@@ -315,6 +315,10 @@ PoemView {
         Viewport.controller.trigger("page:/mypoems/poem/edit",
                                             {"poemId": poemId,
                                              "categories": loader.categoriesModel.data})
+    }
+
+    function publish() {
+        Viewport.controller.trigger("float:/mypoems/publish")
     }
 
     function openGlobalMenu() {

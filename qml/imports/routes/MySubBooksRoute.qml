@@ -12,4 +12,5 @@ MySubBooksPage {
 
     onAddBookRequest: Viewport.controller.trigger("dialog:/mypoems/add", {"bookId": bookId})
     onAddPoemRequest: Viewport.controller.trigger("dialog:/mypoems/poem/add", {"bookId": bookId})
+    onPublishRequest: Viewport.controller.trigger("float:/mypoems/publish")
 }

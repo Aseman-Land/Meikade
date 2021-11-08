@@ -94,6 +94,11 @@ ViewportController {
     }
 
     ViewportControllerRoute {
+        route: /\w+\:\/mypoems\/publish(?:\?poemId=.+)?/
+        source: "PublishRoute.qml"
+    }
+
+    ViewportControllerRoute {
         route: /\w+\:\/poem\/random(?:\?.+)?/
         source: "PoemRoute.qml"
 //        source: "RandomPoemRoute.qml"

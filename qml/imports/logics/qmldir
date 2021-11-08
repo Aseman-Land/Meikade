@@ -42,3 +42,4 @@ EditPoemPage 1.0 EditPoemPage.qml
 ThemeWizardPage 1.0 ThemeWizardPage.qml
 PoemSwipeHelperPage 1.0 PoemSwipeHelperPage.qml
 MessagesPage 1.0 MessagesPage.qml
+PublishPage 1.0 PublishPage.qml

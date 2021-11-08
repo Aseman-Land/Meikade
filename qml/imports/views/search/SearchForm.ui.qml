@@ -327,11 +327,12 @@ Rectangle {
             anchors.verticalCenterOffset: Devices.statusBarHeight/2
             anchors.right: parent.right
             text: qsTr("Close") + Translations.refresher
-            highlighted: true
             radius: 6 * Devices.density
             font.pixelSize: 8 * Devices.fontDensity
-            IOSStyle.accent: Qt.darker(Colors.primary, 1.3)
-            Material.accent: Qt.darker(Colors.primary, 1.3)
+            IOSStyle.foreground: Colors.foreground
+            IOSStyle.background: Colors.deepBackground
+            Material.foreground: Colors.foreground
+            Material.background: Colors.deepBackground
             visible: false
             Material.theme: Material.Dark
             Material.elevation: 0

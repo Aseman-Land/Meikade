@@ -28,6 +28,10 @@ MainView {
             ViewController.trigger("float:/auth/float");
         }
 
+        Tools.jsDelayCall(1000, function(){
+            Viewport.controller.trigger("float:/mypoems/publish")
+        });
+
         loadChangelogs();
         MessagesModel.init();
     }

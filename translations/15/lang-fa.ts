@@ -1028,6 +1028,21 @@ It containts %2 items currently.</source>
     </message>
 </context>
 <context>
+    <name>PublishForm</name>
+    <message>
+        <source>Close</source>
+        <translation>بستن</translation>
+    </message>
+    <message>
+        <source>Review</source>
+        <translation>بازبینی</translation>
+    </message>
+    <message>
+        <source>Please Wait...</source>
+        <translation>لطفا صبر کنید...</translation>
+    </message>
+</context>
+<context>
     <name>IntroSetupOfflines</name>
     <message>
         <source>Offline Poets</source>

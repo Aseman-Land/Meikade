@@ -42,6 +42,7 @@ Item {
     signal addBookRequest()
     signal addPoemRequest()
     signal premiumBuyRequest()
+    signal publishRequest()
 
     Rectangle {
         anchors.fill: parent
@@ -233,7 +234,7 @@ Item {
                     Material.accent: Qt.darker(Colors.primary, 1.3)
 
                     Connections {
-//                        onClicked: addBookRequest()
+                        onClicked: publishRequest()
                     }
 
                     RowLayout {
