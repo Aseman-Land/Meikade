@@ -282,6 +282,10 @@
         <translation>ویرایش شعر</translation>
     </message>
     <message>
+        <source>Publish</source>
+        <translation>انتشار شعر</translation>
+    </message>
+    <message>
         <source>To edit poem touch below button.</source>
         <translation>برای ویرایش شعر کلید زیر را لمس کنید.</translation>
     </message>
@@ -1596,6 +1600,10 @@ It containts %2 items currently.</source>
     <message>
         <source>New Book</source>
         <translation>دفتر جدید</translation>
+    </message>
+    <message>
+        <source>Publish Book</source>
+        <translation>انتشار دفتر</translation>
     </message>
     <message>
         <source>if you want to add a sub-book category, please tap on the below button.</source>

@@ -224,6 +224,37 @@ Item {
                         }
                     }
                 }
+
+                RoundButton {
+                    Layout.alignment: Qt.AlignHCenter
+                    Layout.preferredWidth: publishRow.width + 60 * Devices.density
+                    highlighted: true
+                    IOSStyle.accent: Qt.darker(Colors.primary, 1.3)
+                    Material.accent: Qt.darker(Colors.primary, 1.3)
+
+                    Connections {
+//                        onClicked: addBookRequest()
+                    }
+
+                    RowLayout {
+                        id: publishRow
+                        x: 30 * Devices.density
+                        anchors.verticalCenter: parent.verticalCenter
+
+                        Label {
+                            font.pixelSize: 12 * Devices.fontDensity
+                            font.family: MaterialIcons.family
+                            text: MaterialIcons.mdi_publish
+                            color: "#fff"
+                        }
+
+                        Label {
+                            text: qsTr("Publish Book") + Translations.refresher
+                            font.pixelSize: 9 * Devices.fontDensity
+                            color: "#fff"
+                        }
+                    }
+                }
             }
         }
     }

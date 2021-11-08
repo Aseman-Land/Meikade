@@ -5,6 +5,8 @@ import AsemanQml.Viewport 2.0
 import AsemanQml.MaterialIcons 2.0
 import QtQuick.Layouts 1.3
 import QtQuick.Controls 2.3
+import QtQuick.Controls.Material 2.0
+import QtQuick.Controls.IOSStyle 2.0
 import queries 1.0 as Query
 import views 1.0
 import globals 1.0
@@ -183,7 +185,6 @@ PoemView {
         }
 
         RoundButton {
-            Layout.bottomMargin: 20 * Devices.density
             Layout.preferredWidth: editPoemRow.width + 60 * Devices.density
             Layout.alignment: Qt.AlignHCenter
             highlighted: true
@@ -203,6 +204,35 @@ PoemView {
 
                 Label {
                     text: qsTr("Edit Poem") + Translations.refresher
+                    font.pixelSize: 9 * Devices.fontDensity
+                    color: "#fff"
+                }
+            }
+        }
+
+        RoundButton {
+            Layout.bottomMargin: 20 * Devices.density
+            Layout.preferredWidth: publishRow.width + 60 * Devices.density
+            Layout.alignment: Qt.AlignHCenter
+            highlighted: true
+            IOSStyle.accent: Qt.darker(Colors.primary, 1.3)
+            Material.accent: Qt.darker(Colors.primary, 1.3)
+//            onClicked: edit()
+
+            RowLayout {
+                id: publishRow
+                x: 30 * Devices.density
+                anchors.verticalCenter: parent.verticalCenter
+
+                Label {
+                    font.pixelSize: 12 * Devices.fontDensity
+                    font.family: MaterialIcons.family
+                    text: MaterialIcons.mdi_publish
+                    color: "#fff"
+                }
+
+                Label {
+                    text: qsTr("Publish") + Translations.refresher
                     font.pixelSize: 9 * Devices.fontDensity
                     color: "#fff"
                 }
