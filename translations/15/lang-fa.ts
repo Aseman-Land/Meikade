@@ -1038,6 +1038,26 @@ It containts %2 items currently.</source>
         <translation>بازبینی</translation>
     </message>
     <message>
+        <source>Upload to Review</source>
+        <translation>ارسال برای بررسی</translation>
+    </message>
+    <message>
+        <source>Agreement</source>
+        <translation>قوانین</translation>
+    </message>
+    <message>
+        <source>Finish</source>
+        <translation>پایان</translation>
+    </message>
+    <message>
+        <source>Your request for review submitted officialy. We will publish your poems and notify you when review finished.</source>
+        <translation>درخواست شما برای بررسی انتشار شعرهای خودتان با موفقیت ثبت شد. بعد از بررسی شعرها در صورت تایید شدنشان منتشر خواهند شد و به شما اطلاع رسانی خواهیم کرد.</translation>
+    </message>
+    <message>
+        <source>Accept Agreement</source>
+        <translation>قوانین را می‌پذیرم</translation>
+    </message>
+    <message>
         <source>Please Wait...</source>
         <translation>لطفا صبر کنید...</translation>
     </message>

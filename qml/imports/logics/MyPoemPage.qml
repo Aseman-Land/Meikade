@@ -32,6 +32,7 @@ PoemView {
     property alias poet: loader.poet
     property alias subtitle: loader.poet
 
+    property bool editMode: true
     property alias previewText: loader.previewText
     property alias previewType: loader.previewType
 
@@ -118,7 +119,7 @@ PoemView {
         searchLabel.visible: false
         listView.bottomMargin: editColumn.height
 
-        menuBtn.visible: previewText.length == 0
+        menuBtn.visible: previewText.length == 0 && editMode
         onNavigationClicked: {
             if (previewText.length)
                 return;
@@ -172,7 +173,7 @@ PoemView {
         anchors.margins: 8 * Devices.density
         y: mapListener.result.y + form.listView.footerItem.height
         spacing: 8 * Devices.density
-        visible: previewText.length == 0
+        visible: previewText.length == 0 && editMode
 
         Label {
             Layout.fillWidth: true
@@ -318,7 +319,7 @@ PoemView {
     }
 
     function publish() {
-        Viewport.controller.trigger("float:/mypoems/publish")
+        Viewport.controller.trigger("float:/mypoems/publish", {"poemId": poemId})
     }
 
     function openGlobalMenu() {

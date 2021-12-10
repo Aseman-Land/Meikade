@@ -359,5 +359,6 @@
         <file>imports/views/publish/PublishForm.ui.qml</file>
         <file>imports/logics/PublishPage.qml</file>
         <file>imports/routes/PublishRoute.qml</file>
+        <file>imports/requests/TermsRequest.qml</file>
     </qresource>
 </RCC>
