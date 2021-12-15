@@ -5,6 +5,7 @@ import AsemanQml.Viewport 2.0
 import AsemanQml.Base 2.0
 
 MySubBooksPage {
+    id: dis
     ViewportType.maximumWidth: Viewport.viewport.width > Viewport.viewport.height && !Devices.isMobile? Viewport.viewport.height * 3 / 5 : 0
     ViewportType.touchToClose: true
     width: Constants.width
@@ -12,4 +13,5 @@ MySubBooksPage {
 
     onAddBookRequest: Viewport.controller.trigger("dialog:/mypoems/add", {"bookId": bookId})
     onAddPoemRequest: Viewport.controller.trigger("dialog:/mypoems/poem/add", {"bookId": bookId})
+    onPublishRequest: Viewport.controller.trigger("float:/mypoems/publish", {"bookId": bookId, "name": dis.title})
 }

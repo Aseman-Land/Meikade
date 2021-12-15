@@ -56,6 +56,11 @@ ViewportController {
     }
 
     ViewportControllerRoute {
+        route: /\w+\:\/inbox/
+        source: "InboxRoute.qml"
+    }
+
+    ViewportControllerRoute {
         route: /\w+\:\/syncs/
         source: "SyncRoute.qml"
         viewportType: tabletMode? "popup" : ""
@@ -91,6 +96,11 @@ ViewportController {
     ViewportControllerRoute {
         route: /\w+\:\/mypoems\/poem(?:\?.*poemId\=.+)?/
         source: "MyPoemRoute.qml"
+    }
+
+    ViewportControllerRoute {
+        route: /\w+\:\/mypoems\/publish(?:\?poemId=.+)?/
+        source: "PublishRoute.qml"
     }
 
     ViewportControllerRoute {

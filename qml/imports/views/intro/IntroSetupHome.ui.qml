@@ -14,6 +14,7 @@ Page {
 
     property alias listView: listView
     property alias nextBtn: nextBtn
+    property string keyword
 
     readonly property real headerHeight: 200 * Devices.density
     readonly property real ratio: 1 - Math.min( Math.max(-headerListener.result.y / listView.headerItem.height, 0), 1)
@@ -30,6 +31,7 @@ Page {
         id: busyIndicator
         anchors.centerIn: parent
         viewItem: listView
+        visible: keyword.length == 0 || running
     }
 
     AsemanListView {
@@ -43,7 +45,19 @@ Page {
         bottomMargin: Devices.standardTitleBarHeight + 6 * Devices.density
         header: Item {
             width: listView.width
-            height: headerHeight
+            height: headerHeight + searchKeyword.height
+
+            TextField {
+                id: searchKeyword
+                width: parent.width - 40 * Devices.density
+                height: 46 * Devices.density
+                x: 20 * Devices.density
+                horizontalAlignment: Text.AlignLeft
+                anchors.bottom: parent.bottom
+                placeholderText: qsTr("Search") + Translations.refresher
+                font.pixelSize: 9 * Devices.fontDensity
+                onTextChanged: dis.keyword = text
+            }
         }
 
         delegate: Item {
@@ -102,6 +116,7 @@ Page {
                                 sourceSize.width: 92 * Devices.density
                                 sourceSize.height: 92 * Devices.density
                                 asynchronous: true
+                                ignoreSslErrors: AsemanGlobals.ignoreSslErrors
                                 source: AsemanGlobals.testPoetImagesDisable? "" : model.image
                             }
                         }

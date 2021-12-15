@@ -36,6 +36,7 @@ MyMeikadeView {
     bioLabel.text: MyUserRequest._bio
     profileLabel.text: MyUserRequest._fullname
     authBtn.onClicked: Viewport.controller.trigger("float:/auth/float", {})
+    messagesBtn.onClicked: Viewport.controller.trigger("float:/inbox", {})
 
     avatarBtn.onClicked: {
         var pos = Qt.point(avatarBtn.width/2, avatarBtn.height);
@@ -126,7 +127,7 @@ MyMeikadeView {
                     });
                     break;
                 case 3:
-                    setProfilePicReq._image = MyUserRequest._image;
+                    setProfilePicReq._image = MyUserRequest._imageName;
                     setProfilePicReq.deleteRequest();
                     break;
                 case 4:

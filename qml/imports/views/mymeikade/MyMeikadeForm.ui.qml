@@ -27,6 +27,8 @@ Rectangle {
     property alias weeklyDiary: weeklyDiary
     property alias favesDiary: favesDiary
     property alias authBtn: authBtn
+    property alias messagesBtn: messagesBtn
+    property alias messagesCountLabel: messagesCountLabel
 
     property bool signedIn
 
@@ -205,6 +207,7 @@ Rectangle {
                             sourceSize.height: height * 1.2
                             fillMode: Image.PreserveAspectCrop
                             asynchronous: true
+                            ignoreSslErrors: AsemanGlobals.ignoreSslErrors
 
                             BusyIndicator {
                                 anchors.centerIn: parent
@@ -302,6 +305,49 @@ Rectangle {
                 font.pixelSize: 16 * Devices.fontDensity
                 font.family: MaterialIcons.family
                 text: MaterialIcons.mdi_settings
+            }
+        }
+
+        ItemDelegate {
+            id: messagesBtn
+            y: Devices.statusBarHeight
+            anchors.right: parent.right
+            height: Devices.standardTitleBarHeight
+            width: height
+
+            Label {
+                anchors.centerIn: parent
+                anchors.verticalCenterOffset: -3 * Devices.density
+                color: "#fff"
+                font.pixelSize: 14 * Devices.fontDensity
+                font.family: MaterialIcons.family
+                text: MaterialIcons.mdi_inbox
+            }
+
+            Rectangle {
+                anchors.left: parent.left
+                anchors.bottom: parent.bottom
+                anchors.margins: 14 * Devices.density
+                width: 14 * Devices.density
+                height: width
+                radius: width / 2
+                color: "#ffffff"
+                visible: messagesCountLabel.text.length
+
+                Rectangle {
+                    anchors.fill: parent
+                    anchors.margins: -1 * Devices.density
+                    color: Colors.primary
+                    radius: width / 2
+                    z: -1
+                }
+
+                Label {
+                    id: messagesCountLabel
+                    anchors.centerIn: parent
+                    color: Colors.primary
+                    font.pixelSize: 7 * Devices.fontDensity
+                }
             }
         }
     }

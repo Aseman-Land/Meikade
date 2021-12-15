@@ -9,6 +9,7 @@ import requests 1.0
 MeikadeOfflineItem {
     sourceUrl: Constants.offlinesUrl
     databasePath: AsemanApp.homePath + "/database.sqlite"
+    ignoreSslErrors: AsemanGlobals.ignoreSslErrors
 
     function checkAndInstall(active) {
         var cnt = checkCount();

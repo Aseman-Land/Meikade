@@ -356,5 +356,12 @@
         <file>imports/views/messages/MessagesForm.ui.qml</file>
         <file>imports/logics/MessagesPage.qml</file>
         <file>imports/routes/MessagesRoute.qml</file>
+        <file>imports/views/publish/PublishForm.ui.qml</file>
+        <file>imports/logics/PublishPage.qml</file>
+        <file>imports/routes/PublishRoute.qml</file>
+        <file>imports/requests/TermsRequest.qml</file>
+        <file>imports/views/messages/InboxForm.ui.qml</file>
+        <file>imports/routes/InboxRoute.qml</file>
+        <file>imports/logics/InboxPage.qml</file>
     </qresource>
 </RCC>

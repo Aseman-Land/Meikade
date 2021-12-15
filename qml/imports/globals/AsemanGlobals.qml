@@ -40,6 +40,8 @@ AsemanObject {
     property alias lastMessageId: _settings.lastMessageId
     property alias onlineSearch: _settings.onlineSearch
     property alias smartSearch: _settings.smartSearch
+    property bool ignoreSslErrors: false
+    property bool ignoreSslErrorsViewed: false
 //    property bool introDone: false
     property alias introDone: _settings.introDone
 //    property bool themeDone: false

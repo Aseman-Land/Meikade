@@ -27,6 +27,7 @@ AsemanObject {
     property alias source: queueItem.source
     property alias header: queueItem.header
     property alias percent: queueItem.percent
+    property alias ignoreSslErrors: queueItem.ignoreSslErrors
     readonly property string cachedSource: queueItem.result
 
     property string fileName: {
@@ -41,6 +42,7 @@ AsemanObject {
     FileDownloaderQueueItem {
         id: queueItem
         downloaderQueue: DownloaderQueue
+        ignoreSslErrors: true
         fileName: {
             if(source.length == 0)
                 return ""

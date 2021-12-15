@@ -1,3 +1,6 @@
+### Meikade 4.4.2 changelogs
+- Warn page on the Android 7.0 or earlier to ignore SSL errors on LetsEncrypt problem.
+<br /><br />
 ### Meikade 4.4.0 changelogs
 - Home screen including recent poems and favorite poets
 - Explore page for reading and finding bests of the week and recommended poems in different categories

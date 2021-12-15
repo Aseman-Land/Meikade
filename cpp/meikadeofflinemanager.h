@@ -26,6 +26,7 @@ class MeikadeOfflineItem : public QObject
     Q_PROPERTY(bool installing READ installing NOTIFY doingChanged)
     Q_PROPERTY(bool uninstalling READ uninstalling NOTIFY doingChanged)
     Q_PROPERTY(bool installed READ installed NOTIFY installedChanged)
+    Q_PROPERTY(bool ignoreSslErrors READ ignoreSslErrors WRITE setIgnoreSslErrors NOTIFY ignoreSslErrorsChanged)
 
     class Private;
 
@@ -52,6 +53,9 @@ public:
     bool uninstalling() const;
     bool installed() const;
 
+    bool ignoreSslErrors() const;
+    void setIgnoreSslErrors(bool newIgnoreSslErrors);
+
 Q_SIGNALS:
     void sourceUrlChanged();
     void databasePathChanged();
@@ -59,11 +63,11 @@ Q_SIGNALS:
     void poetIdChanged();
     void catIdChanged();
     void listChanged();
-
-    void sizeChanged() const;
-    void downloadedBytesChanged() const;
-    void doingChanged() const;
-    void installedChanged() const;
+    void sizeChanged();
+    void downloadedBytesChanged();
+    void doingChanged();
+    void installedChanged();
+    void ignoreSslErrorsChanged();
 
 public Q_SLOTS:
     void install(bool active = true);
@@ -104,6 +108,9 @@ public:
     bool installing() const;
     bool uninstalling() const;
 
+    bool ignoreSslErrors() const;
+    void setIgnoreSslErrors(bool newIgnoreSslErrors);
+
 public Q_SLOTS:
     void download();
     void install(const QString &filePath);
@@ -123,6 +130,7 @@ private:
     qint64 mSize = 0;
     qint64 mDownloadedBytes = 0;
     bool mDoing = false;
+    bool mIgnoreSslErrors = false;
 
     QNetworkAccessManager mAccessManager;
     QNetworkReply *mReply = Q_NULLPTR;

@@ -282,6 +282,10 @@
         <translation>ویرایش شعر</translation>
     </message>
     <message>
+        <source>Publish</source>
+        <translation>انتشار شعر</translation>
+    </message>
+    <message>
         <source>To edit poem touch below button.</source>
         <translation>برای ویرایش شعر کلید زیر را لمس کنید.</translation>
     </message>
@@ -563,6 +567,25 @@
     <message>
         <source>Close</source>
         <translation>بستن</translation>
+    </message>
+</context>
+<context>
+    <name>InboxForm</name>
+    <message>
+        <source>Inbox</source>
+        <translation>پیغام‌های شما</translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation>بستن</translation>
+    </message>
+    <message>
+        <source>Text</source>
+        <translation>عنوان</translation>
+    </message>
+    <message>
+        <source>Its a description</source>
+        <translation>یک توضیح درباره عنوان</translation>
     </message>
 </context>
 <context>
@@ -996,8 +1019,66 @@ It containts %2 items currently.</source>
         <translation>لطفا دست کم ۳ شاعر مورد علاقه خود را انتخاب کنید.</translation>
     </message>
     <message>
+        <source>Search</source>
+        <translation>جستجو</translation>
+    </message>
+    <message>
         <source>Next</source>
         <translation>بعدی</translation>
+    </message>
+</context>
+<context>
+    <name>BaseRequest</name>
+    <message>
+        <source>You have connection security issue:%1Do you want to ignore it?</source>
+        <translation>شما یک خطای امنیتی SSL دارید:%1آیا مایل به ادامه دادن هستید؟</translation>
+    </message>
+    <message>
+        <source>SSL Error</source>
+        <translation>خطا امنیتی</translation>
+    </message>
+    <message>
+        <source>Yes</source>
+        <translation>بله</translation>
+    </message>
+    <message>
+        <source>No</source>
+        <translation>خیر</translation>
+    </message>
+</context>
+<context>
+    <name>PublishForm</name>
+    <message>
+        <source>Close</source>
+        <translation>بستن</translation>
+    </message>
+    <message>
+        <source>Review</source>
+        <translation>بازبینی</translation>
+    </message>
+    <message>
+        <source>Upload to Review</source>
+        <translation>ارسال برای بررسی</translation>
+    </message>
+    <message>
+        <source>Agreement</source>
+        <translation>قوانین</translation>
+    </message>
+    <message>
+        <source>Finish</source>
+        <translation>پایان</translation>
+    </message>
+    <message>
+        <source>Your request for review submitted officialy. We will publish your poems and notify you when review finished.</source>
+        <translation>درخواست شما برای بررسی انتشار شعرهای خودتان با موفقیت ثبت شد. بعد از بررسی شعرها در صورت تایید شدنشان منتشر خواهند شد و به شما اطلاع رسانی خواهیم کرد.</translation>
+    </message>
+    <message>
+        <source>Accept Agreement</source>
+        <translation>قوانین را می‌پذیرم</translation>
+    </message>
+    <message>
+        <source>Please Wait...</source>
+        <translation>لطفا صبر کنید...</translation>
     </message>
 </context>
 <context>
@@ -1573,6 +1654,10 @@ It containts %2 items currently.</source>
     <message>
         <source>New Book</source>
         <translation>دفتر جدید</translation>
+    </message>
+    <message>
+        <source>Publish Book</source>
+        <translation>انتشار دفتر</translation>
     </message>
     <message>
         <source>if you want to add a sub-book category, please tap on the below button.</source>

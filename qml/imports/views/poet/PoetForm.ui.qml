@@ -255,6 +255,7 @@ Item {
                         sourceSize.width: width * 1.2
                         sourceSize.height: height * 1.2
                         fillMode: Image.PreserveAspectCrop
+                        ignoreSslErrors: AsemanGlobals.ignoreSslErrors
                     }
 
                     ItemDelegate {

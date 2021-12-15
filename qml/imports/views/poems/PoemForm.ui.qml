@@ -265,6 +265,8 @@ Item {
                     }
 
                     onPressAndHold: {
+                        if (mouse.x < 50 * Devices.density || mouse.x > width - 50 * Devices.density)
+                            return;
                         if (Math.abs(pinX - mouse.x) > 30 * Devices.density)
                             return;
                         dis.menuRequest(model.index, delFrame)

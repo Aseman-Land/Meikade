@@ -99,6 +99,7 @@ AbstractDelegate {
 
                 ImageDownloader {
                     id: cachedImage
+                    ignoreSslErrors: AsemanGlobals.ignoreSslErrors
                 }
 
                 Image {

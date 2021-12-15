@@ -5,6 +5,8 @@ import AsemanQml.Viewport 2.0
 import AsemanQml.MaterialIcons 2.0
 import QtQuick.Layouts 1.3
 import QtQuick.Controls 2.3
+import QtQuick.Controls.Material 2.0
+import QtQuick.Controls.IOSStyle 2.0
 import queries 1.0 as Query
 import views 1.0
 import globals 1.0
@@ -30,6 +32,7 @@ PoemView {
     property alias poet: loader.poet
     property alias subtitle: loader.poet
 
+    property bool editMode: true
     property alias previewText: loader.previewText
     property alias previewType: loader.previewType
 
@@ -116,7 +119,7 @@ PoemView {
         searchLabel.visible: false
         listView.bottomMargin: editColumn.height
 
-        menuBtn.visible: previewText.length == 0
+        menuBtn.visible: previewText.length == 0 && editMode
         onNavigationClicked: {
             if (previewText.length)
                 return;
@@ -170,7 +173,7 @@ PoemView {
         anchors.margins: 8 * Devices.density
         y: mapListener.result.y + form.listView.footerItem.height
         spacing: 8 * Devices.density
-        visible: previewText.length == 0
+        visible: previewText.length == 0 && editMode
 
         Label {
             Layout.fillWidth: true
@@ -183,7 +186,6 @@ PoemView {
         }
 
         RoundButton {
-            Layout.bottomMargin: 20 * Devices.density
             Layout.preferredWidth: editPoemRow.width + 60 * Devices.density
             Layout.alignment: Qt.AlignHCenter
             highlighted: true
@@ -203,6 +205,35 @@ PoemView {
 
                 Label {
                     text: qsTr("Edit Poem") + Translations.refresher
+                    font.pixelSize: 9 * Devices.fontDensity
+                    color: "#fff"
+                }
+            }
+        }
+
+        RoundButton {
+            Layout.bottomMargin: 20 * Devices.density
+            Layout.preferredWidth: publishRow.width + 60 * Devices.density
+            Layout.alignment: Qt.AlignHCenter
+            highlighted: true
+            IOSStyle.accent: Qt.darker(Colors.primary, 1.3)
+            Material.accent: Qt.darker(Colors.primary, 1.3)
+            onClicked: publish()
+
+            RowLayout {
+                id: publishRow
+                x: 30 * Devices.density
+                anchors.verticalCenter: parent.verticalCenter
+
+                Label {
+                    font.pixelSize: 12 * Devices.fontDensity
+                    font.family: MaterialIcons.family
+                    text: MaterialIcons.mdi_publish
+                    color: "#fff"
+                }
+
+                Label {
+                    text: qsTr("Publish") + Translations.refresher
                     font.pixelSize: 9 * Devices.fontDensity
                     color: "#fff"
                 }
@@ -285,6 +316,10 @@ PoemView {
         Viewport.controller.trigger("page:/mypoems/poem/edit",
                                             {"poemId": poemId,
                                              "categories": loader.categoriesModel.data})
+    }
+
+    function publish() {
+        Viewport.controller.trigger("float:/mypoems/publish", {"poemId": poemId})
     }
 
     function openGlobalMenu() {
