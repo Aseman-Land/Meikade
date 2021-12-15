@@ -56,6 +56,11 @@ ViewportController {
     }
 
     ViewportControllerRoute {
+        route: /\w+\:\/inbox/
+        source: "InboxRoute.qml"
+    }
+
+    ViewportControllerRoute {
         route: /\w+\:\/syncs/
         source: "SyncRoute.qml"
         viewportType: tabletMode? "popup" : ""

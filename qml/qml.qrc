@@ -360,5 +360,8 @@
         <file>imports/logics/PublishPage.qml</file>
         <file>imports/routes/PublishRoute.qml</file>
         <file>imports/requests/TermsRequest.qml</file>
+        <file>imports/views/messages/InboxForm.ui.qml</file>
+        <file>imports/routes/InboxRoute.qml</file>
+        <file>imports/logics/InboxPage.qml</file>
     </qresource>
 </RCC>

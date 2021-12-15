@@ -36,6 +36,7 @@ MyMeikadeView {
     bioLabel.text: MyUserRequest._bio
     profileLabel.text: MyUserRequest._fullname
     authBtn.onClicked: Viewport.controller.trigger("float:/auth/float", {})
+    messagesBtn.onClicked: Viewport.controller.trigger("float:/inbox", {})
 
     avatarBtn.onClicked: {
         var pos = Qt.point(avatarBtn.width/2, avatarBtn.height);

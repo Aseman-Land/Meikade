@@ -570,6 +570,25 @@
     </message>
 </context>
 <context>
+    <name>InboxForm</name>
+    <message>
+        <source>Inbox</source>
+        <translation>پیغام‌های شما</translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation>بستن</translation>
+    </message>
+    <message>
+        <source>Text</source>
+        <translation>عنوان</translation>
+    </message>
+    <message>
+        <source>Its a description</source>
+        <translation>یک توضیح درباره عنوان</translation>
+    </message>
+</context>
+<context>
     <name>ContactForm</name>
     <message>
         <source>Contact us</source>
