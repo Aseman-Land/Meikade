@@ -829,6 +829,10 @@ It containts %2 items currently.</source>
         <translation>علاقه‌مندی‌ها</translation>
     </message>
     <message>
+        <source>Public list</source>
+        <translation>انتشار لیست به صورت عمومی</translation>
+    </message>
+    <message>
         <source>Close</source>
         <translation>بستن</translation>
     </message>
@@ -1858,6 +1862,14 @@ It containts %2 items currently.</source>
     <message>
         <source>Search</source>
         <translation>جستجو در شعر و نام شاعر</translation>
+    </message>
+    <message>
+        <source>Poets</source>
+        <translation>شاعرها</translation>
+    </message>
+    <message>
+        <source>Public lists</source>
+        <translation>لیست‌های عمومی</translation>
     </message>
     <message>
         <source>Close</source>

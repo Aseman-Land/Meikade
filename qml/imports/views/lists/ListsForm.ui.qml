@@ -268,6 +268,14 @@ Item {
                         }
                     }
 
+                    Label {
+                        font.pixelSize: 12 * Devices.fontDensity
+                        font.family: MaterialIcons.family
+                        text: MaterialIcons.mdi_earth
+                        color: model.listColor == "transparent"? Colors.foreground : model.listColor
+                        visible: model.publicList
+                    }
+
                     Button {
                         id: menuBtn
                         Layout.preferredWidth: 30 * Devices.density

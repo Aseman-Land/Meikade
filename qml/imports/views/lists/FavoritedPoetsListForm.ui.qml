@@ -21,8 +21,14 @@ Item {
     property alias headerItem: headerItem
     property alias closeBtn: closeBtn
     property alias backBtn: backBtn
+    property bool disableSharing: false
+    property bool publicList: false
+    property string listColor: "transparent"
+    property color gradientColor: listColor
 
     signal clicked(int index)
+    signal publicListSwitch(bool checked)
+    signal colorSwitch(string color)
 
     Rectangle {
         anchors.fill: parent
@@ -52,6 +58,107 @@ Item {
 
         topMargin: 4 * Devices.density
         bottomMargin: 4 * Devices.density
+
+        header: Item {
+            width: listView.width
+            height: disableSharing? 0 : publicColumn.height + 4 * Devices.density
+
+            ColumnLayout {
+                id: publicColumn
+                anchors.left: parent.left
+                anchors.right: parent.right
+                anchors.verticalCenter: parent.verticalCenter
+                visible: !disableSharing
+                spacing: 4 * Devices.density
+
+                ItemDelegate {
+                    Layout.fillWidth: true
+                    Layout.preferredHeight: 40 * Devices.density
+
+                    Connections {
+                        onClicked: publicSwitch.checked = !publicSwitch.checked
+                    }
+
+                    RowLayout {
+                        anchors.left: parent.left
+                        anchors.right: parent.right
+                        anchors.verticalCenter: parent.verticalCenter
+                        anchors.leftMargin: 10 * Devices.density
+
+                        Label {
+                            Layout.fillWidth: true
+                            text: qsTr("Public list") + Translations.refresher
+                            horizontalAlignment: Text.AlignLeft
+                            font.pixelSize: 9 * Devices.fontDensity
+                        }
+
+                        Switch {
+                            id: publicSwitch
+                            checked: publicList
+
+                            Connections {
+                                onCheckedChanged: dis.publicListSwitch(publicSwitch.checked)
+                            }
+                        }
+                    }
+                }
+
+                RowLayout {
+                    id: colorsRow
+                    Layout.alignment: Qt.AlignHCenter
+                    spacing: 0 * Devices.density
+                    visible: publicSwitch.checked
+
+                    Repeater {
+                        model: ListModel {
+                            ListElement {
+                                color: "transparent"
+                            }
+                            ListElement {
+                                color: "#55aaff"
+                            }
+                            ListElement {
+                                color: "#ffaa00"
+                            }
+                            ListElement {
+                                color: "#00aa7f"
+                            }
+                            ListElement {
+                                color: "#ff557f"
+                            }
+                            ListElement {
+                                color: "#aa007f"
+                            }
+                        }
+
+                        RoundButton {
+                            Layout.preferredHeight: 36 * Devices.density
+                            Layout.preferredWidth: 36 * Devices.density
+                            radius: width / 2
+                            highlighted: model.index != 0
+                            IOSStyle.accent: model.color
+                            Material.accent: model.color
+
+                            Connections {
+                                onClicked: {
+                                    listColor = model.color;
+                                    dis.colorSwitch(listColor);
+                                }
+                            }
+
+                            Label {
+                                anchors.centerIn: parent
+                                font.family: MaterialIcons.family
+                                font.pixelSize: 12 * Devices.fontDensity
+                                color: model.index == 0? Colors.foreground : "#fff"
+                                text: MaterialIcons.mdi_check
+                                visible: listColor == model.color
+                            }
+                        }
+                    }
+                }
+            }
+        }
 
         delegate: Item {
             id: itemObj

@@ -97,7 +97,8 @@ Viewport {
 
         onClicked: {
             var item = lModel.get(index);
-            Viewport.viewport.append(favoritedPoets_component, {"listId": item.listId, "title": item.title}, "page")
+            let disableSharing = (item.listId == UserActions.TypeFavorite);
+            Viewport.viewport.append(favoritedPoets_component, {"listId": item.listId, "title": item.title, "disableSharing": disableSharing}, "page")
         }
         onAddListRequest: dis.addListRequest();
 
@@ -122,12 +123,20 @@ Viewport {
         FavoritedPoetsListView {
             headerItem.text: title
             listView.model: FavoritedPoetsListModel { id: fplModel }
+            publicList: fplModel.publicList
+            listColor: fplModel.listColor
             backBtn.onClicked: ViewportType.open = false
             closeBtn.onClicked: closeRequest()
+            onPublicListSwitch: fplModel.publicList = checked
+            onColorSwitch: fplModel.listColor = color
             onClicked: {
                 var map = fplModel.get(index);
                 var poetId = map.poetId;
                 Viewport.viewport.append(favorited_component, {"poetId": poetId, "title": map.poet, "listId": listId}, "page");
+            }
+
+            Behavior on gradientColor {
+                ColorAnimation { easing.type: Easing.OutCubic; duration: 500 }
             }
 
             property string title: qsTr("Favoriteds") + Translations.refresher

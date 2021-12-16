@@ -34,7 +34,9 @@ AsemanListModel {
             "icon": "mdi_heart",
             "link": "float:/favorites",
             "listId": UserActions.TypeFavorite,
-            "checked": selecteds? selecteds.indexOf(UserActions.TypeFavorite) >= 0 : false
+            "checked": selecteds? selecteds.indexOf(UserActions.TypeFavorite) >= 0 : false,
+            "publicList": false,
+            "listColor": "transparent"
         })
 
         lists.forEach(function(l){
@@ -42,14 +44,23 @@ AsemanListModel {
                 return;
 
             var extra = Tools.jsonToVariant(l.extra)
+            var publicList = false;
+            var listColor = "transparent";
+            try {
+                publicList = extra["public"];
+                listColor = extra["listColor"];
+            } catch (e) {}
+
             model.append({
                 "title": l.value,
                 "subtitle": "",
                 "icon": "mdi_library",
                 "link": "float:/favorites?listId=" + l.type,
                 "listId": l.type,
-                "checked": selecteds? selecteds.indexOf(l.type) >= 0 : false
-            })
+                "checked": selecteds? selecteds.indexOf(l.type) >= 0 : false,
+                "publicList": publicList,
+                "listColor": listColor
+            });
         })
     }
 }
