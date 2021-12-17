@@ -16,6 +16,7 @@ PublishView {
     property int poemId
     property int bookId
     property string name
+    property variant items: new Array
 
     finishBtn.onClicked: ViewportType.open = false
     closeBtn.onClicked: ViewportType.open = false
@@ -36,9 +37,11 @@ PublishView {
 
         reviewAcceptBtnIndicator.running = true;
         Tools.jsDelayCall(1000, function(){
-            dis.progress = 1
-            finishNum = 1
-            reviewAcceptBtnIndicator.running = false;
+            Req.StoreActionsBulk.uploadCustomDBActions(items, function(){
+                dis.progress = 1
+                finishNum = 1
+                reviewAcceptBtnIndicator.running = false;
+            })
         })
     }
 
@@ -117,6 +120,7 @@ PublishView {
                 "checked": true,
             };
             reviewModel.append(m);
+            items[items.length] = p;
         })
     }
 
@@ -139,6 +143,7 @@ PublishView {
                 "checked": true,
             };
             reviewModel.append(m);
+            items[items.length] = p;
         })
 
         userActions.poemId = 0;

@@ -41,7 +41,12 @@ AsemanObject {
 
             if (syncAgain) syncActionsInterval();
             syncAgain = false;
+
+            if (_callback)
+                _callback();
         }
+
+        property var _callback
     }
 
     UserActions {
@@ -206,6 +211,30 @@ AsemanObject {
             return;
         }
 
+        uploadCustomActions(items);
+    }
+
+    function uploadCustomDBActions(items, callback) {
+        var list = new Array;
+        items.forEach(function(i){
+            list[list.length] = {
+                "poet_id": i.poetId,
+                "category_id": i.catId,
+                "poem_id": i.poemId,
+                "verse_id": i.verseId,
+                "type": i.type,
+                "declined": i.declined,
+                "value": i.value,
+                "extra": i.extra,
+                "updated_at": i.updatedAt,
+                "inserted_at": i.updatedAt,
+            };
+        });
+
+        uploadCustomActions(list, callback);
+    }
+
+    function uploadCustomActions(items, callback) {
         var acts = new Array
         for (var i in items) {
             var it = items[i];
@@ -253,6 +282,7 @@ AsemanObject {
         }
 
         storeReq.actions = acts;
+        storeReq._callback = (callback == undefined? null : callback);
         storeReq.networkManager.post(storeReq);
     }
 
