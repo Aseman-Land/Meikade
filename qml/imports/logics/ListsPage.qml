@@ -121,8 +121,13 @@ Viewport {
     Component {
         id: favoritedPoets_component
         FavoritedPoetsListView {
+            id: fplView
             headerItem.text: title
-            listView.model: FavoritedPoetsListModel { id: fplModel }
+            listView.model: FavoritedPoetsListModel {
+                id: fplModel
+                onSavingStarted: fplView.publicIndicatorState = true
+                onSavingFinished: fplView.publicIndicatorState = false
+            }
             publicList: fplModel.publicList
             listColor: fplModel.listColor
             backBtn.onClicked: ViewportType.open = false

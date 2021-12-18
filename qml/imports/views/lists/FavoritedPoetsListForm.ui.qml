@@ -9,6 +9,7 @@ import QtQuick.Controls.IOSStyle 2.0
 import globals 1.0
 import micros 1.0
 import models 1.0
+import requests 1.0
 
 Item {
     id: dis
@@ -25,6 +26,7 @@ Item {
     property bool publicList: false
     property string listColor: "transparent"
     property color gradientColor: listColor
+    property bool publicIndicatorState: false
 
     signal clicked(int index)
     signal publicListSwitch(bool checked)
@@ -61,14 +63,14 @@ Item {
 
         header: Item {
             width: listView.width
-            height: disableSharing? 0 : publicColumn.height + 4 * Devices.density
+            height: disableSharing && Bootstrap.initialized? 0 : publicColumn.height + 4 * Devices.density
 
             ColumnLayout {
                 id: publicColumn
                 anchors.left: parent.left
                 anchors.right: parent.right
                 anchors.verticalCenter: parent.verticalCenter
-                visible: !disableSharing
+                visible: !disableSharing || !Bootstrap.initialized
                 spacing: 4 * Devices.density
 
                 ItemDelegate {
@@ -92,9 +94,18 @@ Item {
                             font.pixelSize: 9 * Devices.fontDensity
                         }
 
+                        BusyIndicator {
+                            id: publicIndicator
+                            scale: 0.6
+                            Layout.preferredWidth: 28 * Devices.density
+                            Layout.preferredHeight: 28 * Devices.density
+                            running: publicIndicatorState
+                        }
+
                         Switch {
                             id: publicSwitch
                             checked: publicList
+                            enabled: !publicIndicator.running
 
                             Connections {
                                 onCheckedChanged: dis.publicListSwitch(publicSwitch.checked)

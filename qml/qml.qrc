@@ -363,5 +363,8 @@
         <file>imports/views/messages/InboxForm.ui.qml</file>
         <file>imports/routes/InboxRoute.qml</file>
         <file>imports/logics/InboxPage.qml</file>
+        <file>imports/requests/PublishPoemRequest.qml</file>
+        <file>imports/requests/PublishListRequest.qml</file>
+        <file>imports/requests/UnpublishListRequest.qml</file>
     </qresource>
 </RCC>

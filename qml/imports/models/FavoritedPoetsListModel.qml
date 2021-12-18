@@ -16,18 +16,68 @@ AsemanListModel {
     onPublicListChanged: save()
     onListColorChanged: save()
 
+    signal savingStarted()
+    signal savingFinished()
+
     function save() {
         if (obj.signalBlocker)
             return;
 
-        var current = actions.query("SELECT extra FROM actions WHERE type = :type AND declined = 0 AND poetId = 0 AND catId = 0 AND poemId = 0 AND verseId = 0", {"type": listId})
-        var extra = Tools.toVariantMap( Tools.jsonToVariant(current[0].extra) );
+        savingStarted()
+
+        var currentList = actions.query("SELECT * FROM actions WHERE type = :type AND declined = 0 AND poetId = 0 AND catId = 0 AND poemId = 0 AND verseId = 0", {"type": listId});
+        var current = Tools.toVariantMap(currentList[0]);
+
+        var extra = Tools.toVariantMap( Tools.jsonToVariant(current.extra) );
         extra["public"] = publicList;
         extra["listColor"] = listColor;
-        extra = Tools.variantToJson(extra);
+        var extraJson = Tools.variantToJson(extra);
 
-        actions.query("UPDATE actions SET extra = :extra WHERE type = :type AND declined = 0 AND poetId = 0 AND catId = 0 AND poemId = 0 AND verseId = 0", {"type": listId, "extra": extra});
+        current.extra = extraJson;
+
+        actions.query("UPDATE actions SET extra = :extra WHERE type = :type AND declined = 0 AND poetId = 0 AND catId = 0 AND poemId = 0 AND verseId = 0", {"type": listId, "extra": extraJson});
         GlobalSignals.listsRefreshed();
+
+        StoreActionsBulk.uploadCustomDBActions([current], function(){
+            if (obj.deepSignalBlocker) {
+                obj.deepSignalBlocker = false;
+                savingFinished();
+                return;
+            }
+
+            var req
+            if (publicList) {
+                req = pubReq;
+                req.title = current.value;
+                req.color = extra.listColor;
+            } else {
+                req = unpubReq;
+            }
+            req.poet_id = current.poetId;
+            req.verse_id = current.verseId;
+            req.category_id = current.catId;
+            req.poem_id = current.poemId;
+            req.type = current.type;
+            req.doRequest();
+        });
+    }
+
+    PublishListRequest {
+        id: pubReq
+        onSuccessfull: savingFinished()
+        onErrorChanged: {
+            obj.deepSignalBlocker = true;
+            publicList = false;
+        }
+    }
+
+    UnpublishListRequest {
+        id: unpubReq
+        onSuccessfull: savingFinished()
+        onErrorChanged: {
+            obj.deepSignalBlocker = true;
+            publicList = true;
+        }
     }
 
     UserActions {
@@ -38,6 +88,7 @@ AsemanListModel {
         id: obj
 
         property bool signalBlocker
+        property bool deepSignalBlocker
     }
 
     function refresh() {

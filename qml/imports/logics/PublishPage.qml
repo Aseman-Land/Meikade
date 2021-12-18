@@ -16,7 +16,7 @@ PublishView {
     property int poemId
     property int bookId
     property string name
-    property variant items: new Array
+    property Req.PublishPoemRequest publishReq
 
     finishBtn.onClicked: ViewportType.open = false
     closeBtn.onClicked: ViewportType.open = false
@@ -37,12 +37,29 @@ PublishView {
 
         reviewAcceptBtnIndicator.running = true;
         Tools.jsDelayCall(1000, function(){
-            Req.StoreActionsBulk.uploadCustomDBActions(items, function(){
-                dis.progress = 1
-                finishNum = 1
-                reviewAcceptBtnIndicator.running = false;
+            itemsList.clear();
+            for (var i=0; i<reviewModel.count; i++) {
+                var v = reviewModel.get(i);
+                if (!v.checked)
+                    continue;
+
+                itemsList.append(v.fullData);
+            }
+
+            Req.StoreActionsBulk.uploadCustomDBActions(itemsList.toList(), function(){
+                publishReq = publish_req_component.createObject(dis);
+                publishReq.doNext();
             })
         })
+    }
+
+    onReloadStatesRequest: {
+        var count = 0;
+        for (var i=0; i<reviewModel.count; i++)
+            if (reviewModel.get(i).checked)
+                count++;
+
+        reviewAcceptBtn.enabled = (count > 0);
     }
 
     onPoemClicked: {
@@ -65,6 +82,10 @@ PublishView {
         NumberAnimation { easing.type: Easing.OutCubic; duration: 350 }
     }
 
+    ListObject {
+        id: itemsList
+    }
+
     MyPoemLoaderModel {
         id: loader
         poemId: dis.poemId
@@ -80,7 +101,7 @@ PublishView {
     }
 
     Timer {
-        interval: 3000
+        interval: 1500
         running: true
         repeat: true
         onTriggered: {
@@ -109,8 +130,10 @@ PublishView {
         poems.forEach(function(p){
             var extra = Tools.jsonToVariant(p.extra);
             var m = {
+                "poetId": p.poetId,
                 "bookId": p.catId,
-                "poemId": p.type,
+                "verseId": p.verseId,
+                "poemId": p.poemId,
                 "text": extra.text,
                 "type": extra.type,
                 "publish_status": extra["public"],
@@ -118,10 +141,12 @@ PublishView {
                 "title": p.value,
                 "section": "",
                 "checked": true,
+                "fullData": Tools.toVariantMap(p),
             };
             reviewModel.append(m);
-            items[items.length] = p;
         })
+
+        reloadStatesRequest();
     }
 
     function loadBook(namespace, bookId) {
@@ -132,8 +157,10 @@ PublishView {
         poems.forEach(function(p){
             var extra = Tools.jsonToVariant(p.extra);
             var m = {
+                "poetId": p.poetId,
                 "bookId": p.catId,
-                "poemId": p.type,
+                "verseId": p.verseId,
+                "poemId": p.poemId,
                 "text": extra.text,
                 "type": extra.type,
                 "publish_status": extra["public"],
@@ -141,9 +168,9 @@ PublishView {
                 "title": p.value,
                 "section": namespace,
                 "checked": true,
+                "fullData": Tools.toVariantMap(p),
             };
             reviewModel.append(m);
-            items[items.length] = p;
         })
 
         userActions.poemId = 0;
@@ -151,6 +178,40 @@ PublishView {
         books.forEach(function(b){
             loadBook((namespace.length? ", " : "") + b.value, b.type)
         });
+
+        reloadStatesRequest();
+    }
+
+    Component {
+        id: publish_req_component
+        Req.PublishPoemRequest {
+            id: publishReq
+
+            onErrorChanged: {
+                reviewAcceptBtnIndicator.running = false;
+                publishReq.destroy();
+            }
+
+            onSuccessfull: doNext()
+
+            function doNext() {
+                if (itemsList.isEmpty()) {
+                    dis.progress = 1
+                    finishNum = 1
+                    reviewAcceptBtnIndicator.running = false;
+                    publishReq.destroy();
+                    return;
+                }
+
+                var m = itemsList.takeFirst();
+                publishReq.poet_id = m.poetId;
+                publishReq.verse_id = m.verseId;
+                publishReq.category_id = m.catId;
+                publishReq.poem_id = m.poemId;
+                publishReq.type = m.type;
+                publishReq.doRequest();
+            }
+        }
     }
 }
 

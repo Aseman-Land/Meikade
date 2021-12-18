@@ -32,6 +32,7 @@ Page {
     property real progress: 0
 
     signal poemClicked(int poemId, string text, int type)
+    signal reloadStatesRequest();
 
     Rectangle {
         anchors.fill: parent
@@ -83,7 +84,7 @@ Page {
                 Layout.rightMargin: 8 * Devices.density
                 horizontalAlignment: Text.AlignLeft
                 font.pixelSize: 10 * Devices.fontDensity
-                text: reviewNum > 0? qsTr("Review") : qsTr("Agreement") + Translations.refresher
+                text: finishNum > 0? qsTr("Finished") : reviewNum > 0? qsTr("Review") : qsTr("Agreement") + Translations.refresher
             }
 
             Item {
@@ -176,6 +177,14 @@ Page {
                         color: Colors.deepBackground
                         clip: true
 
+                        Label {
+                            anchors.centerIn: parent
+                            font.pixelSize: 8 * Devices.fontDensity
+                            text: qsTr("There is no poem in the book") + Translations.refresher
+                            visible: reviewListV.count == 0
+                            opacity: 0.6
+                        }
+
                         AsemanListView {
                             id: reviewListV
                             anchors.fill: parent
@@ -230,7 +239,10 @@ Page {
                                         CheckBox {
                                             checked: model.checked
                                             Connections {
-                                                onClicked: model.checked = !model.checked
+                                                onClicked: {
+                                                    model.checked = !model.checked;
+                                                    form.reloadStatesRequest();
+                                                }
                                             }
                                         }
 
@@ -331,6 +343,22 @@ Page {
                                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                                 horizontalAlignment: Text.AlignHCenter
                                 text: qsTr("Your request for review submitted officialy. We will publish your poems and notify you when review finished.") + Translations.refresher
+                            }
+
+                            Label {
+                                Layout.fillWidth: true
+                                font.pixelSize: 9 * Devices.fontDensity
+                                wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                                horizontalAlignment: Text.AlignHCenter
+                                text: qsTr("You can check state of the review by click on the below icon on the top-right of the My Meikade page.") + Translations.refresher
+                            }
+
+                            Label {
+                                Layout.alignment: Qt.AlignHCenter
+                                font.pixelSize: 30 * Devices.fontDensity
+                                font.family: MaterialIcons.family
+                                text: MaterialIcons.mdi_inbox
+                                color: Colors.accent
                             }
                         }
                     }

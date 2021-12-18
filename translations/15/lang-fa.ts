@@ -1077,8 +1077,16 @@ It containts %2 items currently.</source>
         <translation>درخواست شما برای بررسی انتشار شعرهای خودتان با موفقیت ثبت شد. بعد از بررسی شعرها در صورت تایید شدنشان منتشر خواهند شد و به شما اطلاع رسانی خواهیم کرد.</translation>
     </message>
     <message>
+        <source>You can check state of the review by click on the below icon on the top-right of the My Meikade page.</source>
+        <translation>شما همچنین میتوانید با کلیک برای روی شکل زیر در بالا گوشه سمت چپ صفحه‌ی می‌کده من وضعیت بررسی شعرهای خود را مشاهده کنید.</translation>
+    </message>
+    <message>
         <source>Accept Agreement</source>
         <translation>قوانین را می‌پذیرم</translation>
+    </message>
+    <message>
+        <source>There is no poem in the book</source>
+        <translation>شعری در این دفتر موجود نیست</translation>
     </message>
     <message>
         <source>Please Wait...</source>
