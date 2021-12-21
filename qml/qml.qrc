@@ -366,5 +366,7 @@
         <file>imports/requests/PublishPoemRequest.qml</file>
         <file>imports/requests/PublishListRequest.qml</file>
         <file>imports/requests/UnpublishListRequest.qml</file>
+        <file>imports/models/SearchListModel.qml</file>
+        <file>imports/requests/SearchListRequest.qml</file>
     </qresource>
 </RCC>

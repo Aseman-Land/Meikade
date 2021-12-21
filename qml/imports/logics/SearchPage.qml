@@ -35,9 +35,9 @@ SearchView {
     onPoetIdChanged: loadPoetId()
 
     resultHeaderLabel.text: {
-        if (listView.count == 0 && !poetsList.visible)
+        if (listView.count == 0 && !poetsList.visible && !listsList.visible)
             return "";
-        if (listView.model === searchModel)
+        if (listView.model === searchModel || (listView.count == 0))
             return qsTr("Online Results") + Translations.refresher;
         else
             return qsTr("Offline Results") + Translations.refresher;
@@ -68,6 +68,19 @@ SearchView {
         onLinkRequest: {
             var prp = Tools.toVariantMap(properties);
             Viewport.controller.trigger(link, prp);
+        }
+    }
+
+    listsList {
+        model: SearchListModel {
+            id: listsSearchModel
+            query: home.keywordField.text
+        }
+        visible: {
+            for (var i=0; i<listsSearchModel.count; i++)
+                if (listsSearchModel.get(i).modelData.length > 0)
+                    return true;
+            return false;
         }
     }
 

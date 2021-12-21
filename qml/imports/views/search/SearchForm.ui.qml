@@ -24,6 +24,7 @@ Rectangle {
     property alias listView: listView
     property alias headerItem: headerItem
     property alias poetsList: poetsList
+    property alias listsList: listsList
     property alias poetsFilterArea: poetsFilterArea
     property alias domainText: domainText
     property alias busyIndicator: busyIndicator
@@ -140,11 +141,21 @@ Rectangle {
         FlexiList {
             id: listsList
             Layout.fillWidth: true
-            Layout.bottomMargin: 30 * Devices.density
+            Layout.bottomMargin: 10 * Devices.density
             Layout.preferredHeight: 100 * Devices.density
             interactive: false
-            visible: poetsList.visible
-            model: poetsList.model
+        }
+
+        Label {
+            Layout.fillWidth: true
+            Layout.leftMargin: 10 * Devices.density
+            Layout.rightMargin: 10 * Devices.density
+            Layout.bottomMargin: 10 * Devices.density
+            Layout.preferredHeight: 20 * Devices.density
+            font.pixelSize: 9 * Devices.fontDensity
+            horizontalAlignment: Text.AlignLeft
+            visible: listView.count
+            text: qsTr("Poems Texts") + Translations.refresher
         }
     }
 

@@ -24,6 +24,7 @@ AsemanListView {
         id: rowItem
         width: list.width
         type: model.type
+        heightRatio: model.heightRatio == undefined || !model.heightRatio? 1 : model.heightRatio
         modelData: model.modelData
         listView: list
         onClicked: list.linkRequest(link, properties)

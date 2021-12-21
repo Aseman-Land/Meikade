@@ -15,6 +15,7 @@ Item {
         return t.slice(idx+1);
     }
 
+    property real heightRatio: 1
     property variant modelData
     property ListView listView
 
@@ -27,6 +28,7 @@ Item {
         Component {
             FlexiDynamicRow {
                 width: rowItem.width
+                height: heightRatio * 100 * Devices.density
                 listView: rowItem.listView
                 model.data: modelData
                 onClicked: rowItem.clicked(link, properties)

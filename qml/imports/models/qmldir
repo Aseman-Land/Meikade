@@ -5,6 +5,7 @@ ExploreModel 1.0 ExploreModel.qml
 MyMeikadeModel 1.0 MyMeikadeModel.qml
 SearchModel 1.0 SearchModel.qml
 PoetsCleanModel 1.0 PoetsCleanModel.qml
+SearchListModel 1.0 SearchListModel.qml
 RecentsModel 1.0 RecentsModel.qml
 PoetCategoriesModel 1.0 PoetCategoriesModel.qml
 PoetsModel 1.0 PoetsModel.qml

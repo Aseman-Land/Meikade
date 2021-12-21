@@ -1125,6 +1125,13 @@ It containts %2 items currently.</source>
     </message>
 </context>
 <context>
+    <name>SearchListModel</name>
+    <message>
+        <source>%1 follower</source>
+        <translation>%1 دنبال کننده</translation>
+    </message>
+</context>
+<context>
     <name>IntroWelcomForm</name>
     <message>
         <source>Welcome to Meikade 4</source>
@@ -1878,6 +1885,10 @@ It containts %2 items currently.</source>
     <message>
         <source>Public lists</source>
         <translation>لیست‌های عمومی</translation>
+    </message>
+    <message>
+        <source>Poems Texts</source>
+        <translation>متن شعرها</translation>
     </message>
     <message>
         <source>Close</source>
