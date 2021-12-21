@@ -58,7 +58,7 @@ AbstractDelegate {
     ColumnLayout {
         anchors.fill: parent
         anchors.margins: 10 * Devices.density
-        spacing: 10 * Devices.density
+        spacing: imageScene.visible? 10 * Devices.density : 8 * Devices.density
 
         Label {
             id: title
@@ -93,9 +93,11 @@ AbstractDelegate {
             }
 
             Item {
+                id: imageScene
                 Layout.alignment: Qt.AlignBottom | Qt.AlignRight
                 height: 42 * Devices.density
                 width: 42 * Devices.density
+                visible: (image.source + "").length > 0
 
                 ImageDownloader {
                     id: cachedImage

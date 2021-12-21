@@ -22,15 +22,19 @@ Item {
     property alias headerItem: headerItem
     property alias closeBtn: closeBtn
     property alias backBtn: backBtn
-    property bool disableSharing: false
+    property alias helper: helper
     property bool publicList: false
     property string listColor: "transparent"
     property color gradientColor: listColor
     property bool publicIndicatorState: false
+    property bool flatList: false
+    property bool onlineList: false
+    property bool disableSharing: false
 
     signal clicked(int index)
     signal publicListSwitch(bool checked)
     signal colorSwitch(string color)
+    signal flatListSwitched(bool state)
 
     Rectangle {
         anchors.fill: parent
@@ -229,6 +233,14 @@ Item {
                                 source: AsemanGlobals.testPoetImagesDisable? "" : model.image
                             }
                         }
+
+                        Label {
+                            anchors.horizontalCenter: parent.left
+                            anchors.verticalCenter: parent.bottom
+                            font.family: MaterialIcons.family
+                            font.pixelSize: 7 * Devices.fontDensity
+                            text: flatList? (model.isVerse? MaterialIcons.mdi_text_short : MaterialIcons.mdi_format_columns) : ""
+                        }
                     }
 
                     ColumnLayout {
@@ -242,7 +254,7 @@ Item {
                             elide: Text.ElideRight
                             maximumLineCount: 1
                             font.pixelSize: 9 * Devices.fontDensity
-                            text: model.poet
+                            text: flatList? model.title + " - " + model.verseText : model.poet
                         }
 
                         Label {
@@ -253,7 +265,7 @@ Item {
                             maximumLineCount: 1
                             font.pixelSize: 8 * Devices.fontDensity
                             opacity: 0.8
-                            text: model.subtitle
+                            text: flatList? model.poet : model.subtitle
                         }
                     }
 
@@ -279,16 +291,47 @@ Item {
         shadow: Devices.isAndroid
 
         RowLayout {
-            anchors.left: parent.left
             anchors.right: parent.right
-            anchors.leftMargin: 14 * Devices.density
             anchors.rightMargin: 2 * Devices.density
             anchors.bottom: parent.bottom
             height: Devices.standardTitleBarHeight
+            spacing: -6 * Devices.density
+
+            RoundButton {
+                id: flatBtn
+                text: MaterialIcons.mdi_view_list
+                font.family: MaterialIcons.family
+                radius: 6 * Devices.density
+                font.pixelSize: 10 * Devices.fontDensity
+                IOSStyle.foreground: flatList? Colors.accent : Colors.foreground
+                IOSStyle.background: Colors.deepBackground
+                Material.foreground: flatList? Colors.accent : Colors.foreground
+                Material.background: Colors.deepBackground
+                Material.theme: Material.Dark
+                Material.elevation: 0
+                visible: !disableSharing
+
+                Connections {
+                    onClicked: {
+                        flatList = !flatList;
+                        flatListSwitched(flatList);
+                    }
+                }
+            }
+
+            RoundButton {
+                id: followBtn
+                text: qsTr("Follow") + Translations.refresher
+                radius: 6 * Devices.density
+                font.pixelSize: 8 * Devices.fontDensity
+                highlighted: true
+                visible: onlineList
+                Material.theme: Material.Dark
+                Material.elevation: 0
+            }
 
             RoundButton {
                 id: closeBtn
-                Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
                 text: qsTr("Close") + Translations.refresher
                 radius: 6 * Devices.density
                 font.pixelSize: 8 * Devices.fontDensity
@@ -314,5 +357,28 @@ Item {
         anchors.top: listView.top
         color: Colors.primary
         scrollArea: listView
+    }
+
+    Helper {
+        id: helper
+        anchors.fill: parent
+
+        HelperPoint {
+            x: flatBtn.x + flatBtn.width/2 - width/2
+            y: Devices.statusBarHeight + flatBtn.height/2 - height/2
+            width: 100 * Devices.density
+            height: 100 * Devices.density
+            buttonText: qsTr("Next") + Translations.refresher
+            title: qsTr("To view all poems without grouping by poets use this button.") + Translations.refresher
+        }
+
+        HelperPoint {
+            x: closeBtn.x + closeBtn.width/2 - width/2
+            y: Devices.statusBarHeight + Devices.standardTitleBarHeight + closeBtn.height/2 - height/2
+            width: 100 * Devices.density
+            height: 100 * Devices.density
+            buttonText: qsTr("I Undrestand") + Translations.refresher
+            title: qsTr("To share your list with other users using search area, active this switch.") + Translations.refresher
+        }
     }
 }

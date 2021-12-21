@@ -15,7 +15,6 @@ Viewport {
     property alias mainViewport: lists.mainViewport
     property ViewportController mainController
 
-    property bool favoritesOnly
     property alias selectMode: lists.selectMode
 
     property alias poetId: listsQuery.poetId
@@ -106,72 +105,14 @@ Viewport {
             target: GlobalSignals
             onListsRefreshed: lModel.refresh()
         }
-
-        Component.onCompleted: {
-            if (favoritesOnly) {
-                var obj = favoritedPoets_component.createObject(this);
-                obj.anchors.fill = this;
-                obj.backBtn.visible = false;
-
-                listView.visible = false;
-            }
-        }
     }
 
     Component {
         id: favoritedPoets_component
-        FavoritedPoetsListView {
+        SingleListPage {
             id: fplView
-            headerItem.text: title
-            listView.model: FavoritedPoetsListModel {
-                id: fplModel
-                onSavingStarted: fplView.publicIndicatorState = true
-                onSavingFinished: fplView.publicIndicatorState = false
-            }
-            publicList: fplModel.publicList
-            listColor: fplModel.listColor
-            backBtn.onClicked: ViewportType.open = false
-            closeBtn.onClicked: closeRequest()
-            onPublicListSwitch: fplModel.publicList = checked
-            onColorSwitch: fplModel.listColor = color
-            onClicked: {
-                var map = fplModel.get(index);
-                var poetId = map.poetId;
-                Viewport.viewport.append(favorited_component, {"poetId": poetId, "title": map.poet, "listId": listId}, "page");
-            }
-
-            Behavior on gradientColor {
-                ColorAnimation { easing.type: Easing.OutCubic; duration: 500 }
-            }
-
-            property string title: qsTr("Favoriteds") + Translations.refresher
-            property alias listId: fplModel.listId
-
-            Connections {
-                target: GlobalSignals
-                onListsRefreshed: fplModel.refresh()
-            }
-        }
-    }
-
-    Component {
-        id: favorited_component
-        FavoritedListView {
-            property alias poetId: flModel.poetId
-            property alias listId: flModel.listId
-
-            listView.model: FavoritedListModel { id: flModel }
-            backBtn.onClicked: ViewportType.open = false
-            closeBtn.onClicked: closeRequest()
-            onClicked: {
-                var map = flModel.get(index);
-                linkRequest(map.link, map);
-            }
-
-            Connections {
-                target: GlobalSignals
-                onListsRefreshed: flModel.refresh()
-            }
+            closeBtn.visible: true
+            onCloseRequest: dis.closeRequest()
         }
     }
 

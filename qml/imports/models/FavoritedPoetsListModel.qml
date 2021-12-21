@@ -10,16 +10,23 @@ AsemanListModel {
 
     property int listId: UserActions.TypeFavorite
     property bool publicList: false
+    property bool flatList: false
     property string listColor: "transparent"
 
     Component.onCompleted: refresh()
-    onPublicListChanged: save()
-    onListColorChanged: save()
+    onPublicListChanged: save(true)
+    onListColorChanged: save(publicList)
+    onFlatListChanged: save(publicList)
 
     signal savingStarted()
     signal savingFinished()
 
-    function save() {
+    Connections {
+        target: GlobalSignals
+        onListsRefreshed: refresh()
+    }
+
+    function save(onlineSave) {
         if (obj.signalBlocker)
             return;
 
@@ -31,12 +38,19 @@ AsemanListModel {
         var extra = Tools.toVariantMap( Tools.jsonToVariant(current.extra) );
         extra["public"] = publicList;
         extra["listColor"] = listColor;
+        extra["flatList"] = flatList;
         var extraJson = Tools.variantToJson(extra);
 
         current.extra = extraJson;
 
         actions.query("UPDATE actions SET extra = :extra WHERE type = :type AND declined = 0 AND poetId = 0 AND catId = 0 AND poemId = 0 AND verseId = 0", {"type": listId, "extra": extraJson});
         GlobalSignals.listsRefreshed();
+
+        if (!onlineSave) {
+            obj.deepSignalBlocker = false;
+            savingFinished();
+            return;
+        }
 
         StoreActionsBulk.uploadCustomDBActions([current], function(){
             if (obj.deepSignalBlocker) {
@@ -93,17 +107,22 @@ AsemanListModel {
 
     function refresh() {
         Tools.jsDelayCall(10, function(){
+            if (listId == 0)
+                return;
+
             var data = new Array;
             var current = actions.query("SELECT extra FROM actions WHERE type = :type AND declined = 0 AND poetId = 0 AND catId = 0 AND poemId = 0 AND verseId = 0", {"type": listId})
 
             obj.signalBlocker = true;
             publicList = false;
             listColor = "transparent"
+            flatList = false;
 
             try {
                 var extra = Tools.jsonToVariant(current[0].extra);
                 publicList = extra["public"];
                 listColor = extra["listColor"];
+                flatList = extra["flatList"];
             } catch (e) {}
             obj.signalBlocker = false;
 

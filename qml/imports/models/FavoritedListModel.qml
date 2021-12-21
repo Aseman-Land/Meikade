@@ -17,10 +17,18 @@ AsemanListModel {
         id: actions
     }
 
+    Connections {
+        target: GlobalSignals
+        onListsRefreshed: refresh()
+    }
+
     function refresh() {
         Tools.jsDelayCall(10, function(){
+            if (listId == 0)
+                return;
+
             var data = new Array;
-            var list = actions.select("", "type = :type AND poetId = :poetId AND declined = 0", "ORDER BY updatedAt", {type: listId, poetId: poetId});
+            var list = actions.select("", "type = :type AND ((:poetId > 0 AND poetId = :poetId) OR (:poetId = 0 AND poetId > 0)) AND declined = 0", "ORDER BY updatedAt", {type: listId, poetId: poetId});
             for (var i in list) {
                 try {
                     var item = list[i];

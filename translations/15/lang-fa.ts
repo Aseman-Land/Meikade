@@ -833,8 +833,28 @@ It containts %2 items currently.</source>
         <translation>انتشار لیست به صورت عمومی</translation>
     </message>
     <message>
+        <source>Follow</source>
+        <translation>دنبال کردن</translation>
+    </message>
+    <message>
         <source>Close</source>
         <translation>بستن</translation>
+    </message>
+    <message>
+        <source>To view all poems without grouping by poets use this button.</source>
+        <translation>برای مشاهده همه شعرهای لیست بدون دسته‌بندی بر اساس شاعر، از این کلید استفاده کنید.</translation>
+    </message>
+    <message>
+        <source>Next</source>
+        <translation>بعدی</translation>
+    </message>
+    <message>
+        <source>To share your list with other users using search area, active this switch.</source>
+        <translation>برای به اشتراک‌گذاری این لیست با دیگر کاربران این سوییچ را فعال کنید. کاربران دیگر میتوانند از طریق صفحه جستجو لیست‌های دیگران را مشاهده کنند.</translation>
+    </message>
+    <message>
+        <source>I Undrestand</source>
+        <translation>متوجه شدم</translation>
     </message>
 </context>
 <context>
@@ -1127,8 +1147,8 @@ It containts %2 items currently.</source>
 <context>
     <name>SearchListModel</name>
     <message>
-        <source>%1 follower</source>
-        <translation>%1 دنبال کننده</translation>
+        <source>%1 - %2 follower</source>
+        <translation>%1 - %2 دنبال کننده</translation>
     </message>
 </context>
 <context>
@@ -1194,6 +1214,13 @@ It containts %2 items currently.</source>
     <message>
         <source>%1 items</source>
         <translation type="vanished">%1 عنوان</translation>
+    </message>
+</context>
+<context>
+    <name>SingleListPage</name>
+    <message>
+        <source>Favoriteds</source>
+        <translation>علاقه‌مندی‌ها</translation>
     </message>
 </context>
 <context>

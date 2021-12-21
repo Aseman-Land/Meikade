@@ -82,6 +82,11 @@ SearchView {
                     return true;
             return false;
         }
+
+        onLinkRequest: {
+            var prp = Tools.toVariantMap(properties);
+            Viewport.controller.trigger(link, prp);
+        }
     }
 
     poetsFilterArea.onClicked: Viewport.viewport.append(filter_component, {}, "bottomdrawer")
