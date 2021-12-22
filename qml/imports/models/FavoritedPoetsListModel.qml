@@ -11,6 +11,7 @@ AsemanListModel {
     property int listId: UserActions.TypeFavorite
     property bool publicList: false
     property bool flatList: false
+    property int referenceId
     property string listColor: "transparent"
 
     Component.onCompleted: refresh()
@@ -117,12 +118,14 @@ AsemanListModel {
             publicList = false;
             listColor = "transparent"
             flatList = false;
+            referenceId = 0;
 
             try {
                 var extra = Tools.jsonToVariant(current[0].extra);
                 publicList = extra["public"];
                 listColor = extra["listColor"];
                 flatList = extra["flatList"];
+                referenceId = extra["referenceId"];
             } catch (e) {}
             obj.signalBlocker = false;
 

@@ -90,6 +90,11 @@ UserBaseQuery {
         return res;
     }
 
+    function getFullLists() {
+        return select("", "type > :type AND declined = 0 AND poetId = 0 AND catId = 0 AND poemId = 0 AND verseId = 0",
+                      "ORDER BY value", {type: UserActions.TypeItemListsStart})
+    }
+
     function getBooks() {
         var list = select("", "(type < :typeEnd AND type > :typeStart) AND poetId = :poetId AND catId = :catId AND " +
                           "poemId = :poemId AND verseId = :verseId AND declined = 0", "ORDER BY value",
@@ -115,6 +120,13 @@ UserBaseQuery {
         synced = 0;
         push();
         GlobalSignals.syncRequest();
+    }
+
+    function generateNewListId() {
+        var actionId = UserActions.TypeItemListsStart + Tools.dateToSec(new Date) - Tools.dateToSec(new Date(2020, 1, 1));
+        if (actionId < UserActions.TypeItemListsStart || actionId >= UserActions.TypeItemListsEnd)
+            actionId = UserActions.TypeItemListsStart + (actionId % (UserActions.TypeItemListsEnd - UserActions.TypeItemListsStart))
+        return actionId;
     }
 
     function deleteBookRecursively(type) {

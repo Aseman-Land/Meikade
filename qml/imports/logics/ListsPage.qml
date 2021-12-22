@@ -96,8 +96,7 @@ Viewport {
 
         onClicked: {
             var item = lModel.get(index);
-            let disableSharing = (item.listId == UserActions.TypeFavorite);
-            Viewport.viewport.append(favoritedPoets_component, {"listId": item.listId, "title": item.title, "disableSharing": disableSharing}, "page")
+            Viewport.viewport.append(favoritedPoets_component, {"listId": item.listId, "title": item.title, "provider": item.subtitle, "referenceId": item.referenceId}, "page")
         }
         onAddListRequest: dis.addListRequest();
 
@@ -112,7 +111,18 @@ Viewport {
         SingleListPage {
             id: fplView
             closeBtn.visible: true
+            headerBusyIndicator.running: updateModel.refreshing
             onCloseRequest: dis.closeRequest()
+
+            property alias referenceId: updateModel.listId
+
+            OnlineListModel {
+                id: updateModel
+                onLoadedSuccessfully: {
+                    localId = fplView.listId;
+                    follow(fplView.title, fplView.provider);
+                }
+            }
         }
     }
 
@@ -164,7 +174,7 @@ Viewport {
                     {
                         title: qsTr("Change Name"),
                         icon: "mdi_rename_box",
-                        enabled: true
+                        enabled: menuItem.item.referenceId == undefined || menuItem.item.referenceId == 0
                     },
                     {
                         title: qsTr("Delete"),

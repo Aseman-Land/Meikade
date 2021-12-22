@@ -837,6 +837,10 @@ It containts %2 items currently.</source>
         <translation>دنبال کردن</translation>
     </message>
     <message>
+        <source>Unfollow</source>
+        <translation>حذف کردن</translation>
+    </message>
+    <message>
         <source>Close</source>
         <translation>بستن</translation>
     </message>
@@ -862,6 +866,17 @@ It containts %2 items currently.</source>
     <message>
         <source>%1 items</source>
         <translation>%1 عنوان</translation>
+    </message>
+</context>
+<context>
+    <name>OnlineListModel</name>
+    <message>
+        <source>&quot;%1&quot; followed</source>
+        <translation>&quot;%1&quot; به لیست‌ها اضافه شد.</translation>
+    </message>
+    <message>
+        <source>&quot;%1&quot; unfollowed</source>
+        <translation>&quot;%1&quot; از لیست‌ها حذف شد.</translation>
     </message>
 </context>
 <context>

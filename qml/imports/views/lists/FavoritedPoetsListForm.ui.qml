@@ -22,14 +22,17 @@ Item {
     property alias headerItem: headerItem
     property alias headerTitle: headerTitle
     property alias headerProvider: headerProvider
+    property alias headerBusyIndicator: headerBusyIndicator
     property alias closeBtn: closeBtn
     property alias backBtn: backBtn
+    property alias followBtn: followBtn
     property alias helper: helper
     property bool publicList: false
     property string listColor: "transparent"
     property color gradientColor: listColor
     property bool publicIndicatorState: false
 
+    property bool followState
     property bool favoriteMode: false
     property bool flatList: false
     property bool onlineList: false
@@ -71,14 +74,14 @@ Item {
 
         header: Item {
             width: listView.width
-            height: disableSharing && Bootstrap.initialized? 0 : publicColumn.height + 4 * Devices.density
+            height: publicColumn.visible? publicColumn.height + 4 * Devices.density : 0
 
             ColumnLayout {
                 id: publicColumn
                 anchors.left: parent.left
                 anchors.right: parent.right
                 anchors.verticalCenter: parent.verticalCenter
-                visible: !disableSharing || !Bootstrap.initialized
+                visible: !(disableSharing || favoriteMode) || !Bootstrap.initialized
                 spacing: 4 * Devices.density
 
                 ItemDelegate {
@@ -245,6 +248,7 @@ Item {
                             height: width
                             radius: 4 * Devices.density
                             color: Colors.background
+                            visible: flatList
 
                             Label {
                                 anchors.centerIn: parent
@@ -318,6 +322,7 @@ Item {
                 Layout.alignment: Qt.AlignHCenter
                 font.pixelSize: 7 * Devices.fontDensity
                 opacity: 0.7
+                visible: text.length
             }
         }
 
@@ -352,11 +357,13 @@ Item {
 
             RoundButton {
                 id: followBtn
-                text: qsTr("Follow") + Translations.refresher
+                text: followState? qsTr("Unfollow") : qsTr("Follow") + Translations.refresher
                 radius: 6 * Devices.density
                 font.pixelSize: 8 * Devices.fontDensity
                 highlighted: true
                 visible: onlineList
+                IOSStyle.accent: followState? IOSStyle.Red : Colors.accent
+                Material.accent: followState? Material.Red : Colors.accent
                 Material.theme: Material.Dark
                 Material.elevation: 0
             }
@@ -373,6 +380,16 @@ Item {
                 Material.theme: Material.Dark
                 Material.elevation: 0
             }
+        }
+
+        BusyIndicator {
+            id: headerBusyIndicator
+            anchors.verticalCenter: backBtn.verticalCenter
+            anchors.left: backBtn.right
+            scale: 0.6
+            width: 28 * Devices.density
+            height: 28 * Devices.density
+            running: false
         }
 
         HeaderMenuButton {

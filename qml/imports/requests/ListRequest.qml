@@ -9,7 +9,6 @@ BaseRequest {
     property int _list_id
 
     on_List_idChanged: Tools.jsDelayCall(10, refresh)
-    onRefreshRequest: refresh()
 
     function refresh() {
         if (refreshing)

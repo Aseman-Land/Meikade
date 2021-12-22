@@ -237,13 +237,13 @@ Item {
                             anchors.centerIn: parent
                             font.family: MaterialIcons.family
                             font.pixelSize: 14 * Devices.fontDensity
-                            text: MaterialIcons[model.icon]
+                            text: model.referenceId? MaterialIcons.mdi_earth : MaterialIcons[model.icon]
                         }
                     }
 
                     ColumnLayout {
                         Layout.fillWidth: true
-                        spacing: 2 * Devices.density
+                        spacing: 0 * Devices.density
 
                         Label {
                             Layout.fillWidth: true

@@ -22,14 +22,21 @@ Viewport {
         title: vport.title
         provider: user.name
 
-        backBtn.onClicked: vport.ViewportType.open = false;
-
         disableSharing: true
         onlineList: true
         listColor: listModel.listColor
         flatList: listModel.flatList
+        followState: listModel.localId > 0
         onFlatListSwitched: listModel.flatList = state
         onCloseRequest: vport.ViewportType.open = false;
+
+        backBtn.onClicked: vport.ViewportType.open = false;
+        followBtn.onClicked: {
+            if (listModel.localId)
+                listModel.unfollow(dis.title, dis.provider);
+            else
+                listModel.follow(dis.title, dis.provider);
+        }
 
         listView.model: listModel
 

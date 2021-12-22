@@ -20,6 +20,7 @@ FavoritedPoetsListView {
     listColor: fplModel.listColor
     flatList: fplModel.flatList
     favoriteMode: listId == UserActions.TypeFavorite
+    disableSharing: fplModel.referenceId > 0 || listId == UserActions.TypeFavorite
 
     onPublicListSwitch: fplModel.publicList = checked
     onColorSwitch: fplModel.listColor = color
@@ -64,7 +65,7 @@ FavoritedPoetsListView {
     signal closeRequest()
 
     Component.onCompleted: {
-        if (!disableSharing && !AsemanGlobals.helperListsDone) {
+        if (!favoriteMode && !disableSharing && !AsemanGlobals.helperListsDone) {
             helper.next();
             AsemanGlobals.helperListsDone = true;
         }
@@ -101,7 +102,7 @@ FavoritedPoetsListView {
                     "link": n.link,
                     "subtitle": "0 poems",
                     "title": n.title,
-                    "verseId": n.verse_id,
+                    "verseId": n.verseId,
                     "poet": n.poet
                 };
             } catch(e) {}
