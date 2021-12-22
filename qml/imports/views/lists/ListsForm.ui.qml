@@ -237,13 +237,13 @@ Item {
                             anchors.centerIn: parent
                             font.family: MaterialIcons.family
                             font.pixelSize: 14 * Devices.fontDensity
-                            text: MaterialIcons[model.icon]
+                            text: model.referenceId? MaterialIcons.mdi_earth : MaterialIcons[model.icon]
                         }
                     }
 
                     ColumnLayout {
                         Layout.fillWidth: true
-                        spacing: 2 * Devices.density
+                        spacing: 0 * Devices.density
 
                         Label {
                             Layout.fillWidth: true
@@ -266,6 +266,14 @@ Item {
                             text: model.subtitle
                             visible: text.length > 0
                         }
+                    }
+
+                    Label {
+                        font.pixelSize: 12 * Devices.fontDensity
+                        font.family: MaterialIcons.family
+                        text: MaterialIcons.mdi_earth
+                        color: model.listColor == "transparent"? Colors.foreground : model.listColor
+                        visible: model.publicList
                     }
 
                     Button {

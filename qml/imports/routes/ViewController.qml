@@ -161,6 +161,18 @@ ViewportController {
     }
 
     ViewportControllerRoute {
+        route: /\w+\:\/lists\/single(?:\?.+)?/
+        source: "SingleListRoute.qml"
+        viewportType: tabletMode? "popup" : ""
+    }
+
+    ViewportControllerRoute {
+        route: /\w+\:\/lists\/online(?:\?.+)?/
+        source: "OnlineListRoute.qml"
+        viewportType: tabletMode? "popup" : ""
+    }
+
+    ViewportControllerRoute {
         route: /\w+\:\/lists\/add(?:\?.+)?/
         source: "AddListRoute.qml"
     }

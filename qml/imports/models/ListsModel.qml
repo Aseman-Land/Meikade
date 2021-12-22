@@ -24,8 +24,7 @@ AsemanListModel {
     }
 
     function refresh() {
-        var lists = userActions.select("", "type > :type AND declined = 0 AND poetId = 0 AND catId = 0 AND poemId = 0 AND verseId = 0",
-                                       "ORDER BY value", {type: UserActions.TypeItemListsStart})
+        var lists = userActions.getFullLists();
 
         model.clear();
         model.append({
@@ -34,7 +33,10 @@ AsemanListModel {
             "icon": "mdi_heart",
             "link": "float:/favorites",
             "listId": UserActions.TypeFavorite,
-            "checked": selecteds? selecteds.indexOf(UserActions.TypeFavorite) >= 0 : false
+            "checked": selecteds? selecteds.indexOf(UserActions.TypeFavorite) >= 0 : false,
+            "publicList": false,
+            "referenceId": 0,
+            "listColor": "transparent"
         })
 
         lists.forEach(function(l){
@@ -42,14 +44,31 @@ AsemanListModel {
                 return;
 
             var extra = Tools.jsonToVariant(l.extra)
+            var publicList = false;
+            var referenceId = 0;
+            var listColor = "transparent";
+            var provider = "";
+            try {
+                publicList = extra["public"];
+                listColor = extra["listColor"];
+                referenceId = extra["referenceId"];
+                provider = extra["provider"];
+            } catch (e) {}
+
+            if (selecteds && referenceId)
+                return;
+
             model.append({
                 "title": l.value,
-                "subtitle": "",
+                "subtitle": provider == undefined? "" : provider,
                 "icon": "mdi_library",
                 "link": "float:/favorites?listId=" + l.type,
                 "listId": l.type,
-                "checked": selecteds? selecteds.indexOf(l.type) >= 0 : false
-            })
+                "checked": selecteds? selecteds.indexOf(l.type) >= 0 : false,
+                "publicList": publicList,
+                "referenceId": referenceId,
+                "listColor": listColor
+            });
         })
     }
 }

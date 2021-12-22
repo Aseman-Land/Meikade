@@ -24,6 +24,7 @@ Rectangle {
     property alias listView: listView
     property alias headerItem: headerItem
     property alias poetsList: poetsList
+    property alias listsList: listsList
     property alias poetsFilterArea: poetsFilterArea
     property alias domainText: domainText
     property alias busyIndicator: busyIndicator
@@ -102,9 +103,20 @@ Rectangle {
             Layout.leftMargin: 10 * Devices.density
             Layout.rightMargin: 10 * Devices.density
             Layout.preferredHeight: 20 * Devices.density
-            Layout.bottomMargin: poetsList.visible? 0 : 20 * Devices.density
+            Layout.bottomMargin: 20 * Devices.density
             font.pixelSize: 10 * Devices.fontDensity
             horizontalAlignment: Text.AlignLeft
+        }
+
+        Label {
+            Layout.fillWidth: true
+            Layout.leftMargin: 10 * Devices.density
+            Layout.rightMargin: 10 * Devices.density
+            Layout.preferredHeight: 20 * Devices.density
+            font.pixelSize: 9 * Devices.fontDensity
+            horizontalAlignment: Text.AlignLeft
+            visible: poetsList.visible
+            text: qsTr("Poets") + Translations.refresher
         }
 
         FlexiList {
@@ -113,6 +125,37 @@ Rectangle {
             Layout.bottomMargin: 30 * Devices.density
             Layout.preferredHeight: 100 * Devices.density
             interactive: false
+        }
+
+        Label {
+            Layout.fillWidth: true
+            Layout.leftMargin: 10 * Devices.density
+            Layout.rightMargin: 10 * Devices.density
+            Layout.preferredHeight: 20 * Devices.density
+            font.pixelSize: 9 * Devices.fontDensity
+            horizontalAlignment: Text.AlignLeft
+            visible: listsList.visible
+            text: qsTr("Public lists") + Translations.refresher
+        }
+
+        FlexiList {
+            id: listsList
+            Layout.fillWidth: true
+            Layout.bottomMargin: 10 * Devices.density
+            Layout.preferredHeight: 100 * Devices.density
+            interactive: false
+        }
+
+        Label {
+            Layout.fillWidth: true
+            Layout.leftMargin: 10 * Devices.density
+            Layout.rightMargin: 10 * Devices.density
+            Layout.bottomMargin: 10 * Devices.density
+            Layout.preferredHeight: 20 * Devices.density
+            font.pixelSize: 9 * Devices.fontDensity
+            horizontalAlignment: Text.AlignLeft
+            visible: listView.count
+            text: qsTr("Poems Texts") + Translations.refresher
         }
     }
 

@@ -24,13 +24,14 @@ AddListView {
     function confirm() {
         var actionId = home.actionId;
         if (actionId == 0) {
-            actionId = UserActions.TypeItemListsStart + Tools.dateToSec(new Date) - Tools.dateToSec(new Date(2020, 1, 1))
-            if (actionId < UserActions.TypeItemListsStart || actionId >= UserActions.TypeItemListsEnd)
-                actionId = UserActions.TypeItemListsStart + (actionId % (UserActions.TypeItemListsEnd - UserActions.TypeItemListsStart))
+            actionId = createAction.generateNewListId();
         }
 
         var extra = {
-            "public": false
+            "public": false,
+            "referenceId": 0,
+            "listColor": "transparent",
+            "flatList": false,
         };
 
         createAction.type = actionId;

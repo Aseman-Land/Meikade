@@ -10,6 +10,7 @@ HomeRequest 1.0 HomeRequest.qml
 ExploreRequest 1.0 ExploreRequest.qml
 LoginRequest 1.0 LoginRequest.qml
 RegisterRequest 1.0 RegisterRequest.qml
+ListRequest 1.0 ListRequest.qml
 GetSuggestionsRequest 1.0 GetSuggestionsRequest.qml
 VoteSuggestionRequest 1.0 VoteSuggestionRequest.qml
 UnvoteSuggestionRequest 1.0 UnvoteSuggestionRequest.qml
@@ -20,6 +21,7 @@ CatsRequest 1.0 CatsRequest.qml
 PoemVersesRequest 1.0 PoemVersesRequest.qml
 SimplePoetsRequest 1.0 SimplePoetsRequest.qml
 SearchVerseRequest 1.0 SearchVerseRequest.qml
+SearchListRequest 1.0 SearchListRequest.qml
 PoemRequest 1.0 PoemRequest.qml
 CatRequest 1.0 CatRequest.qml
 UserCheckRequest 1.0 UserCheckRequest.qml
@@ -41,4 +43,7 @@ BootstrapRequest 1.0 BootstrapRequest.qml
 PoetsTypeRequest 1.0 PoetsTypeRequest.qml
 LoggerRequest 1.0 LoggerRequest.qml
 GetMessagesRequest 1.0 GetMessagesRequest.qml
+PublishPoemRequest 1.0 PublishPoemRequest.qml
+PublishListRequest 1.0 PublishListRequest.qml
+UnpublishListRequest 1.0 UnpublishListRequest.qml
 TermsRequest 1.0 TermsRequest.qml

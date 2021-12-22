@@ -230,6 +230,7 @@ Item {
                     Layout.alignment: Qt.AlignHCenter
                     Layout.preferredWidth: publishRow.width + 60 * Devices.density
                     highlighted: true
+                    visible: Bootstrap.initialized
                     IOSStyle.accent: Qt.darker(Colors.primary, 1.3)
                     Material.accent: Qt.darker(Colors.primary, 1.3)
 

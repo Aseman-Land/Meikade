@@ -218,6 +218,7 @@ PoemView {
             highlighted: true
             IOSStyle.accent: Qt.darker(Colors.primary, 1.3)
             Material.accent: Qt.darker(Colors.primary, 1.3)
+            visible: Bootstrap.initialized
             onClicked: publish()
 
             RowLayout {

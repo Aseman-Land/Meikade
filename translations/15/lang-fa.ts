@@ -829,8 +829,36 @@ It containts %2 items currently.</source>
         <translation>علاقه‌مندی‌ها</translation>
     </message>
     <message>
+        <source>Public list</source>
+        <translation>انتشار لیست به صورت عمومی</translation>
+    </message>
+    <message>
+        <source>Follow</source>
+        <translation>دنبال کردن</translation>
+    </message>
+    <message>
+        <source>Unfollow</source>
+        <translation>حذف کردن</translation>
+    </message>
+    <message>
         <source>Close</source>
         <translation>بستن</translation>
+    </message>
+    <message>
+        <source>To view all poems without grouping by poets use this button.</source>
+        <translation>برای مشاهده همه شعرهای لیست بدون دسته‌بندی بر اساس شاعر، از این کلید استفاده کنید.</translation>
+    </message>
+    <message>
+        <source>Next</source>
+        <translation>بعدی</translation>
+    </message>
+    <message>
+        <source>To share your list with other users using search area, active this switch.</source>
+        <translation>برای به اشتراک‌گذاری این لیست با دیگر کاربران این سوییچ را فعال کنید. کاربران دیگر میتوانند از طریق صفحه جستجو لیست‌های دیگران را مشاهده کنند.</translation>
+    </message>
+    <message>
+        <source>I Undrestand</source>
+        <translation>متوجه شدم</translation>
     </message>
 </context>
 <context>
@@ -838,6 +866,17 @@ It containts %2 items currently.</source>
     <message>
         <source>%1 items</source>
         <translation>%1 عنوان</translation>
+    </message>
+</context>
+<context>
+    <name>OnlineListModel</name>
+    <message>
+        <source>&quot;%1&quot; followed</source>
+        <translation>&quot;%1&quot; به لیست‌ها اضافه شد.</translation>
+    </message>
+    <message>
+        <source>&quot;%1&quot; unfollowed</source>
+        <translation>&quot;%1&quot; از لیست‌ها حذف شد.</translation>
     </message>
 </context>
 <context>
@@ -1073,8 +1112,16 @@ It containts %2 items currently.</source>
         <translation>درخواست شما برای بررسی انتشار شعرهای خودتان با موفقیت ثبت شد. بعد از بررسی شعرها در صورت تایید شدنشان منتشر خواهند شد و به شما اطلاع رسانی خواهیم کرد.</translation>
     </message>
     <message>
+        <source>You can check state of the review by click on the below icon on the top-right of the My Meikade page.</source>
+        <translation>شما همچنین میتوانید با کلیک برای روی شکل زیر در بالا گوشه سمت چپ صفحه‌ی می‌کده من وضعیت بررسی شعرهای خود را مشاهده کنید.</translation>
+    </message>
+    <message>
         <source>Accept Agreement</source>
         <translation>قوانین را می‌پذیرم</translation>
+    </message>
+    <message>
+        <source>There is no poem in the book</source>
+        <translation>شعری در این دفتر موجود نیست</translation>
     </message>
     <message>
         <source>Please Wait...</source>
@@ -1110,6 +1157,13 @@ It containts %2 items currently.</source>
     <message>
         <source>Premium Account</source>
         <translation>اکانت حرفه‌ای</translation>
+    </message>
+</context>
+<context>
+    <name>SearchListModel</name>
+    <message>
+        <source>%1 - %2 follower</source>
+        <translation>%1 - %2 دنبال کننده</translation>
     </message>
 </context>
 <context>
@@ -1175,6 +1229,13 @@ It containts %2 items currently.</source>
     <message>
         <source>%1 items</source>
         <translation type="vanished">%1 عنوان</translation>
+    </message>
+</context>
+<context>
+    <name>SingleListPage</name>
+    <message>
+        <source>Favoriteds</source>
+        <translation>علاقه‌مندی‌ها</translation>
     </message>
 </context>
 <context>
@@ -1858,6 +1919,18 @@ It containts %2 items currently.</source>
     <message>
         <source>Search</source>
         <translation>جستجو در شعر و نام شاعر</translation>
+    </message>
+    <message>
+        <source>Poets</source>
+        <translation>شاعرها</translation>
+    </message>
+    <message>
+        <source>Public lists</source>
+        <translation>لیست‌های عمومی</translation>
+    </message>
+    <message>
+        <source>Poems Texts</source>
+        <translation>متن شعرها</translation>
     </message>
     <message>
         <source>Close</source>
