@@ -1,6 +1,7 @@
 import QtQuick 2.12
 import logics 1.0
 import globals 1.0
+import requests 1.0
 import models 1.0
 import AsemanQml.Viewport 2.0
 import AsemanQml.Base 2.0
@@ -31,6 +32,7 @@ Viewport {
         onCloseRequest: vport.ViewportType.open = false;
 
         backBtn.onClicked: vport.ViewportType.open = false;
+        followBtn.visible: provider != MyUserRequest._fullname
         followBtn.onClicked: {
             if (listModel.localId)
                 listModel.unfollow(dis.title, dis.provider);
