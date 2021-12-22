@@ -81,7 +81,7 @@ Item {
                 anchors.left: parent.left
                 anchors.right: parent.right
                 anchors.verticalCenter: parent.verticalCenter
-                visible: !(disableSharing || favoriteMode) || !Bootstrap.initialized
+                visible: !(disableSharing || favoriteMode) && Bootstrap.initialized
                 spacing: 4 * Devices.density
 
                 ItemDelegate {

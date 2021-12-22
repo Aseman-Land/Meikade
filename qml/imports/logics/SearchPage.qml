@@ -74,7 +74,7 @@ SearchView {
     listsList {
         model: SearchListModel {
             id: listsSearchModel
-            query: home.keywordField.text
+            query: Bootstrap.initialized? home.keywordField.text : ""
         }
         visible: {
             for (var i=0; i<listsSearchModel.count; i++)

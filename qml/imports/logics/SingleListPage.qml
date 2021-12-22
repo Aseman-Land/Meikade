@@ -69,7 +69,7 @@ FavoritedPoetsListView {
         repeat: false
         running: true
         onTriggered: {
-            if (!favoriteMode && !disableSharing && !AsemanGlobals.helperListsDone) {
+            if (Bootstrap.initialized && !favoriteMode && !disableSharing && !AsemanGlobals.helperListsDone) {
                 helper.next();
                 AsemanGlobals.helperListsDone = true;
             }

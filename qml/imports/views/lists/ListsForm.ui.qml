@@ -86,7 +86,7 @@ Item {
                     font.pixelSize: 9 * Devices.fontDensity
                     text: qsTr("Add List") + Translations.refresher
                     highlighted: true
-                    visible: Subscription.listsLimits > listView.count || premiumMsg.length == 0
+                    visible: Subscription.listsLimits > listView.count-1 || premiumMsg.length == 0
 
                     Connections {
                         target: addBtn
@@ -104,7 +104,7 @@ Item {
                     text: premiumMsg
                     visible: premiumMsg.length
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                    color: Subscription.listsLimits > listView.count? Colors.foreground : "#a00"
+                    color: Subscription.listsLimits > listView.count-1? Colors.foreground : "#a00"
 
                     Connections {
                         onLinkActivated: Qt.openUrlExternally(link)
