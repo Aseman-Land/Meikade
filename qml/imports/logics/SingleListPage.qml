@@ -12,24 +12,32 @@ import routes 1.0
 
 FavoritedPoetsListView {
     id: fplView
-    headerItem.text: title
+    headerTitle.text: title
+    headerProvider.text: provider
+
     listView.model: flatList? flModel : fplModel
     publicList: fplModel.publicList
     listColor: fplModel.listColor
     flatList: fplModel.flatList
+    favoriteMode: listId == UserActions.TypeFavorite
+
     onPublicListSwitch: fplModel.publicList = checked
     onColorSwitch: fplModel.listColor = color
     onFlatListSwitched: fplModel.flatList = state
+
     closeBtn.visible: false
     closeBtn.onClicked: closeRequest()
     backBtn.onClicked: ViewportType.open = false
     onClicked: {
         var map = listView.model.get(index);
         if (flatList) {
-            ViewController.trigger(map.link, map);
+            ViewController.trigger(map.link, prepareNeighbors(map, listView, index));
         } else {
             var poetId = map.poetId;
-            Viewport.viewport.append(favorited_component, {"poetId": poetId, "title": map.poet, "listId": listId}, "page");
+            if (map.childs)
+                Viewport.viewport.append(favorited_component, {"poetId": poetId, "title": map.poet, "childs": map.childs}, "page");
+            else
+                Viewport.viewport.append(favorited_component, {"poetId": poetId, "title": map.poet, "listId": listId}, "page");
         }
     }
 
@@ -50,6 +58,7 @@ FavoritedPoetsListView {
     }
 
     property string title: qsTr("Favoriteds") + Translations.refresher
+    property string provider
     property int listId
 
     signal closeRequest()
@@ -66,14 +75,41 @@ FavoritedPoetsListView {
         FavoritedListView {
             property alias poetId: flModel.poetId
             property alias listId: flModel.listId
+            property alias childs: customModel.data
 
-            listView.model: FavoritedListModel { id: flModel }
+            listView.model: listId? flModel : customModel
             backBtn.onClicked: ViewportType.open = false
             closeBtn.onClicked: closeRequest()
             onClicked: {
-                var map = flModel.get(index);
-                ViewController.trigger(map.link, map);
+                var map = listView.model.get(index);
+                ViewController.trigger(map.link, prepareNeighbors(map, listView, index));
             }
+
+            FavoritedListModel { id: flModel; listId: 0 }
+            AsemanListModel { id: customModel }
         }
+    }
+
+    function prepareNeighbors(map, listView, index) {
+        var properties = Tools.toVariantMap(map);
+
+        var neighbors = new Array;
+        for (var i=0; i<listView.model.count; i++) {
+            var n = listView.model.get(i);
+            try {
+                neighbors[neighbors.length] = {
+                    "link": n.link,
+                    "subtitle": "0 poems",
+                    "title": n.title,
+                    "verseId": n.verse_id,
+                    "poet": n.poet
+                };
+            } catch(e) {}
+        }
+
+        properties["neighbors"] = neighbors;
+        properties["neighborsIndex"] = index;
+
+        return properties;
     }
 }

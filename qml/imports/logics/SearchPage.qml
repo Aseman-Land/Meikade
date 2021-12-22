@@ -85,6 +85,7 @@ SearchView {
 
         onLinkRequest: {
             var prp = Tools.toVariantMap(properties);
+            console.debug(Tools.variantToJson(prp));
             Viewport.controller.trigger(link, prp);
         }
     }

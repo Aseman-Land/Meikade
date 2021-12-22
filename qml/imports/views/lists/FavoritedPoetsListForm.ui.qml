@@ -20,6 +20,8 @@ Item {
 
     property alias listView: listView
     property alias headerItem: headerItem
+    property alias headerTitle: headerTitle
+    property alias headerProvider: headerProvider
     property alias closeBtn: closeBtn
     property alias backBtn: backBtn
     property alias helper: helper
@@ -27,6 +29,8 @@ Item {
     property string listColor: "transparent"
     property color gradientColor: listColor
     property bool publicIndicatorState: false
+
+    property bool favoriteMode: false
     property bool flatList: false
     property bool onlineList: false
     property bool disableSharing: false
@@ -234,12 +238,21 @@ Item {
                             }
                         }
 
-                        Label {
+                        Rectangle {
                             anchors.horizontalCenter: parent.left
                             anchors.verticalCenter: parent.bottom
-                            font.family: MaterialIcons.family
-                            font.pixelSize: 7 * Devices.fontDensity
-                            text: flatList? (model.isVerse? MaterialIcons.mdi_text_short : MaterialIcons.mdi_format_columns) : ""
+                            width: 14 * Devices.density
+                            height: width
+                            radius: 4 * Devices.density
+                            color: Colors.background
+
+                            Label {
+                                anchors.centerIn: parent
+                                font.family: MaterialIcons.family
+                                font.pixelSize: 7 * Devices.fontDensity
+                                color: listColor.length && listColor != "transparent"? listColor : Colors.primary
+                                text: flatList? (model.isVerse? MaterialIcons.mdi_text_short : MaterialIcons.mdi_format_columns) : ""
+                            }
                         }
                     }
 
@@ -285,10 +298,28 @@ Item {
         anchors.top: parent.top
         anchors.right: parent.right
         anchors.left: parent.left
-        text: qsTr("Favoriteds") + Translations.refresher
         color: Colors.headerColor
         light: !Colors.lightHeader
         shadow: Devices.isAndroid
+
+        ColumnLayout {
+            anchors.horizontalCenter: parent.horizontalCenter
+            y: Devices.statusBarHeight + Devices.standardTitleBarHeight/2 - height/2
+            spacing: 0
+
+            Label {
+                id: headerTitle
+                Layout.alignment: Qt.AlignHCenter
+                font.pixelSize: 10 * Devices.fontDensity
+                text: qsTr("Favoriteds") + Translations.refresher
+            }
+            Label {
+                id: headerProvider
+                Layout.alignment: Qt.AlignHCenter
+                font.pixelSize: 7 * Devices.fontDensity
+                opacity: 0.7
+            }
+        }
 
         RowLayout {
             anchors.right: parent.right
@@ -309,7 +340,7 @@ Item {
                 Material.background: Colors.deepBackground
                 Material.theme: Material.Dark
                 Material.elevation: 0
-                visible: !disableSharing
+                visible: !favoriteMode
 
                 Connections {
                     onClicked: {
