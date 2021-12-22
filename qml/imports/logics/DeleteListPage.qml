@@ -12,14 +12,28 @@ DeleteListView {
     width: parent.width
     height: 240 * Devices.density
 
+    property alias referenceId: followReq._list_id;
     property int actionId
     property string currentName
     property int count
 
     rejectBtn.onClicked: home.ViewportType.open = false;
-    confirmBtn.onClicked: confirm()
+    confirmBtn.onClicked: {
+        if (referenceId)
+            followReq.doRequest();
+        else
+            confirm()
+    }
 
     bodyLabel.text: qsTr("Are you sure about delete \"%1\"?\nIt containts %2 items currently.").arg(currentName).arg(count) + Translations.refresher
+
+
+    ListFollowRequest {
+        id: followReq
+        allowGlobalBusy: true
+        _follow: false
+        onSuccessfull: confirm()
+    }
 
     function confirm() {
         createAction.declined = 1;

@@ -27,7 +27,7 @@ Viewport {
     signal linkRequest(string link, variant properties)
     signal addListRequest()
     signal renameListRequest(int actionId, string currentName)
-    signal deleteListRequest(int actionId, string name)
+    signal deleteListRequest(int actionId, string name, int referenceId)
     signal saved(variant lists)
 
     UserActions {
@@ -162,7 +162,7 @@ Viewport {
                     renameListRequest(item.listId, item.title);
                     break;
                 case 1:
-                    deleteListRequest(item.listId, item.title);
+                    deleteListRequest(item.listId, item.title, (menuItem.item.referenceId == undefined? 0 : menuItem.item.referenceId));
                     break;
                 }
 

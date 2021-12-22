@@ -373,5 +373,6 @@
         <file>imports/routes/OnlineListRoute.qml</file>
         <file>imports/requests/ListRequest.qml</file>
         <file>imports/models/OnlineListModel.qml</file>
+        <file>imports/requests/ListFollowRequest.qml</file>
     </qresource>
 </RCC>

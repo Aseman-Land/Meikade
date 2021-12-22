@@ -32,12 +32,12 @@ Viewport {
         onCloseRequest: vport.ViewportType.open = false;
 
         backBtn.onClicked: vport.ViewportType.open = false;
-        followBtn.visible: provider != MyUserRequest._fullname
+//        followBtn.visible: provider != MyUserRequest._fullname
         followBtn.onClicked: {
             if (listModel.localId)
-                listModel.unfollow(dis.title, dis.provider);
+                listModel.unfollowOnline(dis.title, dis.provider);
             else
-                listModel.follow(dis.title, dis.provider);
+                listModel.followOnline(dis.title, dis.provider);
         }
 
         listView.model: listModel

@@ -122,6 +122,13 @@ UserBaseQuery {
         GlobalSignals.syncRequest();
     }
 
+    function pushActionSynced() {
+        updatedAt = Tools.dateToSec(new Date);
+        synced = 1;
+        push();
+        GlobalSignals.syncRequest();
+    }
+
     function generateNewListId() {
         var actionId = UserActions.TypeItemListsStart + Tools.dateToSec(new Date) - Tools.dateToSec(new Date(2020, 1, 1));
         if (actionId < UserActions.TypeItemListsStart || actionId >= UserActions.TypeItemListsEnd)
