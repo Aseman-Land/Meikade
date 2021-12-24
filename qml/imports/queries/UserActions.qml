@@ -75,6 +75,11 @@ UserBaseQuery {
         return list;
     }
 
+    function getListItem(list_id) {
+        return select("", "type = :type AND declined = 0 AND poetId = 0 AND catId = 0 AND poemId = 0 AND verseId = 0",
+                      "ORDER BY value", {type: list_id})
+    }
+
     function getLists() {
         var res = new Array;
         var list = select("", "(type = :favType OR type > :type) AND poetId = :poetId AND catId = :catId AND " +
