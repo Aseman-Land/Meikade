@@ -80,7 +80,7 @@ Item {
                 id: publicColumn
                 anchors.left: parent.left
                 anchors.right: parent.right
-                anchors.verticalCenter: parent.verticalCenter
+                y: 2 * Devices.density
                 visible: !(disableSharing || favoriteMode) && Bootstrap.initialized && listView.count
                 spacing: 4 * Devices.density
 
