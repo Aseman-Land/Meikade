@@ -252,6 +252,14 @@ PoemView {
         dest: Viewport.viewport
     }
 
+    UnpublishPoemRequest {
+        id: ubpubReq
+        allowGlobalBusy: true
+        category_id: loader.catId
+        poem_id: loader.poemId
+        onSuccessfull: GlobalSignals.snackbarRequest(qsTr("Poem unpublished successfully"));
+    }
+
     Component {
         id: globalMenuComponent
         MenuView {
@@ -270,7 +278,29 @@ PoemView {
                     Viewport.controller.trigger("dialog:/mypoems/poem/add", {"actionId": loader.poemId})
                     break;
                 case 1:
+                    var properties = {
+                        "title": qsTr("Delete"),
+                        "body": qsTr("Do you realy want to unpublish this poem? Not that you must submit review request for the republish."),
+                        "buttons": [qsTr("Cancel"), qsTr("Unpublish")]
+                    };
+
+                    var poemId = loader.poemId;
+                    var action = loadAction;
+                    var page = dis
+                    var obj = Viewport.controller.trigger("dialog:/general/error", properties);
+                    obj.itemClicked.connect(function(idx) {
+                        switch (idx) {
+                        case 0: // Cancel
+                            break;
+
+                        case 1: // Unpublish
+                            ubpubReq.doRequest();
+                            break;
+                        }
+                        obj.ViewportType.open = false;
+                    });
                     break;
+
                 case 2:
                     var properties = {
                         "title": qsTr("Delete"),

@@ -376,5 +376,6 @@
         <file>imports/requests/ListFollowRequest.qml</file>
         <file>imports/requests/GetUserRequestsRequest.qml</file>
         <file>imports/models/RequestsModel.qml</file>
+        <file>imports/requests/UnpublishPoemRequest.qml</file>
     </qresource>
 </RCC>

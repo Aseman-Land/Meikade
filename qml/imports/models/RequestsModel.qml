@@ -26,7 +26,6 @@ AsemanListModel {
             remove(createKey(poet, cat, poem, verse, type));
         }
         function test(poet, cat, poem, verse, type) {
-            console.debug("teeest:", poet, cat, poem, verse, type)
             return contains(createKey(poet, cat, poem, verse, type));
         }
         function addCat(c) {

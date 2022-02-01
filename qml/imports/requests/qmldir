@@ -46,6 +46,7 @@ PoetsTypeRequest 1.0 PoetsTypeRequest.qml
 LoggerRequest 1.0 LoggerRequest.qml
 GetMessagesRequest 1.0 GetMessagesRequest.qml
 PublishPoemRequest 1.0 PublishPoemRequest.qml
+UnpublishPoemRequest 1.0 UnpublishPoemRequest.qml
 PublishListRequest 1.0 PublishListRequest.qml
 UnpublishListRequest 1.0 UnpublishListRequest.qml
 TermsRequest 1.0 TermsRequest.qml

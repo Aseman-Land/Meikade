@@ -154,6 +154,13 @@ PoetBooksView {
         dest: Viewport.viewport
     }
 
+    UnpublishPoemRequest {
+        id: ubpubReq
+        allowGlobalBusy: true
+        category_id: bookId
+        onSuccessfull: GlobalSignals.snackbarRequest(qsTr("Book unpublished successfully"));
+    }
+
     Component {
         id: menuComponent
         MenuView {
@@ -170,6 +177,27 @@ PoetBooksView {
                     break;
 
                 case 1:
+                    var properties = {
+                        "title": qsTr("Unpublish"),
+                        "body": qsTr("Do you realy want to unpublish this book? Not that you must submit review request for the republish."),
+                        "buttons": [qsTr("Cancel"), qsTr("Unpublish")]
+                    };
+
+                    var bookId = bookModel.bookId;
+                    var action = loadAction;
+                    var page = dis
+                    var obj = Viewport.controller.trigger("dialog:/general/error", properties);
+                    obj.itemClicked.connect(function(idx) {
+                        switch (idx) {
+                        case 0: // Cancel
+                            break;
+
+                        case 1: // Unpublish
+                            ubpubReq.doRequest();
+                            break;
+                        }
+                        obj.ViewportType.open = false;
+                    });
                     break;
 
                 case 2:

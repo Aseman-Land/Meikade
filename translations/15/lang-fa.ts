@@ -305,6 +305,14 @@
         <source>Do you realy want to delete this poem?</source>
         <translation>آیا از پاک کردن این شعر مطمئن هستید؟</translation>
     </message>
+    <message>
+        <source>Do you realy want to unpublish this poem? Not that you must submit review request for the republish.</source>
+        <translation>آیا از لغو انتشار این شعر مطمئن هستید؟ توجه داشته باشید برای انتشار دوباره اشعار باید مجددا وارد مرحله بررسی شوند.</translation>
+    </message>
+    <message>
+        <source>Unpublish</source>
+        <translation>لغو انتشار</translation>
+    </message>
 </context>
 <context>
         <name>MySubBooksPage</name>
@@ -319,6 +327,14 @@
         <message>
             <source>Cancel</source>
             <translation>لغو</translation>
+        </message>
+        <message>
+            <source>Do you realy want to unpublish this book? Not that you must submit review request for the republish.</source>
+            <translation>آیا از لغو انتشار این دفتر مطمئن هستید؟ توجه داشته باشید برای انتشار دوباره اشعار باید مجددا وارد مرحله بررسی شوند.</translation>
+        </message>
+        <message>
+            <source>Unpublish</source>
+            <translation>لغو انتشار</translation>
         </message>
         <message>
             <source>Do you realy want to delete this book? Not that all sub books and poems will deleted.</source>
