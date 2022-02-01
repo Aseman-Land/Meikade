@@ -1104,6 +1104,10 @@ It containts %2 items currently.</source>
         <translation>قوانین</translation>
     </message>
     <message>
+        <source>Finished</source>
+        <translation>پایان</translation>
+    </message>
+    <message>
         <source>Finish</source>
         <translation>پایان</translation>
     </message>

@@ -26,10 +26,10 @@ PublishView {
 
         agreementAcceptBtnIndicator.running = true;
         Tools.jsDelayCall(1000, function(){
-            dis.progress = 0.5
-            reviewNum = 1
+            dis.progress = 0.5;
+            reviewNum = 1;
             agreementAcceptBtnIndicator.running = false;
-        })
+        });
     }
     reviewAcceptBtn.onClicked: {
         if (reviewAcceptBtnIndicator.running)
@@ -49,7 +49,7 @@ PublishView {
             Req.StoreActionsBulk.uploadCustomDBActions(itemsList.toList(), function(){
                 publishReq = publish_req_component.createObject(dis);
                 publishReq.doNext();
-            })
+            });
         })
     }
 

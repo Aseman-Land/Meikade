@@ -39,7 +39,10 @@ PoetBooksView {
     }
 
     onPremiumBuyRequest: Viewport.controller.trigger("bottomdrawer:/account/premium/buy")
-    Component.onCompleted: premiumTimer.restart()
+    Component.onCompleted: {
+        RequestsModel.refreshing;
+        premiumTimer.restart()
+    }
 
     avatar.header: MyUserRequest.headers
     avatar.source: MyUserRequest._image
@@ -165,7 +168,11 @@ PoetBooksView {
                 case 0:
                     Viewport.controller.trigger("dialog:/mypoems/add", {"actionId": bookModel.bookId})
                     break;
+
                 case 1:
+                    break;
+
+                case 2:
                     var properties = {
                         "title": qsTr("Delete"),
                         "body": qsTr("Do you realy want to delete this book? Not that all sub books and poems will deleted."),
@@ -202,6 +209,11 @@ PoetBooksView {
                         title: qsTr("Rename"),
                         icon: "mdi_pencil",
                         enabled: true
+                    },
+                    {
+                        title: qsTr("Unpublish"),
+                        icon: "mdi_undo",
+                        enabled: RequestsModel.hash.test(bookId, 0, 0, 0, 0)
                     },
                     {
                         title: qsTr("Delete"),

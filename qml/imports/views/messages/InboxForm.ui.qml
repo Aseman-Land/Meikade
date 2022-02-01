@@ -20,7 +20,13 @@ Page {
 
     property alias headerItem: headerItem
     property alias closeBtn: closeBtn
-    property alias suggestionsModel: listView.model
+    property alias inboxModel: listView.model
+
+    ReloadItem {
+        id: busyIndicator
+        anchors.centerIn: parent
+        viewItem: listView
+    }
 
     AsemanListView {
         id: listView
@@ -31,10 +37,40 @@ Page {
         clip: true
         model: 20
 
+        section.property: "categories"
+        section.criteria: ViewSection.FullString
+        section.delegate: Item {
+            width: listView.width
+            height: sectionLabel.text.length? 40 * Devices.density : 0
+            opacity: sectionLabel.text.length? 1 : 0
+
+            Label {
+                id: sectionLabel
+                anchors.left: parent.left
+                anchors.right: parent.right
+                anchors.bottom: parent.bottom
+                anchors.margins: 8 * Devices.density
+                anchors.bottomMargin: 4 * Devices.density
+                horizontalAlignment: Text.AlignLeft
+                font.pixelSize: 9 * Devices.fontDensity
+                text: section
+                color: Colors.accent
+            }
+
+            Rectangle {
+                anchors.bottom: parent.bottom
+                anchors.left: parent.left
+                anchors.right: parent.right
+                height: 1 * Devices.density
+                color: Colors.foreground
+                opacity: 0.1
+            }
+        }
+
         delegate: ItemDelegate {
             id: sugItem
             width: listView.width
-            height: 50 * Devices.density
+            height: 56 * Devices.density
 
             RowLayout {
                 anchors.left: parent.left
@@ -48,14 +84,14 @@ Page {
                     Layout.preferredWidth: 50 * Devices.density
                     horizontalAlignment: Text.AlignHCenter
                     font.family: MaterialIcons.family
-                    font.pixelSize: 14 * Devices.fontDensity
-                    text: MaterialIcons.mdi_bank
-                    color: Colors.accent
+                    font.pixelSize: 16 * Devices.fontDensity
+                    text: MaterialIcons[model.icon]
+                    color: model.color
                 }
 
                 ColumnLayout {
                     Layout.fillWidth: true
-
+                    spacing: 0
                     Label {
                         Layout.fillWidth: true
                         horizontalAlignment: Text.AlignLeft
@@ -63,7 +99,7 @@ Page {
                         maximumLineCount: 1
                         elide: Text.ElideRight
                         font.pixelSize: 9 * Devices.fontDensity
-                        text: qsTr("Text") + " " + model.index + Translations.refresher
+                        text: model.title
                     }
 
                     Label {
@@ -74,7 +110,7 @@ Page {
                         elide: Text.ElideRight
                         font.pixelSize: 8 * Devices.fontDensity
                         opacity: 0.7
-                        text: qsTr("Its a description") + Translations.refresher
+                        text: model.body
                     }
                 }
             }

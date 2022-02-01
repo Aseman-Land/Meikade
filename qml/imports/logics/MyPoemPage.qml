@@ -89,7 +89,11 @@ PoemView {
         return text.trim();
     }
 
-    Component.onCompleted: if (loader.poemId == 0) loader.random()
+    Component.onCompleted: {
+        RequestsModel.refreshing;
+        if (loader.poemId == 0)
+            loader.random()
+    }
     Component.onDestruction: if (menuObject) menuObject.ViewportType.open = false
 
     MyPoemLoaderModel {
@@ -266,6 +270,8 @@ PoemView {
                     Viewport.controller.trigger("dialog:/mypoems/poem/add", {"actionId": loader.poemId})
                     break;
                 case 1:
+                    break;
+                case 2:
                     var properties = {
                         "title": qsTr("Delete"),
                         "body": qsTr("Do you realy want to delete this poem?"),
@@ -302,6 +308,11 @@ PoemView {
                         title: qsTr("Rename"),
                         icon: "mdi_pencil",
                         enabled: true
+                    },
+                    {
+                        title: qsTr("Unpublish"),
+                        icon: "mdi_undo",
+                        enabled: RequestsModel.hash.test(loader.poetId, loader.catId, loader.poemId, 0, 0)
                     },
                     {
                         title: qsTr("Delete"),

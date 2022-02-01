@@ -10,6 +10,7 @@ HomeRequest 1.0 HomeRequest.qml
 ExploreRequest 1.0 ExploreRequest.qml
 LoginRequest 1.0 LoginRequest.qml
 RegisterRequest 1.0 RegisterRequest.qml
+GetUserRequestsRequest 1.0 GetUserRequestsRequest.qml
 ListRequest 1.0 ListRequest.qml
 ListFollowRequest 1.0 ListFollowRequest.qml
 GetSuggestionsRequest 1.0 GetSuggestionsRequest.qml

@@ -374,5 +374,7 @@
         <file>imports/requests/ListRequest.qml</file>
         <file>imports/models/OnlineListModel.qml</file>
         <file>imports/requests/ListFollowRequest.qml</file>
+        <file>imports/requests/GetUserRequestsRequest.qml</file>
+        <file>imports/models/RequestsModel.qml</file>
     </qresource>
 </RCC>
