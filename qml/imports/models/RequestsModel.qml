@@ -51,15 +51,16 @@ AsemanListModel {
                 o.content.categories.forEach(function(c){
                     m.categories += c.value + " ";
                 });
+                m.description = o.description;
                 m.status = o.status_id;
                 switch (m.status) {
                 case 0: // Reviewing
                     m.icon = "mdi_magnify";
-                    m.color = "#ffbe27";
+                    m.color = Colors.accent;
                     break;
                 case 1: // Accepting
                     m.icon = "mdi_checkbox_multiple_marked_circle";
-                    m.color = Colors.primary;
+                    m.color = Colors.accent;
 
                     hash.add(o.action.poet_id, o.action.category_id, o.action.poem_id, o.action.verse_id, o.action.type);
                     hash.add(o.action.type, 0, 0, 0, 0);
@@ -79,6 +80,10 @@ AsemanListModel {
     }
 
     function init() {
+        req.doRequest();
+    }
+
+    function refresh() {
         req.doRequest();
     }
 

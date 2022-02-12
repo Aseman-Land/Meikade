@@ -12,4 +12,5 @@ InboxView {
     id: dis
     closeBtn.onClicked: ViewportType.open = false
     inboxModel: RequestsModel
+    Component.onCompleted: RequestsModel.refresh()
 }

@@ -22,7 +22,6 @@ AsemanListModel {
 
     ListRequest {
         id: listReq
-        _debug: true
         onSuccessfull: {
             dis.clear();
             dis.reload();

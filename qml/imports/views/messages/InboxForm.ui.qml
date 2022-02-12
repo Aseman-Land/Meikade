@@ -70,12 +70,13 @@ Page {
         delegate: ItemDelegate {
             id: sugItem
             width: listView.width
-            height: 56 * Devices.density
+            height: rowLyt.height + 12 * Devices.density
 
             RowLayout {
+                id: rowLyt
                 anchors.left: parent.left
                 anchors.right: parent.right
-                anchors.verticalCenter: parent.verticalCenter
+                y: 6 * Devices.density
                 anchors.rightMargin: 10 * Devices.density
                 spacing: 4 * Devices.density
 
@@ -111,6 +112,17 @@ Page {
                         font.pixelSize: 8 * Devices.fontDensity
                         opacity: 0.7
                         text: model.body
+                        color: model.color
+                    }
+
+                    Label {
+                        Layout.fillWidth: true
+                        horizontalAlignment: Text.AlignLeft
+                        wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                        font.pixelSize: 8 * Devices.fontDensity
+                        opacity: 0.7
+                        visible: text.length
+                        text: model.description
                     }
                 }
             }

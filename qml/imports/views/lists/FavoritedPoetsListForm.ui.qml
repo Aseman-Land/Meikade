@@ -316,6 +316,7 @@ Item {
                 Layout.alignment: Qt.AlignHCenter
                 font.pixelSize: 10 * Devices.fontDensity
                 text: qsTr("Favoriteds") + Translations.refresher
+                color: Colors.headerTextColor
             }
             Label {
                 id: headerProvider
@@ -323,6 +324,7 @@ Item {
                 font.pixelSize: 7 * Devices.fontDensity
                 opacity: 0.7
                 visible: text.length
+                color: Colors.headerTextColor
             }
         }
 
