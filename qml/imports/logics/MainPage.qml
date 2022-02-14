@@ -72,6 +72,7 @@ MainView {
             Connections {
                 target: form
                 onCurrentIndexChanged: search.keywordField.focus = false;
+                onFooterItemDoubleClicked: if(currentIndex === 2) search.keywordField.forceActiveFocus()
             }
         }
     }
