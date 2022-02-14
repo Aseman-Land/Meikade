@@ -23,6 +23,8 @@ Page {
 
     property alias currentIndex: swipeView.currentIndex
 
+    signal footerItemDoubleClicked()
+
     Rectangle {
         id: swipeView
         anchors.top: parent.top
@@ -115,7 +117,14 @@ Page {
                 iconText.font.pixelSize: model.iconSizeRatio * 18 * Devices.fontDensity
                 title.text: model.name
                 title.color: ListView.isCurrentItem ? (Colors.darkMode? Colors.accent : Colors.primary) : Colors.foreground
-                onClicked: footerListView.currentIndex = model.index
+
+                Connections {
+                    onClicked: {
+                        if(currentIndex === model.index) footerItemDoubleClicked();
+                        footerListView.currentIndex = model.index;
+                    }
+                    onDoubleClicked: footerItemDoubleClicked()
+                }
             }
 
             model: AsemanListModel {
