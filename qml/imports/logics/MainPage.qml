@@ -72,7 +72,11 @@ MainView {
             Connections {
                 target: form
                 onCurrentIndexChanged: search.keywordField.focus = false;
-                onFooterItemDoubleClicked: if(currentIndex === 2) search.keywordField.forceActiveFocus()
+                onFooterItemDoubleClicked: if(currentIndex === 2) {
+                                               search.keywordField.focus = false;
+                                               search.keywordField.focus = true;
+                                               search.keywordField.forceActiveFocus(Qt.StrongFocus);
+                                           }
             }
         }
     }
