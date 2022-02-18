@@ -28,6 +28,21 @@ AsemanListModel {
         }
     }
 
+    ListFollowRequest {
+        id: followReq
+        allowGlobalBusy: true
+
+        property string _title
+        property string _provider
+
+        onSuccessfull: {
+            if (_follow)
+                dis.follow(_title, _provider);
+            else
+                dis.unfollow(_title, _provider);
+        }
+    }
+
     UserActions {
         id: listsQuery
     }
@@ -60,6 +75,22 @@ AsemanListModel {
 
     HashObject {
         id: followTempList
+    }
+
+    function followOnline(title, provider) {
+        followReq._list_id = listReq._list_id;
+        followReq._follow = true;
+        followReq._title = title;
+        followReq._provider = provider;
+        followReq.doRequest();
+    }
+
+    function unfollowOnline(title, provider) {
+        followReq._list_id = listReq._list_id;
+        followReq._follow = false;
+        followReq._title = title;
+        followReq._provider = provider;
+        followReq.doRequest();
     }
 
     function follow(title, provider) {
@@ -100,7 +131,7 @@ AsemanListModel {
                 listsQuery.declined = 0;
                 listsQuery.type = listId;
                 listsQuery.extra = Tools.variantToJson(item.extra, true);
-                listsQuery.pushAction()
+                listsQuery.pushActionSynced()
 
                 if (localId)
                     followTempList.remove(item.poet_id + "-" + item.category_id + "-" + item.poem_id + "-" + item.verse_id);
@@ -118,7 +149,7 @@ AsemanListModel {
                 listsQuery.declined = 1;
                 listsQuery.type = listId;
                 listsQuery.extra = it.extra;
-                listsQuery.pushAction();
+                listsQuery.pushActionSynced();
             }
         }
 

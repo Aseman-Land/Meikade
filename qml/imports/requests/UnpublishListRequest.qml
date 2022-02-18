@@ -13,6 +13,6 @@ BaseRequest {
     property int type
 
     function doRequest() {
-        networkManager.deleteMethod(unpublishRequest)
+        networkManager.patch(unpublishRequest)
     }
 }

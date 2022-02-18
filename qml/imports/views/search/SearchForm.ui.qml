@@ -168,6 +168,9 @@ Rectangle {
         bottomMargin: 58 * Devices.density + Devices.navigationBarHeight
 
         onDragStarted: keywordField.focus = false
+        onCountChanged: if (count == 0) initializeState = true
+
+        property bool initializeState: true
 
         header: Item {
             width: listView.width

@@ -39,7 +39,10 @@ PoetBooksView {
     }
 
     onPremiumBuyRequest: Viewport.controller.trigger("bottomdrawer:/account/premium/buy")
-    Component.onCompleted: premiumTimer.restart()
+    Component.onCompleted: {
+        RequestsModel.refreshing;
+        premiumTimer.restart()
+    }
 
     avatar.header: MyUserRequest.headers
     avatar.source: MyUserRequest._image
@@ -151,6 +154,13 @@ PoetBooksView {
         dest: Viewport.viewport
     }
 
+    UnpublishPoemRequest {
+        id: ubpubReq
+        allowGlobalBusy: true
+        category_id: bookId
+        onSuccessfull: GlobalSignals.snackbarRequest(qsTr("Book unpublished successfully"));
+    }
+
     Component {
         id: menuComponent
         MenuView {
@@ -165,7 +175,32 @@ PoetBooksView {
                 case 0:
                     Viewport.controller.trigger("dialog:/mypoems/add", {"actionId": bookModel.bookId})
                     break;
+
                 case 1:
+                    var properties = {
+                        "title": qsTr("Unpublish"),
+                        "body": qsTr("Do you realy want to unpublish this book? Not that you must submit review request for the republish."),
+                        "buttons": [qsTr("Cancel"), qsTr("Unpublish")]
+                    };
+
+                    var bookId = bookModel.bookId;
+                    var action = loadAction;
+                    var page = dis
+                    var obj = Viewport.controller.trigger("dialog:/general/error", properties);
+                    obj.itemClicked.connect(function(idx) {
+                        switch (idx) {
+                        case 0: // Cancel
+                            break;
+
+                        case 1: // Unpublish
+                            ubpubReq.doRequest();
+                            break;
+                        }
+                        obj.ViewportType.open = false;
+                    });
+                    break;
+
+                case 2:
                     var properties = {
                         "title": qsTr("Delete"),
                         "body": qsTr("Do you realy want to delete this book? Not that all sub books and poems will deleted."),
@@ -202,6 +237,11 @@ PoetBooksView {
                         title: qsTr("Rename"),
                         icon: "mdi_pencil",
                         enabled: true
+                    },
+                    {
+                        title: qsTr("Unpublish"),
+                        icon: "mdi_undo",
+                        enabled: RequestsModel.hash.test(bookId, 0, 0, 0, 0)
                     },
                     {
                         title: qsTr("Delete"),

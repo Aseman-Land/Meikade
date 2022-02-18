@@ -110,6 +110,7 @@ int main(int argc, char *argv[])
     register_fcm(&engine);
     engine.rootContext()->setContextProperty("isAndroidStyle", androidStyle);
     engine.rootContext()->setContextProperty("appVersion", MEIKADE_VERSION);
+    engine.rootContext()->setContextProperty("appVersionNumber", QString(MEIKADE_VERSION).remove(QRegExp("\\D")));
     engine.rootContext()->setContextProperty("unlockPassword", UNLOCK_PASSWORD);
     engine.rootContext()->setContextProperty("loggerPath", LOGGER_PATH);
     engine.rootContext()->setContextProperty("qVersion", qVersion());

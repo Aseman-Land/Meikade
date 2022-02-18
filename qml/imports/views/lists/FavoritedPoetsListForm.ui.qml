@@ -80,8 +80,8 @@ Item {
                 id: publicColumn
                 anchors.left: parent.left
                 anchors.right: parent.right
-                anchors.verticalCenter: parent.verticalCenter
-                visible: !(disableSharing || favoriteMode) || !Bootstrap.initialized
+                y: 2 * Devices.density
+                visible: !(disableSharing || favoriteMode) && Bootstrap.initialized && listView.count
                 spacing: 4 * Devices.density
 
                 ItemDelegate {
@@ -316,6 +316,7 @@ Item {
                 Layout.alignment: Qt.AlignHCenter
                 font.pixelSize: 10 * Devices.fontDensity
                 text: qsTr("Favoriteds") + Translations.refresher
+                color: Colors.headerTextColor
             }
             Label {
                 id: headerProvider
@@ -323,6 +324,7 @@ Item {
                 font.pixelSize: 7 * Devices.fontDensity
                 opacity: 0.7
                 visible: text.length
+                color: Colors.headerTextColor
             }
         }
 

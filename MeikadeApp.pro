@@ -1,4 +1,4 @@
-VERSION = 4.4.2
+VERSION = 4.5.0
 TARGET = Meikade
 
 QMAKE_TARGET_BUNDLE_PREFIX = com.meikade

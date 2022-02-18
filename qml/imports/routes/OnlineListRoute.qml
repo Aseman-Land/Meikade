@@ -2,6 +2,7 @@ import QtQuick 2.12
 import logics 1.0
 import globals 1.0
 import requests 1.0
+import queries 1.0
 import models 1.0
 import AsemanQml.Viewport 2.0
 import AsemanQml.Base 2.0
@@ -16,6 +17,10 @@ Viewport {
     property int listId
     property string title
     property variant user
+
+    UserActions {
+        id: userActions
+    }
 
     mainItem: SingleListPage {
         id: dis
@@ -32,12 +37,18 @@ Viewport {
         onCloseRequest: vport.ViewportType.open = false;
 
         backBtn.onClicked: vport.ViewportType.open = false;
-        followBtn.visible: provider != MyUserRequest._fullname
+        followBtn.visible: Bootstrap.subscription && provider != MyUserRequest._fullname
+        followBtn.enabled: Bootstrap.payment && Bootstrap.trusted
         followBtn.onClicked: {
+            if (!Subscription.premium && userActions.getLists().length >= Subscription.listsLimits && listModel.localId == 0) {
+                ViewController.trigger("bottomdrawer:/account/premium/buy")
+                return;
+            }
+
             if (listModel.localId)
-                listModel.unfollow(dis.title, dis.provider);
+                listModel.unfollowOnline(dis.title, dis.provider);
             else
-                listModel.follow(dis.title, dis.provider);
+                listModel.followOnline(dis.title, dis.provider);
         }
 
         listView.model: listModel

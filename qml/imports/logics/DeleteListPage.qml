@@ -12,14 +12,53 @@ DeleteListView {
     width: parent.width
     height: 240 * Devices.density
 
+    property alias referenceId: followReq._list_id;
     property int actionId
     property string currentName
     property int count
 
     rejectBtn.onClicked: home.ViewportType.open = false;
-    confirmBtn.onClicked: confirm()
+    confirmBtn.onClicked: {
+        if (referenceId)
+            followReq.doRequest();
+        else {
+            var items = createAction.getListItem(actionId);
+            try {
+                if (items.length != 1)
+                    throw false;
+
+                var item = items[0];
+                var extra = Tools.jsonToVariant(item.extra)
+                if (extra["public"] != true)
+                    throw false;
+
+                unpubReq.poet_id = item.poetId;
+                unpubReq.category_id = item.catId;
+                unpubReq.poem_id = item.poemId;
+                unpubReq.verse_id = item.verseId;
+                unpubReq.type = actionId;
+                unpubReq.doRequest();
+            } catch (e) {
+                confirm();
+            }
+        }
+    }
 
     bodyLabel.text: qsTr("Are you sure about delete \"%1\"?\nIt containts %2 items currently.").arg(currentName).arg(count) + Translations.refresher
+
+
+    ListFollowRequest {
+        id: followReq
+        allowGlobalBusy: true
+        _follow: false
+        onSuccessfull: confirm()
+    }
+
+    UnpublishListRequest {
+        id: unpubReq
+        allowGlobalBusy: true
+        onSuccessfull: confirm()
+    }
 
     function confirm() {
         createAction.declined = 1;

@@ -64,10 +64,15 @@ FavoritedPoetsListView {
 
     signal closeRequest()
 
-    Component.onCompleted: {
-        if (!favoriteMode && !disableSharing && !AsemanGlobals.helperListsDone) {
-            helper.next();
-            AsemanGlobals.helperListsDone = true;
+    Timer {
+        interval: 500
+        repeat: false
+        running: true
+        onTriggered: {
+            if (Bootstrap.initialized && !favoriteMode && !disableSharing && !AsemanGlobals.helperListsDone) {
+                helper.next();
+                AsemanGlobals.helperListsDone = true;
+            }
         }
     }
 

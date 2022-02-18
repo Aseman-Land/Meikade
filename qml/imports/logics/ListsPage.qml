@@ -27,7 +27,7 @@ Viewport {
     signal linkRequest(string link, variant properties)
     signal addListRequest()
     signal renameListRequest(int actionId, string currentName)
-    signal deleteListRequest(int actionId, string name)
+    signal deleteListRequest(int actionId, string name, int referenceId)
     signal saved(variant lists)
 
     UserActions {
@@ -47,9 +47,9 @@ Viewport {
 
             var tgLink = "<a href='https://t.me/poshtibanimoon'>" + qsTr("Click Here") +"</a>";
             if (Bootstrap.payment && Bootstrap.trusted)
-                return GTranslations.translate( qsTr("You create %1 lists from %2 lists, Allowed to create using non-premium account.").arg(lModel.count).arg(Subscription.listsLimits) )
+                return GTranslations.translate( qsTr("You create %1 lists from %2 lists, Allowed to create using non-premium account.").arg(lModel.count-1).arg(Subscription.listsLimits) )
             else
-                return GTranslations.translate( qsTr("You create %1 lists from %2 lists. for more information contact us on telegram:").arg(lModel.count).arg(Subscription.listsLimits) ) + " " + tgLink
+                return GTranslations.translate( qsTr("You create %1 lists from %2 lists. for more information contact us on telegram:").arg(lModel.count-1).arg(Subscription.listsLimits) ) + " " + tgLink
         }
 
         listView.model: ListsModel {
@@ -162,7 +162,7 @@ Viewport {
                     renameListRequest(item.listId, item.title);
                     break;
                 case 1:
-                    deleteListRequest(item.listId, item.title);
+                    deleteListRequest(item.listId, item.title, (menuItem.item.referenceId == undefined? 0 : menuItem.item.referenceId));
                     break;
                 }
 

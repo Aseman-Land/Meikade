@@ -13,7 +13,7 @@ AsemanObject {
     readonly property int offlineLimits: activeSubscription && Bootstrap.subscription? currentPackage.package.extra.offline_limits : -1
     readonly property int mypoemsLimits: activeSubscription && Bootstrap.subscription? currentPackage.package.extra.mypoems_limits : -1
 
-    readonly property int premium:  premiumDays > 0
+    readonly property int premium: premiumDays > 0
     readonly property int premiumDays: {
         if (!activeSubscription || !Bootstrap.subscription || Bootstrap.fullyUnlocked)
             return 1000;

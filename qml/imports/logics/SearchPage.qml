@@ -74,7 +74,7 @@ SearchView {
     listsList {
         model: SearchListModel {
             id: listsSearchModel
-            query: home.keywordField.text
+            query: Bootstrap.initialized? home.keywordField.text : ""
         }
         visible: {
             for (var i=0; i<listsSearchModel.count; i++)
@@ -118,10 +118,24 @@ SearchView {
 
     onMoreRequest: listView.model.more();
 
-    busyIndicator.running: (searchModel.refreshing && AsemanGlobals.onlineSearch) || ((searchModel.count == 0 || !AsemanGlobals.onlineSearch) && searchOfflineModel.refreshing)
+    busyIndicator.running: ((listsSearchModel.refreshing || searchModel.refreshing || poetsSearchModel.refreshing) && AsemanGlobals.onlineSearch) || ((searchModel.count == 0 || !AsemanGlobals.onlineSearch) && searchOfflineModel.refreshing)
 
     listView {
         model: (searchModel.count || searchModel.refreshing) && AsemanGlobals.onlineSearch? searchModel : searchOfflineModel
+        onCountChanged: {
+            if (!listView.initializeState)
+                return;
+
+            listInitTimer.restart();
+            listView.initializeState = false;
+        }
+    }
+
+    Timer {
+        id: listInitTimer
+        repeat: false
+        interval: 1
+        onTriggered: listView.positionViewAtBeginning()
     }
 
     Connections {

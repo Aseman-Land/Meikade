@@ -11,4 +11,6 @@ import requests 1.0
 InboxView {
     id: dis
     closeBtn.onClicked: ViewportType.open = false
+    inboxModel: RequestsModel
+    Component.onCompleted: RequestsModel.refresh()
 }
