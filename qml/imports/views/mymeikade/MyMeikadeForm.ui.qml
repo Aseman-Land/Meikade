@@ -314,6 +314,7 @@ Rectangle {
             anchors.right: parent.right
             height: Devices.standardTitleBarHeight
             width: height
+            visible: Bootstrap.initialized && AsemanGlobals.accessToken.length
 
             Label {
                 anchors.centerIn: parent
