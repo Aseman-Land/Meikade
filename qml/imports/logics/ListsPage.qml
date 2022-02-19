@@ -113,6 +113,7 @@ Viewport {
             closeBtn.visible: true
             headerBusyIndicator.running: updateModel.refreshing
             onCloseRequest: dis.closeRequest()
+            onAuthRequest: mainController.trigger("float:/auth/float", {})
 
             property alias referenceId: updateModel.listId
 

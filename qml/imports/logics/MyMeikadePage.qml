@@ -36,7 +36,14 @@ MyMeikadeView {
     bioLabel.text: MyUserRequest._bio
     profileLabel.text: MyUserRequest._fullname
     authBtn.onClicked: Viewport.controller.trigger("float:/auth/float", {})
-    messagesBtn.onClicked: Viewport.controller.trigger("float:/inbox", {})
+    messagesBtn.onClicked: {
+        if (AsemanGlobals.accessToken.length == 0) {
+            Viewport.controller.trigger("float:/auth/float", {});
+            return;
+        }
+
+        Viewport.controller.trigger("float:/inbox", {});
+    }
 
     avatarBtn.onClicked: {
         var pos = Qt.point(avatarBtn.width/2, avatarBtn.height);
