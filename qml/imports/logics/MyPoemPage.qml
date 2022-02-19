@@ -361,6 +361,10 @@ PoemView {
     }
 
     function publish() {
+        if (AsemanGlobals.accessToken.length == 0) {
+            Viewport.controller.trigger("float:/auth/float", {})
+            return;
+        }
         Viewport.controller.trigger("float:/mypoems/publish", {"poemId": poemId})
     }
 

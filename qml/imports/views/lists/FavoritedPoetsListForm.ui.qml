@@ -2,6 +2,7 @@ import QtQuick 2.12
 import AsemanQml.Base 2.0
 import AsemanQml.MaterialIcons 2.0
 import AsemanQml.Controls 2.0
+import AsemanQml.Viewport 2.0
 import QtQuick.Controls 2.3
 import QtQuick.Layouts 1.3
 import QtQuick.Controls.Material 2.0
@@ -42,6 +43,7 @@ Item {
     signal publicListSwitch(bool checked)
     signal colorSwitch(string color)
     signal flatListSwitched(bool state)
+    signal authRequest()
 
     Rectangle {
         anchors.fill: parent
@@ -119,7 +121,14 @@ Item {
                             enabled: !publicIndicator.running
 
                             Connections {
-                                onCheckedChanged: dis.publicListSwitch(publicSwitch.checked)
+                                onClicked: {
+                                    if (AsemanGlobals.accessToken.length == 0) {
+                                        dis.authRequest();
+                                        publicSwitch.checked = !publicSwitch.checked;
+                                        return;
+                                    }
+                                    dis.publicListSwitch(publicSwitch.checked)
+                                }
                             }
                         }
                     }
