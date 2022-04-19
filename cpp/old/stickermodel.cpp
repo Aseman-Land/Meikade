@@ -298,7 +298,7 @@ void StickerModel::refresh()
         {
             QString path = ":/qml/imports/logics/old/stickers/images/"+f;
             QFileInfo file(path);
-            const QStringList &parts = file.baseName().split("_",QString::SkipEmptyParts);
+            const QStringList &parts = file.baseName().split("_",Qt::SkipEmptyParts);
             if(parts.count() != 2)
                 continue;
 

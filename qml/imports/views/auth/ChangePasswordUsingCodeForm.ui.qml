@@ -1,4 +1,4 @@
-import QtQuick 2.12
+import QtQuick 2.14
 import globals 1.0
 import AsemanQml.Base 2.0
 import AsemanQml.MaterialIcons 2.0
@@ -63,7 +63,7 @@ Page {
                     font.pixelSize: 10 * Devices.fontDensity
                     horizontalAlignment: Text.AlignHCenter
                     inputMethodHints: Qt.ImhDigitsOnly
-                    validator: RegExpValidator { regExp: /\d+/ }
+                    validator: RegularExpressionValidator { regularExpression: /\d+/ }
                     selectByMouse: true
                     onAccepted: sendBtn.focus = true
 

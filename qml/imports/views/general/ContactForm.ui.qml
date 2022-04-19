@@ -1,4 +1,4 @@
-import QtQuick 2.12
+import QtQuick 2.14
 import AsemanQml.Base 2.0
 import AsemanQml.MaterialIcons 2.0
 import AsemanQml.Controls 2.0
@@ -78,7 +78,7 @@ Page {
                     font.pixelSize: 9 * Devices.fontDensity
                     horizontalAlignment: Text.AlignLeft
                     selectByMouse: true
-                    validator: RegExpValidator { regExp: /(\w|\s)+/ }
+                    validator: RegularExpressionValidator { regularExpression: /(\w|\s)+/ }
                     Layout.bottomMargin: 10 * Devices.density
                 }
 
@@ -95,7 +95,7 @@ Page {
                     font.pixelSize: 9 * Devices.fontDensity
                     horizontalAlignment: Text.AlignLeft
                     selectByMouse: true
-                    validator: RegExpValidator { regExp: /\w(\w|\.)+\@\w+(\.\w+)+/ }
+                    validator: RegularExpressionValidator { regularExpression: /\w(\w|\.)+\@\w+(\.\w+)+/ }
                     Layout.bottomMargin: 10 * Devices.density
                 }
 

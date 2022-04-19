@@ -32,6 +32,7 @@
 #include <QQuickStyle>
 #include <QQmlContext>
 #include <QIcon>
+#include <QRegularExpression>
 #include <QTimer>
 #ifdef QT_WEBVIEW_LIB
 #include <QtWebView>
@@ -59,7 +60,7 @@ static QObject *create_meikadetoole_singleton(QQmlEngine *, QJSEngine *)
 
 int main(int argc, char *argv[])
 {
-    qsrand(QTime::currentTime().msec());
+    srand(QTime::currentTime().msec());
     qputenv("QT_ANDROID_ENABLE_WORKAROUND_TO_DISABLE_PREDICTIVE_TEXT", "1");
     qputenv("QT_LOGGING_RULES", "qt.qml.connections=false");
 
@@ -69,7 +70,11 @@ int main(int argc, char *argv[])
     QQuickStyle::setStyle("Material");
 #else
     androidStyle = false;
+#if (QT_VERSION >= QT_VERSION_CHECK(6, 0, 0))
+    QQuickStyle::setStyle("QtQuick.Controls.IOSStyle");
+#else
     QQuickStyle::setStyle("IOSStyle");
+#endif
 #endif
 
     bool activeSubscription = true;
@@ -110,7 +115,7 @@ int main(int argc, char *argv[])
     register_fcm(&engine);
     engine.rootContext()->setContextProperty("isAndroidStyle", androidStyle);
     engine.rootContext()->setContextProperty("appVersion", MEIKADE_VERSION);
-    engine.rootContext()->setContextProperty("appVersionNumber", QString(MEIKADE_VERSION).remove(QRegExp("\\D")));
+    engine.rootContext()->setContextProperty("appVersionNumber", QString(MEIKADE_VERSION).remove(QRegularExpression("\\D")));
     engine.rootContext()->setContextProperty("unlockPassword", UNLOCK_PASSWORD);
     engine.rootContext()->setContextProperty("loggerPath", LOGGER_PATH);
     engine.rootContext()->setContextProperty("qVersion", qVersion());

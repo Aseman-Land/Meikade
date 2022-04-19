@@ -1,4 +1,4 @@
-import QtQuick 2.12
+import QtQuick 2.14
 import globals 1.0
 import AsemanQml.Base 2.0
 import AsemanQml.MaterialIcons 2.0
@@ -72,7 +72,7 @@ Page {
                     selectByMouse: true
                     leftPadding: LayoutMirroring.enabled? 0 : 34 * Devices.density
                     rightPadding: LayoutMirroring.enabled? 34 * Devices.density : 0
-                    validator: RegExpValidator { regExp: /[a-z][a-z0-9_]+/ }
+                    validator: RegularExpressionValidator { regularExpression: /[a-z][a-z0-9_]+/ }
                     onAccepted: passTxt.focus = true
                     color: focus || userCheckIndicator.running? Colors.foreground : (usernameError.visible || !isValid? "#a00" : "#0a0")
 
@@ -113,7 +113,7 @@ Page {
                     echoMode: TextInput.Password
                     passwordCharacter: '*'
                     passwordMaskDelay: 500
-                    validator: RegExpValidator { regExp: /\w*[0-9\+_\)\(\*\&\^\%\$\#\@\!\[\]\{\}\:\;\"\'\\\.\,\`\/\<\>\|]+\w*/ }
+                    validator: RegularExpressionValidator { regularExpression: /\w*[0-9\+_\)\(\*\&\^\%\$\#\@\!\[\]\{\}\:\;\"\'\\\.\,\`\/\<\>\|]+\w*/ }
                     onAccepted: fullnameTxt.focus = true
                     color: isValid || focus? Colors.foreground : "#a00"
 
@@ -141,7 +141,7 @@ Page {
                     selectByMouse: true
                     leftPadding: LayoutMirroring.enabled? 0 : 34 * Devices.density
                     rightPadding: LayoutMirroring.enabled? 34 * Devices.density : 0
-                    validator: RegExpValidator { regExp: /[\w\s]+/ }
+                    validator: RegularExpressionValidator { regularExpression: /[\w\s]+/ }
                     onAccepted: emailTxt.focus = true
                     color: isValid || focus? Colors.foreground : "#a00"
 
@@ -169,7 +169,7 @@ Page {
                     selectByMouse: true
                     leftPadding: LayoutMirroring.enabled? 0 : 34 * Devices.density
                     rightPadding: LayoutMirroring.enabled? 34 * Devices.density : 0
-                    validator: RegExpValidator { regExp: /\w(\w|\.)+\@\w+(\.\w+)+/ }
+                    validator: RegularExpressionValidator { regularExpression: /\w(\w|\.)+\@\w+(\.\w+)+/ }
                     onAccepted: sendBtn.focus = true
                     color: isValid || focus? Colors.foreground : "#a00"
 

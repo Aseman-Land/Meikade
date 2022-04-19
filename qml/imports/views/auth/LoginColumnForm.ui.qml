@@ -1,4 +1,4 @@
-import QtQuick 2.12
+import QtQuick 2.14
 import globals 1.0
 import AsemanQml.Base 2.0
 import AsemanQml.MaterialIcons 2.0
@@ -39,7 +39,7 @@ ColumnLayout {
         horizontalAlignment: Text.AlignHCenter
         selectByMouse: true
         inputMethodHints: Qt.ImhLowercaseOnly | Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText
-        validator: RegExpValidator { regExp: /[a-z][a-z0-9_]+/ }
+        validator: RegularExpressionValidator { regularExpression: /[a-z][a-z0-9_]+/ }
         onAccepted: passTxt.focus = true
 
         Label {
