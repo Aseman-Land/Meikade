@@ -32,7 +32,7 @@ AsemanObject {
 
     TranslationManager {
         id: mgr
-        sourceDirectory: "translations/"
+        sourceDirectory: Qt.resolvedUrl("translations/")
         delimiters: "-"
         fileName: "lang"
         localeName: AsemanGlobals.language
