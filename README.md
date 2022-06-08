@@ -1,7 +1,6 @@
 ![Meikade-icon](https://raw.githubusercontent.com/Aseman-Land/Meikade/master/configurations/ios/icons/Icon-Small%402x.png)
 
-Meikade
-=======
+# Meikade
 
 Meikade is a collection of Persian poetry.
 It is avaiable on iOS, Android, Windows, macOS and Linux.
@@ -10,19 +9,20 @@ It is avaiable on iOS, Android, Windows, macOS and Linux.
 
 ## 📥️ Download Meikade
 
-| Platform      | Download | Availability|
-| ------------- |:------------------------------------------------------------------------------------:|:---:|
-| iOS           | [AppStore](https://apps.apple.com/us/app/meikade-app/id1543587891#?platform=iphone)  | ✔️ |
-| Android       | [PlayStore](https://play.google.com/store/apps/details?id=org.nilegroup.Meikade)     | ✔️ |
-| Windows       | [exe File]()  | ⏳️ |
-| macOS         | [DMG file]()  | ⏳️ |
-| Linux         | [Deb Package]()  | ⏳️ |
+| Platform |                                      Download                                       | Availability |
+| -------- | :---------------------------------------------------------------------------------: | :----------: |
+| iOS      | [AppStore](https://apps.apple.com/us/app/meikade-app/id1543587891#?platform=iphone) |      ✔️      |
+| Android  |  [PlayStore](https://play.google.com/store/apps/details?id=org.nilegroup.Meikade)   |      ✔️      |
+| Windows  |                                    [exe File]()                                     |     ⏳️      |
+| macOS    |                                    [DMG file]()                                     |     ⏳️      |
+| Linux    |                                   [Deb Package]()                                   |     ⏳️      |
 
 ---
 
 ## ⚒️ Build Meikade
 
 ### Prepare the Prerequisites
+
 Before you start the build process, you have to install/resolve Meikade's dependencies like any other application.
 
 #### Set up your Build Environment
@@ -36,6 +36,7 @@ In order to start the build process, you have to set up the environment for the 
 #### Install the Dependencies
 
 ##### Git
+
 For all the above mentioned platforms, you need to install "git". So for example if you want to build it for Ubuntu, You need to setup your environment using the below command:
 
 ```bash
@@ -43,6 +44,7 @@ sudo apt-get install git g++ gcc
 ```
 
 ##### Qt
+
 You can download and install Qt from their website [qt.io](). Also If you want to build Meikade on Ubuntu (or any other Debian-based distro), you could install Qt from the official repositories using the commands below:
 
 ```bash
@@ -81,11 +83,19 @@ mkdir build && cd build
 qmake -r ..
 make
 ```
+
 and after building it, execute it from the build directory. That's it. You did it! :)
 
 > **NOTE**: to disable subscription feature on your build, just pass `CONFIG+=disable-subscription` config to qmake command.
 
----
+#### Build from AUR
+
+## To build the project from AUR, simply install the [meikade](https://aur.archlinux.org/packages/meikade) package. It will clone and build the project with it's dependencies and package them for you on your computer. Thanks to @zoli
+
+```
+yay -S meikade
+```
+
 Meikade is built using C++ & Qt.
 
 [![GitHub license](https://img.shields.io/github/license/Aseman-Land/Meikade?style=for-the-badge)](https://github.com/Aseman-Land/Meikade/blob/master/LICENSE)
