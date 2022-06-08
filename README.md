@@ -90,7 +90,7 @@ and after building it, execute it from the build directory. That's it. You did i
 
 #### Build from AUR
 
-## To build the project from AUR, simply install the [meikade](https://aur.archlinux.org/packages/meikade) package. It will clone and build the project with it's dependencies and package them for you on your computer. Thanks to @zoli
+## To build the project from AUR, simply install the [meikade](https://aur.archlinux.org/packages/meikade) package. It will clone and build the project with it's dependencies and package them for you on your computer. Thanks to [zoli](https://github.com/zoli)
 
 ```
 yay -S meikade
