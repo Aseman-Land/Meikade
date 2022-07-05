@@ -5,7 +5,6 @@ import AsemanQml.Viewport 2.0
 import AsemanQml.MaterialIcons 2.0
 import Meikade 1.0
 import queries 1.0
-import queries 1.0 as Query
 import views 1.0
 import micros 1.0
 import globals 1.0
@@ -38,9 +37,9 @@ PoetView {
         booksModel.cachePath: AsemanGlobals.cachePath + "/poet-" + poetId + ".cache"
     }
 
-    Query.UserActions {
+    UserActions {
         id: viewActionQuery
-        type: Query.UserActions.TypePoetViewDate
+        type: UserActions.TypePoetViewDate
         poemId: 0
         poetId: dis.id
         declined: 0
