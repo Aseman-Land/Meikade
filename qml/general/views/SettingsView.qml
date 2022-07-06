@@ -30,12 +30,12 @@ Item {
     property alias accountDaysLabel: accountDaysLabel
     property alias accountPremiumBuy: accountPremiumBuy
 
-    Material.theme: Material.Dark
-    IOSStyle.theme: IOSStyle.Dark
+//    Material.theme: Material.Dark
+//    IOSStyle.theme: IOSStyle.Dark
 
     Rectangle {
         anchors.fill: parent
-        color: "#222"
+        color: Colors.deepBackground
     }
 
     AsemanFlickable {
@@ -290,12 +290,14 @@ Item {
         anchors.right: parent.right
         anchors.left: parent.left
         text: qsTr("Settings") + Translations.refresher
-        color: "#333"
+        color: Colors.lightBackground
         shadow: Devices.isAndroid
+        light: Colors.darkMode
 
         HeaderMenuButton {
             id: menuBtn
             ratio: 1
+            buttonColor: Colors.foreground
         }
     }
 

@@ -171,6 +171,7 @@ Page {
                     placeholderText: qsTr("Type your note") + Translations.refresher
                     font.pixelSize: 9 * Devices.fontDensity
                     selectByMouse: true
+                    wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                     visible: Subscription.notesLimits > currentNotesCount || text.length > 0 || premiumMsg.length == 0
                     onTextChanged: visible = true
                     background: Item {}

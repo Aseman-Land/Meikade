@@ -11,6 +11,7 @@ MessagesView {
     onLinkClicked: {
         Viewport.controller.trigger(link);
     }
+    Component.onCompleted: MessagesModel.reload()
 }
 
 
