@@ -1971,6 +1971,62 @@ It containts %2 items currently.</source>
         <source>Offline Results</source>
         <translation>نتایج آفلاین</translation>
     </message>
+    <message>
+        <source>Add to Bookmarks</source>
+        <translation>افزودن به علاقه‌مندی‌ها</translation>
+    </message>
+    <message>
+        <source>Copy</source>
+        <translation>کپی</translation>
+    </message>
+    <message>
+        <source>Create Sticker</source>
+        <translation>اشتراک‌گذاری تصویری</translation>
+    </message>
+    <message>
+        <source>Share</source>
+        <translation>اشتراک‌گذاری</translation>
+    </message>
+    <message>
+        <source>Select</source>
+        <translation>انتخاب</translation>
+    </message>
+    <message>
+        <source>Remove Bookmarks</source>
+        <translation>حذف از علاقه‌مندی‌ها</translation>
+    </message>
+    <message>
+        <source>Poem Unfavorited</source>
+        <translation>شعر از علاقه‌مندی‌ها حذف شد</translation>
+    </message>
+    <message>
+        <source>Poem favorited</source>
+        <translation>شعر به علاقه‌مندی‌ها اضافه شد</translation>
+    </message>
+    <message>
+        <source>Poem copied</source>
+        <translation>شعر کپی شد</translation>
+    </message>
+    <message>
+        <source>Verse Unfavorited</source>
+        <translation>بیت از علاقه‌مندی‌ها حذف شد</translation>
+    </message>
+    <message>
+        <source>Verse favorited</source>
+        <translation>بیت به علاقه‌مندی‌ها اضافه شد</translation>
+    </message>
+    <message>
+        <source>Verse copied</source>
+        <translation>بیت کپی شد</translation>
+    </message>
+    <message>
+        <source>Choose Lists</source>
+        <translation>افزودن/حذف لیست</translation>
+    </message>
+    <message>
+        <source>Note</source>
+        <translation>یادداشت</translation>
+    </message>
 </context>
 <context>
     <name>SearchSmartAbout</name>

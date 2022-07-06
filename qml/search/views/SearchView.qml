@@ -33,6 +33,7 @@ Rectangle {
     property alias closeBtn: closeBtn
 
     signal clicked(string link, int index)
+    signal menuRequest(string link, int index, variant object)
     signal moreRequest()
 
     Label {
@@ -203,13 +204,57 @@ Rectangle {
                 onInitedChanged: if (model.index == listView.count - 10) moreRequest();
             }
 
-            ItemDelegate {
+            Rectangle {
+                anchors.fill: itemDel
+                visible: itemDel.pressed
+                opacity: 0.1
+                color: Colors.foreground
+            }
+
+            MouseArea {
                 id: itemDel
                 anchors.fill: parent
+                pressAndHoldInterval: 300
+                onClicked: searchForm.clicked(model.link, model.index)
+                onPressAndHold: searchForm.menuRequest(model.link, model.index, itemDel)
+            }
 
-                Connections {
-                    target: itemDel
-                    onClicked: searchForm.clicked(model.link, model.index)
+            Item {
+                id: del
+                width: 20 * Devices.density
+                y: 10 * Devices.density
+                anchors.left: parent.left
+
+                Column {
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    spacing: 4 * Devices.density
+
+                    Label {
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        font.pixelSize: 9 * Devices.fontDensity
+                        font.family: MaterialIcons.family
+                        text: MaterialIcons.mdi_heart_outline
+                        color: "#a00"
+                        visible: model.verses[0].favorited
+                    }
+
+                    Label {
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        font.pixelSize: 11 * Devices.fontDensity
+                        font.family: MaterialIcons.family
+                        text: MaterialIcons.mdi_paperclip
+                        color: Colors.noteButton
+                        visible: model.verses[0].hasNote
+                    }
+
+                    Label {
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        font.pixelSize: 11 * Devices.fontDensity
+                        font.family: MaterialIcons.family
+                        text: MaterialIcons.mdi_library
+                        color: "#fa0"
+                        visible: model.verses[0].hasList
+                    }
                 }
             }
 
