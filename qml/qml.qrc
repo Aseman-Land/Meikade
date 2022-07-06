@@ -1,8 +1,255 @@
 <RCC>
+    <qresource prefix="/qml">
+        <file>auth/routes/AuthRoute.qml</file>
+        <file>auth/routes/ChangeBioRoute.qml</file>
+        <file>auth/routes/ChangeNameRoute.qml</file>
+        <file>auth/routes/ChangePasswordRoute.qml</file>
+        <file>auth/views/privates/ChangePasswordForm.qml</file>
+        <file>auth/views/privates/ChangePasswordUsingCodeForm.qml</file>
+        <file>auth/views/privates/ChangePasswordUsingPasswordForm.qml</file>
+        <file>auth/views/privates/ForgetPasswordForm.qml</file>
+        <file>auth/views/privates/LoginColumnForm.qml</file>
+        <file>auth/views/privates/LoginForm.qml</file>
+        <file>auth/views/privates/SignupForm.qml</file>
+        <file>auth/views/AuthView.qml</file>
+        <file>auth/views/ChangeNameView.qml</file>
+        <file>auth/views/ChangePasswordView.qml</file>
+        <file>auth/AuthPage.qml</file>
+        <file>auth/ChangeBioPage.qml</file>
+        <file>auth/ChangeNamePage.qml</file>
+        <file>auth/ChangePasswordPage.qml</file>
+        <file>dialogs/routes/ErrorDialogRoute.qml</file>
+        <file>dialogs/views/ErrorDialogView.qml</file>
+        <file>dialogs/ErrorDialog.qml</file>
+        <file>explore/views/icons/meikade-abstract.png</file>
+        <file>explore/views/icons/meikade.png</file>
+        <file>explore/views/privates/ExploreForm.qml</file>
+        <file>explore/views/ExploreView.qml</file>
+        <file>explore/ExplorePage.qml</file>
+        <file>files/changelogs.txt</file>
+        <file>files/changelogs_fa.txt</file>
+        <file>general/routes/AboutRoute.qml</file>
+        <file>general/routes/ChangelogsRoute.qml</file>
+        <file>general/routes/ContactRoute.qml</file>
+        <file>general/routes/SettingsRoute.qml</file>
+        <file>general/routes/SyncRoute.qml</file>
+        <file>general/routes/ThemeWizardRoute.qml</file>
+        <file>general/routes/WebBrowserRoute.qml</file>
+        <file>general/views/privates/ThemeWizardFrame.qml</file>
+        <file>general/views/themes/auto-red.png</file>
+        <file>general/views/themes/auto.png</file>
+        <file>general/views/themes/dark-color.png</file>
+        <file>general/views/themes/light-color.png</file>
+        <file>general/views/themes/light-light.png</file>
+        <file>general/views/AboutView.qml</file>
+        <file>general/views/ChangelogsView.qml</file>
+        <file>general/views/ContactView.qml</file>
+        <file>general/views/SettingsView.qml</file>
+        <file>general/views/SyncView.qml</file>
+        <file>general/views/ThemeWizardView.qml</file>
+        <file>general/views/WebBrowserView.qml</file>
+        <file>general/AboutPage.qml</file>
+        <file>general/ChangelogsPage.qml</file>
+        <file>general/ContactPage.qml</file>
+        <file>general/SettingsPage.qml</file>
+        <file>general/SyncPage.qml</file>
+        <file>general/ThemeWizardPage.qml</file>
+        <file>general/WebBrowserPage.qml</file>
+        <file>helpers/routes/PoemSwipeHelperRoute.qml</file>
+        <file>helpers/views/PoemSwipeHelperView.qml</file>
+        <file>helpers/PoemSwipeHelperPage.qml</file>
+        <file>home/views/icons/meikade-abstract.png</file>
+        <file>home/views/icons/meikade.png</file>
+        <file>home/views/privates/HomeForm.qml</file>
+        <file>home/views/HomeView.qml</file>
+        <file>home/HomePage.qml</file>
+        <file>images/views/aseman.png</file>
+        <file>images/views/cover.jpg</file>
+        <file>images/views/meikade.png</file>
+        <file>intro/views/icons/meikade.png</file>
+        <file>intro/views/privates/IntroDoneForm.qml</file>
+        <file>intro/views/privates/IntroLoginForm.qml</file>
+        <file>intro/views/privates/IntroSetupHome.qml</file>
+        <file>intro/views/privates/IntroSetupOfflines.qml</file>
+        <file>intro/views/privates/IntroSetupTheme.qml</file>
+        <file>intro/views/privates/IntroWelcomForm.qml</file>
+        <file>intro/views/IntroView.qml</file>
+        <file>intro/IntroPage.qml</file>
+        <file>lists/routes/AddListRoute.qml</file>
+        <file>lists/routes/DeleteListRoute.qml</file>
+        <file>lists/routes/ListsRoute.qml</file>
+        <file>lists/routes/OnlineListRoute.qml</file>
+        <file>lists/routes/SingleListRoute.qml</file>
+        <file>lists/views/AddListView.qml</file>
+        <file>lists/views/DeleteListView.qml</file>
+        <file>lists/views/FavoritedListView.qml</file>
+        <file>lists/views/FavoritedPoetsListView.qml</file>
+        <file>lists/views/ListsView.qml</file>
+        <file>lists/AddListPage.qml</file>
+        <file>lists/DeleteListPage.qml</file>
+        <file>lists/ListsPage.qml</file>
+        <file>lists/SingleListPage.qml</file>
+        <file>messages/routes/InboxRoute.qml</file>
+        <file>messages/routes/MessagesRoute.qml</file>
+        <file>messages/views/InboxView.qml</file>
+        <file>messages/views/MessagesView.qml</file>
+        <file>messages/InboxPage.qml</file>
+        <file>messages/MessagesPage.qml</file>
+        <file>mymeikade/views/privates/DiaryItem.qml</file>
+        <file>mymeikade/views/privates/MyMeikadeForm.qml</file>
+        <file>mymeikade/views/MyMeikadeView.qml</file>
+        <file>mymeikade/MyMeikadePage.qml</file>
+        <file>mypoems/routes/AddBookRoute.qml</file>
+        <file>mypoems/routes/AddPoemRoute.qml</file>
+        <file>mypoems/routes/EditPoemRoute.qml</file>
+        <file>mypoems/views/AddBookView.qml</file>
+        <file>mypoems/views/EditPoemView.qml</file>
+        <file>mypoems/AddBookPage.qml</file>
+        <file>mypoems/EditPoemPage.qml</file>
+        <file>notes/routes/AddNoteRoute.qml</file>
+        <file>notes/routes/NotesRoute.qml</file>
+        <file>notes/views/AddNoteView.qml</file>
+        <file>notes/views/DeleteNoteView.qml</file>
+        <file>notes/views/NotesListView.qml</file>
+        <file>notes/views/NotesPoetsListView.qml</file>
+        <file>notes/AddNotePage.qml</file>
+        <file>notes/NotesPage.qml</file>
+        <file>old/routes/StickerRoute.qml</file>
+        <file>old/stickers/general/logo.png</file>
+        <file>old/stickers/general/poet.png</file>
+        <file>old/stickers/icons/color.png</file>
+        <file>old/stickers/icons/font.png</file>
+        <file>old/stickers/icons/image.png</file>
+        <file>old/stickers/icons/logo.png</file>
+        <file>old/stickers/icons/open.png</file>
+        <file>old/stickers/icons/size.png</file>
+        <file>old/stickers/images/0_0.png</file>
+        <file>old/stickers/images/0_1.png</file>
+        <file>old/stickers/images/0_2.png</file>
+        <file>old/stickers/images/0_3.png</file>
+        <file>old/stickers/images/0_4.png</file>
+        <file>old/stickers/images/0_5.png</file>
+        <file>old/stickers/images/0_6.png</file>
+        <file>old/stickers/images/1_1.png</file>
+        <file>old/stickers/images/1_10.png</file>
+        <file>old/stickers/images/1_11.png</file>
+        <file>old/stickers/images/1_2.png</file>
+        <file>old/stickers/images/1_3.png</file>
+        <file>old/stickers/images/1_4.png</file>
+        <file>old/stickers/images/1_5.png</file>
+        <file>old/stickers/images/1_6.png</file>
+        <file>old/stickers/images/1_7.png</file>
+        <file>old/stickers/images/1_8.png</file>
+        <file>old/stickers/images/1_9.png</file>
+        <file>old/stickers/images/2_1.png</file>
+        <file>old/stickers/images/2_2.png</file>
+        <file>old/stickers/images/2_3.png</file>
+        <file>old/stickers/images/2_4.png</file>
+        <file>old/StickerDialog.qml</file>
+        <file>old/TitleBarShadow.qml</file>
+        <file>poems/routes/MostReadedPoemsRoute.qml</file>
+        <file>poems/routes/MyPoemRoute.qml</file>
+        <file>poems/routes/PoemRoute.qml</file>
+        <file>poems/views/privates/PoemForm.qml</file>
+        <file>poems/views/privates/PoemViewNeighbor.qml</file>
+        <file>poems/views/MostReadedPoemsView.qml</file>
+        <file>poems/views/PoemView.qml</file>
+        <file>poems/MostReadedPoemsPage.qml</file>
+        <file>poems/MyPoemPage.qml</file>
+        <file>poems/PoemPage.qml</file>
+        <file>poet/routes/ManageOfflinePoetsRoute.qml</file>
+        <file>poet/routes/MyBooksRoute.qml</file>
+        <file>poet/routes/MySubBooksRoute.qml</file>
+        <file>poet/routes/PoetBioRoute.qml</file>
+        <file>poet/routes/PoetBooksRoute.qml</file>
+        <file>poet/routes/PoetRoute.qml</file>
+        <file>poet/routes/PoetsListRoute.qml</file>
+        <file>poet/routes/TopPoetsRoute.qml</file>
+        <file>poet/views/ManageOfflinePoetsView.qml</file>
+        <file>poet/views/PoetBioView.qml</file>
+        <file>poet/views/PoetBooksView.qml</file>
+        <file>poet/views/PoetsListView.qml</file>
+        <file>poet/views/PoetView.qml</file>
+        <file>poet/views/TopPoetsView.qml</file>
+        <file>poet/ManageOfflinePoetsPage.qml</file>
+        <file>poet/MyBooksPage.qml</file>
+        <file>poet/MySubBooksPage.qml</file>
+        <file>poet/PoetBioPage.qml</file>
+        <file>poet/PoetBooksPage.qml</file>
+        <file>poet/PoetPage.qml</file>
+        <file>poet/PoetsListPage.qml</file>
+        <file>poet/TopPoetsPage.qml</file>
+        <file>premium/routes/PremiumConfirmRoute.qml</file>
+        <file>premium/views/PremiumConfirmView.qml</file>
+        <file>premium/PremiumConfirmPage.qml</file>
+        <file>publish/routes/PublishRoute.qml</file>
+        <file>publish/views/PublishView.qml</file>
+        <file>publish/PublishPage.qml</file>
+        <file>randoms/routes/HafizFaalRoute.qml</file>
+        <file>randoms/views/HafizFaalView.qml</file>
+        <file>randoms/HafizFaalPage.qml</file>
+        <file>routes/RandomPoemRoute.qml</file>
+        <file>search/routes/SearchRoute.qml</file>
+        <file>search/routes/SearchSmartAboutRoute.qml</file>
+        <file>search/views/privates/SearchFilterItem.qml</file>
+        <file>search/views/SearchFilterView.qml</file>
+        <file>search/views/SearchSmartAboutView.qml</file>
+        <file>search/views/SearchView.qml</file>
+        <file>search/SearchFilterPage.qml</file>
+        <file>search/SearchPage.qml</file>
+        <file>search/SearchSmartAboutPage.qml</file>
+        <file>views/MainView.qml</file>
+        <file>AbstractMain.qml</file>
+        <file>main.qml</file>
+        <file>MainPage.qml</file>
+        <file>maintest.qml</file>
+        <file>MainWindow.qml</file>
+        <file>qml.pri</file>
+        <file>qml.qrc</file>
+        <file>TestDialog.qml</file>
+    </qresource>
     <qresource prefix="/">
         <file>qtquickcontrols2.conf</file>
-    </qresource>
-    <qresource prefix="/qml">
+        <file>imports/components/flexi/delegates/AbstractDelegate.qml</file>
+        <file>imports/components/flexi/delegates/Delegate.qml</file>
+        <file>imports/components/flexi/delegates/FullBackgroundedDelegate.ui.qml</file>
+        <file>imports/components/flexi/delegates/NormalDelegate.ui.qml</file>
+        <file>imports/components/flexi/FlexiAbstractRow.qml</file>
+        <file>imports/components/flexi/FlexiColumnRow.ui.qml</file>
+        <file>imports/components/flexi/FlexiDynamicRow.ui.qml</file>
+        <file>imports/components/flexi/FlexiFlexibleRow.ui.qml</file>
+        <file>imports/components/flexi/FlexiGridRow.ui.qml</file>
+        <file>imports/components/flexi/FlexiOfflinePoetsRow.ui.qml</file>
+        <file>imports/components/flexi/FlexiRecentRow.ui.qml</file>
+        <file>imports/components/flexi/FlexiRowItem.qml</file>
+        <file>imports/components/flexi/FlexiStaticRow.ui.qml</file>
+        <file>imports/components/flexi/FlexiSwitableModel.qml</file>
+        <file>imports/components/flexi/FlexiTopPoetsRow.ui.qml</file>
+        <file>imports/components/images/cover.jpg</file>
+        <file>imports/components/images/mobile-frame.png</file>
+        <file>imports/components/Clock.qml</file>
+        <file>imports/components/DrawerFrame.qml</file>
+        <file>imports/components/EscapeItem.qml</file>
+        <file>imports/components/FlexiList.qml</file>
+        <file>imports/components/FooterItem.ui.qml</file>
+        <file>imports/components/ImageDownloader.qml</file>
+        <file>imports/components/MeikadeLoader.qml</file>
+        <file>imports/components/MenuForm.ui.qml</file>
+        <file>imports/components/MinimalProgressBar.qml</file>
+        <file>imports/components/PoemSwipeHelperAnimation.qml</file>
+        <file>imports/components/PoemTypeIcon.qml</file>
+        <file>imports/components/qmldir</file>
+        <file>imports/components/RandomSelectorTool.qml</file>
+        <file>imports/components/ReloadItem.qml</file>
+        <file>imports/components/SamsungInputBugFixer.qml</file>
+        <file>imports/components/Separator.ui.qml</file>
+        <file>imports/components/Snackbar.qml</file>
+        <file>imports/components/TextFormater.qml</file>
+        <file>imports/components/WaitDialog.ui.qml</file>
+        <file>imports/globals/fonts/BYekan.ttf</file>
+        <file>imports/globals/fonts/DroidNaskh-Regular.ttf</file>
+        <file>imports/globals/fonts/IRANSans_Regular.ttf</file>
+        <file>imports/globals/fonts/Ubuntu-R.ttf</file>
         <file>imports/globals/translations/lang-en.qm</file>
         <file>imports/globals/translations/lang-fa.qm</file>
         <file>imports/globals/AsemanGlobals.qml</file>
@@ -12,126 +259,23 @@
         <file>imports/globals/GlobalSignals.qml</file>
         <file>imports/globals/GTranslations.qml</file>
         <file>imports/globals/qmldir</file>
-        <file>imports/logics/files/changelogs.txt</file>
-        <file>imports/logics/files/changelogs_fa.txt</file>
-        <file>imports/logics/old/stickers/general/logo.png</file>
-        <file>imports/logics/old/stickers/general/poet.png</file>
-        <file>imports/logics/old/stickers/icons/color.png</file>
-        <file>imports/logics/old/stickers/icons/font.png</file>
-        <file>imports/logics/old/stickers/icons/image.png</file>
-        <file>imports/logics/old/stickers/icons/logo.png</file>
-        <file>imports/logics/old/stickers/icons/open.png</file>
-        <file>imports/logics/old/stickers/icons/size.png</file>
-        <file>imports/logics/old/stickers/images/0_0.png</file>
-        <file>imports/logics/old/stickers/images/0_1.png</file>
-        <file>imports/logics/old/stickers/images/0_2.png</file>
-        <file>imports/logics/old/stickers/images/0_3.png</file>
-        <file>imports/logics/old/stickers/images/0_4.png</file>
-        <file>imports/logics/old/stickers/images/0_5.png</file>
-        <file>imports/logics/old/stickers/images/0_6.png</file>
-        <file>imports/logics/old/stickers/images/1_1.png</file>
-        <file>imports/logics/old/stickers/images/1_10.png</file>
-        <file>imports/logics/old/stickers/images/1_11.png</file>
-        <file>imports/logics/old/stickers/images/1_2.png</file>
-        <file>imports/logics/old/stickers/images/1_3.png</file>
-        <file>imports/logics/old/stickers/images/1_4.png</file>
-        <file>imports/logics/old/stickers/images/1_5.png</file>
-        <file>imports/logics/old/stickers/images/1_6.png</file>
-        <file>imports/logics/old/stickers/images/1_7.png</file>
-        <file>imports/logics/old/stickers/images/1_8.png</file>
-        <file>imports/logics/old/stickers/images/1_9.png</file>
-        <file>imports/logics/old/stickers/images/2_1.png</file>
-        <file>imports/logics/old/stickers/images/2_2.png</file>
-        <file>imports/logics/old/stickers/images/2_3.png</file>
-        <file>imports/logics/old/stickers/images/2_4.png</file>
-        <file>imports/logics/old/StickerDialog.qml</file>
-        <file>imports/logics/old/TitleBarShadow.qml</file>
-        <file>imports/logics/AboutPage.qml</file>
-        <file>imports/logics/AddBookPage.qml</file>
-        <file>imports/logics/AddListPage.qml</file>
-        <file>imports/logics/AddNotePage.qml</file>
-        <file>imports/logics/AuthPage.qml</file>
-        <file>imports/logics/ChangelogsPage.qml</file>
-        <file>imports/logics/ChangeNamePage.qml</file>
-        <file>imports/logics/ChangePasswordPage.qml</file>
-        <file>imports/logics/ContactPage.qml</file>
-        <file>imports/logics/DeleteListPage.qml</file>
-        <file>imports/logics/EditPoemPage.qml</file>
-        <file>imports/logics/ErrorDialog.qml</file>
-        <file>imports/logics/HafizFaalPage.qml</file>
-        <file>imports/logics/HomePage.qml</file>
-        <file>imports/logics/IntroPage.qml</file>
-        <file>imports/logics/ListsPage.qml</file>
-        <file>imports/logics/MainPage.qml</file>
-        <file>imports/logics/ManageOfflinePoetsPage.qml</file>
-        <file>imports/logics/MostReadedPoemsPage.qml</file>
-        <file>imports/logics/MyBooksPage.qml</file>
-        <file>imports/logics/MyMeikadePage.qml</file>
-        <file>imports/logics/MyPoemPage.qml</file>
-        <file>imports/logics/MySubBooksPage.qml</file>
-        <file>imports/logics/NotesPage.qml</file>
-        <file>imports/logics/PoemPage.qml</file>
-        <file>imports/logics/PoetBioPage.qml</file>
-        <file>imports/logics/PoetBooksPage.qml</file>
-        <file>imports/logics/PoetPage.qml</file>
-        <file>imports/logics/PoetsListPage.qml</file>
-        <file>imports/logics/PremiumConfirmPage.qml</file>
-        <file>imports/logics/qmldir</file>
-        <file>imports/logics/SearchFilterPage.qml</file>
-        <file>imports/logics/SearchPage.qml</file>
-        <file>imports/logics/SearchSmartAboutPage.qml</file>
-        <file>imports/logics/SettingsPage.qml</file>
-        <file>imports/logics/SyncPage.qml</file>
-        <file>imports/logics/TestDialog.qml</file>
-        <file>imports/logics/TopPoetsPage.qml</file>
-        <file>imports/logics/WebBrowserPage.qml</file>
-        <file>imports/micros/flexi/delegates/AbstractDelegate.qml</file>
-        <file>imports/micros/flexi/delegates/Delegate.qml</file>
-        <file>imports/micros/flexi/delegates/FullBackgroundedDelegate.ui.qml</file>
-        <file>imports/micros/flexi/delegates/NormalDelegate.ui.qml</file>
-        <file>imports/micros/flexi/FlexiAbstractRow.qml</file>
-        <file>imports/micros/flexi/FlexiColumnRow.ui.qml</file>
-        <file>imports/micros/flexi/FlexiDynamicRow.ui.qml</file>
-        <file>imports/micros/flexi/FlexiFlexibleRow.ui.qml</file>
-        <file>imports/micros/flexi/FlexiGridRow.ui.qml</file>
-        <file>imports/micros/flexi/FlexiOfflinePoetsRow.ui.qml</file>
-        <file>imports/micros/flexi/FlexiRecentRow.ui.qml</file>
-        <file>imports/micros/flexi/FlexiRowItem.qml</file>
-        <file>imports/micros/flexi/FlexiStaticRow.ui.qml</file>
-        <file>imports/micros/flexi/FlexiSwitableModel.qml</file>
-        <file>imports/micros/flexi/FlexiTopPoetsRow.ui.qml</file>
-        <file>imports/micros/images/cover.jpg</file>
-        <file>imports/micros/Clock.qml</file>
-        <file>imports/micros/DrawerFrame.qml</file>
-        <file>imports/micros/EscapeItem.qml</file>
-        <file>imports/micros/FlexiList.qml</file>
-        <file>imports/micros/FooterItem.ui.qml</file>
-        <file>imports/micros/MeikadeLoader.qml</file>
-        <file>imports/micros/MenuForm.ui.qml</file>
-        <file>imports/micros/MinimalProgressBar.qml</file>
-        <file>imports/micros/PoemTypeIcon.qml</file>
-        <file>imports/micros/qmldir</file>
-        <file>imports/micros/RandomSelectorTool.qml</file>
-        <file>imports/micros/ReloadItem.qml</file>
-        <file>imports/micros/SamsungInputBugFixer.qml</file>
-        <file>imports/micros/Separator.ui.qml</file>
-        <file>imports/micros/Snackbar.qml</file>
-        <file>imports/micros/TextFormater.qml</file>
-        <file>imports/micros/WaitDialog.ui.qml</file>
         <file>imports/models/BooksModel.qml</file>
         <file>imports/models/CatLoaderModel.qml</file>
         <file>imports/models/CatsModel.qml</file>
+        <file>imports/models/ExploreModel.qml</file>
         <file>imports/models/FavoritedListModel.qml</file>
         <file>imports/models/FavoritedPoetsListModel.qml</file>
         <file>imports/models/HomeModel.qml</file>
         <file>imports/models/ListsModel.qml</file>
         <file>imports/models/ManageOfflinePoetsModel.qml</file>
+        <file>imports/models/MessagesModel.qml</file>
         <file>imports/models/MyMeikadeModel.qml</file>
         <file>imports/models/MyPoemLoaderModel.qml</file>
         <file>imports/models/NotesListModel.qml</file>
         <file>imports/models/NotesPoetsListModel.qml</file>
         <file>imports/models/OfflineCatsModel.qml</file>
         <file>imports/models/OfflinePoetsModel.qml</file>
+        <file>imports/models/OnlineListModel.qml</file>
         <file>imports/models/PoemLoaderModel.qml</file>
         <file>imports/models/PoemVersesModel.qml</file>
         <file>imports/models/PoetCategoriesModel.qml</file>
@@ -140,11 +284,15 @@
         <file>imports/models/PoetsModel.qml</file>
         <file>imports/models/qmldir</file>
         <file>imports/models/RecentsModel.qml</file>
+        <file>imports/models/RequestsModel.qml</file>
+        <file>imports/models/SearchListModel.qml</file>
         <file>imports/models/SearchModel.qml</file>
         <file>imports/models/SearchPoetsModel.qml</file>
         <file>imports/models/SearchPoetsOfflineModel.qml</file>
         <file>imports/models/SearchVerseModel.qml</file>
         <file>imports/models/SearchVerseOfflineModel.qml</file>
+        <file>imports/models/SuggestionsModel.qml</file>
+        <file>imports/models/ThemesModel.qml</file>
         <file>imports/models/TopPoetsHomeModel.qml</file>
         <file>imports/models/TopPoetsModel.qml</file>
         <file>imports/queries/sql/data_1.sql</file>
@@ -178,10 +326,16 @@
         <file>imports/requests/CatsRequest.qml</file>
         <file>imports/requests/ContactUsRequest.qml</file>
         <file>imports/requests/CouponRequest.qml</file>
+        <file>imports/requests/ExploreRequest.qml</file>
         <file>imports/requests/ForgetPasswordRequest.qml</file>
         <file>imports/requests/GetActionsRequest.qml</file>
+        <file>imports/requests/GetMessagesRequest.qml</file>
+        <file>imports/requests/GetSuggestionsRequest.qml</file>
+        <file>imports/requests/GetUserRequestsRequest.qml</file>
         <file>imports/requests/HomeRequest.qml</file>
         <file>imports/requests/InitPaymentRequest.qml</file>
+        <file>imports/requests/ListFollowRequest.qml</file>
+        <file>imports/requests/ListRequest.qml</file>
         <file>imports/requests/Logger.qml</file>
         <file>imports/requests/LoggerRequest.qml</file>
         <file>imports/requests/LoginRequest.qml</file>
@@ -194,188 +348,32 @@
         <file>imports/requests/PoetRequest.qml</file>
         <file>imports/requests/PoetsRequest.qml</file>
         <file>imports/requests/PoetsTypeRequest.qml</file>
+        <file>imports/requests/PublishListRequest.qml</file>
+        <file>imports/requests/PublishPoemRequest.qml</file>
         <file>imports/requests/qmldir</file>
         <file>imports/requests/RandomPoemRequest.qml</file>
         <file>imports/requests/RandomPoemRequester.qml</file>
         <file>imports/requests/RegisterRequest.qml</file>
+        <file>imports/requests/SearchListRequest.qml</file>
         <file>imports/requests/SearchPoetsRequest.qml</file>
         <file>imports/requests/SearchVerseRequest.qml</file>
         <file>imports/requests/SimplePoetsRequest.qml</file>
         <file>imports/requests/StoreActionsBulk.qml</file>
         <file>imports/requests/StoreActionsBulkRequest.qml</file>
         <file>imports/requests/Subscription.qml</file>
+        <file>imports/requests/TermsRequest.qml</file>
+        <file>imports/requests/UnpublishListRequest.qml</file>
+        <file>imports/requests/UnpublishPoemRequest.qml</file>
+        <file>imports/requests/UnvoteSuggestionRequest.qml</file>
         <file>imports/requests/UserChangePasswordRequest.qml</file>
         <file>imports/requests/UserCheckRequest.qml</file>
         <file>imports/requests/UserRequest.qml</file>
         <file>imports/requests/UserSetDetailsRequest.qml</file>
         <file>imports/requests/UserSetProfileRequest.qml</file>
         <file>imports/requests/UserUploadProfileRequest.qml</file>
-        <file>imports/routes/AboutRoute.qml</file>
-        <file>imports/routes/AddBookRoute.qml</file>
-        <file>imports/routes/AddListRoute.qml</file>
-        <file>imports/routes/AddNoteRoute.qml</file>
-        <file>imports/routes/AddPoemRoute.qml</file>
-        <file>imports/routes/AuthRoute.qml</file>
-        <file>imports/routes/ChangelogsRoute.qml</file>
-        <file>imports/routes/ChangeNameRoute.qml</file>
-        <file>imports/routes/ChangePasswordRoute.qml</file>
-        <file>imports/routes/ContactRoute.qml</file>
-        <file>imports/routes/DeleteListRoute.qml</file>
-        <file>imports/routes/EditPoemRoute.qml</file>
-        <file>imports/routes/ErrorDialogRoute.qml</file>
-        <file>imports/routes/HafizFaalRoute.qml</file>
-        <file>imports/routes/ListsRoute.qml</file>
-        <file>imports/routes/ManageOfflinePoetsRoute.qml</file>
-        <file>imports/routes/MostReadedPoemsRoute.qml</file>
-        <file>imports/routes/MyBooksRoute.qml</file>
-        <file>imports/routes/MyPoemRoute.qml</file>
-        <file>imports/routes/MySubBooksRoute.qml</file>
-        <file>imports/routes/NotesRoute.qml</file>
-        <file>imports/routes/PoemRoute.qml</file>
-        <file>imports/routes/PoetBioRoute.qml</file>
-        <file>imports/routes/PoetBooksRoute.qml</file>
-        <file>imports/routes/PoetRoute.qml</file>
-        <file>imports/routes/PoetsListRoute.qml</file>
-        <file>imports/routes/PremiumConfirmRoute.qml</file>
+        <file>imports/requests/VoteSuggestionRequest.qml</file>
         <file>imports/routes/qmldir</file>
-        <file>imports/routes/RandomPoemRoute.qml</file>
-        <file>imports/routes/SearchRoute.qml</file>
-        <file>imports/routes/SearchSmartAboutRoute.qml</file>
-        <file>imports/routes/SettingsRoute.qml</file>
-        <file>imports/routes/StickerRoute.qml</file>
-        <file>imports/routes/SyncRoute.qml</file>
-        <file>imports/routes/TopPoetsRoute.qml</file>
         <file>imports/routes/ViewController.qml</file>
         <file>imports/routes/WaitDialogRoute.qml</file>
-        <file>imports/routes/WebBrowserRoute.qml</file>
-        <file>imports/views/auth/AuthView.qml</file>
-        <file>imports/views/auth/ChangeNameForm.ui.qml</file>
-        <file>imports/views/auth/ChangePasswordForm.ui.qml</file>
-        <file>imports/views/auth/ChangePasswordUsingCodeForm.ui.qml</file>
-        <file>imports/views/auth/ChangePasswordUsingPasswordForm.ui.qml</file>
-        <file>imports/views/auth/ChangePasswordView.qml</file>
-        <file>imports/views/auth/ForgetPasswordForm.ui.qml</file>
-        <file>imports/views/auth/LoginForm.ui.qml</file>
-        <file>imports/views/auth/SignupForm.ui.qml</file>
-        <file>imports/views/dialogs/ErrorDialogForm.ui.qml</file>
-        <file>imports/views/general/AboutForm.ui.qml</file>
-        <file>imports/views/general/ChangelogsForm.ui.qml</file>
-        <file>imports/views/general/ContactForm.ui.qml</file>
-        <file>imports/views/general/SettingsForm.ui.qml</file>
-        <file>imports/views/general/SyncForm.ui.qml</file>
-        <file>imports/views/general/WebBrowserForm.ui.qml</file>
-        <file>imports/views/home/icons/meikade-abstract.png</file>
-        <file>imports/views/home/icons/meikade.png</file>
-        <file>imports/views/home/HomeForm.ui.qml</file>
-        <file>imports/views/home/HomeView.qml</file>
-        <file>imports/views/images/aseman.png</file>
-        <file>imports/views/images/cover.jpg</file>
-        <file>imports/views/images/meikade.png</file>
-        <file>imports/views/intro/icons/meikade.png</file>
-        <file>imports/views/intro/IntroDoneForm.ui.qml</file>
-        <file>imports/views/intro/IntroForm.ui.qml</file>
-        <file>imports/views/intro/IntroSetupHome.ui.qml</file>
-        <file>imports/views/intro/IntroSetupOfflines.ui.qml</file>
-        <file>imports/views/intro/IntroWelcomForm.ui.qml</file>
-        <file>imports/views/lists/AddListForm.ui.qml</file>
-        <file>imports/views/lists/DeleteListForm.ui.qml</file>
-        <file>imports/views/lists/FavoritedListForm.ui.qml</file>
-        <file>imports/views/lists/FavoritedPoetsListForm.ui.qml</file>
-        <file>imports/views/lists/ListsForm.ui.qml</file>
-        <file>imports/views/mymeikade/DiaryItem.ui.qml</file>
-        <file>imports/views/mymeikade/MyMeikadeForm.ui.qml</file>
-        <file>imports/views/mymeikade/MyMeikadeView.qml</file>
-        <file>imports/views/mypoems/AddBookForm.ui.qml</file>
-        <file>imports/views/mypoems/EditPoemForm.ui.qml</file>
-        <file>imports/views/notes/AddNoteForm.ui.qml</file>
-        <file>imports/views/notes/DeleteNoteForm.ui.qml</file>
-        <file>imports/views/notes/NotesListForm.ui.qml</file>
-        <file>imports/views/notes/NotesPoetsListForm.ui.qml</file>
-        <file>imports/views/poems/MostReadedPoemsForm.ui.qml</file>
-        <file>imports/views/poems/PoemForm.ui.qml</file>
-        <file>imports/views/poems/PoemView.qml</file>
-        <file>imports/views/poems/PoemViewNeighbor.qml</file>
-        <file>imports/views/poet/ManageOfflinePoetsForm.ui.qml</file>
-        <file>imports/views/poet/PoetBioForm.ui.qml</file>
-        <file>imports/views/poet/PoetBooksForm.ui.qml</file>
-        <file>imports/views/poet/PoetForm.ui.qml</file>
-        <file>imports/views/poet/PoetsListForm.ui.qml</file>
-        <file>imports/views/poet/TopPoetsForm.ui.qml</file>
-        <file>imports/views/premium/PremiumConfirmForm.ui.qml</file>
-        <file>imports/views/randoms/HafizFaalForm.ui.qml</file>
-        <file>imports/views/search/SearchFilterForm.ui.qml</file>
-        <file>imports/views/search/SearchFilterItem.ui.qml</file>
-        <file>imports/views/search/SearchForm.ui.qml</file>
-        <file>imports/views/search/SearchSmartAbout.ui.qml</file>
-        <file>imports/views/MainForm.ui.qml</file>
-        <file>imports/views/qmldir</file>
-        <file>AbstractMain.qml</file>
-        <file>main.qml</file>
-        <file>maintest.qml</file>
-        <file>MainWindow.qml</file>
-        <file>qml.pri</file>
-        <file>qml.qrc</file>
-        <file>imports/globals/fonts/BYekan.ttf</file>
-        <file>imports/globals/fonts/DroidNaskh-Regular.ttf</file>
-        <file>imports/globals/fonts/IRANSans_Regular.ttf</file>
-        <file>imports/globals/fonts/Ubuntu-R.ttf</file>
-        <file>imports/views/general/ThemeWizardForm.ui.qml</file>
-        <file>imports/logics/ThemeWizardPage.qml</file>
-        <file>imports/routes/ThemeWizardRoute.qml</file>
-        <file>imports/views/general/themes/dark-color.png</file>
-        <file>imports/views/general/themes/light-color.png</file>
-        <file>imports/views/general/themes/light-light.png</file>
-        <file>imports/views/general/themes/auto.png</file>
-        <file>imports/views/intro/IntroSetupTheme.ui.qml</file>
-        <file>imports/views/general/ThemeWizardFrame.ui.qml</file>
-        <file>imports/models/ThemesModel.qml</file>
-        <file>imports/views/general/themes/auto-red.png</file>
-        <file>imports/micros/ImageDownloader.qml</file>
-        <file>imports/views/explore/icons/meikade-abstract.png</file>
-        <file>imports/views/explore/icons/meikade.png</file>
-        <file>imports/views/explore/ExploreForm.ui.qml</file>
-        <file>imports/views/explore/ExploreView.qml</file>
-        <file>imports/models/ExploreModel.qml</file>
-        <file>imports/logics/ExplorePage.qml</file>
-        <file>imports/requests/ExploreRequest.qml</file>
-        <file>imports/views/auth/LoginColumnForm.ui.qml</file>
-        <file>imports/views/intro/IntroLoginForm.ui.qml</file>
-        <file>imports/requests/VoteSuggestionRequest.qml</file>
-        <file>imports/requests/UnvoteSuggestionRequest.qml</file>
-        <file>imports/requests/GetSuggestionsRequest.qml</file>
-        <file>imports/models/SuggestionsModel.qml</file>
-        <file>imports/logics/ChangeBioPage.qml</file>
-        <file>imports/routes/ChangeBioRoute.qml</file>
-        <file>imports/micros/PoemSwipeHelperAnimation.qml</file>
-        <file>imports/micros/images/mobile-frame.png</file>
-        <file>imports/views/helpers/PoemSwipeHelperForm.ui.qml</file>
-        <file>imports/logics/PoemSwipeHelperPage.qml</file>
-        <file>imports/routes/PoemSwipeHelperRoute.qml</file>
-        <file>imports/requests/GetMessagesRequest.qml</file>
-        <file>imports/models/MessagesModel.qml</file>
-        <file>imports/views/messages/MessagesForm.ui.qml</file>
-        <file>imports/logics/MessagesPage.qml</file>
-        <file>imports/routes/MessagesRoute.qml</file>
-        <file>imports/views/publish/PublishForm.ui.qml</file>
-        <file>imports/logics/PublishPage.qml</file>
-        <file>imports/routes/PublishRoute.qml</file>
-        <file>imports/requests/TermsRequest.qml</file>
-        <file>imports/views/messages/InboxForm.ui.qml</file>
-        <file>imports/routes/InboxRoute.qml</file>
-        <file>imports/logics/InboxPage.qml</file>
-        <file>imports/requests/PublishPoemRequest.qml</file>
-        <file>imports/requests/PublishListRequest.qml</file>
-        <file>imports/requests/UnpublishListRequest.qml</file>
-        <file>imports/models/SearchListModel.qml</file>
-        <file>imports/requests/SearchListRequest.qml</file>
-        <file>imports/logics/SingleListPage.qml</file>
-        <file>imports/routes/SingleListRoute.qml</file>
-        <file>imports/routes/OnlineListRoute.qml</file>
-        <file>imports/requests/ListRequest.qml</file>
-        <file>imports/models/OnlineListModel.qml</file>
-        <file>imports/requests/ListFollowRequest.qml</file>
-        <file>imports/requests/GetUserRequestsRequest.qml</file>
-        <file>imports/models/RequestsModel.qml</file>
-        <file>imports/requests/UnpublishPoemRequest.qml</file>
     </qresource>
 </RCC>

@@ -4,7 +4,7 @@ import AsemanQml.Models 2.0
 import requests 1.0
 import queries 1.0
 import globals 1.0
-import micros 1.0
+import components 1.0
 
 AsemanObject {
     id: dis

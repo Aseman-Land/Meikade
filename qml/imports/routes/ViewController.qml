@@ -3,7 +3,6 @@ pragma Singleton
 import QtQuick 2.0
 import AsemanQml.Base 2.0
 import AsemanQml.Viewport 2.0
-import logics 1.0
 
 ViewportController {
     id: viewController
@@ -23,243 +22,243 @@ ViewportController {
 
     ViewportControllerRoute {
         route: /\w+\:\/account\/premium\/buy/
-        source: "PremiumConfirmRoute.qml"
+        source: "qrc:/qml/premium/routes/PremiumConfirmRoute.qml"
     }
 
     ViewportControllerRoute {
         route: /\w+\:\/settings/
-        source: "SettingsRoute.qml"
+        source: "qrc:/qml/general/routes/SettingsRoute.qml"
         viewportType: tabletMode? "popup" : ""
     }
 
     ViewportControllerRoute {
         route: /\w+\:\/settings\/theme/
-        source: "ThemeWizardRoute.qml"
+        source: "qrc:/qml/general/routes/ThemeWizardRoute.qml"
     }
 
     ViewportControllerRoute {
         route: /\w+\:\/contactus/
-        source: "ContactRoute.qml"
+        source: "qrc:/qml/general/routes/ContactRoute.qml"
         viewportType: tabletMode? "popup" : ""
     }
 
     ViewportControllerRoute {
         route: /\w+\:\/changelogs/
-        source: "ChangelogsRoute.qml"
+        source: "qrc:/qml/general/routes/ChangelogsRoute.qml"
         viewportType: tabletMode? "popup" : ""
     }
 
     ViewportControllerRoute {
         route: /\w+\:\/messages/
-        source: "MessagesRoute.qml"
+        source: "qrc:/qml/messages/routes/MessagesRoute.qml"
         viewportType: "popup"
     }
 
     ViewportControllerRoute {
         route: /\w+\:\/inbox/
-        source: "InboxRoute.qml"
+        source: "qrc:/qml/messages/routes/InboxRoute.qml"
     }
 
     ViewportControllerRoute {
         route: /\w+\:\/syncs/
-        source: "SyncRoute.qml"
+        source: "qrc:/qml/general/routes/SyncRoute.qml"
         viewportType: tabletMode? "popup" : ""
     }
 
     ViewportControllerRoute {
         route: /\w+\:\/mypoems/
-        source: "MyBooksRoute.qml"
+        source: "qrc:/qml/poet/routes/MyBooksRoute.qml"
         viewportType: tabletMode? "popup" : ""
     }
 
     ViewportControllerRoute {
         route: /\w+\:\/mypoems\/add(?:\?.*bookId\=.+)?/
-        source: "AddBookRoute.qml"
+        source: "qrc:/qml/mypoems/routes/AddBookRoute.qml"
     }
 
     ViewportControllerRoute {
         route: /\w+\:\/mypoems\/poem\/add(?:\?.*bookId\=.+)?/
-        source: "AddPoemRoute.qml"
+        source: "qrc:/qml/mypoems/routes/AddPoemRoute.qml"
     }
 
     ViewportControllerRoute {
         route: /\w+\:\/mypoems\/poem\/edit(?:\?.*bookId\=.+)?/
-        source: "EditPoemRoute.qml"
+        source: "qrc:/qml/mypoems/routes/EditPoemRoute.qml"
     }
 
     ViewportControllerRoute {
         route: /\w+\:\/mypoems(?:\?.*bookId\=.+)?/
-        source: "MySubBooksRoute.qml"
+        source: "qrc:/qml/poet/routes/MySubBooksRoute.qml"
         viewportType: tabletMode? "popup" : ""
     }
 
     ViewportControllerRoute {
         route: /\w+\:\/mypoems\/poem(?:\?.*poemId\=.+)?/
-        source: "MyPoemRoute.qml"
+        source: "qrc:/qml/poems/routes/MyPoemRoute.qml"
     }
 
     ViewportControllerRoute {
         route: /\w+\:\/mypoems\/publish(?:\?poemId=.+)?/
-        source: "PublishRoute.qml"
+        source: "qrc:/qml/publish/routes/PublishRoute.qml"
     }
 
     ViewportControllerRoute {
         route: /\w+\:\/poem\/random(?:\?.+)?/
-        source: "PoemRoute.qml"
-//        source: "RandomPoemRoute.qml"
+        source: "qrc:/qml/poems/routes/PoemRoute.qml"
+//        source: "qrc:/qml/poems/routes/RandomPoemRoute.qml"
 //        viewportType: "none"
     }
 
     ViewportControllerRoute {
         route: /\w+\:\/web\?link=.+/
-        source: "WebBrowserRoute.qml"
+        source: "qrc:/qml/general/routes/WebBrowserRoute.qml"
     }
 
     ViewportControllerRoute {
         route: /\w+\:\/poet(?:\?.*catId\=.+)?/
-        source: "PoetBooksRoute.qml"
+        source: "qrc:/qml/poet/routes/PoetBooksRoute.qml"
         viewportType: tabletMode? "popup" : ""
     }
 
     ViewportControllerRoute {
         route: /\w+\:\/poet(?:\?.*poemId\=.+)?/
-        source: "PoemRoute.qml"
+        source: "qrc:/qml/poems/routes/PoemRoute.qml"
     }
 
     ViewportControllerRoute {
         route: /\w+\:\/poet(?:\?.+)?/
-        source: "PoetRoute.qml"
+        source: "qrc:/qml/poet/routes/PoetRoute.qml"
         viewportType: tabletMode? "popup" : ""
     }
 
     ViewportControllerRoute {
         route: /\w+\:\/search(?:\?.+)?/
-        source: "SearchRoute.qml"
+        source: "qrc:/qml/search/routes/SearchRoute.qml"
         viewportType: tabletMode? "popup" : ""
     }
 
     ViewportControllerRoute {
         route: /\w+\:\/search\/smart\-about(?:\?.+)?/
-        source: "SearchSmartAboutRoute.qml"
+        source: "SearchSmartqrc:/qml/general/routes/AboutRoute.qml"
     }
 
     ViewportControllerRoute {
         route: /\w+\:\/poet\/bio(?:\?.+)?/
-        source: "PoetBioRoute.qml"
+        source: "qrc:/qml/poet/routes/PoetBioRoute.qml"
     }
 
     ViewportControllerRoute {
         route: /\w+\:\/poets(?:\?.+)?/
-        source: "PoetsListRoute.qml"
+        source: "qrc:/qml/poet/routes/PoetsListRoute.qml"
         viewportType: tabletMode? "popup" : ""
     }
 
     ViewportControllerRoute {
         route: /\w+\:\/lists(?:\?.+)?/
-        source: "ListsRoute.qml"
+        source: "qrc:/qml/lists/routes/ListsRoute.qml"
         viewportType: tabletMode? "popup" : ""
     }
 
     ViewportControllerRoute {
         route: /\w+\:\/lists\/single(?:\?.+)?/
-        source: "SingleListRoute.qml"
+        source: "qrc:/qml/lists/routes/SingleListRoute.qml"
         viewportType: tabletMode? "popup" : ""
     }
 
     ViewportControllerRoute {
         route: /\w+\:\/lists\/online(?:\?.+)?/
-        source: "OnlineListRoute.qml"
+        source: "qrc:/qml/lists/routes/OnlineListRoute.qml"
         viewportType: tabletMode? "popup" : ""
     }
 
     ViewportControllerRoute {
         route: /\w+\:\/lists\/add(?:\?.+)?/
-        source: "AddListRoute.qml"
+        source: "qrc:/qml/lists/routes/AddListRoute.qml"
     }
 
     ViewportControllerRoute {
         route: /\w+\:\/lists\/delete(?:\?.+)?/
-        source: "DeleteListRoute.qml"
+        source: "qrc:/qml/lists/routes/DeleteListRoute.qml"
     }
 
     ViewportControllerRoute {
         route: /\w+\:\/notes(?:\?.+)?/
-        source: "NotesRoute.qml"
+        source: "qrc:/qml/notes/routes/NotesRoute.qml"
         viewportType: tabletMode? "popup" : ""
     }
 
     ViewportControllerRoute {
         route: /\w+\:\/notes\/add(?:\?.+)?/
-        source: "AddNoteRoute.qml"
+        source: "qrc:/qml/notes/routes/AddNoteRoute.qml"
     }
 
     ViewportControllerRoute {
         route: /\w+\:\/offline\/manage/
-        source: "ManageOfflinePoetsRoute.qml"
+        source: "qrc:/qml/poet/routes/ManageOfflinePoetsRoute.qml"
         viewportType: tabletMode? "popup" : ""
     }
 
     ViewportControllerRoute {
         route: /\w+\:\/favorites/
 //        route: /\w+\:\/poets\/top/
-        source: "TopPoetsRoute.qml"
+        source: "qrc:/qml/poet/routes/TopPoetsRoute.qml"
         viewportType: tabletMode? "popup" : ""
     }
 
     ViewportControllerRoute {
         route: /\w+\:\/recents/
-        source: "MostReadedPoemsRoute.qml"
+        source: "qrc:/qml/poems/routes/MostReadedPoemsRoute.qml"
         viewportType: tabletMode? "popup" : "float"
     }
 
     ViewportControllerRoute {
         route: /\w+\:\/abouts/
-        source: "AboutRoute.qml"
+        source: "qrc:/qml/general/routes/AboutRoute.qml"
         viewportType: tabletMode? "popup" : ""
     }
 
     ViewportControllerRoute {
         route: /\w+\:\/poem\/hafiz_faal/
-        source: "HafizFaalRoute.qml"
+        source: "qrc:/qml/randoms/routes/HafizFaalRoute.qml"
         viewportType: tabletMode? "popup" : "float"
     }
 
     ViewportControllerRoute {
         route: /\w+\:\/auth\/float/
-        source: "AuthRoute.qml"
+        source: "qrc:/qml/auth/routes/AuthRoute.qml"
         viewportType: tabletMode? "popup" : "float"
     }
 
     ViewportControllerRoute {
         route: /\w+\:\/auth\/changePassword(?:\?.+)?/
-        source: "ChangePasswordRoute.qml"
+        source: "qrc:/qml/auth/routes/ChangePasswordRoute.qml"
         viewportType: tabletMode? "popup" : "float"
     }
 
     ViewportControllerRoute {
         route: /\w+\:\/auth\/changeName(?:\?.+)?/
-        source: "ChangeNameRoute.qml"
+        source: "qrc:/qml/auth/routes/ChangeNameRoute.qml"
     }
 
     ViewportControllerRoute {
         route: /\w+\:\/auth\/changeBio(?:\?.+)?/
-        source: "ChangeBioRoute.qml"
+        source: "qrc:/qml/auth/routes/ChangeBioRoute.qml"
     }
 
     ViewportControllerRoute {
         route: /\w+\:\/sticker\/export/
-        source: "StickerRoute.qml"
+        source: "qrc:/qml/old/routes/StickerRoute.qml"
         viewportType: tabletMode? "popup" : "float"
     }
 
     ViewportControllerRoute {
         route: /\w+\:\/helpers\/poem\/swipe/
-        source: "PoemSwipeHelperRoute.qml"
+        source: "qrc:/qml/helpers/routes/PoemSwipeHelperRoute.qml"
     }
 
     ViewportControllerRoute {
         route: /dialog:\/general\/error.*/
-        source: "ErrorDialogRoute.qml"
+        source: "qrc:/qml/dialogs/routes/ErrorDialogRoute.qml"
     }
 
     ViewportControllerRoute {

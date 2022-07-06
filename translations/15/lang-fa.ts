@@ -9,7 +9,7 @@
     </message>
 </context>
 <context>
-    <name>AboutForm</name>
+    <name>AboutView</name>
     <message>
         <source>Website</source>
         <translation>وب‌سایت</translation>
@@ -203,7 +203,7 @@
     </message>
 </context>
 <context>
-    <name>AddListForm</name>
+    <name>AddListView</name>
     <message>
         <source>Add List</source>
         <translation>لیست جدید</translation>
@@ -230,7 +230,7 @@
     </message>
 </context>
 <context>
-    <name>AddBookForm</name>
+    <name>AddBookView</name>
     <message>
         <source>Add Book</source>
         <translation>دفتر جدید</translation>
@@ -354,7 +354,7 @@
         </message>
 </context>
 <context>
-    <name>EditPoemForm</name>
+    <name>EditPoemView</name>
     <message>
         <source>To add your poem, please type every verse in a single line. After all verses written press save button.</source>
         <translation>برای وارد کردن شعر خود، عر مصراع را در یک سطر وارد کنید. بعد از کامل شدن شعر، دکمه ثبت شعر را بزنید.</translation>
@@ -385,7 +385,7 @@
     </message>
 </context>
 <context>
-    <name>AddNoteForm</name>
+    <name>AddNoteView</name>
     <message>
         <source>Type your note</source>
         <translation>یادداشت خود را بنویسید</translation>
@@ -454,7 +454,7 @@
     </message>
 </context>
 <context>
-    <name>ChangeNameForm</name>
+    <name>ChangeNameView</name>
     <message>
         <source>Change Name</source>
         <translation>تغییر نام</translation>
@@ -575,7 +575,7 @@
     </message>
 </context>
 <context>
-    <name>ChangelogsForm</name>
+    <name>ChangelogsView</name>
     <message>
         <source>ChangeLogs</source>
         <translation>تغییرات نسخه جدید</translation>
@@ -586,7 +586,7 @@
     </message>
 </context>
 <context>
-    <name>InboxForm</name>
+    <name>InboxView</name>
     <message>
         <source>Inbox</source>
         <translation>پیغام‌های شما</translation>
@@ -605,7 +605,7 @@
     </message>
 </context>
 <context>
-    <name>ContactForm</name>
+    <name>ContactView</name>
     <message>
         <source>Contact us</source>
         <translation>تماس با ما</translation>
@@ -725,7 +725,7 @@
     </message>
 </context>
 <context>
-    <name>DeleteListForm</name>
+    <name>DeleteListView</name>
     <message>
         <source>Delete List</source>
         <translation>حذف لیست</translation>
@@ -744,7 +744,7 @@
     </message>
 </context>
 <context>
-    <name>PoemSwipeHelperForm</name>
+    <name>PoemSwipeHelperView</name>
     <message>
         <source>Help</source>
         <translation>راهنمایی</translation>
@@ -772,7 +772,7 @@ It containts %2 items currently.</source>
     </message>
 </context>
 <context>
-    <name>DeleteNoteForm</name>
+    <name>DeleteNoteView</name>
     <message>
         <source>Delete List</source>
         <translation>حذف لیست</translation>
@@ -809,7 +809,7 @@ It containts %2 items currently.</source>
     </message>
 </context>
 <context>
-    <name>FavoritedListForm</name>
+    <name>FavoritedListView</name>
     <message>
         <source>There is no item here</source>
         <translation>هیچ عنوانی وجود ندارد</translation>
@@ -824,7 +824,7 @@ It containts %2 items currently.</source>
     </message>
 </context>
 <context>
-    <name>MessagesForm</name>
+    <name>MessagesView</name>
     <message>
         <source>Messages</source>
         <translation>پیام‌ها</translation>
@@ -835,7 +835,7 @@ It containts %2 items currently.</source>
     </message>
 </context>
 <context>
-    <name>FavoritedPoetsListForm</name>
+    <name>FavoritedPoetsListView</name>
     <message>
         <source>There is no item here</source>
         <translation>هیچ عنوانی وجود ندارد</translation>
@@ -976,7 +976,7 @@ It containts %2 items currently.</source>
     </message>
 </context>
 <context>
-    <name>HafizFaalForm</name>
+    <name>HafizFaalView</name>
     <message>
         <source>Hafiz Faal</source>
         <translation>فال حافظ</translation>
@@ -1038,7 +1038,7 @@ It containts %2 items currently.</source>
     </message>
 </context>
 <context>
-    <name>IntroForm</name>
+    <name>IntroView</name>
     <message>
         <source>Skip</source>
         <translation>رد کردن</translation>
@@ -1102,7 +1102,7 @@ It containts %2 items currently.</source>
     </message>
 </context>
 <context>
-    <name>PublishForm</name>
+    <name>PublishView</name>
     <message>
         <source>Close</source>
         <translation>بستن</translation>
@@ -1206,7 +1206,7 @@ It containts %2 items currently.</source>
     </message>
 </context>
 <context>
-    <name>ListsForm</name>
+    <name>ListsView</name>
     <message>
         <source>There is no item here</source>
         <translation>هیچ عنوانی وجود ندارد</translation>
@@ -1332,7 +1332,7 @@ It containts %2 items currently.</source>
     </message>
 </context>
 <context>
-    <name>MainForm</name>
+    <name>MainView</name>
     <message>
         <source>Home</source>
         <translation>خانه</translation>
@@ -1351,7 +1351,7 @@ It containts %2 items currently.</source>
     </message>
 </context>
 <context>
-    <name>ManageOfflinePoetsForm</name>
+    <name>ManageOfflinePoetsView</name>
     <message>
         <source>Manage Offlines</source>
         <translation>مدیریت آفلاین‌ها</translation>
@@ -1409,7 +1409,7 @@ It containts %2 items currently.</source>
     </message>
 </context>
 <context>
-    <name>MostReadedPoemsForm</name>
+    <name>MostReadedPoemsView</name>
     <message>
         <source>Poets</source>
         <translation>شاعرها</translation>
@@ -1529,7 +1529,7 @@ It containts %2 items currently.</source>
     </message>
 </context>
 <context>
-    <name>NotesListForm</name>
+    <name>NotesListView</name>
     <message>
         <source>There is no item here</source>
         <translation>هیچ عنوانی وجود ندارد</translation>
@@ -1555,7 +1555,7 @@ It containts %2 items currently.</source>
     </message>
 </context>
 <context>
-    <name>NotesPoetsListForm</name>
+    <name>NotesPoetsListView</name>
     <message>
         <source>There is no item here</source>
         <translation>هیچ عنوانی وجود ندارد</translation>
@@ -1651,7 +1651,7 @@ It containts %2 items currently.</source>
     </message>
 </context>
 <context>
-    <name>PoetBioForm</name>
+    <name>PoetBioView</name>
     <message>
         <source>Biography</source>
         <translation>درباره شاعر</translation>
@@ -1704,7 +1704,7 @@ It containts %2 items currently.</source>
     </message>
 </context>
 <context>
-    <name>PoetForm</name>
+    <name>PoetView</name>
     <message>
         <source>Biography</source>
         <translation>درباره شاعر</translation>
@@ -1723,7 +1723,7 @@ It containts %2 items currently.</source>
     </message>
 </context>
 <context>
-    <name>PoetBooksForm</name>
+    <name>PoetBooksView</name>
     <message>
         <source>New Poem</source>
         <translation>شعر جدید</translation>
@@ -1789,14 +1789,14 @@ It containts %2 items currently.</source>
     </message>
 </context>
 <context>
-    <name>PoetsListForm</name>
+    <name>PoetsListView</name>
     <message>
         <source>All Poets</source>
         <translation>همه شاعرها</translation>
     </message>
 </context>
 <context>
-    <name>PremiumConfirmForm</name>
+    <name>PremiumConfirmView</name>
     <message>
         <source>Monthly</source>
         <translation>پرداخت ماهیانه</translation>
@@ -1904,7 +1904,7 @@ It containts %2 items currently.</source>
     </message>
 </context>
 <context>
-    <name>SearchFilterForm</name>
+    <name>SearchFilterView</name>
     <message>
         <source>Search Filter</source>
         <translation>جستجوی پیشرفته</translation>
@@ -1931,7 +1931,7 @@ It containts %2 items currently.</source>
     </message>
 </context>
 <context>
-    <name>SearchForm</name>
+    <name>SearchView</name>
     <message>
         <source>Search domain:</source>
         <translation>محدوده جستجو:</translation>
@@ -2014,7 +2014,7 @@ It&apos;s experimental currently and Meikade technical team working on it. But i
         </message>
 </context>
 <context>
-        <name>ThemeWizardForm</name>
+        <name>ThemeWizardView</name>
         <message>
             <source>Apply and Close</source>
             <translation>انتخاب و تایید</translation>
@@ -2029,7 +2029,7 @@ It&apos;s experimental currently and Meikade technical team working on it. But i
         </message>
 </context>
 <context>
-    <name>SettingsForm</name>
+    <name>SettingsView</name>
     <message>
         <source>Language</source>
         <translation>زبان</translation>
@@ -2271,7 +2271,7 @@ It&apos;s experimental currently and Meikade technical team working on it. But i
     </message>
 </context>
 <context>
-    <name>SyncForm</name>
+    <name>SyncView</name>
     <message>
         <source>Last sync date and time</source>
         <translation>زمان آخرین همگام‌سازی</translation>
@@ -2325,7 +2325,7 @@ It&apos;s experimental currently and Meikade technical team working on it. But i
     </message>
 </context>
 <context>
-    <name>TopPoetsForm</name>
+    <name>TopPoetsView</name>
     <message>
         <source>There is no item here</source>
         <translation>هیچ عنوانی وجود ندارد</translation>
@@ -2347,7 +2347,7 @@ It&apos;s experimental currently and Meikade technical team working on it. But i
     </message>
 </context>
 <context>
-    <name>WebBrowserForm</name>
+    <name>WebBrowserView</name>
     <message>
         <source>Loading</source>
         <translation>در حال بارگزاری</translation>

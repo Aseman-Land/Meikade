@@ -1,6 +1,6 @@
 <?xml version="1.0" ?><!DOCTYPE TS><TS language="en_US" version="2.1">
 <context>
-    <name>AboutForm</name>
+    <name>AboutView</name>
     <message>
         <source>Website</source>
         <translation>Website</translation>
@@ -83,7 +83,7 @@ open source and free software technologies.&lt;br /&gt;Aseman promotes accessibi
     </message>
 </context>
 <context>
-    <name>AddListForm</name>
+    <name>AddListView</name>
     <message>
         <source>Add List</source>
         <translation>Add List</translation>
@@ -110,7 +110,7 @@ open source and free software technologies.&lt;br /&gt;Aseman promotes accessibi
     </message>
 </context>
 <context>
-    <name>AddNoteForm</name>
+    <name>AddNoteView</name>
     <message>
         <source>Type your note</source>
         <translation>Type your note</translation>
@@ -163,7 +163,7 @@ open source and free software technologies.&lt;br /&gt;Aseman promotes accessibi
     </message>
 </context>
 <context>
-    <name>ChangeNameForm</name>
+    <name>ChangeNameView</name>
     <message>
         <source>Change Name</source>
         <translation>Change Name</translation>
@@ -265,7 +265,7 @@ open source and free software technologies.&lt;br /&gt;Aseman promotes accessibi
     </message>
 </context>
 <context>
-    <name>ChangelogsForm</name>
+    <name>ChangelogsView</name>
     <message>
         <source>ChangeLogs</source>
         <translation>ChangeLogs</translation>
@@ -276,7 +276,7 @@ open source and free software technologies.&lt;br /&gt;Aseman promotes accessibi
     </message>
 </context>
 <context>
-    <name>ContactForm</name>
+    <name>ContactView</name>
     <message>
         <source>Contact us</source>
         <translation>Contact us</translation>
@@ -376,7 +376,7 @@ open source and free software technologies.&lt;br /&gt;Aseman promotes accessibi
     </message>
 </context>
 <context>
-    <name>DeleteListForm</name>
+    <name>DeleteListView</name>
     <message>
         <source>Delete List</source>
         <translation>Delete List</translation>
@@ -408,7 +408,7 @@ It contains %2 of current items.</translation>
     </message>
 </context>
 <context>
-    <name>DeleteNoteForm</name>
+    <name>DeleteNoteView</name>
     <message>
         <source>Delete List</source>
         <translation>Delete List</translation>
@@ -445,7 +445,7 @@ It contains %2 of current items.</translation>
     </message>
 </context>
 <context>
-    <name>FavoritedListForm</name>
+    <name>FavoritedListView</name>
     <message>
         <source>There is no item here</source>
         <translation>No item was found in here</translation>
@@ -460,7 +460,7 @@ It contains %2 of current items.</translation>
     </message>
 </context>
 <context>
-    <name>FavoritedPoetsListForm</name>
+    <name>FavoritedPoetsListView</name>
     <message>
         <source>There is no item here</source>
         <translation>There is no item here</translation>
@@ -562,7 +562,7 @@ It contains %2 of current items.</translation>
     </message>
 </context>
 <context>
-    <name>HafizFaalForm</name>
+    <name>HafizFaalView</name>
     <message>
         <source>Hafiz Faal</source>
         <translation>Hafez Faal</translation>
@@ -622,7 +622,7 @@ It contains %2 of current items.</translation>
     </message>
 </context>
 <context>
-    <name>IntroForm</name>
+    <name>IntroView</name>
     <message>
         <source>Next</source>
         <translation>Next</translation>
@@ -708,7 +708,7 @@ page.</translation>
     </message>
 </context>
 <context>
-    <name>ListsForm</name>
+    <name>ListsView</name>
     <message>
         <source>There is no item here</source>
         <translation>There is no item here</translation>
@@ -816,7 +816,7 @@ page.</translation>
     </message>
 </context>
 <context>
-    <name>MainForm</name>
+    <name>MainView</name>
     <message>
         <source>Home</source>
         <translation>Home</translation>
@@ -831,7 +831,7 @@ page.</translation>
     </message>
 </context>
 <context>
-    <name>ManageOfflinePoetsForm</name>
+    <name>ManageOfflinePoetsView</name>
     <message>
         <source>Manage Offlines</source>
         <translation>Manage Downloads</translation>
@@ -885,7 +885,7 @@ page.</translation>
     </message>
 </context>
 <context>
-    <name>MostReadedPoemsForm</name>
+    <name>MostReadedPoemsView</name>
     <message>
         <source>Poets</source>
         <translation>Poets</translation>
@@ -993,7 +993,7 @@ page.</translation>
     </message>
 </context>
 <context>
-    <name>NotesListForm</name>
+    <name>NotesListView</name>
     <message>
         <source>There is no item here</source>
         <translation>There is no item here</translation>
@@ -1019,7 +1019,7 @@ page.</translation>
     </message>
 </context>
 <context>
-    <name>NotesPoetsListForm</name>
+    <name>NotesPoetsListView</name>
     <message>
         <source>There is no item here</source>
         <translation>There is no item here</translation>
@@ -1115,7 +1115,7 @@ page.</translation>
     </message>
 </context>
 <context>
-    <name>PoetBioForm</name>
+    <name>PoetBioView</name>
     <message>
         <source>Biography</source>
         <translation>Biography</translation>
@@ -1168,7 +1168,7 @@ page.</translation>
     </message>
 </context>
 <context>
-    <name>PoetForm</name>
+    <name>PoetView</name>
     <message>
         <source>Biography</source>
         <translation>Biography</translation>
@@ -1210,14 +1210,14 @@ page.</translation>
     </message>
 </context>
 <context>
-    <name>PoetsListForm</name>
+    <name>PoetsListView</name>
     <message>
         <source>All Poets</source>
         <translation>All Poets</translation>
     </message>
 </context>
 <context>
-    <name>PremiumConfirmForm</name>
+    <name>PremiumConfirmView</name>
     <message>
         <source>Monthly</source>
         <translation>Monthly</translation>
@@ -1317,7 +1317,7 @@ page.</translation>
     </message>
 </context>
 <context>
-    <name>SearchFilterForm</name>
+    <name>SearchFilterView</name>
     <message>
         <source>Search Filter</source>
         <translation>Search Filter</translation>
@@ -1344,7 +1344,7 @@ page.</translation>
     </message>
 </context>
 <context>
-    <name>SearchForm</name>
+    <name>SearchView</name>
     <message>
         <source>Search domain:</source>
         <translation>Search domain:</translation>
@@ -1396,7 +1396,7 @@ Currently this method of searching is experimental and Meikade&apos;s AI team is
     </message>
 </context>
 <context>
-    <name>SettingsForm</name>
+    <name>SettingsView</name>
     <message>
         <source>Language</source>
         <translation>Language</translation>
@@ -1630,7 +1630,7 @@ Currently this method of searching is experimental and Meikade&apos;s AI team is
     </message>
 </context>
 <context>
-    <name>SyncForm</name>
+    <name>SyncView</name>
     <message>
         <source>Last sync date and time</source>
         <translation>Last synced date and time</translation>
@@ -1680,7 +1680,7 @@ Currently this method of searching is experimental and Meikade&apos;s AI team is
     </message>
 </context>
 <context>
-    <name>TopPoetsForm</name>
+    <name>TopPoetsView</name>
     <message>
         <source>There is no item here</source>
         <translation>There is no item here</translation>
@@ -1702,7 +1702,7 @@ Currently this method of searching is experimental and Meikade&apos;s AI team is
     </message>
 </context>
 <context>
-    <name>WebBrowserForm</name>
+    <name>WebBrowserView</name>
     <message>
         <source>Loading</source>
         <translation>Loading</translation>

@@ -144,37 +144,37 @@ void StickerModel::refresh()
         size.title = tr("Size");
         size.command1 = Size;
         size.type = Category;
-        size.image = QUrl::fromLocalFile(":/qml/imports/logics/old/stickers/icons/size.png");
+        size.image = QUrl::fromLocalFile(":/qml/old/stickers/icons/size.png");
 
         StickerModelItem color;
         color.title = tr("Color");
         color.command1 = Color;
         color.type = Category;
-        color.image = QUrl::fromLocalFile(":/qml/imports/logics/old/stickers/icons/color.png");
+        color.image = QUrl::fromLocalFile(":/qml/old/stickers/icons/color.png");
 
         StickerModelItem image;
         image.title = tr("Image");
         image.command1 = OpenImage;
         image.type = Category;
-        image.image = QUrl::fromLocalFile(":/qml/imports/logics/old/stickers/icons/open.png");
+        image.image = QUrl::fromLocalFile(":/qml/old/stickers/icons/open.png");
 
         StickerModelItem sticker;
         sticker.title = tr("Sticker");
         sticker.command1 = Sticker;
         sticker.type = Category;
-        sticker.image = QUrl::fromLocalFile(":/qml/imports/logics/old/stickers/icons/image.png");
+        sticker.image = QUrl::fromLocalFile(":/qml/old/stickers/icons/image.png");
 
         StickerModelItem font;
         font.title = tr("Font");
         font.command1 = Font;
         font.type = Category;
-        font.image = QUrl::fromLocalFile(":/qml/imports/logics/old/stickers/icons/font.png");
+        font.image = QUrl::fromLocalFile(":/qml/old/stickers/icons/font.png");
 
         StickerModelItem logo;
         logo.title = tr("Logo");
         logo.command1 = Logo;
         logo.type = Category;
-        logo.image = QUrl::fromLocalFile(":/qml/imports/logics/old/stickers/icons/logo.png");
+        logo.image = QUrl::fromLocalFile(":/qml/old/stickers/icons/logo.png");
 
         p->list << size;
         p->list << color;
@@ -293,10 +293,10 @@ void StickerModel::refresh()
 
     case Sticker:
     {
-        const QStringList & files = QDir(":/qml/imports/logics/old/stickers/images/").entryList(QDir::Files, QDir::Name);
+        const QStringList & files = QDir(":/qml/old/stickers/images/").entryList(QDir::Files, QDir::Name);
         for(const QString &f: files)
         {
-            QString path = ":/qml/imports/logics/old/stickers/images/"+f;
+            QString path = ":/qml/old/stickers/images/"+f;
             QFileInfo file(path);
             const QStringList &parts = file.baseName().split("_",Qt::SkipEmptyParts);
             if(parts.count() != 2)
@@ -344,13 +344,13 @@ void StickerModel::refresh()
         StickerModelItem meikade;
         meikade.type = Logo;
         meikade.title = tr("Meikade Logo");
-        meikade.image = QUrl::fromLocalFile(":/qml/imports/logics/old/stickers/general/logo.png");
+        meikade.image = QUrl::fromLocalFile(":/qml/old/stickers/general/logo.png");
         meikade.command1 = static_cast<int>(StickerModel::MeikadeLogo);
 
         StickerModelItem poet;
         poet.type = Logo;
         poet.title = tr("Poet Name");
-        poet.image = QUrl::fromLocalFile(":/qml/imports/logics/old/stickers/general/poet.png");
+        poet.image = QUrl::fromLocalFile(":/qml/old/stickers/general/poet.png");
         poet.command1 = static_cast<int>(StickerModel::PoetLogo);
 
         p->list << meikade;

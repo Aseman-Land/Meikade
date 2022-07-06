@@ -5,10 +5,9 @@ import AsemanQml.Viewport 2.0
 import QtQuick.Controls 2.3
 import QtQuick.Controls.Material 2.3
 import QtQuick.Controls.IOSStyle 2.3
-import logics 1.0
 import routes 1.0
 import globals 1.0
-import micros 1.0
+import components 1.0
 
 AsemanWindow {
     id: mainWin
