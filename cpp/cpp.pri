@@ -13,6 +13,8 @@ DEFINES += \
 test-mode: DEFINES += TEST_MODE
 disable-subscription: DEFINES += DISABLE_SUBSCRIPTION
 
+include(thirdparty/thirdparty.pri)
+
 SOURCES += \
     $$PWD/old/stickermodel.cpp \
     $$PWD/old/stickerwriter.cpp \

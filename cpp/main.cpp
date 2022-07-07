@@ -34,6 +34,8 @@
 #include <QIcon>
 #include <QRegularExpression>
 #include <QTimer>
+#include <QAsemanCoreVersion>
+
 #ifdef QT_WEBVIEW_LIB
 #include <QtWebView>
 #endif
@@ -97,6 +99,14 @@ int main(int argc, char *argv[])
 #endif
 #endif
 
+#ifdef QTFIREBASE_SUPPORT
+    const auto qtFirebase = true;
+    const QString qtFirebaseVersion = QTFIREBASE_VERSION;
+#else
+    const auto qtFirebase = false;
+    const QString qtFirebaseVersion;
+#endif
+
     qmlRegisterType<MeikadeOfflineItem>("Meikade", 1, 0, "MeikadeOfflineItem");
     qmlRegisterType<MeikadeOfflineItemGlobal>("Meikade", 1, 0, "MeikadeOfflineItemGlobal");
     qmlRegisterType<StickerModel>("Meikade", 1, 0, "StickerModel");
@@ -119,6 +129,9 @@ int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty("unlockPassword", UNLOCK_PASSWORD);
     engine.rootContext()->setContextProperty("loggerPath", LOGGER_PATH);
     engine.rootContext()->setContextProperty("qVersion", qVersion());
+    engine.rootContext()->setContextProperty("qtFirebase", qtFirebase);
+    engine.rootContext()->setContextProperty("qtFirebaseVersion", qtFirebaseVersion);
+    engine.rootContext()->setContextProperty("qtAsemanVersion", QASEMANCORE_VERSION_STR);
     engine.rootContext()->setContextProperty("activeSubscription", activeSubscription);
     engine.rootContext()->setContextProperty("testMode", testMode);
     const QUrl url(testMode? QStringLiteral("qrc:/qml/maintest.qml") : QStringLiteral("qrc:/qml/main.qml"));

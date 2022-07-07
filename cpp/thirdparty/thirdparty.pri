@@ -1,0 +1,1 @@
+include(find-qtfirebase.pri)

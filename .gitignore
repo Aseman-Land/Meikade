@@ -9,6 +9,7 @@ build
 *.lai
 *.dll
 *.dylib
+google-services.json
 
 # Qt-es
 
