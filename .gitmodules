@@ -1,3 +1,3 @@
-[submodule "QtFirebase"]
-	path = QtFirebase
+[submodule "cpp/thirdparty/qtfirebase"]
+	path = cpp/thirdparty/qtfirebase
 	url = https://github.com/Larpon/QtFirebase.git
