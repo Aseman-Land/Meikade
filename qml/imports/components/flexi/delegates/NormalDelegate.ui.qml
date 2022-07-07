@@ -6,6 +6,7 @@ import QtQuick.Controls.Material 2.0
 import QtQuick.Controls.IOSStyle 2.0
 import QtQuick.Layouts 1.3
 import AsemanQml.Base 2.0
+import AsemanQml.MaterialIcons 2.0
 import QtGraphicalEffects 1.0
 
 AbstractDelegate {
@@ -97,11 +98,26 @@ AbstractDelegate {
                 Layout.alignment: Qt.AlignBottom | Qt.AlignRight
                 height: 42 * Devices.density
                 width: 42 * Devices.density
-                visible: (image.source + "").length > 0
+                visible: (cachedImage.source + "").length > 0
 
                 ImageDownloader {
                     id: cachedImage
                     ignoreSslErrors: AsemanGlobals.ignoreSslErrors
+                }
+
+                Rectangle {
+                    anchors.fill: parent
+                    color: Qt.darker(background.color, 1.3)
+                    radius: delItem.radius / 2
+                    visible: (image.source + "").length == 0
+
+                    Label {
+                        anchors.centerIn: parent
+                        font.family: MaterialIcons.family
+                        font.pixelSize: 15 * Devices.fontDensity
+                        text: MaterialIcons.mdi_account
+                        color: "#ffffff"
+                    }
                 }
 
                 Image {

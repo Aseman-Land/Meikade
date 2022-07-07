@@ -78,6 +78,27 @@ ColumnLayout {
             text: MaterialIcons.mdi_lock
             color: Colors.primary
         }
+
+        Button {
+            anchors.right: parent.right
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.verticalCenterOffset: 4 * Devices.density
+            font.pixelSize: 12 * Devices.fontDensity
+            font.family: MaterialIcons.family
+            text: passTxt.echoMode == TextInput.Password? MaterialIcons.mdi_eye : MaterialIcons.mdi_eye_off
+            flat: true
+            highlighted: true
+            width: 32 * Devices.density
+            height: 42 * Devices.density
+            Material.accent: Colors.primary
+            IOSStyle.accent: Colors.primary
+            onClicked: {
+                if (passTxt.echoMode == TextInput.Password)
+                    passTxt.echoMode = TextInput.Normal
+                else
+                    passTxt.echoMode = TextInput.Password
+            }
+        }
     }
 
     Button {
