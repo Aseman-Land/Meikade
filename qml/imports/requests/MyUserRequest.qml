@@ -40,7 +40,7 @@ UserRequest {
     }
     readonly property string _image: {
         try {
-            if (_cache.image.length == 0)
+            if (_imageName.length == 0)
                 return "";
 
             return baseUrl + "/user/image/" + _imageName;

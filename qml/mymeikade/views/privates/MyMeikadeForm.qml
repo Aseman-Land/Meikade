@@ -208,6 +208,7 @@ Rectangle {
                             fillMode: Image.PreserveAspectCrop
                             asynchronous: true
                             ignoreSslErrors: AsemanGlobals.ignoreSslErrors
+                            visible: (avatar.source + "").length
 
                             BusyIndicator {
                                 anchors.centerIn: parent
