@@ -16,3 +16,6 @@ Clock 1.0 Clock.qml
 PoemTypeIcon 1.0 PoemTypeIcon.qml
 ImageDownloader 1.0 ImageDownloader.qml
 PoemSwipeHelperAnimation 1.0 PoemSwipeHelperAnimation.qml
+PriceField 1.0 PriceField.qml
+HeaderBackButton 1.0 HeaderBackButton.qml
+MMaterialIcon 1.0 MMaterialIcon.qml

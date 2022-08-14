@@ -50,3 +50,8 @@ UnpublishPoemRequest 1.0 UnpublishPoemRequest.qml
 PublishListRequest 1.0 PublishListRequest.qml
 UnpublishListRequest 1.0 UnpublishListRequest.qml
 TermsRequest 1.0 TermsRequest.qml
+GetVolcanoPaymentsRequest 1.0 GetVolcanoPaymentsRequest.qml
+GetVolcanoWalletRequest 1.0 GetVolcanoWalletRequest.qml
+SubmitVolcanoDecodeRequest 1.0 SubmitVolcanoDecodeRequest.qml
+SubmitVolcanoDepositRequest 1.0 SubmitVolcanoDepositRequest.qml
+SubmitVolcanoWhitdrawRequest 1.0 SubmitVolcanoWhitdrawRequest.qml

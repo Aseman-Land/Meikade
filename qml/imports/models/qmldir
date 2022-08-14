@@ -33,3 +33,4 @@ BooksModel 1.0 BooksModel.qml
 MyPoemLoaderModel 1.0 MyPoemLoaderModel.qml
 ThemesModel 1.0 ThemesModel.qml
 SuggestionsModel 1.0 SuggestionsModel.qml
+VolcanoPaymentsModel 1.0 VolcanoPaymentsModel.qml

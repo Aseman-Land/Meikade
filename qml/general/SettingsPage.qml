@@ -1,8 +1,10 @@
 import QtQuick 2.12
 import AsemanQml.Base 2.0
 import AsemanQml.Viewport 2.0
+import AsemanQml.Models 2.0
 import QtQuick.Controls.Material 2.0
 import QtQuick.Controls.IOSStyle 2.0
+import components 1.0
 import globals 1.0
 import routes 1.0
 import requests 1.0
@@ -13,6 +15,27 @@ SettingsView {
     id: dis
     menuBtn.onClicked: ViewportType.open = false
     ViewportType.gestureWidth: 30 * Devices.density
+
+    property Item withdrawDlg
+    property Item depositDlg
+    property Item paymentsDlg
+
+    onWithdrawDlgChanged: if (!withdrawDlg) valcanoReq.doRequest()
+    onDepositDlgChanged: if (!depositDlg) valcanoReq.doRequest()
+
+    property int balance: {
+        try {
+            return valcanoReq.response.result.balance;
+        } catch (e) {
+            return 0;
+        }
+    }
+
+    GetVolcanoWalletRequest {
+        id: valcanoReq
+        allowShowErrors: true
+        Component.onCompleted: if (AsemanGlobals.accessToken.length) doRequest()
+    }
 
     loginBtn.onClicked: Viewport.controller.trigger("float:/auth/float", {})
     logoutBtn.onClicked: {
@@ -34,6 +57,27 @@ SettingsView {
             }
             obj.ViewportType.open = false;
         })
+    }
+
+    balanceLabel.text: valcanoReq.refreshing? qsTr("Loading...") : qsTr("%1 SAT").arg(formater.output) + Translations.refresher
+    balanceIndicator.running: valcanoReq.refreshing
+    balanceMoreBtn.onClicked: {
+        var pos = Qt.point(dis.LayoutMirroring.enabled? Constants.radius : balanceMoreBtn.width - Constants.radius, balanceMoreBtn.height/2);
+        var parent = balanceMoreBtn;
+        while (parent && parent != Viewport.viewport) {
+            pos.x += parent.x;
+            pos.y += parent.y;
+            parent = parent.parent;
+        }
+
+        Viewport.viewport.append(menuComponent, {"pointPad": pos}, "menu");
+    }
+
+    TextFormater {
+        id: formater
+        delimiter: ","
+        count: 3
+        input: "" + Math.floor(dis.balance / 1000)
     }
 
     LogoutRequest {
@@ -141,6 +185,61 @@ SettingsView {
             case IOSStyle.Dark:
                 themeCombo.currentIndex = 2;
                 break;
+            }
+        }
+    }
+
+    Component {
+        id: menuComponent
+        MenuView {
+            id: menuItem
+            x: dis.LayoutMirroring.enabled? pointPad.x : pointPad.x - width
+            y: pointPad.y + (openFromTop? 10 * Devices.density : - height - 10 * Devices.density)
+            width: 220 * Devices.density
+            ViewportType.transformOrigin: {
+                var y = openFromTop? 0 : height;
+                var x = dis.LayoutMirroring.enabled? 0 : width;
+                return Qt.point(x, y);
+            }
+
+            property point pointPad
+            property int index
+            property bool openFromTop: pointPad.y < Viewport.viewport.height/2
+
+            onItemClicked: {
+                switch (index) {
+                case 0:
+                    paymentsDlg = Viewport.controller.trigger("float:/volcano/payments");
+                    break;
+                case 1:
+                    depositDlg = Viewport.controller.trigger("bottomdrawer:/volcano/deposit");
+                    break;
+                case 2:
+                    withdrawDlg = Viewport.controller.trigger("bottomdrawer:/volcano/withdraw");
+                    break;
+                }
+
+                ViewportType.open = false;
+            }
+
+            model: AsemanListModel {
+                data: [
+                    {
+                        title: qsTr("Payments"),
+                        icon: "mdi_view_list",
+                        enabled: true
+                    },
+                    {
+                        title: qsTr("Deposit"),
+                        icon: "mdi_plus",
+                        enabled: true
+                    },
+                    {
+                        title: qsTr("Withdraw"),
+                        icon: "mdi_minus",
+                        enabled: true
+                    }
+                ]
             }
         }
     }

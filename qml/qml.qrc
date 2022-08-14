@@ -207,6 +207,10 @@
         <file>qml.pri</file>
         <file>qml.qrc</file>
         <file>TestDialog.qml</file>
+        <file>volcano/DepositDialog.qml</file>
+        <file>volcano/PaymentsDialog.qml</file>
+        <file>volcano/QRScannerDialog.qml</file>
+        <file>volcano/WithdrawDialog.qml</file>
     </qresource>
     <qresource prefix="/">
         <file>qtquickcontrols2.conf</file>
@@ -375,5 +379,14 @@
         <file>imports/routes/qmldir</file>
         <file>imports/routes/ViewController.qml</file>
         <file>imports/routes/WaitDialogRoute.qml</file>
+        <file>imports/requests/GetVolcanoPaymentsRequest.qml</file>
+        <file>imports/requests/GetVolcanoWalletRequest.qml</file>
+        <file>imports/requests/SubmitVolcanoDecodeRequest.qml</file>
+        <file>imports/requests/SubmitVolcanoDepositRequest.qml</file>
+        <file>imports/requests/SubmitVolcanoWhitdrawRequest.qml</file>
+        <file>imports/components/PriceField.qml</file>
+        <file>imports/components/HeaderBackButton.qml</file>
+        <file>imports/components/MMaterialIcon.qml</file>
+        <file>imports/models/VolcanoPaymentsModel.qml</file>
     </qresource>
 </RCC>

@@ -265,5 +265,23 @@ ViewportController {
         route: /dialog:\/wait/
         source: "WaitDialogRoute.qml"
     }
+
+    ViewportControllerRoute {
+        route: /\w+:\/volcano\/deposit/
+        source: "qrc:/qml/volcano/DepositDialog.qml"
+        viewportType: "bottomdrawer"
+    }
+
+    ViewportControllerRoute {
+        route: /\w+:\/volcano\/withdraw/
+        source: "qrc:/qml/volcano/WithdrawDialog.qml"
+        viewportType: "bottomdrawer"
+    }
+
+    ViewportControllerRoute {
+        route: /\w+:\/volcano\/payments/
+        source: "qrc:/qml/volcano/PaymentsDialog.qml"
+        viewportType: tabletMode? "popup" : "float"
+    }
 }
 

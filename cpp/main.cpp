@@ -40,6 +40,10 @@
 #include <QtWebView>
 #endif
 
+#ifdef QZXING_AVAILABLE
+#include "QZXing.h"
+#endif
+
 static void register_fcm(QQmlEngine *engine)
 {
 #ifdef QTFIREBASE_VERSION
@@ -134,6 +138,17 @@ int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty("qtAsemanVersion", QASEMANCORE_VERSION_STR);
     engine.rootContext()->setContextProperty("activeSubscription", activeSubscription);
     engine.rootContext()->setContextProperty("testMode", testMode);
+
+    auto qzxing = false;
+
+#ifdef QZXING_AVAILABLE
+    QZXing::registerQMLTypes();
+    QZXing::registerQMLImageProvider(engine);
+    qzxing = true;
+#endif
+
+    engine.rootContext()->setContextProperty("qzxing", qzxing);
+
     const QUrl url(testMode? QStringLiteral("qrc:/qml/maintest.qml") : QStringLiteral("qrc:/qml/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated, &app, [url](QObject *obj, const QUrl &objUrl) {
         if (!obj && url == objUrl)

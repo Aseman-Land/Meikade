@@ -29,6 +29,9 @@ Item {
     property alias accountStateLabel: accountStateLabel
     property alias accountDaysLabel: accountDaysLabel
     property alias accountPremiumBuy: accountPremiumBuy
+    property alias balanceIndicator: balanceIndicator
+    property alias balanceLabel: balanceLabel
+    property alias balanceMoreBtn: balanceMoreBtn
 
 //    Material.theme: Material.Dark
 //    IOSStyle.theme: IOSStyle.Dark
@@ -252,6 +255,39 @@ Item {
                     stepSize: 1
                 }
 
+                RowLayout {
+                    spacing: 4 * Devices.density
+
+                    Label {
+                        font.pixelSize: 9 * Devices.fontDensity
+                        text: qsTr("Balance:") + Translations.refresher
+                    }
+
+                    Label {
+                        id: balanceLabel
+                        font.pixelSize: 9 * Devices.fontDensity
+                        color: Colors.accent
+                        Layout.fillWidth: true
+                    }
+
+                    BusyIndicator {
+                        id: balanceIndicator
+                        visible: running
+                        running: false
+                        Layout.preferredWidth: 16 * Devices.density
+                        Layout.preferredHeight: 16 * Devices.density
+                    }
+
+                    Button {
+                        id: balanceMoreBtn
+                        Layout.preferredWidth: 40 * Devices.density
+                        Layout.preferredHeight: 40 * Devices.density
+                        font.pixelSize: 9 * Devices.fontDensity
+                        font.family: MaterialIcons.family
+                        flat: true
+                        text: MaterialIcons.mdi_dots_vertical
+                    }
+                }
             }
         }
     }

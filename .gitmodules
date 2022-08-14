@@ -1,3 +1,6 @@
 [submodule "cpp/thirdparty/qtfirebase"]
 	path = cpp/thirdparty/qtfirebase
 	url = https://github.com/Larpon/QtFirebase.git
+[submodule "cpp/thirdparty/qzxing"]
+	path = cpp/thirdparty/qzxing
+	url = https://github.com/ftylitak/qzxing.git
