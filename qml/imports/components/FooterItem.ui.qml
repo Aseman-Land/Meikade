@@ -1,9 +1,9 @@
 import QtQuick 2.12
-import globals 1.0
 import QtQuick.Controls 2.3
 import AsemanQml.MaterialIcons 2.0
 import AsemanQml.Base 2.0
 import QtQuick.Layouts 1.3
+import globals 1.0
 
 ItemDelegate {
     id: element
@@ -13,11 +13,13 @@ ItemDelegate {
     property alias iconText: iconText
     property alias title: title
 
-    ColumnLayout {
+    GridLayout {
         id: column
-        spacing: 1 * Devices.density
-        anchors.horizontalCenter: parent.horizontalCenter
+        columnSpacing: 8 * Devices.density
+        rowSpacing: 1 * Devices.density
+        x: AsemanGlobals.viewMode == 2? parent.width/2 - width/2 : (LayoutMirroring.enabled? parent.width - width - 20 * Devices.density : 20 * Devices.density)
         anchors.verticalCenter: parent.verticalCenter
+        columns: AsemanGlobals.viewMode == 2? 1 : 2
 
         Label {
             id: iconText
@@ -34,7 +36,7 @@ ItemDelegate {
             Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
             text: qsTr("Label") + Translations.refresher
             font.capitalization: Font.AllUppercase
-            font.pixelSize: 7 * Devices.fontDensity
+            font.pixelSize: (AsemanGlobals.viewMode == 2? 7 : 9) * Devices.fontDensity
         }
     }
 }

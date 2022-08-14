@@ -59,24 +59,9 @@ Item {
             text: qsTr("Frame") + Translations.refresher
         }
 
-        RowLayout {
-            anchors.left: parent.left
-            anchors.right: parent.right
-            height: Devices.standardTitleBarHeight
-
-            RoundButton {
-                id: cancelBtn
-                Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
-                text: qsTr("Cancel") + Translations.refresher
-                highlighted: true
-                radius: 6 * Devices.density
-                font.pixelSize: 8 * Devices.fontDensity
-                Material.accent: Qt.darker(Colors.primary, 1.3)
-                Material.theme: Material.Dark
-                IOSStyle.accent: Qt.darker(Colors.primary, 1.3)
-                IOSStyle.theme: IOSStyle.Dark
-                Material.elevation: 0
-            }
+        HeaderBackButton {
+            id: cancelBtn
+            iosPopup: true
         }
     }
 }

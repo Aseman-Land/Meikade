@@ -328,29 +328,9 @@ Item {
         shadow: selectMode? false : Devices.isAndroid
         light: (!selectMode || Colors.darkMode) && !Colors.lightHeader
 
-        RowLayout {
-            anchors.left: parent.left
-            anchors.right: parent.right
-            anchors.leftMargin: 14 * Devices.density
-            anchors.rightMargin: 2 * Devices.density
-            anchors.bottom: parent.bottom
-            height: Devices.standardTitleBarHeight
-
-            RoundButton {
-                id: closeBtn
-                Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
-                text: qsTr("Close") + Translations.refresher
-                radius: 6 * Devices.density
-                font.pixelSize: 8 * Devices.fontDensity
-                IOSStyle.accent: Qt.darker(Colors.primary, 1.3)
-                Material.accent: Qt.darker(Colors.primary, 1.3)
-                IOSStyle.foreground: Colors.foreground
-                IOSStyle.background: Colors.deepBackground
-                Material.foreground: Colors.foreground
-                Material.background: Colors.deepBackground
-                Material.theme: Material.Dark
-                Material.elevation: 0
-            }
+        HeaderBackButton {
+            id: closeBtn
+            iosPopup: true
         }
     }
 

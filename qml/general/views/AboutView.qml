@@ -9,6 +9,7 @@ import QtQuick.Controls.IOSStyle 2.0
 import AsemanQml.MaterialIcons 2.0
 import QtQuick.Layouts 1.0
 import globals 1.0
+import components 1.0
 import requests 1.0
 import "privates"
 
@@ -324,9 +325,9 @@ Page {
         shadow: Devices.isAndroid
         text: qsTr("About") + Translations.refresher
 
-        HeaderMenuButton {
+        HeaderBackButton {
             id: headerBtn
-            ratio: 1
+            color: "#fff"
         }
     }
 }

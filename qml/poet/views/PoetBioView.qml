@@ -6,6 +6,7 @@ import QtQuick.Controls.Material 2.0
 import QtQuick.Controls.IOSStyle 2.0
 import QtQuick.Controls 2.3
 import QtQuick.Layouts 1.3
+import components 1.0
 import globals 1.0
 
 Page {
@@ -108,18 +109,8 @@ Page {
                 Layout.preferredHeight: 2
             }
 
-            RoundButton {
+            HeaderBackButton {
                 id: closeBtn
-                Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
-                text: qsTr("Close") + Translations.refresher
-                radius: 6 * Devices.density
-                font.pixelSize: 8 * Devices.fontDensity
-                IOSStyle.foreground: Colors.foreground
-                IOSStyle.background: Colors.deepBackground
-                Material.foreground: Colors.foreground
-                Material.background: Colors.deepBackground
-                Material.theme: Material.Dark
-                Material.elevation: 0
             }
         }
     }

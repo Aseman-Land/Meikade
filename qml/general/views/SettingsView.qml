@@ -330,10 +330,8 @@ Item {
         shadow: Devices.isAndroid
         light: Colors.darkMode
 
-        HeaderMenuButton {
+        HeaderBackButton {
             id: menuBtn
-            ratio: 1
-            buttonColor: Colors.foreground
         }
     }
 

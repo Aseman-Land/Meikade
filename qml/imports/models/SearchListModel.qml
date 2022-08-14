@@ -48,7 +48,7 @@ AsemanListModel {
                     "color": "transparent",
                     "section": "",
                     "type": "dynamic",
-                    "heightRatio": 0.8,
+                    "heightRatio": 1,
                 };
 
                 var modelData = new Array;

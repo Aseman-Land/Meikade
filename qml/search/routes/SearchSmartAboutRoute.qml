@@ -4,7 +4,7 @@ import AsemanQml.Viewport 2.0
 import ".."
 
 SearchSmartAboutPage {
-    width: parent.width
+    width: Viewport.viewport.width > Viewport.viewport.height && !Devices.isMobile? Viewport.viewport.height * 3 / 5 : parent.width
     height: 500 * Devices.density
 
     cancelBtn.onClicked: ViewportType.open = false

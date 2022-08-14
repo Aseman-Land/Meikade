@@ -92,7 +92,7 @@ SearchView {
         }
     }
 
-    poetsFilterArea.onClicked: Viewport.viewport.append(filter_component, {}, "bottomdrawer")
+    poetsFilterArea.onClicked: Viewport.viewport.append(filter_component, {}, (AsemanGlobals.viewMode == 2? "bottomdrawer" : "dialog"))
 
     onMenuRequest: {
         var pos = Qt.point(object.width/2, 0);
@@ -275,7 +275,6 @@ SearchView {
         SearchFilterPage {
             width: tabletWidth? tabletWidth : home.width
             height: View.root.height * 0.9
-            x: Viewport.viewport.width/2 - width/2
             poetsList.model: onlineSearchSwitch.checked? poetsModel : offlinePoetsModel
             acceptBtn.onClicked: {
                 searchFilterModel.clear();

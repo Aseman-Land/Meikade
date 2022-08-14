@@ -9,7 +9,7 @@ SearchFilterView {
 
     property bool accurateSearch: !AsemanGlobals.smartSearch
 
-    accurateSearchHelpBtn.onClicked: Viewport.controller.trigger("bottomdrawer:/search/smart-about")
+    accurateSearchHelpBtn.onClicked: Viewport.controller.trigger("bottomdrawer:/search/smart_about")
 
     accurateSearchSwitch.checked: accurateSearch
     accurateSearchSwitch.onCheckedChanged: {

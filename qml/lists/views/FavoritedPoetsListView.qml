@@ -379,17 +379,9 @@ Item {
                 Material.elevation: 0
             }
 
-            RoundButton {
+            HeaderBackButton {
                 id: closeBtn
-                text: qsTr("Close") + Translations.refresher
-                radius: 6 * Devices.density
-                font.pixelSize: 8 * Devices.fontDensity
-                IOSStyle.foreground: Colors.foreground
-                IOSStyle.background: Colors.deepBackground
-                Material.foreground: Colors.foreground
-                Material.background: Colors.deepBackground
-                Material.theme: Material.Dark
-                Material.elevation: 0
+                iosPopup: true
             }
         }
 

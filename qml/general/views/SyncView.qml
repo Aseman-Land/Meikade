@@ -8,6 +8,7 @@ import QtQuick.Controls.Material 2.0
 import QtQuick.Controls.IOSStyle 2.0
 import AsemanQml.MaterialIcons 2.0
 import QtQuick.Layouts 1.0
+import components 1.0
 import globals 1.0
 import "privates"
 
@@ -240,27 +241,8 @@ Page {
         light: !Colors.lightHeader
         shadow: Devices.isAndroid
 
-        RowLayout {
-            anchors.left: parent.left
-            anchors.right: parent.right
-            anchors.leftMargin: 14 * Devices.density
-            anchors.rightMargin: 2 * Devices.density
-            anchors.bottom: parent.bottom
-            height: Devices.standardTitleBarHeight
-
-            RoundButton {
-                id: closeBtn
-                Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
-                text: qsTr("Close") + Translations.refresher
-                radius: 6 * Devices.density
-                font.pixelSize: 8 * Devices.fontDensity
-                IOSStyle.foreground: Colors.foreground
-                IOSStyle.background: Colors.deepBackground
-                Material.foreground: Colors.foreground
-                Material.background: Colors.deepBackground
-                Material.theme: Material.Dark
-                Material.elevation: 0
-            }
+        HeaderBackButton {
+            id: closeBtn
         }
     }
 }

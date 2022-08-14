@@ -3,6 +3,7 @@ pragma Singleton
 import QtQuick 2.0
 import AsemanQml.Base 2.0
 import AsemanQml.Viewport 2.0
+import globals 1.0
 
 ViewportController {
     id: viewController
@@ -10,7 +11,7 @@ ViewportController {
     property int waitCount: 0
     property variant waitObj
 
-    readonly property bool tabletMode: viewController.viewport && viewController.viewport.width > viewController.viewport.height
+    readonly property bool tabletMode: AsemanGlobals.viewMode != 2
 
     onWaitCountChanged: {
         if (waitCount > 0) {
@@ -84,6 +85,7 @@ ViewportController {
     ViewportControllerRoute {
         route: /\w+\:\/mypoems\/poem\/edit(?:\?.*bookId\=.+)?/
         source: "qrc:/qml/mypoems/routes/EditPoemRoute.qml"
+        viewportType: tabletMode? "popup" : ""
     }
 
     ViewportControllerRoute {
@@ -95,11 +97,13 @@ ViewportController {
     ViewportControllerRoute {
         route: /\w+\:\/mypoems\/poem(?:\?.*poemId\=.+)?/
         source: "qrc:/qml/poems/routes/MyPoemRoute.qml"
+        viewportType: tabletMode? "popup" : ""
     }
 
     ViewportControllerRoute {
         route: /\w+\:\/mypoems\/publish(?:\?poemId=.+)?/
         source: "qrc:/qml/publish/routes/PublishRoute.qml"
+        viewportType: tabletMode? "popup" : ""
     }
 
     ViewportControllerRoute {
@@ -107,6 +111,7 @@ ViewportController {
         source: "qrc:/qml/poems/routes/PoemRoute.qml"
 //        source: "qrc:/qml/poems/routes/RandomPoemRoute.qml"
 //        viewportType: "none"
+        viewportType: tabletMode? "popup" : ""
     }
 
     ViewportControllerRoute {
@@ -123,6 +128,7 @@ ViewportController {
     ViewportControllerRoute {
         route: /\w+\:\/poet(?:\?.*poemId\=.+)?/
         source: "qrc:/qml/poems/routes/PoemRoute.qml"
+        viewportType: tabletMode? "popup" : ""
     }
 
     ViewportControllerRoute {
@@ -269,19 +275,25 @@ ViewportController {
     ViewportControllerRoute {
         route: /\w+:\/volcano\/deposit/
         source: "qrc:/qml/volcano/DepositDialog.qml"
-        viewportType: "bottomdrawer"
+        viewportType: tabletMode? "dialog" : "bottomdrawer"
     }
 
     ViewportControllerRoute {
         route: /\w+:\/volcano\/withdraw/
         source: "qrc:/qml/volcano/WithdrawDialog.qml"
-        viewportType: "bottomdrawer"
+        viewportType: tabletMode? "dialog" : "bottomdrawer"
     }
 
     ViewportControllerRoute {
         route: /\w+:\/volcano\/payments/
         source: "qrc:/qml/volcano/PaymentsDialog.qml"
         viewportType: tabletMode? "popup" : "float"
+    }
+
+    ViewportControllerRoute {
+        route: /\w+\:\/search\/smart_about/
+        source: "qrc:/qml/search/routes/SearchSmartAboutRoute.qml"
+        viewportType: tabletMode? "dialog" : "bottomdrawer"
     }
 }
 

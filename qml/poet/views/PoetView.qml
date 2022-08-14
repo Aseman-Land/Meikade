@@ -318,9 +318,10 @@ Item {
             }
         }
 
-        HeaderMenuButton {
+        HeaderBackButton {
             id: menuBtn
-            ratio: 1
+            color: "#fff"
+            x: LayoutMirroring.enabled? parent.width - width : 0
         }
     }
 }

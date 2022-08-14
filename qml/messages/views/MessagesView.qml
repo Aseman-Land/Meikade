@@ -13,7 +13,6 @@ DrawerFrame {
     height: 500 * Devices.density
     headerItem.anchors.topMargin: Devices.statusBarHeight
     headerLabel.text: qsTr("Messages") + Translations.refresher
-    cancelBtn.text: qsTr("Close") + Translations.refresher
     flickable.interactive: false
 
     property alias listView: listView
