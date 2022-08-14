@@ -3,8 +3,10 @@ import AsemanQml.Base 2.0
 import QtQuick.Controls 2.3
 import QtQuick.Layouts 1.3
 import AsemanQml.Controls 2.0
+import AsemanQml.MaterialIcons 2.0
 import QtQuick.Controls.Material 2.0
 import globals 1.0
+import models 1.0
 import components 1.0
 
 Page {
@@ -13,8 +15,10 @@ Page {
     height: Constants.height
 
     property alias listView: listView
+    property variant categoryModel
     property alias nextBtn: nextBtn
     property string keyword
+    property int currentTypeId: 1
 
     readonly property real headerHeight: 200 * Devices.density
     readonly property real ratio: 1 - Math.min( Math.max(-headerListener.result.y / listView.headerItem.height, 0), 1)
@@ -45,18 +49,37 @@ Page {
         bottomMargin: Devices.standardTitleBarHeight + 6 * Devices.density
         header: Item {
             width: listView.width
-            height: headerHeight + searchKeyword.height
+            height: headerHeight + headerColumns.height
 
-            TextField {
-                id: searchKeyword
+            ColumnLayout {
+                id: headerColumns
                 width: parent.width - 40 * Devices.density
-                height: 46 * Devices.density
                 x: 20 * Devices.density
-                horizontalAlignment: Text.AlignLeft
                 anchors.bottom: parent.bottom
-                placeholderText: qsTr("Search") + Translations.refresher
-                font.pixelSize: 9 * Devices.fontDensity
-                onTextChanged: dis.keyword = text
+                spacing: 4 * Devices.density
+
+                TextField {
+                    id: searchKeyword
+                    Layout.fillWidth: true
+                    Layout.preferredHeight: 46 * Devices.density
+                    horizontalAlignment: Text.AlignLeft
+                    placeholderText: qsTr("Search") + Translations.refresher
+                    font.pixelSize: 9 * Devices.fontDensity
+                    onTextChanged: dis.keyword = text
+                }
+
+                TabBar {
+                    Layout.fillWidth: true
+
+                    Repeater {
+                        model: categoryModel
+                        TabButton {
+                            font.pixelSize: 9 * Devices.fontDensity
+                            text: GTranslations.localeName == "fa"? model.name : model.name_en
+                            onClicked: currentTypeId = model.id
+                        }
+                    }
+                }
             }
         }
 
@@ -103,13 +126,28 @@ Page {
                         Layout.preferredHeight: 38 * Devices.density
                         Layout.preferredWidth: 38 * Devices.density
 
+                        Rectangle {
+                            anchors.fill: parent
+                            color: Colors.primary
+                            radius: Constants.radius
+
+                            Label {
+                                anchors.centerIn: parent
+                                font.family: MaterialIcons.family
+                                font.pixelSize: 15 * Devices.fontDensity
+                                text: MaterialIcons.mdi_account
+                                color: "#fff"
+                            }
+                        }
+
                         RoundedItem {
+                            id: roundItem
                             width: parent.width * 2
                             height: parent.height * 2
                             anchors.centerIn: parent
                             radius: Constants.radius * 1.5
                             scale: 0.5
-                            visible: !AsemanGlobals.testPoetImagesDisable
+                            visible: !AsemanGlobals.testPoetImagesDisable && (model.image + "").length != 0
 
                             CachedImage {
                                 anchors.fill: parent

@@ -10,6 +10,7 @@ AsemanListModel {
 
     property string keyword
     property alias refreshing: poetsReq.refreshing
+    property alias typeId: poetsReq.type_id
 
     function append(poetId, properties) {
         actions.poetId = poetId;
@@ -17,6 +18,7 @@ AsemanListModel {
         actions.extra = Tools.variantToJson(properties);
         actions.updatedAt = Tools.dateToSec(new Date);
         actions.pushAction();
+        actions.refresh();
         GlobalSignals.topPoetsRefreshed();
     }
     function remove(poetId) {
@@ -24,10 +26,12 @@ AsemanListModel {
         actions.declined = true;
         actions.updatedAt = Tools.dateToSec(new Date);
         actions.pushAction();
+        actions.refresh();
         GlobalSignals.topPoetsRefreshed();
     }
 
     onKeywordChanged: refreshTimer.restart()
+    onTypeIdChanged: refreshTimer.restart()
 
     Timer {
         id: refreshTimer

@@ -45,7 +45,9 @@ IntroView {
         listView.model: TopPoetsModel {
             id: topModel
             keyword: home.setupHomeForm.keyword
+            typeId: home.setupHomeForm.currentTypeId
         }
+        categoryModel: PoetCategoriesModel {}
 
         nextBtn.enabled: TopPoetsHomeModel.count > 2
         nextBtn.onClicked: list.currentIndex++
