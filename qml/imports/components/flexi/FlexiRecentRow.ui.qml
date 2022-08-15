@@ -10,6 +10,7 @@ FlexiDynamicRow {
     height: list.visible? 100 * Devices.density : 0
 
     property alias type: recentsModel.type
+    property alias count: recentsModel.count
 
     list.visible: recentsModel.count > 0
     list.model: RecentsModel {

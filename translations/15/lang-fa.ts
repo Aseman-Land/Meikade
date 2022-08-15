@@ -2,13 +2,6 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="fa_IR">
 <context>
-    <name>FlexiTopPoetsRow</name>
-    <message>
-        <source>Add Poets</source>
-        <translation>اضافه کردن شاعر</translation>
-    </message>
-</context>
-<context>
     <name>AboutView</name>
     <message>
         <source>Website</source>
@@ -81,82 +74,134 @@
     </message>
 </context>
 <context>
-    <name>JalaliCalendarObject</name>
+    <name>AddBookView</name>
     <message>
-        <source>Farvardin</source>
-        <translation>فروردین</translation>
+        <source>Add Book</source>
+        <translation>دفتر جدید</translation>
     </message>
     <message>
-        <source>Ordibehesht</source>
-        <translation>اردیبهشت</translation>
+        <source>Please enter book name:</source>
+        <translation>نام دفتر خود را وارد کنید:</translation>
     </message>
     <message>
-        <source>Khordad</source>
-        <translation>خرداد</translation>
+        <source>Book Name</source>
+        <translation>نام دفتر</translation>
     </message>
     <message>
-        <source>Tir</source>
-        <translation>تیر</translation>
+        <source>Add</source>
+        <translation>ساخت دفتر</translation>
     </message>
     <message>
-        <source>Mordad</source>
-        <translation>مرداد</translation>
+        <source>Rename Book</source>
+        <translation>تغییر نام دفتر</translation>
     </message>
     <message>
-        <source>Shahrivar</source>
-        <translation>شهریور</translation>
+        <source>Rename</source>
+        <translation>تغییر نام</translation>
+    </message>
+</context>
+<context>
+    <name>AddListView</name>
+    <message>
+        <source>Add List</source>
+        <translation>لیست جدید</translation>
     </message>
     <message>
-        <source>Mehr</source>
-        <translation>مهر</translation>
+        <source>Please enter list name:</source>
+        <translation>نام لیست خود را وارد کنید:</translation>
     </message>
     <message>
-        <source>Abaan</source>
-        <translation>آبان</translation>
+        <source>List Name</source>
+        <translation>نام لیست</translation>
     </message>
     <message>
-        <source>Aazar</source>
-        <translation>آذر</translation>
+        <source>Add</source>
+        <translation>ساخت لیست</translation>
     </message>
     <message>
-        <source>Dey</source>
-        <translation>دی</translation>
+        <source>Rename List</source>
+        <translation>تغییر نام لیست</translation>
     </message>
     <message>
-        <source>Bahman</source>
-        <translation>بهمن</translation>
+        <source>Rename</source>
+        <translation>تغییر نام</translation>
+    </message>
+</context>
+<context>
+    <name>AddNotePage</name>
+    <message>
+        <source>You create %1 note from %2 notes, Allowed to create using non-premium account.</source>
+        <translation>شما %1 یادداشت از %2 یادداشت که با اکانت غیرحرفه‌ای می‌توانید بنویسید را نوشته‌اید.</translation>
     </message>
     <message>
-        <source>Esfand</source>
-        <translation>اسفند</translation>
+        <source>You create %1 note from %2 notes. for more information contact us on telegram:</source>
+        <translation>شما %1 یادداشت از %2 یادداشت که میتوانید بنویسید را نوشته‌اید. برای اطلاعات بیشتر با ما در تلگرام تماس بگیرید:</translation>
     </message>
     <message>
-        <source>Shanbe</source>
-        <translation>شنبه</translation>
+        <source>Click Here</source>
+        <translation>کلیک کنید</translation>
     </message>
     <message>
-        <source>1Shanbe</source>
-        <translation>یکشنبه</translation>
+        <source>Are you sure about delete this note?</source>
+        <translation>آیا از پاک کردن این یادداشت مطمئنید؟</translation>
+    </message>
+</context>
+<context>
+    <name>AddNoteView</name>
+    <message>
+        <source>Type your note</source>
+        <translation>یادداشت خود را بنویسید</translation>
     </message>
     <message>
-        <source>2Shanbe</source>
-        <translation>دوشنبه</translation>
+        <source>Save</source>
+        <translation>ذخیره یادداشت</translation>
     </message>
     <message>
-        <source>3Shanbe</source>
-        <translation>سه‌شنبه</translation>
+        <source>I Undrestand</source>
+        <translation>متوجه شدم</translation>
     </message>
     <message>
-        <source>4Shanbe</source>
-        <translation>چهارشنبه</translation>
+        <source>To go to the poem, click on the verse</source>
+        <translation>برای رفتن به صفحه شعر، متن بیت را لمس کنید</translation>
     </message>
     <message>
-        <source>5Shanbe</source>
-        <translation>پنجشنبه</translation>
+        <source>Edit Note</source>
+        <translation>ویرایش یادداشت</translation>
     </message>
     <message>
-        <source>Jome</source>
-        <translation>جمعه</translation>
+        <source>Close</source>
+        <translation>بستن</translation>
+    </message>
+    <message>
+        <source>To buy premium account click on below button</source>
+        <translation>برای خرید اکانت حرفه‌ای روی دکمه زیر کلیک کنید</translation>
+    </message>
+    <message>
+        <source>Premium Account</source>
+        <translation>اکانت حرفه‌ای</translation>
+    </message>
+    <message>
+        <source>Don&apos;t show this message again</source>
+        <translation>عدم نمایش مجدد این پیغام</translation>
+    </message>
+</context>
+<context>
+    <name>AddPoemRoute</name>
+    <message>
+        <source>Add Poem</source>
+        <translation>شعر جدید</translation>
+    </message>
+    <message>
+        <source>Please enter poem name:</source>
+        <translation>نام شعر خود را وارد کنید:</translation>
+    </message>
+    <message>
+        <source>Poem Name</source>
+        <translation>نام شعر</translation>
+    </message>
+    <message>
+        <source>Rename Poem</source>
+        <translation>تغییر نام شعر</translation>
     </message>
 </context>
 <context>
@@ -203,246 +248,6 @@
     </message>
 </context>
 <context>
-    <name>AddListView</name>
-    <message>
-        <source>Add List</source>
-        <translation>لیست جدید</translation>
-    </message>
-    <message>
-        <source>Please enter list name:</source>
-        <translation>نام لیست خود را وارد کنید:</translation>
-    </message>
-    <message>
-        <source>List Name</source>
-        <translation>نام لیست</translation>
-    </message>
-    <message>
-        <source>Add</source>
-        <translation>ساخت لیست</translation>
-    </message>
-    <message>
-        <source>Rename List</source>
-        <translation>تغییر نام لیست</translation>
-    </message>
-    <message>
-        <source>Rename</source>
-        <translation>تغییر نام</translation>
-    </message>
-</context>
-<context>
-    <name>AddBookView</name>
-    <message>
-        <source>Add Book</source>
-        <translation>دفتر جدید</translation>
-    </message>
-    <message>
-        <source>Please enter book name:</source>
-        <translation>نام دفتر خود را وارد کنید:</translation>
-    </message>
-    <message>
-        <source>Book Name</source>
-        <translation>نام دفتر</translation>
-    </message>
-    <message>
-        <source>Add</source>
-        <translation>ساخت دفتر</translation>
-    </message>
-    <message>
-        <source>Rename Book</source>
-        <translation>تغییر نام دفتر</translation>
-    </message>
-    <message>
-        <source>Rename</source>
-        <translation>تغییر نام</translation>
-    </message>
-</context>
-<context>
-    <name>AddPoemRoute</name>
-    <message>
-        <source>Add Poem</source>
-        <translation>شعر جدید</translation>
-    </message>
-    <message>
-        <source>Please enter poem name:</source>
-        <translation>نام شعر خود را وارد کنید:</translation>
-    </message>
-    <message>
-        <source>Poem Name</source>
-        <translation>نام شعر</translation>
-    </message>
-    <message>
-        <source>Rename Poem</source>
-        <translation>تغییر نام شعر</translation>
-    </message>
-</context>
-<context>
-    <name>MyPoemPage</name>
-    <message>
-        <source>Edit Poem</source>
-        <translation>ویرایش شعر</translation>
-    </message>
-    <message>
-        <source>Publish</source>
-        <translation>انتشار شعر</translation>
-    </message>
-    <message>
-        <source>To edit poem touch below button.</source>
-        <translation>برای ویرایش شعر کلید زیر را لمس کنید.</translation>
-    </message>
-    <message>
-        <source>Rename</source>
-        <translation>تغییر نام</translation>
-    </message>
-    <message>
-        <source>Delete</source>
-        <translation>پاک کردن</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation>لغو</translation>
-    </message>
-    <message>
-        <source>Do you realy want to delete this poem?</source>
-        <translation>آیا از پاک کردن این شعر مطمئن هستید؟</translation>
-    </message>
-    <message>
-        <source>Do you realy want to unpublish this poem? Not that you must submit review request for the republish.</source>
-        <translation>آیا از لغو انتشار این شعر مطمئن هستید؟ توجه داشته باشید برای انتشار دوباره اشعار باید مجددا وارد مرحله بررسی شوند.</translation>
-    </message>
-    <message>
-        <source>Unpublish</source>
-        <translation>لغو انتشار</translation>
-    </message>
-</context>
-<context>
-        <name>MySubBooksPage</name>
-        <message>
-            <source>Rename</source>
-            <translation>تغییر نام</translation>
-        </message>
-        <message>
-            <source>Delete</source>
-            <translation>پاک کردن</translation>
-        </message>
-        <message>
-            <source>Cancel</source>
-            <translation>لغو</translation>
-        </message>
-        <message>
-            <source>Do you realy want to unpublish this book? Not that you must submit review request for the republish.</source>
-            <translation>آیا از لغو انتشار این دفتر مطمئن هستید؟ توجه داشته باشید برای انتشار دوباره اشعار باید مجددا وارد مرحله بررسی شوند.</translation>
-        </message>
-        <message>
-            <source>Unpublish</source>
-            <translation>لغو انتشار</translation>
-        </message>
-        <message>
-            <source>Do you realy want to delete this book? Not that all sub books and poems will deleted.</source>
-            <translation>آیا از پاک کردن این دفتر مطمئن هستید؟ توجه داشته باشید که تمامی دفترها و اشعار زیر مجموعه آن پاک خواهند شد.</translation>
-        </message>
-        <message>
-            <source>Click Here</source>
-            <translation>کلیک کنید</translation>
-        </message>
-        <message>
-            <source>You create %1 poem from %2 poems, Allowed to create using non-premium account.</source>
-            <translation>شما %1 شعر از %2 شعر که با اکانت غیرحرفه‌ای میتوانید بسازید را ساخته‌اید.</translation>
-        </message>
-        <message>
-            <source>You create %1 poems from %2 poems. for more information contact us on telegram:</source>
-            <translation>شما %1 شعر از %2 شعر که میتوانید بسازید ساخته‌اید. برای اطلاعات بیشتر با ما در تلگرام تماس بگیرید:</translation>
-        </message>
-</context>
-<context>
-    <name>EditPoemView</name>
-    <message>
-        <source>To add your poem, please type every verse in a single line. After all verses written press save button.</source>
-        <translation>برای وارد کردن شعر خود، عر مصراع را در یک سطر وارد کنید. بعد از کامل شدن شعر، دکمه ثبت شعر را بزنید.</translation>
-    </message>
-    <message>
-        <source>Note</source>
-        <translation>توجه</translation>
-    </message>
-    <message>
-        <source>Poem Text</source>
-        <translation>متن شعر</translation>
-    </message>
-    <message>
-        <source>Preview</source>
-        <translation>پیش‌نمایش</translation>
-    </message>
-    <message>
-        <source>Save poem</source>
-        <translation>ذخیره‌سازی</translation>
-    </message>
-    <message>
-        <source>Every verse in a single line:</source>
-        <translation>هر مصراع در یک خط:</translation>
-    </message>
-    <message>
-        <source>To make verses showin in center of the line, add a ':' in the first of the line.</source>
-        <translation>برای مشخص کردن بند گردان در ترکیب‌بند و ترجیع‌بند و همچنین بند مسمط، اول مصراع‌های مورد نظر دونقطه (:) بگذارید.</translation>
-    </message>
-</context>
-<context>
-    <name>AddNoteView</name>
-    <message>
-        <source>Type your note</source>
-        <translation>یادداشت خود را بنویسید</translation>
-    </message>
-    <message>
-        <source>Save</source>
-        <translation>ذخیره یادداشت</translation>
-    </message>
-    <message>
-        <source>I Undrestand</source>
-        <translation>متوجه شدم</translation>
-    </message>
-    <message>
-        <source>To go to the poem, click on the verse</source>
-        <translation>برای رفتن به صفحه شعر، متن بیت را لمس کنید</translation>
-    </message>
-    <message>
-        <source>Edit Note</source>
-        <translation>ویرایش یادداشت</translation>
-    </message>
-    <message>
-        <source>Close</source>
-        <translation>بستن</translation>
-    </message>
-    <message>
-        <source>To buy premium account click on below button</source>
-        <translation>برای خرید اکانت حرفه‌ای روی دکمه زیر کلیک کنید</translation>
-    </message>
-    <message>
-        <source>Premium Account</source>
-        <translation>اکانت حرفه‌ای</translation>
-    </message>
-    <message>
-        <source>Don&apos;t show this message again</source>
-        <translation>عدم نمایش مجدد این پیغام</translation>
-    </message>
-</context>
-<context>
-    <name>AddNotePage</name>
-    <message>
-        <source>You create %1 note from %2 notes, Allowed to create using non-premium account.</source>
-        <translation>شما %1 یادداشت از %2 یادداشت که با اکانت غیرحرفه‌ای می‌توانید بنویسید را نوشته‌اید.</translation>
-    </message>
-    <message>
-        <source>You create %1 note from %2 notes. for more information contact us on telegram:</source>
-        <translation>شما %1 یادداشت از %2 یادداشت که میتوانید بنویسید را نوشته‌اید. برای اطلاعات بیشتر با ما در تلگرام تماس بگیرید:</translation>
-    </message>
-    <message>
-        <source>Click Here</source>
-        <translation>کلیک کنید</translation>
-    </message>
-    <message>
-        <source>Are you sure about delete this note?</source>
-        <translation>آیا از پاک کردن این یادداشت مطمئنید؟</translation>
-    </message>
-</context>
-<context>
     <name>AuthPage</name>
     <message>
         <source>Logged in Successfully</source>
@@ -454,29 +259,22 @@
     </message>
 </context>
 <context>
-    <name>ChangeNameView</name>
+    <name>BaseRequest</name>
     <message>
-        <source>Change Name</source>
-        <translation>تغییر نام</translation>
+        <source>You have connection security issue:%1Do you want to ignore it?</source>
+        <translation>شما یک خطای امنیتی SSL دارید:%1آیا مایل به ادامه دادن هستید؟</translation>
     </message>
     <message>
-        <source>Please enter new name:</source>
-        <translation>لطفا نام جدید را وارد کنید:</translation>
+        <source>SSL Error</source>
+        <translation>خطا امنیتی</translation>
     </message>
     <message>
-        <source>Full Name</source>
-        <translation>نام و نام خانوادگی</translation>
+        <source>Yes</source>
+        <translation>بله</translation>
     </message>
     <message>
-        <source>Confirm</source>
-        <translation>تایید</translation>
-    </message>
-</context>
-<context>
-    <name>ChangeNamePage</name>
-    <message>
-        <source>Name updated successfully</source>
-        <translation>نام شما با موفقیت تغییر کرد</translation>
+        <source>No</source>
+        <translation>خیر</translation>
     </message>
 </context>
 <context>
@@ -496,6 +294,32 @@
     <message>
         <source>Biography</source>
         <translation>درباره شما</translation>
+    </message>
+</context>
+<context>
+    <name>ChangeNamePage</name>
+    <message>
+        <source>Name updated successfully</source>
+        <translation>نام شما با موفقیت تغییر کرد</translation>
+    </message>
+</context>
+<context>
+    <name>ChangeNameView</name>
+    <message>
+        <source>Change Name</source>
+        <translation>تغییر نام</translation>
+    </message>
+    <message>
+        <source>Please enter new name:</source>
+        <translation>لطفا نام جدید را وارد کنید:</translation>
+    </message>
+    <message>
+        <source>Full Name</source>
+        <translation>نام و نام خانوادگی</translation>
+    </message>
+    <message>
+        <source>Confirm</source>
+        <translation>تایید</translation>
     </message>
 </context>
 <context>
@@ -586,22 +410,38 @@
     </message>
 </context>
 <context>
-    <name>InboxView</name>
+    <name>ContactPage</name>
     <message>
-        <source>Inbox</source>
-        <translation>پیغام‌های شما</translation>
+        <source>Platform Name</source>
+        <translation>نام پلتفرم</translation>
     </message>
     <message>
-        <source>Close</source>
-        <translation>بستن</translation>
+        <source>Kernel</source>
+        <translation>هسته</translation>
     </message>
     <message>
-        <source>Text</source>
-        <translation>عنوان</translation>
+        <source>CPU Architecture</source>
+        <translation>معماری پردازنده</translation>
     </message>
     <message>
-        <source>Its a description</source>
-        <translation>یک توضیح درباره عنوان</translation>
+        <source>Device Name</source>
+        <translation>نام دستگاه</translation>
+    </message>
+    <message>
+        <source>LCD Density</source>
+        <translation>تراکم پیکسلی تصویر</translation>
+    </message>
+    <message>
+        <source>Meikade Version</source>
+        <translation>نسخه می‌کده</translation>
+    </message>
+    <message>
+        <source>LCD Size</source>
+        <translation>اندازه تصویر</translation>
+    </message>
+    <message>
+        <source>Thank you. Your message sent successfully :)</source>
+        <translation>ممنون از ارسال پیام. با شما در ارتباطیم :)</translation>
     </message>
 </context>
 <context>
@@ -664,41 +504,6 @@
     </message>
 </context>
 <context>
-    <name>ContactPage</name>
-    <message>
-        <source>Platform Name</source>
-        <translation>نام پلتفرم</translation>
-    </message>
-    <message>
-        <source>Kernel</source>
-        <translation>هسته</translation>
-    </message>
-    <message>
-        <source>CPU Architecture</source>
-        <translation>معماری پردازنده</translation>
-    </message>
-    <message>
-        <source>Device Name</source>
-        <translation>نام دستگاه</translation>
-    </message>
-    <message>
-        <source>LCD Density</source>
-        <translation>تراکم پیکسلی تصویر</translation>
-    </message>
-    <message>
-        <source>Meikade Version</source>
-        <translation>نسخه می‌کده</translation>
-    </message>
-    <message>
-        <source>LCD Size</source>
-        <translation>اندازه تصویر</translation>
-    </message>
-    <message>
-        <source>Thank you. Your message sent successfully :)</source>
-        <translation>ممنون از ارسال پیام. با شما در ارتباطیم :)</translation>
-    </message>
-</context>
-<context>
     <name>DataOfflineInstaller</name>
     <message>
         <source>Premium Needed</source>
@@ -725,6 +530,19 @@
     </message>
 </context>
 <context>
+    <name>DeleteListPage</name>
+    <message>
+        <source>Are you sure about delete &quot;%1&quot;?
+It containts %2 items currently.</source>
+        <translation>آیا از حذف کردن &quot;%1&quot; مطمئنید؟
+درحال حاضر این لیست %2 عنوان دارد.</translation>
+    </message>
+    <message>
+        <source>&quot;%1&quot; deleted</source>
+        <translation>&quot;%1&quot; پاک شد</translation>
+    </message>
+</context>
+<context>
     <name>DeleteListView</name>
     <message>
         <source>Delete List</source>
@@ -741,34 +559,6 @@
     <message>
         <source>Confirm</source>
         <translation>حذف کردن</translation>
-    </message>
-</context>
-<context>
-    <name>PoemSwipeHelperView</name>
-    <message>
-        <source>Help</source>
-        <translation>راهنمایی</translation>
-    </message>
-    <message>
-        <source>To go to the next/previous poem, hold center of the screen and swipe it to the left or right.</source>
-        <translation>برای سریع‌تر رفتن به شعر قبل یا بعد، میتوانید انگشتتان را روی وسط صفحه نگه دارید و صفحه را به چپ یا راست بکشید.</translation>
-    </message>
-    <message>
-        <source>I Undrestand</source>
-        <translation>متوجه شدم</translation>
-    </message>
-</context>
-<context>
-    <name>DeleteListPage</name>
-    <message>
-        <source>Are you sure about delete &quot;%1&quot;?
-It containts %2 items currently.</source>
-        <translation>آیا از حذف کردن &quot;%1&quot; مطمئنید؟
-درحال حاضر این لیست %2 عنوان دارد.</translation>
-    </message>
-    <message>
-        <source>&quot;%1&quot; deleted</source>
-        <translation>&quot;%1&quot; پاک شد</translation>
     </message>
 </context>
 <context>
@@ -791,6 +581,61 @@ It containts %2 items currently.</source>
     </message>
 </context>
 <context>
+    <name>DepositDialog</name>
+    <message>
+        <source>Generating Deposit...</source>
+        <translation>درحال ساختن لینک واریز...</translation>
+    </message>
+    <message>
+        <source>Copy code or Scan below QR using a lightning wallet (like BlueWallet) to complete deposit.</source>
+        <translation>کد را کپی کنید یا QR زیر را با کیف پول lightning خود (مثل BlueWallet) اسکن کنید.</translation>
+    </message>
+    <message>
+        <source>Payment key copied to the clipboard.</source>
+        <translation>کد واریز کپی شد.</translation>
+    </message>
+    <message>
+        <source>Click to copy:</source>
+        <translation>برای کپی کلیک کنید:</translation>
+    </message>
+    <message>
+        <source>Please enter value you want to deposit to your account:</source>
+        <translation>لطفا مقداری که میخواهید اکانت خود را شارژ کنید وارد کنید:</translation>
+    </message>
+    <message>
+        <source>Satoshi</source>
+        <translation>ساتوشی</translation>
+    </message>
+    <message>
+        <source>Minimum:</source>
+        <translation>حداقل:</translation>
+    </message>
+    <message>
+        <source>%1 satoshi,</source>
+        <translation>%1 ساتوشی,</translation>
+    </message>
+    <message>
+        <source>Maxmium:</source>
+        <translation>حداکثر:</translation>
+    </message>
+    <message>
+        <source>%1 satoshi</source>
+        <translation>%1 ساتوشی</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>لغو</translation>
+    </message>
+    <message>
+        <source>Generate payment key</source>
+        <translation>ساختن کد واریز</translation>
+    </message>
+    <message>
+        <source>Deposit</source>
+        <translation>واریز</translation>
+    </message>
+</context>
+<context>
     <name>DrawerFrame</name>
     <message>
         <source>Frame</source>
@@ -799,6 +644,37 @@ It containts %2 items currently.</source>
     <message>
         <source>Cancel</source>
         <translation>لغو</translation>
+    </message>
+</context>
+<context>
+    <name>EditPoemView</name>
+    <message>
+        <source>To add your poem, please type every verse in a single line. After all verses written press save button.</source>
+        <translation>برای وارد کردن شعر خود، عر مصراع را در یک سطر وارد کنید. بعد از کامل شدن شعر، دکمه ثبت شعر را بزنید.</translation>
+    </message>
+    <message>
+        <source>Note</source>
+        <translation>توجه</translation>
+    </message>
+    <message>
+        <source>Poem Text</source>
+        <translation>متن شعر</translation>
+    </message>
+    <message>
+        <source>Preview</source>
+        <translation>پیش‌نمایش</translation>
+    </message>
+    <message>
+        <source>Save poem</source>
+        <translation>ذخیره‌سازی</translation>
+    </message>
+    <message>
+        <source>Every verse in a single line:</source>
+        <translation>هر مصراع در یک خط:</translation>
+    </message>
+    <message>
+        <source>To make verses showin in center of the line, add a &apos;:&apos; in the first of the line.</source>
+        <translation>برای مشخص کردن بند گردان در ترکیب‌بند و ترجیع‌بند و همچنین بند مسمط، اول مصراع‌های مورد نظر دونقطه (:) بگذارید.</translation>
     </message>
 </context>
 <context>
@@ -824,14 +700,10 @@ It containts %2 items currently.</source>
     </message>
 </context>
 <context>
-    <name>MessagesView</name>
+    <name>FavoritedPoetsListModel</name>
     <message>
-        <source>Messages</source>
-        <translation>پیام‌ها</translation>
-    </message>
-    <message>
-        <source>Close</source>
-        <translation>بستن</translation>
+        <source>%1 items</source>
+        <translation>%1 عنوان</translation>
     </message>
 </context>
 <context>
@@ -878,24 +750,6 @@ It containts %2 items currently.</source>
     </message>
 </context>
 <context>
-    <name>FavoritedPoetsListModel</name>
-    <message>
-        <source>%1 items</source>
-        <translation>%1 عنوان</translation>
-    </message>
-</context>
-<context>
-    <name>OnlineListModel</name>
-    <message>
-        <source>&quot;%1&quot; followed</source>
-        <translation>&quot;%1&quot; به لیست‌ها اضافه شد.</translation>
-    </message>
-    <message>
-        <source>&quot;%1&quot; unfollowed</source>
-        <translation>&quot;%1&quot; از لیست‌ها حذف شد.</translation>
-    </message>
-</context>
-<context>
     <name>FlexiList</name>
     <message>
         <source>More</source>
@@ -921,12 +775,41 @@ It containts %2 items currently.</source>
         <source>Favorites</source>
         <translation>علاقه‌مندی‌ها</translation>
     </message>
+    <message>
+        <source>Shelf</source>
+        <translation>کتابخانه</translation>
+    </message>
+</context>
+<context>
+    <name>FlexiTopPoetsRow</name>
+    <message>
+        <source>Add Poets</source>
+        <translation>اضافه کردن شاعر</translation>
+    </message>
+    <message>
+        <source>Manage Shelf</source>
+        <translation>مدیریت کتابخانه</translation>
+    </message>
+</context>
+<context>
+    <name>FlexiTopPoetsRow.ui</name>
+    <message>
+        <source>Manage Shelf</source>
+        <translation type="unfinished">مدیریت کتابخانه</translation>
+    </message>
 </context>
 <context>
     <name>FooterItem</name>
     <message>
         <source>Label</source>
         <translation>برچسب</translation>
+    </message>
+</context>
+<context>
+    <name>FooterItem.ui</name>
+    <message>
+        <source>Label</source>
+        <translation type="unfinished">برچسب</translation>
     </message>
 </context>
 <context>
@@ -976,17 +859,6 @@ It containts %2 items currently.</source>
     </message>
 </context>
 <context>
-    <name>HafizFaalView</name>
-    <message>
-        <source>Hafiz Faal</source>
-        <translation>فال حافظ</translation>
-    </message>
-    <message>
-        <source>Close</source>
-        <translation>بستن</translation>
-    </message>
-</context>
-<context>
     <name>HafizFaalPage</name>
     <message>
         <source>Hafiz</source>
@@ -998,10 +870,40 @@ It containts %2 items currently.</source>
     </message>
 </context>
 <context>
+    <name>HafizFaalView</name>
+    <message>
+        <source>Hafiz Faal</source>
+        <translation>فال حافظ</translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation>بستن</translation>
+    </message>
+</context>
+<context>
     <name>HomeForm</name>
     <message>
         <source>Meikade</source>
         <translation>می‌کده</translation>
+    </message>
+</context>
+<context>
+    <name>InboxView</name>
+    <message>
+        <source>Inbox</source>
+        <translation>پیغام‌های شما</translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation>بستن</translation>
+    </message>
+    <message>
+        <source>Text</source>
+        <translation>عنوان</translation>
+    </message>
+    <message>
+        <source>Its a description</source>
+        <translation>یک توضیح درباره عنوان</translation>
     </message>
 </context>
 <context>
@@ -1035,17 +937,6 @@ It containts %2 items currently.</source>
     <message>
         <source>Finish</source>
         <translation>پایان</translation>
-    </message>
-</context>
-<context>
-    <name>IntroView</name>
-    <message>
-        <source>Skip</source>
-        <translation>رد کردن</translation>
-    </message>
-    <message>
-        <source>Prev</source>
-        <translation>قبلی</translation>
     </message>
 </context>
 <context>
@@ -1083,72 +974,6 @@ It containts %2 items currently.</source>
     </message>
 </context>
 <context>
-    <name>BaseRequest</name>
-    <message>
-        <source>You have connection security issue:%1Do you want to ignore it?</source>
-        <translation>شما یک خطای امنیتی SSL دارید:%1آیا مایل به ادامه دادن هستید؟</translation>
-    </message>
-    <message>
-        <source>SSL Error</source>
-        <translation>خطا امنیتی</translation>
-    </message>
-    <message>
-        <source>Yes</source>
-        <translation>بله</translation>
-    </message>
-    <message>
-        <source>No</source>
-        <translation>خیر</translation>
-    </message>
-</context>
-<context>
-    <name>PublishView</name>
-    <message>
-        <source>Close</source>
-        <translation>بستن</translation>
-    </message>
-    <message>
-        <source>Review</source>
-        <translation>بازبینی</translation>
-    </message>
-    <message>
-        <source>Upload to Review</source>
-        <translation>ارسال برای بررسی</translation>
-    </message>
-    <message>
-        <source>Agreement</source>
-        <translation>قوانین</translation>
-    </message>
-    <message>
-        <source>Finished</source>
-        <translation>پایان</translation>
-    </message>
-    <message>
-        <source>Finish</source>
-        <translation>پایان</translation>
-    </message>
-    <message>
-        <source>Your request for review submitted officialy. We will publish your poems and notify you when review finished.</source>
-        <translation>درخواست شما برای بررسی انتشار شعرهای خودتان با موفقیت ثبت شد. بعد از بررسی شعرها در صورت تایید شدنشان منتشر خواهند شد و به شما اطلاع رسانی خواهیم کرد.</translation>
-    </message>
-    <message>
-        <source>You can check state of the review by click on the below icon on the top-right of the My Meikade page.</source>
-        <translation>شما همچنین میتوانید با کلیک برای روی شکل زیر در بالا گوشه سمت چپ صفحه‌ی می‌کده من وضعیت بررسی شعرهای خود را مشاهده کنید.</translation>
-    </message>
-    <message>
-        <source>Accept Agreement</source>
-        <translation>قوانین را می‌پذیرم</translation>
-    </message>
-    <message>
-        <source>There is no poem in the book</source>
-        <translation>شعری در این دفتر موجود نیست</translation>
-    </message>
-    <message>
-        <source>Please Wait...</source>
-        <translation>لطفا صبر کنید...</translation>
-    </message>
-</context>
-<context>
     <name>IntroSetupOfflines</name>
     <message>
         <source>Offline Poets</source>
@@ -1180,10 +1005,25 @@ It containts %2 items currently.</source>
     </message>
 </context>
 <context>
-    <name>SearchListModel</name>
+    <name>IntroSetupTheme</name>
     <message>
-        <source>%1 - %2 follower</source>
-        <translation>%1 - %2 دنبال کننده</translation>
+        <source>Theme</source>
+        <translation>انتخاب پوسته</translation>
+    </message>
+    <message>
+        <source>Next</source>
+        <translation>بعدی</translation>
+    </message>
+</context>
+<context>
+    <name>IntroView</name>
+    <message>
+        <source>Skip</source>
+        <translation>رد کردن</translation>
+    </message>
+    <message>
+        <source>Prev</source>
+        <translation>قبلی</translation>
     </message>
 </context>
 <context>
@@ -1203,6 +1043,127 @@ It containts %2 items currently.</source>
     <message>
         <source>Next</source>
         <translation>بعدی</translation>
+    </message>
+</context>
+<context>
+    <name>JalaliCalendarObject</name>
+    <message>
+        <source>Farvardin</source>
+        <translation>فروردین</translation>
+    </message>
+    <message>
+        <source>Ordibehesht</source>
+        <translation>اردیبهشت</translation>
+    </message>
+    <message>
+        <source>Khordad</source>
+        <translation>خرداد</translation>
+    </message>
+    <message>
+        <source>Tir</source>
+        <translation>تیر</translation>
+    </message>
+    <message>
+        <source>Mordad</source>
+        <translation>مرداد</translation>
+    </message>
+    <message>
+        <source>Shahrivar</source>
+        <translation>شهریور</translation>
+    </message>
+    <message>
+        <source>Mehr</source>
+        <translation>مهر</translation>
+    </message>
+    <message>
+        <source>Abaan</source>
+        <translation>آبان</translation>
+    </message>
+    <message>
+        <source>Aazar</source>
+        <translation>آذر</translation>
+    </message>
+    <message>
+        <source>Dey</source>
+        <translation>دی</translation>
+    </message>
+    <message>
+        <source>Bahman</source>
+        <translation>بهمن</translation>
+    </message>
+    <message>
+        <source>Esfand</source>
+        <translation>اسفند</translation>
+    </message>
+    <message>
+        <source>Shanbe</source>
+        <translation>شنبه</translation>
+    </message>
+    <message>
+        <source>1Shanbe</source>
+        <translation>یکشنبه</translation>
+    </message>
+    <message>
+        <source>2Shanbe</source>
+        <translation>دوشنبه</translation>
+    </message>
+    <message>
+        <source>3Shanbe</source>
+        <translation>سه‌شنبه</translation>
+    </message>
+    <message>
+        <source>4Shanbe</source>
+        <translation>چهارشنبه</translation>
+    </message>
+    <message>
+        <source>5Shanbe</source>
+        <translation>پنجشنبه</translation>
+    </message>
+    <message>
+        <source>Jome</source>
+        <translation>جمعه</translation>
+    </message>
+</context>
+<context>
+    <name>ListsModel</name>
+    <message>
+        <source>Favorites</source>
+        <translation>علاقه‌مندی‌ها</translation>
+    </message>
+    <message>
+        <source>%1 items</source>
+        <translation>%1 عنوان</translation>
+    </message>
+</context>
+<context>
+    <name>ListsPage</name>
+    <message>
+        <source>Lists updated</source>
+        <translation>لیست به روز شد</translation>
+    </message>
+    <message>
+        <source>Favoriteds</source>
+        <translation>علاقه‌مندی‌ها</translation>
+    </message>
+    <message>
+        <source>Change Name</source>
+        <translation>تغییر نام</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>حذف لیست</translation>
+    </message>
+    <message>
+        <source>You create %1 lists from %2 lists, Allowed to create using non-premium account.</source>
+        <translation>شما %1 لیست از %2 لیست که با اکانت غیرحرفه‌ای میتوانید بسازید را ساخته‌اید.</translation>
+    </message>
+    <message>
+        <source>You create %1 lists from %2 lists. for more information contact us on telegram:</source>
+        <translation>شما %1 لیست از %2 لیست که میتوانید بسازید ساخته‌اید. برای اطلاعات بیشتر با ما در تلگرام تماس بگیرید:</translation>
+    </message>
+    <message>
+        <source>Click Here</source>
+        <translation>کلیک کنید</translation>
     </message>
 </context>
 <context>
@@ -1241,66 +1202,6 @@ It containts %2 items currently.</source>
     </message>
 </context>
 <context>
-    <name>ListsModel</name>
-    <message>
-        <source>Favorites</source>
-        <translation>علاقه‌مندی‌ها</translation>
-    </message>
-    <message>
-        <source>%1 items</source>
-        <translation type="vanished">%1 عنوان</translation>
-    </message>
-</context>
-<context>
-    <name>SingleListPage</name>
-    <message>
-        <source>Favoriteds</source>
-        <translation>علاقه‌مندی‌ها</translation>
-    </message>
-</context>
-<context>
-    <name>ListsPage</name>
-    <message>
-        <source>Lists updated</source>
-        <translation>لیست به روز شد</translation>
-    </message>
-    <message>
-        <source>Favoriteds</source>
-        <translation>علاقه‌مندی‌ها</translation>
-    </message>
-    <message>
-        <source>Change Name</source>
-        <translation>تغییر نام</translation>
-    </message>
-    <message>
-        <source>Delete</source>
-        <translation>حذف لیست</translation>
-    </message>
-    <message>
-        <source>You create %1 lists from %2 lists, Allowed to create using non-premium account.</source>
-        <translation>شما %1 لیست از %2 لیست که با اکانت غیرحرفه‌ای میتوانید بسازید را ساخته‌اید.</translation>
-    </message>
-    <message>
-        <source>You create %1 lists from %2 lists. for more information contact us on telegram:</source>
-        <translation>شما %1 لیست از %2 لیست که میتوانید بسازید ساخته‌اید. برای اطلاعات بیشتر با ما در تلگرام تماس بگیرید:</translation>
-    </message>
-    <message>
-        <source>Click Here</source>
-        <translation>کلیک کنید</translation>
-    </message>
-</context>
-<context>
-    <name>LoginForm</name>
-    <message>
-        <source>Authenticating</source>
-        <translation>ورود</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation>لغو</translation>
-    </message>
-</context>
-<context>
     <name>LoginColumnForm</name>
     <message>
         <source>If you created account before, Just enter your username below. Otherwise click on &quot;Create new account&quot; button.</source>
@@ -1332,6 +1233,17 @@ It containts %2 items currently.</source>
     </message>
 </context>
 <context>
+    <name>LoginForm</name>
+    <message>
+        <source>Authenticating</source>
+        <translation>ورود</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>لغو</translation>
+    </message>
+</context>
+<context>
     <name>MainView</name>
     <message>
         <source>Home</source>
@@ -1348,6 +1260,21 @@ It containts %2 items currently.</source>
     <message>
         <source>My Meikade</source>
         <translation>می‌کده من</translation>
+    </message>
+</context>
+<context>
+    <name>ManageOfflinePoetsPage</name>
+    <message>
+        <source>You install %1 offline poet from %2 poets, Allowed to install using non-premium account.</source>
+        <translation>شما آثار %1 شاعر از حداکثر %2 شاعر که می‌توانید با اکانت غیرحرفه‌ای آفلاین کنید را نصب کرده‌اید.</translation>
+    </message>
+    <message>
+        <source>You install %1 offline poet from %2 poets. for more information contact us on telegram:</source>
+        <translation>شما %1 شاعر از %2 شاعر که می‌توانید نصب کنید را استفاده کردید. برای اطلاعات بیشتر با ما در تلگرام تماس بگیرید:</translation>
+    </message>
+    <message>
+        <source>Click Here</source>
+        <translation>کلیک کنید</translation>
     </message>
 </context>
 <context>
@@ -1394,18 +1321,14 @@ It containts %2 items currently.</source>
     </message>
 </context>
 <context>
-    <name>ManageOfflinePoetsPage</name>
+    <name>MessagesView</name>
     <message>
-        <source>You install %1 offline poet from %2 poets, Allowed to install using non-premium account.</source>
-        <translation>شما آثار %1 شاعر از حداکثر %2 شاعر که می‌توانید با اکانت غیرحرفه‌ای آفلاین کنید را نصب کرده‌اید.</translation>
+        <source>Messages</source>
+        <translation>پیام‌ها</translation>
     </message>
     <message>
-        <source>You install %1 offline poet from %2 poets. for more information contact us on telegram:</source>
-        <translation>شما %1 شاعر از %2 شاعر که می‌توانید نصب کنید را استفاده کردید. برای اطلاعات بیشتر با ما در تلگرام تماس بگیرید:</translation>
-    </message>
-    <message>
-        <source>Click Here</source>
-        <translation>کلیک کنید</translation>
+        <source>Close</source>
+        <translation>بستن</translation>
     </message>
 </context>
 <context>
@@ -1494,7 +1417,7 @@ It containts %2 items currently.</source>
     </message>
     <message>
         <source>Favorites</source>
-        <translation type="vanished">علاقه‌مندی‌ها</translation>
+        <translation>علاقه‌مندی‌ها</translation>
     </message>
     <message>
         <source>about</source>
@@ -1529,6 +1452,92 @@ It containts %2 items currently.</source>
     </message>
 </context>
 <context>
+    <name>MyPoemPage</name>
+    <message>
+        <source>Edit Poem</source>
+        <translation>ویرایش شعر</translation>
+    </message>
+    <message>
+        <source>Publish</source>
+        <translation>انتشار شعر</translation>
+    </message>
+    <message>
+        <source>To edit poem touch below button.</source>
+        <translation>برای ویرایش شعر کلید زیر را لمس کنید.</translation>
+    </message>
+    <message>
+        <source>Rename</source>
+        <translation>تغییر نام</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>پاک کردن</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>لغو</translation>
+    </message>
+    <message>
+        <source>Do you realy want to delete this poem?</source>
+        <translation>آیا از پاک کردن این شعر مطمئن هستید؟</translation>
+    </message>
+    <message>
+        <source>Do you realy want to unpublish this poem? Not that you must submit review request for the republish.</source>
+        <translation>آیا از لغو انتشار این شعر مطمئن هستید؟ توجه داشته باشید برای انتشار دوباره اشعار باید مجددا وارد مرحله بررسی شوند.</translation>
+    </message>
+    <message>
+        <source>Unpublish</source>
+        <translation>لغو انتشار</translation>
+    </message>
+    <message>
+        <source>Poem unpublished successfully</source>
+        <translation>شعر باموفقیت از انتشار خارج شد</translation>
+    </message>
+</context>
+<context>
+    <name>MySubBooksPage</name>
+    <message>
+        <source>Rename</source>
+        <translation>تغییر نام</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>پاک کردن</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>لغو</translation>
+    </message>
+    <message>
+        <source>Do you realy want to unpublish this book? Not that you must submit review request for the republish.</source>
+        <translation>آیا از لغو انتشار این دفتر مطمئن هستید؟ توجه داشته باشید برای انتشار دوباره اشعار باید مجددا وارد مرحله بررسی شوند.</translation>
+    </message>
+    <message>
+        <source>Unpublish</source>
+        <translation>لغو انتشار</translation>
+    </message>
+    <message>
+        <source>Do you realy want to delete this book? Not that all sub books and poems will deleted.</source>
+        <translation>آیا از پاک کردن این دفتر مطمئن هستید؟ توجه داشته باشید که تمامی دفترها و اشعار زیر مجموعه آن پاک خواهند شد.</translation>
+    </message>
+    <message>
+        <source>Click Here</source>
+        <translation>کلیک کنید</translation>
+    </message>
+    <message>
+        <source>You create %1 poem from %2 poems, Allowed to create using non-premium account.</source>
+        <translation>شما %1 شعر از %2 شعر که با اکانت غیرحرفه‌ای میتوانید بسازید را ساخته‌اید.</translation>
+    </message>
+    <message>
+        <source>You create %1 poems from %2 poems. for more information contact us on telegram:</source>
+        <translation>شما %1 شعر از %2 شعر که میتوانید بسازید ساخته‌اید. برای اطلاعات بیشتر با ما در تلگرام تماس بگیرید:</translation>
+    </message>
+    <message>
+        <source>Book unpublished successfully</source>
+        <translation>دفتر با موفقیت از انتشار خارج شد</translation>
+    </message>
+</context>
+<context>
     <name>NotesListView</name>
     <message>
         <source>There is no item here</source>
@@ -1555,6 +1564,13 @@ It containts %2 items currently.</source>
     </message>
 </context>
 <context>
+    <name>NotesPoetsListModel</name>
+    <message>
+        <source>%1 notes</source>
+        <translation>%1 یادداشت</translation>
+    </message>
+</context>
+<context>
     <name>NotesPoetsListView</name>
     <message>
         <source>There is no item here</source>
@@ -1574,10 +1590,21 @@ It containts %2 items currently.</source>
     </message>
 </context>
 <context>
-    <name>NotesPoetsListModel</name>
+    <name>OnlineListModel</name>
     <message>
-        <source>%1 notes</source>
-        <translation>%1 یادداشت</translation>
+        <source>&quot;%1&quot; followed</source>
+        <translation>&quot;%1&quot; به لیست‌ها اضافه شد.</translation>
+    </message>
+    <message>
+        <source>&quot;%1&quot; unfollowed</source>
+        <translation>&quot;%1&quot; از لیست‌ها حذف شد.</translation>
+    </message>
+</context>
+<context>
+    <name>PaymentsDialog</name>
+    <message>
+        <source>Payments</source>
+        <translation>پرداخت‌ها</translation>
     </message>
 </context>
 <context>
@@ -1651,6 +1678,21 @@ It containts %2 items currently.</source>
     </message>
 </context>
 <context>
+    <name>PoemSwipeHelperView</name>
+    <message>
+        <source>Help</source>
+        <translation>راهنمایی</translation>
+    </message>
+    <message>
+        <source>To go to the next/previous poem, hold center of the screen and swipe it to the left or right.</source>
+        <translation>برای سریع‌تر رفتن به شعر قبل یا بعد، میتوانید انگشتتان را روی وسط صفحه نگه دارید و صفحه را به چپ یا راست بکشید.</translation>
+    </message>
+    <message>
+        <source>I Undrestand</source>
+        <translation>متوجه شدم</translation>
+    </message>
+</context>
+<context>
     <name>PoetBioView</name>
     <message>
         <source>Biography</source>
@@ -1693,36 +1735,6 @@ It containts %2 items currently.</source>
     </message>
 </context>
 <context>
-    <name>PoetCategoriesModel</name>
-    <message>
-        <source>Classic</source>
-        <translation type="vanished">سنتی</translation>
-    </message>
-    <message>
-        <source>New Age</source>
-        <translation type="vanished">معاصر</translation>
-    </message>
-</context>
-<context>
-    <name>PoetView</name>
-    <message>
-        <source>Biography</source>
-        <translation>درباره شاعر</translation>
-    </message>
-    <message>
-        <source>Views</source>
-        <translation>بازدید</translation>
-    </message>
-    <message>
-        <source>New Book</source>
-        <translation>دفتر جدید</translation>
-    </message>
-    <message>
-        <source>To add new book please tap on the below button.</source>
-        <translation>برای اضافه کردن دفتر شعر جدید، کلید زیر را لمس کنید.</translation>
-    </message>
-</context>
-<context>
     <name>PoetBooksView</name>
     <message>
         <source>New Poem</source>
@@ -1758,6 +1770,17 @@ It containts %2 items currently.</source>
     </message>
 </context>
 <context>
+    <name>PoetCategoriesModel</name>
+    <message>
+        <source>Classic</source>
+        <translation>سنتی</translation>
+    </message>
+    <message>
+        <source>New Age</source>
+        <translation>معاصر</translation>
+    </message>
+</context>
+<context>
     <name>PoetPage</name>
     <message>
         <source>Enable offline</source>
@@ -1789,49 +1812,40 @@ It containts %2 items currently.</source>
     </message>
 </context>
 <context>
+    <name>PoetTypesView</name>
+    <message>
+        <source>There is no item here</source>
+        <translation>هیچ عنوانی وجود ندارد</translation>
+    </message>
+    <message>
+        <source>Manage Shelf</source>
+        <translation>مدیریت کتابخانه</translation>
+    </message>
+</context>
+<context>
+    <name>PoetView</name>
+    <message>
+        <source>Biography</source>
+        <translation>درباره شاعر</translation>
+    </message>
+    <message>
+        <source>Views</source>
+        <translation>بازدید</translation>
+    </message>
+    <message>
+        <source>New Book</source>
+        <translation>دفتر جدید</translation>
+    </message>
+    <message>
+        <source>To add new book please tap on the below button.</source>
+        <translation>برای اضافه کردن دفتر شعر جدید، کلید زیر را لمس کنید.</translation>
+    </message>
+</context>
+<context>
     <name>PoetsListView</name>
     <message>
         <source>All Poets</source>
         <translation>همه شاعرها</translation>
-    </message>
-</context>
-<context>
-    <name>PremiumConfirmView</name>
-    <message>
-        <source>Monthly</source>
-        <translation>پرداخت ماهیانه</translation>
-    </message>
-    <message>
-        <source>Yearly</source>
-        <translation>پرداخت سالیانه</translation>
-    </message>
-    <message>
-        <source>Confirm</source>
-        <translation>تایید</translation>
-    </message>
-    <message>
-        <source>Premium Account</source>
-        <translation>اکانت حرفه‌ای</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation>لغو</translation>
-    </message>
-    <message>
-        <source>Coupon</source>
-        <translation>کد تخفیف</translation>
-    </message>
-    <message>
-        <source>Submit</source>
-        <translation>ثبت</translation>
-    </message>
-    <message>
-        <source>You must login with you account before active premium account.</source>
-        <translation>قبل از ارتقا به می‌کده حرفه‌ای باید وارد حساب کاربری خود شوید.</translation>
-    </message>
-    <message>
-        <source>Login</source>
-        <translation>ورود</translation>
     </message>
 </context>
 <context>
@@ -1875,6 +1889,103 @@ It containts %2 items currently.</source>
     <message>
         <source>%1 Personal Poems</source>
         <translation>%1 شعر شخصی</translation>
+    </message>
+</context>
+<context>
+    <name>PremiumConfirmView</name>
+    <message>
+        <source>Monthly</source>
+        <translation>پرداخت ماهیانه</translation>
+    </message>
+    <message>
+        <source>Yearly</source>
+        <translation>پرداخت سالیانه</translation>
+    </message>
+    <message>
+        <source>Confirm</source>
+        <translation>تایید</translation>
+    </message>
+    <message>
+        <source>Premium Account</source>
+        <translation>اکانت حرفه‌ای</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>لغو</translation>
+    </message>
+    <message>
+        <source>Coupon</source>
+        <translation>کد تخفیف</translation>
+    </message>
+    <message>
+        <source>Submit</source>
+        <translation>ثبت</translation>
+    </message>
+    <message>
+        <source>You must login with you account before active premium account.</source>
+        <translation>قبل از ارتقا به می‌کده حرفه‌ای باید وارد حساب کاربری خود شوید.</translation>
+    </message>
+    <message>
+        <source>Login</source>
+        <translation>ورود</translation>
+    </message>
+</context>
+<context>
+    <name>PublishView</name>
+    <message>
+        <source>Close</source>
+        <translation>بستن</translation>
+    </message>
+    <message>
+        <source>Review</source>
+        <translation>بازبینی</translation>
+    </message>
+    <message>
+        <source>Upload to Review</source>
+        <translation>ارسال برای بررسی</translation>
+    </message>
+    <message>
+        <source>Agreement</source>
+        <translation>قوانین</translation>
+    </message>
+    <message>
+        <source>Finished</source>
+        <translation>پایان</translation>
+    </message>
+    <message>
+        <source>Finish</source>
+        <translation>پایان</translation>
+    </message>
+    <message>
+        <source>Your request for review submitted officialy. We will publish your poems and notify you when review finished.</source>
+        <translation>درخواست شما برای بررسی انتشار شعرهای خودتان با موفقیت ثبت شد. بعد از بررسی شعرها در صورت تایید شدنشان منتشر خواهند شد و به شما اطلاع رسانی خواهیم کرد.</translation>
+    </message>
+    <message>
+        <source>You can check state of the review by click on the below icon on the top-right of the My Meikade page.</source>
+        <translation>شما همچنین میتوانید با کلیک برای روی شکل زیر در بالا گوشه سمت چپ صفحه‌ی می‌کده من وضعیت بررسی شعرهای خود را مشاهده کنید.</translation>
+    </message>
+    <message>
+        <source>Accept Agreement</source>
+        <translation>قوانین را می‌پذیرم</translation>
+    </message>
+    <message>
+        <source>There is no poem in the book</source>
+        <translation>شعری در این دفتر موجود نیست</translation>
+    </message>
+    <message>
+        <source>Please Wait...</source>
+        <translation>لطفا صبر کنید...</translation>
+    </message>
+</context>
+<context>
+    <name>QRScannerDialog</name>
+    <message>
+        <source>Please wait</source>
+        <translation>لطفا صبر کنید</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>لغو</translation>
     </message>
 </context>
 <context>
@@ -1931,30 +2042,10 @@ It containts %2 items currently.</source>
     </message>
 </context>
 <context>
-    <name>SearchView</name>
+    <name>SearchListModel</name>
     <message>
-        <source>Search domain:</source>
-        <translation>محدوده جستجو:</translation>
-    </message>
-    <message>
-        <source>Search</source>
-        <translation>جستجو در شعر و نام شاعر</translation>
-    </message>
-    <message>
-        <source>Poets</source>
-        <translation>شاعرها</translation>
-    </message>
-    <message>
-        <source>Public lists</source>
-        <translation>لیست‌های عمومی</translation>
-    </message>
-    <message>
-        <source>Poems Texts</source>
-        <translation>متن شعرها</translation>
-    </message>
-    <message>
-        <source>Close</source>
-        <translation>بستن</translation>
+        <source>%1 - %2 follower</source>
+        <translation>%1 - %2 دنبال کننده</translation>
     </message>
 </context>
 <context>
@@ -2052,37 +2143,85 @@ It&apos;s experimental currently and Meikade technical team working on it. But i
     </message>
 </context>
 <context>
-        <name>IntroSetupTheme</name>
-        <message>
-            <source>Theme</source>
-            <translation>انتخاب پوسته</translation>
-        </message>
-        <message>
-            <source>Next</source>
-            <translation>بعدی</translation>
-        </message>
+    <name>SearchSmartAboutView</name>
+    <message>
+        <source>Smart Search</source>
+        <translation>جستجوی هوشمند</translation>
+    </message>
+    <message>
+        <source>Some about text</source>
+        <translation>توضیحات</translation>
+    </message>
 </context>
 <context>
-        <name>ThemeWizardFrame</name>
-        <message>
-            <source>Please select theme</source>
-            <translation>پوسته مورد علاقه خود را انتخاب کنید</translation>
-        </message>
+    <name>SearchView</name>
+    <message>
+        <source>Search domain:</source>
+        <translation>محدوده جستجو:</translation>
+    </message>
+    <message>
+        <source>Search</source>
+        <translation>جستجو در شعر و نام شاعر</translation>
+    </message>
+    <message>
+        <source>Poets</source>
+        <translation>شاعرها</translation>
+    </message>
+    <message>
+        <source>Public lists</source>
+        <translation>لیست‌های عمومی</translation>
+    </message>
+    <message>
+        <source>Poems Texts</source>
+        <translation>متن شعرها</translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation>بستن</translation>
+    </message>
 </context>
 <context>
-        <name>ThemeWizardView</name>
-        <message>
-            <source>Apply and Close</source>
-            <translation>انتخاب و تایید</translation>
-        </message>
-        <message>
-            <source>Theme Wizard</source>
-            <translation>انتخاب پوسته</translation>
-        </message>
-        <message>
-            <source>Close</source>
-            <translation>خروج</translation>
-        </message>
+    <name>SettingsPage</name>
+    <message>
+        <source>Logout</source>
+        <translation>خروج از حساب کاربری</translation>
+    </message>
+    <message>
+        <source>Do you realy want to logout?</source>
+        <translation>آیا مطمئنید که می‌خواهید خارج شوید؟</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>لغو</translation>
+    </message>
+    <message>
+        <source>Logout Successfully</source>
+        <translation>با موفقیت خارج شدید</translation>
+    </message>
+    <message>
+        <source>%1 days</source>
+        <translation>%1 روز</translation>
+    </message>
+    <message>
+        <source>Loading...</source>
+        <translation>در حال بارگزاری...</translation>
+    </message>
+    <message>
+        <source>%1 SAT</source>
+        <translation>%1 ساتوشی</translation>
+    </message>
+    <message>
+        <source>Payments</source>
+        <translation>پرداخت‌ها</translation>
+    </message>
+    <message>
+        <source>Deposit</source>
+        <translation>واریز</translation>
+    </message>
+    <message>
+        <source>Withdraw</source>
+        <translation>برداشت‌</translation>
+    </message>
 </context>
 <context>
     <name>SettingsView</name>
@@ -2154,28 +2293,9 @@ It&apos;s experimental currently and Meikade technical team working on it. But i
         <source>Mixed Header</source>
         <translation>نوار ابزار بی‌رنگ</translation>
     </message>
-</context>
-<context>
-    <name>SettingsPage</name>
     <message>
-        <source>Logout</source>
-        <translation>خروج از حساب کاربری</translation>
-    </message>
-    <message>
-        <source>Do you realy want to logout?</source>
-        <translation>آیا مطمئنید که می‌خواهید خارج شوید؟</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation>لغو</translation>
-    </message>
-    <message>
-        <source>Logout Successfully</source>
-        <translation>با موفقیت خارج شدید</translation>
-    </message>
-    <message>
-        <source>%1 days</source>
-        <translation>%1 روز</translation>
+        <source>Balance:</source>
+        <translation>موجودی:</translation>
     </message>
 </context>
 <context>
@@ -2234,6 +2354,13 @@ It&apos;s experimental currently and Meikade technical team working on it. But i
     </message>
 </context>
 <context>
+    <name>SingleListPage</name>
+    <message>
+        <source>Favoriteds</source>
+        <translation>علاقه‌مندی‌ها</translation>
+    </message>
+</context>
+<context>
     <name>StickerDialog</name>
     <message>
         <source>Share</source>
@@ -2249,11 +2376,11 @@ It&apos;s experimental currently and Meikade technical team working on it. But i
     </message>
     <message>
         <source>Select Image</source>
-        <translation type="vanished">انتخاب تصویر</translation>
+        <translation>انتخاب تصویر</translation>
     </message>
     <message>
         <source>Unset</source>
-        <translation type="vanished">حذف</translation>
+        <translation>حذف</translation>
     </message>
     <message>
         <source>Sticker saved on %1</source>
@@ -2318,12 +2445,27 @@ It&apos;s experimental currently and Meikade technical team working on it. But i
         <source>Poet Name</source>
         <translation>نام شاعر</translation>
     </message>
+    <message>
+        <source>1:2</source>
+        <translation type="unfinished">1:2</translation>
+    </message>
+    <message>
+        <source>1:3</source>
+        <translation type="unfinished">1:3</translation>
+    </message>
 </context>
 <context>
     <name>Subscription</name>
     <message>
         <source>Free Account</source>
         <translation>اکانت رایگان</translation>
+    </message>
+</context>
+<context>
+    <name>SyncPage</name>
+    <message>
+        <source>Syncing...</source>
+        <translation>در حال همگام‌سازی…</translation>
     </message>
 </context>
 <context>
@@ -2342,7 +2484,7 @@ It&apos;s experimental currently and Meikade technical team working on it. But i
     </message>
     <message>
         <source>Favorites</source>
-        <translation type="vanished">علاقه‌مندی‌ها</translation>
+        <translation>علاقه‌مندی‌ها</translation>
     </message>
     <message>
         <source>Notes</source>
@@ -2374,10 +2516,25 @@ It&apos;s experimental currently and Meikade technical team working on it. But i
     </message>
 </context>
 <context>
-    <name>SyncPage</name>
+    <name>ThemeWizardFrame</name>
     <message>
-        <source>Syncing...</source>
-        <translation>در حال همگام‌سازی…</translation>
+        <source>Please select theme</source>
+        <translation>پوسته مورد علاقه خود را انتخاب کنید</translation>
+    </message>
+</context>
+<context>
+    <name>ThemeWizardView</name>
+    <message>
+        <source>Apply and Close</source>
+        <translation>انتخاب و تایید</translation>
+    </message>
+    <message>
+        <source>Theme Wizard</source>
+        <translation>انتخاب پوسته</translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation>خروج</translation>
     </message>
 </context>
 <context>
@@ -2394,12 +2551,27 @@ It&apos;s experimental currently and Meikade technical team working on it. But i
         <source>Close</source>
         <translation>بستن</translation>
     </message>
+    <message>
+        <source>Manage Shelf</source>
+        <translation>مدیریت کتابخانه</translation>
+    </message>
+    <message>
+        <source>Search</source>
+        <translation>جستجو</translation>
+    </message>
 </context>
 <context>
     <name>WaitDialog</name>
     <message>
         <source>Please Wait...</source>
         <translation>لطفا صبر کنید...</translation>
+    </message>
+</context>
+<context>
+    <name>WaitDialog.ui</name>
+    <message>
+        <source>Please Wait...</source>
+        <translation type="unfinished">لطفا صبر کنید...</translation>
     </message>
 </context>
 <context>
@@ -2411,6 +2583,80 @@ It&apos;s experimental currently and Meikade technical team working on it. But i
     <message>
         <source>Close</source>
         <translation>بستن</translation>
+    </message>
+</context>
+<context>
+    <name>WithdrawDialog</name>
+    <message>
+        <source>Withdraw process completed successfully.</source>
+        <translation>برداشت با موفقیت انجام شد.</translation>
+    </message>
+    <message>
+        <source>Checking payment...</source>
+        <translation>درحال بررسی کد برداشت...</translation>
+    </message>
+    <message>
+        <source>Please check below informations and click on Pay to complete withraw process.</source>
+        <translation>لطفا اطلاعات زیر را بررسی کنید و در صورت صحیح بودن کلید برداشت رو بزنید.</translation>
+    </message>
+    <message>
+        <source>%1.%2</source>
+        <translation>%1.%2</translation>
+    </message>
+    <message>
+        <source>Satoshi</source>
+        <translation>ساتوشی</translation>
+    </message>
+    <message>
+        <source>Payment Hash:</source>
+        <translation>کلید برداشت:</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>لغو</translation>
+    </message>
+    <message>
+        <source>Pay Withdraw</source>
+        <translation>برداشت</translation>
+    </message>
+    <message>
+        <source>Warning</source>
+        <translation>توجه</translation>
+    </message>
+    <message>
+        <source>Do you realy want to tip &lt;b&gt;%1 satoshi&lt;/b&gt; to this trick?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Yes</source>
+        <translation>بله</translation>
+    </message>
+    <message>
+        <source>No</source>
+        <translation>خیر</translation>
+    </message>
+    <message>
+        <source>Please enter payment key to withdraw from your account:</source>
+        <translation>لطفا کد برداشت را اینجا وارد کنید:</translation>
+    </message>
+    <message>
+        <source>Click to paste:</source>
+        <translation>برای پیست کردن کلیک کنید:</translation>
+    </message>
+    <message>
+        <source>Check payment key</source>
+        <translation>بررسی کد برداشت</translation>
+    </message>
+    <message>
+        <source>Withdraw</source>
+        <translation>برداشت‌</translation>
+    </message>
+</context>
+<context>
+    <name>main</name>
+    <message>
+        <source>Execute stress test for Qr Code encoding and decoding</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

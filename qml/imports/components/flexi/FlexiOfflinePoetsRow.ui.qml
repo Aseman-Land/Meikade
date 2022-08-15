@@ -7,6 +7,7 @@ import models 1.0
 import "delegates"
 
 FlexiDynamicRow {
+    property alias count: recentsModel.count
 
     list.model: OfflinePoetsModel {
         id: recentsModel

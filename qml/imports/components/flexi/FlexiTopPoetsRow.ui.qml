@@ -10,21 +10,27 @@ import "delegates"
 
 FlexiGridRow {
 
+    readonly property int count: TopPoetsHomeModel.count + 1
+
     list.model: TopPoetsHomeModel
 
-    Button {
-        anchors.verticalCenterOffset: 60 * Devices.density
-        anchors.centerIn: parent
-        visible: TopPoetsHomeModel.count == 0
-        text: qsTr("Add Poets") + Translations.refresher
-        font.pixelSize: 9 * Devices.fontDensity
-//        highlighted: isAndroidStyle
-        Material.elevation: 0
-        Material.background: Colors.lightBackground
-        Material.foreground: Colors.accent
+    Column {
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.top: parent.bottom
+        anchors.topMargin: TopPoetsHomeModel.count? 0 : 60 * Devices.density
 
-        Connections {
-            onClicked: Viewport.controller.trigger("float:/favorites")
+        Button {
+            anchors.horizontalCenter: parent.horizontalCenter
+            text: qsTr("Manage Shelf") + Translations.refresher
+            font.pixelSize: 9 * Devices.fontDensity
+//            highlighted: isAndroidStyle
+            Material.elevation: 0
+            Material.background: Colors.lightBackground
+            Material.foreground: Colors.accent
+
+            Connections {
+                onClicked: Viewport.controller.trigger("float:/favorites")
+            }
         }
     }
 }

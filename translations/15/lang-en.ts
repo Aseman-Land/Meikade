@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="en_US" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="en_US">
 <context>
     <name>AboutView</name>
     <message>
@@ -81,6 +83,49 @@ open source and free software technologies.&lt;br /&gt;Aseman promotes accessibi
         <source>Version:</source>
         <translation>Version:</translation>
     </message>
+    <message>
+        <source>&lt;b&gt;&lt;u&gt;Meikade is a free and opensource poetry app&lt;/u&gt;&lt;/b&gt;, designed and created by Aseman. It means user freedom and privacy is important for Meikade. So you can access Meikade&apos;s source code on Github, Read it and change it under the term of the GPLv3 license.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Aseman</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hamidreza Mohammad (Ganjoor team), Arman Farajollahi-far, Purya Daneshvar (UI/UX), Armin Shalchian (Apple Watch), Amin Hatami (Logo Designer), Mohsen Ebrahimnejad (Telegram channel assistant), Hasan Noroozi, Houtan Baraary, Mansoore Zamani, Pourya Khalaj Tehrani</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;b&gt;&lt;u&gt;Aseman&lt;/u&gt;&lt;/b&gt;, Aseman is a non-profit and community based company that created in 2013 by members of the Idehgostar company. Aseman created to leads open-source and free software.&lt;br /&gt;Aseman promotes openness, innovation and participation on the digital and computers world.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>AddBookView</name>
+    <message>
+        <source>Rename Book</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add Book</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Please enter book name:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Book Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Rename</source>
+        <translation type="unfinished">Rename</translation>
+    </message>
+    <message>
+        <source>Add</source>
+        <translation type="unfinished">Add</translation>
+    </message>
 </context>
 <context>
     <name>AddListView</name>
@@ -107,6 +152,29 @@ open source and free software technologies.&lt;br /&gt;Aseman promotes accessibi
     <message>
         <source>Rename</source>
         <translation>Rename</translation>
+    </message>
+</context>
+<context>
+    <name>AddNotePage</name>
+    <message>
+        <source>You create %1 note from %2 notes, Allowed to create using non-premium account.</source>
+        <translation>You have created %1 note(s) from %2 notes that you are allowed to create while using non-premium account.</translation>
+    </message>
+    <message>
+        <source>You create %1 note from %2 notes.</source>
+        <translation>You have created %1 note(s) from %2 notes.</translation>
+    </message>
+    <message>
+        <source>Click Here</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You create %1 note from %2 notes. for more information contact us on telegram:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Are you sure about delete this note?</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -139,16 +207,32 @@ open source and free software technologies.&lt;br /&gt;Aseman promotes accessibi
         <source>Don&apos;t show this message again</source>
         <translation>Don&apos;t show this message again</translation>
     </message>
-</context>
-<context>
-    <name>AddNotePage</name>
     <message>
-        <source>You create %1 note from %2 notes, Allowed to create using non-premium account.</source>
-        <translation>You have created %1 note(s) from %2 notes that you are allowed to create while using non-premium account.</translation>
+        <source>I Undrestand</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>You create %1 note from %2 notes.</source>
-        <translation>You have created %1 note(s) from %2 notes.</translation>
+        <source>To go to the poem, click on the verse</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>AddPoemRoute</name>
+    <message>
+        <source>Rename Poem</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add Poem</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Poem Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Please enter poem name:</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -160,6 +244,51 @@ open source and free software technologies.&lt;br /&gt;Aseman promotes accessibi
     <message>
         <source>Check your email, assigned to your account.</source>
         <translation>Check your email, the one assigned to your account.</translation>
+    </message>
+</context>
+<context>
+    <name>BaseRequest</name>
+    <message>
+        <source>SSL Error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You have connection security issue:%1Do you want to ignore it?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Yes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ChangeBioPage</name>
+    <message>
+        <source>Change Bio</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Please enter new biography:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Biography</source>
+        <translation type="unfinished">Biography</translation>
+    </message>
+    <message>
+        <source>Bio updated successfully</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ChangeNamePage</name>
+    <message>
+        <source>Name updated successfully</source>
+        <translation>Name updated successfully</translation>
     </message>
 </context>
 <context>
@@ -179,13 +308,6 @@ open source and free software technologies.&lt;br /&gt;Aseman promotes accessibi
     <message>
         <source>Confirm</source>
         <translation>Confirm</translation>
-    </message>
-</context>
-<context>
-    <name>ChangeNamePage</name>
-    <message>
-        <source>Name updated successfully</source>
-        <translation>Name updated successfully</translation>
     </message>
 </context>
 <context>
@@ -276,6 +398,41 @@ open source and free software technologies.&lt;br /&gt;Aseman promotes accessibi
     </message>
 </context>
 <context>
+    <name>ContactPage</name>
+    <message>
+        <source>Platform Name</source>
+        <translation>Platform Name</translation>
+    </message>
+    <message>
+        <source>Kernel</source>
+        <translation>Kernel</translation>
+    </message>
+    <message>
+        <source>CPU Architecture</source>
+        <translation>CPU Architecture</translation>
+    </message>
+    <message>
+        <source>Device Name</source>
+        <translation>Device Name</translation>
+    </message>
+    <message>
+        <source>LCD Density</source>
+        <translation>LCD Density</translation>
+    </message>
+    <message>
+        <source>LCD Size</source>
+        <translation>LCD Size</translation>
+    </message>
+    <message>
+        <source>Thank you. Your message sent successfully :)</source>
+        <translation>Thank you. Your message was sent successfully :)</translation>
+    </message>
+    <message>
+        <source>Meikade Version</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ContactView</name>
     <message>
         <source>Contact us</source>
@@ -317,36 +474,21 @@ open source and free software technologies.&lt;br /&gt;Aseman promotes accessibi
         <source>Send</source>
         <translation>Send</translation>
     </message>
-</context>
-<context>
-    <name>ContactPage</name>
     <message>
-        <source>Platform Name</source>
-        <translation>Platform Name</translation>
+        <source>Features that suggested by Meikade users. You can rate them.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Kernel</source>
-        <translation>Kernel</translation>
+        <source>%1 people</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>CPU Architecture</source>
-        <translation>CPU Architecture</translation>
+        <source>User&apos;s Requests</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Device Name</source>
-        <translation>Device Name</translation>
-    </message>
-    <message>
-        <source>LCD Density</source>
-        <translation>LCD Density</translation>
-    </message>
-    <message>
-        <source>LCD Size</source>
-        <translation>LCD Size</translation>
-    </message>
-    <message>
-        <source>Thank you. Your message sent successfully :)</source>
-        <translation>Thank you. Your message was sent successfully :)</translation>
+        <source>Send Message</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -376,6 +518,19 @@ open source and free software technologies.&lt;br /&gt;Aseman promotes accessibi
     </message>
 </context>
 <context>
+    <name>DeleteListPage</name>
+    <message>
+        <source>Are you sure about delete &quot;%1&quot;?
+It containts %2 items currently.</source>
+        <translation>Are you sure about deleting &quot;%1&quot;?
+It contains %2 of current items.</translation>
+    </message>
+    <message>
+        <source>&quot;%1&quot; deleted</source>
+        <translation>&quot;%1&quot; deleted</translation>
+    </message>
+</context>
+<context>
     <name>DeleteListView</name>
     <message>
         <source>Delete List</source>
@@ -392,19 +547,6 @@ open source and free software technologies.&lt;br /&gt;Aseman promotes accessibi
     <message>
         <source>Confirm</source>
         <translation>Confirm</translation>
-    </message>
-</context>
-<context>
-    <name>DeleteListPage</name>
-    <message>
-        <source>Are you sure about delete &quot;%1&quot;?
-It containts %2 items currently.</source>
-        <translation>Are you sure about deleting &quot;%1&quot;?
-It contains %2 of current items.</translation>
-    </message>
-    <message>
-        <source>&quot;%1&quot; deleted</source>
-        <translation>&quot;%1&quot; deleted</translation>
     </message>
 </context>
 <context>
@@ -427,6 +569,61 @@ It contains %2 of current items.</translation>
     </message>
 </context>
 <context>
+    <name>DepositDialog</name>
+    <message>
+        <source>Generating Deposit...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copy code or Scan below QR using a lightning wallet (like BlueWallet) to complete deposit.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Payment key copied to the clipboard.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Click to copy:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Please enter value you want to deposit to your account:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Satoshi</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Minimum:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 satoshi,</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Maxmium:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 satoshi</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation type="unfinished">Cancel</translation>
+    </message>
+    <message>
+        <source>Generate payment key</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Deposit</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>DrawerFrame</name>
     <message>
         <source>Frame</source>
@@ -435,6 +632,37 @@ It contains %2 of current items.</translation>
     <message>
         <source>Cancel</source>
         <translation>Cancel</translation>
+    </message>
+</context>
+<context>
+    <name>EditPoemView</name>
+    <message>
+        <source>To add your poem, please type every verse in a single line. After all verses written press save button.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Note</source>
+        <translation type="unfinished">Note</translation>
+    </message>
+    <message>
+        <source>To make verses showin in center of the line, add a &apos;:&apos; in the first of the line.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Every verse in a single line:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Poem Text</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Preview</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Save poem</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -460,6 +688,13 @@ It contains %2 of current items.</translation>
     </message>
 </context>
 <context>
+    <name>FavoritedPoetsListModel</name>
+    <message>
+        <source>%1 items</source>
+        <translation>%1 of items</translation>
+    </message>
+</context>
+<context>
     <name>FavoritedPoetsListView</name>
     <message>
         <source>There is no item here</source>
@@ -473,12 +708,33 @@ It contains %2 of current items.</translation>
         <source>Close</source>
         <translation>Close</translation>
     </message>
-</context>
-<context>
-    <name>FavoritedPoetsListModel</name>
     <message>
-        <source>%1 items</source>
-        <translation>%1 of items</translation>
+        <source>Public list</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unfollow</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Follow</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Next</source>
+        <translation type="unfinished">Next</translation>
+    </message>
+    <message>
+        <source>To view all poems without grouping by poets use this button.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>I Undrestand</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>To share your list with other users using search area, active this switch.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -507,12 +763,30 @@ It contains %2 of current items.</translation>
         <source>Favorites</source>
         <translation>Favorites</translation>
     </message>
+    <message>
+        <source>Shelf</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>FlexiTopPoetsRow.ui</name>
+    <message>
+        <source>Manage Shelf</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FooterItem</name>
     <message>
         <source>Label</source>
         <translation>Label</translation>
+    </message>
+</context>
+<context>
+    <name>FooterItem.ui</name>
+    <message>
+        <source>Label</source>
+        <translation type="unfinished">Label</translation>
     </message>
 </context>
 <context>
@@ -562,17 +836,6 @@ It contains %2 of current items.</translation>
     </message>
 </context>
 <context>
-    <name>HafizFaalView</name>
-    <message>
-        <source>Hafiz Faal</source>
-        <translation>Hafez Faal</translation>
-    </message>
-    <message>
-        <source>Close</source>
-        <translation>Close</translation>
-    </message>
-</context>
-<context>
     <name>HafizFaalPage</name>
     <message>
         <source>Hafiz</source>
@@ -584,10 +847,28 @@ It contains %2 of current items.</translation>
     </message>
 </context>
 <context>
+    <name>HafizFaalView</name>
+    <message>
+        <source>Hafiz Faal</source>
+        <translation>Hafez Faal</translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation>Close</translation>
+    </message>
+</context>
+<context>
     <name>HomeForm</name>
     <message>
         <source>Meikade</source>
         <translation>Meikade</translation>
+    </message>
+</context>
+<context>
+    <name>InboxView</name>
+    <message>
+        <source>Inbox</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -622,17 +903,6 @@ It contains %2 of current items.</translation>
     </message>
 </context>
 <context>
-    <name>IntroView</name>
-    <message>
-        <source>Next</source>
-        <translation>Next</translation>
-    </message>
-    <message>
-        <source>Prev</source>
-        <translation>Previous</translation>
-    </message>
-</context>
-<context>
     <name>IntroPage</name>
     <message>
         <source>You install %1 offline poet from %2 poets, Allowed to install using non-premium account.</source>
@@ -653,6 +923,18 @@ It contains %2 of current items.</translation>
         <source>Please choose at lease 5 your favorites.</source>
         <translation>Please choose 5 of your favorites at least.</translation>
     </message>
+    <message>
+        <source>Search</source>
+        <translation type="unfinished">Search</translation>
+    </message>
+    <message>
+        <source>Please choose at lease 3 your favorites.</source>
+        <translation type="unfinished">Please choose 5 of your favorites at least. {3 ?}</translation>
+    </message>
+    <message>
+        <source>Next</source>
+        <translation type="unfinished">Next</translation>
+    </message>
 </context>
 <context>
     <name>IntroSetupOfflines</name>
@@ -663,7 +945,7 @@ It contains %2 of current items.</translation>
     <message>
         <source>Meikade 4 is online by default now. It means you can discover between tousands of poems freely without downloading to your storages. But it also available to download them to your 
 storage and read them offline. Please select your poets that your want to read online. You can also setup it later on the every poet/book page.</source>
-        <translation type="vanished">Meikade 4 is online by default, which means you can access thousands of poems everyday without downloading them to your device storage. But you can also access 
+        <translation>Meikade 4 is online by default, which means you can access thousands of poems everyday without downloading them to your device storage. But you can also access 
 your poetry in an offline mode via downloading your selected poets. Please select the preferred poets that you wish to access offline. You can edit this list later in each poet or book 
 page.</translation>
     </message>
@@ -693,6 +975,32 @@ page.</translation>
     </message>
 </context>
 <context>
+    <name>IntroSetupTheme</name>
+    <message>
+        <source>Theme</source>
+        <translation type="unfinished">Theme</translation>
+    </message>
+    <message>
+        <source>Next</source>
+        <translation type="unfinished">Next</translation>
+    </message>
+</context>
+<context>
+    <name>IntroView</name>
+    <message>
+        <source>Next</source>
+        <translation>Next</translation>
+    </message>
+    <message>
+        <source>Prev</source>
+        <translation>Previous</translation>
+    </message>
+    <message>
+        <source>Skip</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>IntroWelcomForm</name>
     <message>
         <source>Welcome to Meikade 4</source>
@@ -705,6 +1013,60 @@ page.</translation>
     <message>
         <source>So It&apos;s neccessary to take some times and do next steps to personalize your Meikade. Choose language and press &quot;Next&quot; if you ready.</source>
         <translation>So It is necessary to take some time and complete next steps to personalize your Meikade. Choose your default language and press &quot;Next&quot; if you are ready.</translation>
+    </message>
+    <message>
+        <source>Please choose your language</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Next</source>
+        <translation type="unfinished">Next</translation>
+    </message>
+</context>
+<context>
+    <name>ListsModel</name>
+    <message>
+        <source>Favorites</source>
+        <translation>Favorites</translation>
+    </message>
+    <message>
+        <source>%1 items</source>
+        <translation>%1 of items</translation>
+    </message>
+</context>
+<context>
+    <name>ListsPage</name>
+    <message>
+        <source>Lists updated</source>
+        <translation>Lists updated</translation>
+    </message>
+    <message>
+        <source>Favoriteds</source>
+        <translation>Favorites</translation>
+    </message>
+    <message>
+        <source>Change Name</source>
+        <translation>Change Name</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>Delete</translation>
+    </message>
+    <message>
+        <source>You create %1 lists from %2 lists, Allowed to create using non-premium account.</source>
+        <translation>You have created %1 of %2 lists that you are allowed to install while using non-premium account.</translation>
+    </message>
+    <message>
+        <source>You create %1 lists from %2 lists.</source>
+        <translation>You have created %1 of %2 lists.</translation>
+    </message>
+    <message>
+        <source>Click Here</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You create %1 lists from %2 lists. for more information contact us on telegram:</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -743,41 +1105,34 @@ page.</translation>
     </message>
 </context>
 <context>
-    <name>ListsModel</name>
+    <name>LoginColumnForm</name>
     <message>
-        <source>Favorites</source>
-        <translation>Favorites</translation>
+        <source>If you created account before, Just enter your username below. Otherwise click on &quot;Create new account&quot; button.</source>
+        <translation type="unfinished">If you already have an account, just enter your username. Otherwise click on &quot;Create a new account&quot; button.</translation>
     </message>
     <message>
-        <source>%1 items</source>
-        <translation type="vanished">%1 of items</translation>
-    </message>
-</context>
-<context>
-    <name>ListsPage</name>
-    <message>
-        <source>Lists updated</source>
-        <translation>Lists updated</translation>
+        <source>Username</source>
+        <translation type="unfinished">Username</translation>
     </message>
     <message>
-        <source>Favoriteds</source>
-        <translation>Favorites</translation>
+        <source>Password</source>
+        <translation type="unfinished">Password</translation>
     </message>
     <message>
-        <source>Change Name</source>
-        <translation>Change Name</translation>
+        <source>Login</source>
+        <translation type="unfinished">Login</translation>
     </message>
     <message>
-        <source>Delete</source>
-        <translation>Delete</translation>
+        <source>Create new account</source>
+        <translation type="unfinished">Create a new account</translation>
     </message>
     <message>
-        <source>You create %1 lists from %2 lists, Allowed to create using non-premium account.</source>
-        <translation>You have created %1 of %2 lists that you are allowed to install while using non-premium account.</translation>
+        <source>Forget your password</source>
+        <translation type="unfinished">Forgot your password?</translation>
     </message>
     <message>
-        <source>You create %1 lists from %2 lists.</source>
-        <translation>You have created %1 of %2 lists.</translation>
+        <source>Skip authenticating</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -829,6 +1184,29 @@ page.</translation>
         <source>My Meikade</source>
         <translation>My Meikade</translation>
     </message>
+    <message>
+        <source>Explore</source>
+        <translation type="unfinished">Explore</translation>
+    </message>
+</context>
+<context>
+    <name>ManageOfflinePoetsPage</name>
+    <message>
+        <source>You install %1 offline poet from %2 poets, Allowed to install using non-premium account.</source>
+        <translation>You have installed %1 of %2 offline poets that you are allowed to install using non-premium account.</translation>
+    </message>
+    <message>
+        <source>You install %1 offline poet from %2 poets.</source>
+        <translation>You have installed %1 of %2 offline poets.</translation>
+    </message>
+    <message>
+        <source>Click Here</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You install %1 offline poet from %2 poets. for more information contact us on telegram:</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ManageOfflinePoetsView</name>
@@ -874,14 +1252,10 @@ page.</translation>
     </message>
 </context>
 <context>
-    <name>ManageOfflinePoetsPage</name>
+    <name>MessagesView</name>
     <message>
-        <source>You install %1 offline poet from %2 poets, Allowed to install using non-premium account.</source>
-        <translation>You have installed %1 of %2 offline poets that you are allowed to install using non-premium account.</translation>
-    </message>
-    <message>
-        <source>You install %1 offline poet from %2 poets.</source>
-        <translation>You have installed %1 of %2 offline poets.</translation>
+        <source>Messages</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -966,7 +1340,7 @@ page.</translation>
     </message>
     <message>
         <source>Favorites</source>
-        <translation type="vanished">Favorites</translation>
+        <translation>Favorites</translation>
     </message>
     <message>
         <source>about</source>
@@ -975,6 +1349,10 @@ page.</translation>
     <message>
         <source>Lists</source>
         <translation>Lists</translation>
+    </message>
+    <message>
+        <source>My Poems</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -985,11 +1363,105 @@ page.</translation>
     </message>
     <message>
         <source>Change Avatar</source>
-        <translation type="vanished">Change Avatar</translation>
+        <translation>Change Avatar</translation>
     </message>
     <message>
         <source>Change Password</source>
         <translation>Change Password</translation>
+    </message>
+    <message>
+        <source>Change Bio</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unset Avatar</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>MyPoemPage</name>
+    <message>
+        <source>To edit poem touch below button.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit Poem</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Publish</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Poem unpublished successfully</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation type="unfinished">Delete</translation>
+    </message>
+    <message>
+        <source>Do you realy want to unpublish this poem? Not that you must submit review request for the republish.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation type="unfinished">Cancel</translation>
+    </message>
+    <message>
+        <source>Unpublish</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Do you realy want to delete this poem?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Rename</source>
+        <translation type="unfinished">Rename</translation>
+    </message>
+</context>
+<context>
+    <name>MySubBooksPage</name>
+    <message>
+        <source>Click Here</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You create %1 poem from %2 poems, Allowed to create using non-premium account.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You create %1 poems from %2 poems. for more information contact us on telegram:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Book unpublished successfully</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unpublish</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Do you realy want to unpublish this book? Not that you must submit review request for the republish.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation type="unfinished">Cancel</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation type="unfinished">Delete</translation>
+    </message>
+    <message>
+        <source>Do you realy want to delete this book? Not that all sub books and poems will deleted.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Rename</source>
+        <translation type="unfinished">Rename</translation>
     </message>
 </context>
 <context>
@@ -1019,14 +1491,21 @@ page.</translation>
     </message>
 </context>
 <context>
+    <name>NotesPoetsListModel</name>
+    <message>
+        <source>%1 items</source>
+        <translation>%1 of items</translation>
+    </message>
+    <message>
+        <source>%1 notes</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>NotesPoetsListView</name>
     <message>
         <source>There is no item here</source>
         <translation>There is no item here</translation>
-    </message>
-    <message>
-        <source>Favoriteds</source>
-        <translation type="unfinished"/>
     </message>
     <message>
         <source>Close</source>
@@ -1038,10 +1517,21 @@ page.</translation>
     </message>
 </context>
 <context>
-    <name>NotesPoetsListModel</name>
+    <name>OnlineListModel</name>
     <message>
-        <source>%1 items</source>
-        <translation>%1 of items</translation>
+        <source>&quot;%1&quot; followed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&quot;%1&quot; unfollowed</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>PaymentsDialog</name>
+    <message>
+        <source>Payments</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1059,7 +1549,7 @@ page.</translation>
     <name>PoemPage</name>
     <message>
         <source>Add to Bookmarks</source>
-        <translation type="vanished">Add to Bookmarks</translation>
+        <translation>Add to Bookmarks</translation>
     </message>
     <message>
         <source>Copy</source>
@@ -1079,15 +1569,15 @@ page.</translation>
     </message>
     <message>
         <source>Remove Bookmarks</source>
-        <translation type="vanished">Remove Bookmarks</translation>
+        <translation>Remove Bookmarks</translation>
     </message>
     <message>
         <source>Poem Unfavorited</source>
-        <translation type="vanished">Poem Unfavorited</translation>
+        <translation>Poem Unfavorited</translation>
     </message>
     <message>
         <source>Poem favorited</source>
-        <translation type="vanished">Poem favorited</translation>
+        <translation>Poem favorited</translation>
     </message>
     <message>
         <source>Poem copied</source>
@@ -1095,11 +1585,11 @@ page.</translation>
     </message>
     <message>
         <source>Verse Unfavorited</source>
-        <translation type="vanished">Verse Unfavorited</translation>
+        <translation>Verse Unfavorited</translation>
     </message>
     <message>
         <source>Verse favorited</source>
-        <translation type="vanished">Verse favorited</translation>
+        <translation>Verse favorited</translation>
     </message>
     <message>
         <source>Verse copied</source>
@@ -1112,6 +1602,21 @@ page.</translation>
     <message>
         <source>Note</source>
         <translation>Note</translation>
+    </message>
+</context>
+<context>
+    <name>PoemSwipeHelperView</name>
+    <message>
+        <source>Help</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>To go to the next/previous poem, hold center of the screen and swipe it to the left or right.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>I Undrestand</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1157,25 +1662,49 @@ page.</translation>
     </message>
 </context>
 <context>
-    <name>PoetCategoriesModel</name>
+    <name>PoetBooksView</name>
     <message>
-        <source>Classic</source>
-        <translation type="vanished">Classic</translation>
+        <source>To buy premium account click on below button</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>New Age</source>
-        <translation type="vanished">New Age</translation>
+        <source>Premium Account</source>
+        <translation type="unfinished">Premium Account</translation>
+    </message>
+    <message>
+        <source>Don&apos;t show this message again</source>
+        <translation type="unfinished">Don&apos;t show this message again</translation>
+    </message>
+    <message>
+        <source>To add new poem please tap on the below button.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>New Poem</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>if you want to add a sub-book category, please tap on the below button.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>New Book</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Publish Book</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
-    <name>PoetView</name>
+    <name>PoetCategoriesModel</name>
     <message>
-        <source>Biography</source>
-        <translation>Biography</translation>
+        <source>Classic</source>
+        <translation>Classic</translation>
     </message>
     <message>
-        <source>Views</source>
-        <translation>Views</translation>
+        <source>New Age</source>
+        <translation>New Age</translation>
     </message>
 </context>
 <context>
@@ -1210,10 +1739,83 @@ page.</translation>
     </message>
 </context>
 <context>
+    <name>PoetTypesView</name>
+    <message>
+        <source>There is no item here</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Manage Shelf</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>PoetView</name>
+    <message>
+        <source>Biography</source>
+        <translation>Biography</translation>
+    </message>
+    <message>
+        <source>Views</source>
+        <translation>Views</translation>
+    </message>
+    <message>
+        <source>To add new book please tap on the below button.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>New Book</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>PoetsListView</name>
     <message>
         <source>All Poets</source>
         <translation>All Poets</translation>
+    </message>
+</context>
+<context>
+    <name>PremiumConfirmPage</name>
+    <message>
+        <source>%1% OFF Coupon</source>
+        <translation>%1% OFF Coupon</translation>
+    </message>
+    <message>
+        <source>Toman</source>
+        <translation>Toman</translation>
+    </message>
+    <message>
+        <source>Unlimited Notes</source>
+        <translation>Unlimited Notes</translation>
+    </message>
+    <message>
+        <source>%1 Notes</source>
+        <translation>%1 Notes</translation>
+    </message>
+    <message>
+        <source>Unlimited Lists</source>
+        <translation>Unlimited Lists</translation>
+    </message>
+    <message>
+        <source>%1 Lists</source>
+        <translation>%1 Lists</translation>
+    </message>
+    <message>
+        <source>Unlimited Offline Poems</source>
+        <translation>Unlimited Offline Poems</translation>
+    </message>
+    <message>
+        <source>%1 Offline Poems</source>
+        <translation>%1 Offline Poems</translation>
+    </message>
+    <message>
+        <source>Unlimited Personal Poems</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 Personal Poems</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1256,38 +1858,57 @@ page.</translation>
     </message>
 </context>
 <context>
-    <name>PremiumConfirmPage</name>
+    <name>PublishView</name>
     <message>
-        <source>%1% OFF Coupon</source>
-        <translation>%1% OFF Coupon</translation>
+        <source>Finished</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Toman</source>
-        <translation>Toman</translation>
+        <source>Review</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Unlimited Notes</source>
-        <translation>Unlimited Notes</translation>
+        <source>Agreement</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>%1 Notes</source>
-        <translation>%1 Notes</translation>
+        <source>Accept Agreement</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Unlimited Lists</source>
-        <translation>Unlimited Lists</translation>
+        <source>There is no poem in the book</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>%1 Lists</source>
-        <translation>%1 Lists</translation>
+        <source>Upload to Review</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Unlimited Offline Poems</source>
-        <translation>Unlimited Offline Poems</translation>
+        <source>Your request for review submitted officialy. We will publish your poems and notify you when review finished.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>%1 Offline Poems</source>
-        <translation>%1 Offline Poems</translation>
+        <source>You can check state of the review by click on the below icon on the top-right of the My Meikade page.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Finish</source>
+        <translation type="unfinished">Finish</translation>
+    </message>
+    <message>
+        <source>Please Wait...</source>
+        <translation type="unfinished">Please Wait...</translation>
+    </message>
+</context>
+<context>
+    <name>QRScannerDialog</name>
+    <message>
+        <source>Please wait</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation type="unfinished">Cancel</translation>
     </message>
 </context>
 <context>
@@ -1344,18 +1965,10 @@ page.</translation>
     </message>
 </context>
 <context>
-    <name>SearchView</name>
+    <name>SearchListModel</name>
     <message>
-        <source>Search domain:</source>
-        <translation>Search domain:</translation>
-    </message>
-    <message>
-        <source>Search</source>
-        <translation>Search</translation>
-    </message>
-    <message>
-        <source>Close</source>
-        <translation>Close</translation>
+        <source>%1 - %2 follower</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1371,6 +1984,46 @@ page.</translation>
     <message>
         <source>Offline Results</source>
         <translation>Offline Results</translation>
+    </message>
+    <message>
+        <source>Verse Unfavorited</source>
+        <translation type="unfinished">Verse Unfavorited</translation>
+    </message>
+    <message>
+        <source>Verse favorited</source>
+        <translation type="unfinished">Verse favorited</translation>
+    </message>
+    <message>
+        <source>Verse copied</source>
+        <translation type="unfinished">Verse copied</translation>
+    </message>
+    <message>
+        <source>Remove Bookmarks</source>
+        <translation type="unfinished">Remove Bookmarks</translation>
+    </message>
+    <message>
+        <source>Add to Bookmarks</source>
+        <translation type="unfinished">Add to Bookmarks</translation>
+    </message>
+    <message>
+        <source>Note</source>
+        <translation type="unfinished">Note</translation>
+    </message>
+    <message>
+        <source>Choose Lists</source>
+        <translation type="unfinished">Choose Lists</translation>
+    </message>
+    <message>
+        <source>Copy</source>
+        <translation type="unfinished">Copy</translation>
+    </message>
+    <message>
+        <source>Create Sticker</source>
+        <translation type="unfinished">Create Sticker</translation>
+    </message>
+    <message>
+        <source>Share</source>
+        <translation type="unfinished">Share</translation>
     </message>
 </context>
 <context>
@@ -1393,6 +2046,87 @@ It&apos;s experimental currently and Meikade technical team working on it. But i
         <translation>Meikade online search is a smart search that uses Artificial Intelligence algorithms to give you better results.
 It removes extra spaces you may have entered or search between other possible spellings or similar meanings.
 Currently this method of searching is experimental and Meikade&apos;s AI team is working on it. If it fails to find your desired result, you can always disable it via checking word search checkbox.</translation>
+    </message>
+</context>
+<context>
+    <name>SearchSmartAboutView</name>
+    <message>
+        <source>Smart Search</source>
+        <translation type="unfinished">Smart Search</translation>
+    </message>
+    <message>
+        <source>Some about text</source>
+        <translation type="unfinished">Description</translation>
+    </message>
+</context>
+<context>
+    <name>SearchView</name>
+    <message>
+        <source>Search domain:</source>
+        <translation>Search domain:</translation>
+    </message>
+    <message>
+        <source>Search</source>
+        <translation>Search</translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation>Close</translation>
+    </message>
+    <message>
+        <source>Poets</source>
+        <translation type="unfinished">Poets</translation>
+    </message>
+    <message>
+        <source>Public lists</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Poems Texts</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SettingsPage</name>
+    <message>
+        <source>Logout</source>
+        <translation>Logout</translation>
+    </message>
+    <message>
+        <source>Do you realy want to logout?</source>
+        <translation>Are you sure you want to log out?</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>Cancel</translation>
+    </message>
+    <message>
+        <source>Logout Successfully</source>
+        <translation>Logout Successfully</translation>
+    </message>
+    <message>
+        <source>%1 days</source>
+        <translation>%1 days</translation>
+    </message>
+    <message>
+        <source>Loading...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 SAT</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Payments</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Deposit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Withdraw</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1461,28 +2195,13 @@ Currently this method of searching is experimental and Meikade&apos;s AI team is
         <source>Show Phrase Number</source>
         <translation>Show Phrase Number</translation>
     </message>
-</context>
-<context>
-    <name>SettingsPage</name>
     <message>
-        <source>Logout</source>
-        <translation>Logout</translation>
+        <source>Mixed Header</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Do you realy want to logout?</source>
-        <translation>Are you sure you want to log out?</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation>Cancel</translation>
-    </message>
-    <message>
-        <source>Logout Successfully</source>
-        <translation>Logout Successfully</translation>
-    </message>
-    <message>
-        <source>%1 days</source>
-        <translation>%1 days</translation>
+        <source>Balance:</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1541,6 +2260,13 @@ Currently this method of searching is experimental and Meikade&apos;s AI team is
     </message>
 </context>
 <context>
+    <name>SingleListPage</name>
+    <message>
+        <source>Favoriteds</source>
+        <translation type="unfinished">Favorites</translation>
+    </message>
+</context>
+<context>
     <name>StickerDialog</name>
     <message>
         <source>Share</source>
@@ -1556,15 +2282,19 @@ Currently this method of searching is experimental and Meikade&apos;s AI team is
     </message>
     <message>
         <source>Select Image</source>
-        <translation type="vanished">Select Image</translation>
+        <translation>Select Image</translation>
     </message>
     <message>
         <source>Unset</source>
-        <translation type="vanished">Unset</translation>
+        <translation>Unset</translation>
     </message>
     <message>
         <source>Sticker saved on %1</source>
         <translation>Sticker saved on %1</translation>
+    </message>
+    <message>
+        <source>Sticker saved to Gallery</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1621,12 +2351,27 @@ Currently this method of searching is experimental and Meikade&apos;s AI team is
         <source>Poet Name</source>
         <translation>Poet Name</translation>
     </message>
+    <message>
+        <source>1:2</source>
+        <translation type="unfinished">1:2</translation>
+    </message>
+    <message>
+        <source>1:3</source>
+        <translation type="unfinished">1:3</translation>
+    </message>
 </context>
 <context>
     <name>Subscription</name>
     <message>
         <source>Free Account</source>
         <translation>Free Account</translation>
+    </message>
+</context>
+<context>
+    <name>SyncPage</name>
+    <message>
+        <source>Syncing...</source>
+        <translation>Syncing...</translation>
     </message>
 </context>
 <context>
@@ -1641,7 +2386,7 @@ Currently this method of searching is experimental and Meikade&apos;s AI team is
     </message>
     <message>
         <source>Favorites</source>
-        <translation type="vanished">Favorites</translation>
+        <translation>Favorites</translation>
     </message>
     <message>
         <source>Notes</source>
@@ -1671,12 +2416,27 @@ Currently this method of searching is experimental and Meikade&apos;s AI team is
         <source>Lists</source>
         <translation>Lists</translation>
     </message>
+    <message>
+        <source>My Poems</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
-    <name>SyncPage</name>
+    <name>ThemeWizardFrame</name>
     <message>
-        <source>Syncing...</source>
-        <translation>Syncing...</translation>
+        <source>Please select theme</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ThemeWizardView</name>
+    <message>
+        <source>Apply and Close</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Theme Wizard</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1693,12 +2453,27 @@ Currently this method of searching is experimental and Meikade&apos;s AI team is
         <source>Close</source>
         <translation>Close</translation>
     </message>
+    <message>
+        <source>Search</source>
+        <translation type="unfinished">Search</translation>
+    </message>
+    <message>
+        <source>Manage Shelf</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>WaitDialog</name>
     <message>
         <source>Please Wait...</source>
         <translation>Please Wait...</translation>
+    </message>
+</context>
+<context>
+    <name>WaitDialog.ui</name>
+    <message>
+        <source>Please Wait...</source>
+        <translation type="unfinished">Please Wait...</translation>
     </message>
 </context>
 <context>
@@ -1710,6 +2485,80 @@ Currently this method of searching is experimental and Meikade&apos;s AI team is
     <message>
         <source>Close</source>
         <translation>Close</translation>
+    </message>
+</context>
+<context>
+    <name>WithdrawDialog</name>
+    <message>
+        <source>Withdraw process completed successfully.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Checking payment...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Please check below informations and click on Pay to complete withraw process.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1.%2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Satoshi</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Payment Hash:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation type="unfinished">Cancel</translation>
+    </message>
+    <message>
+        <source>Pay Withdraw</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Warning</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Do you realy want to tip &lt;b&gt;%1 satoshi&lt;/b&gt; to this trick?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Yes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Please enter payment key to withdraw from your account:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Click to paste:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Check payment key</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Withdraw</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>main</name>
+    <message>
+        <source>Execute stress test for Qr Code encoding and decoding</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

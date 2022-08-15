@@ -4,3 +4,4 @@ singleton Fonts 1.0 Fonts.qml
 singleton Colors 1.0 Colors.qml
 singleton GTranslations 1.0 GTranslations.qml
 singleton GlobalSignals 1.0 GlobalSignals.qml
+singleton GlobalMethods 1.0 GlobalMethods.qml

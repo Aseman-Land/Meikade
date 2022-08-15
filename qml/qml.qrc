@@ -211,6 +211,7 @@
         <file>volcano/PaymentsDialog.qml</file>
         <file>volcano/QRScannerDialog.qml</file>
         <file>volcano/WithdrawDialog.qml</file>
+        <file>poet/views/PoetTypesView.qml</file>
     </qresource>
     <qresource prefix="/">
         <file>qtquickcontrols2.conf</file>
@@ -388,5 +389,6 @@
         <file>imports/components/HeaderBackButton.qml</file>
         <file>imports/components/MMaterialIcon.qml</file>
         <file>imports/models/VolcanoPaymentsModel.qml</file>
+        <file>imports/globals/GlobalMethods.qml</file>
     </qresource>
 </RCC>

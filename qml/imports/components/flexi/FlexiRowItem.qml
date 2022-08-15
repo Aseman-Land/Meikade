@@ -17,6 +17,7 @@ Item {
 
     property real heightRatio: 1
     property variant modelData
+    property int count: dswitch.item && dswitch.item.count? dswitch.item.count : (modelData && modelData.length? modelData.length : 0)
     property ListView listView
 
     signal clicked(string link, variant properties)

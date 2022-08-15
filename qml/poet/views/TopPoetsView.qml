@@ -17,8 +17,10 @@ Item {
 
     readonly property bool lightToolbar: Colors.lightHeader
 
+    property string keyword
     property alias listView: listView
     property alias headerItem: headerItem
+    property alias menuBtn: menuBtn
     property alias closeBtn: closeBtn
 
     signal checked(string poetId, variant properties, bool active)
@@ -51,6 +53,29 @@ Item {
 
         topMargin: 4 * Devices.density
         bottomMargin: 4 * Devices.density
+
+        header: Item {
+            width: listView.width
+            height: headerColumns.height
+
+            ColumnLayout {
+                id: headerColumns
+                width: parent.width - 16 * Devices.density
+                x: 8 * Devices.density
+                anchors.bottom: parent.bottom
+                spacing: 4 * Devices.density
+
+                TextField {
+                    id: searchKeyword
+                    Layout.fillWidth: true
+                    Layout.preferredHeight: 46 * Devices.density
+                    horizontalAlignment: Text.AlignLeft
+                    placeholderText: qsTr("Search") + Translations.refresher
+                    font.pixelSize: 9 * Devices.fontDensity
+                    onTextChanged: dis.keyword = text
+                }
+            }
+        }
 
         delegate: Item {
             id: itemObj
@@ -164,13 +189,19 @@ Item {
         anchors.top: parent.top
         anchors.right: parent.right
         anchors.left: parent.left
-        text: qsTr("Top Poets") + Translations.refresher
+        text: qsTr("Manage Shelf") + Translations.refresher
         color: Colors.headerColor
         light: !Colors.lightHeader
         shadow: Devices.isAndroid
 
         HeaderBackButton {
             id: closeBtn
+        }
+
+        HeaderMenuButton {
+            id: menuBtn
+            ratio: 1
+            buttonColor: Colors.headerTextColor
         }
     }
 
