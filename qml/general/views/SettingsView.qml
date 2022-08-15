@@ -332,6 +332,7 @@ Item {
 
         HeaderBackButton {
             id: menuBtn
+            color: Colors.foreground
         }
     }
 

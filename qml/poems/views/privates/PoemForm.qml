@@ -467,9 +467,10 @@ Item {
             }
         }
 
-        HeaderMenuButton {
+        HeaderBackButton {
             id: backBtn
-            ratio: 1
+            x: LayoutMirroring.enabled? parent.width - width : 0
+            color: "#fff"
         }
     }
 

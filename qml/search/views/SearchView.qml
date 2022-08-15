@@ -415,6 +415,7 @@ Rectangle {
 
         HeaderBackButton {
             id: closeBtn
+            visible: false
         }
 
         RoundButton {

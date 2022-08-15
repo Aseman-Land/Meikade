@@ -10,7 +10,7 @@ HeaderMenuButton {
     ratio: 1
     x: iosPopup? (LayoutMirroring.enabled? 0 : parent.width - width) : (LayoutMirroring.enabled? parent.width - width : 0)
     buttonColor: iosPopup? "transparent" : color
-    color: Colors.foreground
+    color: iosPopup? Colors.headerTextColor : Colors.foreground
 
     Label {
         anchors.centerIn: parent

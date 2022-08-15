@@ -56,10 +56,8 @@ Item {
         titleFontSize: 10 * Devices.fontDensity
         shadow: Devices.isAndroid
 
-        HeaderMenuButton {
+        HeaderBackButton {
             id: headerBtn
-            ratio: 1
-            buttonColor: Colors.headerTextColor
         }
     }
 

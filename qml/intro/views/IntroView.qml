@@ -15,7 +15,7 @@ Page {
     property alias prevBtn: prevBtn
     property alias nextBtn: nextBtn
     property alias doneForm: doneForm
-    property alias setupHomeForm: setupHomeForm
+//    property alias setupHomeForm: setupHomeForm
     property alias welcomForm: welcomForm
     property alias loginForm: loginForm
     property alias setupThemeForm: setupThemeForm
@@ -28,7 +28,7 @@ Page {
 //        interactive: false
 
         property int currentIndex: 0
-        property int count: 5
+        property int count: 4
 
         IntroWelcomForm {
             id: welcomForm
@@ -40,20 +40,15 @@ Page {
             anchors.fill: parent
             visible: list.currentIndex == 1
         }
-        IntroSetupHome {
-            id: setupHomeForm
-            anchors.fill: parent
-            visible: list.currentIndex == 2
-        }
         IntroSetupTheme {
             id: setupThemeForm
             anchors.fill: parent
-            visible: list.currentIndex == 3
+            visible: list.currentIndex == 2
         }
         IntroDoneForm {
             id: doneForm
             anchors.fill: parent
-            visible: list.currentIndex == 4
+            visible: list.currentIndex == 3
         }
     }
 

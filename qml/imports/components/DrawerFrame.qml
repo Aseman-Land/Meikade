@@ -62,6 +62,7 @@ Item {
         HeaderBackButton {
             id: cancelBtn
             iosPopup: true
+            color: Colors.foreground
         }
     }
 }

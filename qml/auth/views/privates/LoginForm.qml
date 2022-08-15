@@ -1,5 +1,6 @@
 import QtQuick 2.12
 import globals 1.0
+import components 1.0
 import AsemanQml.Base 2.0
 import AsemanQml.MaterialIcons 2.0
 import QtQuick.Controls 2.3
@@ -63,24 +64,8 @@ Page {
         shadow: Devices.isAndroid
         visible: !introMode
 
-        RowLayout {
-            anchors.left: parent.left
-            anchors.right: parent.right
-            anchors.bottom: parent.bottom
-            height: Devices.standardTitleBarHeight
-
-            RoundButton {
-                id: cancelBtn
-                Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
-                text: qsTr("Cancel") + Translations.refresher
-                highlighted: true
-                radius: 6 * Devices.density
-                font.pixelSize: 8 * Devices.fontDensity
-                IOSStyle.accent: Qt.darker(Colors.primary, 1.3)
-                Material.accent: Qt.darker(Colors.primary, 1.3)
-                Material.theme: Material.Dark
-                Material.elevation: 0
-            }
+        HeaderBackButton {
+            id: cancelBtn
         }
     }
 }

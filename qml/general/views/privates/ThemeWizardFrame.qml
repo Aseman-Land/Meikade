@@ -66,7 +66,7 @@ ColumnLayout {
                 anchors.fill: parent
                 anchors.topMargin: 20 * Devices.density
                 anchors.bottomMargin: 20 * Devices.density
-                source: model.image
+                source: "../" + model.image
                 fillMode: Image.PreserveAspectFit
                 sourceSize.width: width * 1.2
                 sourceSize.height: height * 1.2
