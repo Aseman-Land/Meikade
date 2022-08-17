@@ -12,7 +12,7 @@ AsemanListModel {
     Component.onCompleted: refresh()
 
     MeikadeOfflineItemGlobal {
-        onOfflineInstalled: refresh()
+        onOfflineRefreshed: refresh()
     }
 
     DataOfflinePoets {

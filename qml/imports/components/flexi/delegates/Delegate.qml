@@ -29,6 +29,7 @@ Item {
 
     signal clicked()
     signal moreRequest()
+    signal pressAndHold()
 
     Component.onCompleted: if (moreHint) moreRequest();
 
@@ -53,6 +54,8 @@ Item {
                     background.color: Colors.darkMode? Qt.darker(analizer.color, 1.5) : analizer.color
                     blurImage.source: analizer.imageResult
                     button.onClicked: delg.clicked()
+                    button.onPressAndHold: delg.pressAndHold()
+                    button.pressAndHoldInterval: 600
 
                     property color titleColor: {
                         if (delg.color != "#ffffff" || delg.link.indexOf(":/poet?id=") == -1)
@@ -93,6 +96,8 @@ Item {
                     image.source: analizer.imageResult
                     background.color: delg.color
                     button.onClicked: delg.clicked()
+                    button.onPressAndHold: delg.pressAndHold()
+                    button.pressAndHoldInterval: 600
                     Component.onCompleted: {
                         if (!isVerse) {
                             title.horizontalAlignment = Text.AlignHCenter;

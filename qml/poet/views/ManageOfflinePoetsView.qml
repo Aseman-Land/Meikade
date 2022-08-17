@@ -299,7 +299,7 @@ Item {
         anchors.top: parent.top
         anchors.right: parent.right
         anchors.left: parent.left
-        text: qsTr("Manage Offlines") + Translations.refresher
+        text: qsTr("Edit Shelf") + Translations.refresher
         color: Colors.headerColor
         light: !Colors.lightHeader
         shadow: Devices.isAndroid

@@ -26,12 +26,12 @@ AsemanListModel {
                 "link": "float:/mypoems",
                 "underco": false
             },
-            {
-                "title": qsTr("Manage Offlines") + Translations.refresher,
-                "icon": "mdi_view_dashboard",
-                "link": "float:/offline/manage",
-                "underco": false
-            },
+//            {
+//                "title": qsTr("Manage Offlines") + Translations.refresher,
+//                "icon": "mdi_view_dashboard",
+//                "link": "float:/offline/manage",
+//                "underco": false
+//            },
             {
                 "title": qsTr("Settings") + Translations.refresher,
                 "icon": "mdi_settings",

@@ -167,7 +167,7 @@ Rectangle {
         anchors.top: headerItem.bottom
         anchors.right: parent.right
         anchors.left: parent.left
-        bottomMargin: 58 * Devices.density + Devices.navigationBarHeight
+        bottomMargin: AsemanGlobals.viewMode == 2? 58 * Devices.density + Devices.navigationBarHeight : 0
 
         onDragStarted: keywordField.focus = false
         onCountChanged: if (count == 0) initializeState = true

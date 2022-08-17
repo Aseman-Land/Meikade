@@ -767,11 +767,19 @@ It contains %2 of current items.</translation>
         <source>Shelf</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Finish</source>
+        <translation type="unfinished">Finish</translation>
+    </message>
+    <message>
+        <source>Edit</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
-    <name>FlexiTopPoetsRow.ui</name>
+    <name>FlexiTopPoetsRow</name>
     <message>
-        <source>Manage Shelf</source>
+        <source>To add items to shelf touch + button</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1249,6 +1257,10 @@ page.</translation>
     <message>
         <source>Don&apos;t show this message again</source>
         <translation>Don&apos;t show this message again</translation>
+    </message>
+    <message>
+        <source>Edit Shelf</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2460,6 +2472,18 @@ Currently this method of searching is experimental and Meikade&apos;s AI team is
     <message>
         <source>Manage Shelf</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Uninstalling</source>
+        <translation type="unfinished">Uninstalling</translation>
+    </message>
+    <message>
+        <source>Downloading</source>
+        <translation type="unfinished">Downloading</translation>
+    </message>
+    <message>
+        <source>Installing</source>
+        <translation type="unfinished">Installing</translation>
     </message>
 </context>
 <context>

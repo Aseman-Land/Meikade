@@ -7,4 +7,5 @@ Rectangle {
 
     signal clicked(string link, variant properties)
     signal moreRequest()
+    signal editRequest(bool mode)
 }

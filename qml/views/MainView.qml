@@ -79,7 +79,7 @@ Page {
 
     Item {
         id: footerItem
-        height: AsemanGlobals.viewMode == 2? 58 * Devices.density + Devices.navigationBarHeight : parent.height
+        height: AsemanGlobals.viewMode == 2? AsemanGlobals.viewMode == 2? 58 * Devices.density + Devices.navigationBarHeight : 0 : parent.height
         width: AsemanGlobals.viewMode == 2? parent.width : 200 * Devices.density
         x: LayoutMirroring.enabled? parent.width - width : 0
         anchors.bottom: parent.bottom

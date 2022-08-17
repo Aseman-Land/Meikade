@@ -779,6 +779,14 @@ It containts %2 items currently.</source>
         <source>Shelf</source>
         <translation>کتابخانه</translation>
     </message>
+    <message>
+        <source>Finish</source>
+        <translation>پایان</translation>
+    </message>
+    <message>
+        <source>Edit</source>
+        <translation>ویرایش</translation>
+    </message>
 </context>
 <context>
     <name>FlexiTopPoetsRow</name>
@@ -790,12 +798,16 @@ It containts %2 items currently.</source>
         <source>Manage Shelf</source>
         <translation>مدیریت کتابخانه</translation>
     </message>
+    <message>
+        <source>To add items to shelf touch + button</source>
+        <translation>برای اضافه کردن عنوان به کتابخانه + را لمس کنید</translation>
+    </message>
 </context>
 <context>
     <name>FlexiTopPoetsRow.ui</name>
     <message>
         <source>Manage Shelf</source>
-        <translation type="unfinished">مدیریت کتابخانه</translation>
+        <translation type="obsolete">مدیریت کتابخانه</translation>
     </message>
 </context>
 <context>
@@ -1318,6 +1330,10 @@ It containts %2 items currently.</source>
     <message>
         <source>Don&apos;t show this message again</source>
         <translation>عدم نمایش مجدد این پیغام</translation>
+    </message>
+    <message>
+        <source>Edit Shelf</source>
+        <translation>ویرایش کتابخانه</translation>
     </message>
 </context>
 <context>
@@ -2559,6 +2575,18 @@ It&apos;s experimental currently and Meikade technical team working on it. But i
         <source>Search</source>
         <translation>جستجو</translation>
     </message>
+    <message>
+        <source>Uninstalling</source>
+        <translation>در حال غیرفعال کردن</translation>
+    </message>
+    <message>
+        <source>Downloading</source>
+        <translation>در حال دانلود</translation>
+    </message>
+    <message>
+        <source>Installing</source>
+        <translation>در حال نصب</translation>
+    </message>
 </context>
 <context>
     <name>WaitDialog</name>
@@ -2571,7 +2599,7 @@ It&apos;s experimental currently and Meikade technical team working on it. But i
     <name>WaitDialog.ui</name>
     <message>
         <source>Please Wait...</source>
-        <translation type="unfinished">لطفا صبر کنید...</translation>
+        <translation>لطفا صبر کنید...</translation>
     </message>
 </context>
 <context>

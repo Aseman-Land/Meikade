@@ -8,6 +8,7 @@ import QtQuick.Controls.Material 2.0
 import QtQuick.Controls.IOSStyle 2.0
 import globals 1.0
 import components 1.0
+import queries 1.0
 import models 1.0
 
 Item {
@@ -22,6 +23,8 @@ Item {
     property alias headerItem: headerItem
     property alias menuBtn: menuBtn
     property alias closeBtn: closeBtn
+
+    property int offlinePoetsCount
 
     signal checked(string poetId, variant properties, bool active)
 
@@ -82,8 +85,6 @@ Item {
             width: listView.width
             height: rowLayout.height + 20 * Devices.density
 
-            property bool isVerse: model.details && model.details.first_verse? true : false
-
             RoundedItem {
                 anchors.fill: parent
                 anchors.leftMargin: 8 * Devices.density
@@ -100,11 +101,7 @@ Item {
                 ItemDelegate {
                     id: itemDel
                     anchors.fill: parent
-
-                    Connections {
-                        target: itemDel
-                        onClicked: delSwitch.checked = !delSwitch.checked
-                    }
+                    onClicked: swt.toggle()
                 }
 
                 RowLayout {
@@ -150,7 +147,7 @@ Item {
                             elide: Text.ElideRight
                             maximumLineCount: 1
                             font.pixelSize: 9 * Devices.fontDensity
-                            text: model.title + (itemObj.isVerse? " - " + model.details.first_verse : "")
+                            text: model.title
                         }
 
                         Label {
@@ -166,17 +163,51 @@ Item {
                         }
                     }
 
-                    Switch {
-                        id: delSwitch
-                        Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
-                        checked: model.checked
+                    MinimalProgressBar {
+                        id: progressBar
+                        color: Colors.deepBackground
+                        frontColor: Colors.accent
+                        textColor: "#333"
+                        running: offlineInstaller.downloading || offlineInstaller.installing || offlineInstaller.uninstalling
+                        label: offlineInstaller.uninstalling? qsTr("Uninstalling") : (offlineInstaller.downloading? qsTr("Downloading") : qsTr("Installing"))
+                        nonProgress: !offlineInstaller.uninstalling
+                        progress: offlineInstaller.size? 0.1 + 0.9 * offlineInstaller.downloadedBytes / offlineInstaller.size : 0.1
+                    }
 
-                        Connections {
-                            target: delSwitch
-                            onCheckedChanged: {
-                                model.checked = delSwitch.checked;
-                                dis.checked(model.id, listView.model.get(index), delSwitch.checked);
+                    Switch {
+                        id: swt
+                        Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+                        enabled: !offlineInstaller.installing || offlineInstaller.uninstalling
+                        checked: (offlineInstaller.installed || offlineInstaller.installing || offlineInstaller.downloading) && !offlineInstaller.uninstalling
+
+                        property bool initialized: false
+                        Component.onCompleted: initialized = true
+
+                        onToggled: {
+                            if (swt.checked == (offlineInstaller.installed || offlineInstaller.downloading))
+                                return;
+
+                            if (offlineInstaller.downloading)
+                                offlineInstaller.stop();
+                            else {
+                                offlinePoetsCount = offlineInstaller.checkCount();
+                                var res = offlineInstaller.checkAndInstall(swt.checked);
+                                if (swt.checked) {
+                                    if (res)
+                                        offlinePoetsCount++;
+                                    else
+                                        swt.checked = false;
+                                } else {
+                                    offlinePoetsCount--;
+                                }
                             }
+                        }
+                        onInitializedChanged: if (model.index == 0) offlinePoetsCount = offlineInstaller.checkCount();
+
+                        DataOfflineInstaller {
+                            id: offlineInstaller
+                            poetId: model.id
+                            catId: model.catId
                         }
                     }
                 }

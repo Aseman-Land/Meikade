@@ -6,6 +6,7 @@ import globals 1.0
 import components 1.0
 import routes 1.0
 import requests 1.0
+import Meikade 1.0
 import models 1.0
 import "views"
 import "mymeikade"

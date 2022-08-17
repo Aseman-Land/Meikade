@@ -91,6 +91,8 @@ public:
 
 Q_SIGNALS:
     void offlineInstalled(qint32 poetId, qint32 catId);
+    void offlineUninstalled(qint32 poetId, qint32 catId);
+    void offlineRefreshed(qint32 poetId, qint32 catId);
 };
 
 class MeikadeOfflineItemInstaller : public QObject

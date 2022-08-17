@@ -6,13 +6,16 @@ import globals 1.0
 DataBaseQuery {
     id: obj
 
-    function getItems() {
+    function getItems(poetId) {
         var items = new Array;
 
         var analize = function(data) {
             for (var i in data)
             {
                 var d = data[i];
+                if (poetId != undefined && poetId != d.id)
+                    continue;
+
                 var item = {
                     "color": "",
                     "details": null,

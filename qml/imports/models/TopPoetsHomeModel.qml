@@ -3,12 +3,46 @@ pragma Singleton
 import QtQuick 2.0
 import AsemanQml.Base 2.0
 import AsemanQml.Models 2.0
+import Meikade 1.0
 import requests 1.0
 import queries 1.0
 import globals 1.0
 
 AsemanListModel {
     id: listModel
+
+    MeikadeOfflineItemGlobal {
+        onOfflineInstalled: if (catId == 0) append(poetId)
+        onOfflineUninstalled: if (catId == 0) remove(poetId)
+    }
+
+    DataOfflinePoets {
+        id: poetsReq
+    }
+
+    function append(poetId) {
+        let poets = poetsReq.getItems(poetId);
+        if (poets.length != 1)
+            return;
+
+        let properties = poets[0];
+
+        actions.poetId = poetId;
+        actions.declined = false;
+        actions.extra = Tools.variantToJson(properties);
+        actions.updatedAt = Tools.dateToSec(new Date);
+        actions.pushAction();
+        actions.refresh();
+        GlobalSignals.topPoetsRefreshed();
+    }
+    function remove(poetId) {
+        actions.poetId = poetId;
+        actions.declined = true;
+        actions.updatedAt = Tools.dateToSec(new Date);
+        actions.pushAction();
+        actions.refresh();
+        GlobalSignals.topPoetsRefreshed();
+    }
 
     Connections {
         target: GlobalSignals

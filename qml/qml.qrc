@@ -217,19 +217,19 @@
         <file>qtquickcontrols2.conf</file>
         <file>imports/components/flexi/delegates/AbstractDelegate.qml</file>
         <file>imports/components/flexi/delegates/Delegate.qml</file>
-        <file>imports/components/flexi/delegates/FullBackgroundedDelegate.ui.qml</file>
-        <file>imports/components/flexi/delegates/NormalDelegate.ui.qml</file>
+        <file>imports/components/flexi/delegates/FullBackgroundedDelegate.qml</file>
+        <file>imports/components/flexi/delegates/NormalDelegate.qml</file>
         <file>imports/components/flexi/FlexiAbstractRow.qml</file>
-        <file>imports/components/flexi/FlexiColumnRow.ui.qml</file>
-        <file>imports/components/flexi/FlexiDynamicRow.ui.qml</file>
-        <file>imports/components/flexi/FlexiFlexibleRow.ui.qml</file>
-        <file>imports/components/flexi/FlexiGridRow.ui.qml</file>
-        <file>imports/components/flexi/FlexiOfflinePoetsRow.ui.qml</file>
-        <file>imports/components/flexi/FlexiRecentRow.ui.qml</file>
+        <file>imports/components/flexi/FlexiColumnRow.qml</file>
+        <file>imports/components/flexi/FlexiDynamicRow.qml</file>
+        <file>imports/components/flexi/FlexiFlexibleRow.qml</file>
+        <file>imports/components/flexi/FlexiGridRow.qml</file>
+        <file>imports/components/flexi/FlexiOfflinePoetsRow.qml</file>
+        <file>imports/components/flexi/FlexiRecentRow.qml</file>
         <file>imports/components/flexi/FlexiRowItem.qml</file>
-        <file>imports/components/flexi/FlexiStaticRow.ui.qml</file>
+        <file>imports/components/flexi/FlexiStaticRow.qml</file>
         <file>imports/components/flexi/FlexiSwitableModel.qml</file>
-        <file>imports/components/flexi/FlexiTopPoetsRow.ui.qml</file>
+        <file>imports/components/flexi/FlexiTopPoetsRow.qml</file>
         <file>imports/components/images/cover.jpg</file>
         <file>imports/components/images/mobile-frame.png</file>
         <file>imports/components/Clock.qml</file>

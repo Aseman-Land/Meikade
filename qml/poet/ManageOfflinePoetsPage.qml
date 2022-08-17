@@ -34,9 +34,10 @@ ManageOfflinePoetsView {
         }
     }
 
-    PoetsCleanModel {
+    OfflinePoetsModel {
         id: poetsModel
         cachePath: AsemanGlobals.cachePath + "/poetsofflinelist.cache"
+        cleanData: true
     }
 
     OfflineCatsModel {

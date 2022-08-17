@@ -15,6 +15,7 @@ Item {
         return t.slice(idx+1);
     }
 
+    property bool editMode: false
     property real heightRatio: 1
     property variant modelData
     property int count: dswitch.item && dswitch.item.count? dswitch.item.count : (modelData && modelData.length? modelData.length : 0)
@@ -100,8 +101,10 @@ Item {
             FlexiTopPoetsRow {
                 width: rowItem.width
                 listView: rowItem.listView
+                editMode: rowItem.editMode
                 onClicked: rowItem.clicked(link, properties)
                 onMoreRequest: rowItem.moreRequest()
+                onEditRequest: rowItem.editMode = mode
             }
         }
 

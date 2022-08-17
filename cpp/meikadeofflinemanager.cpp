@@ -315,7 +315,13 @@ MeikadeOfflineItemInstaller::MeikadeOfflineItemInstaller(const QString &database
             return;
 
         for (MeikadeOfflineItemGlobal *g: meikadeOfflineItemGlobal_objects)
-            Q_EMIT g->offlineInstalled(mPoetId, mCatId);
+        {
+            if (mSourceUrl.isEmpty())
+                Q_EMIT g->offlineUninstalled(mPoetId, mCatId);
+            else
+                Q_EMIT g->offlineInstalled(mPoetId, mCatId);
+            Q_EMIT g->offlineRefreshed(mPoetId, mCatId);
+        }
     });
 }
 

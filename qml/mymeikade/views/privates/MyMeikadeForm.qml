@@ -359,7 +359,7 @@ Rectangle {
         anchors.bottom: gridView.bottom
         anchors.top: gridView.top
         anchors.topMargin: coverImage.height
-        anchors.bottomMargin: 58 * Devices.density + Devices.navigationBarHeight
+        anchors.bottomMargin: AsemanGlobals.viewMode == 2? 58 * Devices.density + Devices.navigationBarHeight : 0
         color: Colors.primary
         scrollArea: gridView
     }

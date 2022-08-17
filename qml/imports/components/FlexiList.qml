@@ -79,11 +79,16 @@ AsemanListView {
                     font.pixelSize: 8 * Devices.fontDensity
                     color: Colors.accent
                     text: {
+                        if (rowItem.editMode)
+                            return qsTr("Finish") + Translations.refresher
+
                         var idx = sectionItem.link.indexOf("\\");
                         var linkLabel = (idx<0? sectionItem.link : sectionItem.link.slice(0, idx));
                         switch (linkLabel) {
                         case "Manage":
                             return qsTr("Manage") + Translations.refresher
+                        case "Edit":
+                            return qsTr("Edit") + Translations.refresher
                         case "More":
                         default:
                             return qsTr("More") + Translations.refresher
@@ -93,7 +98,19 @@ AsemanListView {
                     ItemDelegate {
                         anchors.fill: parent
                         anchors.margins: -10 * Devices.density
-                        onClicked: list.linkRequest(sectionItem.link.slice(sectionItem.link.indexOf("\\") + 1), {"fulltext": sectionItem.fulltext})
+                        onClicked: {
+                            var link = sectionItem.link.slice(sectionItem.link.indexOf("\\") + 1);
+                            switch (link) {
+                            case "edit":
+                                rowItem.editMode = !rowItem.editMode;
+                                break;
+
+                            default:
+                                list.linkRequest(link, {"fulltext": sectionItem.fulltext});
+                                break;
+                            }
+
+                        }
                     }
 
                 }

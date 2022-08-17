@@ -41,7 +41,7 @@ Item {
         FlexiList {
             id: list
             topMargin: headerItem.height + spacing
-            bottomMargin: 70 * Devices.density + Devices.navigationBarHeight
+            bottomMargin: 180 * Devices.density + Devices.navigationBarHeight
             anchors.fill: parent
             model: ListModel {
                 ListElement {
@@ -60,7 +60,7 @@ Item {
         anchors.right: parent.right
         anchors.bottom: listScene.bottom
         anchors.top: headerItem.bottom
-        anchors.bottomMargin: 58 * Devices.density + Devices.navigationBarHeight
+        anchors.bottomMargin: AsemanGlobals.viewMode == 2? 58 * Devices.density + Devices.navigationBarHeight : 0
         color: Colors.primary
         scrollArea: list
     }

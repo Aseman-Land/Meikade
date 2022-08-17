@@ -21,7 +21,7 @@ AsemanListModel {
             "color": "transparent",
             "modelData": [
             ],
-            "section": "Shelf\\More\\float:/favorites",
+            "section": "Shelf\\Edit\\edit",
             "type": "favorites"
         },
     ]

@@ -10,7 +10,7 @@ AsemanListModel {
     data: getItems()
 
     MeikadeOfflineItemGlobal {
-        onOfflineInstalled: data = getItems()
+        onOfflineRefreshed: data = getItems()
     }
 
     DataOfflinePoets {
