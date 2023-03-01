@@ -5,6 +5,10 @@
 Meikade is a collection of Persian poetry.
 It is avaiable on iOS, Android, Windows, macOS and Linux.
 
+- [Download Meikade](https://github.com/Aseman-Land/Meikade#%EF%B8%8F-download-meikade)
+- [Build Meikade](https://github.com/Aseman-Land/Meikade#%EF%B8%8F-build-meikade)
+- [Donation](https://github.com/Aseman-Land/Meikade#%EF%B8%8F-donation)
+
 ---
 
 ## 📥️ Download Meikade
@@ -99,3 +103,9 @@ yay -S meikade
 Meikade is built using C++ & Qt.
 
 [![GitHub license](https://img.shields.io/github/license/Aseman-Land/Meikade?style=for-the-badge)](https://github.com/Aseman-Land/Meikade/blob/master/LICENSE)
+
+---
+
+## Donation
+
+[Help us to keep Meikade up to date](https://aseman-land.github.io/Meikade/)
