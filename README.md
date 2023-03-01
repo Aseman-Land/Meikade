@@ -7,7 +7,7 @@ It is avaiable on iOS, Android, Windows, macOS and Linux.
 
 - [Download Meikade](https://github.com/Aseman-Land/Meikade#%EF%B8%8F-download-meikade)
 - [Build Meikade](https://github.com/Aseman-Land/Meikade#%EF%B8%8F-build-meikade)
-- [Donation](https://github.com/Aseman-Land/Meikade#%EF%B8%8F-donation)
+- [Donation](https://github.com/Aseman-Land/Meikade#donation)
 
 ---
 
