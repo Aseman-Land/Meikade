@@ -1,12 +1,10 @@
 import QtQuick 2.12
 import AsemanQml.Base 2.0
 import AsemanQml.Models 2.0
-import QtQuick.Controls 2.3
+import AsemanQml.Controls.Beta 3.0
 import AsemanQml.Controls 2.0
 import AsemanQml.MaterialIcons 2.0
-import QtQuick.Layouts 1.3
-import QtQuick.Controls.Material 2.0
-import QtGraphicalEffects 1.0
+import AsemanQml.GraphicalEffects 2.0
 import components 1.0
 import globals 1.0
 

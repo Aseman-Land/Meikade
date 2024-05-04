@@ -1,5 +1,6 @@
 import QtQuick 2.12
-import QtQuick.Controls 2.3
+import AsemanQml.Controls 2.0
+import AsemanQml.Controls.Beta 3.0
 
 Loader {
     id: dis
