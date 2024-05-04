@@ -11,6 +11,6 @@ BaseRequest {
     property string bolt
 
     function doRequest() {
-        _networkManager.post(req)
+        networkManager.post(req)
     }
 }

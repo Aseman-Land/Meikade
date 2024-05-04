@@ -1,6 +1,10 @@
-QT += quick qml quickcontrols2 asemancore network widgets asemangui
+QT += quick qml quickcontrols2  network widgets
 CONFIG += c++11
 QTPLUGIN -= qsqlmysql
+
+qtHaveModule(asemancore): {
+    QT += asemancore asemangui
+}
 
 qtHaveModule(sql): QT += sql
 qtHaveModule(webview): QT += webview

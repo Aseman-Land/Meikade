@@ -11,6 +11,6 @@ BaseRequest {
     property int amount_msat: 0
 
     function doRequest() {
-        _networkManager.post(req)
+        networkManager.post(req)
     }
 }

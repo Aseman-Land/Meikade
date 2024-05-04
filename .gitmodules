@@ -4,3 +4,6 @@
 [submodule "cpp/thirdparty/qzxing"]
 	path = cpp/thirdparty/qzxing
 	url = https://github.com/ftylitak/qzxing.git
+[submodule "thirdparty/qtaseman"]
+	path = thirdparty/qtaseman
+	url = https://github.com/Aseman-Land/QtAseman.git

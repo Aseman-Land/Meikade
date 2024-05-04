@@ -9,7 +9,7 @@
 #include <QMutex>
 #include <QThreadPool>
 
-#include <QAsemanImageColorAnalizor>
+#include <asemanimagecoloranalizor.h>
 
 class QGraphicsEffect;
 class DelegateDataAnalizer : public QObject

@@ -34,7 +34,8 @@
 #include <QIcon>
 #include <QRegularExpression>
 #include <QTimer>
-#include <QAsemanCoreVersion>
+
+#include <asemanimagecoloranalizor.h>
 
 #ifdef QT_WEBVIEW_LIB
 #include <QtWebView>
@@ -135,7 +136,7 @@ int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty("qVersion", qVersion());
     engine.rootContext()->setContextProperty("qtFirebase", qtFirebase);
     engine.rootContext()->setContextProperty("qtFirebaseVersion", qtFirebaseVersion);
-    engine.rootContext()->setContextProperty("qtAsemanVersion", QASEMANCORE_VERSION_STR);
+    engine.rootContext()->setContextProperty("qtAsemanVersion", "3.0.0");
     engine.rootContext()->setContextProperty("activeSubscription", activeSubscription);
     engine.rootContext()->setContextProperty("testMode", testMode);
 
