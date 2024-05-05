@@ -30,5 +30,10 @@ MTabBar 1.0 MTabBar.qml
 MTabButton 1.0 MTabButton.qml
 MItemDelegate 1.0 MItemDelegate.qml
 MBusyIndicator 1.0 MBusyIndicator.qml
+MCheckBox 1.0 MCheckBox.qml
 MProgressBar 1.0 MProgressBar.qml
 MPageIndicator 1.0 MPageIndicator.qml
+MComboBox 1.0 MComboBox.qml
+MSlider 1.0 MSlider.qml
+MAccentButton 1.0 MAccentButton.qml
+MScrollView 1.0 MScrollView.qml

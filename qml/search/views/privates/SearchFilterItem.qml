@@ -2,13 +2,11 @@ import QtQuick 2.12
 import AsemanQml.Base 2.0
 import AsemanQml.Controls 2.0
 import AsemanQml.MaterialIcons 2.0
-import QtQuick.Controls 2.3
 import QtQuick.Layouts 1.3
-import QtQuick.Controls.Material 2.0
-import QtQuick.Controls.IOSStyle 2.0
 import globals 1.0
+import components 1.0
 
-ItemDelegate {
+MItemDelegate {
     width: Constants.width
     height: 50 * Devices.density
 
@@ -34,7 +32,7 @@ ItemDelegate {
         anchors.leftMargin: 20 * Devices.density
         anchors.rightMargin: 20 * Devices.density
 
-        Label {
+        MLabel {
             Layout.alignment: Qt.AlignCenter
             Layout.fillWidth: true
             font.pixelSize: 9 * Devices.fontDensity
@@ -45,7 +43,7 @@ ItemDelegate {
             text: poetName
         }
 
-        Label {
+        MLabel {
             Layout.alignment: Qt.AlignCenter
             font.family: MaterialIcons.family
             font.pixelSize: 16 * Devices.fontDensity

@@ -1,11 +1,8 @@
 import QtQuick 2.0
 import AsemanQml.Base 2.0
 import AsemanQml.MaterialIcons 2.0
-import QtQuick.Controls 2.3
 import AsemanQml.Controls 2.0
 import QtQuick.Layouts 1.3
-import QtQuick.Controls.Material 2.0
-import QtQuick.Controls.IOSStyle 2.0
 import globals 1.0
 import components 1.0
 
@@ -72,7 +69,7 @@ DrawerFrame {
                                 anchors.right: parent.right
                                 anchors.top: parent.top
 
-                                Label {
+                                MLabel {
                                     Layout.fillWidth: true
                                     font.pixelSize: 10 * Devices.fontDensity
                                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
@@ -89,13 +86,13 @@ DrawerFrame {
                                     ignoreSslErrors: AsemanGlobals.ignoreSslErrors
                                     asynchronous: true
 
-                                    BusyIndicator {
+                                    MBusyIndicator {
                                         anchors.centerIn: parent
                                         running: img.status != Image.Ready && img.visible
                                     }
                                 }
 
-                                Label {
+                                MLabel {
                                     Layout.fillWidth: true
                                     font.pixelSize: 9 * Devices.fontDensity
                                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
@@ -109,22 +106,19 @@ DrawerFrame {
                         id: rptr
                         model: msgItem.buttons
 
-                        Button {
+                        MButton {
                             Layout.fillWidth: true
                             highlighted: true
                             font.pixelSize: 9 * Devices.fontDensity
                             text: modelData["text_" + GTranslations.localeName]
-
-                            Connections {
-                                onClicked: linkClicked(modelData.link)
-                            }
+                            onClicked: linkClicked(modelData.link)
                         }
                     }
                 }
             }
         }
 
-        PageIndicator {
+        MPageIndicator {
             Layout.alignment: Qt.AlignHCenter
             count: listView.count
             currentIndex: listView.currentIndex

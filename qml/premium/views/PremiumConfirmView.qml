@@ -1,12 +1,9 @@
 import QtQuick 2.12
 import AsemanQml.Base 2.0
 import AsemanQml.MaterialIcons 2.0
-import QtQuick.Controls 2.3
 import AsemanQml.Controls 2.0
 import AsemanQml.Models 2.0
 import QtQuick.Layouts 1.3
-import QtQuick.Controls.Material 2.0
-import QtQuick.Controls.IOSStyle 2.0
 import requests 1.0
 import globals 1.0
 import components 1.0
@@ -14,9 +11,6 @@ import components 1.0
 Item {
     width: Constants.width
     height: Constants.height
-
-    IOSStyle.theme: forceDark? IOSStyle.Dark : AsemanGlobals.iosTheme
-    Material.theme: forceDark? Material.Dark : AsemanGlobals.androidEffectiveTheme
 
     property alias titleLabel: titleLabel
     property alias subtitleLabel: subtitleLabel
@@ -41,13 +35,11 @@ Item {
         opacity: forceDark && Devices.isAndroid? 1 : 0.5
     }
 
-    BusyIndicator {
+    MBusyIndicator {
         id: busyIndicator
         anchors.centerIn: parent
         running: false
         visible: !loginColumn.visible
-        Material.accent: packageColor
-        IOSStyle.foreground: packageColor
     }
 
     ColumnLayout {
@@ -58,22 +50,19 @@ Item {
         anchors.margins: 20 * Devices.density
         visible: false
 
-        Label {
+        MLabel {
             Layout.fillWidth: true
             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
             font.pixelSize: 9 * Devices.fontDensity
             text: qsTr("You must login with you account before active premium account.") + Translations.refresher
         }
 
-        Button {
+        MButton {
             id: loginBtn
             Layout.alignment: Qt.AlignHCenter
             font.pixelSize: 9 * Devices.fontDensity
             text: qsTr("Login") + Translations.refresher
             highlighted: true
-
-            Material.accent: packageColor
-            IOSStyle.accent: packageColor
         }
     }
 
@@ -110,7 +99,7 @@ Item {
                     Layout.bottomMargin: 20 * Devices.density
                     spacing: 10 * Devices.density
 
-                    Label {
+                    MLabel {
                         Layout.alignment: Qt.AlignBottom
                         font.pixelSize: 40 * Devices.fontDensity
                         font.family: MaterialIcons.family
@@ -123,7 +112,7 @@ Item {
                         Layout.fillWidth: true
                         spacing: 4 * Devices.density
 
-                        Label {
+                        MLabel {
                             id: titleLabel
                             Layout.fillWidth: true
                             horizontalAlignment: Text.AlignLeft
@@ -131,7 +120,7 @@ Item {
                             text: "50,000 IRR per Month"
                         }
 
-                        Label {
+                        MLabel {
                             id: subtitleLabel
                             Layout.fillWidth: true
                             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
@@ -152,7 +141,7 @@ Item {
                         Layout.rightMargin: 20 * Devices.density
                         spacing: 20 * Devices.density
 
-                        Label {
+                        MLabel {
                             horizontalAlignment: Text.AlignHCenter
                             font.pixelSize: 14 * Devices.fontDensity
                             font.family: MaterialIcons.family
@@ -160,7 +149,7 @@ Item {
                             color: packageColor
                         }
 
-                        Label {
+                        MLabel {
                             Layout.fillWidth: true
                             horizontalAlignment: Text.AlignLeft
                             font.pixelSize: 9 * Devices.fontDensity
@@ -181,71 +170,51 @@ Item {
         anchors.rightMargin: 20 * Devices.density
         visible: flickable.visible
 
-        Material.accent: packageColor
-        IOSStyle.accent: packageColor
-
         Item {
             Layout.fillWidth: true
             Layout.preferredHeight: 48 * Devices.density
 
-            TextField {
+            MTextField {
                 id: couponField
                 anchors.fill: parent
                 horizontalAlignment: Text.AlignLeft
-                placeholder: qsTr("Coupon") + Translations.refresher
+                placeholderText: qsTr("Coupon") + Translations.refresher
                 font.pixelSize: 10 * Devices.fontDensity
                 inputMethodHints: Qt.ImhSensitiveData | Qt.ImhNoPredictiveText
                 selectByMouse: true
                 enabled: !couponBusy.running
             }
 
-            BusyIndicator {
+            MBusyIndicator {
                 id: couponBusy
                 anchors.centerIn: parent
                 scale: 0.6
                 running: true
-                Material.accent: packageColor
-                IOSStyle.foreground: packageColor
             }
         }
 
-        Button {
+        MButton {
             id: couponBtn
             font.pixelSize: 9 * Devices.fontDensity
             text: qsTr("Submit") + Translations.refresher
             highlighted: true
             flat: true
             enabled: couponField.length > 3 && !couponBusy.running
-            Material.elevation: 0
         }
     }
 
-    ComboBox {
+    MComboBox {
         id: intervalPayCombo
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.bottom: confirmBtn.top
         anchors.leftMargin: 20 * Devices.density
         anchors.rightMargin: 20 * Devices.density
-        font.pixelSize: 9 * Devices.fontDensity
         visible: flickable.visible
         model: [qsTr("Monthly"), qsTr("Yearly") + Translations.refresher]
-        delegate: ItemDelegate {
-            width: intervalPayCombo.width
-
-            Label {
-                anchors.fill: parent
-                horizontalAlignment: Text.AlignHCenter
-                verticalAlignment: Text.AlignVCenter
-                font.pixelSize: 9 * Devices.fontDensity
-                text: model.text
-            }
-            IOSStyle.theme: AsemanGlobals.iosTheme
-            Material.theme: AsemanGlobals.androidEffectiveTheme
-        }
     }
 
-    Button {
+    MButton {
         id: confirmBtn
         anchors.left: parent.left
         anchors.right: parent.right
@@ -255,9 +224,6 @@ Item {
         visible: flickable.visible
         text: qsTr("Confirm") + Translations.refresher
         highlighted: true
-        Material.accent: packageColor
-        IOSStyle.accent: packageColor
-        Material.elevation: 0
     }
 
     Rectangle {
@@ -270,7 +236,7 @@ Item {
 
         Separator {}
 
-        Label {
+        MLabel {
             id: headerLabel
             anchors.centerIn: parent
             font.pixelSize: 9 * Devices.fontDensity
@@ -283,18 +249,13 @@ Item {
             anchors.right: parent.right
             height: Devices.standardTitleBarHeight
 
-            RoundButton {
+            MButton {
                 id: cancelBtn
                 Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
                 text: qsTr("Cancel") + Translations.refresher
                 highlighted: true
                 radius: 6 * Devices.density
                 font.pixelSize: 8 * Devices.fontDensity
-                Material.accent: Qt.darker(headerItem.color, 1.3)
-                Material.theme: Material.Dark
-                IOSStyle.accent: Qt.darker(headerItem.color, 1.3)
-                IOSStyle.theme: IOSStyle.Dark
-                Material.elevation: 0
             }
         }
     }

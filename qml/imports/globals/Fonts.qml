@@ -1,8 +1,6 @@
 pragma Singleton
 
 import QtQuick 2.10
-import QtQuick.Controls.Material 2.0
-import QtQuick.Controls.IOSStyle 2.0
 import AsemanQml.Base 2.0
 
 AsemanObject

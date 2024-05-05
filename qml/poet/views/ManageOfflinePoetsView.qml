@@ -2,10 +2,7 @@ import QtQuick 2.12
 import AsemanQml.Base 2.0
 import AsemanQml.MaterialIcons 2.0
 import AsemanQml.Controls 2.0
-import QtQuick.Controls 2.3
 import QtQuick.Layouts 1.3
-import QtQuick.Controls.Material 2.0
-import QtQuick.Controls.IOSStyle 2.0
 import requests 1.0
 import globals 1.0
 import components 1.0
@@ -52,85 +49,6 @@ Item {
         topMargin: 4 * Devices.density
         bottomMargin: 4 * Devices.density
 
-        header: Item {
-            width: listView.width
-            height: headerRow.visible? headerRow.height + 30 * Devices.density : 0
-
-            ColumnLayout {
-                id: headerRow
-                y: 15 * Devices.density
-                anchors.left: parent.left
-                anchors.right: parent.right
-                spacing: 10 * Devices.density
-                visible: premiumMsg.length
-
-                Label {
-                    Layout.fillWidth: true
-                    Layout.leftMargin: 20 * Devices.density
-                    Layout.rightMargin: 20 * Devices.density
-                    horizontalAlignment: Text.AlignHCenter
-                    font.pixelSize: 8 * Devices.fontDensity
-                    opacity: 0.8
-                    text: premiumMsg
-                    wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                    color: Subscription.offlineLimits > offlinePoetsCount? Colors.foreground : "#a00"
-
-                    Connections {
-                        onLinkActivated: Qt.openUrlExternally(link)
-                    }
-                }
-
-                Label {
-                    Layout.fillWidth: true
-                    Layout.leftMargin: 20 * Devices.density
-                    Layout.rightMargin: 20 * Devices.density
-                    horizontalAlignment: Text.AlignHCenter
-                    font.pixelSize: 8 * Devices.fontDensity
-                    text: qsTr("To buy premium account click on below button") + Translations.refresher
-                    visible: Subscription.offlineLimits <= offlinePoetsCount && !AsemanGlobals.disablePremiumOfflinesWarn && Bootstrap.payment && Bootstrap.trusted
-                    wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                }
-
-                ColumnLayout {
-                    Layout.alignment: Qt.AlignHCenter
-                    visible: Subscription.offlineLimits <= offlinePoetsCount && !AsemanGlobals.disablePremiumOfflinesWarn && Bootstrap.payment && Bootstrap.trusted
-                    spacing: 0
-
-                    RoundButton {
-                        id: premiumBtn
-                        Layout.alignment: Qt.AlignHCenter
-                        Layout.preferredWidth: listView.width * 0.5
-                        text: qsTr("Premium Account") + Translations.refresher
-                        font.pixelSize: 9 * Devices.fontDensity
-                        highlighted: true
-                        Material.accent: Subscription.premiumColor
-                        IOSStyle.accent: Subscription.premiumColor
-                        Material.elevation: 0
-
-                        Connections {
-                            target: premiumBtn
-                            onClicked: dis.premiumBuyRequest()
-                        }
-                    }
-
-                    RoundButton {
-                        id: premiumDisMisBtn
-                        Layout.alignment: Qt.AlignHCenter
-                        text: qsTr("Don't show this message again") + Translations.refresher
-                        font.underline: true
-                        font.pixelSize: 8 * Devices.fontDensity
-                        flat: true
-                        highlighted: true
-
-                        Connections {
-                            target: premiumDisMisBtn
-                            onClicked: AsemanGlobals.disablePremiumOfflinesWarn = true
-                        }
-                    }
-                }
-            }
-        }
-
         delegate: Item {
             id: itemObj
             width: listView.width
@@ -149,7 +67,7 @@ Item {
                     color: Colors.background
                 }
 
-                ItemDelegate {
+                MItemDelegate {
                     id: itemDel
                     anchors.fill: parent
 
@@ -195,7 +113,7 @@ Item {
                         Layout.fillWidth: true
                         spacing: 2 * Devices.density
 
-                        Label {
+                        MLabel {
                             Layout.fillWidth: true
                             horizontalAlignment: Text.AlignLeft
                             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
@@ -205,7 +123,7 @@ Item {
                             text: model.title
                         }
 
-                        Label {
+                        MLabel {
                             Layout.fillWidth: true
                             horizontalAlignment: Text.AlignLeft
                             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
@@ -229,7 +147,7 @@ Item {
                         progress: offlineInstaller.size? 0.1 + 0.9 * offlineInstaller.downloadedBytes / offlineInstaller.size : 0.1
                     }
 
-                    Switch {
+                    MSwitch {
                         id: swt
                         Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
                         enabled: !offlineInstaller.installing || offlineInstaller.uninstalling
@@ -278,31 +196,26 @@ Item {
         color: Colors.deepBackground
     }
 
-    TabBar {
+    MTabBar {
         id: tabBar
         anchors.top: headerItem.bottom
         anchors.left: parent.left
         anchors.right: parent.right
 
-        TabButton {
+        MTabButton {
             text: qsTr("Poets") + Translations.refresher
-            font.pixelSize: 9 * Devices.fontDensity
         }
-        TabButton {
+        MTabButton {
             text: qsTr("Books") + Translations.refresher
-            font.pixelSize: 9 * Devices.fontDensity
         }
     }
 
-    Header {
+    MHeader {
         id: headerItem
         anchors.top: parent.top
         anchors.right: parent.right
         anchors.left: parent.left
-        text: qsTr("Edit Shelf") + Translations.refresher
-        color: Colors.headerColor
-        light: !Colors.lightHeader
-        shadow: Devices.isAndroid
+        title: qsTr("Edit Shelf") + Translations.refresher
 
         HeaderBackButton {
             id: closeBtn

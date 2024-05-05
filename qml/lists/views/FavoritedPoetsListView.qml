@@ -2,11 +2,9 @@ import QtQuick 2.12
 import AsemanQml.Base 2.0
 import AsemanQml.MaterialIcons 2.0
 import AsemanQml.Controls 2.0
+import AsemanQml.Controls.Beta 3.0
 import AsemanQml.Viewport 2.0
-import QtQuick.Controls 2.3
 import QtQuick.Layouts 1.3
-import QtQuick.Controls.Material 2.0
-import QtQuick.Controls.IOSStyle 2.0
 import globals 1.0
 import components 1.0
 import models 1.0
@@ -56,7 +54,7 @@ Item {
         viewItem: listView
     }
 
-    Label {
+    MLabel {
         anchors.centerIn: parent
         font.pixelSize: 8 * Devices.fontDensity
         text: qsTr("There is no item here") + Translations.refresher
@@ -86,7 +84,7 @@ Item {
                 visible: !(disableSharing || favoriteMode) && Bootstrap.initialized && listView.count
                 spacing: 4 * Devices.density
 
-                ItemDelegate {
+                MItemDelegate {
                     Layout.fillWidth: true
                     Layout.preferredHeight: 40 * Devices.density
 
@@ -100,14 +98,14 @@ Item {
                         anchors.verticalCenter: parent.verticalCenter
                         anchors.leftMargin: 10 * Devices.density
 
-                        Label {
+                        MLabel {
                             Layout.fillWidth: true
                             text: qsTr("Public list") + Translations.refresher
                             horizontalAlignment: Text.AlignLeft
                             font.pixelSize: 9 * Devices.fontDensity
                         }
 
-                        BusyIndicator {
+                        MBusyIndicator {
                             id: publicIndicator
                             scale: 0.6
                             Layout.preferredWidth: 28 * Devices.density
@@ -115,7 +113,7 @@ Item {
                             running: publicIndicatorState
                         }
 
-                        Switch {
+                        MSwitch {
                             id: publicSwitch
                             checked: publicList
                             enabled: !publicIndicator.running
@@ -162,13 +160,12 @@ Item {
                             }
                         }
 
-                        RoundButton {
+                        MButton {
                             Layout.preferredHeight: 36 * Devices.density
                             Layout.preferredWidth: 36 * Devices.density
                             radius: width / 2
                             highlighted: model.index != 0
-                            IOSStyle.accent: model.color
-                            Material.accent: model.color
+                            Style.accentColor: model.color
 
                             Connections {
                                 onClicked: {
@@ -177,7 +174,7 @@ Item {
                                 }
                             }
 
-                            Label {
+                            MLabel {
                                 anchors.centerIn: parent
                                 font.family: MaterialIcons.family
                                 font.pixelSize: 12 * Devices.fontDensity
@@ -306,14 +303,11 @@ Item {
         }
     }
 
-    Header {
+    MHeader {
         id: headerItem
         anchors.top: parent.top
         anchors.right: parent.right
         anchors.left: parent.left
-        color: Colors.headerColor
-        light: !Colors.lightHeader
-        shadow: Devices.isAndroid
 
         ColumnLayout {
             anchors.horizontalCenter: parent.horizontalCenter
@@ -344,18 +338,14 @@ Item {
             height: Devices.standardTitleBarHeight
             spacing: -6 * Devices.density
 
-            RoundButton {
+            MButton {
                 id: flatBtn
                 text: MaterialIcons.mdi_view_list
                 font.family: MaterialIcons.family
                 radius: 6 * Devices.density
                 font.pixelSize: 10 * Devices.fontDensity
-                IOSStyle.foreground: flatList? Colors.accent : Colors.foreground
-                IOSStyle.background: Colors.deepBackground
-                Material.foreground: flatList? Colors.accent : Colors.foreground
-                Material.background: Colors.deepBackground
-                Material.theme: Material.Dark
-                Material.elevation: 0
+                Style.accentColor: flatList? Colors.accent : Colors.foreground
+                Style.accentTextColor: Colors.deepBackground
                 visible: !favoriteMode
 
                 Connections {
@@ -366,17 +356,13 @@ Item {
                 }
             }
 
-            RoundButton {
+            MAccentButton {
                 id: followBtn
                 text: followState? qsTr("Unfollow") : qsTr("Follow") + Translations.refresher
                 radius: 6 * Devices.density
                 font.pixelSize: 8 * Devices.fontDensity
                 highlighted: true
                 visible: onlineList
-                IOSStyle.accent: followState? IOSStyle.Red : Colors.accent
-                Material.accent: followState? Material.Red : Colors.accent
-                Material.theme: Material.Dark
-                Material.elevation: 0
             }
 
             HeaderBackButton {

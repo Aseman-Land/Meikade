@@ -1,11 +1,8 @@
 import QtQuick 2.12
 import AsemanQml.Base 2.0
 import AsemanQml.MaterialIcons 2.0
-import QtQuick.Controls 2.3
 import AsemanQml.Controls 2.0
 import QtQuick.Layouts 1.3
-import QtQuick.Controls.Material 2.0
-import QtQuick.Controls.IOSStyle 2.0
 import globals 1.0
 import components 1.0
 
@@ -35,7 +32,7 @@ DrawerFrame {
             Layout.rightMargin: 20 * Devices.density
             spacing: 20 * Devices.density
 
-            Label {
+            MLabel {
                 id: contactName
                 Layout.fillWidth: true
                 horizontalAlignment: Text.AlignLeft
@@ -60,7 +57,7 @@ DrawerFrame {
 
             property bool isValid: text.length > 0 || preeditText.length > 0
 
-            Label {
+            MLabel {
                 anchors.left: parent.left
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.verticalCenterOffset: 4 * Devices.density
@@ -72,7 +69,7 @@ DrawerFrame {
             }
         }
 
-        Button {
+        MButton {
             id: confirmBtn
             Layout.fillWidth: true
             Layout.leftMargin: 20 * Devices.density
@@ -81,7 +78,6 @@ DrawerFrame {
             enabled: nameField.isValid
             text: renameMode? qsTr("Rename") : qsTr("Add") + Translations.refresher
             highlighted: true
-            Material.elevation: 0
         }
     }
 }

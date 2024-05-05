@@ -4,24 +4,22 @@ import AsemanQml.Controls 2.0
 import AsemanQml.Viewport 2.0
 import AsemanQml.MaterialIcons 2.0
 import QtQuick.Layouts 1.3
-import QtQuick.Controls.Material 2.3
-import QtQuick.Controls 2.15
 import components 1.0
 import models 1.0
 import requests 1.0
 import globals 1.0
 
-Page {
+MPage {
     id: dis
     ViewportType.maximumWidth: Viewport.viewport.width > Viewport.viewport.height && !Devices.isMobile? 500 * Devices.density : 0
     ViewportType.touchToClose: true
 
-    BusyIndicator {
+    MBusyIndicator {
         anchors.centerIn: parent
         running: fmodel.refreshing
     }
 
-    ScrollView {
+    MScrollView {
         anchors.top: header.bottom
         anchors.left: parent.left
         anchors.right: parent.right
@@ -32,10 +30,9 @@ Page {
             model: VolcanoPaymentsModel {
                 id: fmodel
             }
-            delegate: ItemDelegate {
+            delegate: MItemDelegate {
                 width: lview.width
                 height: 56 * Devices.density
-                focusPolicy: Qt.ClickFocus
 
                 Component.onCompleted: if (model.index == lview.count-1 && lview.model.more) lview.model.more()
 
@@ -56,7 +53,8 @@ Page {
                         spacing: 4 * Devices.density
 
                         RowLayout {
-                            Label {
+
+                            MLabel {
                                 Layout.fillWidth: true
                                 font.bold: true
                                 text: formater.output
@@ -72,7 +70,7 @@ Page {
                                 }
                             }
 
-                            Label {
+                            MLabel {
                                 font.pixelSize: 8 * Devices.fontDensity
                                 color: Colors.accent
                                 text: {
@@ -81,7 +79,7 @@ Page {
                                 }
                             }
                         }
-                        Label {
+                        MLabel {
                             Layout.fillWidth: true
                             opacity: 0.7
                             font.pixelSize: 7 * Devices.fontDensity
@@ -108,7 +106,7 @@ Page {
             anchors.centerIn: parent
             spacing: 0
 
-            Label {
+            MLabel {
                 Layout.alignment: Qt.AlignHCenter
                 font.pixelSize: 10 * Devices.fontDensity
                 text: qsTr("Payments") + Translations.refresher

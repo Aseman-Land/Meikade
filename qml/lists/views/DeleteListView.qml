@@ -1,11 +1,8 @@
 import QtQuick 2.12
 import AsemanQml.Base 2.0
 import AsemanQml.MaterialIcons 2.0
-import QtQuick.Controls 2.3
 import AsemanQml.Controls 2.0
 import QtQuick.Layouts 1.3
-import QtQuick.Controls.Material 2.0
-import QtQuick.Controls.IOSStyle 2.0
 import globals 1.0
 import components 1.0
 
@@ -36,7 +33,7 @@ DrawerFrame {
             Layout.rightMargin: 20 * Devices.density
             spacing: 20 * Devices.density
 
-            Label {
+            MLabel {
                 id: bodyLabel
                 Layout.fillWidth: true
                 horizontalAlignment: Text.AlignLeft
@@ -45,7 +42,7 @@ DrawerFrame {
             }
         }
 
-        Button {
+        MButton {
             id: rejectBtn
             Layout.fillWidth: true
             Layout.topMargin: 10 * Devices.density
@@ -53,10 +50,9 @@ DrawerFrame {
             Layout.rightMargin: 20 * Devices.density
             font.pixelSize: 9 * Devices.fontDensity
             text: qsTr("Cancel") + Translations.refresher
-            Material.elevation: 0
         }
 
-        Button {
+        MButton {
             id: confirmBtn
             Layout.fillWidth: true
             Layout.leftMargin: 20 * Devices.density
@@ -64,9 +60,6 @@ DrawerFrame {
             font.pixelSize: 9 * Devices.fontDensity
             text: qsTr("Confirm") + Translations.refresher
             highlighted: true
-            Material.accent: Material.Red
-            IOSStyle.accent: IOSStyle.Red
-            Material.elevation: 0
         }
     }
 }

@@ -3,10 +3,7 @@ import AsemanQml.Base 2.0
 import AsemanQml.Controls 2.0
 import AsemanQml.Viewport 2.0
 import AsemanQml.MaterialIcons 2.0
-import QtQuick.Controls 2.3
 import QtQuick.Layouts 1.3
-import QtQuick.Controls.Material 2.0
-import QtQuick.Controls.IOSStyle 2.0
 import components 1.0
 import requests 1.0
 import globals 1.0
@@ -57,12 +54,12 @@ NullMouseArea {
         anchors.centerIn: parent
         visible: decodeReq.refreshing
 
-        BusyIndicator {
+        MBusyIndicator {
             Layout.alignment: Qt.AlignHCenter
             running: decodeReq.refreshing
         }
 
-        Label {
+        MLabel {
             font.pixelSize: 9 * Devices.fontDensity
             text: qsTr("Checking payment...") + Translations.refresher
         }
@@ -76,7 +73,7 @@ NullMouseArea {
         spacing: 4 * Devices.density
         visible: false;
 
-        Label {
+        MLabel {
             Layout.fillWidth: true
             Layout.topMargin: 10 * Devices.density
             Layout.leftMargin: 20 * Devices.density
@@ -93,7 +90,7 @@ NullMouseArea {
             Layout.topMargin: 20 * Devices.density
             Layout.bottomMargin: 20 * Devices.density
 
-            Label {
+            MLabel {
                 color: Colors.accent
                 font.pixelSize: 18 * Devices.fontDensity
                 text: qsTr("%1.%2").arg(formater.output).arg( formater.number - Math.floor(formater.number) )
@@ -108,7 +105,7 @@ NullMouseArea {
                 }
             }
 
-            Label {
+            MLabel {
                 font.pixelSize: 9 * Devices.fontDensity
                 color: Colors.accent
                 text: qsTr("Satoshi") + Translations.refresher
@@ -121,14 +118,14 @@ NullMouseArea {
             Layout.leftMargin: 20 * Devices.density
             Layout.rightMargin: 20 * Devices.density
 
-            Label {
+            MLabel {
                 font.pixelSize: 9 * Devices.fontDensity
                 text: qsTr("Payment Hash:")
                 font.bold: true
                 color: Colors.accent
             }
 
-            Label {
+            MLabel {
                 id: paymentHash
                 Layout.fillWidth: true
                 font.pixelSize: 9 * Devices.fontDensity
@@ -138,7 +135,7 @@ NullMouseArea {
             }
         }
 
-        Button {
+        MButton {
             Layout.fillWidth: true
             Layout.leftMargin: 20 * Devices.density
             Layout.rightMargin: 20 * Devices.density
@@ -149,7 +146,7 @@ NullMouseArea {
             }
         }
 
-        Button {
+        MButton {
             id: payBtn
             Layout.fillWidth: true
             Layout.leftMargin: 20 * Devices.density
@@ -188,7 +185,7 @@ NullMouseArea {
         spacing: 4 * Devices.density
         visible: !decodeReq.refreshing && !resultColumn.visible
 
-        Label {
+        MLabel {
             Layout.fillWidth: true
             Layout.topMargin: 10 * Devices.density
             Layout.leftMargin: 20 * Devices.density
@@ -214,7 +211,7 @@ NullMouseArea {
                 anchors.right: parent.right
                 y: 10 * Devices.density
 
-                Label {
+                MLabel {
                     font.pixelSize: 9 * Devices.fontDensity
                     text: qsTr("Click to paste:")
                     font.bold: true
@@ -228,7 +225,7 @@ NullMouseArea {
                     font.pixelSize: 9 * Devices.fontDensity
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
 
-                    Button {
+                    MButton {
                         anchors.right: parent.right
                         anchors.bottom: parent.bottom
                         anchors.margins: 4 * Devices.density
@@ -251,7 +248,7 @@ NullMouseArea {
             }
         }
 
-        Button {
+        MButton {
             id: rejectBtn
             Layout.fillWidth: true
             Layout.leftMargin: 20 * Devices.density
@@ -263,7 +260,7 @@ NullMouseArea {
             }
         }
 
-        Button {
+        MButton {
             id: confirmBtn
             Layout.fillWidth: true
             Layout.leftMargin: 20 * Devices.density
@@ -288,7 +285,7 @@ NullMouseArea {
 
         Separator {}
 
-        Label {
+        MLabel {
             id: headerLabel
             anchors.centerIn: parent
             font.pixelSize: 9 * Devices.fontDensity

@@ -1,11 +1,9 @@
 import QtQuick 2.12
 import AsemanQml.Base 2.0
 import AsemanQml.Viewport 2.0
-import QtQuick.Controls 2.3
-import QtQuick.Controls.Material 2.0
-import QtQuick.Controls.IOSStyle 2.0
-import globals 1.0
 import QtQuick.Layouts 1.3
+import components 1.0
+import globals 1.0
 
 Item {
     id: element
@@ -36,7 +34,7 @@ Item {
             Layout.margins: 10
             spacing: 6 * Devices.density
 
-            Label {
+            MLabel {
                 id: titleLabel
                 Layout.fillWidth: true
                 font.bold: true
@@ -46,7 +44,7 @@ Item {
                 text: "Title"
             }
 
-            Label {
+            MLabel {
                 id: bodyLabel
                 Layout.fillWidth: true
                 Layout.fillHeight: true
@@ -73,22 +71,13 @@ Item {
             Repeater {
                 id: repeater
                 model: ["Ok"]
-                Button {
+                MButton {
                     id: btn
                     Layout.fillWidth: true
-                    topInset: 0
-                    bottomInset: 0
-                    leftInset: 0
-                    rightInset: 0
                     highlighted: true
                     flat: true
-                    hoverEnabled: false
                     text: modelData
-
-                    Connections {
-                        target: btn
-                        onClicked: element.itemClicked(model.index, modelData)
-                    }
+                    onClicked: element.itemClicked(model.index, modelData)
                 }
             }
         }

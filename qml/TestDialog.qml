@@ -2,22 +2,16 @@ import QtQuick 2.12
 import AsemanQml.Base 2.0
 import AsemanQml.MaterialIcons 2.0
 import AsemanQml.Controls 2.0
-import QtQuick.Controls 2.3
 import QtQuick.Layouts 1.3
-import QtQuick.Controls.Material 2.0
-import QtQuick.Controls.IOSStyle 2.0
 import requests 1.0
 import globals 1.0
 import components 1.0
 import models 1.0
 
-Page {
+MPage {
     id: dis
     width: Constants.width
     height: Constants.height
-
-    Material.theme: Material.Light
-    IOSStyle.theme: IOSStyle.Light
 
     LayoutMirroring.enabled: false
     LayoutMirroring.childrenInherit: true
@@ -31,14 +25,14 @@ Page {
 
         signal toggled
 
-        Label {
+        MLabel {
             id: lbl
             Layout.fillWidth: true
             font.pixelSize: 9 * Devices.fontDensity
             horizontalAlignment: Text.AlignLeft
         }
 
-        Switch {
+        MSwitch {
             id: swt
             checked: true
             onToggled: tcitem.toggled()
@@ -47,10 +41,7 @@ Page {
 
     AsemanFlickable {
         id: flick
-        anchors.top: headerItem.bottom
-        anchors.bottom: startBtn.top
-        anchors.right: parent.right
-        anchors.left: parent.left
+        anchors.fill: parent
         flickableDirection: Flickable.VerticalFlick
         clip: true
 
@@ -113,7 +104,7 @@ Page {
         }
     }
 
-    Button {
+    MButton {
         id: startBtn
         anchors.right: flick.right
         anchors.left: flick.left
@@ -126,15 +117,12 @@ Page {
         onClicked: dis.loadRequest()
     }
 
-    Header {
+    header: MHeader {
         id: headerItem
         anchors.top: parent.top
         anchors.right: parent.right
         anchors.left: parent.left
-        text: "Configs Panel"
-        color: "#fff"
-        light: false
-        shadow: Devices.isAndroid
+        title: "Configs Panel"
     }
 
     HScrollBar {

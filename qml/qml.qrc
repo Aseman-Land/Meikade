@@ -403,5 +403,10 @@
         <file>imports/components/MBusyIndicator.qml</file>
         <file>imports/components/MProgressBar.qml</file>
         <file>imports/components/MPageIndicator.qml</file>
+        <file>imports/components/MComboBox.qml</file>
+        <file>imports/components/MSlider.qml</file>
+        <file>imports/components/MAccentButton.qml</file>
+        <file>imports/components/MCheckBox.qml</file>
+        <file>imports/components/MScrollView.qml</file>
     </qresource>
 </RCC>

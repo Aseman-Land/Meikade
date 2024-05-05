@@ -1,11 +1,8 @@
 import QtQuick 2.12
 import AsemanQml.Base 2.0
 import AsemanQml.MaterialIcons 2.0
-import QtQuick.Controls 2.3
 import QtQuick.Layouts 1.3
 import AsemanQml.Controls 2.0
-import QtQuick.Controls.Material 2.0
-import QtQuick.Controls.IOSStyle 2.0
 import globals 1.0
 import components 1.0
 import models 1.0
@@ -75,7 +72,7 @@ Item {
                 anchors.margins: 20 * Devices.density
                 spacing: 4 * Devices.density
 
-                Label {
+                MLabel {
                     Layout.fillWidth: true
                     font.pixelSize: 9 * Devices.fontDensity
                     wrapMode: TextEdit.WrapAtWordBoundaryOrAnywhere
@@ -91,7 +88,7 @@ Item {
                     Repeater {
                         model: 4
 
-                        Button {
+                        MButton {
                             Layout.preferredWidth: typeIcon.width + 20 * Devices.density
                             Layout.preferredHeight: typeIcon.height + 20 * Devices.density
                             highlighted: model.index == currentType
@@ -111,7 +108,7 @@ Item {
                     }
                 }
 
-                Label {
+                MLabel {
                     Layout.fillWidth: true
                     font.pixelSize: 9 * Devices.fontDensity
                     horizontalAlignment: Text.AlignLeft
@@ -122,7 +119,7 @@ Item {
                     text: "<b>" + qsTr("Note") + ":</b> " + qsTr("To make verses showin in center of the line, add a ':' in the first of the line.") + Translations.refresher
                 }
 
-                Label {
+                MLabel {
                     Layout.topMargin: 8 * Devices.density
                     Layout.fillWidth: true
                     font.pixelSize: 9 * Devices.fontDensity
@@ -166,13 +163,13 @@ Item {
         anchors.margins: 10 * Devices.density
         spacing: 4 * Devices.density
 
-        Button {
+        MButton {
             id: previewBtn
             font.pixelSize: 9 * Devices.fontDensity
             text: qsTr("Preview") + Translations.refresher
         }
 
-        Button {
+        MButton {
             id: saveBtn
             font.pixelSize: 9 * Devices.fontDensity
             highlighted: true
@@ -222,7 +219,7 @@ Item {
             anchors.fill: parent
             anchors.topMargin: Devices.statusBarHeight
 
-            Label {
+            MLabel {
                 id: titleLabel
                 anchors.bottom: subtitleLabel.top
                 anchors.left: parent.left
@@ -237,7 +234,7 @@ Item {
                 opacity: ratio
             }
 
-            Label {
+            MLabel {
                 id: subtitleLabel
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.verticalCenterOffset: 10 * Devices.density * ratioAbs
@@ -298,12 +295,10 @@ Item {
                         anchors.left: parent.left
                         spacing: 4 * Devices.density
 
-                        BusyIndicator {
+                        MBusyIndicator {
                             scale: 0.6
                             Layout.preferredHeight: 28 * Devices.density
                             Layout.preferredWidth: 28 * Devices.density
-                            Material.accent: "#fff"
-                            IOSStyle.foreground: "#fff"
                             running: navigationRepeater.model && navigationRepeater.model.refreshing !== undefined && navigationRepeater.model.refreshing && navigationRepeater.count == 0? true : false
                             visible: running
                         }
@@ -323,7 +318,7 @@ Item {
                                 spacing: 0
                                 Layout.alignment: Qt.AlignVCenter
 
-                                Label {
+                                MLabel {
                                     Layout.alignment: Qt.AlignVCenter
                                     font.pixelSize: 12 * Devices.fontDensity
                                     font.family: MaterialIcons.family
@@ -331,7 +326,7 @@ Item {
                                     color: "#fff"
                                 }
 
-                                Label {
+                                MLabel {
                                     Layout.alignment: Qt.AlignVCenter
                                     font.pixelSize: 9 * Devices.fontDensity
                                     text: model.title

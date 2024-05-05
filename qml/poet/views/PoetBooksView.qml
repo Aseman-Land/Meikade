@@ -2,10 +2,7 @@ import QtQuick 2.12
 import AsemanQml.Base 2.0
 import AsemanQml.MaterialIcons 2.0
 import AsemanQml.Controls 2.0
-import QtQuick.Controls 2.3
 import QtQuick.Layouts 1.3
-import QtQuick.Controls.Material 2.0
-import QtQuick.Controls.IOSStyle 2.0
 import globals 1.0
 import components 1.0
 import models 1.0
@@ -76,73 +73,7 @@ Item {
                 visible: readWriteMode
                 spacing: 4 * Devices.density
 
-                Label {
-                    Layout.fillWidth: true
-                    Layout.leftMargin: 20 * Devices.density
-                    Layout.rightMargin: 20 * Devices.density
-                    horizontalAlignment: Text.AlignHCenter
-                    font.pixelSize: 8 * Devices.fontDensity
-                    opacity: 0.8
-                    text: premiumMsg
-                    visible: premiumMsg.length && poemAddMode
-                    wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                    color: Subscription.mypoemsLimits > poemsCount? Colors.foreground : "#a00"
-
-                    Connections {
-                        onLinkActivated: Qt.openUrlExternally(link)
-                    }
-                }
-
-                Label {
-                    Layout.fillWidth: true
-                    Layout.leftMargin: 20 * Devices.density
-                    Layout.rightMargin: 20 * Devices.density
-                    horizontalAlignment: Text.AlignHCenter
-                    font.pixelSize: 8 * Devices.fontDensity
-                    text: qsTr("To buy premium account click on below button") + Translations.refresher
-                    visible: !addBtn.visible && premiumMsg.length && !AsemanGlobals.disablePremiumMyBooksWarn && Bootstrap.payment && Bootstrap.trusted && poemAddMode
-                    wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                }
-
-                ColumnLayout {
-                    Layout.alignment: Qt.AlignHCenter
-                    visible: !addBtn.visible && premiumMsg.length && !AsemanGlobals.disablePremiumMyBooksWarn && Bootstrap.payment && Bootstrap.trusted && poemAddMode
-                    spacing: 0
-
-                    RoundButton {
-                        id: premiumBtn
-                        Layout.alignment: Qt.AlignHCenter
-                        Layout.preferredWidth: listView.width * 0.5
-                        text: qsTr("Premium Account") + Translations.refresher
-                        font.pixelSize: 9 * Devices.fontDensity
-                        highlighted: true
-                        Material.accent: Subscription.premiumColor
-                        IOSStyle.accent: Subscription.premiumColor
-                        Material.elevation: 0
-
-                        Connections {
-                            target: premiumBtn
-                            onClicked: dis.premiumBuyRequest()
-                        }
-                    }
-
-                    RoundButton {
-                        id: premiumDisMisBtn
-                        Layout.alignment: Qt.AlignHCenter
-                        text: qsTr("Don't show this message again") + Translations.refresher
-                        font.underline: true
-                        font.pixelSize: 8 * Devices.fontDensity
-                        flat: true
-                        highlighted: true
-
-                        Connections {
-                            target: premiumDisMisBtn
-                            onClicked: AsemanGlobals.disablePremiumMyBooksWarn = true
-                        }
-                    }
-                }
-
-                Label {
+                MLabel {
                     Layout.fillWidth: true
                     horizontalAlignment: Text.AlignHCenter
                     font.pixelSize: 8 * Devices.fontDensity
@@ -152,13 +83,11 @@ Item {
                     visible: addBtn.visible
                 }
 
-                RoundButton {
+                MAccentButton {
                     id: addBtn
                     Layout.alignment: Qt.AlignHCenter
                     Layout.preferredWidth: addRow.width + 60 * Devices.density
                     highlighted: true
-                    IOSStyle.accent: Colors.accent
-                    Material.accent: Colors.accent
                     visible: poemAddMode && (Subscription.mypoemsLimits > poemsCount || premiumMsg.length == 0)
 
                     Connections {
@@ -170,14 +99,14 @@ Item {
                         x: 30 * Devices.density
                         anchors.verticalCenter: parent.verticalCenter
 
-                        Label {
+                        MLabel {
                             font.pixelSize: 12 * Devices.fontDensity
                             font.family: MaterialIcons.family
                             text: MaterialIcons.mdi_feather
                             color: "#fff"
                         }
 
-                        Label {
+                        MLabel {
                             text: qsTr("New Poem") + Translations.refresher
                             font.pixelSize: 9 * Devices.fontDensity
                             color: "#fff"
@@ -185,7 +114,7 @@ Item {
                     }
                 }
 
-                Label {
+                MLabel {
                     visible: bookAddMode
                     Layout.topMargin: poemAddMode? 20 * Devices.density : 0
                     Layout.fillWidth: true
@@ -196,7 +125,7 @@ Item {
                     opacity: 0.7
                 }
 
-                RoundButton {
+                MButton {
                     visible: bookAddMode
                     Layout.alignment: Qt.AlignHCenter
                     Layout.preferredWidth: addSubBookRow.width + 60 * Devices.density
@@ -211,14 +140,14 @@ Item {
                         x: 30 * Devices.density
                         anchors.verticalCenter: parent.verticalCenter
 
-                        Label {
+                        MLabel {
                             font.pixelSize: 12 * Devices.fontDensity
                             font.family: MaterialIcons.family
                             text: MaterialIcons.mdi_notebook
                             color: "#fff"
                         }
 
-                        Label {
+                        MLabel {
                             text: qsTr("New Book") + Translations.refresher
                             font.pixelSize: 9 * Devices.fontDensity
                             color: "#fff"
@@ -226,13 +155,11 @@ Item {
                     }
                 }
 
-                RoundButton {
+                MButton {
                     Layout.alignment: Qt.AlignHCenter
                     Layout.preferredWidth: publishRow.width + 60 * Devices.density
                     highlighted: true
                     visible: Bootstrap.initialized
-                    IOSStyle.accent: Qt.darker(Colors.primary, 1.3)
-                    Material.accent: Qt.darker(Colors.primary, 1.3)
 
                     Connections {
                         onClicked: publishRequest()
@@ -243,14 +170,14 @@ Item {
                         x: 30 * Devices.density
                         anchors.verticalCenter: parent.verticalCenter
 
-                        Label {
+                        MLabel {
                             font.pixelSize: 12 * Devices.fontDensity
                             font.family: MaterialIcons.family
                             text: MaterialIcons.mdi_publish
                             color: "#fff"
                         }
 
-                        Label {
+                        MLabel {
                             text: qsTr("Publish Book") + Translations.refresher
                             font.pixelSize: 9 * Devices.fontDensity
                             color: "#fff"
@@ -300,7 +227,7 @@ Item {
                         visible: avatar.status != Image.Ready
                     }
 
-                    Label {
+                    MLabel {
                         anchors.centerIn: parent
                         color: Colors.headerColor
                         font.pixelSize: 28 * Devices.fontDensity
@@ -317,7 +244,7 @@ Item {
                         ignoreSslErrors: AsemanGlobals.ignoreSslErrors
                     }
 
-                    ItemDelegate {
+                    MItemDelegate {
                         id: avatarBtn
                         anchors.fill: parent
                     }
@@ -360,14 +287,14 @@ Item {
                                 spacing: 0
                                 Layout.alignment: Qt.AlignVCenter
 
-                                Label {
+                                MLabel {
                                     font.family: MaterialIcons.family
                                     text: LayoutMirroring.enabled? MaterialIcons.mdi_chevron_left : MaterialIcons.mdi_chevron_right
                                     font.pixelSize: 14 * Devices.fontDensity
                                     color: Colors.headerTextColor
                                 }
 
-                                Label {
+                                MLabel {
                                     text: model.title
                                     font.pixelSize: 9 * Devices.fontDensity
                                     color: Colors.headerTextColor
@@ -375,7 +302,7 @@ Item {
                                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                                     elide: Text.ElideRight
 
-                                    ItemDelegate {
+                                    MItemDelegate {
                                         id: navDel
                                         anchors.fill: parent
                                         anchors.margins: -14 * Devices.density
@@ -397,12 +324,12 @@ Item {
                 id: progressBar
             }
 
-            ItemDelegate {
+            MItemDelegate {
                 id: menuBtn
                 Layout.preferredHeight: Devices.standardTitleBarHeight
                 Layout.preferredWidth: Devices.standardTitleBarHeight
 
-                Label {
+                MLabel {
                     anchors.centerIn: parent
                     font.family: MaterialIcons.family
                     font.pixelSize: 14 * Devices.fontDensity

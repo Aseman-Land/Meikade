@@ -2,10 +2,7 @@ import QtQuick 2.12
 import AsemanQml.Base 2.0
 import AsemanQml.Controls 2.0
 import AsemanQml.Viewport 2.0
-import QtQuick.Controls 2.3
 import QtQuick.Layouts 1.3
-import QtQuick.Controls.Material 2.0
-import QtQuick.Controls.IOSStyle 2.0
 import components 1.0
 import requests 1.0
 import globals 1.0
@@ -49,12 +46,12 @@ NullMouseArea {
         anchors.centerIn: parent
         visible: depositReq.refreshing
 
-        BusyIndicator {
+        MBusyIndicator {
             Layout.alignment: Qt.AlignHCenter
             running: depositReq.refreshing
         }
 
-        Label {
+        MLabel {
             font.pixelSize: 9 * Devices.fontDensity
             text: qsTr("Generating Deposit...") + Translations.refresher
         }
@@ -68,7 +65,7 @@ NullMouseArea {
         spacing: 4 * Devices.density
         visible: false;
 
-        Label {
+        MLabel {
             id: bodyLabel
             Layout.fillWidth: true
             Layout.topMargin: 10 * Devices.density
@@ -94,7 +91,7 @@ NullMouseArea {
             mipmap: true
         }
 
-        ItemDelegate {
+        MItemDelegate {
             Layout.fillWidth: true
             Layout.preferredHeight: 50 * Devices.density
             Layout.bottomMargin: Devices.navigationBarHeight
@@ -110,14 +107,14 @@ NullMouseArea {
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.margins: 20 * Devices.density
 
-                Label {
+                MLabel {
                     font.pixelSize: 9 * Devices.fontDensity
                     text: qsTr("Click to copy:")
                     font.bold: true
                     color: Colors.accent
                 }
 
-                Label {
+                MLabel {
                     id: paymentLink
                     Layout.fillWidth: true
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
@@ -137,7 +134,7 @@ NullMouseArea {
         spacing: 4 * Devices.density
         visible: !depositReq.refreshing && !resultColumn.visible
 
-        Label {
+        MLabel {
             Layout.fillWidth: true
             Layout.topMargin: 10 * Devices.density
             Layout.leftMargin: 20 * Devices.density
@@ -181,7 +178,7 @@ NullMouseArea {
             Layout.rightMargin: 20 * Devices.density
             spacing: 4 * Devices.density
 
-            Label {
+            MLabel {
                 horizontalAlignment: Text.AlignLeft
                 font.bold: true
                 color: Colors.accent
@@ -190,14 +187,14 @@ NullMouseArea {
                 text: qsTr("Minimum:") + Translations.refresher
             }
 
-            Label {
+            MLabel {
                 horizontalAlignment: Text.AlignLeft
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                 font.pixelSize: 7 * Devices.fontDensity
                 text: qsTr("%1 satoshi,").arg(Math.floor(Bootstrap.tips.min_account_deposit / 1000))
             }
 
-            Label {
+            MLabel {
                 horizontalAlignment: Text.AlignLeft
                 font.bold: true
                 color: Colors.accent
@@ -206,7 +203,7 @@ NullMouseArea {
                 text: qsTr("Maxmium:") + Translations.refresher
             }
 
-            Label {
+            MLabel {
                 horizontalAlignment: Text.AlignLeft
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                 font.pixelSize: 7 * Devices.fontDensity
@@ -219,7 +216,7 @@ NullMouseArea {
             }
         }
 
-        Button {
+        MButton {
             id: rejectBtn
             Layout.fillWidth: true
             Layout.leftMargin: 20 * Devices.density
@@ -231,7 +228,7 @@ NullMouseArea {
             }
         }
 
-        Button {
+        MButton {
             id: confirmBtn
             Layout.fillWidth: true
             Layout.leftMargin: 20 * Devices.density
@@ -256,7 +253,7 @@ NullMouseArea {
 
         Separator {}
 
-        Label {
+        MLabel {
             id: headerLabel
             anchors.centerIn: parent
             font.pixelSize: 9 * Devices.fontDensity

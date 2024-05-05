@@ -74,14 +74,8 @@ int main(int argc, char *argv[])
     bool androidStyle;
 #ifdef Q_OS_ANDROID
     androidStyle = true;
-    QQuickStyle::setStyle("Material");
 #else
     androidStyle = false;
-#if (QT_VERSION >= QT_VERSION_CHECK(6, 0, 0))
-    QQuickStyle::setStyle("QtQuick.Controls.IOSStyle");
-#else
-    QQuickStyle::setStyle("IOSStyle");
-#endif
 #endif
 
     bool activeSubscription = true;

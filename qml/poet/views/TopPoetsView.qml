@@ -2,10 +2,7 @@ import QtQuick 2.12
 import AsemanQml.Base 2.0
 import AsemanQml.MaterialIcons 2.0
 import AsemanQml.Controls 2.0
-import QtQuick.Controls 2.3
 import QtQuick.Layouts 1.3
-import QtQuick.Controls.Material 2.0
-import QtQuick.Controls.IOSStyle 2.0
 import globals 1.0
 import components 1.0
 import queries 1.0
@@ -39,7 +36,7 @@ Item {
         viewItem: listView
     }
 
-    Label {
+    MLabel {
         anchors.centerIn: parent
         font.pixelSize: 8 * Devices.fontDensity
         text: qsTr("There is no item here") + Translations.refresher
@@ -98,7 +95,7 @@ Item {
                     color: Colors.background
                 }
 
-                ItemDelegate {
+                MItemDelegate {
                     id: itemDel
                     anchors.fill: parent
                     onClicked: swt.toggle()
@@ -140,7 +137,7 @@ Item {
                         Layout.fillWidth: true
                         spacing: 2 * Devices.density
 
-                        Label {
+                        MLabel {
                             Layout.fillWidth: true
                             horizontalAlignment: Text.AlignLeft
                             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
@@ -150,7 +147,7 @@ Item {
                             text: model.title
                         }
 
-                        Label {
+                        MLabel {
                             Layout.fillWidth: true
                             horizontalAlignment: Text.AlignLeft
                             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
@@ -174,7 +171,7 @@ Item {
                         progress: offlineInstaller.size? 0.1 + 0.9 * offlineInstaller.downloadedBytes / offlineInstaller.size : 0.1
                     }
 
-                    Switch {
+                    MSwitch {
                         id: swt
                         Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
                         enabled: !offlineInstaller.installing || offlineInstaller.uninstalling
@@ -215,15 +212,12 @@ Item {
         }
     }
 
-    Header {
+    MHeader {
         id: headerItem
         anchors.top: parent.top
         anchors.right: parent.right
         anchors.left: parent.left
-        text: qsTr("Manage Shelf") + Translations.refresher
-        color: Colors.headerColor
-        light: !Colors.lightHeader
-        shadow: Devices.isAndroid
+        title: qsTr("Manage Shelf") + Translations.refresher
 
         HeaderBackButton {
             id: closeBtn

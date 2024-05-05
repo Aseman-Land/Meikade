@@ -1,11 +1,8 @@
 import QtQuick 2.12
 import AsemanQml.Base 2.0
 import AsemanQml.MaterialIcons 2.0
-import QtQuick.Controls 2.3
 import QtQuick.Layouts 1.3
 import AsemanQml.Controls 2.0
-import QtQuick.Controls.Material 2.0
-import QtQuick.Controls.IOSStyle 2.0
 import globals 1.0
 import components 1.0
 import models 1.0
@@ -81,7 +78,7 @@ Item {
                 visible: readWriteMode
                 spacing: 4 * Devices.density
 
-                Label {
+                MLabel {
                     Layout.fillWidth: true
                     horizontalAlignment: Text.AlignHCenter
                     font.pixelSize: 8 * Devices.fontDensity
@@ -90,7 +87,7 @@ Item {
                     opacity: 0.7
                 }
 
-                RoundButton {
+                MButton {
                     Layout.alignment: Qt.AlignHCenter
                     Layout.preferredWidth: addRow.width + 60 * Devices.density
                     highlighted: true
@@ -104,14 +101,14 @@ Item {
                         x: 30 * Devices.density
                         anchors.verticalCenter: parent.verticalCenter
 
-                        Label {
+                        MLabel {
                             font.pixelSize: 12 * Devices.fontDensity
                             font.family: MaterialIcons.family
                             text: MaterialIcons.mdi_plus
                             color: "#fff"
                         }
 
-                        Label {
+                        MLabel {
                             text: qsTr("New Book") + Translations.refresher
                             font.pixelSize: 9 * Devices.fontDensity
                             color: "#fff"
@@ -149,7 +146,7 @@ Item {
             color: Colors.lightBackground
         }
 
-        ItemDelegate {
+        MItemDelegate {
             id: bioBtn
             anchors.fill: parent
             hoverEnabled: false
@@ -164,7 +161,7 @@ Item {
             anchors.rightMargin: 14 * Devices.density
             spacing: 0
 
-            Label {
+            MLabel {
                 id: bioTitle
                 Layout.fillWidth: true
                 Layout.preferredHeight: Devices.standardTitleBarHeight
@@ -174,7 +171,7 @@ Item {
                 text: qsTr("Biography") + Translations.refresher
             }
 
-            Label {
+            MLabel {
                 font.family: MaterialIcons.family
                 font.pixelSize: 16 * Devices.fontDensity
                 text: MaterialIcons.mdi_chevron_up
@@ -241,7 +238,7 @@ Item {
                         visible: avatar.status != Image.Ready
                     }
 
-                    Label {
+                    MLabel {
                         anchors.centerIn: parent
                         color: Colors.primary
                         font.pixelSize: 36 * Devices.fontDensity
@@ -258,14 +255,14 @@ Item {
                         ignoreSslErrors: AsemanGlobals.ignoreSslErrors
                     }
 
-                    ItemDelegate {
+                    MItemDelegate {
                         id: avatarBtn
                         anchors.fill: parent
                     }
                 }
             }
 
-            Label {
+            MLabel {
                 id: profileLabel
                 font.pixelSize: 14 * Devices.fontDensity
                 scale: (10 + 4 * ratio) / 14
@@ -284,7 +281,7 @@ Item {
                 opacity: ratio
             }
 
-            Label {
+            MLabel {
                 id: viewsLabel
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.top: profileLabel.bottom
@@ -297,7 +294,7 @@ Item {
             }
         }
 
-        Label {
+        MLabel {
             id: settingsLabel
             anchors.top: parent.top
             anchors.right: parent.right
@@ -311,7 +308,7 @@ Item {
             font.family: MaterialIcons.family
             text: MaterialIcons.mdi_dots_vertical
 
-            ItemDelegate {
+            MItemDelegate {
                 id: settingsBtn
                 anchors.fill: parent
                 z: -1
