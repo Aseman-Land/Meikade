@@ -3,16 +3,14 @@ import AsemanQml.Base 2.0
 import AsemanQml.Controls 2.0
 import AsemanQml.Viewport 2.0
 import AsemanQml.Models 2.0
-import QtQuick.Controls 2.9
-import QtQuick.Controls.Material 2.0
-import QtQuick.Controls.IOSStyle 2.0
+import AsemanQml.Controls.Beta 3.0
 import AsemanQml.MaterialIcons 2.0
 import QtQuick.Layouts 1.0
 import components 1.0
 import globals 1.0
 import "privates"
 
-Page {
+MPage {
     width: Constants.width
     height: Constants.height
 
@@ -32,10 +30,7 @@ Page {
 
     AsemanFlickable {
         id: flick
-        anchors.left: parent.left
-        anchors.right: parent.right
-        anchors.top: headerItem.bottom
-        anchors.bottom: parent.bottom
+        anchors.fill: parent
         flickableDirection: Flickable.VerticalFlick
         contentHeight: flickScene.height
         contentWidth: flickScene.width
@@ -45,15 +40,16 @@ Page {
             width: flick.width
             height: Math.max(flickColumn.height, flick.height)
 
-            ColumnLayout {
+            Column {
                 id: flickColumn
                 anchors.left: parent.left
                 anchors.right: parent.right
                 anchors.top: parent.top
+                spacing: 8 * Devices.density
 
                 Rectangle {
-                    Layout.fillWidth: true
-                    Layout.preferredHeight: 120 * Devices.density
+                    width: parent.width
+                    height: 120 * Devices.density
                     color: Colors.deepBackground
 
                     Rectangle {
@@ -69,7 +65,7 @@ Page {
                             anchors.verticalCenter: parent.verticalCenter
                             anchors.rightMargin: 40 * Devices.density
 
-                            Button {
+                            MButton {
                                 id: syncBtn
                                 anchors.centerIn: parent
                                 highlighted: true
@@ -88,28 +84,28 @@ Page {
                             }
                         }
 
-                        ColumnLayout {
+                        Column {
                             anchors.centerIn: parent
                             spacing: 4 * Devices.density
 
-                            Label {
-                                Layout.alignment: Qt.AlignHCenter
+                            MLabel {
+                                anchors.horizontalCenter: parent.horizontalCenter
                                 text: qsTr("Last sync date and time") + Translations.refresher
                                 font.pixelSize: 9 * Devices.fontDensity
                                 font.bold: true
                                 color: Colors.accent
                             }
 
-                            Label {
+                            MLabel {
                                 id: syncDateLabel
-                                Layout.alignment: Qt.AlignHCenter
+                                anchors.horizontalCenter: parent.horizontalCenter
                                 text: "29 June 2020"
                                 font.pixelSize: 8 * Devices.fontDensity
                             }
 
-                            Label {
+                            MLabel {
                                 id: syncTimeLabel
-                                Layout.alignment: Qt.AlignHCenter
+                                anchors.horizontalCenter: parent.horizontalCenter
                                 text: "15:01:49"
                                 font.pixelSize: 8 * Devices.fontDensity
                             }
@@ -117,13 +113,14 @@ Page {
                     }
                 }
 
-                ColumnLayout {
-                    Layout.fillWidth: true
-                    Layout.margins: 12 * Devices.density
-                    spacing: 0
+                Column {
+                    anchors.left: parent.left
+                    anchors.right: parent.right
+                    anchors.margins: 20 * Devices.density
+                    spacing: 10 * Devices.density
 
-                    Label {
-                        Layout.fillWidth: true
+                    MLabel {
+                        width: parent.width
                         horizontalAlignment: Text.AlignLeft
                         text: qsTr("Items you want to sync with Meikade's cloud services:")
                               + Translations.refresher
@@ -132,88 +129,97 @@ Page {
 
                     RowLayout {
                         id: mypoemsRow
+                        width: parent.width
                         spacing: 0
 
-                        Label {
+                        MLabel {
                             Layout.fillWidth: true
                             horizontalAlignment: Text.AlignLeft
                             text: qsTr("My Poems") + Translations.refresher
                             font.pixelSize: 9 * Devices.fontDensity
                         }
 
-                        Switch {
+                        MSwitch {
                             id: mypoemsSwitch
                         }
                     }
 
                     RowLayout {
                         id: favesRow
+                        width: parent.width
                         spacing: 0
 
-                        Label {
+                        MLabel {
                             Layout.fillWidth: true
                             horizontalAlignment: Text.AlignLeft
                             text: qsTr("Lists") + Translations.refresher
                             font.pixelSize: 9 * Devices.fontDensity
                         }
 
-                        Switch {
+                        MSwitch {
                             id: syncListsSwitch
                         }
                     }
 
                     RowLayout {
                         id: notesRow
+                        width: parent.width
                         spacing: 0
 
-                        Label {
+                        MLabel {
                             Layout.fillWidth: true
                             horizontalAlignment: Text.AlignLeft
                             text: qsTr("Notes") + Translations.refresher
                             font.pixelSize: 9 * Devices.fontDensity
                         }
 
-                        Switch {
+                        MSwitch {
                             id: syncNotesSwitch
                         }
                     }
 
                     RowLayout {
                         id: viewRow
+                        width: parent.width
                         spacing: 0
 
-                        Label {
+                        MLabel {
                             Layout.fillWidth: true
                             horizontalAlignment: Text.AlignLeft
                             text: qsTr("Last viewed poems") + Translations.refresher
                             font.pixelSize: 9 * Devices.fontDensity
                         }
 
-                        Switch {
+                        MSwitch {
                             id: syncPoemsSwitch
                         }
                     }
 
                     RowLayout {
                         id: topPoetsRow
+                        width: parent.width
                         spacing: 0
 
-                        Label {
+                        MLabel {
                             Layout.fillWidth: true
                             horizontalAlignment: Text.AlignLeft
                             text: qsTr("Top Poets") + Translations.refresher
                             font.pixelSize: 9 * Devices.fontDensity
                         }
 
-                        Switch {
+                        MSwitch {
                             id: syncTopPoetsSwitch
                         }
                     }
 
-                    Button {
+                    Item {
+                        width: 1
+                        height: 4 * Devices.density
+                    }
+
+                    MButton {
                         id: resyncBtn
-                        Layout.fillWidth: true
-                        Layout.topMargin: 20 * Devices.density
+                        width: parent.width
                         highlighted: true
                         font.pixelSize: 9 * Devices.fontDensity
                         text: qsTr("Resync All") + Translations.refresher
@@ -231,15 +237,12 @@ Page {
         color: Colors.primary
     }
 
-    Header {
+    header: MHeader {
         id: headerItem
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.top: parent.top
-        text: qsTr("Sync") + Translations.refresher
-        color: Colors.headerColor
-        light: !Colors.lightHeader
-        shadow: Devices.isAndroid
+        title: qsTr("Sync") + Translations.refresher
 
         HeaderBackButton {
             id: closeBtn

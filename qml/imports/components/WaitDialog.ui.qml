@@ -1,8 +1,5 @@
 import QtQuick 2.12
 import AsemanQml.Base 2.0
-import QtQuick.Controls 2.3
-import QtQuick.Controls.Material 2.0
-import QtQuick.Controls.IOSStyle 2.0
 import QtQuick.Layouts 1.3
 import globals 1.0
 
@@ -24,13 +21,13 @@ Item {
         anchors.verticalCenter: parent.verticalCenter
         anchors.horizontalCenter: parent.horizontalCenter
 
-        BusyIndicator {
+        MBusyIndicator {
             id: busyIndicator
             Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
             running: element.visible
         }
 
-        Label {
+        MLabel {
             id: waitLabel
             text: qsTr("Please Wait...") + Translations.refresher
             Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter

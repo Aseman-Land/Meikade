@@ -120,13 +120,11 @@ Page {
                 title.text: model.name
                 title.color: ListView.isCurrentItem ? (Colors.darkMode? Colors.accent : Colors.primary) : Colors.foreground
 
-                Connections {
-                    onClicked: {
-                        if(currentIndex === model.index) footerItemDoubleClicked();
-                        footerListView.currentIndex = model.index;
-                    }
-                    onDoubleClicked: footerItemDoubleClicked()
+                onClicked: {
+                    if(currentIndex === model.index) footerItemDoubleClicked();
+                    footerListView.currentIndex = model.index;
                 }
+                onPressAndHold: footerItemDoubleClicked()
             }
 
             model: AsemanListModel {

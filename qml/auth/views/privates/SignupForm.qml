@@ -1,14 +1,12 @@
 import QtQuick 2.14
 import globals 1.0
+import components 1.0
 import AsemanQml.Base 2.0
 import AsemanQml.MaterialIcons 2.0
-import QtQuick.Controls 2.3
-import QtQuick.Layouts 1.3
-import QtQuick.Controls.Material 2.0
-import QtQuick.Controls.IOSStyle 2.0
+import AsemanQml.Controls.Beta 3.0
 import AsemanQml.Controls 2.0
 
-Page {
+MPage {
     id: page
     width: Constants.width
     height: Constants.height
@@ -45,26 +43,24 @@ Page {
                 anchors.fill: parent
             }
 
-            ColumnLayout {
+            Column {
                 id: columnLayout
                 anchors.left: parent.left
                 anchors.right: parent.right
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.margins: 20 * Devices.density
-                spacing: 0
+                spacing: 8 * Devices.density
 
-                Label {
+                MLabel {
                     id: loginLabel
                     text: qsTr("Fill below form with your details below to signing up.") + Translations.refresher
-                    Layout.fillWidth: true
-                    Layout.bottomMargin: 20 * Devices.density
+                    width: parent.width
                     wrapMode: Text.WordWrap
                 }
 
-                TextField {
+                MTextField {
                     id: userTxt
-                    Layout.fillWidth: true
-                    Layout.preferredHeight: 48 * Devices.density
+                    width: parent.width
                     placeholderText: qsTr("Username") + '*' + Translations.refresher
                     font.pixelSize: 9 * Devices.fontDensity
                     horizontalAlignment: Text.AlignHCenter
@@ -78,7 +74,7 @@ Page {
 
                     property bool isValid: acceptableInput && length > 5
 
-                    Label {
+                    MLabel {
                         anchors.left: parent.left
                         anchors.verticalCenter: parent.verticalCenter
                         anchors.verticalCenterOffset: 4 * Devices.density
@@ -100,10 +96,9 @@ Page {
                     }
                 }
 
-                TextField {
+                MTextField {
                     id: passTxt
-                    Layout.fillWidth: true
-                    Layout.preferredHeight: 48 * Devices.density
+                    width: parent.width
                     placeholderText: qsTr("Password") + '*' + Translations.refresher
                     font.pixelSize: 9 * Devices.fontDensity
                     horizontalAlignment: Text.AlignHCenter
@@ -119,7 +114,7 @@ Page {
 
                     property bool isValid: acceptableInput && length > 7
 
-                    Label {
+                    MLabel {
                         anchors.left: parent.left
                         anchors.verticalCenter: parent.verticalCenter
                         anchors.verticalCenterOffset: 4 * Devices.density
@@ -131,10 +126,9 @@ Page {
                     }
                 }
 
-                TextField {
+                MTextField {
                     id: fullnameTxt
-                    Layout.fillWidth: true
-                    Layout.preferredHeight: 48 * Devices.density
+                    width: parent.width
                     placeholderText: qsTr("Full Name") + '*' + Translations.refresher
                     font.pixelSize: 9 * Devices.fontDensity
                     horizontalAlignment: Text.AlignHCenter
@@ -147,7 +141,7 @@ Page {
 
                     property bool isValid: length > 5
 
-                    Label {
+                    MLabel {
                         anchors.left: parent.left
                         anchors.verticalCenter: parent.verticalCenter
                         anchors.verticalCenterOffset: 4 * Devices.density
@@ -159,10 +153,9 @@ Page {
                     }
                 }
 
-                TextField {
+                MTextField {
                     id: emailTxt
-                    Layout.fillWidth: true
-                    Layout.preferredHeight: 48 * Devices.density
+                    width: parent.width
                     placeholderText: qsTr("Email") + Translations.refresher
                     font.pixelSize: 9 * Devices.fontDensity
                     horizontalAlignment: Text.AlignHCenter
@@ -175,7 +168,7 @@ Page {
 
                     property bool isValid: acceptableInput || length == 0
 
-                    Label {
+                    MLabel {
                         anchors.left: parent.left
                         anchors.verticalCenter: parent.verticalCenter
                         anchors.verticalCenterOffset: 4 * Devices.density
@@ -187,24 +180,23 @@ Page {
                     }
                 }
 
-                Button {
+                MButton {
                     id: sendBtn
                     text: qsTr("Sign Up") + Translations.refresher
-                    Layout.bottomMargin: 20 * Devices.density
-                    Layout.fillWidth: true
+                    width: parent.width
                     font.pixelSize: 9 * Devices.fontDensity
                     highlighted: true
                     enabled: userTxt.isValid && passTxt.isValid && fullnameTxt.isValid && emailTxt.isValid && !usernameError.visible && !userCheckIndicator.running
 
-                    ColumnLayout {
+                    Column {
                         spacing: 2 * Devices.density
                         anchors.left: sendBtn.left
                         anchors.right: sendBtn.right
                         anchors.top: sendBtn.bottom
 
-                        Label {
+                        MLabel {
                             id: usernameError
-                            Layout.fillWidth: true
+                            width: parent.width
                             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                             horizontalAlignment: Text.AlignLeft
                             font.pixelSize: 8 * Devices.fontDensity
@@ -213,8 +205,8 @@ Page {
                             text: qsTr("* Username you choosen taken.")
                         }
 
-                        Label {
-                            Layout.fillWidth: true
+                        MLabel {
+                            width: parent.width
                             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                             horizontalAlignment: Text.AlignLeft
                             font.pixelSize: 8 * Devices.fontDensity
@@ -223,8 +215,8 @@ Page {
                             text: qsTr("* Your username must be 6 character at least and containt lower case characters and numbers only.")
                         }
 
-                        Label {
-                            Layout.fillWidth: true
+                        MLabel {
+                            width: parent.width
                             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                             horizontalAlignment: Text.AlignLeft
                             font.pixelSize: 8 * Devices.fontDensity
@@ -233,8 +225,8 @@ Page {
                             text: qsTr("* Your password must be greater than 8 character and has one number or sign at least.")
                         }
 
-                        Label {
-                            Layout.fillWidth: true
+                        MLabel {
+                            width: parent.width
                             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                             horizontalAlignment: Text.AlignLeft
                             font.pixelSize: 8 * Devices.fontDensity
@@ -243,8 +235,8 @@ Page {
                             text: qsTr("* Your full name must be greater than 6 character.")
                         }
 
-                        Label {
-                            Layout.fillWidth: true
+                        MLabel {
+                            width: parent.width
                             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                             horizontalAlignment: Text.AlignLeft
                             font.pixelSize: 8 * Devices.fontDensity
@@ -267,23 +259,21 @@ Page {
         light: !Colors.lightHeader
         shadow: Devices.isAndroid
 
-        RowLayout {
+        Item {
             anchors.left: parent.left
             anchors.right: parent.right
             anchors.bottom: parent.bottom
             height: Devices.standardTitleBarHeight
 
-            RoundButton {
+            MButton {
                 id: cancelBtn
-                Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
+                anchors.right: parent.right
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.margins: 8 * Devices.density
                 text: qsTr("Cancel") + Translations.refresher
                 highlighted: true
                 radius: 6 * Devices.density
                 font.pixelSize: 8 * Devices.fontDensity
-                IOSStyle.accent: Qt.darker(Colors.primary, 1.3)
-                Material.accent: Qt.darker(Colors.primary, 1.3)
-                Material.theme: Material.Dark
-                Material.elevation: 0
             }
         }
     }

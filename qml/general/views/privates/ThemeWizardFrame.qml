@@ -2,10 +2,7 @@ import QtQuick 2.12
 import AsemanQml.Base 2.0
 import AsemanQml.MaterialIcons 2.0
 import AsemanQml.Controls 2.0
-import QtQuick.Controls 2.3
 import QtQuick.Layouts 1.3
-import QtQuick.Controls.Material 2.0
-import QtQuick.Controls.IOSStyle 2.0
 import globals 1.0
 import components 1.0
 import models 1.0
@@ -16,7 +13,7 @@ ColumnLayout {
 
     property alias listView: listView
 
-    Label {
+    MLabel {
         Layout.fillWidth: true
         Layout.topMargin: 8 * Devices.density
         font.pixelSize: 9 * Devices.fontDensity
@@ -57,7 +54,7 @@ ColumnLayout {
         snapMode: ListView.SnapOneItem
         preferredHighlightBegin: leftMargin
         preferredHighlightEnd: width - rightMargin
-        delegate: ItemDelegate {
+        delegate: MItemDelegate {
             width: height * 0.6
             height: listView.height
             onClicked: listView.currentIndex = model.index

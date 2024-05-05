@@ -1,9 +1,8 @@
 import QtQuick 2.0
 import AsemanQml.Base 2.0
-import QtQuick.Controls 2.3
+import AsemanQml.Controls 2.0
+import AsemanQml.Controls.Beta 3.0
 import QtQuick.Layouts 1.3
-import QtQuick.Controls.Material 2.0
-import QtQuick.Controls.IOSStyle 2.0
 import globals 1.0
 
 Rectangle {
@@ -14,9 +13,6 @@ Rectangle {
     radius: downloadProgressBar.radius
     color: "#88ffffff"
     visible: running
-
-    IOSStyle.theme: IOSStyle.Light
-    Material.theme: Material.Light
 
     property alias frontColor: downloadProgressBar.color
     property alias textColor: downloadProgressLabel.color
@@ -45,15 +41,14 @@ Rectangle {
         anchors.centerIn: parent
         spacing: 2 * Devices.density
 
-        BusyIndicator {
+        MBusyIndicator {
             id: downloadingProgressIndicator
             scale: 0.6
             Layout.preferredHeight: 28 * Devices.density
             Layout.preferredWidth: 28 * Devices.density
-            Material.accent: downloadProgressLabel.color
         }
 
-        Label {
+        MLabel {
             id: downloadProgressLabel
             font.pixelSize: 8 * Devices.fontDensity
             text: "Downloading"

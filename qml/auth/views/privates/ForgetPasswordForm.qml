@@ -1,14 +1,12 @@
 import QtQuick 2.12
 import globals 1.0
+import components 1.0
 import AsemanQml.Base 2.0
 import AsemanQml.MaterialIcons 2.0
-import QtQuick.Controls 2.3
-import QtQuick.Layouts 1.3
-import QtQuick.Controls.Material 2.0
-import QtQuick.Controls.IOSStyle 2.0
+import AsemanQml.Controls.Beta 3.0
 import AsemanQml.Controls 2.0
 
-Page {
+MPage {
     id: page
     width: Constants.width
     height: Constants.height
@@ -38,27 +36,25 @@ Page {
                 anchors.fill: parent
             }
 
-            ColumnLayout {
+            Column {
                 id: columnLayout
                 anchors.left: parent.left
                 anchors.right: parent.right
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.margins: 20 * Devices.density
-                spacing: 0
+                spacing: 8 * Devices.density
 
-                Label {
+                MLabel {
                     id: loginLabel
                     font.pixelSize: 9 * Devices.fontDensity
                     text: qsTr("To restore your password please enter your username below and tap on the restore. We'll send an email to you to change your password.") + Translations.refresher
-                    Layout.fillWidth: true
-                    Layout.bottomMargin: 20 * Devices.density
+                    width: parent.width
                     wrapMode: Text.WordWrap
                 }
 
-                TextField {
+                MTextField {
                     id: userTxt
-                    Layout.fillWidth: true
-                    Layout.preferredHeight: 48 * Devices.density
+                    width: parent.width
                     placeholderText: qsTr("Username") + Translations.refresher
                     font.pixelSize: 10 * Devices.fontDensity
                     horizontalAlignment: Text.AlignHCenter
@@ -66,7 +62,7 @@ Page {
                     inputMethodHints: Qt.ImhLowercaseOnly | Qt.ImhNoAutoUppercase
                     onAccepted: sendBtn.focus = true
 
-                    Label {
+                    MLabel {
                         anchors.left: parent.left
                         anchors.verticalCenter: parent.verticalCenter
                         anchors.verticalCenterOffset: 4 * Devices.density
@@ -78,10 +74,10 @@ Page {
                     }
                 }
 
-                Button {
+                MButton {
                     id: sendBtn
                     text: qsTr("Restore") + Translations.refresher
-                    Layout.fillWidth: true
+                    width: parent.width
                     font.pixelSize: 9 * Devices.fontDensity
                     highlighted: true
 //                    enabled: userTxt.length > 5 && passTxt.length > 5
@@ -90,32 +86,27 @@ Page {
         }
     }
 
-    Header {
+    MHeader {
         id: headerItem
         anchors.left: parent.left
         anchors.right: parent.right
-        text: qsTr("Forget Password") + Translations.refresher
-        color: Colors.headerColor
-        light: !Colors.lightHeader
-        shadow: Devices.isAndroid
+        title: qsTr("Forget Password") + Translations.refresher
 
-        RowLayout {
+        Item {
             anchors.left: parent.left
             anchors.right: parent.right
             anchors.bottom: parent.bottom
             height: Devices.standardTitleBarHeight
 
-            RoundButton {
+            MButton {
                 id: cancelBtn
-                Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
+                anchors.right: parent.right
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.margins: 8 * Devices.density
                 text: qsTr("Cancel") + Translations.refresher
                 highlighted: true
                 radius: 6 * Devices.density
                 font.pixelSize: 8 * Devices.fontDensity
-                IOSStyle.accent: Qt.darker(Colors.primary, 1.3)
-                Material.accent: Qt.darker(Colors.primary, 1.3)
-                Material.theme: Material.Dark
-                Material.elevation: 0
             }
         }
     }

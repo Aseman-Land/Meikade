@@ -1,11 +1,8 @@
 import QtQuick 2.12
 import AsemanQml.Base 2.0
 import AsemanQml.MaterialIcons 2.0
-import QtQuick.Controls 2.3
 import AsemanQml.Controls 2.0
-import QtQuick.Layouts 1.3
-import QtQuick.Controls.Material 2.0
-import QtQuick.Controls.IOSStyle 2.0
+import AsemanQml.Controls.Beta 3.0
 import globals 1.0
 import components 1.0
 import "privates"
@@ -23,7 +20,7 @@ DrawerFrame {
 
     headerLabel.text: qsTr("Change Name") + Translations.refresher
 
-    ColumnLayout {
+    Column {
         id: sceneColumn
         anchors.left: parent.left
         anchors.right: parent.right
@@ -31,27 +28,26 @@ DrawerFrame {
         anchors.margins: 15 * Devices.density
         spacing: 4 * Devices.density
 
-        RowLayout {
-            Layout.fillWidth: true
-            Layout.leftMargin: 20 * Devices.density
-            Layout.rightMargin: 20 * Devices.density
+        Row {
+            anchors.left: parent.left
+            anchors.right: parent.right
+            anchors.margins: 20 * Devices.density
             spacing: 20 * Devices.density
 
-            Label {
+            MLabel {
                 id: contactName
-                Layout.fillWidth: true
+                width: parent.width
                 horizontalAlignment: Text.AlignLeft
                 font.pixelSize: 9 * Devices.fontDensity
                 text: qsTr("Please enter new name:") + Translations.refresher
             }
         }
 
-        TextField {
+        MTextField {
             id: nameField
-            Layout.fillWidth: true
-            Layout.leftMargin: 20 * Devices.density
-            Layout.rightMargin: 20 * Devices.density
-            Layout.preferredHeight: 48 * Devices.density
+            anchors.left: parent.left
+            anchors.right: parent.right
+            anchors.margins: 20 * Devices.density
             placeholderText: qsTr("Full Name") + Translations.refresher
             font.pixelSize: 9 * Devices.fontDensity
             horizontalAlignment: Text.AlignHCenter
@@ -62,7 +58,7 @@ DrawerFrame {
 
             property bool isValid: length > 5
 
-            Label {
+            MLabel {
                 anchors.left: parent.left
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.verticalCenterOffset: 4 * Devices.density
@@ -74,16 +70,15 @@ DrawerFrame {
             }
         }
 
-        Button {
+        MButton {
             id: confirmBtn
-            Layout.fillWidth: true
-            Layout.leftMargin: 20 * Devices.density
-            Layout.rightMargin: 20 * Devices.density
+            anchors.left: parent.left
+            anchors.right: parent.right
+            anchors.margins: 20 * Devices.density
             font.pixelSize: 9 * Devices.fontDensity
             enabled: nameField.isValid
             text: qsTr("Confirm") + Translations.refresher
             highlighted: true
-            Material.elevation: 0
         }
     }
 }

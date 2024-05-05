@@ -1,11 +1,9 @@
 import QtQuick 2.12
 import AsemanQml.Base 2.0
 import AsemanQml.Controls 2.0
+import AsemanQml.Controls.Beta 3.0
 import AsemanQml.Viewport 2.0
 import AsemanQml.Models 2.0
-import QtQuick.Controls 2.0
-import QtQuick.Controls.Material 2.0
-import QtQuick.Controls.IOSStyle 2.0
 import AsemanQml.MaterialIcons 2.0
 import QtQuick.Layouts 1.0
 import globals 1.0
@@ -13,28 +11,17 @@ import components 1.0
 import requests 1.0
 import "privates"
 
-Page {
+MPage {
     width: Constants.width
     height: Constants.height
-
-    Material.theme: Material.Dark
-    IOSStyle.theme: IOSStyle.Dark
 
     property alias headerBtn: headerBtn
     property string qtVersion: "5.15.0"
     property string applicationVersion: "4.2.0"
 
-    Rectangle {
-        anchors.fill: parent
-        color: "#303030"
-    }
-
     AsemanFlickable {
         id: flick
-        anchors.left: parent.left
-        anchors.right: parent.right
-        anchors.top: headerItem.bottom
-        anchors.bottom: parent.bottom
+        anchors.fill: parent
         flickableDirection: Flickable.VerticalFlick
         contentHeight: flickScene.height
         contentWidth: flickScene.width
@@ -63,7 +50,7 @@ Page {
                     source: "qrc:/qml/images/views/meikade.png"
                 }
 
-                Label {
+                MLabel {
                     Layout.fillWidth: true
                     font.pixelSize: 9 * Devices.fontDensity
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
@@ -72,7 +59,7 @@ Page {
                     text: qsTr("<b><u>Meikade is a free and opensource poetry app</u></b>, designed and created by Aseman. It means user freedom and privacy is important for Meikade. So you can access Meikade's source code on Github, Read it and change it under the term of the GPLv3 license.") + Translations.refresher
                 }
 
-                Label {
+                MLabel {
                     Layout.fillWidth: true
                     font.pixelSize: 9 * Devices.fontDensity
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
@@ -108,7 +95,7 @@ Page {
                             }
                         }
 
-                        Button {
+                        MButton {
                             id: mkd_iconBtn
                             Layout.preferredWidth: 42 * Devices.density
                             flat: true
@@ -128,14 +115,14 @@ Page {
                     Layout.fillWidth: true
                     spacing: 4 * Devices.density
 
-                    Label {
+                    MLabel {
                         font.pixelSize: 9 * Devices.fontDensity
                         font.bold: true
                         horizontalAlignment: Text.AlignLeft
                         text: qsTr("Development Team:") + Translations.refresher
                     }
 
-                    Label {
+                    MLabel {
                         Layout.fillWidth: true
                         font.pixelSize: 9 * Devices.fontDensity
                         horizontalAlignment: Text.AlignLeft
@@ -147,7 +134,7 @@ Page {
                     Layout.fillWidth: true
                     spacing: 4 * Devices.density
 
-                    Label {
+                    MLabel {
                         Layout.fillWidth: true
                         font.pixelSize: 9 * Devices.fontDensity
                         font.bold: true
@@ -155,7 +142,7 @@ Page {
                         text: qsTr("Thanks to:") + Translations.refresher
                     }
 
-                    Label {
+                    MLabel {
                         Layout.fillWidth: true
                         font.pixelSize: 9 * Devices.fontDensity
                         wrapMode: Text.WrapAtWordBoundaryOrAnywhere
@@ -176,7 +163,7 @@ Page {
                     visible: Bootstrap.aseman
                 }
 
-                Label {
+                MLabel {
                     Layout.fillWidth: true
                     font.pixelSize: 9 * Devices.fontDensity
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
@@ -220,8 +207,7 @@ Page {
                             }
                         }
 
-                        Button {
-                            id: mkd_iconBtn
+                        MButton {
                             Layout.preferredWidth: 42 * Devices.density
                             flat: true
                             font.pixelSize: 20 * Devices.fontDensity
@@ -229,7 +215,6 @@ Page {
                             text: MaterialIcons[model.icon]
 
                             Connections {
-                                target: mkd_iconBtn
                                 onClicked: Viewport.controller.trigger("float:/web?link=" + model.link)
                             }
                         }
@@ -240,7 +225,7 @@ Page {
                     Layout.fillWidth: true
                     spacing: 0
 
-                    Label {
+                    MLabel {
                         Layout.fillWidth: true
                         font.pixelSize: 9 * Devices.fontDensity
                         font.bold: true
@@ -258,7 +243,7 @@ Page {
                             ]
                         }
 
-                        ItemDelegate {
+                        MItemDelegate {
                             id: osDel
                             Layout.fillWidth: true
                             Layout.preferredHeight: osAppColumn.height + 20 * Devices.density
@@ -276,7 +261,7 @@ Page {
                                 anchors.margins: 10 * Devices.density
                                 spacing: 4 * Devices.density
 
-                                Label {
+                                MLabel {
                                     Layout.fillWidth: true
                                     font.pixelSize: 9 * Devices.fontDensity
                                     horizontalAlignment: Text.AlignLeft
@@ -284,7 +269,7 @@ Page {
                                     text: model.title
                                 }
 
-                                Label {
+                                MLabel {
                                     Layout.fillWidth: true
                                     font.pixelSize: 8 * Devices.fontDensity
                                     horizontalAlignment: Text.AlignJustify
@@ -292,7 +277,7 @@ Page {
                                     text: model.description
                                 }
 
-                                Label {
+                                MLabel {
                                     Layout.fillWidth: true
                                     font.pixelSize: 8 * Devices.fontDensity
                                     horizontalAlignment: Text.AlignLeft
@@ -313,21 +298,17 @@ Page {
         anchors.right: flick.right
         anchors.top: flick.top
         anchors.bottom: flick.bottom
-        color: "#fff"
+        color: Colors.primary
     }
 
-    Header {
-        id: headerItem
+    header: MHeader {
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.top: parent.top
-        color: "#222222"
-        shadow: Devices.isAndroid
-        text: qsTr("About") + Translations.refresher
+        title: qsTr("About") + Translations.refresher
 
         HeaderBackButton {
             id: headerBtn
-            color: "#fff"
         }
     }
 }

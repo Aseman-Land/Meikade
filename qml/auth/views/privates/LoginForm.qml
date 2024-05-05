@@ -3,13 +3,11 @@ import globals 1.0
 import components 1.0
 import AsemanQml.Base 2.0
 import AsemanQml.MaterialIcons 2.0
-import QtQuick.Controls 2.3
 import QtQuick.Layouts 1.3
-import QtQuick.Controls.Material 2.0
-import QtQuick.Controls.IOSStyle 2.0
+import AsemanQml.Controls.Beta 3.0
 import AsemanQml.Controls 2.0
 
-Page {
+MPage {
     id: page
     width: Constants.width
     height: Constants.height
@@ -49,19 +47,13 @@ Page {
                 id: columnLayout
                 width: Math.min(parent.width - 40 * Devices.density, 350*Devices.density)
                 anchors.centerIn: parent
-                anchors.verticalCenterOffset: headerItem.height
             }
         }
     }
 
-    Header {
+    header: MHeader {
         id: headerItem
-        anchors.left: parent.left
-        anchors.right: parent.right
-        text: qsTr("Authenticating") + Translations.refresher
-        color: Colors.headerColor
-        light: !Colors.lightHeader
-        shadow: Devices.isAndroid
+        title: qsTr("Authenticating") + Translations.refresher
         visible: !introMode
 
         HeaderBackButton {

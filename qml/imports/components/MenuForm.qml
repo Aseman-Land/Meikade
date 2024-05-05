@@ -1,9 +1,11 @@
 import QtQuick 2.0
-import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.3
 import AsemanQml.Base 2.0
+import AsemanQml.Controls 2.0
+import AsemanQml.Controls.Beta 3.0
 import AsemanQml.MaterialIcons 2.0
 import globals 1.0
+import components 1.0
 
 Rectangle {
     id: menuRoot
@@ -28,7 +30,7 @@ Rectangle {
             id: menuRepeater
             model: 4
 
-            ItemDelegate {
+            MItemDelegate {
                 Layout.preferredHeight: 50 * Devices.density
                 Layout.fillWidth: true
                 enabled: model.enabled
@@ -42,13 +44,13 @@ Rectangle {
                     anchors.margins: 14 * Devices.density
                     spacing: 14 * Devices.density
 
-                    Label {
+                    MLabel {
                         font.family: MaterialIcons.family
                         font.pixelSize: 12 * Devices.fontDensity
                         text: MaterialIcons[model.icon]
                     }
 
-                    Label {
+                    MLabel {
                         Layout.fillWidth: true
                         horizontalAlignment: Text.AlignLeft
                         font.pixelSize: 9 * Devices.fontDensity

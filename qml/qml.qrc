@@ -236,10 +236,10 @@
         <file>imports/components/DrawerFrame.qml</file>
         <file>imports/components/EscapeItem.qml</file>
         <file>imports/components/FlexiList.qml</file>
-        <file>imports/components/FooterItem.ui.qml</file>
+        <file>imports/components/FooterItem.qml</file>
         <file>imports/components/ImageDownloader.qml</file>
         <file>imports/components/MeikadeLoader.qml</file>
-        <file>imports/components/MenuForm.ui.qml</file>
+        <file>imports/components/MenuForm.qml</file>
         <file>imports/components/MinimalProgressBar.qml</file>
         <file>imports/components/PoemSwipeHelperAnimation.qml</file>
         <file>imports/components/PoemTypeIcon.qml</file>
@@ -247,7 +247,7 @@
         <file>imports/components/RandomSelectorTool.qml</file>
         <file>imports/components/ReloadItem.qml</file>
         <file>imports/components/SamsungInputBugFixer.qml</file>
-        <file>imports/components/Separator.ui.qml</file>
+        <file>imports/components/Separator.qml</file>
         <file>imports/components/Snackbar.qml</file>
         <file>imports/components/TextFormater.qml</file>
         <file>imports/components/WaitDialog.ui.qml</file>
@@ -390,5 +390,18 @@
         <file>imports/components/MMaterialIcon.qml</file>
         <file>imports/models/VolcanoPaymentsModel.qml</file>
         <file>imports/globals/GlobalMethods.qml</file>
+        <file>imports/components/MTextField.qml</file>
+        <file>imports/components/MButton.qml</file>
+        <file>imports/components/MLabel.qml</file>
+        <file>imports/components/MPage.qml</file>
+        <file>imports/components/MHeader.qml</file>
+        <file>imports/components/MSwitch.qml</file>
+        <file>imports/components/MTextArea.qml</file>
+        <file>imports/components/MTabBar.qml</file>
+        <file>imports/components/MTabButton.qml</file>
+        <file>imports/components/MItemDelegate.qml</file>
+        <file>imports/components/MBusyIndicator.qml</file>
+        <file>imports/components/MProgressBar.qml</file>
+        <file>imports/components/MPageIndicator.qml</file>
     </qresource>
 </RCC>
