@@ -1420,6 +1420,10 @@ It containts %2 items currently.</source>
         <translation>تماس با ما</translation>
     </message>
     <message>
+        <source>Privacy Policy</source>
+        <translation>حریم شخصی</translation>
+    </message>
+    <message>
         <source>Manage Offlines</source>
         <translation>مدیریت آفلاین‌ها</translation>
     </message>

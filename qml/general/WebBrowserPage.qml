@@ -9,7 +9,7 @@ WebBrowserView {
     width: Constants.width
     height: Constants.height
 
-    webTitle.text: webView.title
+    webTitle.text: title.length? title : webView.title
 
     busyIndicator.running: Colors.androidStyle? false : webView.loading
     progressBar.visible: Colors.androidStyle? webView.loading : false

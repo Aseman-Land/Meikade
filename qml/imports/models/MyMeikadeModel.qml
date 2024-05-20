@@ -60,6 +60,13 @@ AsemanListModel {
             };
         }
 
+        res[res.length] = {
+            "title": qsTr("Privacy Policy") + Translations.refresher,
+            "icon": "mdi_information",
+            "link": "float:/web?link=http://meikade.com/privacy&title=" + qsTr("Privacy Policy"),
+            "underco": false
+        };
+
         return res;
     }
 }
