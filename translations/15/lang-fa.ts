@@ -2197,22 +2197,45 @@ It&apos;s experimental currently and Meikade technical team working on it. But i
     </message>
 </context>
 <context>
+    <name>ErrorDialogView</name>
+    <message>
+        <source>Password</source>
+        <translation>کلمه عبور</translation>
+    </message>
+</context>
+<context>
     <name>SettingsPage</name>
     <message>
         <source>Logout</source>
         <translation>خروج از حساب کاربری</translation>
     </message>
     <message>
+        <source>Delete</source>
+        <translation>حذف کامل حساب کاربری</translation>
+    </message>
+    <message>
         <source>Do you realy want to logout?</source>
         <translation>آیا مطمئنید که می‌خواهید خارج شوید؟</translation>
+    </message>
+    <message>
+        <source>Do you realy want to delete your account? All data will be deleted.</source>
+        <translation>آیا مطمئنید که می‌خواهید اکانت خود را پاک کنید؟ تمامی اطلاعات شما پاک خواهد شد.</translation>
     </message>
     <message>
         <source>Cancel</source>
         <translation>لغو</translation>
     </message>
     <message>
+        <source>Delete Data</source>
+        <translation>حذف اطلاعات</translation>
+    </message>
+    <message>
         <source>Logout Successfully</source>
         <translation>با موفقیت خارج شدید</translation>
+    </message>
+    <message>
+        <source>Delete Successfully</source>
+        <translation>اکانت شما با موفقیت حذف شد</translation>
     </message>
     <message>
         <source>%1 days</source>
@@ -2264,6 +2287,10 @@ It&apos;s experimental currently and Meikade technical team working on it. But i
     <message>
         <source>Logout</source>
         <translation>خروج از حساب کاربری</translation>
+    </message>
+    <message>
+        <source>Delete Account</source>
+        <translation>حذف کامل حساب کاربری</translation>
     </message>
     <message>
         <source>Settings</source>

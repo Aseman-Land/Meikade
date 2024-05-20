@@ -84,7 +84,8 @@ int main(int argc, char *argv[])
 #endif
 #endif
 
-    bool activeSubscription = true;
+    bool activeVolcano = false;
+    bool activeSubscription = false;
 #ifdef DISABLE_SUBSCRIPTION
     activeSubscription = false;
 #endif
@@ -138,6 +139,7 @@ int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty("qtFirebaseVersion", qtFirebaseVersion);
     engine.rootContext()->setContextProperty("qtAsemanVersion", "3.0.0");
     engine.rootContext()->setContextProperty("activeSubscription", activeSubscription);
+    engine.rootContext()->setContextProperty("activeVolcano", activeVolcano);
     engine.rootContext()->setContextProperty("testMode", testMode);
 
     auto qzxing = false;

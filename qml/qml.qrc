@@ -390,5 +390,6 @@
         <file>imports/components/MMaterialIcon.qml</file>
         <file>imports/models/VolcanoPaymentsModel.qml</file>
         <file>imports/globals/GlobalMethods.qml</file>
+        <file>imports/requests/DeleteRequest.qml</file>
     </qresource>
 </RCC>

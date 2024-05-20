@@ -19,6 +19,7 @@ Item {
     property alias menuBtn: menuBtn
     property alias headerItem: headerItem
     property alias logoutBtn: logoutBtn
+    property alias deleteBtn: deleteBtn
     property alias loginBtn: loginBtn
     property alias languageCombo: languageCombo
     property alias themeCombo: themeCombo
@@ -257,6 +258,7 @@ Item {
 
                 RowLayout {
                     spacing: 4 * Devices.density
+                    visible: activeVolcano
 
                     Label {
                         font.pixelSize: 9 * Devices.fontDensity
@@ -305,19 +307,34 @@ Item {
         visible: AsemanGlobals.accessToken.length == 0 && Bootstrap.initialized
     }
 
-    Button {
-        id: logoutBtn
+    ColumnLayout {
         anchors.right: flick.right
         anchors.left: flick.left
         anchors.bottom: flick.bottom
         anchors.bottomMargin: 10 * Devices.density + Devices.navigationBarHeight
         anchors.margins: 20 * Devices.density
-        highlighted: true
-        font.pixelSize: 9 * Devices.fontDensity
-        text: qsTr("Logout") + Translations.refresher
-        IOSStyle.accent: "#700"
-        Material.accent: "#700"
         visible: AsemanGlobals.accessToken.length
+        spacing: 0
+
+        Button {
+            id: logoutBtn
+            Layout.fillWidth: true
+            highlighted: true
+            font.pixelSize: 9 * Devices.fontDensity
+            text: qsTr("Logout") + Translations.refresher
+            IOSStyle.accent: "#700"
+            Material.accent: "#700"
+        }
+
+        Button {
+            id: deleteBtn
+            Layout.fillWidth: true
+            highlighted: true
+            font.pixelSize: 9 * Devices.fontDensity
+            text: qsTr("Delete Account") + Translations.refresher
+            IOSStyle.accent: "#700"
+            Material.accent: "#700"
+        }
     }
 
     Header {

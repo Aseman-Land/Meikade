@@ -20,8 +20,8 @@ SettingsView {
     property Item depositDlg
     property Item paymentsDlg
 
-    onWithdrawDlgChanged: if (!withdrawDlg) valcanoReq.doRequest()
-    onDepositDlgChanged: if (!depositDlg) valcanoReq.doRequest()
+    onWithdrawDlgChanged: if (!withdrawDlg && activeVolcano) valcanoReq.doRequest()
+    onDepositDlgChanged: if (!depositDlg && activeVolcano) valcanoReq.doRequest()
 
     property int balance: {
         try {
@@ -34,7 +34,7 @@ SettingsView {
     GetVolcanoWalletRequest {
         id: valcanoReq
         allowShowErrors: true
-        Component.onCompleted: if (AsemanGlobals.accessToken.length) doRequest()
+        Component.onCompleted: if (AsemanGlobals.accessToken.length && activeVolcano) doRequest()
     }
 
     loginBtn.onClicked: Viewport.controller.trigger("float:/auth/float", {})
@@ -53,6 +53,30 @@ SettingsView {
 
             case 1: // Logout
                 logoutReq.networkManager.get(logoutReq)
+                break;
+            }
+            obj.ViewportType.open = false;
+        })
+    }
+    deleteBtn.onClicked: {
+        var properties = {
+            "title": qsTr("Delete"),
+            "body": qsTr("Do you realy want to delete your account? All data will be deleted."),
+            "buttons": [qsTr("Cancel"), qsTr("Delete Data")],
+            "getPassword": true,
+        };
+
+        var obj = Viewport.controller.trigger("dialog:/general/error", properties);
+        obj.itemClicked.connect(function(idx, title, password) {
+            switch (idx) {
+            case 0: // Cancel
+                break;
+
+            case 1: // Logout
+                if (password.length == 0)
+                    return;
+
+                deleteReq.doRequest();
                 break;
             }
             obj.ViewportType.open = false;
@@ -89,6 +113,18 @@ SettingsView {
 
             dis.ViewportType.open = false;
             GlobalSignals.snackbarRequest(qsTr("Logout Successfully"))
+        }
+    }
+
+    DeleteRequest {
+        id: deleteReq
+        allowGlobalBusy: true
+        onSuccessfull: {
+            AsemanGlobals.accessToken = "";
+            AsemanGlobals.lastSync = "";
+
+            dis.ViewportType.open = false;
+            GlobalSignals.snackbarRequest(qsTr("Delete Successfully"))
         }
     }
 

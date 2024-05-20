@@ -14,8 +14,9 @@ Item {
     property alias bodyLabel: bodyLabel
     property alias titleLabel: titleLabel
     property alias repeater: repeater
+    property alias passwordField: passwordField
 
-    signal itemClicked(int index, string title)
+    signal itemClicked(int index, string title, string password)
 
     Rectangle {
         color: Colors.background
@@ -55,6 +56,16 @@ Item {
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                 text: "Message's body"
             }
+
+            TextField {
+                id: passwordField
+                Layout.fillWidth: true
+                font.pixelSize: 9 * Devices.fontDensity
+                placeholderText: qsTr("Password")
+                echoMode: TextInput.Password
+                passwordCharacter: '*'
+                passwordMaskDelay: 300
+            }
         }
 
         Rectangle {
@@ -87,7 +98,7 @@ Item {
 
                     Connections {
                         target: btn
-                        onClicked: element.itemClicked(model.index, modelData)
+                        onClicked: element.itemClicked(model.index, modelData, passwordField.text)
                     }
                 }
             }

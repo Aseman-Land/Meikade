@@ -9,10 +9,12 @@ ErrorDialogView {
     property variant buttons
     property string title
     property string body
+    property bool getPassword
 
     titleLabel.text: title
     bodyLabel.text: body
     repeater.model: buttons? buttons : [ qsTr("Ok") + Translations.refresher ]
+    passwordField.visible: getPassword
 
     onItemClicked: if (!buttons && index == 0) Viewport.viewport.closeLast()
 }
