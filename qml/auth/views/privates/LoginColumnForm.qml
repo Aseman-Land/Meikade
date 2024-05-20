@@ -1,14 +1,16 @@
 import QtQuick 2.14
 import globals 1.0
-import components 1.0
 import AsemanQml.Base 2.0
 import AsemanQml.MaterialIcons 2.0
-import AsemanQml.Controls.Beta 3.0
+import QtQuick.Controls 2.3
+import QtQuick.Layouts 1.3
+import QtQuick.Controls.Material 2.0
+import QtQuick.Controls.IOSStyle 2.0
 import AsemanQml.Controls 2.0
 
-Column {
+ColumnLayout {
     id: columnLayout
-    spacing: 8 * Devices.density
+    spacing: 0
 
     property alias forgetBtn: forgetBtn
     property alias signupBtn: signupBtn
@@ -19,17 +21,19 @@ Column {
     property alias skipLoginBtn: skipLoginBtn
     property bool introMode: false
 
-    MLabel {
+    Label {
         id: loginLabel
         font.pixelSize: 9 * Devices.fontDensity
         text: qsTr("If you created account before, Just enter your username below. Otherwise click on \"Create new account\" button.") + Translations.refresher
-        width: parent.width
+        Layout.fillWidth: true
+        Layout.bottomMargin: 20 * Devices.density
         wrapMode: Text.WordWrap
     }
 
-    MTextField {
+    TextField {
         id: userTxt
-        width: parent.width
+        Layout.fillWidth: true
+        Layout.preferredHeight: 48 * Devices.density
         placeholderText: qsTr("Username") + Translations.refresher
         font.pixelSize: 10 * Devices.fontDensity
         horizontalAlignment: Text.AlignHCenter
@@ -38,7 +42,7 @@ Column {
         validator: RegularExpressionValidator { regularExpression: /[a-z][a-z0-9_]+/ }
         onAccepted: passTxt.focus = true
 
-        MLabel {
+        Label {
             anchors.left: parent.left
             anchors.verticalCenter: parent.verticalCenter
             anchors.verticalCenterOffset: 4 * Devices.density
@@ -50,9 +54,10 @@ Column {
         }
     }
 
-    MTextField {
+    TextField {
         id: passTxt
-        width: parent.width
+        Layout.fillWidth: true
+        Layout.preferredHeight: 48 * Devices.density
         placeholderText: qsTr("Password") + Translations.refresher
         font.pixelSize: 10 * Devices.fontDensity
         horizontalAlignment: Text.AlignHCenter
@@ -63,7 +68,7 @@ Column {
         selectByMouse: true
         onAccepted: sendBtn.focus = true
 
-        MLabel {
+        Label {
             anchors.left: parent.left
             anchors.verticalCenter: parent.verticalCenter
             anchors.verticalCenterOffset: 4 * Devices.density
@@ -74,7 +79,7 @@ Column {
             color: Colors.primary
         }
 
-        MButton {
+        Button {
             anchors.right: parent.right
             anchors.verticalCenter: parent.verticalCenter
             anchors.verticalCenterOffset: 4 * Devices.density
@@ -84,7 +89,9 @@ Column {
             flat: true
             highlighted: true
             width: 32 * Devices.density
-            height: 32 * Devices.density
+            height: 42 * Devices.density
+            Material.accent: Colors.primary
+            IOSStyle.accent: Colors.primary
             onClicked: {
                 if (passTxt.echoMode == TextInput.Password)
                     passTxt.echoMode = TextInput.Normal
@@ -94,55 +101,53 @@ Column {
         }
     }
 
-    MButton {
+    Button {
         id: sendBtn
         text: qsTr("Login") + Translations.refresher
-        width: parent.width
+        Layout.fillWidth: true
         font.pixelSize: 9 * Devices.fontDensity
         highlighted: true
 //        enabled: userTxt.length > 5 && passTxt.length > 5
     }
 
-    Column {
-        width: parent.width
+    Button {
+        id: signupBtn
+        text: qsTr("Create new account") + Translations.refresher
+        Layout.fillWidth: true
+        Layout.preferredHeight: 40 * Devices.density
+        Layout.bottomMargin: -10 * Devices.density
+        font.pixelSize: 9 * Devices.fontDensity
+        font.underline: true
+        flat: true
+        highlighted: true
+        Material.accent: Colors.primary
+        IOSStyle.accent: Colors.primary
+    }
 
-        MButton {
-            id: signupBtn
-            text: qsTr("Create new account") + Translations.refresher
-            width: parent.width
-            height: 30 * Devices.density
-            font.pixelSize: 9 * Devices.fontDensity
-            font.underline: true
-            flat: true
-            highlighted: true
-        }
+    Button {
+        id: forgetBtn
+        text: qsTr("Forget your password") + Translations.refresher
+        Layout.bottomMargin: introMode? 0 : 40 * Devices.density
+        Layout.fillWidth: true
+        Layout.preferredHeight: 40 * Devices.density
+        font.pixelSize: 9 * Devices.fontDensity
+        font.underline: true
+        flat: true
+        highlighted: true
+        Material.accent: Colors.primary
+        IOSStyle.accent: Colors.primary
+    }
 
-        MButton {
-            id: forgetBtn
-            text: qsTr("Forget your password") + Translations.refresher
-            width: parent.width
-            height: 30 * Devices.density
-            font.pixelSize: 9 * Devices.fontDensity
-            font.underline: true
-            flat: true
-            highlighted: true
-        }
-
-        MButton {
-            id: skipLoginBtn
-            text: qsTr("Skip authenticating") + Translations.refresher
-            width: parent.width
-            height: 30 * Devices.density
-            font.pixelSize: 9 * Devices.fontDensity
-            font.underline: true
-            flat: true
-            visible: introMode
-            highlighted: true
-        }
-
-        Item {
-            width: 1
-            height: 40 * Devices.density
-        }
+    Button {
+        id: skipLoginBtn
+        text: qsTr("Skip authenticating") + Translations.refresher
+        Layout.bottomMargin: introMode? 40 * Devices.density : 0
+        Layout.fillWidth: true
+        Layout.preferredHeight: 40 * Devices.density
+        font.pixelSize: 9 * Devices.fontDensity
+        font.underline: true
+        flat: true
+        visible: introMode
+        highlighted: true
     }
 }

@@ -1,12 +1,11 @@
 import QtQuick 2.12
+import QtQuick.Controls 2.3
 import AsemanQml.MaterialIcons 2.0
 import AsemanQml.Base 2.0
-import AsemanQml.Controls 2.0
-import AsemanQml.Controls.Beta 3.0
 import QtQuick.Layouts 1.3
 import globals 1.0
 
-MItemDelegate {
+ItemDelegate {
     id: element
     width: 100
     height: 100
@@ -22,7 +21,7 @@ MItemDelegate {
         anchors.verticalCenter: parent.verticalCenter
         columns: AsemanGlobals.viewMode == 2? 1 : 2
 
-        MLabel {
+        Label {
             id: iconText
             Layout.preferredHeight: 30 * Devices.density
             text: MaterialIcons.mdi_bell
@@ -32,7 +31,7 @@ MItemDelegate {
             font.family: MaterialIcons.family
             font.pixelSize: 18 * Devices.fontDensity
         }
-        MLabel {
+        Label {
             id: title
             Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
             text: qsTr("Label") + Translations.refresher

@@ -3,11 +3,14 @@ import AsemanQml.Base 2.0
 import AsemanQml.Controls 2.0
 import AsemanQml.Models 2.0
 import AsemanQml.MaterialIcons 2.0
+import QtQuick.Controls.Material 2.0
+import QtQuick.Controls.IOSStyle 2.0
+import QtQuick.Controls 2.3
 import QtQuick.Layouts 1.3
 import components 1.0
 import globals 1.0
 
-MPage {
+Page {
     id: form
     width: Constants.width
     height: Constants.height
@@ -38,7 +41,10 @@ MPage {
     }
 
     Rectangle {
-        anchors.fill: parent
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.top: headerItem.bottom
+        anchors.bottom: parent.bottom
         color: Colors.deepBackground
 
         ColumnLayout {
@@ -73,7 +79,7 @@ MPage {
                 }
             }
 
-            MLabel {
+            Label {
                 Layout.fillWidth: true
                 Layout.leftMargin: 8 * Devices.density
                 Layout.rightMargin: 8 * Devices.density
@@ -113,7 +119,7 @@ MPage {
                             contentWidth: agreement.width
                             contentHeight: agreement.height
 
-                            MLabel {
+                            Label {
                                 id: agreement
                                 width: agreementFlick.width
                                 topPadding: 10 * Devices.density
@@ -134,7 +140,7 @@ MPage {
                         }
                     }
 
-                    MButton {
+                    Button {
                         id: agreementAcceptBtn
                         Layout.fillWidth: true
                         opacity: 1 - reviewNum
@@ -143,13 +149,15 @@ MPage {
                         highlighted: true
                         text: agreementAcceptBtnIndicator.running? "" : qsTr("Accept Agreement") + Translations.refresher
 
-                        MBusyIndicator {
+                        BusyIndicator {
                             id: agreementAcceptBtnIndicator
                             anchors.centerIn: parent
                             scale: 0.6
                             height: 28 * Devices.density
                             width: 28 * Devices.density
                             running: false
+                            IOSStyle.foreground: "#fff"
+                            Material.accent: "#fff"
                         }
                     }
                 }
@@ -170,7 +178,7 @@ MPage {
                         color: Colors.deepBackground
                         clip: true
 
-                        MLabel {
+                        Label {
                             anchors.centerIn: parent
                             font.pixelSize: 8 * Devices.fontDensity
                             text: qsTr("There is no poem in the book") + Translations.refresher
@@ -194,7 +202,7 @@ MPage {
                                 height: sectionLabel.text.length? 30 * Devices.density : 0
                                 opacity: sectionLabel.text.length? 1 : 0
 
-                                MLabel {
+                                Label {
                                     id: sectionLabel
                                     anchors.left: parent.left
                                     anchors.right: parent.right
@@ -215,7 +223,7 @@ MPage {
                                     color: Colors.lightBackground
                                     anchors.fill: parent
 
-                                    MItemDelegate {
+                                    ItemDelegate {
                                         anchors.fill: parent
 
                                         Connections {
@@ -229,7 +237,7 @@ MPage {
                                         anchors.verticalCenter: parent.verticalCenter
                                         anchors.margins: 8 * Devices.density
 
-                                        MCheckBox {
+                                        CheckBox {
                                             checked: model.checked
                                             Connections {
                                                 onClicked: {
@@ -243,14 +251,14 @@ MPage {
                                             spacing: 0 * Devices.density
                                             Layout.fillWidth: true
 
-                                            MLabel {
+                                            Label {
                                                 text: model.title
                                                 Layout.fillWidth: true
                                                 horizontalAlignment: Text.AlignLeft
                                                 font.pixelSize: 9 * Devices.fontDensity
                                             }
 
-                                            MLabel {
+                                            Label {
                                                 text: model.first_verse
                                                 Layout.fillWidth: true
                                                 horizontalAlignment: Text.AlignLeft
@@ -275,7 +283,7 @@ MPage {
                         }
                     }
 
-                    MButton {
+                    Button {
                         id: reviewAcceptBtn
                         Layout.fillWidth: true
                         font.pixelSize: 9 * Devices.fontDensity
@@ -284,13 +292,15 @@ MPage {
                         visible: opacity > 0
                         text: reviewAcceptBtnIndicator.running? "" : qsTr("Upload to Review") + Translations.refresher
 
-                        MBusyIndicator {
+                        BusyIndicator {
                             id: reviewAcceptBtnIndicator
                             anchors.centerIn: parent
                             scale: 0.6
                             height: 28 * Devices.density
                             width: 28 * Devices.density
                             running: false
+                            IOSStyle.foreground: "#fff"
+                            Material.accent: "#fff"
                         }
                     }
                 }
@@ -320,7 +330,7 @@ MPage {
                             anchors.right: parent.right
                             anchors.verticalCenter: parent.verticalCenter
 
-                            MLabel {
+                            Label {
                                 Layout.alignment: Qt.AlignHCenter
                                 font.pixelSize: 60 * Devices.fontDensity
                                 font.family: MaterialIcons.family
@@ -328,7 +338,7 @@ MPage {
                                 color: Colors.accent
                             }
 
-                            MLabel {
+                            Label {
                                 Layout.fillWidth: true
                                 font.pixelSize: 9 * Devices.fontDensity
                                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
@@ -336,7 +346,7 @@ MPage {
                                 text: qsTr("Your request for review submitted officialy. We will publish your poems and notify you when review finished.") + Translations.refresher
                             }
 
-                            MLabel {
+                            Label {
                                 Layout.fillWidth: true
                                 font.pixelSize: 9 * Devices.fontDensity
                                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
@@ -344,7 +354,7 @@ MPage {
                                 text: qsTr("You can check state of the review by click on the below icon on the top-right of the My Meikade page.") + Translations.refresher
                             }
 
-                            MLabel {
+                            Label {
                                 Layout.alignment: Qt.AlignHCenter
                                 font.pixelSize: 30 * Devices.fontDensity
                                 font.family: MaterialIcons.family
@@ -354,7 +364,7 @@ MPage {
                         }
                     }
 
-                    MButton {
+                    Button {
                         id: finishBtn
                         Layout.fillWidth: true
                         font.pixelSize: 9 * Devices.fontDensity
@@ -366,15 +376,21 @@ MPage {
         }
     }
 
-    MBusyIndicator {
+    BusyIndicator {
         id: busyIndicator
         Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
         anchors.centerIn: parent
         running: false
     }
 
-    header: MHeader {
+    Header {
         id: headerItem
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.top: parent.top
+        color: Colors.headerColor
+        light: !Colors.lightHeader
+        shadow: Devices.isAndroid
 
         Image {
             anchors.centerIn: parent
@@ -428,15 +444,17 @@ MPage {
                 fillMode: Image.PreserveAspectFit
             }
 
-            MBusyIndicator {
+            BusyIndicator {
                 Layout.alignment: Qt.AlignHCenter
                 Layout.preferredWidth: isAndroidStyle? 36 * Devices.density : 24 * Devices.density
                 Layout.preferredHeight: isAndroidStyle? 36 * Devices.density : 24 * Devices.density
+                IOSStyle.foreground: "#fff"
+                Material.accent: "#fff"
                 opacity: 1 - initedNum
                 running: opacity > 0
             }
 
-            MLabel {
+            Label {
                 Layout.topMargin: 14 * Devices.density
                 Layout.alignment: Qt.AlignHCenter
                 text: qsTr("Please Wait...") + Translations.refresher

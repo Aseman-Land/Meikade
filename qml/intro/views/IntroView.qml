@@ -1,12 +1,14 @@
 import QtQuick 2.12
 import AsemanQml.Base 2.0
+import QtQuick.Controls 2.3
 import QtQuick.Layouts 1.3
 import AsemanQml.Controls 2.0
+import QtQuick.Controls.Material 2.0
 import globals 1.0
 import components 1.0
 import "privates"
 
-MPage {
+Page {
     id: homeForm
     width: Constants.width
     height: Constants.height
@@ -50,7 +52,7 @@ MPage {
         }
     }
 
-    MPageIndicator {
+    PageIndicator {
         anchors.bottom: parent.bottom
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.bottomMargin: 15 * Devices.density + Devices.navigationBarHeight
@@ -58,7 +60,7 @@ MPage {
         currentIndex: list.currentIndex
     }
 
-    MButton {
+    Button {
         id: nextBtn
         width: 100 * Devices.density
         anchors.bottom: parent.bottom
@@ -71,7 +73,7 @@ MPage {
         onClicked: AsemanGlobals.introDone = true
     }
 
-    MButton {
+    Button {
         id: prevBtn
         width: 100 * Devices.density
         anchors.bottom: parent.bottom

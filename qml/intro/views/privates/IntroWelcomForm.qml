@@ -1,13 +1,15 @@
 import QtQuick 2.12
 import AsemanQml.Base 2.0
 import AsemanQml.Viewport 2.0
+import QtQuick.Controls 2.3
 import QtQuick.Layouts 1.3
 import AsemanQml.Controls 2.0
+import QtQuick.Controls.Material 2.0
 import globals 1.0
 import requests 1.0
 import components 1.0
 
-MPage {
+Page {
     id: homeForm
     width: Constants.width
     height: Constants.height
@@ -20,7 +22,7 @@ MPage {
         anchors.margins: 20 * Devices.density
         anchors.verticalCenter: parent.verticalCenter
         anchors.verticalCenterOffset: -20 * Devices.density
-        spacing: 10 * Devices.density
+        spacing: 0
 
         Item {
             Layout.preferredWidth: 128 * Devices.density
@@ -38,14 +40,14 @@ MPage {
             }
         }
 
-        MLabel {
+        Label {
             Layout.topMargin: 6 * Devices.density
             Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
             font.pixelSize: 16 * Devices.fontDensity
             text: qsTr("Welcome to Meikade 4") + Translations.refresher
         }
 
-        MLabel {
+        Label {
             Layout.topMargin: 6 * Devices.density
             Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
             Layout.fillWidth: true
@@ -55,14 +57,15 @@ MPage {
             text: qsTr("Please choose your language") + Translations.refresher
         }
 
-        MComboBox {
+        ComboBox {
             id: languageCombo
             Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
             Layout.preferredWidth: 300 * Devices.density
+            font.pixelSize: 9 * Devices.fontDensity
             model: ["English", "فارسی"]
         }
 
-        MButton {
+        Button {
             id: nextBtn
             Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
             Layout.preferredWidth: 300 * Devices.density

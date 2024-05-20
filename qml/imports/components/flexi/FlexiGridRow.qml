@@ -1,10 +1,12 @@
 import QtQuick 2.12
+import QtQuick.Controls 2.9
 import AsemanQml.Base 2.0
 import AsemanQml.Models 2.0
 import AsemanQml.MaterialIcons 2.0
+import QtQuick.Controls.Material 2.0
+import QtQuick.Controls.IOSStyle 2.0
 import globals 1.0
 import queries 1.0
-import components 1.0
 import "delegates"
 
 FlexiAbstractRow {
@@ -86,12 +88,14 @@ FlexiAbstractRow {
                         active: editMode
                         sourceComponent: Item {
 
-                            MBusyIndicator {
+                            BusyIndicator {
                                 id: busyIndic
                                 anchors.centerIn: parent
                                 width: 26 * Devices.density
                                 height: width
                                 running: offlineInstaller.installing || offlineInstaller.uninstalling || offlineInstaller.downloading
+                                IOSStyle.foreground: "#fff"
+                                Material.accent: "#fff"
                             }
 
                             Rectangle {
@@ -104,7 +108,7 @@ FlexiAbstractRow {
                                 color: Qt.darker(Colors.deepBackground, 1.2)
                                 visible: !busyIndic.running
 
-                                MLabel {
+                                Label {
                                     anchors.centerIn: parent
                                     font.pixelSize: 7 * Devices.fontDensity
                                     font.family: MaterialIcons.family

@@ -1,12 +1,14 @@
 import QtQuick 2.14
 import globals 1.0
-import components 1.0
 import AsemanQml.Base 2.0
 import AsemanQml.MaterialIcons 2.0
-import AsemanQml.Controls.Beta 3.0
+import QtQuick.Controls 2.3
+import QtQuick.Layouts 1.3
+import QtQuick.Controls.Material 2.0
+import QtQuick.Controls.IOSStyle 2.0
 import AsemanQml.Controls 2.0
 
-MPage {
+Page {
     id: page
     width: Constants.width
     height: Constants.height
@@ -36,25 +38,27 @@ MPage {
                 anchors.fill: parent
             }
 
-            Column {
+            ColumnLayout {
                 id: columnLayout
                 anchors.left: parent.left
                 anchors.right: parent.right
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.margins: 20 * Devices.density
-                spacing: 8 * Devices.density
+                spacing: 0
 
-                MLabel {
+                Label {
                     id: loginLabel
                     font.pixelSize: 9 * Devices.fontDensity
                     text: qsTr("Enter token, sent to your email and tap on the Submit button.") + Translations.refresher
-                    width: parent.width
+                    Layout.fillWidth: true
+                    Layout.bottomMargin: 20 * Devices.density
                     wrapMode: Text.WordWrap
                 }
 
-                MTextField {
+                TextField {
                     id: passTxt
-                    width: parent.width
+                    Layout.fillWidth: true
+                    Layout.preferredHeight: 48 * Devices.density
                     placeholderText: qsTr("Token") + Translations.refresher
                     font.pixelSize: 10 * Devices.fontDensity
                     horizontalAlignment: Text.AlignHCenter
@@ -63,7 +67,7 @@ MPage {
                     selectByMouse: true
                     onAccepted: sendBtn.focus = true
 
-                    MLabel {
+                    Label {
                         anchors.left: parent.left
                         anchors.verticalCenter: parent.verticalCenter
                         anchors.verticalCenterOffset: 4 * Devices.density
@@ -75,10 +79,10 @@ MPage {
                     }
                 }
 
-                MButton {
+                Button {
                     id: sendBtn
                     text: qsTr("Submit") + Translations.refresher
-                    width: parent.width
+                    Layout.fillWidth: true
                     font.pixelSize: 9 * Devices.fontDensity
                     highlighted: true
                     enabled: passTxt.length > 3
@@ -87,7 +91,7 @@ MPage {
         }
     }
 
-    MHeader {
+    Header {
         id: headerItem
         anchors.left: parent.left
         anchors.right: parent.right
@@ -96,21 +100,23 @@ MPage {
         light: !Colors.lightHeader
         shadow: Devices.isAndroid
 
-        Item {
+        RowLayout {
             anchors.left: parent.left
             anchors.right: parent.right
             anchors.bottom: parent.bottom
             height: Devices.standardTitleBarHeight
 
-            MButton {
+            RoundButton {
                 id: cancelBtn
-                anchors.right: parent.right
-                anchors.verticalCenter: parent.verticalCenter
-                anchors.margins: 8 * Devices.density
+                Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
                 text: qsTr("Cancel") + Translations.refresher
                 highlighted: true
                 radius: 6 * Devices.density
                 font.pixelSize: 8 * Devices.fontDensity
+                IOSStyle.accent: Qt.darker(Colors.primary, 1.3)
+                Material.accent: Qt.darker(Colors.primary, 1.3)
+                Material.theme: Material.Dark
+                Material.elevation: 0
             }
         }
     }

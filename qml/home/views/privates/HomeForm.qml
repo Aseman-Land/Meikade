@@ -1,9 +1,10 @@
 import QtQuick 2.12
 import AsemanQml.Base 2.0
+import QtQuick.Controls 2.3
 import QtQuick.Layouts 1.3
 import AsemanQml.Controls 2.0
-import AsemanQml.Controls.Beta 3.0
-import AsemanQml.GraphicalEffects 2.0
+import QtQuick.Controls.Material 2.0
+import QtGraphicalEffects 1.0
 import globals 1.0
 import components 1.0
 
@@ -28,7 +29,7 @@ Item {
         Rectangle {
             width: headerItem.width
             height: headerItem.height
-            color: Colors.headerColor
+            color: headerItem.color
         }
 
         ReloadItem {
@@ -42,6 +43,16 @@ Item {
             topMargin: headerItem.height + spacing
             bottomMargin: 180 * Devices.density + Devices.navigationBarHeight
             anchors.fill: parent
+            model: ListModel {
+                ListElement {
+                    type: "recents"
+                    section: "Recents"
+                }
+                ListElement {
+                    type: "static"
+                    section: ""
+                }
+            }
         }
     }
 
@@ -71,17 +82,21 @@ Item {
             anchors.fill: parent
             visible: Devices.isIOS || Devices.isDesktop
             gradient: Gradient {
-                GradientStop { position: 0.0; color: Colors.headerColor }
+                GradientStop { position: 0.0; color: headerItem.color }
                 GradientStop { position: 1.0; color: "transparent" }
             }
         }
     }
 
-    MHeader {
+    Header {
         id: headerItem
+        color: Colors.headerColor
+        light: !Colors.lightHeader
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.top: parent.top
+        titleFontSize: 10 * Devices.fontDensity
+        shadow: Devices.isAndroid
         opacity: Devices.isIOS || Devices.isDesktop? 0.8 : 1
     }
 

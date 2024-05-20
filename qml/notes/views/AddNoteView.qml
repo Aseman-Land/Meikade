@@ -1,13 +1,16 @@
 import QtQuick 2.12
 import AsemanQml.Base 2.0
 import AsemanQml.MaterialIcons 2.0
+import QtQuick.Controls 2.3
 import AsemanQml.Controls 2.0
 import QtQuick.Layouts 1.3
+import QtQuick.Controls.Material 2.0
+import QtQuick.Controls.IOSStyle 2.0
 import globals 1.0
 import components 1.0
 import requests 1.0
 
-MPage {
+Page {
     id: form
     width: Constants.width
     height: Constants.height
@@ -23,6 +26,7 @@ MPage {
     property alias noteField: noteField
     property alias flick: flick
     property alias scene: scene
+    property alias premiumBtn: premiumBtn
 
     property string premiumMsg
     property int currentNotesCount
@@ -33,7 +37,7 @@ MPage {
 
     AsemanFlickable {
         id: flick
-        anchors.top: parent.top
+        anchors.top: headerItem.bottom
         anchors.right: parent.right
         anchors.left: parent.left
         anchors.bottom: buttonsRow.top
@@ -62,7 +66,7 @@ MPage {
                     Layout.rightMargin: 10 * Devices.density
                     spacing: 20 * Devices.density
 
-                    MLabel {
+                    Label {
                         id: poemText
                         Layout.fillWidth: true
                         Layout.minimumHeight: 60 * Devices.density
@@ -71,12 +75,12 @@ MPage {
                         wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                         text: "Poem Description" + Translations.refresher
 
-                        MBusyIndicator {
+                        BusyIndicator {
                             anchors.centerIn: parent
                             running: poemText.text.length == 0
                         }
 
-                        MItemDelegate {
+                        ItemDelegate {
                             id: poemBtn
                             anchors.fill: parent
                             anchors.margins: -10 * Devices.density
@@ -91,6 +95,72 @@ MPage {
                     Layout.rightMargin: 10 * Devices.density
                     height: 1 * Devices.density
                     color: "#33888888"
+                }
+
+                Label {
+                    Layout.fillWidth: true
+                    Layout.leftMargin: 20 * Devices.density
+                    Layout.rightMargin: 20 * Devices.density
+                    horizontalAlignment: Text.AlignHCenter
+                    font.pixelSize: 8 * Devices.fontDensity
+                    opacity: 0.8
+                    text: premiumMsg
+                    visible: premiumMsg.length
+                    wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                    color: Subscription.notesLimits > currentNotesCount? Colors.foreground : "#a00"
+
+                    Connections {
+                        onLinkActivated: Qt.openUrlExternally(link)
+                    }
+                }
+
+                Label {
+                    Layout.fillWidth: true
+                    Layout.leftMargin: 20 * Devices.density
+                    Layout.rightMargin: 20 * Devices.density
+                    horizontalAlignment: Text.AlignHCenter
+                    font.pixelSize: 8 * Devices.fontDensity
+                    text: qsTr("To buy premium account click on below button") + Translations.refresher
+                    visible: !noteField.visible && premiumMsg.length && !AsemanGlobals.disablePremiumNotesWarn && Bootstrap.payment && Bootstrap.trusted
+                    wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                }
+
+                ColumnLayout {
+                    Layout.alignment: Qt.AlignHCenter
+                    visible: !noteField.visible && premiumMsg.length && !AsemanGlobals.disablePremiumNotesWarn && Bootstrap.payment && Bootstrap.trusted
+                    spacing: 0
+
+                    RoundButton {
+                        id: premiumBtn
+                        Layout.alignment: Qt.AlignHCenter
+                        Layout.preferredWidth: form.width * 0.5
+                        text: qsTr("Premium Account") + Translations.refresher
+                        font.pixelSize: 9 * Devices.fontDensity
+                        highlighted: true
+                        Material.accent: Subscription.premiumColor
+                        IOSStyle.accent: Subscription.premiumColor
+                        Material.elevation: 0
+
+                        Connections {
+                            target: premiumBtn
+                            onClicked: form.premiumBuyRequest()
+                        }
+                    }
+
+                    RoundButton {
+                        id: premiumDisMisBtn
+                        Layout.alignment: Qt.AlignHCenter
+                        text: qsTr("Don't show this message again") + Translations.refresher
+                        font.underline: true
+                        font.pixelSize: 8 * Devices.fontDensity
+                        flat: true
+                        highlighted: true
+
+                        Connections {
+                            target: premiumDisMisBtn
+                            onClicked: AsemanGlobals.disablePremiumNotesWarn = true
+                        }
+                    }
                 }
 
                 TextArea {
@@ -126,7 +196,7 @@ MPage {
         anchors.margins: 10 * Devices.density
         anchors.bottomMargin: Devices.navigationBarHeight + 10 * Devices.density
 
-        MButton {
+        Button {
             id: deleteBtn
             Layout.preferredWidth: 50 * Devices.density
             font.pixelSize: 14 * Devices.fontDensity
@@ -134,14 +204,19 @@ MPage {
             text: MaterialIcons.mdi_trash_can
             flat: true
             highlighted: true
+            Material.accent: Material.Red
+            IOSStyle.accent: IOSStyle.Red
         }
 
-        MButton {
+        Button {
             id: confirmBtn
             Layout.fillWidth: true
             font.pixelSize: 9 * Devices.fontDensity
             text: qsTr("Save") + Translations.refresher
             highlighted: true
+            Material.accent: Colors.noteButton
+            IOSStyle.accent: Colors.noteButton
+            Material.elevation: 0
         }
     }
 

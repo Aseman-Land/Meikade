@@ -1,4 +1,5 @@
 import QtQuick 2.0
+import QtQuick.Controls 2.0
 import AsemanQml.Viewport 2.0
 import AsemanQml.Base 2.0
 import AsemanQml.Models 2.0
@@ -23,7 +24,7 @@ MyMeikadeView {
     gridView.model: MyMeikadeModel {}
 
     settingsBtn.onClicked: Viewport.controller.trigger("page:/settings")
-    onClicked: (link) => {
+    onClicked: {
         if (link == "float:/syncs" && AsemanGlobals.accessToken.length == 0)
             link = "float:/auth/float";
 

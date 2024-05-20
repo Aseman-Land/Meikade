@@ -2,7 +2,9 @@ import QtQuick 2.12
 import AsemanQml.Base 2.0
 import AsemanQml.MaterialIcons 2.0
 import AsemanQml.Controls 2.0
+import QtQuick.Controls 2.3
 import QtQuick.Layouts 1.3
+import QtQuick.Controls.Material 2.0
 import globals 1.0
 import components 1.0
 import models 1.0
@@ -64,7 +66,7 @@ Item {
         color: Colors.deepBackground
     }
 
-    MTabBar {
+    TabBar {
         id: tabBar
         anchors.top: headerItem.bottom
         anchors.right: parent.right
@@ -75,7 +77,8 @@ Item {
 
         Repeater {
             id: tabBarRepeater
-            MTabButton {
+            TabButton {
+                font.pixelSize: 9 * Devices.fontDensity
                 text: GTranslations.localeName == "fa"? model.name : model.name_en
             }
         }

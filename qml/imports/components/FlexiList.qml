@@ -2,9 +2,11 @@ import QtQuick 2.12
 import globals 1.0
 import AsemanQml.Base 2.0
 import AsemanQml.Viewport 2.0
+import QtQuick.Controls 2.3
 import QtQuick.Layouts 1.3
 import AsemanQml.Controls 2.0
-import AsemanQml.Controls.Beta 3.0
+import QtQuick.Controls.Material 2.0
+import QtQuick.Controls.IOSStyle 2.0
 import "flexi"
 
 AsemanListView {
@@ -43,7 +45,7 @@ AsemanListView {
                     return ""
             }
 
-            MLabel {
+            Label {
                 id: sectionTxt
                 anchors.left: parent.left
                 anchors.right: parent.right
@@ -68,7 +70,7 @@ AsemanListView {
                     }
                 }
 
-                MLabel {
+                Label {
                     anchors.rightMargin: 10 * Devices.density
                     anchors.right: parent.right
                     anchors.verticalCenter: parent.verticalCenter
@@ -120,7 +122,7 @@ AsemanListView {
             width: parent.width
             type: model.type
             heightRatio: model.heightRatio == undefined || !model.heightRatio? 1 : model.heightRatio
-            dataList: model.dataList
+            modelData: model.modelData
             listView: list
             onClicked: list.linkRequest(link, properties)
             onMoreRequest: if (model.index === list.count-1) list.moreRequest()

@@ -1,13 +1,16 @@
 import QtQuick 2.12
 import AsemanQml.Base 2.0
+import QtQuick.Controls 2.3
 import QtQuick.Layouts 1.3
 import AsemanQml.Controls 2.0
+import QtQuick.Controls.Material 2.0
+import QtQuick.Controls.IOSStyle 2.0
 import globals 1.0
 import components 1.0
 import queries 1.0
 import requests 1.0
 
-MPage {
+Page {
     id: homeForm
     width: Constants.width
     height: Constants.height
@@ -53,7 +56,7 @@ MPage {
                 spacing: 10 * Devices.density
                 visible: premiumMsg.length
 
-                MLabel {
+                Label {
                     Layout.fillWidth: true
                     Layout.leftMargin: 20 * Devices.density
                     Layout.rightMargin: 20 * Devices.density
@@ -69,7 +72,7 @@ MPage {
                     }
                 }
 
-                MLabel {
+                Label {
                     Layout.fillWidth: true
                     Layout.leftMargin: 20 * Devices.density
                     Layout.rightMargin: 20 * Devices.density
@@ -80,7 +83,7 @@ MPage {
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                 }
 
-                MButton {
+                RoundButton {
                     id: premiumBtn
                     Layout.preferredWidth: listView.width * 0.5
                     Layout.alignment: Qt.AlignHCenter
@@ -88,6 +91,9 @@ MPage {
                     font.pixelSize: 9 * Devices.fontDensity
                     highlighted: true
                     visible: Subscription.offlineLimits <= offlinePoetsCount && Bootstrap.payment && Bootstrap.trusted
+                    Material.accent: Subscription.premiumColor
+                    IOSStyle.accent: Subscription.premiumColor
+                    Material.elevation: 0
 
                     Connections {
                         target: premiumBtn
@@ -115,7 +121,7 @@ MPage {
                     color: Colors.background
                 }
 
-                MItemDelegate {
+                ItemDelegate {
                     id: itemDel
                     anchors.fill: parent
 
@@ -161,7 +167,7 @@ MPage {
                         Layout.fillWidth: true
                         spacing: 2 * Devices.density
 
-                        MLabel {
+                        Label {
                             Layout.fillWidth: true
                             horizontalAlignment: Text.AlignLeft
                             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
@@ -171,7 +177,7 @@ MPage {
                             text: model.title
                         }
 
-                        MLabel {
+                        Label {
                             Layout.fillWidth: true
                             horizontalAlignment: Text.AlignLeft
                             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
@@ -195,7 +201,7 @@ MPage {
                         progress: offlineInstaller.size? 0.1 + 0.9 * offlineInstaller.downloadedBytes / offlineInstaller.size : 0.1
                     }
 
-                    MSwitch {
+                    Switch {
                         id: swt
                         Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
                         enabled: !offlineInstaller.installing || offlineInstaller.uninstalling
@@ -268,14 +274,14 @@ MPage {
                 anchors.topMargin: 4 * Devices.density
                 spacing: 10 * Devices.density
 
-                MLabel {
+                Label {
                     Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
                     font.pixelSize: 16 * Devices.fontDensity
                     scale: 0.6 + ratio * 0.4
                     text: qsTr("Offline Poets") + Translations.refresher
                 }
 
-                MLabel {
+                Label {
                     Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
                     Layout.fillWidth: true
                     Layout.leftMargin: 20 * Devices.density

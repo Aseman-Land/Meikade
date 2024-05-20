@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import AsemanQml.Base 2.0
+import QtQuick.Controls 2.3
 import AsemanQml.Controls 2.0
 import QtQuick.Layouts 1.3
 import components 1.0
@@ -22,7 +23,7 @@ Item {
         anchors.verticalCenter: parent.verticalCenter
         spacing: 4 * Devices.density
 
-        MLabel {
+        Label {
             Layout.fillWidth: true
             Layout.leftMargin: 15 * Devices.density
             Layout.rightMargin: 15 * Devices.density
@@ -31,7 +32,7 @@ Item {
             text: qsTr("Help") + Translations.refresher
         }
 
-        MLabel {
+        Label {
             Layout.fillWidth: true
             Layout.leftMargin: 15 * Devices.density
             Layout.rightMargin: 15 * Devices.density
@@ -53,7 +54,7 @@ Item {
             }
         }
 
-        MButton {
+        Button {
             id: okBtn
             font.pixelSize: 9 * Devices.fontDensity
             Layout.fillWidth: true

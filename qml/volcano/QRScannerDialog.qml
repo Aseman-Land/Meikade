@@ -1,15 +1,21 @@
 import QtQuick 2.12
 import AsemanQml.Base 2.0
 import AsemanQml.Viewport 2.0
+import QtQuick.Controls 2.3
 import QtQuick.Layouts 1.3
 import QtMultimedia 5.8
 import AsemanQml.Controls 2.0
-import AsemanQml.GraphicalEffects 2.0
+import QtQuick.Controls.Material 2.0
+import QtQuick.Controls.IOSStyle 2.0
+import QtGraphicalEffects 1.0
 import QZXing 3.3
 import components 1.0
 
-MPage {
+Page {
     id: dis
+
+    Material.theme: Material.Dark
+    IOSStyle.theme: IOSStyle.Dark
 
     signal tagFound(string tag)
     
@@ -139,7 +145,7 @@ MPage {
                     maskSource: focusMaskBorder
                 }
 
-                MLabel {
+                Label {
                     id: cameraLoading
                     text: qsTr("Please wait") + Translations.refresher
                     font.capitalization: Font.AllUppercase
@@ -151,7 +157,7 @@ MPage {
             }
         }
 
-        MButton {
+        Button {
             id: cancelBtn
             text: qsTr("Cancel") + Translations.refresher
             font.pixelSize: 9 * Devices.fontDensity

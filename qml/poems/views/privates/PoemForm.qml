@@ -1,8 +1,11 @@
 import QtQuick 2.12
 import AsemanQml.Base 2.0
 import AsemanQml.MaterialIcons 2.0
+import QtQuick.Controls 2.3
 import QtQuick.Layouts 1.3
 import AsemanQml.Controls 2.0
+import QtQuick.Controls.Material 2.0
+import QtQuick.Controls.IOSStyle 2.0
 import globals 1.0
 import components 1.0
 import models 1.0
@@ -151,7 +154,7 @@ Item {
                 color: "#f00"
             }
 
-            MCheckBox {
+            CheckBox {
                 id: checkbox
                 anchors.verticalCenter: del.position === PoemVersesModel.PositionRight? parent.bottom : parent.verticalCenter
                 anchors.left: delFrame.right
@@ -181,7 +184,7 @@ Item {
                     anchors.horizontalCenter: parent.horizontalCenter
                     spacing: 4 * Devices.density
 
-                    MLabel {
+                    Label {
                         anchors.horizontalCenter: parent.horizontalCenter
                         font.pixelSize: 9 * Devices.fontDensity
                         font.family: MaterialIcons.family
@@ -190,7 +193,7 @@ Item {
                         visible: model.favorited
                     }
 
-                    MLabel {
+                    Label {
                         anchors.horizontalCenter: parent.horizontalCenter
                         font.pixelSize: 11 * Devices.fontDensity
                         font.family: MaterialIcons.family
@@ -199,7 +202,7 @@ Item {
                         visible: model.hasNote
                     }
 
-                    MLabel {
+                    Label {
                         anchors.horizontalCenter: parent.horizontalCenter
                         font.pixelSize: 11 * Devices.fontDensity
                         font.family: MaterialIcons.family
@@ -286,7 +289,7 @@ Item {
                 anchors.bottom: parent.bottom
                 anchors.left: parent.left
 
-                MLabel {
+                Label {
                     id: verseLabel
                     anchors.left: parent.left
                     anchors.right: parent.right
@@ -325,7 +328,7 @@ Item {
                     Layout.fillWidth: true
                     spacing: 10 * Devices.density
 
-                    MLabel {
+                    Label {
                         font.pixelSize: 10 * Devices.fontDensity
                         text: qsTr("Phrase") + Translations.refresher
                     }
@@ -337,7 +340,7 @@ Item {
                     }
                 }
 
-                MLabel {
+                Label {
                     Layout.fillWidth: true
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                     font.pixelSize: 9 * Devices.fontDensity
@@ -395,7 +398,7 @@ Item {
             anchors.fill: parent
             anchors.topMargin: Devices.statusBarHeight
 
-            MLabel {
+            Label {
                 id: titleLabel
                 anchors.bottom: subtitleLabel.top
                 anchors.left: parent.left
@@ -410,7 +413,7 @@ Item {
                 opacity: ratio
             }
 
-            MLabel {
+            Label {
                 id: subtitleLabel
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.verticalCenterOffset: 10 * Devices.density * ratioAbs
@@ -426,7 +429,7 @@ Item {
                 elide: Text.ElideRight
             }
 
-            MLabel {
+            Label {
                 id: viewsLabel
                 anchors.top: subtitleLabel.bottom
                 anchors.left: parent.left
@@ -443,7 +446,7 @@ Item {
             }
         }
 
-        MLabel {
+        Label {
             id: searchLabel
             anchors.top: parent.top
             anchors.right: parent.right
@@ -457,7 +460,7 @@ Item {
             font.family: MaterialIcons.family
             text: MaterialIcons.mdi_magnify
 
-            MItemDelegate {
+            ItemDelegate {
                 id: searchBtn
                 anchors.fill: parent
                 z: -1
@@ -509,10 +512,12 @@ Item {
                         anchors.left: parent.left
                         spacing: 4 * Devices.density
 
-                        MBusyIndicator {
+                        BusyIndicator {
                             scale: 0.6
                             Layout.preferredHeight: 28 * Devices.density
                             Layout.preferredWidth: 28 * Devices.density
+                            Material.accent: "#fff"
+                            IOSStyle.foreground: "#fff"
                             running: (navigationRepeater.model && navigationRepeater.model.refreshing !== undefined && navigationRepeater.model.refreshing && navigationRepeater.count == 0) || extraRefreshing? true : false
                             visible: running
                         }
@@ -532,7 +537,7 @@ Item {
                                 spacing: 0
                                 Layout.alignment: Qt.AlignVCenter
 
-                                MLabel {
+                                Label {
                                     Layout.alignment: Qt.AlignVCenter
                                     font.pixelSize: 12 * Devices.fontDensity
                                     font.family: MaterialIcons.family
@@ -540,13 +545,13 @@ Item {
                                     color: "#fff"
                                 }
 
-                                MLabel {
+                                Label {
                                     Layout.alignment: Qt.AlignVCenter
                                     font.pixelSize: 9 * Devices.fontDensity
                                     text: model.title
                                     color: "#fff"
 
-                                    MItemDelegate {
+                                    ItemDelegate {
                                         id: navDel
                                         anchors.left: parent.left
                                         anchors.right: parent.right
@@ -567,7 +572,7 @@ Item {
                 }
             }
 
-            MItemDelegate {
+            ItemDelegate {
                 id: menuBtn
                 Layout.preferredWidth: 30 * Devices.density
                 Layout.preferredHeight: headerFooter.height
@@ -583,7 +588,7 @@ Item {
                     }
                 }
 
-                MLabel {
+                Label {
                     anchors.centerIn: parent
                     font.pixelSize: 12 * Devices.fontDensity
                     font.family: MaterialIcons.family

@@ -2,7 +2,10 @@ import QtQuick 2.12
 import AsemanQml.Base 2.0
 import AsemanQml.MaterialIcons 2.0
 import AsemanQml.Controls 2.0
+import QtQuick.Controls 2.3
 import QtQuick.Layouts 1.3
+import QtQuick.Controls.Material 2.0
+import QtQuick.Controls.IOSStyle 2.0
 import globals 1.0
 import components 1.0
 import models 1.0
@@ -34,7 +37,7 @@ Item {
         viewItem: listView
     }
 
-    MLabel {
+    Label {
         anchors.centerIn: parent
         font.pixelSize: 8 * Devices.fontDensity
         text: qsTr("There is no item here") + Translations.refresher
@@ -70,7 +73,7 @@ Item {
                     color: Colors.background
                 }
 
-                MItemDelegate {
+                ItemDelegate {
                     id: itemDel
                     anchors.fill: parent
 
@@ -101,13 +104,13 @@ Item {
                             color: Colors.foreground
                         }
 
-                        MLabel {
+                        Label {
                             anchors.centerIn: parent
                             font.family: MaterialIcons.family
                             font.pixelSize: 14 * Devices.fontDensity
                             text: model.isVerse? MaterialIcons.mdi_text_short : MaterialIcons.mdi_format_columns
 
-                            MLabel {
+                            Label {
                                 anchors.horizontalCenter: parent.left
                                 anchors.verticalCenter: parent.bottom
                                 font.family: MaterialIcons.family
@@ -121,7 +124,7 @@ Item {
                         Layout.fillWidth: true
                         spacing: 2 * Devices.density
 
-                        MLabel {
+                        Label {
                             Layout.fillWidth: true
                             horizontalAlignment: Text.AlignLeft
                             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
@@ -131,7 +134,7 @@ Item {
                             text: model.title + " - " + model.verseText
                         }
 
-                        MLabel {
+                        Label {
                             Layout.fillWidth: true
                             horizontalAlignment: Text.AlignLeft
                             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
@@ -143,7 +146,7 @@ Item {
                         }
                     }
 
-                    MLabel {
+                    Label {
                         font.family: MaterialIcons.family
                         font.pixelSize: 16 * Devices.fontDensity
                         text: LayoutMirroring.enabled? MaterialIcons.mdi_chevron_left : MaterialIcons.mdi_chevron_right

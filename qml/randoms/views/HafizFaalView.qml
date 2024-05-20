@@ -2,7 +2,10 @@ import QtQuick 2.12
 import AsemanQml.Base 2.0
 import AsemanQml.MaterialIcons 2.0
 import AsemanQml.Controls 2.0
+import QtQuick.Controls 2.3
 import QtQuick.Layouts 1.3
+import QtQuick.Controls.Material 2.0
+import QtQuick.Controls.IOSStyle 2.0
 import globals 1.0
 import components 1.0
 
@@ -30,12 +33,15 @@ Item {
         anchors.left: parent.left
     }
 
-    MHeader {
+    Header {
         id: headerItem
         anchors.top: parent.top
         anchors.right: parent.right
         anchors.left: parent.left
-        title: qsTr("Hafiz Faal") + Translations.refresher
+        text: qsTr("Hafiz Faal") + Translations.refresher
+        color: Colors.headerColor
+        light: !Colors.lightHeader
+        shadow: Devices.isAndroid
 
         HeaderBackButton {
             id: closeBtn

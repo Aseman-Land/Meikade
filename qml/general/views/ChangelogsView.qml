@@ -2,13 +2,16 @@ import QtQuick 2.12
 import AsemanQml.Base 2.0
 import AsemanQml.MaterialIcons 2.0
 import AsemanQml.Controls 2.0
+import QtQuick.Controls 2.3
 import QtQuick.Layouts 1.3
+import QtQuick.Controls.Material 2.0
+import QtQuick.Controls.IOSStyle 2.0
 import globals 1.0
 import components 1.0
 import models 1.0
 import "privates"
 
-MPage {
+Page {
     id: dis
     width: Constants.width
     height: Constants.height
@@ -20,7 +23,10 @@ MPage {
 
     AsemanFlickable {
         id: flick
-        anchors.fill: parent
+        anchors.top: headerItem.bottom
+        anchors.bottom: parent.bottom
+        anchors.right: parent.right
+        anchors.left: parent.left
         flickableDirection: Flickable.VerticalFlick
         contentWidth: scene.width
         contentHeight: scene.height
@@ -52,7 +58,7 @@ MPage {
                     fillMode: Image.PreserveAspectFit
                 }
 
-                MLabel {
+                Label {
                     id: textLabel
                     Layout.fillWidth: true
                     font.pixelSize: 9 * Devices.fontDensity
@@ -74,9 +80,15 @@ MPage {
         color: Colors.primary
     }
 
-    header: MHeader {
+    Header {
         id: headerItem
-        title: qsTr("ChangeLogs") + Translations.refresher
+        anchors.top: parent.top
+        anchors.right: parent.right
+        anchors.left: parent.left
+        text: qsTr("ChangeLogs") + Translations.refresher
+        color: Colors.headerColor
+        light: !Colors.lightHeader
+        shadow: Devices.isAndroid
 
         HeaderBackButton {
             id: closeBtn

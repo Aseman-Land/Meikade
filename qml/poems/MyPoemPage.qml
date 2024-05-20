@@ -4,6 +4,9 @@ import AsemanQml.Models 2.0
 import AsemanQml.Viewport 2.0
 import AsemanQml.MaterialIcons 2.0
 import QtQuick.Layouts 1.3
+import QtQuick.Controls 2.3
+import QtQuick.Controls.Material 2.0
+import QtQuick.Controls.IOSStyle 2.0
 import queries 1.0 as Query
 import globals 1.0
 import requests 1.0
@@ -176,7 +179,7 @@ PoemView {
         spacing: 8 * Devices.density
         visible: previewText.length == 0 && editMode
 
-        MLabel {
+        Label {
             Layout.fillWidth: true
             Layout.topMargin: 4 * Devices.density
             font.pixelSize: 7 * Devices.fontDensity
@@ -186,7 +189,7 @@ PoemView {
             opacity: 0.7
         }
 
-        MButton {
+        RoundButton {
             Layout.preferredWidth: editPoemRow.width + 60 * Devices.density
             Layout.alignment: Qt.AlignHCenter
             highlighted: true
@@ -197,14 +200,14 @@ PoemView {
                 x: 30 * Devices.density
                 anchors.verticalCenter: parent.verticalCenter
 
-                MLabel {
+                Label {
                     font.pixelSize: 12 * Devices.fontDensity
                     font.family: MaterialIcons.family
                     text: MaterialIcons.mdi_feather
                     color: "#fff"
                 }
 
-                MLabel {
+                Label {
                     text: qsTr("Edit Poem") + Translations.refresher
                     font.pixelSize: 9 * Devices.fontDensity
                     color: "#fff"
@@ -212,11 +215,13 @@ PoemView {
             }
         }
 
-        MButton {
+        RoundButton {
             Layout.bottomMargin: 20 * Devices.density
             Layout.preferredWidth: publishRow.width + 60 * Devices.density
             Layout.alignment: Qt.AlignHCenter
             highlighted: true
+            IOSStyle.accent: Qt.darker(Colors.primary, 1.3)
+            Material.accent: Qt.darker(Colors.primary, 1.3)
             visible: Bootstrap.initialized
             onClicked: publish()
 
@@ -225,14 +230,14 @@ PoemView {
                 x: 30 * Devices.density
                 anchors.verticalCenter: parent.verticalCenter
 
-                MLabel {
+                Label {
                     font.pixelSize: 12 * Devices.fontDensity
                     font.family: MaterialIcons.family
                     text: MaterialIcons.mdi_publish
                     color: "#fff"
                 }
 
-                MLabel {
+                Label {
                     text: qsTr("Publish") + Translations.refresher
                     font.pixelSize: 9 * Devices.fontDensity
                     color: "#fff"

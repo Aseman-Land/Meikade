@@ -2,11 +2,14 @@ import QtQuick 2.12
 import AsemanQml.Base 2.0
 import AsemanQml.Controls 2.0
 import AsemanQml.MaterialIcons 2.0
+import QtQuick.Controls.Material 2.0
+import QtQuick.Controls.IOSStyle 2.0
+import QtQuick.Controls 2.3
 import QtQuick.Layouts 1.3
 import components 1.0
 import globals 1.0
 
-MPage {
+Page {
     width: Constants.width
     height: Constants.height
 
@@ -24,7 +27,10 @@ MPage {
 
     Item {
         id: scene
-        anchors.fill: parent
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.top: headerItem.bottom
+        anchors.bottom: parent.bottom
 
         AsemanFlickable {
             id: flickable
@@ -37,7 +43,7 @@ MPage {
                 id: flickColumn
                 width: flickable.width
 
-                MLabel {
+                Label {
                     id: bioText
                     Layout.margins: 14
                     Layout.fillHeight: true
@@ -58,7 +64,7 @@ MPage {
         }
     }
 
-    MBusyIndicator {
+    BusyIndicator {
         id: busyIndicator
         Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
         anchors.centerIn: parent
@@ -73,8 +79,9 @@ MPage {
         anchors.top: parent.top
         height: Devices.standardTitleBarHeight + Devices.statusBarHeight
 
-        MProgressBar {
+        ProgressBar {
             id: progressBar
+            indeterminate: true
             anchors.bottom: parent.bottom
             anchors.right: parent.right
             anchors.left: parent.left
@@ -89,7 +96,7 @@ MPage {
             anchors.bottom: parent.bottom
             height: Devices.standardTitleBarHeight
 
-            MLabel {
+            Label {
                 id: bioTitle
                 verticalAlignment: Text.AlignVCenter
                 font.pixelSize: 12 * Devices.fontDensity

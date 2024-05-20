@@ -2,6 +2,7 @@ import QtQuick 2.9
 import AsemanQml.Base 2.0
 import AsemanQml.Controls 2.0
 import AsemanQml.MaterialIcons 2.0
+import QtQuick.Controls 2.3
 import globals 1.0
 
 HeaderMenuButton {
@@ -11,7 +12,7 @@ HeaderMenuButton {
     buttonColor: iosPopup? "transparent" : color
     color: iosPopup? Colors.headerTextColor : Colors.foreground
 
-    MLabel {
+    Label {
         anchors.centerIn: parent
         text: MaterialIcons.mdi_close
         font.family: MaterialIcons.family

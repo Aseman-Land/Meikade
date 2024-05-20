@@ -1,13 +1,13 @@
 import QtQuick 2.14
 import AsemanQml.Base 2.0
-import AsemanQml.Controls 2.0
-import AsemanQml.Controls.Beta 3.0
+import QtQuick.Controls 2.3
 import globals 1.0
 
-MTextField {
+TextField {
     id: dis
     implicitHeight: 34 * Devices.density
     horizontalAlignment: Text.AlignLeft
+    topInset: 0
     topPadding: 4 * Devices.density
     rightPadding: LayoutMirroring.enabled? 16 * Devices.density : unit.width + 16 * Devices.density
     leftPadding: LayoutMirroring.enabled? unit.width + 16 * Devices.density : 16 * Devices.density
@@ -49,7 +49,7 @@ MTextField {
         property bool signalBlocker: false
     }
 
-    MLabel {
+    Label {
         id: unit
         anchors.rightMargin: 8 * Devices.density
         anchors.right: parent.right

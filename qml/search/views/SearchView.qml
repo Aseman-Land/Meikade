@@ -3,7 +3,10 @@ import AsemanQml.Base 2.0
 import AsemanQml.MaterialIcons 2.0
 import AsemanQml.Controls 2.0
 import AsemanQml.Models 2.0
+import QtQuick.Controls 2.3
 import QtQuick.Layouts 1.3
+import QtQuick.Controls.Material 2.0
+import QtQuick.Controls.IOSStyle 2.0
 import globals 1.0
 import components 1.0
 import models 1.0
@@ -33,7 +36,7 @@ Rectangle {
     signal menuRequest(string link, int index, variant object)
     signal moreRequest()
 
-    MLabel {
+    Label {
         anchors.centerIn: parent
         anchors.verticalCenterOffset: 50 * Devices.density
         font.family: MaterialIcons.family
@@ -43,7 +46,7 @@ Rectangle {
         visible: !busyIndicator.running && listView.count == 0
     }
 
-    MBusyIndicator {
+    BusyIndicator {
         id: busyIndicator
         anchors.centerIn: parent
         visible: listView.count == 0
@@ -77,7 +80,7 @@ Rectangle {
                 anchors.margins: 20 * Devices.density
                 spacing: 10 * Devices.density
 
-                MLabel {
+                Label {
                     horizontalAlignment: Text.AlignLeft
                     verticalAlignment: Text.AlignVCenter
                     font.pixelSize: 9 * Devices.fontDensity
@@ -85,7 +88,7 @@ Rectangle {
                     text: qsTr("Search domain:") + Translations.refresher
                 }
 
-                MLabel {
+                Label {
                     id: domainText
                     horizontalAlignment: Text.AlignLeft
                     verticalAlignment: Text.AlignVCenter
@@ -96,7 +99,7 @@ Rectangle {
             }
         }
 
-        MLabel {
+        Label {
             id: resultHeaderLabel
             Layout.fillWidth: true
             Layout.leftMargin: 10 * Devices.density
@@ -107,7 +110,7 @@ Rectangle {
             horizontalAlignment: Text.AlignLeft
         }
 
-        MLabel {
+        Label {
             Layout.fillWidth: true
             Layout.leftMargin: 10 * Devices.density
             Layout.rightMargin: 10 * Devices.density
@@ -126,7 +129,7 @@ Rectangle {
             interactive: false
         }
 
-        MLabel {
+        Label {
             Layout.fillWidth: true
             Layout.leftMargin: 10 * Devices.density
             Layout.rightMargin: 10 * Devices.density
@@ -145,7 +148,7 @@ Rectangle {
             interactive: false
         }
 
-        MLabel {
+        Label {
             Layout.fillWidth: true
             Layout.leftMargin: 10 * Devices.density
             Layout.rightMargin: 10 * Devices.density
@@ -180,7 +183,7 @@ Rectangle {
             width: listView.width
             height: 100 * Devices.density
 
-            MBusyIndicator {
+            BusyIndicator {
                 anchors.centerIn: parent
                 running: !busyIndicator.visible && busyIndicator.running
             }
@@ -226,7 +229,7 @@ Rectangle {
                     anchors.horizontalCenter: parent.horizontalCenter
                     spacing: 4 * Devices.density
 
-                    MLabel {
+                    Label {
                         anchors.horizontalCenter: parent.horizontalCenter
                         font.pixelSize: 9 * Devices.fontDensity
                         font.family: MaterialIcons.family
@@ -235,7 +238,7 @@ Rectangle {
                         visible: model.verses[0].favorited
                     }
 
-                    MLabel {
+                    Label {
                         anchors.horizontalCenter: parent.horizontalCenter
                         font.pixelSize: 11 * Devices.fontDensity
                         font.family: MaterialIcons.family
@@ -244,7 +247,7 @@ Rectangle {
                         visible: model.verses[0].hasNote
                     }
 
-                    MLabel {
+                    Label {
                         anchors.horizontalCenter: parent.horizontalCenter
                         font.pixelSize: 11 * Devices.fontDensity
                         font.family: MaterialIcons.family
@@ -266,7 +269,7 @@ Rectangle {
                 Repeater {
                     model: AsemanListModel { data: verses }
 
-                    MLabel {
+                    Label {
                         Layout.fillWidth: true
                         text: model.text
                         font.pixelSize: 10 * Devices.fontDensity
@@ -295,14 +298,14 @@ Rectangle {
                     anchors.verticalCenter: parent.verticalCenter
                     spacing: 4 * Devices.density
 
-                    MLabel {
+                    Label {
                         Layout.alignment: Qt.AlignLeft
                         text: model.poet.name
                         color: "#fff"
                         font.pixelSize: 8 * Devices.fontDensity
                     }
 
-                    MLabel {
+                    Label {
                         Layout.alignment: Qt.AlignVCenter
                         font.family: MaterialIcons.family
                         text: LayoutMirroring.enabled? MaterialIcons.mdi_chevron_left : MaterialIcons.mdi_chevron_right
@@ -316,14 +319,14 @@ Rectangle {
                         RowLayout {
                             spacing: 4 * Devices.density
 
-                            MLabel {
+                            Label {
                                 Layout.alignment: Qt.AlignLeft
                                 text: model.title
                                 color: "#fff"
                                 font.pixelSize: 8 * Devices.fontDensity
                             }
 
-                            MLabel {
+                            Label {
                                 Layout.alignment: Qt.AlignVCenter
                                 font.family: MaterialIcons.family
                                 text: LayoutMirroring.enabled? MaterialIcons.mdi_chevron_left : MaterialIcons.mdi_chevron_right
@@ -333,7 +336,7 @@ Rectangle {
                         }
                     }
 
-                    MLabel {
+                    Label {
                         Layout.alignment: Qt.AlignLeft
                         Layout.fillWidth: true
                         text: model.poem.title
@@ -385,23 +388,26 @@ Rectangle {
             anchors.rightMargin: (closeBtn.visible? closeBtn.width : 20 * Devices.density)
             anchors.leftMargin: 20 * Devices.density
 
-            MLabel {
+            Label {
                 text: MaterialIcons.mdi_magnify
                 font.family: MaterialIcons.family
                 font.pixelSize: 16 * Devices.fontDensity
                 color: Colors.headerTextColor
             }
 
-            MTextField {
+            TextField {
                 id: keywordField
                 bottomPadding: Devices.isAndroid? 1 * Devices.density : 8 * Devices.density
                 Layout.fillWidth: true
                 horizontalAlignment: Text.AlignLeft
                 placeholderText: qsTr("Search") + Translations.refresher
                 selectByMouse: true
+                Material.theme: Colors.lightHeader? Material.Light : Material.Dark
+                IOSStyle.theme: Colors.lightHeader? IOSStyle.Light : IOSStyle.Dark
                 font.pixelSize: 9 * Devices.fontDensity
                 inputMethodHints: Qt.ImhNoPredictiveText
                 color: Colors.headerTextColor
+                background: Item {}
 
                 SamsungInputBugFixer {}
             }
@@ -412,7 +418,7 @@ Rectangle {
             visible: false
         }
 
-        MButton {
+        RoundButton {
             anchors.right: searchRow.right
             anchors.rightMargin: -10 * Devices.density
             anchors.verticalCenter: parent.verticalCenter
@@ -424,6 +430,8 @@ Rectangle {
             font.family: MaterialIcons.family
             font.pixelSize: 16 * Devices.density
             text: MaterialIcons.mdi_close
+            IOSStyle.foreground: Colors.headerTextColor
+            Material.foreground: Colors.headerTextColor
             visible: keywordField.text.length
             onClicked: keywordField.text = ""
         }

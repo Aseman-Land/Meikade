@@ -2,10 +2,12 @@ import QtQuick 2.12
 import globals 1.0
 import AsemanQml.Base 2.0
 import AsemanQml.MaterialIcons 2.0
+import QtQuick.Controls 2.3
 import QtQuick.Layouts 1.3
 import AsemanQml.Controls 2.0
+import QtQuick.Controls.Material 2.0
+import QtQuick.Controls.IOSStyle 2.0
 import requests 1.0
-import components 1.0
 
 Rectangle {
     id: myMeikade
@@ -79,7 +81,7 @@ Rectangle {
                     anchors.centerIn: parent
                     spacing: 0
 
-                    MLabel {
+                    Label {
                         Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
                         Layout.bottomMargin: 8 * Devices.density
                         font.pixelSize: 18 * Devices.fontDensity
@@ -87,13 +89,13 @@ Rectangle {
                         text: MaterialIcons[model.icon]
                     }
 
-                    MLabel {
+                    Label {
                         Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
                         font.pixelSize: 9 * Devices.fontDensity
                         text: model.title
                     }
 
-                    MLabel {
+                    Label {
                         Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
                         font.pixelSize: 7 * Devices.fontDensity
                         visible: model.underco
@@ -102,9 +104,10 @@ Rectangle {
                     }
                 }
 
-                MItemDelegate {
+                ItemDelegate {
                     id: idel
                     anchors.fill: parent
+                    hoverEnabled: false
 
                     Connections {
                         target: idel
@@ -139,14 +142,14 @@ Rectangle {
                 opacity: (1 - ratioAbs) * 0.3
             }
 
-            MItemDelegate {
+            ItemDelegate {
                 id: authBtn
                 anchors.fill: parent
                 scale: Math.min(0.6 + ratioAbs*0.4, 1)
                 opacity: ratioAbs * 2 - 1
                 visible: opacity > 0 && !signedIn
 
-                MLabel {
+                Label {
                     id: loginLabel
                     anchors.centerIn: parent
                     font.pixelSize: 10 * Devices.fontDensity
@@ -188,7 +191,7 @@ Rectangle {
                         anchors.margins: 3 * Devices.density
                         radius: height / 2
 
-                        MLabel {
+                        Label {
                             anchors.centerIn: parent
                             color: Colors.primary
                             font.pixelSize: 26 * Devices.fontDensity
@@ -207,12 +210,14 @@ Rectangle {
                             ignoreSslErrors: AsemanGlobals.ignoreSslErrors
                             visible: (avatar.source + "").length
 
-                            MBusyIndicator {
+                            BusyIndicator {
                                 anchors.centerIn: parent
                                 scale: 0.8
                                 Layout.preferredHeight: 28 * Devices.density
                                 Layout.preferredWidth: 28 * Devices.density
                                 running: (avatar.source + "").length && avatar.status != Image.Ready
+                                Material.accent: Colors.primary
+                                IOSStyle.foreground: Colors.primary
                             }
                         }
                     }
@@ -221,7 +226,7 @@ Rectangle {
                 ColumnLayout {
                     spacing: 4 * Devices.density
 
-                    MLabel {
+                    Label {
                         id: profileLabel
                         font.bold: true
                         font.pixelSize: 9 * Devices.fontDensity
@@ -230,7 +235,7 @@ Rectangle {
                         text: "Bardia Daneshvar"
                     }
 
-                    MLabel {
+                    Label {
                         id: bioLabel
                         Layout.fillWidth: true
                         font.pixelSize: 8 * Devices.fontDensity
@@ -242,7 +247,7 @@ Rectangle {
                 }
             }
 
-            MItemDelegate {
+            ItemDelegate {
                 id: avatarBtn
                 anchors.fill: parent
                 visible: signedIn
@@ -275,7 +280,7 @@ Rectangle {
             }
         }
 
-        MLabel {
+        Label {
             y: Devices.statusBarHeight
             height: Devices.standardTitleBarHeight
             anchors.horizontalCenter: parent.horizontalCenter
@@ -286,7 +291,7 @@ Rectangle {
             opacity: 1 - ratioAbs * 1.5
         }
 
-        MItemDelegate {
+        ItemDelegate {
             id: settingsBtn
             y: Devices.statusBarHeight
             anchors.left: parent.left
@@ -294,7 +299,7 @@ Rectangle {
             width: height
             visible: false
 
-            MLabel {
+            Label {
                 anchors.centerIn: parent
                 anchors.verticalCenterOffset: -3 * Devices.density
                 color: "#fff"
@@ -304,7 +309,7 @@ Rectangle {
             }
         }
 
-        MItemDelegate {
+        ItemDelegate {
             id: messagesBtn
             y: Devices.statusBarHeight
             anchors.right: parent.right
@@ -312,7 +317,7 @@ Rectangle {
             width: height
             visible: Bootstrap.initialized && AsemanGlobals.accessToken.length
 
-            MLabel {
+            Label {
                 anchors.centerIn: parent
                 anchors.verticalCenterOffset: -3 * Devices.density
                 color: "#fff"
@@ -339,7 +344,7 @@ Rectangle {
                     z: -1
                 }
 
-                MLabel {
+                Label {
                     id: messagesCountLabel
                     anchors.centerIn: parent
                     color: Colors.primary

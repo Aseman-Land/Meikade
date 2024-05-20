@@ -1,7 +1,10 @@
 import QtQuick 2.12
 import globals 1.0
 import components 1.0
+import QtQuick.Controls 2.3
 import AsemanQml.Base 2.0
+import QtQuick.Controls.Material 2.0
+import QtQuick.Controls.IOSStyle 2.0
 
 AbstractDelegate {
     id: adel
@@ -40,7 +43,7 @@ AbstractDelegate {
         radius: adel.radius
     }
 
-    MLabel {
+    Label {
         id: title
         anchors.verticalCenter: parent.verticalCenter
         anchors.right: parent.right
@@ -52,6 +55,7 @@ AbstractDelegate {
         maximumLineCount: 2
         elide: Text.ElideRight
         verticalAlignment: Text.AlignVCenter
-        color: Colors.background
+        Material.foreground: Material.background
+        IOSStyle.foreground: IOSStyle.background
     }
 }

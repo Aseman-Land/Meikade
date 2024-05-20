@@ -1,10 +1,13 @@
 import QtQuick 2.12
 import globals 1.0
 import components 1.0
+import QtQuick.Controls 2.0
+import QtQuick.Controls.Material 2.0
+import QtQuick.Controls.IOSStyle 2.0
 import QtQuick.Layouts 1.3
 import AsemanQml.Base 2.0
 import AsemanQml.MaterialIcons 2.0
-import AsemanQml.GraphicalEffects 2.0
+import QtGraphicalEffects 1.0
 
 AbstractDelegate {
     id: delItem
@@ -58,7 +61,7 @@ AbstractDelegate {
         anchors.margins: 10 * Devices.density
         spacing: imageScene.visible? 10 * Devices.density : 8 * Devices.density
 
-        MLabel {
+        Label {
             id: title
             Layout.fillWidth: true
             font.pixelSize: 9 * Devices.fontDensity
@@ -68,13 +71,14 @@ AbstractDelegate {
             elide: Text.ElideRight
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: Text.AlignLeft
-            color: Colors.background
+            Material.foreground: Material.background
+            IOSStyle.foreground: IOSStyle.background
         }
 
         RowLayout {
             Layout.fillWidth: true
 
-            MLabel {
+            Label {
                 id: subtitle
                 Layout.fillWidth: true
                 Layout.fillHeight: true
@@ -85,7 +89,8 @@ AbstractDelegate {
                 maximumLineCount: 1
                 elide: Text.ElideRight
                 horizontalAlignment: Text.AlignLeft
-                color: Colors.background
+                Material.foreground: Material.background
+                IOSStyle.foreground: IOSStyle.background
             }
 
             Item {
@@ -106,7 +111,7 @@ AbstractDelegate {
                     radius: delItem.radius / 2
                     visible: (image.source + "").length == 0
 
-                    MLabel {
+                    Label {
                         anchors.centerIn: parent
                         font.family: MaterialIcons.family
                         font.pixelSize: 15 * Devices.fontDensity

@@ -3,7 +3,10 @@ import AsemanQml.Base 2.0
 import AsemanQml.MaterialIcons 2.0
 import AsemanQml.Controls 2.0
 import AsemanQml.Models 2.0
+import QtQuick.Controls 2.3
 import QtQuick.Layouts 1.3
+import QtQuick.Controls.Material 2.0
+import QtQuick.Controls.IOSStyle 2.0
 import globals 1.0
 import components 1.0
 import models 1.0
@@ -34,7 +37,7 @@ DrawerFrame {
             Layout.leftMargin: 8 * Devices.density
             Layout.rightMargin: 8 * Devices.density
 
-            MLabel {
+            Label {
                 Layout.fillWidth: true
                 font.pixelSize: 9 * Devices.fontDensity
                 font.bold: true
@@ -42,7 +45,7 @@ DrawerFrame {
                 text: qsTr("Online Search") + Translations.refresher
             }
 
-            MSwitch {
+            Switch {
                 id: onlineSearchSwitch
                 checked: true
             }
@@ -53,14 +56,14 @@ DrawerFrame {
             Layout.rightMargin: 8 * Devices.density
             Layout.topMargin: -10 * Devices.density
 
-            MLabel {
+            Label {
                 font.pixelSize: 9 * Devices.fontDensity
                 font.bold: true
                 horizontalAlignment: Text.AlignLeft
                 text: qsTr("Accurate word search") + Translations.refresher
             }
 
-            MButton {
+            Button {
                 id: accurateSearchHelpBtn
                 Layout.preferredHeight: 40 * Devices.density
                 Layout.preferredWidth: 120 * Devices.density
@@ -75,7 +78,7 @@ DrawerFrame {
                 Layout.fillWidth: true
             }
 
-            MSwitch {
+            Switch {
                 id: accurateSearchSwitch
                 checked: true
                 enabled: onlineSearchSwitch.checked
@@ -124,7 +127,7 @@ DrawerFrame {
             }
         }
 
-        MLabel {
+        Label {
             Layout.fillWidth: true
             Layout.topMargin: 20 * Devices.density
             Layout.leftMargin: 8 * Devices.density
@@ -176,7 +179,7 @@ DrawerFrame {
             }
         }
 
-        MButton {
+        Button {
             id: acceptBtn
             Layout.fillWidth: true
             text: qsTr("Accept") + Translations.refresher

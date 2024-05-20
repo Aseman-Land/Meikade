@@ -2,13 +2,16 @@ import QtQuick 2.12
 import AsemanQml.Base 2.0
 import AsemanQml.MaterialIcons 2.0
 import AsemanQml.Controls 2.0
+import QtQuick.Controls 2.3
 import QtQuick.Layouts 1.3
+import QtQuick.Controls.Material 2.0
+import QtQuick.Controls.IOSStyle 2.0
 import globals 1.0
 import components 1.0
 import models 1.0
 import requests 1.0
 
-MPage {
+Page {
     id: dis
     width: Constants.width
     height: Constants.height
@@ -27,7 +30,10 @@ MPage {
 
     AsemanListView {
         id: listView
-        anchors.fill: parent
+        anchors.top: headerItem.bottom
+        anchors.bottom: parent.bottom
+        anchors.right: parent.right
+        anchors.left: parent.left
         clip: true
         model: 20
 
@@ -38,7 +44,7 @@ MPage {
             height: sectionLabel.text.length? 40 * Devices.density : 0
             opacity: sectionLabel.text.length? 1 : 0
 
-            MLabel {
+            Label {
                 id: sectionLabel
                 anchors.left: parent.left
                 anchors.right: parent.right
@@ -61,7 +67,7 @@ MPage {
             }
         }
 
-        delegate: MItemDelegate {
+        delegate: ItemDelegate {
             id: sugItem
             width: listView.width
             height: rowLyt.height + 12 * Devices.density
@@ -74,7 +80,7 @@ MPage {
                 anchors.rightMargin: 10 * Devices.density
                 spacing: 4 * Devices.density
 
-                MLabel {
+                Label {
                     Layout.alignment: Qt.AlignVCenter
                     Layout.preferredWidth: 50 * Devices.density
                     horizontalAlignment: Text.AlignHCenter
@@ -87,7 +93,7 @@ MPage {
                 ColumnLayout {
                     Layout.fillWidth: true
                     spacing: 0
-                    MLabel {
+                    Label {
                         Layout.fillWidth: true
                         horizontalAlignment: Text.AlignLeft
                         wrapMode: Text.WrapAtWordBoundaryOrAnywhere
@@ -97,7 +103,7 @@ MPage {
                         text: model.title
                     }
 
-                    MLabel {
+                    Label {
                         Layout.fillWidth: true
                         horizontalAlignment: Text.AlignLeft
                         wrapMode: Text.WrapAtWordBoundaryOrAnywhere
@@ -109,7 +115,7 @@ MPage {
                         color: model.color
                     }
 
-                    MLabel {
+                    Label {
                         Layout.fillWidth: true
                         horizontalAlignment: Text.AlignLeft
                         wrapMode: Text.WrapAtWordBoundaryOrAnywhere
@@ -141,12 +147,15 @@ MPage {
         visible: listView.visible
     }
 
-    header: MHeader {
+    Header {
         id: headerItem
         anchors.top: parent.top
         anchors.right: parent.right
         anchors.left: parent.left
-        title: qsTr("Inbox") + Translations.refresher
+        text: qsTr("Inbox") + Translations.refresher
+        color: Colors.headerColor
+        light: !Colors.lightHeader
+        shadow: Devices.isAndroid
 
         HeaderBackButton {
             id: closeBtn

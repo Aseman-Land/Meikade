@@ -1,8 +1,9 @@
 import QtQuick 2.4
+import QtQuick.Layouts 1.1
 import AsemanQml.Base 2.0
 import AsemanQml.Controls 2.0
-import AsemanQml.Controls.Beta 3.0
-import QtQuick.Layouts 1.1
+import QtQuick.Controls 2.0
+import QtQuick.Controls.Material 2.1
 import globals 1.0
 
 Rectangle {
@@ -66,7 +67,7 @@ Rectangle {
             width: 24 * Devices.density
         }
 
-        MLabel {
+        Label {
             id: snackText
             font.pixelSize: 9*Devices.fontDensity
             Layout.fillWidth: true
@@ -89,7 +90,7 @@ Rectangle {
             width: snackbar.buttonText == "" ? 0 : snackbar.fullWidth ? 24 * Devices.density : 48 * Devices.density
         }
 
-        MButton {
+        Button {
             id: snackButton
             flat: true
             visible: snackbar.buttonText != ""

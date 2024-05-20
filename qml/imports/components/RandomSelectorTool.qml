@@ -1,8 +1,7 @@
 import QtQuick 2.12
 import AsemanQml.Base 2.0
-import AsemanQml.Controls 2.0
-import AsemanQml.Controls.Beta 3.0
 import AsemanQml.Viewport 2.0
+import QtQuick.Controls 2.3
 import globals 1.0
 
 Rectangle {
@@ -77,7 +76,7 @@ Rectangle {
                     color: "#fff"
                 }
 
-                MLabel {
+                Label {
                     id: indexLabel
                     anchors.centerIn: parent
                     font.pixelSize: 16 * Devices.fontDensity

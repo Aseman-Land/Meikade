@@ -3,7 +3,10 @@ import AsemanQml.Base 2.0
 import AsemanQml.MaterialIcons 2.0
 import AsemanQml.Controls 2.0
 import AsemanQml.Viewport 2.0
+import QtQuick.Controls 2.3
 import QtQuick.Layouts 1.3
+import QtQuick.Controls.Material 2.0
+import QtQuick.Controls.IOSStyle 2.0
 import globals 1.0
 import components 1.0
 import models 1.0
@@ -46,7 +49,7 @@ Item {
         viewItem: listView
     }
 
-    MLabel {
+    Label {
         anchors.centerIn: parent
         font.pixelSize: 8 * Devices.fontDensity
         text: qsTr("There is no item here") + Translations.refresher
@@ -76,7 +79,7 @@ Item {
                 anchors.right: parent.right
                 spacing: 10 * Devices.density
 
-                MButton {
+                RoundButton {
                     id: addBtn
                     Layout.preferredWidth: headerRow.width * 0.5
                     Layout.alignment: Qt.AlignHCenter
@@ -88,6 +91,72 @@ Item {
                     Connections {
                         target: addBtn
                         onClicked: dis.addListRequest()
+                    }
+                }
+
+                Label {
+                    Layout.fillWidth: true
+                    Layout.leftMargin: 20 * Devices.density
+                    Layout.rightMargin: 20 * Devices.density
+                    horizontalAlignment: Text.AlignHCenter
+                    font.pixelSize: 8 * Devices.fontDensity
+                    opacity: 0.8
+                    text: premiumMsg
+                    visible: premiumMsg.length
+                    wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                    color: Subscription.listsLimits > listView.count-1? Colors.foreground : "#a00"
+
+                    Connections {
+                        onLinkActivated: Qt.openUrlExternally(link)
+                    }
+                }
+
+                Label {
+                    Layout.fillWidth: true
+                    Layout.leftMargin: 20 * Devices.density
+                    Layout.rightMargin: 20 * Devices.density
+                    horizontalAlignment: Text.AlignHCenter
+                    font.pixelSize: 8 * Devices.fontDensity
+                    text: qsTr("To buy premium account click on below button") + Translations.refresher
+                    visible: !addBtn.visible && premiumMsg.length && !AsemanGlobals.disablePremiumListsWarn && Bootstrap.payment && Bootstrap.trusted
+                    wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                }
+
+                ColumnLayout {
+                    Layout.alignment: Qt.AlignHCenter
+                    visible: !addBtn.visible && premiumMsg.length && !AsemanGlobals.disablePremiumListsWarn && Bootstrap.payment && Bootstrap.trusted
+                    spacing: 0
+
+                    RoundButton {
+                        id: premiumBtn
+                        Layout.alignment: Qt.AlignHCenter
+                        Layout.preferredWidth: listView.width * 0.5
+                        text: qsTr("Premium Account") + Translations.refresher
+                        font.pixelSize: 9 * Devices.fontDensity
+                        highlighted: true
+                        Material.accent: Subscription.premiumColor
+                        IOSStyle.accent: Subscription.premiumColor
+                        Material.elevation: 0
+
+                        Connections {
+                            target: premiumBtn
+                            onClicked: dis.premiumBuyRequest()
+                        }
+                    }
+
+                    RoundButton {
+                        id: premiumDisMisBtn
+                        Layout.alignment: Qt.AlignHCenter
+                        text: qsTr("Don't show this message again") + Translations.refresher
+                        font.underline: true
+                        font.pixelSize: 8 * Devices.fontDensity
+                        flat: true
+                        highlighted: true
+
+                        Connections {
+                            target: premiumDisMisBtn
+                            onClicked: AsemanGlobals.disablePremiumListsWarn = true
+                        }
                     }
                 }
             }
@@ -164,7 +233,7 @@ Item {
                             color: Colors.foreground
                         }
 
-                        MLabel {
+                        Label {
                             anchors.centerIn: parent
                             font.family: MaterialIcons.family
                             font.pixelSize: 14 * Devices.fontDensity
@@ -176,7 +245,7 @@ Item {
                         Layout.fillWidth: true
                         spacing: 0 * Devices.density
 
-                        MLabel {
+                        Label {
                             Layout.fillWidth: true
                             horizontalAlignment: Text.AlignLeft
                             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
@@ -186,7 +255,7 @@ Item {
                             text: model.title
                         }
 
-                        MLabel {
+                        Label {
                             Layout.fillWidth: true
                             horizontalAlignment: Text.AlignLeft
                             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
@@ -199,7 +268,7 @@ Item {
                         }
                     }
 
-                    MLabel {
+                    Label {
                         font.pixelSize: 12 * Devices.fontDensity
                         font.family: MaterialIcons.family
                         text: MaterialIcons.mdi_earth
@@ -207,7 +276,7 @@ Item {
                         visible: model.publicList
                     }
 
-                    MButton {
+                    Button {
                         id: menuBtn
                         Layout.preferredWidth: 30 * Devices.density
                         font.family: MaterialIcons.family
@@ -223,7 +292,7 @@ Item {
                         }
                     }
 
-                    MCheckBox {
+                    CheckBox {
                         id: checkBox
                         visible: selectMode? true : false
                         checked: model.checked
@@ -234,7 +303,7 @@ Item {
         }
     }
 
-    MButton {
+    Button {
         id: confirmBtn
         anchors.left: parent.left
         anchors.right: parent.right
@@ -246,6 +315,7 @@ Item {
         text: qsTr("Done") + Translations.refresher
         highlighted: true
         visible: selectMode? true : false
+        Material.elevation: 0
     }
 
     Header {

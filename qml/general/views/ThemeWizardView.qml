@@ -2,7 +2,10 @@ import QtQuick 2.12
 import AsemanQml.Base 2.0
 import AsemanQml.MaterialIcons 2.0
 import AsemanQml.Controls 2.0
+import QtQuick.Controls 2.3
 import QtQuick.Layouts 1.3
+import QtQuick.Controls.Material 2.0
+import QtQuick.Controls.IOSStyle 2.0
 import globals 1.0
 import components 1.0
 import models 1.0
@@ -39,7 +42,7 @@ Item {
             Layout.fillHeight: true
         }
 
-        MButton {
+        Button {
             id: applyBtn
             Layout.fillWidth: true
             Layout.bottomMargin: 8 * Devices.density
@@ -48,6 +51,8 @@ Item {
             font.pixelSize: 9 * Devices.fontDensity
             text: qsTr("Apply and Close") + Translations.refresher
             highlighted: true
+            Material.accent: Colors.accent
+            IOSStyle.accent: Colors.accent
         }
     }
 
@@ -61,7 +66,7 @@ Item {
 
         Separator {}
 
-        MLabel {
+        Label {
             id: headerLabel
             anchors.centerIn: parent
             font.pixelSize: 9 * Devices.fontDensity

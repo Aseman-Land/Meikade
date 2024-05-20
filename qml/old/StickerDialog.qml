@@ -17,13 +17,15 @@
 */
 
 import QtQuick 2.0
-import AsemanQml.GraphicalEffects 2.0
+import QtGraphicalEffects 1.0
+import QtQuick.Controls 2.1
+import QtQuick.Controls.Material 2.0
+import QtQuick.Controls.IOSStyle 2.0
 import AsemanQml.Base 2.0
 import AsemanQml.Controls 2.0
 import AsemanQml.Viewport 2.0
 import AsemanQml.MaterialIcons 2.0
 import Meikade 1.0
-import components 1.0
 import globals 1.0
 
 Rectangle {
@@ -95,7 +97,7 @@ Rectangle {
             onClicked: BackHandler.back()
         }
 
-        MButton {
+        Button {
             anchors.right: parent.right
             anchors.rightMargin: 10 * Devices.density
             anchors.verticalCenter: parent.verticalCenter
@@ -308,7 +310,7 @@ Rectangle {
                             visible: false
                         }
 
-                        MLabel {
+                        Label {
                             id: deleteIcon
                             anchors.centerIn: parent
                             font.family: MaterialIcons.family
@@ -434,9 +436,11 @@ Rectangle {
             onWheel: wheel.accepted = false
         }
 
-        MBusyIndicator {
+        BusyIndicator {
             id: indicator
             anchors.centerIn: parent
+            Material.accent: "#fff"
+            IOSStyle.foreground: "#fff"
         }
 
         Text {

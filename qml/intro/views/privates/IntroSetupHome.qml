@@ -1,13 +1,15 @@
 import QtQuick 2.12
 import AsemanQml.Base 2.0
+import QtQuick.Controls 2.3
 import QtQuick.Layouts 1.3
 import AsemanQml.Controls 2.0
 import AsemanQml.MaterialIcons 2.0
+import QtQuick.Controls.Material 2.0
 import globals 1.0
 import models 1.0
 import components 1.0
 
-MPage {
+Page {
     id: dis
     width: Constants.width
     height: Constants.height
@@ -66,12 +68,12 @@ MPage {
                     onTextChanged: dis.keyword = text
                 }
 
-                MTabBar {
+                TabBar {
                     Layout.fillWidth: true
 
                     Repeater {
                         model: categoryModel
-                        MTabButton {
+                        TabButton {
                             font.pixelSize: 9 * Devices.fontDensity
                             text: GTranslations.localeName == "fa"? model.name : model.name_en
                             onClicked: currentTypeId = model.id
@@ -101,7 +103,7 @@ MPage {
                     color: Colors.background
                 }
 
-                MItemDelegate {
+                ItemDelegate {
                     id: itemDel
                     anchors.fill: parent
 
@@ -129,7 +131,7 @@ MPage {
                             color: Colors.primary
                             radius: Constants.radius
 
-                            MLabel {
+                            Label {
                                 anchors.centerIn: parent
                                 font.family: MaterialIcons.family
                                 font.pixelSize: 15 * Devices.fontDensity
@@ -162,7 +164,7 @@ MPage {
                         Layout.fillWidth: true
                         spacing: 2 * Devices.density
 
-                        MLabel {
+                        Label {
                             Layout.fillWidth: true
                             horizontalAlignment: Text.AlignLeft
                             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
@@ -172,7 +174,7 @@ MPage {
                             text: model.title + (itemObj.isVerse? " - " + model.details.first_verse : "")
                         }
 
-                        MLabel {
+                        Label {
                             Layout.fillWidth: true
                             horizontalAlignment: Text.AlignLeft
                             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
@@ -185,7 +187,7 @@ MPage {
                         }
                     }
 
-                    MSwitch {
+                    Switch {
                         id: delSwitch
                         Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
                         checked: model.checked
@@ -230,14 +232,14 @@ MPage {
                 anchors.right: parent.right
                 spacing: ratio * 10 +  2 * Devices.density
 
-                MLabel {
+                Label {
                     Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
                     font.pixelSize: 10 * Devices.fontDensity
                     text: qsTr("Setup Favorites") + Translations.refresher
                     scale: ratio * 0.8 + 1
                 }
 
-                MLabel {
+                Label {
                     Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
                     Layout.fillWidth: true
                     horizontalAlignment: Text.AlignHCenter
@@ -261,7 +263,7 @@ MPage {
         }
     }
 
-    MButton {
+    Button {
         id: nextBtn
         anchors.bottom: parent.bottom
         anchors.horizontalCenter: parent.horizontalCenter

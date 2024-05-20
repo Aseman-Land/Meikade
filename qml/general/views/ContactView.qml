@@ -2,15 +2,17 @@ import QtQuick 2.14
 import AsemanQml.Base 2.0
 import AsemanQml.MaterialIcons 2.0
 import AsemanQml.Controls 2.0
-import AsemanQml.Controls.Beta 3.0
+import QtQuick.Controls 2.3
 import QtQuick.Layouts 1.3
+import QtQuick.Controls.Material 2.0
+import QtQuick.Controls.IOSStyle 2.0
 import globals 1.0
 import components 1.0
 import models 1.0
 import requests 1.0
 import "privates"
 
-MPage {
+Page {
     id: dis
     width: Constants.width
     height: Constants.height
@@ -55,7 +57,7 @@ MPage {
                 anchors.margins: 10 * Devices.density
                 spacing: 0
 
-                MLabel {
+                Label {
                     Layout.fillWidth: true
                     font.pixelSize: 9 * Devices.fontDensity
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
@@ -64,15 +66,16 @@ MPage {
                     Layout.bottomMargin: 10 * Devices.density
                 }
 
-                MLabel {
+                Label {
                     font.pixelSize: 9 * Devices.fontDensity
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                     text: qsTr("Name") + ":" + Translations.refresher
                 }
 
-                MTextField {
+                TextField {
                     id: nameField
                     Layout.fillWidth: true
+                    Layout.preferredHeight: 48 * Devices.density
                     font.pixelSize: 9 * Devices.fontDensity
                     horizontalAlignment: Text.AlignLeft
                     selectByMouse: true
@@ -80,15 +83,16 @@ MPage {
                     Layout.bottomMargin: 10 * Devices.density
                 }
 
-                MLabel {
+                Label {
                     font.pixelSize: 9 * Devices.fontDensity
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                     text: qsTr("Email") + ":" + Translations.refresher
                 }
 
-                MTextField {
+                TextField {
                     id: emailField
                     Layout.fillWidth: true
+                    Layout.preferredHeight: 48 * Devices.density
                     font.pixelSize: 9 * Devices.fontDensity
                     horizontalAlignment: Text.AlignLeft
                     selectByMouse: true
@@ -96,13 +100,13 @@ MPage {
                     Layout.bottomMargin: 10 * Devices.density
                 }
 
-                MLabel {
+                Label {
                     font.pixelSize: 9 * Devices.fontDensity
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                     text: qsTr("Message") + ":" + Translations.refresher
                 }
 
-                MTextArea {
+                TextArea {
                     id: messageField
                     Layout.fillWidth: true
                     Layout.minimumHeight: 100 * Devices.density
@@ -117,7 +121,7 @@ MPage {
                     Layout.fillWidth: true
                     spacing: 0
 
-                    MLabel {
+                    Label {
                         Layout.fillWidth: true
                         font.pixelSize: 9 * Devices.fontDensity
                         text: qsTr("Attach device details") + Translations.refresher
@@ -125,12 +129,12 @@ MPage {
                         verticalAlignment: Text.AlignVCenter
                     }
 
-                    MSwitch {
+                    Switch {
                         id: attachSwitch
                     }
                 }
 
-                MLabel {
+                Label {
                     id: detailsText
                     Layout.fillWidth: true
                     font.pixelSize: 8 * Devices.fontDensity
@@ -140,7 +144,7 @@ MPage {
                     Layout.bottomMargin: 10 * Devices.density
                 }
 
-                MLabel {
+                Label {
                     Layout.fillWidth: true
                     font.pixelSize: 8 * Devices.fontDensity
                     text: (attachSwitch.checked? qsTr("Device details will send.") : qsTr("Device details will not sent. Please send it if you are reporting a problem.")) + Translations.refresher
@@ -149,7 +153,7 @@ MPage {
                     color: attachSwitch.checked? "#18f" : "#a00"
                 }
 
-                MButton {
+                Button {
                     id: sendBtn
                     Layout.fillWidth: true
                     font.pixelSize: 9 * Devices.fontDensity
@@ -190,7 +194,7 @@ MPage {
             width: listView.width
             height: descLbl.height + 20 * Devices.density
 
-            MLabel {
+            Label {
                 id: descLbl
                 anchors.left: parent.left
                 anchors.right: parent.right
@@ -264,7 +268,7 @@ MPage {
                     radius: 6 * Devices.density
                     color: model.extra.color
 
-                    MLabel {
+                    Label {
                         anchors.centerIn: parent
                         font.pixelSize: 16 * Devices.fontDensity
                         font.family: MaterialIcons.family
@@ -277,7 +281,7 @@ MPage {
                     Layout.fillWidth: true
                     spacing: 4 * Devices.density
 
-                    MLabel {
+                    Label {
                         Layout.fillWidth: true
                         font.pixelSize: 9 * Devices.fontDensity
                         horizontalAlignment: Text.AlignLeft
@@ -287,7 +291,7 @@ MPage {
                         text: model.title
                     }
 
-                    MLabel {
+                    Label {
                         Layout.fillWidth: true
                         font.pixelSize: 8 * Devices.fontDensity
                         horizontalAlignment: Text.AlignLeft
@@ -297,7 +301,7 @@ MPage {
                     }
 
                     RowLayout {
-                        MLabel {
+                        Label {
                             id: sugDate
                             Layout.fillWidth: true
                             font.pixelSize: 8 * Devices.fontDensity
@@ -307,7 +311,7 @@ MPage {
                             opacity: 0.7
                         }
 
-                        MButton {
+                        Button {
                             id: voteBtn
                             flat: true
                             Layout.preferredWidth: voteRow.width + 8 * Devices.density
@@ -333,6 +337,8 @@ MPage {
                                 anchors.centerIn: parent
                                 height: 28 * Devices.density
                                 width: 28 * Devices.density
+                                Material.accent: Colors.primary
+                                IOSStyle.foreground: Colors.primary
                                 running: unvoteReq.refreshing || voteReq.refreshing
                             }
 
@@ -343,7 +349,7 @@ MPage {
                                 spacing: 8 * Devices.density
                                 visible: !busyIndicator.running
 
-                                MLabel {
+                                Label {
                                     font.pixelSize: 10 * Devices.fontDensity
                                     font.family: MaterialIcons.family
                                     text: model.status == 1? MaterialIcons.mdi_check : MaterialIcons.mdi_thumb_up
@@ -351,7 +357,7 @@ MPage {
                                     color: model.status == 1? "#00aa00" : sugItem.voted? Colors.primary : Colors.foreground
                                 }
 
-                                MLabel {
+                                Label {
                                     id: sugPeoples
                                     font.pixelSize: 8 * Devices.fontDensity
                                     opacity: 1
@@ -383,27 +389,32 @@ MPage {
         visible: listView.visible
     }
 
-    MTabBar {
+    TabBar {
         id: tabBar
-        anchors.top: parent.top
+        anchors.top: headerItem.bottom
         anchors.right: parent.right
         anchors.left: parent.left
 
-        MTabButton {
+        TabButton {
             text: qsTr("User's Requests") + Translations.refresher
+            font.pixelSize: 8 * Devices.fontDensity
         }
 
-        MTabButton {
+        TabButton {
             text: qsTr("Send Message") + Translations.refresher
+            font.pixelSize: 8 * Devices.fontDensity
         }
     }
 
-    header: MHeader {
+    Header {
         id: headerItem
         anchors.top: parent.top
         anchors.right: parent.right
         anchors.left: parent.left
-        title: qsTr("Contact us") + Translations.refresher
+        text: qsTr("Contact us") + Translations.refresher
+        color: Colors.headerColor
+        light: !Colors.lightHeader
+        shadow: Devices.isAndroid
 
         HeaderBackButton {
             id: closeBtn
