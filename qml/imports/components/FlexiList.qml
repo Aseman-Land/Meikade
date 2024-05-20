@@ -120,7 +120,7 @@ AsemanListView {
             width: parent.width
             type: model.type
             heightRatio: model.heightRatio == undefined || !model.heightRatio? 1 : model.heightRatio
-            modelData: model.modelData
+            dataList: model.dataList
             listView: list
             onClicked: list.linkRequest(link, properties)
             onMoreRequest: if (model.index === list.count-1) list.moreRequest()

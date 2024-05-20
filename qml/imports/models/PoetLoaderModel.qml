@@ -65,12 +65,12 @@ AsemanObject {
 
                 if (cats.length) {
                     booksModel.append({
-                                          type: "grid",
-                                          section: "",
-                                          color: "transparent",
-                                          background: false,
-                                          modelData: cats
-                                      })
+                        type: "grid",
+                        section: "",
+                        color: "transparent",
+                        background: false,
+                        modelData: cats
+                    })
                 }
 
                 typesModel.clear();

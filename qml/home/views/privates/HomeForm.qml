@@ -42,16 +42,6 @@ Item {
             topMargin: headerItem.height + spacing
             bottomMargin: 180 * Devices.density + Devices.navigationBarHeight
             anchors.fill: parent
-            model: ListModel {
-                ListElement {
-                    type: "recents"
-                    section: "Recents"
-                }
-                ListElement {
-                    type: "static"
-                    section: ""
-                }
-            }
         }
     }
 

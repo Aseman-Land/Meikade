@@ -23,7 +23,7 @@ MyMeikadeView {
     gridView.model: MyMeikadeModel {}
 
     settingsBtn.onClicked: Viewport.controller.trigger("page:/settings")
-    onClicked: {
+    onClicked: (link) => {
         if (link == "float:/syncs" && AsemanGlobals.accessToken.length == 0)
             link = "float:/auth/float";
 

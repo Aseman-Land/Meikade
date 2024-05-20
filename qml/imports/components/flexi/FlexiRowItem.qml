@@ -17,8 +17,8 @@ Item {
 
     property bool editMode: false
     property real heightRatio: 1
-    property variant modelData
-    property int count: dswitch.item && dswitch.item.count? dswitch.item.count : (modelData && modelData.length? modelData.length : 0)
+    property variant dataList
+    property int count: dswitch.item && dswitch.item.count? dswitch.item.count : (dataList && dataList.length? dataList.length : 0)
     property ListView listView
 
     signal clicked(string link, variant properties)
@@ -32,7 +32,7 @@ Item {
                 width: rowItem.width
                 height: heightRatio * 100 * Devices.density
                 listView: rowItem.listView
-                model.data: modelData
+                model.data: dataList
                 onClicked: rowItem.clicked(link, properties)
                 onMoreRequest: rowItem.moreRequest()
             }
@@ -42,7 +42,7 @@ Item {
             FlexiStaticRow {
                 width: rowItem.width
                 listView: rowItem.listView
-                model.data: modelData
+                model.data: dataList
                 onClicked: rowItem.clicked(link, properties)
                 onMoreRequest: rowItem.moreRequest()
             }
@@ -52,7 +52,7 @@ Item {
             FlexiFlexibleRow {
                 width: rowItem.width
                 listView: rowItem.listView
-                model.data: modelData
+                model.data: dataList
                 onClicked: rowItem.clicked(link, properties)
                 onMoreRequest: rowItem.moreRequest()
             }
@@ -62,7 +62,7 @@ Item {
             FlexiGridRow {
                 width: rowItem.width
                 listView: rowItem.listView
-                model.data: modelData
+                model.data: dataList
                 onClicked: rowItem.clicked(link, properties)
                 onMoreRequest: rowItem.moreRequest()
             }
@@ -72,7 +72,7 @@ Item {
             FlexiColumnRow {
                 width: rowItem.width
                 listView: rowItem.listView
-                model.data: modelData
+                model.data: dataList
                 onClicked: rowItem.clicked(link, properties)
                 onMoreRequest: rowItem.moreRequest()
             }
