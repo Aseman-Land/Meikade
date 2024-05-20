@@ -72,10 +72,11 @@ SettingsView {
             case 0: // Cancel
                 break;
 
-            case 1: // Logout
+            case 1: // Delete
                 if (password.length == 0)
                     return;
 
+                deleteReq.password = Constants.hashPassword(password);
                 deleteReq.doRequest();
                 break;
             }
