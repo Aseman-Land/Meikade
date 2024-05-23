@@ -13,7 +13,7 @@
 
     <supports-screens android:largeScreens="true" android:normalScreens="true" android:anyDensity="true" android:smallScreens="true"/>
 
-    <uses-sdk android:targetSdkVersion="28" android:minSdkVersion="23"/>
+    <uses-sdk android:targetSdkVersion="33" android:minSdkVersion="23"/>
     <supports-screens android:normalScreens="true" android:smallScreens="true" android:anyDensity="true" android:largeScreens="true"/>
 
     <application android:hardwareAccelerated="true" android:name="io.aseman.android.AsemanApplication" android:label="Meikade" android:icon="@drawable/icon" android:extractNativeLibs="true">
@@ -22,6 +22,7 @@
                   android:label="Meikade"
                   android:screenOrientation="unspecified"
                   android:theme="@style/splashScreenTheme"
+                  android:exported="true"
                   android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

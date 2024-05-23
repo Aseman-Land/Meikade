@@ -14,6 +14,7 @@ AsemanListView {
     anchors.leftMargin: spacing
     anchors.rightMargin: spacing
     spacing: 10 * Devices.density
+    cacheBuffer: 500
     topMargin: spacing
     bottomMargin: spacing
 
