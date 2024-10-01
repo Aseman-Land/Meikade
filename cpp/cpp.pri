@@ -17,6 +17,7 @@ DEFINES += \
 test-mode: DEFINES += TEST_MODE
 disable-subscription: DEFINES += DISABLE_SUBSCRIPTION
 
+include(network/network.pri)
 include(thirdparty/thirdparty.pri)
 
 SOURCES += \
@@ -33,3 +34,4 @@ HEADERS += \
     $$PWD/meikadeofflinemanager.h \ \
     $$PWD/meikadetools.h \
     $$PWD/delegatedataanalizer.h
+
