@@ -33,7 +33,9 @@ Item {
                 height: heightRatio * 100 * Devices.density
                 listView: rowItem.listView
                 model.data: dataList
-                onClicked: rowItem.clicked(link, properties)
+                onClicked: function(link, properties) {
+                    rowItem.clicked(link, properties)
+                }
                 onMoreRequest: rowItem.moreRequest()
             }
         }
@@ -43,7 +45,9 @@ Item {
                 width: rowItem.width
                 listView: rowItem.listView
                 model.data: dataList
-                onClicked: rowItem.clicked(link, properties)
+                onClicked: function(link, properties) {
+                    rowItem.clicked(link, properties)
+                }
                 onMoreRequest: rowItem.moreRequest()
             }
         }
@@ -63,7 +67,9 @@ Item {
                 width: rowItem.width
                 listView: rowItem.listView
                 model.data: dataList
-                onClicked: rowItem.clicked(link, properties)
+                onClicked: function(link, properties) {
+                    rowItem.clicked(link, properties)
+                }
                 onMoreRequest: rowItem.moreRequest()
             }
         }
@@ -73,7 +79,9 @@ Item {
                 width: rowItem.width
                 listView: rowItem.listView
                 model.data: dataList
-                onClicked: rowItem.clicked(link, properties)
+                onClicked: function(link, properties) {
+                    rowItem.clicked(link, properties)
+                }
                 onMoreRequest: rowItem.moreRequest()
             }
         }
@@ -102,7 +110,9 @@ Item {
                 width: rowItem.width
                 listView: rowItem.listView
                 editMode: rowItem.editMode
-                onClicked: rowItem.clicked(link, properties)
+                onClicked: function(link, properties) {
+                    rowItem.clicked(link, properties)
+                }
                 onMoreRequest: rowItem.moreRequest()
                 onEditRequest: rowItem.editMode = mode
             }

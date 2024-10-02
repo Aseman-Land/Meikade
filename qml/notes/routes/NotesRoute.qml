@@ -12,7 +12,9 @@ NotesPage {
     ViewportType.touchToClose: true
 
     onCloseRequest: ViewportType.open = false;
-    onLinkRequest: Viewport.controller.trigger(link, properties)
+    onLinkRequest: function(link, properties) {
+        Viewport.controller.trigger(link, properties)
+    }
     onAddListRequest: Viewport.controller.trigger("dialog:/lists/add")
     onRenameListRequest: Viewport.controller.trigger("dialog:/lists/add", {"actionId": actionId, "currentName": currentName})
     onDeleteListRequest: Viewport.controller.trigger("bottomdrawer:/lists/delete", {"actionId": actionId, "currentName": name})

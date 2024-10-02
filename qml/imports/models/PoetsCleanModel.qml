@@ -34,7 +34,9 @@ AsemanListModel {
                 }
 
                 listModel.clear();
-                res.forEach(listModel.append)
+                res.forEach(function(item){
+                    listModel.append(item);
+                })
             } catch (e) {
             }
         }

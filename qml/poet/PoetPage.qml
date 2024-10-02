@@ -78,7 +78,7 @@ PoetView {
     menuBtn.onClicked: ViewportType.open = false
 
     gridView {
-        onLinkRequest: {
+        onLinkRequest: function(link, properties) {
             var navigData = dis.navigData;
             navigData[navigData.length] = Tools.toVariantMap(properties);
 

@@ -99,7 +99,7 @@ PoetBooksView {
 
     listView {
         onMoreRequest: catsModel.more()
-        onLinkRequest: {
+        onLinkRequest: function(link, properties) {
             var navigData = navigModel.data;
             navigData[navigData.length] = Tools.toVariantMap(properties);
 

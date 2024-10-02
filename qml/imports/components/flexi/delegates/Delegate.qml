@@ -20,7 +20,7 @@ Item {
     readonly property int poetId: {
         var ids = Tools.stringRegExp(link, "id\\=(\\d+)", false)
         if (!ids || ids.length === 0)
-            return "";
+            return 0;
 
         return ids[0][1]
     }

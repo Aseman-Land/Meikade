@@ -39,7 +39,7 @@ PoetView {
     avatar.source: MyUserRequest._image
 
     gridView {
-        onLinkRequest: {
+        onLinkRequest: function(link, properties) {
             var navigData = dis.navigData;
             navigData[navigData.length] = Tools.toVariantMap(properties);
 

@@ -256,7 +256,7 @@ Item {
                     property int pinX
                     property int pinY
 
-                    onPressed: {
+                    onPressed: function(mouse) {
                         pinX = mouse.x;
                         pinY = mouse.y;
                     }

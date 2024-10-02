@@ -68,7 +68,7 @@ SearchView {
             return false;
         }
 
-        onLinkRequest: {
+        onLinkRequest: function(link, properties) {
             var prp = Tools.toVariantMap(properties);
             Viewport.controller.trigger(link, prp);
         }
@@ -86,7 +86,7 @@ SearchView {
             return false;
         }
 
-        onLinkRequest: {
+        onLinkRequest: function(link, properties) {
             var prp = Tools.toVariantMap(properties);
             Viewport.controller.trigger(link, prp);
         }

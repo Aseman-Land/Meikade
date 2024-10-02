@@ -120,9 +120,11 @@ AsemanListView {
             width: parent.width
             type: model.type
             heightRatio: model.heightRatio == undefined || !model.heightRatio? 1 : model.heightRatio
-            dataList: model.dataList
+            dataList: model.modelData
             listView: list
-            onClicked: list.linkRequest(link, properties)
+            onClicked: function(link, properties) {
+                list.linkRequest(link, properties)
+            }
             onMoreRequest: if (model.index === list.count-1) list.moreRequest()
 
             Rectangle {

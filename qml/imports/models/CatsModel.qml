@@ -106,7 +106,7 @@ AsemanListModel {
             }
         }
 
-        result.forEach(model.append);
+        result.forEach(function(item){ model.append(item) });
     }
 
     function more() {

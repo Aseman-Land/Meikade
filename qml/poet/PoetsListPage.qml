@@ -21,7 +21,9 @@ PoetsListView {
     headerBtn.onClicked: ViewportType.open = false
 
     gridView {
-        onLinkRequest: Viewport.controller.trigger(link, properties)
+        onLinkRequest: function(link, properties) {
+            Viewport.controller.trigger(link, properties)
+        }
         model: {
             if (modelsRepeater.count == 0)
                 return new Array;

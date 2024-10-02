@@ -18,7 +18,9 @@ Viewport {
             cachePath: ""
         }
 
-        onClicked: Viewport.viewport.append(select_poet_component, {"currentTypeId": typeId}, "page")
+        onClicked: function (typeId) {
+            Viewport.viewport.append(select_poet_component, {"currentTypeId": typeId}, "page")
+        }
     }
 
     Component {

@@ -9,7 +9,9 @@ ExploreView {
     id: home
 
     list {
-        onLinkRequest: Viewport.controller.trigger(link, properties)
+        onLinkRequest: function(link, properties) {
+            Viewport.controller.trigger(link, properties)
+        }
         model: ExploreModel {
             cachePath: AsemanGlobals.cachePath + "/home.cache"
         }
