@@ -54,35 +54,11 @@ Item {
         scrollArea: list
     }
 
-    Item {
-        anchors.fill: headerItem
-        clip: true
-
-        FastBlur {
-            width: listScene.width
-            height: listScene.height
-            source: listScene
-            radius: Devices.isIOS || Devices.isDesktop? 64 : 0
-            cached: true
-            visible: Devices.isIOS || Devices.isDesktop
-        }
-
-        Rectangle {
-            anchors.fill: parent
-            visible: Devices.isIOS || Devices.isDesktop
-            gradient: Gradient {
-                GradientStop { position: 0.0; color: Colors.headerColor }
-                GradientStop { position: 1.0; color: "transparent" }
-            }
-        }
-    }
-
     MHeader {
         id: headerItem
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.top: parent.top
-        opacity: Devices.isIOS || Devices.isDesktop? 0.8 : 1
     }
 
     Image {

@@ -309,6 +309,7 @@ MPage {
 
         HeaderBackButton {
             id: headerBtn
+            color: Colors.headerTextColor
         }
     }
 }

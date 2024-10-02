@@ -14,6 +14,8 @@ MPage {
     id: dis
     width: Constants.width
     height: Constants.height
+    Style.backgroundColor: Colors.background
+
     property alias menuBtn: menuBtn
     property alias headerItem: headerItem
     property alias logoutBtn: logoutBtn
@@ -190,7 +192,7 @@ MPage {
         visible: AsemanGlobals.accessToken.length
     }
 
-    header: Header {
+    header: MHeader {
         id: headerItem
         anchors.top: parent.top
         anchors.right: parent.right
@@ -199,7 +201,7 @@ MPage {
 
         HeaderBackButton {
             id: menuBtn
-            color: Colors.foreground
+            color: Colors.headerTextColor
         }
     }
 

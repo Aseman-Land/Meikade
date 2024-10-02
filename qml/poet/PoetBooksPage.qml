@@ -151,7 +151,7 @@ PoetBooksView {
             width: 220 * Devices.density
             ViewportType.transformOrigin: Qt.point((LayoutMirroring.enabled? -20 * Devices.density : width + 20 * Devices.density), -20 * Devices.density)
 
-            onItemClicked: {
+            onItemClicked: function(index) {
                 switch (index) {
                 case 0:
                     catsModel.offlineInstaller.checkAndInstall( !catsModel.offlineInstaller.installed );

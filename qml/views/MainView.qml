@@ -63,16 +63,6 @@ Page {
         anchors.fill: footerItem
         clip: true
         visible: AsemanGlobals.viewMode == 2
-
-        FastBlur {
-            width: swipeView.width
-            height: swipeView.height
-            anchors.bottom: parent.bottom
-            source: swipeView
-            radius: Devices.isIOS || Devices.isDesktop? 64 : 0
-            cached: true
-            visible: Devices.isIOS || Devices.isDesktop
-        }
     }
 
     Item {
@@ -84,7 +74,6 @@ Page {
 
         Rectangle {
             anchors.fill: parent
-            opacity: Devices.isIOS || Devices.isDesktop? 0.7 : 1
             color: Colors.background
         }
 

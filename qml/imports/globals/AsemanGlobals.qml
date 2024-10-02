@@ -68,12 +68,12 @@ AsemanObject {
     readonly property int androidEffectiveTheme: {
         let h = clockTimer.dateTime.getHours()
         switch (androidTheme) {
-        case Material.System:
+        case 0:
             return h > 18? Material.Dark : Material.Light
-        case Material.Dark:
-            return Material.Dark;
-        case Material.Light:
+        case 1:
             return Material.Light;
+        case 2:
+            return Material.Dark;
         default:
             return Material.Light;
         }
