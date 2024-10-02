@@ -89,30 +89,13 @@ Item {
 
                 MButton {
                     Layout.alignment: Qt.AlignHCenter
-                    Layout.preferredWidth: addRow.width + 60 * Devices.density
                     highlighted: true
+                    text: qsTr("New Book") + Translations.refresher
+                    icon: MaterialIcons.mdi_plus
+                    iconPixelSize: 12 * Devices.fontDensity
 
                     Connections {
                         onClicked: addBookRequest()
-                    }
-
-                    RowLayout {
-                        id: addRow
-                        x: 30 * Devices.density
-                        anchors.verticalCenter: parent.verticalCenter
-
-                        MLabel {
-                            font.pixelSize: 12 * Devices.fontDensity
-                            font.family: MaterialIcons.family
-                            text: MaterialIcons.mdi_plus
-                            color: "#fff"
-                        }
-
-                        MLabel {
-                            text: qsTr("New Book") + Translations.refresher
-                            font.pixelSize: 9 * Devices.fontDensity
-                            color: "#fff"
-                        }
                     }
                 }
             }

@@ -33,15 +33,9 @@ FlexiGridRow {
             height: width
             radius: height/2
             highlighted: true
+            icon: MaterialIcons.mdi_plus
+            iconPixelSize: 12 * Devices.fontDensity
             onClicked: Viewport.controller.trigger("float:/favorites")
-
-            MLabel {
-                anchors.centerIn: parent
-                font.family: MaterialIcons.family
-                font.pixelSize: 12 * Devices.fontDensity
-                text: MaterialIcons.mdi_plus
-                color: "#fff"
-            }
         }
     }
 }
