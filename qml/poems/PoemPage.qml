@@ -478,7 +478,7 @@ PoemView {
                 Component.onCompleted: fetch()
             }
 
-            onItemClicked: {
+            onItemClicked: function (index) {
                 var idx = menuItem.index;
                 var poemLoader = loader;
 

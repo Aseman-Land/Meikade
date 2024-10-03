@@ -261,7 +261,7 @@ Item {
                         pinY = mouse.y;
                     }
 
-                    onPressAndHold: {
+                    onPressAndHold: function(mouse) {
                         if (mouse.x < 50 * Devices.density || mouse.x > width - 50 * Devices.density)
                             return;
                         if (Math.abs(pinX - mouse.x) > 30 * Devices.density)
