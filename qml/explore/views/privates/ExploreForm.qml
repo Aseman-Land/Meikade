@@ -54,7 +54,7 @@ Item {
         scrollArea: list
     }
 
-    Header {
+    MHeader {
         id: headerItem
         anchors.left: parent.left
         anchors.right: parent.right

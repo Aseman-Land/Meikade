@@ -35,7 +35,7 @@ PoemView {
     onPoemIdChanged: form.selectMode = false;
     onVerseIdChanged: highlightTimer.restart()
 
-    onChangeRequest: {
+    onChangeRequest: function(link, title, subtitle, verse_id, poetName) {
         url = link;
         dis.title = title;
 
@@ -291,14 +291,14 @@ PoemView {
 
         searchBtn.onClicked: Viewport.controller.trigger("float:/search?poetId=" + poetId)
 
-        onNavigationClicked: {
+        onNavigationClicked: function(link, index) {
             var properties = loader.categoriesModel.get(index);
             properties["navigData"] = loader.categoriesModel.data.slice(0, index+1);
 
             Viewport.controller.trigger(link, properties);
         }
 
-        onSelectedToggled: {
+        onSelectedToggled: function(index, selected) {
             var oneExists = false;
             for (var i in form.selectedList)
                 if (form.selectedList[i]) {
@@ -317,7 +317,7 @@ PoemView {
                 BackHandler.removeHandler(form)
         }
 
-        onMenuRequest: {
+        onMenuRequest: function(index, object) {
             if (loader.refrshing)
                 return;
             if (form.selectMode) {

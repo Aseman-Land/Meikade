@@ -22,9 +22,9 @@ FavoritedPoetsListView {
     favoriteMode: listId == UserActions.TypeFavorite
     disableSharing: fplModel.referenceId > 0 || listId == UserActions.TypeFavorite
 
-    onPublicListSwitch: fplModel.publicList = checked
-    onColorSwitch: fplModel.listColor = color
-    onFlatListSwitched: fplModel.flatList = state
+    onPublicListSwitch: function(checked) { fplModel.publicList = checked }
+    onColorSwitch: function(color) { fplModel.listColor = color }
+    onFlatListSwitched: function(state) { fplModel.flatList = state }
 
     closeBtn.visible: false
     closeBtn.onClicked: closeRequest()
