@@ -41,7 +41,7 @@ Viewport {
         followBtn.enabled: Bootstrap.payment && Bootstrap.trusted
         followBtn.onClicked: {
             if (!Subscription.premium && userActions.getLists().length >= Subscription.listsLimits && listModel.localId == 0) {
-                ViewController.trigger("bottomdrawer:/account/premium/buy")
+                ViewController.trigger("blurbottomdrawer:/account/premium/buy")
                 return;
             }
 

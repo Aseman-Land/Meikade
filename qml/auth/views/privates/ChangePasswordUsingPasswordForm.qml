@@ -88,7 +88,7 @@ MPage {
         }
     }
 
-    MHeader {
+    Header {
         id: headerItem
         anchors.left: parent.left
         anchors.right: parent.right

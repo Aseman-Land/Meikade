@@ -38,7 +38,7 @@ PoetBooksView {
             return GTranslations.translate( qsTr("You create %1 poems from %2 poems. for more information contact us on telegram:").arg(poemsCount).arg(Subscription.mypoemsLimits) ) + " " + tgLink
     }
 
-    onPremiumBuyRequest: Viewport.controller.trigger("bottomdrawer:/account/premium/buy")
+    onPremiumBuyRequest: Viewport.controller.trigger("blurbottomdrawer:/account/premium/buy")
     Component.onCompleted: {
         RequestsModel.refreshing;
         premiumTimer.restart()

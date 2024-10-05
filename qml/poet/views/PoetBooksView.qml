@@ -86,31 +86,14 @@ Item {
                 MAccentButton {
                     id: addBtn
                     Layout.alignment: Qt.AlignHCenter
-                    Layout.preferredWidth: addRow.width + 60 * Devices.density
                     highlighted: true
                     visible: poemAddMode && (Subscription.mypoemsLimits > poemsCount || premiumMsg.length == 0)
+                    icon: MaterialIcons.mdi_feather
+                    iconPixelSize: 12 * Devices.fontDensity
+                    text: qsTr("New Poem") + Translations.refresher
 
                     Connections {
                         onClicked: addPoemRequest()
-                    }
-
-                    RowLayout {
-                        id: addRow
-                        x: 30 * Devices.density
-                        anchors.verticalCenter: parent.verticalCenter
-
-                        MLabel {
-                            font.pixelSize: 12 * Devices.fontDensity
-                            font.family: MaterialIcons.family
-                            text: MaterialIcons.mdi_feather
-                            color: "#fff"
-                        }
-
-                        MLabel {
-                            text: qsTr("New Poem") + Translations.refresher
-                            font.pixelSize: 9 * Devices.fontDensity
-                            color: "#fff"
-                        }
                     }
                 }
 
@@ -128,60 +111,26 @@ Item {
                 MButton {
                     visible: bookAddMode
                     Layout.alignment: Qt.AlignHCenter
-                    Layout.preferredWidth: addSubBookRow.width + 60 * Devices.density
                     highlighted: true
+                    icon: MaterialIcons.mdi_notebook
+                    iconPixelSize: 12 * Devices.fontDensity
+                    text: qsTr("New Book") + Translations.refresher
 
                     Connections {
                         onClicked: addBookRequest()
-                    }
-
-                    RowLayout {
-                        id: addSubBookRow
-                        x: 30 * Devices.density
-                        anchors.verticalCenter: parent.verticalCenter
-
-                        MLabel {
-                            font.pixelSize: 12 * Devices.fontDensity
-                            font.family: MaterialIcons.family
-                            text: MaterialIcons.mdi_notebook
-                            color: "#fff"
-                        }
-
-                        MLabel {
-                            text: qsTr("New Book") + Translations.refresher
-                            font.pixelSize: 9 * Devices.fontDensity
-                            color: "#fff"
-                        }
                     }
                 }
 
                 MButton {
                     Layout.alignment: Qt.AlignHCenter
-                    Layout.preferredWidth: publishRow.width + 60 * Devices.density
                     highlighted: true
                     visible: Bootstrap.initialized
+                    icon: MaterialIcons.mdi_publish
+                    iconPixelSize: 12 * Devices.fontDensity
+                    text: qsTr("Publish Book") + Translations.refresher
 
                     Connections {
                         onClicked: publishRequest()
-                    }
-
-                    RowLayout {
-                        id: publishRow
-                        x: 30 * Devices.density
-                        anchors.verticalCenter: parent.verticalCenter
-
-                        MLabel {
-                            font.pixelSize: 12 * Devices.fontDensity
-                            font.family: MaterialIcons.family
-                            text: MaterialIcons.mdi_publish
-                            color: "#fff"
-                        }
-
-                        MLabel {
-                            text: qsTr("Publish Book") + Translations.refresher
-                            font.pixelSize: 9 * Devices.fontDensity
-                            color: "#fff"
-                        }
                     }
                 }
             }

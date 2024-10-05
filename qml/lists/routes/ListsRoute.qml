@@ -18,6 +18,6 @@ ListsPage {
     }
     onAddListRequest: Viewport.controller.trigger("dialog:/lists/add")
     onRenameListRequest: Viewport.controller.trigger("dialog:/lists/add", {"actionId": actionId, "currentName": currentName})
-    onDeleteListRequest: Viewport.controller.trigger("bottomdrawer:/lists/delete", {"actionId": actionId, "currentName": name, "referenceId": referenceId})
+    onDeleteListRequest: Viewport.controller.trigger("blurbottomdrawer:/lists/delete", {"actionId": actionId, "currentName": name, "referenceId": referenceId})
 }
 

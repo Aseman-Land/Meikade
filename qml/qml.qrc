@@ -408,5 +408,7 @@
         <file>imports/components/MAccentButton.qml</file>
         <file>imports/components/MCheckBox.qml</file>
         <file>imports/components/MScrollView.qml</file>
+        <file>imports/components/MFooter.qml</file>
+        <file>imports/components/MFooterButton.qml</file>
     </qresource>
 </RCC>

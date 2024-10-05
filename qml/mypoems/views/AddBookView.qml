@@ -25,7 +25,7 @@ DrawerFrame {
         anchors.right: parent.right
         anchors.verticalCenter: parent.verticalCenter
         anchors.margins: 15 * Devices.density
-        spacing: 4 * Devices.density
+        spacing: 8 * Devices.density
 
         RowLayout {
             Layout.fillWidth: true
@@ -42,7 +42,7 @@ DrawerFrame {
             }
         }
 
-        TextField {
+        MTextField {
             id: nameField
             Layout.fillWidth: true
             Layout.leftMargin: 20 * Devices.density
@@ -54,7 +54,6 @@ DrawerFrame {
             selectByMouse: true
             leftPadding: 34 * Devices.density
             rightPadding: 34 * Devices.density
-            color: isValid || focus? Colors.foreground : "#a00"
 
             property bool isValid: text.length > 0 || preeditText.length > 0
 

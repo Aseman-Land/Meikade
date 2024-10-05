@@ -65,7 +65,7 @@ Item {
                 anchors.bottom: parent.bottom
                 spacing: 4 * Devices.density
 
-                TextField {
+                MTextField {
                     id: searchKeyword
                     Layout.fillWidth: true
                     Layout.preferredHeight: 46 * Devices.density

@@ -24,7 +24,7 @@ DrawerFrame {
         anchors.right: parent.right
         anchors.verticalCenter: parent.verticalCenter
         anchors.margins: 15 * Devices.density
-        spacing: 4 * Devices.density
+        spacing: 10 * Devices.density
 
         RowLayout {
             Layout.fillWidth: true
@@ -41,19 +41,17 @@ DrawerFrame {
             }
         }
 
-        TextField {
+        MTextField {
             id: nameField
             Layout.fillWidth: true
             Layout.leftMargin: 20 * Devices.density
             Layout.rightMargin: 20 * Devices.density
-            Layout.preferredHeight: 48 * Devices.density
             placeholderText: qsTr("List Name") + Translations.refresher
             font.pixelSize: 9 * Devices.fontDensity
             horizontalAlignment: Text.AlignHCenter
             selectByMouse: true
             leftPadding: 34 * Devices.density
             rightPadding: 34 * Devices.density
-            color: isValid || focus? Colors.foreground : "#a00"
 
             property bool isValid: text.length > 0 || preeditText.length > 0
 

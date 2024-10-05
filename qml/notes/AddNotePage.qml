@@ -49,7 +49,7 @@ AddNoteView {
             return GTranslations.translate( qsTr("You create %1 note from %2 notes. for more information contact us on telegram:").arg(currentNotesCount).arg(Subscription.notesLimits) ) + " " + tgLink
     }
 
-    onPremiumBuyRequest: Viewport.controller.trigger("bottomdrawer:/account/premium/buy")
+    onPremiumBuyRequest: Viewport.controller.trigger("blurbottomdrawer:/account/premium/buy")
 
     function ensureVisible(r)
     {

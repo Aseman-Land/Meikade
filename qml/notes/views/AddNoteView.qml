@@ -33,7 +33,7 @@ MPage {
 
     AsemanFlickable {
         id: flick
-        anchors.top: parent.top
+        anchors.top: headerItem.bottom
         anchors.right: parent.right
         anchors.left: parent.left
         anchors.bottom: buttonsRow.top
@@ -93,7 +93,7 @@ MPage {
                     color: "#33888888"
                 }
 
-                TextArea {
+                MTextArea {
                     id: noteField
                     Layout.fillWidth: true
                     Layout.bottomMargin: keyboardHeight
@@ -104,7 +104,6 @@ MPage {
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                     visible: Subscription.notesLimits > currentNotesCount || text.length > 0 || premiumMsg.length == 0
                     onTextChanged: visible = true
-                    background: Item {}
                 }
             }
         }
@@ -158,15 +157,12 @@ MPage {
         }
     }
 
-    Header {
+    MHeader {
         id: headerItem
         anchors.top: parent.top
         anchors.right: parent.right
         anchors.left: parent.left
-        text: qsTr("Edit Note") + Translations.refresher
-        color: Colors.headerColor
-        light: !Colors.lightHeader
-        shadow: Devices.isAndroid
+        title: qsTr("Edit Note") + Translations.refresher
 
         HeaderBackButton {
             id: closeBtn

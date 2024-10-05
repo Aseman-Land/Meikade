@@ -146,18 +146,16 @@ Item {
         }
     }
 
-    Header {
+    MHeader {
         id: headerItem
         anchors.top: parent.top
         anchors.right: parent.right
         anchors.left: parent.left
-        text: qsTr("Notes") + Translations.refresher
-        color: Colors.headerColor
-        light: !Colors.lightHeader
-        shadow: Devices.isAndroid
+        title: qsTr("Notes") + Translations.refresher
 
         HeaderBackButton {
             id: closeBtn
+            buttonColor: Colors.headerTextColor
         }
     }
 

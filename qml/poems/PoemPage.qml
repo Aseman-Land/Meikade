@@ -96,7 +96,7 @@ PoemView {
         if (loader.poemId == 0) loader.random()
         if (!AsemanGlobals.helperSwipePoemDone) {
             Tools.jsDelayCall(1000, function(){
-                Viewport.controller.trigger("bottomdrawer:/helpers/poem/swipe");
+                Viewport.controller.trigger("blurbottomdrawer:/helpers/poem/swipe");
                 AsemanGlobals.helperSwipePoemDone = true;
             });
         }
@@ -381,7 +381,7 @@ PoemView {
                     break;
                 case 1:
                     form.selectMode = false;
-                    Viewport.controller.trigger("bottomdrawer:/lists", {"selectMode": faveActionQuery.getLists(), "poetId": faveActionQuery.poetId,
+                    Viewport.controller.trigger("blurbottomdrawer:/lists", {"selectMode": faveActionQuery.getLists(), "poetId": faveActionQuery.poetId,
                                                 "catId": faveActionQuery.catId, "poemId": faveActionQuery.poemId, "verseId": faveActionQuery.verseId,
                                                 "extra": viewActionQuery.extra});
                     break;
@@ -525,7 +525,7 @@ PoemView {
                     break;
 
                 case 2:
-                    Viewport.controller.trigger("bottomdrawer:/lists", {"selectMode": verseFaveActionQuery.getLists(), "poetId": verseFaveActionQuery.poetId,
+                    Viewport.controller.trigger("blurbottomdrawer:/lists", {"selectMode": verseFaveActionQuery.getLists(), "poetId": verseFaveActionQuery.poetId,
                                                 "catId": verseFaveActionQuery.catId, "poemId": verseFaveActionQuery.poemId,
                                                 "verseId": verseFaveActionQuery.verseId, "extra": extra}).saved.connect(function(lists){
                         var item = poemLoader.versesModel.get(idx);

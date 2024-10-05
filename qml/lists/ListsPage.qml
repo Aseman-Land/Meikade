@@ -57,7 +57,7 @@ Viewport {
             selecteds: selectMode
         }
 
-        onPremiumBuyRequest: mainController.trigger("bottomdrawer:/account/premium/buy")
+        onPremiumBuyRequest: mainController.trigger("blurbottomdrawer:/account/premium/buy")
 
         closeBtn.onClicked: closeRequest()
         confirmBtn.onClicked: {

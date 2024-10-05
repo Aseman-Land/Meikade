@@ -25,7 +25,7 @@ QtObject {
     readonly property color headerColor: AsemanGlobals.mixedHeaderColor? lightBackground : primary
     readonly property color headerTextColor: AsemanGlobals.mixedHeaderColor? foreground : "#fff"
     readonly property color primary: Material.primary
-    readonly property color accent: Material.accent
+    readonly property color accent: "#0d80ec"
     readonly property color background: Material.background
     readonly property color foreground: Material.foreground
 

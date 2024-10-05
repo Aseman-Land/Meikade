@@ -64,6 +64,11 @@ Item {
         color: Colors.deepBackground
     }
 
+    Repeater {
+        id: tabBarRepeater
+        visible: false
+    }
+
     MTabBar {
         id: tabBar
         anchors.top: headerItem.bottom
@@ -73,11 +78,17 @@ Item {
         LayoutMirroring.enabled: false;
         LayoutMirroring.childrenInherit: true
 
-        Repeater {
-            id: tabBarRepeater
-            MTabButton {
-                text: GTranslations.localeName == "fa"? model.name : model.name_en
-            }
+        MTabButton {
+            text: GTranslations.localeName == "fa"? "سنتی" : "Classic"
+        }
+        MTabButton {
+            text: GTranslations.localeName == "fa"? "معاصر" : "New Age"
+        }
+        MTabButton {
+            text: GTranslations.localeName == "fa"? "انگلیسی" : "English"
+        }
+        MTabButton {
+            text: GTranslations.localeName == "fa"? "کاربران" : "Users"
         }
     }
 

@@ -7,6 +7,7 @@ import globals 1.0
 HeaderMenuButton {
     id: btn
     ratio: 1
+    y: iosPopup? View.statusBarHeight : 0
     x: iosPopup? (LayoutMirroring.enabled? 0 : parent.width - width) : (LayoutMirroring.enabled? parent.width - width : 0)
     buttonColor: iosPopup? "transparent" : color
     color: iosPopup? Colors.headerTextColor : Colors.foreground

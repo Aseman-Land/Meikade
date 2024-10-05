@@ -29,7 +29,7 @@ MeikadeOfflineItem {
                 var err = ViewController.trigger("dialog:/general/error", errorInputs);
                 err.itemClicked.connect(function(index){
                     if (index == 1)
-                        ViewController.trigger("bottomdrawer:/account/premium/buy")
+                        ViewController.trigger("blurbottomdrawer:/account/premium/buy")
                     err.ViewportType.open = false;
                 });
             }

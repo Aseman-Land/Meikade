@@ -344,8 +344,8 @@ Item {
                 font.family: MaterialIcons.family
                 radius: 6 * Devices.density
                 font.pixelSize: 10 * Devices.fontDensity
-                Style.accentColor: flatList? Colors.accent : Colors.foreground
-                Style.accentTextColor: Colors.deepBackground
+                flat: !flatList
+                Style.foregroundColor: Colors.headerTextColor
                 visible: !favoriteMode
 
                 Connections {

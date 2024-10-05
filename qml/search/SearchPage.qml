@@ -378,7 +378,7 @@ SearchView {
                     break;
 
                 case 2:
-                    Viewport.controller.trigger("bottomdrawer:/lists", {"selectMode": verseFaveActionQuery.getLists(), "poetId": verseFaveActionQuery.poetId,
+                    Viewport.controller.trigger("blurbottomdrawer:/lists", {"selectMode": verseFaveActionQuery.getLists(), "poetId": verseFaveActionQuery.poetId,
                                                 "catId": verseFaveActionQuery.catId, "poemId": verseFaveActionQuery.poemId,
                                                 "verseId": verseFaveActionQuery.verseId, "extra": extra}).saved.connect(function(lists){
                         var item = searchMdl.get(idx);

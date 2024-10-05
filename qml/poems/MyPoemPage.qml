@@ -187,57 +187,23 @@ PoemView {
         }
 
         MButton {
-            Layout.preferredWidth: editPoemRow.width + 60 * Devices.density
             Layout.alignment: Qt.AlignHCenter
             highlighted: true
             onClicked: edit()
-
-            RowLayout {
-                id: editPoemRow
-                x: 30 * Devices.density
-                anchors.verticalCenter: parent.verticalCenter
-
-                MLabel {
-                    font.pixelSize: 12 * Devices.fontDensity
-                    font.family: MaterialIcons.family
-                    text: MaterialIcons.mdi_feather
-                    color: "#fff"
-                }
-
-                MLabel {
-                    text: qsTr("Edit Poem") + Translations.refresher
-                    font.pixelSize: 9 * Devices.fontDensity
-                    color: "#fff"
-                }
-            }
+            iconPixelSize: 12 * Devices.fontDensity
+            icon: MaterialIcons.mdi_feather
+            text: qsTr("Edit Poem") + Translations.refresher
         }
 
         MButton {
             Layout.bottomMargin: 20 * Devices.density
-            Layout.preferredWidth: publishRow.width + 60 * Devices.density
             Layout.alignment: Qt.AlignHCenter
             highlighted: true
             visible: Bootstrap.initialized
             onClicked: publish()
-
-            RowLayout {
-                id: publishRow
-                x: 30 * Devices.density
-                anchors.verticalCenter: parent.verticalCenter
-
-                MLabel {
-                    font.pixelSize: 12 * Devices.fontDensity
-                    font.family: MaterialIcons.family
-                    text: MaterialIcons.mdi_publish
-                    color: "#fff"
-                }
-
-                MLabel {
-                    text: qsTr("Publish") + Translations.refresher
-                    font.pixelSize: 9 * Devices.fontDensity
-                    color: "#fff"
-                }
-            }
+            iconPixelSize: 12 * Devices.fontDensity
+            icon: MaterialIcons.mdi_publish
+            text: qsTr("Publish") + Translations.refresher
         }
     }
 

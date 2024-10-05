@@ -275,13 +275,13 @@ ViewportController {
     ViewportControllerRoute {
         route: /\w+:\/volcano\/deposit/
         source: "qrc:/qml/volcano/DepositDialog.qml"
-        viewportType: tabletMode? "dialog" : "bottomdrawer"
+        viewportType: tabletMode? "dialog" : "ios-bottomdrawer"
     }
 
     ViewportControllerRoute {
         route: /\w+:\/volcano\/withdraw/
         source: "qrc:/qml/volcano/WithdrawDialog.qml"
-        viewportType: tabletMode? "dialog" : "bottomdrawer"
+        viewportType: tabletMode? "dialog" : "ios-bottomdrawer"
     }
 
     ViewportControllerRoute {
@@ -293,7 +293,7 @@ ViewportController {
     ViewportControllerRoute {
         route: /\w+\:\/search\/smart_about/
         source: "qrc:/qml/search/routes/SearchSmartAboutRoute.qml"
-        viewportType: tabletMode? "dialog" : "bottomdrawer"
+        viewportType: tabletMode? "dialog" : "ios-bottomdrawer"
     }
 }
 

@@ -57,7 +57,9 @@ Item {
                 width: rowItem.width
                 listView: rowItem.listView
                 model.data: dataList
-                onClicked: rowItem.clicked(link, properties)
+                onClicked:  function(link, properties) {
+                    rowItem.clicked(link, properties)
+                }
                 onMoreRequest: rowItem.moreRequest()
             }
         }
@@ -91,7 +93,9 @@ Item {
                 width: rowItem.width
                 listView: rowItem.listView
                 type: args.length? args * 1 : 5
-                onClicked: rowItem.clicked(link, properties)
+                onClicked: function(link, properties) {
+                    rowItem.clicked(link, properties)
+                }
                 onMoreRequest: rowItem.moreRequest()
             }
         }
@@ -100,7 +104,9 @@ Item {
             FlexiOfflinePoetsRow {
                 width: rowItem.width
                 listView: rowItem.listView
-                onClicked: rowItem.clicked(link, properties)
+                onClicked: function(link, properties) {
+                    rowItem.clicked(link, properties)
+                }
                 onMoreRequest: rowItem.moreRequest()
             }
         }

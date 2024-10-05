@@ -22,7 +22,7 @@ ManageOfflinePoetsView {
             return GTranslations.translate( qsTr("You install %1 offline poet from %2 poets. for more information contact us on telegram:").arg(offlinePoetsCount).arg(Subscription.offlineLimits) ) + " " + tgLink;
     }
 
-    onPremiumBuyRequest: Viewport.controller.trigger("bottomdrawer:/account/premium/buy")
+    onPremiumBuyRequest: Viewport.controller.trigger("blurbottomdrawer:/account/premium/buy")
 
     listView.model: {
         switch (tabBar.currentIndex) {

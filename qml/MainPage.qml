@@ -129,7 +129,7 @@ MainView {
         if (AsemanGlobals.themeDone)
             return;
 
-        Tools.jsDelayCall(400, function(){ Viewport.controller.trigger("bottomdrawer:/settings/theme") });
+        Tools.jsDelayCall(400, function(){ Viewport.controller.trigger("blurbottomdrawer:/settings/theme") });
         AsemanGlobals.themeDone = true;
     }
 

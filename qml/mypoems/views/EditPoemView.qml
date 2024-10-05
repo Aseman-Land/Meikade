@@ -128,13 +128,12 @@ Item {
                     text: qsTr("Every verse in a single line:") + Translations.refresher
                 }
 
-                TextArea {
+                MTextArea {
                     id: editArea
                     Layout.fillWidth: true
                     font.pixelSize: 9 * Devices.fontDensity
                     horizontalAlignment: Text.AlignLeft
                     wrapMode: TextEdit.WrapAtWordBoundaryOrAnywhere
-                    background: Item {}
                     placeholderText: qsTr("Poem Text") + Translations.refresher
 
                     Connections {

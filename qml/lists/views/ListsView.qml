@@ -241,7 +241,7 @@ Item {
         anchors.bottom: parent.bottom
         anchors.leftMargin: 20 * Devices.density
         anchors.rightMargin: 20 * Devices.density
-        anchors.bottomMargin: Devices.navigationBarHeight
+        anchors.bottomMargin: Devices.navigationBarHeight + 20 * Devices.density
         font.pixelSize: 9 * Devices.fontDensity
         text: qsTr("Done") + Translations.refresher
         highlighted: true

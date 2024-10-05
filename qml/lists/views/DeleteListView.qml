@@ -25,7 +25,7 @@ DrawerFrame {
         anchors.right: parent.right
         anchors.verticalCenter: parent.verticalCenter
         anchors.margins: 15 * Devices.density
-        spacing: 0
+        spacing: 8 * Devices.density
 
         RowLayout {
             Layout.fillWidth: true

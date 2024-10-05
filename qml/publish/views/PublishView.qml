@@ -150,6 +150,8 @@ MPage {
                             height: 28 * Devices.density
                             width: 28 * Devices.density
                             running: false
+                            light: true
+                            z: 1000
                         }
                     }
                 }
@@ -217,10 +219,7 @@ MPage {
 
                                     MItemDelegate {
                                         anchors.fill: parent
-
-                                        Connections {
-                                            onClicked: form.poemClicked(model.poemId, model.text, model.type)
-                                        }
+                                        onClicked: form.poemClicked(model.poemId, model.text, model.type)
                                     }
 
                                     RowLayout {
@@ -291,6 +290,8 @@ MPage {
                             height: 28 * Devices.density
                             width: 28 * Devices.density
                             running: false
+                            light: true
+                            z: 1000
                         }
                     }
                 }
@@ -382,6 +383,7 @@ MPage {
             width: 160 * Devices.density
             height: 160 * Devices.density
             scale: 0.3 + 0.5 * (1 - initedNum)
+            opacity: initedNum
             source: Colors.lightHeader? "qrc:/qml/explore/views/icons/meikade.png" : "qrc:/qml/explore/views/icons/meikade-abstract.png"
             sourceSize.width: width
             sourceSize.height: height
@@ -434,6 +436,7 @@ MPage {
                 Layout.preferredHeight: isAndroidStyle? 36 * Devices.density : 24 * Devices.density
                 opacity: 1 - initedNum
                 running: opacity > 0
+                light: true
             }
 
             MLabel {

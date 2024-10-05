@@ -1,5 +1,5 @@
 android {
-    QT += androidextras
+    # QT += androidextras
     ANDROID_PACKAGE_SOURCE_DIR = $$PWD
 
     DISTFILES += \
@@ -7,6 +7,6 @@ android {
         $$PWD/gradle.properties
 }
 
-ANDROID_ABIS = armeabi-v7a arm64-v8a
+ANDROID_ABIS = x86
 
-android: include(/opt/develop/android/openssl/openssl.pri)
+android: include(/opt/develop/android/openssl3/openssl.pri)

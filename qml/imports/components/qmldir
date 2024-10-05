@@ -37,3 +37,5 @@ MComboBox 1.0 MComboBox.qml
 MSlider 1.0 MSlider.qml
 MAccentButton 1.0 MAccentButton.qml
 MScrollView 1.0 MScrollView.qml
+MFooter 1.0 MFooter.qml
+MFooterButton 1.0 MFooterButton.qml
