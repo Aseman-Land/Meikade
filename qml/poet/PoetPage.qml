@@ -67,7 +67,7 @@ PoetView {
         }
     }
 
-    bioBtn.onClicked: Viewport.controller.trigger("float:/poet/bio", {"link": loader.wikipedia, "text": loader.description})
+    bioBtn.onClicked: Viewport.controller.trigger("popup:/poet/bio", {"link": loader.wikipedia, "text": loader.description})
 
     progressBar.running: loader.offlineInstaller.uninstalling || loader.offlineInstaller.installing || loader.offlineInstaller.downloading
     progressBar.progress: loader.offlineInstaller.size? (loader.offlineInstaller.downloadedBytes / loader.offlineInstaller.size) * 0.9 + 0.1 : 0.1
@@ -113,10 +113,10 @@ PoetView {
                     loader.offlineInstaller.checkAndInstall( !loader.offlineInstaller.installed );
                     break;
                 case 1:
-                    Viewport.controller.trigger("page:/poem/random?poetId=" + dis.id);
+                    Viewport.controller.trigger("stack:/poem/random?poetId=" + dis.id);
                     break;
                 case 2:
-                    Viewport.controller.trigger("float:/search?poetId=" + dis.id);
+                    Viewport.controller.trigger("popup:/search?poetId=" + dis.id);
                     break;
                 }
 

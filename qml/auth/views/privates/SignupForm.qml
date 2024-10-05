@@ -257,7 +257,7 @@ MPage {
         text: qsTr("Signup") + Translations.refresher
         color: Colors.headerColor
         light: !Colors.lightHeader
-        shadow: Devices.isAndroid
+        shadow: false
 
         Item {
             anchors.left: parent.left

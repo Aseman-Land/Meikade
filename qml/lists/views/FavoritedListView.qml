@@ -19,7 +19,7 @@ Item {
     property alias closeBtn: closeBtn
     property alias backBtn: backBtn
 
-    property alias title: headerItem.text
+    property alias title: headerItem.title
 
     signal clicked(int index)
 
@@ -154,15 +154,12 @@ Item {
         }
     }
 
-    Header {
+    MHeader {
         id: headerItem
         anchors.top: parent.top
         anchors.right: parent.right
         anchors.left: parent.left
-        text: qsTr("Favoriteds") + Translations.refresher
-        color: Colors.headerColor
-        light: !Colors.lightHeader
-        shadow: Devices.isAndroid
+        title: qsTr("Favoriteds") + Translations.refresher
 
         HeaderBackButton {
             id: closeBtn
@@ -172,6 +169,7 @@ Item {
         HeaderMenuButton {
             id: backBtn
             ratio: 1
+            y: 0
             buttonColor: Colors.headerTextColor
         }
     }

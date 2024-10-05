@@ -105,7 +105,7 @@ AsemanObject {
                 dis.poet = r.poet.name;
                 dis.poetImage = r.poet.image;
                 dis.poetColor = r.poet.color;
-                dis.link = "page:/poet?id=" + r.poet.id + "&poemId=" + r.poem.id;
+                dis.link = "stack:/poet?id=" + r.poet.id + "&poemId=" + r.poem.id;
 
                 if (dis.poetImage.length == 0)
                     dis.poetImage = Constants.thumbsBaseUrl +  r.poet.id + ".png"
@@ -116,11 +116,11 @@ AsemanObject {
                 categoriesModel.append({
                     title: r.poet.name,
                     id: r.poet.id,
-                    link: "page:/poet?id=" + r.poet.id
+                    link: "stack:/poet?id=" + r.poet.id
                 });
 
                 r.categories.forEach(function(c){
-                    c["link"] = "page:/poet?id=" + r.poet.id + "&catId=" + c.id;
+                    c["link"] = "stack:/poet?id=" + r.poet.id + "&catId=" + c.id;
                     categoriesModel.insert(1, c);
                 });
 

@@ -11,36 +11,36 @@ AsemanListModel {
             {
                 "title": qsTr("Lists") + Translations.refresher,
                 "icon": "mdi_heart",
-                "link": "float:/lists",
+                "link": "popup:/lists",
                 "underco": false
             },
             {
                 "title": qsTr("Notes") + Translations.refresher,
                 "icon": "mdi_note",
-                "link": "float:/notes",
+                "link": "popup:/notes",
                 "underco": false
             },
             {
                 "title": qsTr("My Poems") + Translations.refresher,
                 "icon": "mdi_notebook",
-                "link": "float:/mypoems",
+                "link": "popup:/mypoems",
                 "underco": false
             },
 //            {
 //                "title": qsTr("Manage Offlines") + Translations.refresher,
 //                "icon": "mdi_view_dashboard",
-//                "link": "float:/offline/manage",
+//                "link": "popup:/offline/manage",
 //                "underco": false
 //            },
             {
                 "title": qsTr("Settings") + Translations.refresher,
                 "icon": "mdi_settings",
-                "link": "page:/settings",
+                "link": "stack:/settings",
                 "underco": false
             },{
                 "title": qsTr("Sync") + Translations.refresher,
                 "icon": "mdi_cloud_sync",
-                "link": "float:/syncs",
+                "link": "popup:/syncs",
                 "underco": false
             }
         ]
@@ -49,13 +49,13 @@ AsemanListModel {
             res[res.length] = {
                 "title": qsTr("Contact US") + Translations.refresher,
                 "icon": "mdi_email",
-                "link": "float:/contactus",
+                "link": "popup:/contactus",
                 "underco": false
             };
             res[res.length] = {
                 "title": qsTr("about") + Translations.refresher,
                 "icon": "mdi_information",
-                "link": "page:/abouts",
+                "link": "stack:/abouts",
                 "underco": false
             };
         }

@@ -94,7 +94,7 @@ MPage {
         text: qsTr("Forget Password") + Translations.refresher
         color: Colors.headerColor
         light: !Colors.lightHeader
-        shadow: Devices.isAndroid
+        shadow: false
 
         Item {
             anchors.left: parent.left

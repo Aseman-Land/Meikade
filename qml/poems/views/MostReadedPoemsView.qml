@@ -181,7 +181,7 @@ Item {
         text: qsTr("Most Recents") + Translations.refresher
         color: Colors.headerColor
         light: !Colors.lightHeader
-        shadow: Devices.isAndroid
+        shadow: false
 
         HeaderBackButton {
             id: closeBtn

@@ -311,7 +311,7 @@ Item {
 
         ColumnLayout {
             anchors.horizontalCenter: parent.horizontalCenter
-            y: Devices.statusBarHeight + Devices.standardTitleBarHeight/2 - height/2
+            y: Devices.standardTitleBarHeight/2 - height/2
             spacing: 0
 
             Label {
@@ -384,6 +384,7 @@ Item {
         HeaderMenuButton {
             id: backBtn
             ratio: 1
+            y: 0
             buttonColor: Colors.headerTextColor
         }
     }

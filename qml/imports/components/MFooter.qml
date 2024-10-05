@@ -6,4 +6,5 @@ import globals 1.0
 Footer {
     Style.backgroundColor: Colors.background
     Style.accentColor: Colors.primary
+    Style.foregroundColor: Colors.foreground
 }

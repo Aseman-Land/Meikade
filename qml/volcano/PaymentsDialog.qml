@@ -100,7 +100,7 @@ MPage {
         anchors.right: parent.right
         color: Colors.headerColor
         light: !Colors.lightHeader
-        shadow: Devices.isAndroid
+        shadow: false
 
         ColumnLayout {
             anchors.centerIn: parent

@@ -56,7 +56,7 @@ AsemanObject {
                             color: "",
                             image: "",
                             type: "fullback",
-                            link: (c.id == 10001? "float:/poem/hafiz_faal" : "page:/poet?id=" + c.poet_id + "&catId=" + c.id),
+                            link: (c.id == 10001? "popup:/poem/hafiz_faal" : "stack:/poet?id=" + c.poet_id + "&catId=" + c.id),
                             heightRatio: 0.6,
                             details: null
                         };

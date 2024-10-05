@@ -19,7 +19,7 @@ Viewport {
         }
 
         onClicked: function (typeId) {
-            Viewport.viewport.append(select_poet_component, {"currentTypeId": typeId}, "page")
+            Viewport.viewport.append(select_poet_component, {"currentTypeId": typeId}, "stack")
         }
     }
 

@@ -362,7 +362,7 @@ Rectangle {
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.top: parent.top
-        shadow: Devices.isAndroid
+        shadow: false
 
         Rectangle {
             anchors.fill: parent

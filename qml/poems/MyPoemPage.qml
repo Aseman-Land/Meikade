@@ -316,17 +316,17 @@ PoemView {
     }
 
     function edit() {
-        Viewport.controller.trigger("page:/mypoems/poem/edit",
+        Viewport.controller.trigger("stack:/mypoems/poem/edit",
                                             {"poemId": poemId,
                                              "categories": loader.categoriesModel.data})
     }
 
     function publish() {
         if (AsemanGlobals.accessToken.length == 0) {
-            Viewport.controller.trigger("float:/auth/float", {})
+            Viewport.controller.trigger("popup:/auth/float", {})
             return;
         }
-        Viewport.controller.trigger("float:/mypoems/publish", {"poemId": poemId})
+        Viewport.controller.trigger("popup:/mypoems/publish", {"poemId": poemId})
     }
 
     function openGlobalMenu() {

@@ -21,7 +21,7 @@ DataBaseQuery {
                     "details": null,
                     "heightRatio": 1,
                     "image": Constants.thumbsBaseUrl + d.id + ".png",
-                    "link": "page:/poet?id=" + d.id,
+                    "link": "stack:/poet?id=" + d.id,
                     "subtitle": qsTr("%1 books").arg(d.catCount),
                     "title": d.name,
                     "type": "normal",

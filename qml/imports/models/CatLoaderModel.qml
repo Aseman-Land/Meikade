@@ -56,7 +56,7 @@ AsemanObject {
                             color: "",
                             image: "",
                             type: "fullback",
-                            link: "page:/poet?id=" + c.poet_id + "&catId=" + c.id,
+                            link: "stack:/poet?id=" + c.poet_id + "&catId=" + c.id,
                             heightRatio: 0.6,
                             details: null
                         };

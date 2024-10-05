@@ -96,7 +96,7 @@ Viewport {
 
         onClicked: {
             var item = lModel.get(index);
-            Viewport.viewport.append(favoritedPoets_component, {"listId": item.listId, "title": item.title, "provider": item.subtitle, "referenceId": item.referenceId}, "page")
+            Viewport.viewport.append(favoritedPoets_component, {"listId": item.listId, "title": item.title, "provider": item.subtitle, "referenceId": item.referenceId}, "stack")
         }
         onAddListRequest: dis.addListRequest();
 
@@ -113,7 +113,7 @@ Viewport {
             closeBtn.visible: true
             headerBusyIndicator.running: updateModel.refreshing
             onCloseRequest: dis.closeRequest()
-            onAuthRequest: mainController.trigger("float:/auth/float", {})
+            onAuthRequest: mainController.trigger("popup:/auth/float", {})
 
             property alias referenceId: updateModel.listId
 

@@ -105,15 +105,12 @@ Item {
         }
     }
 
-    Header {
+    MHeader {
         id: headerItem
         anchors.top: parent.top
         anchors.right: parent.right
         anchors.left: parent.left
-        text: qsTr("Manage Shelf") + Translations.refresher
-        color: Colors.headerColor
-        light: !Colors.lightHeader
-        shadow: Devices.isAndroid
+        title: qsTr("Manage Shelf") + Translations.refresher
 
         HeaderBackButton {
             id: closeBtn

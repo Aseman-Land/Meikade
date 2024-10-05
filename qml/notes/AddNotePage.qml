@@ -26,7 +26,7 @@ AddNoteView {
     noteField.onCursorRectangleChanged: ensureVisible(noteField.cursorRectangle)
 
     deleteBtn.visible: createAction.value.length > 0
-    deleteBtn.onClicked: Viewport.viewport.append(delete_component, {}, "bottomdrawer")
+    deleteBtn.onClicked: Viewport.viewport.append(delete_component, {}, "blurbottomdrawer")
 
     poemBtn.onClicked: {
 //        ViewportType.open = false;

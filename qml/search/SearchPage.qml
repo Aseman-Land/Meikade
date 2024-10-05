@@ -92,7 +92,7 @@ SearchView {
         }
     }
 
-    poetsFilterArea.onClicked: Viewport.viewport.append(filter_component, {}, (AsemanGlobals.viewMode == 2? "bottomdrawer" : "dialog"))
+    poetsFilterArea.onClicked: Viewport.viewport.append(filter_component, {}, (AsemanGlobals.viewMode == 2? "blurbottomdrawer" : "dialog"))
 
     onMenuRequest: {
         var pos = Qt.point(object.width/2, 0);
@@ -230,7 +230,7 @@ SearchView {
         var navigData = new Array;
         navigData[navigData.length] = {
             title: r.poet.name,
-            link: "page:/poet?id=" + r.poet.id
+            link: "stack:/poet?id=" + r.poet.id
         }
 
         map.clear();
@@ -238,7 +238,7 @@ SearchView {
             var cat = r.categories[i];
             map.insert(cat.id, {
                            title: cat.title,
-                           link: "page:/poet?id=" + r.poet.id + "&catId=" + cat.id
+                           link: "stack:/poet?id=" + r.poet.id + "&catId=" + cat.id
                        });
         }
 
@@ -248,7 +248,7 @@ SearchView {
 
         navigData[navigData.length] = {
             title: r.poem.title,
-            link: "page:/poet?id=" + r.poet.id + "&poemId=" + r.poem.id
+            link: "stack:/poet?id=" + r.poet.id + "&poemId=" + r.poem.id
         };
 
         var properties = {
@@ -257,7 +257,7 @@ SearchView {
             poetImage: Constants.thumbsBaseUrl + r.poet.id + ".png",
             navigData: navigData,
             color: "",
-            link: "page:/poet?id=" + r.poet.id + "&poemId=" + r.poem.id,
+            link: "stack:/poet?id=" + r.poet.id + "&poemId=" + r.poem.id,
             type: "normal"
         };
 
@@ -366,7 +366,7 @@ SearchView {
                     var poemText = menuItem.verseText;
                     poemText = Tools.stringReplace(poemText, "\n+", "\n", true);
 
-                    Viewport.controller.trigger("float:/notes/add", {"poetId": verseFaveActionQuery.poetId,
+                    Viewport.controller.trigger("popup:/notes/add", {"poetId": verseFaveActionQuery.poetId,
                                                 "catId": verseFaveActionQuery.catId, "poemId": verseFaveActionQuery.poemId,
                                                 "verseId": verseFaveActionQuery.verseId, "poemText": poemText, "extra": extra}).saved.connect(function(text){
                         var item = searchMdl.get(idx);
@@ -401,7 +401,7 @@ SearchView {
                     GlobalSignals.snackbarRequest(qsTr("Verse copied"));
                     break;
                 case 4:
-                    Viewport.controller.trigger("float:/sticker/export", {"poet": poet, "text": menuItem.verseText})
+                    Viewport.controller.trigger("popup:/sticker/export", {"poet": poet, "text": menuItem.verseText})
                     break;
                 case 5:
                     Devices.share(dis.title, menuItem.verseText);

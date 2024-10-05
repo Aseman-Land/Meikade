@@ -6,4 +6,6 @@ import globals 1.0
 Header {
     Style.primaryColor: Colors.headerColor
     Style.primaryTextColor: Colors.headerTextColor
+
+    readonly property bool isMHeader: true
 }

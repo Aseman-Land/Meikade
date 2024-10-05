@@ -49,7 +49,7 @@ AsemanListModel {
                 "color": "",
                 "image": "",
                 "type": "fullback",
-                "link": "page:/mypoems?bookId=" + l.type,
+                "link": "stack:/mypoems?bookId=" + l.type,
                 "listId": l.type,
                 "heightRatio": 0.6,
                 "details": {
@@ -95,7 +95,7 @@ AsemanListModel {
                 "color": "",
                 "image": "",
                 "type": "fullback",
-                "link": "page:/mypoems/poem?poemId=" + l.type,
+                "link": "stack:/mypoems/poem?poemId=" + l.type,
                 "listId": l.type,
                 "heightRatio": 0.6,
                 "details": {

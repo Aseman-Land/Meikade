@@ -21,7 +21,7 @@ Page {
     signal changePasswordRequest(string password)
 
     function changePassword() {
-        _viewport.append(changePasswordComponent, {}, "page")
+        _viewport.append(changePasswordComponent, {}, "stack")
     }
 
     Viewport {

@@ -225,6 +225,7 @@ Item {
 
         HeaderMenuButton {
             id: menuBtn
+            y: 0
             ratio: 1
             buttonColor: Colors.headerTextColor
         }

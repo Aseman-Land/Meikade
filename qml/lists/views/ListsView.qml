@@ -255,7 +255,7 @@ Item {
         anchors.left: parent.left
         text: qsTr("Lists") + Translations.refresher
         color: selectMode? "transparent" : Colors.headerColor
-        shadow: selectMode? false : Devices.isAndroid
+        shadow: false
         light: (!selectMode || Colors.darkMode) && !Colors.lightHeader
 
         HeaderBackButton {

@@ -36,9 +36,9 @@ FavoritedPoetsListView {
         } else {
             var poetId = map.poetId;
             if (map.childs)
-                Viewport.viewport.append(favorited_component, {"poetId": poetId, "title": map.poet, "childs": map.childs}, "page");
+                Viewport.viewport.append(favorited_component, {"poetId": poetId, "title": map.poet, "childs": map.childs}, "stack");
             else
-                Viewport.viewport.append(favorited_component, {"poetId": poetId, "title": map.poet, "listId": listId}, "page");
+                Viewport.viewport.append(favorited_component, {"poetId": poetId, "title": map.poet, "listId": listId}, "stack");
         }
     }
 
