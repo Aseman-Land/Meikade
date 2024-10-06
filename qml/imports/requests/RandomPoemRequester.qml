@@ -103,7 +103,7 @@ AsemanObject {
                         };
 
                         ViewController.waitCount--;
-                        ViewController.trigger("stack:/poet?id=" + poetId + "&poemId=" + poemId, properties);
+                        ViewController.trigger("page:/poet?id=" + poetId + "&poemId=" + poemId, properties);
                     } catch (e) {
                         ViewController.waitCount--;
                         showConnectionError();

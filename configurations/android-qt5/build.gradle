@@ -1,0 +1,115 @@
+buildscript {
+    repositories {
+        google()
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.4.2'
+        classpath 'com.google.gms:google-services:4.3.10'
+    }
+}
+
+repositories {
+    google()
+    jcenter()
+}
+
+apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
+
+android {
+    /*******************************************************
+     * The following variables:
+     * - androidBuildToolsVersion,
+     * - androidCompileSdkVersion
+     * - qt5AndroidDir - holds the path to qt android files
+     *                   needed to build any Qt application
+     *                   on Android.
+     *
+     * are defined in gradle.properties file. This file is
+     * updated by QtCreator and androiddeployqt tools.
+     * Changing them manually might break the compilation!
+     *******************************************************/
+
+    compileSdkVersion androidCompileSdkVersion.toInteger()
+
+    buildToolsVersion androidBuildToolsVersion
+
+    sourceSets {
+        main {
+            manifest.srcFile 'AndroidManifest.xml'
+            java.srcDirs = [qt5AndroidDir + '/src', 'src', 'java']
+            aidl.srcDirs = [qt5AndroidDir + '/src', 'src', 'aidl']
+            res.srcDirs = [qt5AndroidDir + '/res', 'res']
+            resources.srcDirs = ['src']
+            renderscript.srcDirs = ['src']
+            assets.srcDirs = ['assets']
+            jniLibs.srcDirs = ['libs']
+       }
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+// Pre-experimental Gradle plug-in NDK boilerplate below.
+// Right now the Firebase plug-in does not work with the experimental
+// Gradle plug-in so we're using ndk-build for the moment.
+project.ext {
+    // Configure the Firebase C++ SDK location.
+
+    firebase_cpp_sdk_dir = System.getenv('FIREBASE_CPP_SDK_DIR')
+    firebaseSdkUsed = 'system env variable FIREBASE_CPP_SDK_DIR'
+
+    if (firebase_cpp_sdk_dir != null && (new File(firebase_cpp_sdk_dir)).exists()) {
+        // Check the NDK location using the same configuration options as the
+        // experimental Gradle plug-in.
+        def ndkDir = android.ndkDirectory
+        ndkUsed = 'android.ndkDirectory'
+
+        if (ndkDir == null || !ndkDir.exists()) {
+            ndkDir = new File(System.getProperty('ndk_dir'))
+            ndkUsed = 'system property ndk_dir'
+        }
+        if (ndkDir == null || !ndkDir.exists()) {
+            ndkDir = new File(System.getenv('ANDROID_NDK_HOME'))
+            ndkUsed = 'system env variable ANDROID_NDK_HOME'
+        }
+        if (ndkDir == null || !ndkDir.exists()) {
+            throw new StopActionException(
+                'Android NDK directory should be specified using the ndkDir ' +
+                'property or ANDROID_NDK_HOME environment variable.'
+            )
+        }
+        println 'QtFirebase (Firebase C++ SDK) using Android NDK located in ' + ndkDir + ' (from ' + ndkUsed + ')'
+    } else {
+        println 'Firebase support is disabled.'
+    }
+}
+
+repositories {
+    flatDir {
+        dirs project.ext.firebase_cpp_sdk_dir + "/libs/android"
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
+    implementation 'com.android.support:appcompat-v7:27.0.0'
+    implementation 'com.android.support:design:27.0.0'
+    implementation 'com.android.support:support-v4:27.1.1'
+
+    if (project.ext.firebase_cpp_sdk_dir != null) {
+        implementation platform('com.google.firebase:firebase-bom:30.1.0')
+
+        // For Messaging support
+        implementation 'com.google.firebase.messaging.cpp:firebase_messaging_cpp@aar'
+        implementation 'com.google.firebase:firebase-messaging'
+    }
+}

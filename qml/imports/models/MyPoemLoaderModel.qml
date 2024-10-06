@@ -40,14 +40,14 @@ AsemanObject {
         dis.poetId = 0;
         dis.catId = r.catId;
         dis.poet = MyUserRequest._fullname;
-        dis.link = "stack:/mypoems?poemId=" + r.type;
+        dis.link = "page:/mypoems?poemId=" + r.type;
         dis.poemId = r.type;
 
         categoriesModel.clear();
         categoriesModel.append({
             title: MyUserRequest._fullname,
             id: 0,
-            link: "stack:/mypoems"
+            link: "page:/mypoems"
         });
 
         var parent_cat = r.catId;
@@ -60,7 +60,7 @@ AsemanObject {
             categoriesModel.insert(1, {
                 title: c.value,
                 id: c.type,
-                link: "stack:/mypoems?bookId=" + parent_cat
+                link: "page:/mypoems?bookId=" + parent_cat
             });
 
             parent_cat = c.catId;

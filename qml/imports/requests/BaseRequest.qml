@@ -39,7 +39,7 @@ NetworkRequest {
     signal refreshRequest()
 
     onIgnoreSslErrorsChanged: if (!refreshing) refreshTimer.restart()
-    onStatusChanged: if (status == 401 && AsemanGlobals.accessToken.length && accessToken == AsemanGlobals.accessToken) { AsemanGlobals.accessToken = ""; ViewController.trigger("popup:/auth/float"); }
+    onStatusChanged: if (status == 401 && AsemanGlobals.accessToken.length && accessToken == AsemanGlobals.accessToken) { AsemanGlobals.accessToken = ""; ViewController.trigger("float:/auth/float"); }
     onResponseChanged: if (_debug) console.debug(Tools.variantToJson(response))
     onHeadersChanged: if (!refreshing) refreshTimer.restart()
     onRefreshingStateChanged: {

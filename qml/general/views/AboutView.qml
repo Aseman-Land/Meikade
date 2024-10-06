@@ -105,7 +105,7 @@ MPage {
 
                             Connections {
                                 target: mkd_iconBtn
-                                onClicked: Viewport.controller.trigger("popup:/web?link=" + model.link)
+                                onClicked: Viewport.controller.trigger("float:/web?link=" + model.link)
                             }
                         }
                     }
@@ -215,7 +215,7 @@ MPage {
                             text: MaterialIcons[model.icon]
 
                             Connections {
-                                onClicked: Viewport.controller.trigger("popup:/web?link=" + model.link)
+                                onClicked: Viewport.controller.trigger("float:/web?link=" + model.link)
                             }
                         }
                     }
@@ -250,7 +250,7 @@ MPage {
 
                             Connections {
                                 target: osDel
-                                onClicked: Viewport.controller.trigger("popup:/web?link=" + model.link)
+                                onClicked: Viewport.controller.trigger("float:/web?link=" + model.link)
                             }
 
                             ColumnLayout {

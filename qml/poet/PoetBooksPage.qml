@@ -33,7 +33,7 @@ PoetBooksView {
                 "title": subtitle,
                 "image": poetImage,
                 "id": id,
-                "link": "stack:/poet?id=" + id,
+                "link": "page:/poet?id=" + id,
             },
             {
                 "title": title,
@@ -157,10 +157,10 @@ PoetBooksView {
                     catsModel.offlineInstaller.checkAndInstall( !catsModel.offlineInstaller.installed );
                     break;
                 case 1:
-                    Viewport.controller.trigger("stack:/poem/random?poetId=" + dis.id + "&catId=" + dis.catId);
+                    Viewport.controller.trigger("page:/poem/random?poetId=" + dis.id + "&catId=" + dis.catId);
                     break;
                 case 2:
-                    Viewport.controller.trigger("popup:/search?poetId=" + dis.id)
+                    Viewport.controller.trigger("float:/search?poetId=" + dis.id)
                     break;
                 }
 

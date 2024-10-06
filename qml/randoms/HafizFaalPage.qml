@@ -21,7 +21,7 @@ HafizFaalView {
         poet: qsTr("Hafiz") + Translations.refresher
         title: qsTr("%1 Ghazal").arg(Tools.translateNumbers(currentItem)) + Translations.refresher
         image: "https://meikade.com/offlines/thumbs/2.png"
-        url: "stack:/poet?id=2&poemId=" + poemId
+        url: "page:/poet?id=2&poemId=" + poemId
 
         property int currentItem
 

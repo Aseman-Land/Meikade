@@ -97,7 +97,7 @@ AsemanListModel {
                     res[res.length] = {
                         poem: poem,
                         poet: poet,
-                        link: "stack:/poet?id=" + poet.id + "&poemId=" + poem.id,
+                        link: "page:/poet?id=" + poet.id + "&poemId=" + poem.id,
                         categories: catMap.values,
                         verses: verseMap.values
                     };

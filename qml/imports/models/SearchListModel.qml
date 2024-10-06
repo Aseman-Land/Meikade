@@ -60,7 +60,7 @@ AsemanListModel {
                     u["type"] = "normal";
                     u["heightRatio"] = 0.6;
                     u["subtitle"] = qsTr("%1 - %2 follower").arg(u.user.name).arg(u.follow + 1);
-                    u["link"] = "popup:/lists/online?listId=" + u.id;
+                    u["link"] = "float:/lists/online?listId=" + u.id;
                     u["image"] = "";
                     u["details"] = Tools.jsonToVariant("{}");
 

@@ -25,7 +25,7 @@ EditPoemView {
     navigationRepeater.model: AsemanListModel { data: categories }
 
     backBtn.onClicked: ViewportType.open = false
-    previewBtn.onClicked: Viewport.controller.trigger("popup:/mypoems/poem", {"poemId": poemId, "previewText": editArea.text, "previewType": dis.currentType, "editMode": false})
+    previewBtn.onClicked: Viewport.controller.trigger("float:/mypoems/poem", {"poemId": poemId, "previewText": editArea.text, "previewType": dis.currentType, "editMode": false})
     saveBtn.onClicked: {
         userActions.fetch();
 

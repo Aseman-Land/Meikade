@@ -23,7 +23,7 @@ MPage {
     signal forgetRequest(string username)
 
     function signup() {
-        _viewport.append(signupComponent, {}, "stack")
+        _viewport.append(signupComponent, {}, "page")
     }
 
     Viewport {
@@ -35,8 +35,8 @@ MPage {
             backgroudMouseArea.onClicked: Devices.hideKeyboard()
             sendBtn.onClicked: loginPage.loginRequest(userTxt.text, passTxt.text)
             passTxt.onAccepted: loginPage.loginRequest(userTxt.text, passTxt.text)
-            signupBtn.onClicked: _viewport.append(signupComponent, {}, "stack")
-            forgetBtn.onClicked: _viewport.append(forgetComponent, {}, "stack")
+            signupBtn.onClicked: _viewport.append(signupComponent, {}, "page")
+            forgetBtn.onClicked: _viewport.append(forgetComponent, {}, "page")
             cancelBtn.onClicked: viewport.closeLast()
         }
     }

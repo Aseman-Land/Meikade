@@ -32,7 +32,7 @@ MainView {
     Component.onCompleted: {
         if (AsemanGlobals.username.length == 0 && AsemanGlobals.accessToken.length != 0) {
             AsemanGlobals.accessToken = "";
-            ViewController.trigger("popup:/auth/float");
+            ViewController.trigger("float:/auth/float");
         }
 
         loadChangelogs();
@@ -41,7 +41,7 @@ MainView {
 
     Connections {
         target: MessagesModel
-        onNewMessageArrived: ViewController.trigger("popup:/messages");
+        onNewMessageArrived: ViewController.trigger("float:/messages");
     }
 
     MeikadeLoader {
@@ -119,7 +119,7 @@ MainView {
             return;
         }
 
-        Tools.jsDelayCall(1000, function(){ changelogItem = Viewport.controller.trigger("popup:/changelogs") });
+        Tools.jsDelayCall(1000, function(){ changelogItem = Viewport.controller.trigger("float:/changelogs") });
         AsemanGlobals.lastChangelogs = appVersionNumber;
     }
 
@@ -160,7 +160,7 @@ MainView {
             welcomForm.languageCombo.onCurrentIndexChanged: if (welcomForm.languageCombo.currentIndex >= 0 && !initTimer.running) AsemanGlobals.language = GTranslations.model.get(welcomForm.languageCombo.currentIndex).key
 
             doneForm.finishBtn.onClicked: AsemanGlobals.introDone = true;
-            doneForm.signInBtn.onClicked: Viewport.controller.trigger("popup:/auth/float")
+            doneForm.signInBtn.onClicked: Viewport.controller.trigger("float:/auth/float")
             doneForm.helpBtn.onCheckedChanged: AsemanGlobals.sendData = doneForm.helpBtn.checked
         }
     }

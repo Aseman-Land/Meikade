@@ -16,7 +16,7 @@ AsemanObject {
         onReinitSync: {
             syncActionsInterval();
             Tools.jsDelayCall(400, function(){
-                controller.trigger("popup:/syncs", {"allowResync": false})
+                controller.trigger("float:/syncs", {"allowResync": false})
             })
         }
     }

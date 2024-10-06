@@ -63,7 +63,7 @@ PublishView {
     }
 
     onPoemClicked: {
-        Viewport.controller.trigger("popup:/mypoems/poem", {"poemId": poemId, "previewText": text, "previewType": type, "editMode": false});
+        Viewport.controller.trigger("float:/mypoems/poem", {"poemId": poemId, "previewText": text, "previewType": type, "editMode": false});
     }
 
     Behavior on progress {

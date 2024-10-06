@@ -55,7 +55,7 @@ AsemanListModel {
             try {
                 for (var i in response.result) {
                     var u = response.result[i];
-                    u["link"] = "stack:/poet?id=" + u.poet.id + "&poemId=" + u.poem.id
+                    u["link"] = "page:/poet?id=" + u.poet.id + "&poemId=" + u.poem.id
 
                     userActions.poetId = u.poet.id;
                     userActions.poemId = u.poem.id;

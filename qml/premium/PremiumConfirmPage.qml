@@ -17,7 +17,7 @@ PremiumConfirmView {
     busyIndicator.running: pkgReq.refreshing
 
     loginColumn.visible: AsemanGlobals.accessToken.length == 0
-    loginBtn.onClicked: Viewport.controller.trigger("popup:/auth/float", {})
+    loginBtn.onClicked: Viewport.controller.trigger("float:/auth/float", {})
 
     cancelBtn.onClicked: home.ViewportType.open = false;
     confirmBtn.onClicked: confirm()

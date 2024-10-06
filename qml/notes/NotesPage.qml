@@ -38,7 +38,7 @@ Viewport {
         onClicked: {
             var map = fplModel.get(index);
             var poetId = map.poetId;
-            Viewport.viewport.append(note_component, {"poetId": poetId, "title": map.poet}, "stack");
+            Viewport.viewport.append(note_component, {"poetId": poetId, "title": map.poet}, "page");
         }
 
         Connections {
@@ -57,7 +57,7 @@ Viewport {
             closeBtn.onClicked: closeRequest()
             onClicked: {
                 var map = flModel.get(index);
-                var obj = ViewController.trigger("popup:/notes/add", {"poetId": map.poetId, "catId": map.catId, "poemId": map.poemId,
+                var obj = ViewController.trigger("float:/notes/add", {"poetId": map.poetId, "catId": map.catId, "poemId": map.poemId,
                                                  "verseId": map.verseId, "poemText": "", "extra": map.extra});
                 obj.saved.connect(function(text){});
                 obj.poemRequest.connect(function(){

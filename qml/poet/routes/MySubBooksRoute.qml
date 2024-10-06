@@ -15,10 +15,10 @@ MySubBooksPage {
     onAddPoemRequest: Viewport.controller.trigger("dialog:/mypoems/poem/add", {"bookId": bookId})
     onPublishRequest: {
         if (AsemanGlobals.accessToken.length == 0) {
-            Viewport.controller.trigger("popup:/auth/float", {})
+            Viewport.controller.trigger("float:/auth/float", {})
             return;
         }
-        Viewport.controller.trigger("popup:/mypoems/publish", {"bookId": bookId, "name": dis.title})
+        Viewport.controller.trigger("float:/mypoems/publish", {"bookId": bookId, "name": dis.title})
     }
 }
 

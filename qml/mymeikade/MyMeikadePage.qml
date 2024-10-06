@@ -22,10 +22,10 @@ MyMeikadeView {
 
     gridView.model: MyMeikadeModel {}
 
-    settingsBtn.onClicked: Viewport.controller.trigger("stack:/settings")
+    settingsBtn.onClicked: Viewport.controller.trigger("page:/settings")
     onClicked: (link) => {
-        if (link == "popup:/syncs" && AsemanGlobals.accessToken.length == 0)
-            link = "popup:/auth/float";
+        if (link == "float:/syncs" && AsemanGlobals.accessToken.length == 0)
+            link = "float:/auth/float";
 
         Viewport.controller.trigger(link, {});
     }
@@ -34,14 +34,14 @@ MyMeikadeView {
     avatar.source: MyUserRequest._image
     bioLabel.text: MyUserRequest._bio
     profileLabel.text: MyUserRequest._fullname
-    authBtn.onClicked: Viewport.controller.trigger("popup:/auth/float", {})
+    authBtn.onClicked: Viewport.controller.trigger("float:/auth/float", {})
     messagesBtn.onClicked: {
         if (AsemanGlobals.accessToken.length == 0) {
-            Viewport.controller.trigger("popup:/auth/float", {});
+            Viewport.controller.trigger("float:/auth/float", {});
             return;
         }
 
-        Viewport.controller.trigger("popup:/inbox", {});
+        Viewport.controller.trigger("float:/inbox", {});
     }
 
     avatarBtn.onClicked: {
@@ -137,7 +137,7 @@ MyMeikadeView {
                     setProfilePicReq.deleteRequest();
                     break;
                 case 4:
-                    Viewport.controller.trigger("popup:/auth/changePassword", {"forgetMode": false});
+                    Viewport.controller.trigger("float:/auth/changePassword", {"forgetMode": false});
                     break;
                 }
 

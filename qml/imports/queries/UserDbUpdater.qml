@@ -60,7 +60,7 @@ AsemanObject {
                 var r = res[0];
                 var item = {
                     image: "https://meikade.com/offlines/thumbs/" + r.poet_id + ".png",
-                    link:"stack:/poet?id=" + r.poet_id + "&poemId=" + fav.poem_id,
+                    link:"page:/poet?id=" + r.poet_id + "&poemId=" + fav.poem_id,
                     subtitle: r.poet_name,
                     title: r.poem_title,
                     verseText: vorderRes[0].text

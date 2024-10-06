@@ -13,7 +13,7 @@ AsemanListModel {
             "color": "transparent",
             "modelData": [
             ],
-            "section": "Recents\\More\\popup:/recents",
+            "section": "Recents\\More\\float:/recents",
             "type": "recents"
         },
         {

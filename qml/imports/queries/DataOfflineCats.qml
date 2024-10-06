@@ -27,7 +27,7 @@ DataBaseQuery {
                     "details": null,
                     "heightRatio": 0.6,
                     "image": "",
-                    "link": "stack:/poet?id=" + d.poet_id + (poemQuery? "&poemId=" : "&catId=") + d.id,
+                    "link": "page:/poet?id=" + d.poet_id + (poemQuery? "&poemId=" : "&catId=") + d.id,
                     "subtitle": d.poemsCount + " poems",
                     "title": d.text,
                     "type": "fullback",

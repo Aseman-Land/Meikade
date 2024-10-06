@@ -35,7 +35,7 @@ FlexiGridRow {
             highlighted: true
             icon: MaterialIcons.mdi_plus
             iconPixelSize: 12 * Devices.fontDensity
-            onClicked: Viewport.controller.trigger("popup:/favorites")
+            onClicked: Viewport.controller.trigger("float:/favorites")
         }
     }
 }

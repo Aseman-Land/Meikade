@@ -289,7 +289,7 @@ PoemView {
         title: GTranslations.translate(loader.title)
         phrase: AsemanGlobals.phrase? loader.phrase : ""
 
-        searchBtn.onClicked: Viewport.controller.trigger("popup:/search?poetId=" + poetId)
+        searchBtn.onClicked: Viewport.controller.trigger("float:/search?poetId=" + poetId)
 
         onNavigationClicked: function(link, index) {
             var properties = loader.categoriesModel.get(index);
@@ -391,7 +391,7 @@ PoemView {
                     GlobalSignals.snackbarRequest(qsTr("Poem copied"));
                     break;
                 case 3:
-                    Viewport.controller.trigger("popup:/sticker/export", {"poet": poet, "text": dis.getText(true)})
+                    Viewport.controller.trigger("float:/sticker/export", {"poet": poet, "text": dis.getText(true)})
                     break;
                 case 4:
                     Devices.share(dis.title, dis.getText(false));
@@ -513,7 +513,7 @@ PoemView {
                     var poemText = loader.getText(false, menuItem.index);
                     poemText = Tools.stringReplace(poemText, "\n+", "\n", true);
 
-                    Viewport.controller.trigger("popup:/notes/add", {"poetId": verseFaveActionQuery.poetId,
+                    Viewport.controller.trigger("float:/notes/add", {"poetId": verseFaveActionQuery.poetId,
                                                 "catId": verseFaveActionQuery.catId, "poemId": verseFaveActionQuery.poemId,
                                                 "verseId": verseFaveActionQuery.verseId, "poemText": poemText, "extra": extra}).saved.connect(function(text){
                         var item = poemLoader.versesModel.get(idx);
@@ -548,7 +548,7 @@ PoemView {
                     GlobalSignals.snackbarRequest(qsTr("Verse copied"));
                     break;
                 case 4:
-                    Viewport.controller.trigger("popup:/sticker/export", {"poet": poet, "text": loader.getText(true, menuItem.index)})
+                    Viewport.controller.trigger("float:/sticker/export", {"poet": poet, "text": loader.getText(true, menuItem.index)})
                     break;
                 case 5:
                     Devices.share(dis.title, loader.getText(false, menuItem.index));
