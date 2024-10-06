@@ -40,7 +40,7 @@ Item {
     Rectangle {
         anchors.fill: parent
         color: selectMode? Colors.background : Colors.deepBackground
-        opacity: selectMode? 0.5 : 1
+        opacity: selectMode && !Devices.isAndroid? 0.5 : 1
     }
 
     ReloadItem {
@@ -325,7 +325,7 @@ Item {
         anchors.left: parent.left
         text: qsTr("Lists") + Translations.refresher
         color: selectMode? "transparent" : Colors.headerColor
-        shadow: selectMode? false : Devices.isAndroid
+        shadow: selectMode? false : isAndroidStyle
         light: (!selectMode || Colors.darkMode) && !Colors.lightHeader
 
         HeaderBackButton {

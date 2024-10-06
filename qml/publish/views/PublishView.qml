@@ -390,7 +390,7 @@ Page {
         anchors.top: parent.top
         color: Colors.headerColor
         light: !Colors.lightHeader
-        shadow: Devices.isAndroid
+        shadow: isAndroidStyle
 
         Image {
             anchors.centerIn: parent

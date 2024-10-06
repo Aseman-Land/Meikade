@@ -71,10 +71,15 @@ int main(int argc, char *argv[])
     qputenv("QT_ANDROID_ENABLE_WORKAROUND_TO_DISABLE_PREDICTIVE_TEXT", "1");
     qputenv("QT_LOGGING_RULES", "qt.qml.connections=false");
 
-    bool androidStyle;
+    bool androidStyle = false;
 #ifdef Q_OS_ANDROID
+#ifdef FORCE_IOSSTYLE
+    androidStyle = false;
+    QQuickStyle::setStyle("IOSStyle");
+#else
     androidStyle = true;
     QQuickStyle::setStyle("Material");
+#endif
 #else
     androidStyle = false;
 #if (QT_VERSION >= QT_VERSION_CHECK(6, 0, 0))

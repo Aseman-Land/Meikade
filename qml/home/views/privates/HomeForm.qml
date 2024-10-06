@@ -96,7 +96,7 @@ Item {
         anchors.right: parent.right
         anchors.top: parent.top
         titleFontSize: 10 * Devices.fontDensity
-        shadow: Devices.isAndroid
+        shadow: isAndroidStyle
         opacity: Devices.isIOS || Devices.isDesktop? 0.8 : 1
     }
 

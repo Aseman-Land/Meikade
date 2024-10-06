@@ -22,7 +22,7 @@ Item {
     Rectangle {
         anchors.fill: parent
         color: Colors.background
-        opacity: 0.5
+        opacity: Devices.isAndroid? 1 : 0.5
     }
 
     AsemanFlickable {

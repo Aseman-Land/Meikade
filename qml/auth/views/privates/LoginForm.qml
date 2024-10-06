@@ -61,7 +61,7 @@ Page {
         text: qsTr("Authenticating") + Translations.refresher
         color: Colors.headerColor
         light: !Colors.lightHeader
-        shadow: Devices.isAndroid
+        shadow: isAndroidStyle
         visible: !introMode
 
         HeaderBackButton {

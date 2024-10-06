@@ -265,7 +265,7 @@ Page {
         text: qsTr("Signup") + Translations.refresher
         color: Colors.headerColor
         light: !Colors.lightHeader
-        shadow: Devices.isAndroid
+        shadow: isAndroidStyle
 
         RowLayout {
             anchors.left: parent.left

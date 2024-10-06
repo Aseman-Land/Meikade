@@ -134,7 +134,7 @@ Page {
         text: "Configs Panel"
         color: "#fff"
         light: false
-        shadow: Devices.isAndroid
+        shadow: isAndroidStyle
     }
 
     HScrollBar {

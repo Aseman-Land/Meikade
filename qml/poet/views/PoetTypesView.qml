@@ -116,7 +116,7 @@ Item {
         text: qsTr("Manage Shelf") + Translations.refresher
         color: Colors.headerColor
         light: !Colors.lightHeader
-        shadow: Devices.isAndroid
+        shadow: isAndroidStyle
 
         HeaderBackButton {
             id: closeBtn

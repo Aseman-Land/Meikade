@@ -54,7 +54,7 @@ Item {
         light: !Colors.lightHeader
         text: qsTr("All Poets") + Translations.refresher
         titleFontSize: 10 * Devices.fontDensity
-        shadow: Devices.isAndroid
+        shadow: isAndroidStyle
 
         HeaderBackButton {
             id: headerBtn

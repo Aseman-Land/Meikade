@@ -7,6 +7,6 @@ android {
         $$PWD/gradle.properties
 }
 
-ANDROID_ABIS = armeabi-v7a arm64-v8a x86_64 x86
+ANDROID_ABIS = arm64-v8a
 
 android: include(/opt/develop/android/openssl/openssl.pri)

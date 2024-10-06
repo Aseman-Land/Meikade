@@ -344,7 +344,7 @@ Item {
         anchors.left: parent.left
         text: qsTr("Settings") + Translations.refresher
         color: Colors.lightBackground
-        shadow: Devices.isAndroid
+        shadow: isAndroidStyle
         light: Colors.darkMode
 
         HeaderBackButton {

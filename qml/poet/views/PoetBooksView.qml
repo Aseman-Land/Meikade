@@ -268,7 +268,7 @@ Item {
         anchors.left: parent.left
         color: Colors.headerColor
         light: !Colors.lightHeader
-        shadow: Devices.isAndroid
+        shadow: isAndroidStyle
 
         RowLayout {
             anchors.fill: parent

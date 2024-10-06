@@ -97,7 +97,7 @@ Page {
         text: qsTr("Forget Password") + Translations.refresher
         color: Colors.headerColor
         light: !Colors.lightHeader
-        shadow: Devices.isAndroid
+        shadow: isAndroidStyle
 
         RowLayout {
             anchors.left: parent.left

@@ -102,7 +102,7 @@ Page {
         anchors.right: parent.right
         color: Colors.headerColor
         light: !Colors.lightHeader
-        shadow: Devices.isAndroid
+        shadow: isAndroidStyle
 
         ColumnLayout {
             anchors.centerIn: parent
