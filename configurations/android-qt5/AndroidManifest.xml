@@ -16,10 +16,10 @@
     <uses-sdk android:targetSdkVersion="33" android:minSdkVersion="23"/>
     <supports-screens android:normalScreens="true" android:smallScreens="true" android:anyDensity="true" android:largeScreens="true"/>
 
-    <application android:hardwareAccelerated="true" android:name="io.aseman.android.AsemanApplication" android:label="Meikade" android:icon="@drawable/icon" android:extractNativeLibs="true">
+    <application android:hardwareAccelerated="true" android:name="io.aseman.android.AsemanApplication" android:label="Meikade Beta Qt5" android:icon="@drawable/icon" android:extractNativeLibs="true">
         <activity android:configChanges="orientation|uiMode|screenLayout|screenSize|smallestScreenSize|layoutDirection|locale|fontScale|keyboard|keyboardHidden|navigation|mcc|mnc|density"
                   android:name="io.aseman.android.AsemanActivity"
-                  android:label="Meikade"
+                  android:label="Meikade Beta Qt5"
                   android:screenOrientation="unspecified"
                   android:theme="@style/splashScreenTheme"
                   android:exported="true"

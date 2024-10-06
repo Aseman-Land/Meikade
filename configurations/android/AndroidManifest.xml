@@ -22,6 +22,7 @@
         android:hardwareAccelerated="true"
         android:label="Meikade Beta Qt6"
         android:icon="@drawable/icon"
+        android:theme="@style/splashScreenTheme"
         android:requestLegacyExternalStorage="true"
         android:allowNativeHeapPointerTagging="false"
         android:allowBackup="true"
@@ -29,7 +30,7 @@
         <activity
             android:name="io.aseman.android.AsemanActivity"
             android:configChanges="orientation|uiMode|screenLayout|screenSize|smallestScreenSize|layoutDirection|locale|fontScale|keyboard|keyboardHidden|navigation"
-            android:label="Meikade"
+            android:label="Meikade Beta Qt6"
             android:launchMode="singleTop"
             android:screenOrientation="unspecified"
             android:exported="true">
