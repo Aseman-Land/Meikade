@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.nilegroup.beta.Meikade"
+    package="org.nilegroup.beta.Meikade.qt6"
     android:installLocation="auto"
     android:versionCode="3"
     android:versionName="1.0.2">
@@ -20,7 +20,7 @@
     <application
         android:name="io.aseman.android.AsemanApplication"
         android:hardwareAccelerated="true"
-        android:label="Meikade"
+        android:label="Meikade Beta Qt6"
         android:icon="@drawable/icon"
         android:requestLegacyExternalStorage="true"
         android:allowNativeHeapPointerTagging="false"

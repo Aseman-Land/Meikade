@@ -22,9 +22,12 @@ MPage {
 
     signal footerItemDoubleClicked()
 
-    footer: MFooter {
+    MFooter {
         id: footer
         onCurrentIndexChanged: swipeView.currentIndex = currentIndex
+        anchors.bottom: parent.bottom
+        anchors.right: parent.right
+        anchors.left: parent.left
 
         MFooterButton {
             icon: footer.currentIndex == 0? MaterialIcons.mdi_home : MaterialIcons.mdi_home_outline
@@ -47,7 +50,7 @@ MPage {
     Rectangle {
         id: swipeView
         anchors.top: parent.top
-        anchors.bottom: parent.bottom
+        anchors.bottom: footer.top
         anchors.right: parent.right
         anchors.left: parent.left
         anchors.leftMargin: AsemanGlobals.viewMode == 2? 0 : footerItem.width

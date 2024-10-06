@@ -19,7 +19,7 @@ void MAuth::login(const QString &username, const QString &password, QObject *rec
         list << json.toMap().value("token").toString();
         list << hasError;
 
-        callback.call(list);
+        QJSValue(callback).call(list);
     });
 }
 
