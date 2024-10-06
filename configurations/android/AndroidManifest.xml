@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.nilegroup.Meikade"
+    package="org.nilegroup.beta.Meikade"
     android:installLocation="auto"
     android:versionCode="3"
     android:versionName="1.0.2">
